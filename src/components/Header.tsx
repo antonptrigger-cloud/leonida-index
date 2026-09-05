@@ -14,7 +14,7 @@ export function Header() {
     <header className="border-b border-[#2a2a2e] bg-[#0b0b0c]">
       <div className="mx-auto flex max-w-5xl items-center justify-between gap-4 px-4 py-3">
         <Link href="/" className="text-sm font-semibold tracking-wide text-[#f4f1ea] hover:text-[#ff2d7b]">
-          Leonida Index
+          Leonida Vice Guide
         </Link>
         <nav className="flex flex-wrap items-center gap-3 text-sm text-[#9a958c]">
           {NAV.map((item) => (

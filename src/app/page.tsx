@@ -23,9 +23,10 @@ export default function Home() {
     <div className="flex flex-col gap-12">
       <section>
         <p className="text-xs uppercase tracking-[0.25em] text-[#ffd36b]">GTA VI fan utility</p>
-        <h1 className="mt-2 text-4xl font-semibold tracking-tight">Leonida Index</h1>
+        <h1 className="mt-2 text-4xl font-semibold tracking-tight">Leonida Vice Guide</h1>
         <p className="mt-3 max-w-xl text-[#9a958c]">
-          Map, guides, database, tools. One site. Launch target 19 November 2026.
+          Map, guides, database and tools for Vice City and the state of Leonida.
+          Launch 19 November 2026.
         </p>
       </section>
 
