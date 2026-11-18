@@ -1,5 +1,6 @@
 import { metaFor } from "@/lib/seo/site";
 import { PageSchema } from "@/lib/seo/jsonld";
+import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { PageHeader } from "@/components/PageHeader";
 
 export const metadata = metaFor("/map/ambrosia");
@@ -7,7 +8,8 @@ export const metadata = metaFor("/map/ambrosia");
 export default function Page() {
   return (
     <div>
-      <PageSchema path="/map/ambrosia" />
+      <PageSchema path="/map/ambrosia" breadcrumbs={false} />
+      <Breadcrumbs path="/map/ambrosia" />
       <PageHeader kicker="Region" title="Ambrosia" source="Official / Showcase" />
       <div className="flex max-w-xl flex-col gap-6 text-ink-2">
         <section>

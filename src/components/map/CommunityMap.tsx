@@ -45,11 +45,14 @@ export function CommunityMap({
   initialPins,
   online,
   initialFilters = NO_FILTERS,
+  breadcrumb,
 }: {
   initialPins: PublicPin[];
   online: boolean;
   /** From the /map URL. `q` is the WebSite SearchAction target (/map?q=…). */
   initialFilters?: InitialFilters;
+  /** Visible breadcrumb (server-rendered with its JSON-LD), shown as a small first line of the floating controls card, so it overlays the map without taking layout space. */
+  breadcrumb?: React.ReactNode;
 }) {
   useHeaderOffset();
   const [pins, setPins] = useState<PublicPin[]>(initialPins);
@@ -187,6 +190,7 @@ export function CommunityMap({
 
       {/* Controls: submit (desktop), search, spoilers, filters */}
       <div className={`${card} vc-glass--cut absolute left-2x right-2x top-2x z-[1000] flex flex-col gap-3x p-3x sm:left-3x sm:right-auto sm:top-3x sm:w-[440px] sm:p-4x`}>
+        {breadcrumb ? <div className="lvg-crumb -mb-1x">{breadcrumb}</div> : null}
         <h2 className="sr-only">Map controls</h2>
         <div className="hidden items-center justify-between gap-4x sm:flex">
           <div className="leading-none">
@@ -327,7 +331,7 @@ export function CommunityMap({
 
       {/* Mobile: the main action sits at thumb height. */}
       {!panelMode || panelMode === "list" ? (
-        <div className="absolute bottom-10x left-4x z-[1000] sm:hidden">
+        <div className="absolute bottom-[5.25rem] left-4x z-[1000] sm:hidden">
           <button
             onClick={submitting ? endSubmit : startSubmit}
             disabled={!online}

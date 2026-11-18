@@ -4,6 +4,7 @@ import { PIN_TYPES } from "@/lib/map/config";
 import { parseFilters } from "@/lib/map/filters";
 import { getLivePins } from "@/lib/map/service";
 import { PageSchema } from "@/lib/seo/jsonld";
+import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { ROUTES, metaFor } from "@/lib/seo/site";
 
 export const metadata = metaFor("/map");
@@ -27,7 +28,7 @@ export default async function MapIndex({ searchParams }: { searchParams: Promise
   const listed = pins.filter((p) => !p.spoiler);
   return (
     <>
-      <PageSchema path="/map" />
+      <PageSchema path="/map" breadcrumbs={false} />
       {/*
         Server-rendered summary of the map for search engines and screen readers. The interactive
         map covers the viewport, so this is visually hidden but present in the HTML.
@@ -62,7 +63,12 @@ export default async function MapIndex({ searchParams }: { searchParams: Promise
           <Link href="/secrets">GTA 6 secrets</Link>
         </p>
       </section>
-      <CommunityMap initialPins={pins} online={online} initialFilters={filters} />
+      <CommunityMap
+        initialPins={pins}
+        online={online}
+        initialFilters={filters}
+        breadcrumb={<Breadcrumbs path="/map" className="text-[11px] leading-none text-muted" />}
+      />
     </>
   );
 }

@@ -1,5 +1,6 @@
 import { metaFor } from "@/lib/seo/site";
 import { PageSchema } from "@/lib/seo/jsonld";
+import { Breadcrumbs } from "@/components/Breadcrumbs";
 import Link from "next/link";
 import { PageHeader } from "@/components/PageHeader";
 import { getStore } from "@/lib/map/store";
@@ -44,7 +45,8 @@ export default async function LeaderboardPage() {
   }
   return (
     <div>
-      <PageSchema path="/map/leaderboard" />
+      <PageSchema path="/map/leaderboard" breadcrumbs={false} />
+      <Breadcrumbs path="/map/leaderboard" />
       <PageHeader kicker="Community map" title="Leaderboard" source="Community submissions" />
       {!store ? (
         <p className="mb-6 rounded-lg border border-orange/40 bg-orange/10 px-3 py-2 text-sm text-orange">

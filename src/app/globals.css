@@ -769,7 +769,7 @@ a.vc-card:hover {
   color: #5a5566;
   text-shadow: none;
 }
-.lvg-map .leaflet-control-attribution {
+.lvg-map.leaflet-container .leaflet-control-attribution {
   background: rgba(10, 10, 11, 0.9);
   color: #d9d5e2;
   font-size: 12px;
@@ -778,7 +778,7 @@ a.vc-card:hover {
   max-width: calc(100vw - 16px);
   text-shadow: 0 1px 1px rgba(0, 0, 0, 0.8);
 }
-.lvg-map .leaflet-control-attribution a {
+.lvg-map.leaflet-container .leaflet-control-attribution a {
   color: #ff5c97;
   text-decoration: underline;
 }

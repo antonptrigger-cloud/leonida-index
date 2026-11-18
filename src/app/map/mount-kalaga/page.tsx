@@ -1,5 +1,6 @@
 import { metaFor } from "@/lib/seo/site";
 import { PageSchema } from "@/lib/seo/jsonld";
+import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { PageHeader } from "@/components/PageHeader";
 
 export const metadata = metaFor("/map/mount-kalaga");
@@ -7,7 +8,8 @@ export const metadata = metaFor("/map/mount-kalaga");
 export default function Page() {
   return (
     <div>
-      <PageSchema path="/map/mount-kalaga" />
+      <PageSchema path="/map/mount-kalaga" breadcrumbs={false} />
+      <Breadcrumbs path="/map/mount-kalaga" />
       <PageHeader kicker="Region" title="Mount Kalaga" source="Official / Showcase" />
       <div className="flex max-w-xl flex-col gap-6 text-ink-2">
         <section>
