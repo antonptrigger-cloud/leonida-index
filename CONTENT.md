@@ -22,3 +22,4 @@ news | /news/gta-6-release-countdown | Release time by region | live | official 
 news | /news/gta-6-confirmed-so-far | What is confirmed | live | official |
 news | /news/gta-6-preload-editions-pricing | Preload and editions | live | official | US prices only
 news | /news/gta-6-festival-set-times-heat-night | Festival set times | live | official + reported | no livestream announced; charity list may be truncated
+news | /news/gta-6-sales-17-million-sensor-tower | Sales estimate | live | reported (Sensor Tower estimates) | no official sales figure yet; update when Take-Two publishes

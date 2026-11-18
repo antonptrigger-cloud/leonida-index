@@ -10,21 +10,24 @@ const L = "text-pink underline underline-offset-2";
 
 // Update this block each hourly run: reading time (AEST), source, result.
 const STATUS: React.ReactNode[][] = [
-  ["PlayStation Network", "All services up and running (account management, gaming and social, video, store, direct)", <Ext key="ps" href="https://status.playstation.com/">PlayStation Service Status</Ext>, "08:04 AEST, 19 Nov"],
-  ["PSN via GTATracker", "Up, all five listed services up", <Ext key="gtp" href="https://gtatracker.gg/online/server-status">GTATracker, relaying Sony&rsquo;s feed</Ext>, "22:00 UTC, 18 Nov (08:00 AEST)"],
-  ["Xbox network", "Up. Account, safety, store, social and sharing services all up", <Ext key="gtx" href="https://gtatracker.gg/online/server-status">GTATracker, relaying Microsoft&rsquo;s feed</Ext>, "22:00 UTC, 18 Nov (08:00 AEST)"],
-  ["Rockstar service status", "GTA Online, Red Dead Online, Online Services and Cfx up. No GTA VI entry listed", <Ext key="gt2" href="https://gtatracker.gg/online/server-status">GTATracker, reading Rockstar&rsquo;s page</Ext>, "21:57 UTC, 18 Nov (07:57 AEST)"],
-  ["User reports: GTA VI (Australia)", "\u201cPossible problems\u201d. Most reported: game launch (58%), then server connection", <Ext key="dda" href="https://downdetector.com.au/status/gta-vi/">Downdetector AU</Ext>, "08:05 AEST, 19 Nov"],
-  ["User reports: PSN (Australia)", "\u201cPossible problems\u201d. Server connection 41%, login 24%, then game launch", <Ext key="ddp" href="https://downdetector.com.au/status/playstation-network/">Downdetector AU</Ext>, "08:06 AEST, 19 Nov"],
-  ["User reports: GTA VI (New Zealand)", "No current problems", <Ext key="dd" href="https://downdetector.co.nz/status/gta-vi/">Downdetector NZ</Ext>, "08:04 AEST, 19 Nov"],
+  ["PlayStation Network", "No active issues listed for the US, UK, Europe, Australia or New Zealand", <Ext key="ps" href="https://status.playstation.com/">PlayStation Service Status</Ext>, "09:02 AEST, 19 Nov"],
+  ["PSN via GTATracker", "Up, all five listed services up", <Ext key="gtp" href="https://gtatracker.gg/online/server-status">GTATracker, relaying Sony&rsquo;s feed</Ext>, "23:00 UTC, 18 Nov (09:00 AEST)"],
+  ["Xbox network", "Up. Account, safety, store, social and sharing services all up", <Ext key="gtx" href="https://gtatracker.gg/online/server-status">GTATracker, relaying Microsoft&rsquo;s feed</Ext>, "23:00 UTC, 18 Nov (09:00 AEST)"],
+  ["Rockstar service status", "GTA Online, Red Dead Online, Online Services and Cfx up. No GTA VI entry listed", <Ext key="gt2" href="https://gtatracker.gg/online/server-status">GTATracker, reading Rockstar&rsquo;s page</Ext>, "22:59 UTC, 18 Nov (08:59 AEST)"],
+  ["User reports: GTA VI (Australia)", "No current problems (was \u201cpossible problems\u201d at 08:05). Most reported: game launch (58%), then server connection", <Ext key="dda" href="https://downdetector.com.au/status/gta-vi/">Downdetector AU</Ext>, "09:02 AEST, 19 Nov"],
+  ["User reports: PSN (Australia)", "\u201cPossible problems\u201d. Server connection 40%, then login and game launch", <Ext key="ddp" href="https://downdetector.com.au/status/playstation-network/">Downdetector AU</Ext>, "09:02 AEST, 19 Nov"],
+  ["User reports: GTA VI (New Zealand)", "No current problems", <Ext key="dd" href="https://downdetector.co.nz/status/gta-vi/">Downdetector NZ</Ext>, "09:03 AEST, 19 Nov"],
+  ["User reports: GTA VI (Germany)", "\u201cPossible problems\u201d in user reports, just after the 09:00 AEST unlock. Top category 48% when our team read it (category name not shown to us). Not a confirmed outage", <Ext key="dde" href="https://allestoerungen.de/stoerung/gta-vi/">Allestörungen (Downdetector DE)</Ext>, "09:03 AEST, 19 Nov"],
+  ["User reports: GTA VI (UK)", "\u201cProblems\u201d in user reports, read before the UK unlock at 10:00 AEST, so it likely reflects PSN, store or download trouble rather than GTA VI itself (our inference). Top category 63% (category name not shown to us). Not a confirmed outage", <Ext key="ddu" href="https://downdetector.co.uk/status/gta-vi/">Downdetector UK</Ext>, "09:03 AEST, 19 Nov"],
 ];
 
 export default function Page() {
   return (
     <NewsLayout slug={SLUG} kicker="News · Live tracker" title="GTA 6 Server Status & Known Issues" source="Official status pages + reported">
       <Lede>
-        Latest readings, 08:00 to 08:06 AEST on 19 Nov: the PlayStation status page shows everything up, and Xbox and Rockstar&rsquo;s status feeds (read second-hand via GTATracker) show up too. PlayStation Network had a disruption on 18 Nov (US time) that Sony&rsquo;s status page acknowledged and later cleared,
-        and Downdetector Australia shows &ldquo;possible problems&rdquo; in user reports for both GTA VI and PSN. Those are user reports, not confirmed outages. PS5 owners still need a mandatory system update. This page is updated through launch week.
+        Latest readings as read by our team, 08:59 to 09:03 AEST on 19 Nov: PlayStation&rsquo;s status feed lists no active issues for the US, UK, Europe, Australia or New Zealand, and Xbox and Rockstar&rsquo;s status feeds (read second-hand via GTATracker) show up too.
+        Central Europe unlocked at 09:00 AEST, and Downdetector user reports show &ldquo;possible problems&rdquo; in Germany and &ldquo;problems&rdquo; in the UK, where the game does not unlock until 10:00 AEST, so those UK reports probably are not about the game itself. Australian GTA VI reports have dropped back to &ldquo;no current problems&rdquo;. Those are user reports, not confirmed outages.
+        PlayStation Network had a disruption on 18 Nov (US time) that Sony&rsquo;s status page acknowledged and later cleared. PS5 owners still need a mandatory system update. This page is updated through launch week.
       </Lede>
 
       <H2>Live status</H2>
@@ -34,11 +37,11 @@ export default function Page() {
           Before the PSN disruption, Insider Gaming reported no performance or networking issues at the time of writing (<Ext href="https://insider-gaming.com/is-grand-theft-auto-6-down-gta-6-issues-explained/">Insider Gaming</Ext>).
         </li>
         <li>
-          We could not load Rockstar&rsquo;s own service status page ourselves (it returned an error), so the Rockstar reading above is second-hand. GTA 6 is unlocking region by region, so the bigger tests of store and network load come when Europe and the Americas unlock.
+          We could not load Rockstar&rsquo;s own service status page ourselves (it returned an error), so the Rockstar reading above is second-hand. The PlayStation row is read from Sony&rsquo;s own status feed. GTA 6 is unlocking region by region, so the bigger tests of store and network load come when Europe and the Americas unlock.
         </li>
         <li>
-          <Lead>Where the unlock has reached:</Lead> Rockstar releases at midnight local time, rolling by region. By our conversion from store listings, New Zealand unlocked at 21:00 AEST (11:00 UTC) on 18 Nov, and Australian stores list 23:00 AEST (13:00 UTC), including for Brisbane. By 08:00 AEST on 19 Nov it was also live in Japan and the rest of Asia, India and the Gulf.
-          Central Europe follows at 09:00 AEST, the UK and Ireland at 10:00 AEST and the US East Coast at 15:00 AEST. See the <Link href={newsPath("gta-6-release-countdown")} className={L}>release time by region</Link> for the caveats.
+          <Lead>Where the unlock has reached:</Lead> Rockstar releases at midnight local time, rolling by region. By our conversion from store listings, New Zealand unlocked at 21:00 AEST (11:00 UTC) on 18 Nov, and Australian stores list 23:00 AEST (13:00 UTC), including for Brisbane. By 09:00 AEST on 19 Nov it was also live in Japan and the rest of Asia, India, the Gulf and central Europe.
+          The UK and Ireland follow at 10:00 AEST and the US East Coast at 15:00 AEST. See the <Link href={newsPath("gta-6-release-countdown")} className={L}>release time by region</Link> for the caveats.
         </li>
         <li>
           Take-Two describes GTA VI as a single-player title, so we expect day-one strain to land mostly on store and download systems. That is our expectation, not a reported fact.
