@@ -6,7 +6,7 @@ import { HeaderBackdrop } from "@/components/HeaderBackdrop";
 const NAV: NavItem[] = [
   { href: "/map", label: "Map" },
   { href: "/guides", label: "Guides" },
-  { href: "/database/characters", label: "Database", match: "/database" },
+  { href: "/database", label: "Database", match: "/database" },
   { href: "/tools/edition-compare", label: "Tools", match: "/tools" },
   { href: "/news", label: "News" },
   { href: "/secrets", label: "Secrets" },

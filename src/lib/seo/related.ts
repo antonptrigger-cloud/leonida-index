@@ -21,6 +21,7 @@ import { MISSIONS, missionPath } from "@/lib/guides/missions";
 import { NEWS, newsPath } from "@/lib/news/articles";
 import { CHARACTERS, characterPath } from "@/lib/characters/characters";
 import { CAST_PATH } from "@/lib/characters/cast";
+import { REFERENCE_PAGES } from "@/lib/database/reference";
 import { ROUTES } from "./site";
 
 export type Section = "map" | "guide" | "news" | "character";
@@ -188,6 +189,21 @@ function buildItems(): Item[] {
       blurb: cast.description,
       tags,
       date: "2026-11-18",
+    });
+  }
+
+  // Database reference pages (vehicles, weapons, radio): from their registry copy.
+  for (const page of REFERENCE_PAGES) {
+    const r = ROUTES[page.path];
+    if (!r) continue;
+    items.push({
+      href: page.path,
+      title: r.crumb,
+      label: "Database",
+      section: "guide",
+      blurb: r.description,
+      tags: tagsFromText(`${r.title} ${r.description}`),
+      date: r.updated ?? "2026-11-18",
     });
   }
 

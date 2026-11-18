@@ -6,6 +6,7 @@ import { CharacterPlaceholder } from "@/components/characters/CharacterBits";
 import { CHARACTERS, CHARACTER_NOTE, GROUPS, LAST_VERIFIED_LABEL, characterPath } from "@/lib/characters/characters";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { CAST_PATH } from "@/lib/characters/cast";
+import { REFERENCE_PAGES } from "@/lib/database/reference";
 
 export const metadata = metaFor("/database/characters");
 
@@ -60,6 +61,15 @@ export default function CharactersIndex() {
             <p className="mt-3x text-xs text-muted">
               Last verified <time dateTime="2026-11-18">{LAST_VERIFIED_LABEL}</time>, before launch.
             </p>
+          </div>
+          <div className="vc-card p-6x">
+            <h2 className="vc-kicker">More in the database</h2>
+            <ul className="mt-4x flex flex-col gap-2x text-sm">
+              {REFERENCE_PAGES.map((p) => (
+                <li key={p.path}><Link href={p.path} className="text-blue hover:text-pink">{p.cardTitle}</Link></li>
+              ))}
+              <li><Link href="/database" className="text-blue hover:text-pink">Database home</Link></li>
+            </ul>
           </div>
         </aside>
       </div>
