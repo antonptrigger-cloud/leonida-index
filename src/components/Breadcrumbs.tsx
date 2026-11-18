@@ -7,14 +7,14 @@ import { crumbsFor } from "@/lib/seo/site";
  * `crumbsFor(path)` so the markup always matches what readers see. Pages that render this
  * should pass `breadcrumbs={false}` to `<PageSchema>` to avoid a duplicate list.
  */
-export function Breadcrumbs({ path }: { path: string }) {
+export function Breadcrumbs({ path, className = "mb-6x text-xs text-muted" }: { path: string; className?: string }) {
   const crumbs = crumbsFor(path);
   if (crumbs.length < 2) return null;
   const schema = breadcrumbSchema(path);
   return (
     <>
       {schema ? <JsonLd data={schema} /> : null}
-      <nav aria-label="Breadcrumb" className="mb-6x text-xs text-muted">
+      <nav aria-label="Breadcrumb" className={className}>
         <ol className="flex flex-wrap items-center gap-x-2x gap-y-1x">
           {crumbs.map((c, i) => {
             const last = i === crumbs.length - 1;

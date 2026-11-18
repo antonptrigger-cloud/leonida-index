@@ -68,6 +68,7 @@ export const memoryStore: MapStore = {
       status: "pending",
       ...input,
       isSeed: false,
+      source: "community",
       approximate: false,
       upCount: 0,
       downCount: 0,

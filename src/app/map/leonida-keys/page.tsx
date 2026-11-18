@@ -1,5 +1,6 @@
 import { metaFor } from "@/lib/seo/site";
 import { PageSchema } from "@/lib/seo/jsonld";
+import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { PageHeader } from "@/components/PageHeader";
 
 export const metadata = metaFor("/map/leonida-keys");
@@ -7,7 +8,8 @@ export const metadata = metaFor("/map/leonida-keys");
 export default function Page() {
   return (
     <div>
-      <PageSchema path="/map/leonida-keys" />
+      <PageSchema path="/map/leonida-keys" breadcrumbs={false} />
+      <Breadcrumbs path="/map/leonida-keys" />
       <PageHeader kicker="Region" title="Leonida Keys" source="Official / Showcase" />
       <div className="flex max-w-xl flex-col gap-6 text-ink-2">
         <section>

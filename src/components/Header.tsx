@@ -25,7 +25,7 @@ export function Header() {
           </span>
         </Link>
         <nav
-          className="-mx-4x flex w-[calc(100%+2rem)] items-center gap-6x overflow-x-auto px-4x pb-1 [scrollbar-width:none] sm:mx-0 sm:w-auto sm:flex-1 sm:justify-end sm:overflow-visible sm:px-0 sm:pb-0"
+          className="flex w-full flex-wrap items-center justify-between gap-x-3x gap-y-1x sm:w-auto sm:flex-1 sm:justify-end sm:gap-6x"
           aria-label="Main"
         >
           <NavLinks items={NAV} />

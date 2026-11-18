@@ -1,7 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useState } from "react";
-import { LIMITS, PIN_TYPES } from "@/lib/map/config";
+import { LIMITS, PIN_TYPES, typeSingular } from "@/lib/map/config";
 import type { Comment, PublicPin } from "@/lib/map/types";
 import { getLikedComments, getMyVote, getSavedGamerTag, getVoterId, saveGamerTag, setLikedComment, setMyVote } from "./local";
 
@@ -18,6 +18,7 @@ export function PinDetails({
 }) {
   const [myVote, setVote] = useState<-1 | 0 | 1>(0);
   const [busy, setBusy] = useState(false);
+  const [copied, setCopied] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [comments, setComments] = useState<Comment[] | null>(null);
   const [liked, setLiked] = useState<Set<string>>(new Set());
@@ -111,7 +112,7 @@ export function PinDetails({
       <div className="flex items-start justify-between gap-3">
         <div>
           <p className="mb-2x text-[0.65rem] font-bold uppercase tracking-[0.32em]" style={{ color: type.color }}>
-            {type.label.replace(/s$/, "")}
+            {typeSingular(pin.type)}
             {pin.region && pin.type !== "region" ? <span className="text-muted"> · {pin.region}</span> : null}
           </p>
           <h2 className="vc-heading pr-6x text-[3rem]">{pin.name}</h2>
@@ -120,6 +121,22 @@ export function PinDetails({
           ✕
         </button>
       </div>
+
+      {pin.source === "gtadb" ? (
+        <p className="border-l-2 border-blue bg-blue/10 px-3x py-1x text-xs text-blue" data-testid="gtadb-badge">
+          Community research, not named by Rockstar. Landmark data from{" "}
+          <a href="https://map.gtadb.org" target="_blank" rel="noopener" className="underline">
+            GTADB.org
+          </a>{" "}
+          (<a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener" className="underline">CC BY 4.0</a>).
+        </p>
+      ) : null}
+
+      {pin.source === "official" ? (
+        <p className="border-l-2 border-turq bg-turq/10 px-3x py-1x text-xs text-turq" data-testid="official-badge">
+          ✓ Named by Rockstar. Source is in the description below.
+        </p>
+      ) : null}
 
       {pin.approximate ? (
         <p className="border-l-2 border-orange bg-orange/10 px-3x py-1x text-xs text-orange">Approximate position: confirm in game.</p>
@@ -133,6 +150,20 @@ export function PinDetails({
           {pin.occupant}
         </p>
       ) : null}
+
+      <button
+        type="button"
+        onClick={() => {
+          navigator.clipboard?.writeText(window.location.href).then(
+            () => setCopied(true),
+            () => setCopied(false),
+          );
+        }}
+        className="self-start text-xs text-muted underline-offset-2 hover:text-pink-2 hover:underline"
+        data-testid="copy-link"
+      >
+        {copied ? "Link copied" : "Copy link to this pin"}
+      </button>
 
       <p className="text-xs text-muted" data-testid="first-marked">
         First marked by <span className="font-medium text-ink">{pin.gamerTag}</span>

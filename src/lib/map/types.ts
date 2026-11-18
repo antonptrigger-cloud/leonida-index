@@ -1,4 +1,4 @@
-import type { PinType, SubmitType } from "./config";
+import type { PinSource, PinType, SubmitType } from "./config";
 
 export type PinStatus = "pending" | "approved" | "rejected" | "merged" | "hidden";
 
@@ -15,6 +15,8 @@ export interface Pin {
   y: number;
   gamerTag: string;
   isSeed: boolean;
+  /** "official" = named by Rockstar; "community" = marked by a player. Defaults from `isSeed` until the DB has the column. */
+  source: PinSource;
   approximate: boolean;
   spoiler: boolean;
   upCount: number;
@@ -39,6 +41,7 @@ export type PublicPin = Pick<
   | "y"
   | "gamerTag"
   | "isSeed"
+  | "source"
   | "approximate"
   | "spoiler"
   | "upCount"
@@ -108,6 +111,7 @@ export function toPublicPin(p: Pin): PublicPin {
     y: p.y,
     gamerTag: p.gamerTag,
     isSeed: p.isSeed,
+    source: p.source,
     approximate: p.approximate,
     spoiler: p.spoiler,
     upCount: p.upCount,

@@ -15,6 +15,14 @@ export default function Page() {
         <li><strong className="text-orange">In-game</strong> — captured after 19 Nov.</li>
         <li><strong className="text-orange">Unverified</strong> — not treated as fact in the headline.</li>
       </ul>
+      <h2 className="mb-2 mt-10 text-sm uppercase tracking-widest text-turq">Map data credits</h2>
+      <p className="max-w-xl text-ink-2">
+        Pins marked <strong className="text-turq">official</strong> are places Rockstar names itself. Pins marked GTADB use landmark data from{" "}
+        <a href="https://map.gtadb.org" className="underline" target="_blank" rel="noopener">GTADB.org</a> and its contributors,
+        licensed <a href="https://creativecommons.org/licenses/by/4.0/" className="underline" target="_blank" rel="noopener">CC BY 4.0</a>.
+        We changed it: filtered, re-typed and repositioned onto our own base map, so those positions are approximate. We do not use
+        their map tiles or photos. Community pins are marked by players and reviewed by moderators.
+      </p>
     </div>
   );
 }

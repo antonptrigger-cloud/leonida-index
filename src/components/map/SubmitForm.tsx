@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { LIMITS, PIN_TYPES, REGIONS, SUBMIT_TYPES, type SubmitType } from "@/lib/map/config";
+import { LIMITS, REGIONS, SUBMIT_TYPES, typeSingular, type SubmitType } from "@/lib/map/config";
 import { validateSubmission, type FieldErrors } from "@/lib/map/validation";
 import { getSavedGamerTag, saveGamerTag } from "./local";
 
@@ -103,7 +103,7 @@ export function SubmitForm({
           <option value="">Choose…</option>
           {SUBMIT_TYPES.map((t) => (
             <option key={t} value={t}>
-              {PIN_TYPES[t].label.replace(/s$/, "")}
+              {typeSingular(t)}
             </option>
           ))}
         </select>

@@ -2,9 +2,11 @@
 
 import dynamic from "next/dynamic";
 import Link from "next/link";
-import { useCallback, useEffect, useMemo, useState } from "react";
-import { PIN_TYPES, TILES, type PinType } from "@/lib/map/config";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { PIN_TYPES, REGIONS, SOURCE_LABELS, TILES, typeSingular, type PinType } from "@/lib/map/config";
+import { NO_FILTERS, regionSlug as slug, type InitialFilters } from "@/lib/map/filters";
 import type { LeaderboardEntry, PublicPin } from "@/lib/map/types";
+import { glyphSvg } from "./glyphs";
 import { PinDetails } from "./PinDetails";
 import { SubmitForm } from "./SubmitForm";
 
@@ -42,22 +44,28 @@ function useHeaderOffset() {
 export function CommunityMap({
   initialPins,
   online,
-  initialQuery = "",
+  initialFilters = NO_FILTERS,
+  breadcrumb,
 }: {
   initialPins: PublicPin[];
   online: boolean;
-  /** From /map?q=… (WebSite SearchAction target). */
-  initialQuery?: string;
+  /** From the /map URL. `q` is the WebSite SearchAction target (/map?q=…). */
+  initialFilters?: InitialFilters;
+  /** Visible breadcrumb (server-rendered with its JSON-LD), shown as a small first line of the floating controls card, so it overlays the map without taking layout space. */
+  breadcrumb?: React.ReactNode;
 }) {
   useHeaderOffset();
   const [pins, setPins] = useState<PublicPin[]>(initialPins);
-  const [enabled, setEnabled] = useState<Set<PinType>>(new Set(TYPE_KEYS));
-  const [query, setQuery] = useState(initialQuery);
-  const [showSpoilers, setShowSpoilers] = useState(false);
-  const [selectedId, setSelectedId] = useState<string | null>(null);
+  const [enabled, setEnabled] = useState<Set<PinType>>(new Set(initialFilters.types ?? TYPE_KEYS));
+  const [query, setQuery] = useState(initialFilters.q);
+  const [showSpoilers, setShowSpoilers] = useState(initialFilters.spoilers);
+  const [officialOnly, setOfficialOnly] = useState(initialFilters.official);
+  const [region, setRegion] = useState<string | null>(initialFilters.region);
+  const deepPin = initialPins.find((p) => p.id === initialFilters.pin) ?? null;
+  const [selectedId, setSelectedId] = useState<string | null>(deepPin?.id ?? null);
   const [submitting, setSubmitting] = useState(false);
   const [draft, setDraft] = useState<{ x: number; y: number } | null>(null);
-  const [flyTarget, setFlyTarget] = useState<{ x: number; y: number; key: number } | null>(null);
+  const [flyTarget, setFlyTarget] = useState<{ x: number; y: number; key: number } | null>(deepPin ? { x: deepPin.x, y: deepPin.y, key: 1 } : null);
   const [leaders, setLeaders] = useState<LeaderboardEntry[] | null>(null);
   const [filtersOpen, setFiltersOpen] = useState(false);
   const [listOpen, setListOpen] = useState(false);
@@ -77,25 +85,44 @@ export function CommunityMap({
       .catch(() => setLeaders([]));
   }, [online]);
 
-  const counts = useMemo(() => {
-    const c: Partial<Record<PinType, number>> = {};
-    for (const p of pins) if (showSpoilers || !p.spoiler) c[p.type] = (c[p.type] ?? 0) + 1;
-    return c;
-  }, [pins, showSpoilers]);
-
   const q = query.trim().toLowerCase();
-  const visible = useMemo(
+  const matchesQuery = useCallback(
+    (p: PublicPin) => !q || [p.name, p.description, p.region ?? "", p.occupant ?? "", p.gamerTag].some((v) => v.toLowerCase().includes(q)),
+    [q],
+  );
+  /** Everything except the type chips, so each chip's count reflects what it would add. */
+  const base = useMemo(
     () =>
       pins.filter(
-        (p) =>
-          enabled.has(p.type) &&
-          (showSpoilers || !p.spoiler) &&
-          (!q || [p.name, p.description, p.region ?? "", p.occupant ?? "", p.gamerTag].some((s) => s.toLowerCase().includes(q))),
+        (p) => (showSpoilers || !p.spoiler) && (!officialOnly || p.source === "official") && (!region || p.region === region) && matchesQuery(p),
       ),
-    [pins, enabled, showSpoilers, q],
+    [pins, showSpoilers, officialOnly, region, matchesQuery],
   );
+  const counts = useMemo(() => {
+    const c: Partial<Record<PinType, number>> = {};
+    for (const p of base) c[p.type] = (c[p.type] ?? 0) + 1;
+    return c;
+  }, [base]);
+  const visible = useMemo(() => base.filter((p) => enabled.has(p.type)), [base, enabled]);
+  const filtering = !!q || officialOnly || !!region || enabled.size < TYPE_KEYS.length;
+  const activeFilterCount = (officialOnly ? 1 : 0) + (region ? 1 : 0) + (enabled.size < TYPE_KEYS.length ? 1 : 0) + (showSpoilers ? 1 : 0);
 
   const selected = pins.find((p) => p.id === selectedId) ?? null;
+
+  // Keep the URL shareable: filters and the open pin live in the query string (replaceState: no history spam).
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const set = (k: string, v: string | null) => (v ? params.set(k, v) : params.delete(k));
+    set("q", query.trim() || null);
+    set("types", enabled.size < TYPE_KEYS.length ? TYPE_KEYS.filter((t) => enabled.has(t)).join(",") : null);
+    set("official", officialOnly ? "1" : null);
+    set("region", region ? slug(region) : null);
+    set("spoilers", showSpoilers ? "1" : null);
+    set("pin", selectedId);
+    const qs = params.toString();
+    const url = `${window.location.pathname}${qs ? `?${qs}` : ""}${window.location.hash}`;
+    if (url !== `${window.location.pathname}${window.location.search}${window.location.hash}`) window.history.replaceState(null, "", url);
+  }, [query, enabled, officialOnly, region, showSpoilers, selectedId]);
 
   const select = useCallback(
     (id: string) => {
@@ -135,13 +162,21 @@ export function CommunityMap({
     setPins((list) => list.map((p) => (p.id === id ? { ...p, upCount: up, downCount: down } : p)));
   }, []);
 
+  const mapPins = useMemo(() => (selected && !visible.includes(selected) ? [...visible, selected] : visible), [visible, selected]);
+  const listRef = useRef<HTMLUListElement>(null);
+  const searchRef = useRef<HTMLInputElement>(null);
+  const focusResult = (index: number) => {
+    const items = listRef.current?.querySelectorAll<HTMLButtonElement>("button[data-result]");
+    items?.[Math.max(0, Math.min(index, items.length - 1))]?.focus();
+  };
+
   const panelMode: "submit" | "details" | "list" | null = submitting ? "submit" : selected ? "details" : listOpen || q ? "list" : null;
 
   return (
     <div className="lvg-fullmap fixed inset-x-0 bottom-0 z-30" style={{ top: "var(--lvg-header-h, 49px)", background: TILES.background }}>
       <div className="absolute inset-0" data-testid="map">
         <LeafletMap
-          pins={visible}
+          pins={mapPins}
           selectedId={selectedId}
           onSelect={select}
           dropMode={submitting}
@@ -149,11 +184,13 @@ export function CommunityMap({
           onDraftChange={setDraft}
           flyTarget={flyTarget}
           showCoords={showCoords}
+          showAllPlaces={filtering || !!selected}
         />
       </div>
 
       {/* Controls: submit (desktop), search, spoilers, filters */}
       <div className={`${card} vc-glass--cut absolute left-2x right-2x top-2x z-[1000] flex flex-col gap-3x p-3x sm:left-3x sm:right-auto sm:top-3x sm:w-[440px] sm:p-4x`}>
+        {breadcrumb ? <div className="lvg-crumb -mb-1x">{breadcrumb}</div> : null}
         <h2 className="sr-only">Map controls</h2>
         <div className="hidden items-center justify-between gap-4x sm:flex">
           <div className="leading-none">
@@ -170,31 +207,40 @@ export function CommunityMap({
             {submitting ? "Cancel submission" : "Submit a location"}
           </button>
         </div>
-        <label className="group flex items-center gap-2x border-b border-pink/35 pb-1x focus-within:border-blue">
-          <svg viewBox="0 0 20 20" className="h-4 w-4 shrink-0 text-pink-2" aria-hidden>
-            <circle cx="8.5" cy="8.5" r="5.5" fill="none" stroke="currentColor" strokeWidth="2" />
-            <path d="M13 13l4.5 4.5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
-          </svg>
-          <input
-            type="search"
-            value={query}
-            onChange={(e) => setQuery(e.target.value)}
-            placeholder="Search places, regions, gamer tags…"
-            aria-label="Search pins"
-            className="min-w-0 flex-1 bg-transparent py-1x text-sm text-ink outline-none placeholder:text-faint"
-          />
-        </label>
-        <div className="flex flex-wrap items-center gap-x-3x gap-y-2x pl-1x">
-          <label className="vc-chip cursor-pointer" style={{ ["--chip" as string]: "#ff8c42" }}>
-            <input type="checkbox" checked={showSpoilers} onChange={(e) => setShowSpoilers(e.target.checked)} className="accent-pink" />
-            Show spoilers
+        <div className="flex items-center gap-2x">
+          <label className="group flex min-w-0 flex-1 items-center gap-2x border-b border-pink/35 pb-1x focus-within:border-blue">
+            <svg viewBox="0 0 20 20" className="h-4 w-4 shrink-0 text-pink-2" aria-hidden>
+              <circle cx="8.5" cy="8.5" r="5.5" fill="none" stroke="currentColor" strokeWidth="2" />
+              <path d="M13 13l4.5 4.5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+            </svg>
+            <input
+              ref={searchRef}
+              type="search"
+              value={query}
+              onChange={(e) => setQuery(e.target.value)}
+              onKeyDown={(e) => {
+                if (e.key === "ArrowDown" || (e.key === "Enter" && visible.length)) {
+                  e.preventDefault();
+                  setSelectedId(null);
+                  setListOpen(true);
+                  // Wait for the list to render, then move focus into it.
+                  requestAnimationFrame(() => focusResult(0));
+                } else if (e.key === "Escape") {
+                  setQuery("");
+                }
+              }}
+              placeholder="Search places, regions, gamer tags…"
+              aria-label="Search pins"
+              className="min-w-0 flex-1 bg-transparent py-1x text-sm text-ink outline-none placeholder:text-faint"
+            />
           </label>
           <button
             onClick={() => setFiltersOpen((v) => !v)}
             aria-expanded={filtersOpen}
-            className="vc-chip sm:hidden"
+            aria-controls="map-filters"
+            className="vc-chip shrink-0 sm:hidden"
           >
-            Filters {enabled.size < TYPE_KEYS.length ? `(${enabled.size}/${TYPE_KEYS.length})` : ""}
+            Filters{activeFilterCount ? ` (${activeFilterCount})` : ""}
           </button>
           <button
             onClick={() => {
@@ -203,29 +249,78 @@ export function CommunityMap({
               setListOpen((v) => !v || !!selected);
             }}
             aria-expanded={panelMode === "list"}
-            className="vc-chip"
+            className="vc-chip shrink-0"
             style={{ ["--chip" as string]: "#00d4ff" }}
           >
             Pins ({visible.length})
           </button>
-          <Link href="/map/leaderboard" className="vc-display ml-auto text-[0.95rem] tracking-[0.08em] text-muted transition-colors hover:text-pink-2">
-            Leaderboard →
-          </Link>
         </div>
-        <div className={`${filtersOpen ? "flex" : "hidden"} flex-wrap gap-x-3x gap-y-2x pl-1x sm:flex`} role="group" aria-label="Filter by type">
-          {TYPE_KEYS.map((t) => (
-            <button
-              key={t}
-              onClick={() => toggleType(t)}
-              aria-pressed={enabled.has(t)}
-              className={`vc-chip ${enabled.has(t) ? "" : "line-through"}`}
-              style={{ ["--chip" as string]: PIN_TYPES[t].color }}
-            >
-              <span className="inline-block h-2 w-2 rotate-45" style={{ background: PIN_TYPES[t].color, opacity: enabled.has(t) ? 1 : 0.35 }} />
-              {PIN_TYPES[t].label}
-              <span className="text-muted">{counts[t] ?? 0}</span>
-            </button>
-          ))}
+        <div id="map-filters" className={`${filtersOpen ? "flex" : "hidden"} flex-col gap-3x sm:flex`}>
+          <div className="flex flex-wrap items-center gap-x-3x gap-y-2x pl-1x">
+            <label className="vc-chip cursor-pointer" style={{ ["--chip" as string]: "#00e5cc" }} title="Only places Rockstar has named itself">
+              <input type="checkbox" checked={officialOnly} onChange={(e) => setOfficialOnly(e.target.checked)} className="accent-pink" />
+              Official only
+            </label>
+            <label className="vc-chip cursor-pointer" style={{ ["--chip" as string]: "#ff8c42" }}>
+              <input type="checkbox" checked={showSpoilers} onChange={(e) => setShowSpoilers(e.target.checked)} className="accent-pink" />
+              Show spoilers
+            </label>
+            <label className="vc-chip">
+              <span className="sr-only">Region</span>
+              <select
+                value={region ?? ""}
+                onChange={(e) => setRegion(e.target.value || null)}
+                aria-label="Filter by region"
+                className="max-w-[9.5rem] cursor-pointer bg-transparent text-inherit outline-none"
+              >
+                <option value="" className="bg-card">All regions</option>
+                {REGIONS.map((r) => (
+                  <option key={r} value={r} className="bg-card">
+                    {r}
+                  </option>
+                ))}
+              </select>
+            </label>
+            {filtering || showSpoilers ? (
+              <button
+                onClick={() => {
+                  setEnabled(new Set(TYPE_KEYS));
+                  setOfficialOnly(false);
+                  setRegion(null);
+                  setShowSpoilers(false);
+                  setQuery("");
+                }}
+                className="text-xs text-muted underline-offset-2 hover:text-pink-2 hover:underline"
+              >
+                Reset
+              </button>
+            ) : null}
+            <Link href="/map/leaderboard" className="vc-display ml-auto text-[0.95rem] tracking-[0.08em] text-muted transition-colors hover:text-pink-2">
+              Leaderboard →
+            </Link>
+          </div>
+          <div className="flex flex-wrap gap-x-3x gap-y-2x pl-1x" role="group" aria-label="Filter by type">
+            {TYPE_KEYS.filter((t) => (counts[t] ?? 0) > 0 || !enabled.has(t)).map((t) => {
+              const n = counts[t] ?? 0;
+              return (
+                <button
+                  key={t}
+                  onClick={() => toggleType(t)}
+                  aria-pressed={enabled.has(t)}
+                  className={`vc-chip ${enabled.has(t) ? "" : "line-through"}`}
+                  style={{ ["--chip" as string]: PIN_TYPES[t].color }}
+                >
+                  <span
+                    className="inline-flex h-3.5 w-3.5 items-center justify-center"
+                    style={{ opacity: enabled.has(t) ? 1 : 0.4 }}
+                    dangerouslySetInnerHTML={{ __html: glyphSvg(t, PIN_TYPES[t].color, 14) }}
+                  />
+                  {PIN_TYPES[t].label}
+                  <span className="text-muted">{n}</span>
+                </button>
+              );
+            })}
+          </div>
         </div>
         {!online ? (
           <p className="border-l-2 border-orange bg-orange/10 px-3x py-1x text-xs text-orange" data-testid="offline-notice">
@@ -236,7 +331,7 @@ export function CommunityMap({
 
       {/* Mobile: the main action sits at thumb height. */}
       {!panelMode || panelMode === "list" ? (
-        <div className="absolute bottom-10x left-4x z-[1000] sm:hidden">
+        <div className="absolute bottom-[5.25rem] left-4x z-[1000] sm:hidden">
           <button
             onClick={submitting ? endSubmit : startSubmit}
             disabled={!online}
@@ -264,7 +359,7 @@ export function CommunityMap({
           {panelMode === "submit" ? (
             <SubmitForm draft={draft} onCancel={endSubmit} onDone={endSubmit} />
           ) : panelMode === "details" && selected ? (
-            <PinDetails pin={selected} online={online} onClose={() => setSelectedId(null)} onCounts={onCounts} />
+            <PinDetails key={selected.id} pin={selected} online={online} onClose={() => setSelectedId(null)} onCounts={onCounts} />
           ) : (
             <div className="flex flex-col gap-4">
               <div className="flex items-start justify-between">
@@ -286,21 +381,58 @@ export function CommunityMap({
                   ✕
                 </button>
               </div>
-              <ul className="flex flex-col gap-1 text-sm" data-testid="pin-list">
+              <ul
+                ref={listRef}
+                className="flex flex-col gap-1 text-sm"
+                data-testid="pin-list"
+                aria-label="Pins on the map"
+                onKeyDown={(e) => {
+                  const items = [...(listRef.current?.querySelectorAll<HTMLButtonElement>("button[data-result]") ?? [])];
+                  const i = items.indexOf(document.activeElement as HTMLButtonElement);
+                  if (i < 0) return;
+                  if (e.key === "ArrowDown") {
+                    e.preventDefault();
+                    items[Math.min(i + 1, items.length - 1)]?.focus();
+                  } else if (e.key === "ArrowUp") {
+                    e.preventDefault();
+                    if (i === 0) searchRef.current?.focus();
+                    else items[i - 1]?.focus();
+                  } else if (e.key === "Home") {
+                    e.preventDefault();
+                    items[0]?.focus();
+                  } else if (e.key === "End") {
+                    e.preventDefault();
+                    items[items.length - 1]?.focus();
+                  }
+                }}
+              >
                 {visible.map((p) => (
                   <li key={p.id}>
                     <button
+                      data-result
                       onClick={() => focus(p)}
-                      className="flex w-full items-center gap-3x border-l-2 border-transparent px-2x py-1x text-left transition-[padding,border-color,background] duration-200 hover:border-pink hover:bg-pink/10 hover:pl-3x"
+                      className="flex w-full items-center gap-3x border-l-2 border-transparent px-2x py-1x text-left transition-[padding,border-color,background] duration-200 hover:border-pink hover:bg-pink/10 hover:pl-3x focus-visible:border-pink focus-visible:bg-pink/10 focus-visible:outline-none"
                     >
-                      <span className="inline-block h-2 w-2 shrink-0 rotate-45" style={{ background: PIN_TYPES[p.type].color }} />
+                      <span
+                        className="inline-flex h-4 w-4 shrink-0 items-center justify-center"
+                        aria-hidden
+                        dangerouslySetInnerHTML={{ __html: glyphSvg(p.type, PIN_TYPES[p.type].color, 15) }}
+                      />
                       <span className="truncate">{p.name}</span>
-                      {p.approximate ? <span className="ml-auto text-[10px] text-faint">approx.</span> : null}
+                      <span className="sr-only">{`, ${typeSingular(p.type)}`}</span>
+                      <span className="ml-auto flex shrink-0 items-center gap-2x text-[10px] text-faint">
+                        {p.source === "official" ? <span className="text-turq" title="Named by Rockstar">✓ official</span> : null}
+                        {p.source === "gtadb" ? <span title={SOURCE_LABELS.gtadb}>GTADB</span> : null}
+                        {p.approximate ? <span>approx.</span> : null}
+                      </span>
                     </button>
                   </li>
                 ))}
-                {visible.length === 0 ? <li className="text-xs text-muted">Nothing matches.</li> : null}
+                {visible.length === 0 ? <li className="text-xs text-muted">Nothing matches. Try clearing a filter.</li> : null}
               </ul>
+              <p className="text-[11px] leading-relaxed text-faint">
+                <span className="text-turq">✓</span> named by Rockstar · dashed outline = approximate position · solid outline = confirmed position
+              </p>
               {online ? (
                 <div className="border-t border-pink/20 pt-4x">
                   <div className="mb-2 flex items-center justify-between">

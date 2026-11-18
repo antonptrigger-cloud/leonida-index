@@ -1,5 +1,6 @@
+import gtadbData from "./gtadb-pins.json";
 import seedData from "./seed-pins.json";
-import { SEED_AUTHOR, type PinType } from "./config";
+import { SEED_AUTHOR, type PinSource, type PinType } from "./config";
 import type { Pin } from "./types";
 
 interface SeedRow {
@@ -11,12 +12,14 @@ interface SeedRow {
   y: number;
   approximate: boolean;
   description: string;
+  /** Defaults to "official": every seed pin is a place Rockstar itself has named. */
+  source?: PinSource;
 }
 
 const SEED_CREATED_AT = "2026-11-18T00:00:00.000Z";
 
-/** Official region and landmark pins. Shown even when the database is offline. */
-export const SEED_PINS: Pin[] = (seedData as SeedRow[]).map((s) => ({
+/** Official pins (named by Rockstar) plus the GTADB-imported landmarks. Shown even when the database is offline. */
+export const SEED_PINS: Pin[] = [...(seedData as SeedRow[]), ...(gtadbData as SeedRow[])].map((s) => ({
   id: s.id,
   status: "approved",
   type: s.type,
@@ -28,6 +31,7 @@ export const SEED_PINS: Pin[] = (seedData as SeedRow[]).map((s) => ({
   y: s.y,
   gamerTag: SEED_AUTHOR,
   isSeed: true,
+  source: s.source ?? "official",
   approximate: s.approximate,
   spoiler: false,
   upCount: 0,
