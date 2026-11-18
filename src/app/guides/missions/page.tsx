@@ -2,6 +2,7 @@ import Link from "next/link";
 import { metaFor } from "@/lib/seo/site";
 import { PageSchema } from "@/lib/seo/jsonld";
 import { PageHeader } from "@/components/PageHeader";
+import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { SpoilerWarning } from "@/components/guides/MissionBits";
 import { CHAPTER, LAST_VERIFIED, LAST_VERIFIED_LABEL, MISSIONS, ORDER_NOTE, missionPath } from "@/lib/guides/missions";
 
@@ -10,12 +11,8 @@ export const metadata = metaFor("/guides/missions");
 export default function MissionsIndex() {
   return (
     <div>
-      <PageSchema path="/guides/missions" />
-      <nav aria-label="Breadcrumb" className="mb-6x text-xs text-muted">
-        <Link href="/guides" className="hover:text-pink">Guides</Link>
-        <span aria-hidden> / </span>
-        <span className="text-ink-2">Missions</span>
-      </nav>
+      <PageSchema path="/guides/missions" breadcrumbs={false} />
+      <Breadcrumbs path="/guides/missions" />
       <PageHeader
         backdrop="boat"
         kicker={`Mission guides · Chapter ${CHAPTER.number}`}

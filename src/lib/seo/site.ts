@@ -35,6 +35,8 @@ export interface RouteSeo {
   /** Short label for breadcrumbs. */
   crumb: string;
   kind?: "page" | "article" | "news" | "howto" | "collection" | "profile";
+  /** For kind = "profile": "Thing" for a group or duo, otherwise "Person". */
+  profileType?: "Person" | "Thing";
   /** HowTo steps, when kind = "howto". */
   steps?: { name: string; text: string }[];
   changeFrequency?: ChangeFreq;
@@ -50,6 +52,9 @@ export interface RouteSeo {
   /** Sources relied on, emitted as JSON-LD citation (news). */
   citations?: string[];
 }
+
+/** Character profiles that describe a duo, not one person. */
+const GROUP_PROFILES = new Set(["real-dimez"]);
 
 const region = (name: string, title: string, description: string): RouteSeo => ({
   title,
@@ -73,7 +78,7 @@ export const ROUTES: Record<string, RouteSeo> = {
   "/map": {
     title: "GTA 6 Interactive Map: Vice City & Leonida",
     description:
-      "Free interactive GTA 6 map of Leonida: Vice City, Leonida Keys, Grassrivers, Port Gellhorn, Ambrosia and Mount Kalaga. Find landmarks, secrets and collectibles, and mark new spots for the community.",
+      "Free interactive GTA 6 map of Leonida: Vice City, Leonida Keys, Grassrivers, Port Gellhorn, Ambrosia and Mount Kalaga. Find landmarks and secrets.",
     crumb: "Map",
     kind: "collection",
     changeFrequency: "hourly",
@@ -124,6 +129,7 @@ export const ROUTES: Record<string, RouteSeo> = {
     kind: "collection",
     changeFrequency: "daily",
     priority: 0.85,
+    updated: LAST_VERIFIED,
   },
   "/guides/beginner": {
     title: "GTA 6 Beginner Guide: Tips for Your First Hours",
@@ -196,6 +202,8 @@ export const ROUTES: Record<string, RouteSeo> = {
     title: "GTA 6 Secrets & Easter Eggs",
     description: "GTA 6 secrets and easter eggs found by players after launch, verified before they are listed. Submit your own finds on the community map.",
     crumb: "Secrets",
+    // noindex until there is real, verified content (also keeps it out of the sitemap).
+    noindex: true,
     kind: "collection",
     changeFrequency: "daily",
     priority: 0.8,
@@ -207,6 +215,8 @@ export const ROUTES: Record<string, RouteSeo> = {
     kind: "collection",
     changeFrequency: "daily",
     priority: 0.7,
+    // The index changes whenever any story does.
+    updated: NEWS.map((n) => n.updated).sort().at(-1),
   },
   "/news/release-date": {
     title: "GTA 6 Release Date, Platforms & Price",
@@ -244,7 +254,7 @@ export const ROUTES: Record<string, RouteSeo> = {
   },
   "/database/characters": {
     title: "GTA 6 Characters: Full Cast List",
-    description: "Every GTA 6 character Rockstar has profiled so far: Lucia Caminos, Jason Duval, Cal Hampton, Boobie Ike, Dre'Quan Priest, Raul Bautista, Brian Heder and Real Dimez. Spoilers hidden.",
+    description: "Every GTA 6 character Rockstar has profiled: Lucia Caminos, Jason Duval, Cal Hampton, Boobie Ike, Dre'Quan Priest, Raul Bautista, Brian Heder and Real Dimez.",
     crumb: "Characters",
     kind: "collection",
     changeFrequency: "weekly",
@@ -259,6 +269,7 @@ export const ROUTES: Record<string, RouteSeo> = {
         description: c.seoDescription,
         crumb: c.name,
         kind: "profile",
+        profileType: GROUP_PROFILES.has(c.slug) ? "Thing" : "Person",
         changeFrequency: "weekly",
         priority: 0.6,
         updated: CHARACTERS_VERIFIED,
@@ -282,19 +293,22 @@ export const ROUTES: Record<string, RouteSeo> = {
   },
 };
 
+/** Longest "title | brand" we allow before dropping the brand suffix. */
+export const MAX_BRANDED_TITLE = 62;
+
 export function absoluteUrl(path: string): string {
   return path === "/" ? SITE.url : `${SITE.url}${path}`;
 }
 
 /** Breadcrumb trail for a path, using the nearest registered ancestors. */
-export function crumbsFor(path: string): { name: string; url: string }[] {
-  const out: { name: string; url: string }[] = [{ name: "Home", url: SITE.url }];
+export function crumbsFor(path: string): { name: string; url: string; path: string }[] {
+  const out: { name: string; url: string; path: string }[] = [{ name: "Home", url: SITE.url, path: "/" }];
   if (path === "/") return out;
   const parts = path.split("/").filter(Boolean);
   for (let i = 1; i <= parts.length; i++) {
     const p = "/" + parts.slice(0, i).join("/");
     const r = ROUTES[p];
-    if (r) out.push({ name: r.crumb, url: absoluteUrl(p) });
+    if (r) out.push({ name: r.crumb, url: absoluteUrl(p), path: p });
   }
   return out;
 }
@@ -304,9 +318,13 @@ export function metaFor(path: string): Metadata {
   const r = ROUTES[path];
   if (!r) throw new Error(`No SEO entry for ${path}`);
   const url = absoluteUrl(path);
-  const ogTitle = r.absoluteTitle ? r.title : `${r.title} | ${SITE.name}`;
+  // Search results cut titles at roughly 60 characters. When adding the " | Leonida Vice Guide"
+  // suffix would push past MAX_BRANDED_TITLE, show the page title on its own (the brand stays in og:site_name).
+  const branded = `${r.title} | ${SITE.name}`;
+  const bare = r.absoluteTitle || branded.length > MAX_BRANDED_TITLE;
+  const ogTitle = bare ? r.title : branded;
   return {
-    title: r.absoluteTitle ? { absolute: r.title } : r.title,
+    title: bare ? { absolute: r.title } : r.title,
     description: r.description,
     alternates: { canonical: path },
     ...(r.noindex ? { robots: { index: false, follow: false, nocache: true } } : {}),
@@ -318,7 +336,9 @@ export function metaFor(path: string): Metadata {
       siteName: SITE.name,
       locale: SITE.locale,
       images: [OG_IMAGE],
-      ...(r.kind === "news" && r.published ? { publishedTime: r.published, modifiedTime: r.updated ?? r.published } : {}),
+      ...((r.kind === "news" || r.kind === "article" || r.kind === "howto") && r.published
+        ? { publishedTime: r.published, modifiedTime: r.updated ?? r.published }
+        : {}),
     },
     twitter: { card: "summary_large_image", title: ogTitle, description: r.description, images: [OG_IMAGE.url] },
   };

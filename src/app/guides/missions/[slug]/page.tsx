@@ -4,6 +4,9 @@ import { notFound } from "next/navigation";
 import { metaFor } from "@/lib/seo/site";
 import { PageSchema } from "@/lib/seo/jsonld";
 import { PageHeader } from "@/components/PageHeader";
+import { Breadcrumbs } from "@/components/Breadcrumbs";
+import { Faq } from "@/components/Faq";
+import { Related } from "@/components/Related";
 import { Spoiler } from "@/components/guides/Spoiler";
 import { SourcesList, SpoilerWarning, StatusTag } from "@/components/guides/MissionBits";
 import { CHAPTER, LAST_VERIFIED_LABEL, MISSIONS, ORDER_NOTE, missionBySlug, missionPath } from "@/lib/guides/missions";
@@ -34,14 +37,8 @@ export default async function MissionPage({ params }: { params: Promise<{ slug: 
 
   return (
     <article>
-      <PageSchema path={path} />
-      <nav aria-label="Breadcrumb" className="mb-6x text-xs text-muted">
-        <Link href="/guides" className="hover:text-pink">Guides</Link>
-        <span aria-hidden> / </span>
-        <Link href="/guides/missions" className="hover:text-pink">Missions</Link>
-        <span aria-hidden> / </span>
-        <span className="text-ink-2">{m.name}</span>
-      </nav>
+      <PageSchema path={path} breadcrumbs={false} />
+      <Breadcrumbs path={path} />
       <PageHeader
         backdrop="boat"
         kicker={`Mission guide · Chapter ${CHAPTER.number} · ${String(m.order).padStart(2, "0")}/${String(MISSIONS.length).padStart(2, "0")}`}
@@ -135,6 +132,8 @@ export default async function MissionPage({ params }: { params: Promise<{ slug: 
         </aside>
       </div>
 
+      <Faq items={m.faq} />
+
       <SourcesList sources={m.sources} />
 
       <nav aria-label="More missions" className="mt-16x grid gap-4x border-t border-pink/20 pt-6x sm:grid-cols-2">
@@ -161,6 +160,7 @@ export default async function MissionPage({ params }: { params: Promise<{ slug: 
           </Link>
         )}
       </nav>
+      <Related path={path} />
     </article>
   );
 }
