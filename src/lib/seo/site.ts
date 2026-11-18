@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { CHAPTER, LAST_VERIFIED, MISSIONS, missionPath } from "@/lib/guides/missions";
 import { NEWS, newsPath } from "@/lib/news/articles";
 import { CHARACTERS, LAST_VERIFIED as CHARACTERS_VERIFIED, characterPath } from "@/lib/characters/characters";
+import { DB_VERIFIED, REFERENCE_PAGES } from "@/lib/database/reference";
 import { CAST_DESCRIPTION, CAST_PATH, CAST_TITLE, CAST_VERIFIED } from "@/lib/characters/cast";
 
 export const SITE = {
@@ -253,6 +254,30 @@ export const ROUTES: Record<string, RouteSeo> = {
     changeFrequency: "weekly",
     priority: 0.65,
   },
+  "/database": {
+    title: "GTA 6 Database: Characters, Vehicles, Weapons, Radio",
+    description: "The Leonida Vice Guide database: GTA 6 characters and cast, vehicle totals, weapons and Ammu-Nation stores, and radio stations. Every fact is labelled.",
+    crumb: "Database",
+    kind: "collection",
+    changeFrequency: "daily",
+    priority: 0.8,
+    updated: DB_VERIFIED,
+  },
+  ...Object.fromEntries(
+    REFERENCE_PAGES.map((p): [string, RouteSeo] => [
+      p.path,
+      {
+        title: p.seoTitle,
+        description: p.seoDescription,
+        crumb: p.crumb,
+        kind: "article",
+        changeFrequency: "daily",
+        priority: 0.7,
+        updated: DB_VERIFIED,
+        published: DB_VERIFIED,
+      },
+    ]),
+  ),
   "/database/characters": {
     title: "GTA 6 Characters: Full Cast List",
     description: "GTA 6 characters: Lucia Caminos, Jason Duval, Brian Heder and the rest of Rockstar's profiles, plus fences like Moses and Randy. Every fact is labelled.",

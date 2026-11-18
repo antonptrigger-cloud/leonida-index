@@ -63,4 +63,8 @@ behind a blur-to-reveal.
 
 ## Sitemap and robots
 
-The sitemap lists every non-`noindex` entry in `ROUTES` (map, guides, missions, news, characters, tools, sources, about; `/secrets` is `noindex` and omitted until it has real content). `lastModified` comes from each route's `updated` (the news index uses the newest story's `updated`; the guides index uses `LAST_VERIFIED`); map pages use the newest approved pin. `robots.txt` allows everything except `/map/admin` and `/api/`, and links the sitemap.
+The sitemap lists every non-`noindex` entry in `ROUTES` (map, guides, missions, news, database hub and reference pages for characters, vehicles, weapons and radio, tools, sources, about; `/secrets` is `noindex` and omitted until it has real content). `lastModified` comes from each route's `updated` (the news index uses the newest story's `updated`; the guides index uses `LAST_VERIFIED`); map pages use the newest approved pin. `robots.txt` allows everything except `/map/admin` and `/api/`, and links the sitemap.
+
+## Database reference pages
+
+`/database` is the hub. `/database/vehicles`, `/database/weapons` and `/database/radio-stations` are driven by `src/lib/database/reference.ts` (one `RefPage` each: SEO title and description, sections, blurred spoiler list, FAQ, sources) and rendered by `components/database/ReferencePage.tsx`. `ROUTES` and the related-links engine read the same list, so adding a page there registers it everywhere. Totals are attributed to the outlet that gave them ("PowerPyx counts...") and labelled Reported; story-linked unlocks go in the `spoiler` list only.

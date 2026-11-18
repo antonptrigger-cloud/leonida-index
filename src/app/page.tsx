@@ -12,7 +12,7 @@ export const metadata = metaFor("/");
 const GUIDE = [
   { href: "/news/release-date", title: "What’s confirmed", body: "19 Nov 2026 · PS5 and Xbox Series X|S" },
   { href: "/guides/wanted", title: "Wanted system", body: "Six stars, witnesses and splitting up" },
-  { href: "/database/characters", title: "Characters", body: "Lucia, Jason, and the rest of the cast" },
+  { href: "/database", title: "Database", body: "Characters, vehicles, weapons and radio" },
   { href: "/guides/beginner", title: "Beginner guide", body: "Your first hours and the character swap" },
   { href: "/tools/edition-compare", title: "Editions", body: "Standard vs Ultimate, side by side" },
 ];
