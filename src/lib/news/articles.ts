@@ -33,6 +33,9 @@ export const STREAMERS_PUBLISHED = "2026-11-18T23:10:00+10:00";
 /** SEO content-gap guides. Set to the moment they go live; bump `updated` on every fact change. */
 export const GAPS_PUBLISHED = "2026-11-18T23:38:00+10:00";
 
+/** Fact-update batch (tracker, file size, performance, reviews, preload). Web Bot: set to the moment the edits go live. */
+export const UPDATES_AT = "2026-11-18T23:50:00+10:00";
+
 export const newsPath = (slug: string) => `/news/${slug}`;
 
 export const NEWS: NewsItem[] = [
@@ -66,7 +69,7 @@ export const NEWS: NewsItem[] = [
     tag: "Reviews",
     keywords: ["GTA 6 reviews", "Metacritic", "GTA 6 score", "Ocarina of Time", "performance", "PS5 Pro"],
     published: NEWS_PUBLISHED,
-    updated: NEWS_PUBLISHED,
+    updated: UPDATES_AT,
     citations: [
       "https://www.bbc.com/news/live/c60rkg21dl22t",
       "https://insider-gaming.com/gta-6-gets-a-99-in-early-metacritic-review-scores/",
@@ -74,6 +77,8 @@ export const NEWS: NewsItem[] = [
       "https://www.aa.com.tr/en/science-technology/gta-vi-global-rollout-begins-with-new-zealand-launch/4129238",
       "https://www.metacritic.com/game/grand-theft-auto-vi/",
       "https://www.polygon.com/gta-6-review-roundup/",
+      "https://www.digitalfoundry.net/features/gta-6-ps5-vs-ps5-pro-xbox-series-x-and-series-s-which-console-plays-best",
+      "https://www.ign.com/articles/gta-6-xbox-series-s-performance",
       "https://www.digitalfoundry.net/reviews/grand-theft-auto-6-a-landmark-achievement-that-redefines-a-console-generation",
     ],
   },
@@ -87,7 +92,7 @@ export const NEWS: NewsItem[] = [
     tag: "Live tracker",
     keywords: ["GTA 6 server status", "is GTA 6 down", "GTA 6 known issues", "GTA 6 PS5 update", "GTA 6 patch", "01.002.001"],
     published: NEWS_PUBLISHED,
-    updated: GAPS_PUBLISHED,
+    updated: UPDATES_AT,
     citations: [
       "https://x.com/PS_Support_US/status/2122863683881619685",
       "https://www.pushsquare.com/news/2026/11/gta-6-requires-new-ps5-firmware-update-to-play",
@@ -95,6 +100,7 @@ export const NEWS: NewsItem[] = [
       "https://www.theverge.com/games/1036395/if-you-want-to-play-gta-vi-on-ps5-tonight-download-yesterdays-firmware-update-first",
       "https://www.vice.com/en/article/gta-6-second-day-one-patch-ps5-xbox/",
       "https://insider-gaming.com/is-grand-theft-auto-6-down-gta-6-issues-explained/",
+      "https://www.digitalfoundry.net/features/gta-6-ps5-vs-ps5-pro-xbox-series-x-and-series-s-which-console-plays-best",
       "https://status.playstation.com/",
       "https://gtatracker.gg/online/server-status",
       "https://downdetector.co.nz/status/gta-vi/",
@@ -148,15 +154,16 @@ export const NEWS: NewsItem[] = [
     slug: "gta-6-preload-editions-pricing",
     title: "GTA 6 Preload, Editions & Price",
     description:
-      "How to preload GTA 6 on PS5 and Xbox, how much space you need (212GB), and what Standard ($79.99) and Ultimate ($99.99) include.",
+      "How to preload GTA 6 on PS5 and Xbox, how much space you need (212GB PS5, about 225GB Xbox), and what Standard ($79.99) and Ultimate ($99.99) include.",
     crumb: "Preload and editions",
     teaser: "212GB, how to preload on PS5 and Xbox, and what Standard and Ultimate include.",
     tag: "Guide",
     keywords: ["GTA 6 preload", "GTA 6 file size", "GTA 6 editions", "GTA 6 Ultimate Edition", "GTA 6 price"],
     published: NEWS_PUBLISHED,
-    updated: NEWS_PUBLISHED,
+    updated: UPDATES_AT,
     citations: [
       "https://www.rockstargames.com/VI/pre-load-now",
+      "https://www.xbox.com/en-US/games/store/grand-theft-auto-vi/9P3H4968GRSM",
       "https://www.theverge.com/games/1025271/gta-vi-storage-space-rockstar-games",
       "https://www.playstation.com/en-us/games/grand-theft-auto-vi/",
       "https://www.xbox.com/en-US/games/store/grand-theft-auto-vi-ultimate-edition-upgrade/9pn4llbr8rch",
@@ -240,21 +247,22 @@ export const NEWS: NewsItem[] = [
     slug: "gta-6-performance-ps5-pro-xbox",
     title: "GTA 6 Performance: PS5, PS5 Pro & Xbox",
     description:
-      "GTA 6 runs at 30fps on every console with no performance mode. What PS5 Pro gets, Xbox Series S and X resolution, and what reviewers measured.",
+      "GTA 6 runs at 30fps on every console with no performance mode. What PS5 Pro gets, Series S and X resolution, and what Digital Foundry and IGN measured.",
     crumb: "Performance by console",
-    teaser: "30fps everywhere, no performance mode. PS5 Pro adds PSSR and ray-traced shadows. Resolutions and test results.",
+    teaser: "30fps everywhere, no performance mode. PS5 Pro adds PSSR and ray-traced shadows. Resolutions and Digital Foundry test results.",
     tag: "Performance",
     keywords: ["GTA 6 performance", "GTA 6 60fps", "GTA 6 PS5 Pro", "GTA 6 Xbox Series X", "GTA 6 Series S", "GTA 6 graphics modes"],
     published: GAPS_PUBLISHED,
-    updated: GAPS_PUBLISHED,
+    updated: UPDATES_AT,
     citations: [
       "https://gameinformer.com/2026/11/10/grand-theft-auto-vi-will-run-at-30-fps-on-all-consoles-but-ps5-pro-will-feature-improved",
       "https://www.playstation.com/en-us/games/grand-theft-auto-vi/",
       "https://www.gamespot.com/articles/gta-6-ps5-pro-features-frame-rates-and-xbox-cloud-gaming-details-confirmed-by-rockstar/",
       "https://wccftech.com/grand-theft-auto-vi-amd-fsr-4-xbox-series-s-ray-tracing/",
       "https://www.techradar.com/gaming/why-no-40fps-mode-for-gta-6-rockstar-says-the-complexity-of-simulating-and-rendering-our-world-requires-it-to-carefully-balance-how-we-spend-every-millisecond-of-both-the-central-processor-and-the-graphics-processor",
+      "https://www.digitalfoundry.net/features/gta-6-ps5-vs-ps5-pro-xbox-series-x-and-series-s-which-console-plays-best",
       "https://www.digitalfoundry.net/reviews/grand-theft-auto-6-a-landmark-achievement-that-redefines-a-console-generation",
-      "https://za.ign.com/grand-theft-auto-vi/245779/gta-6-xbox-series-s-performance-how-does-the-weakest-console-handle-the-biggest-game-of-all-time",
+      "https://www.ign.com/articles/gta-6-xbox-series-s-performance",
       "https://news.xbox.com/en-us/2026/11/10/grand-theft-auto-6-comes-to-xbox-cloud-gaming-november-19/",
     ],
     faq: [
@@ -268,11 +276,11 @@ export const NEWS: NewsItem[] = [
       },
       {
         question: "Is GTA 6 better on PS5 or Xbox Series X?",
-        answer: "Rockstar gives the same numbers for both: a 1440p base resolution upscaled to 4K at a 30fps target. Rockstar says the game plays best on PS5 and lists PS5-specific haptics, Tempest 3D Audio and faster loading. We have not found an independent Xbox Series X test.",
+        answer: "Rockstar gives the same numbers for both: a 1440p base resolution upscaled to 4K at a 30fps target. Rockstar says the game plays best on PS5 and lists PS5-specific haptics, Tempest 3D Audio and faster loading. Digital Foundry's test found the same 1440p and 30fps target on both, with similar dips into the high 20s and mid-20s.",
       },
       {
         question: "How does GTA 6 run on Xbox Series S?",
-        answer: "Rockstar says it renders at 720p and uses AMD FSR 4 to reach 1080p. IGN's early look at the opening section found a mostly steady 30fps with a couple of drops as low as 24fps.",
+        answer: "Rockstar says it renders at 720p and uses AMD FSR 4 to reach about 1080p. Digital Foundry found the loosest 30fps of any console, with large parts of the game in the mid to high 20s and drops to around 20fps or lower in heavy scenes. IGN's look at only the opening section found mostly 30fps with a couple of drops to 24fps.",
       },
     ],
   },
@@ -394,15 +402,16 @@ export const NEWS: NewsItem[] = [
     slug: "gta-6-file-size-time-to-beat",
     title: "GTA 6 File Size and Time to Beat",
     description:
-      "GTA 6 needs up to 212GB of storage. How long the story takes, how long side content adds, and how long to 100%, per VGC and GameSpot.",
+      "GTA 6 needs 212GB on PS5 and about 225GB on Xbox per the store listing. How long the story takes, side content, and 100%, per VGC and GameSpot.",
     crumb: "File size and length",
-    teaser: "Clear 212GB. About 60 to 65 hours for the story, 90 to 100 with side content, 200+ for everything.",
+    teaser: "Clear 212GB on PS5, about 225GB on Xbox. About 60 to 65 hours for the story, 90 to 100 with side content, 200+ for everything.",
     tag: "Guide",
-    keywords: ["GTA 6 file size", "GTA 6 storage", "how long to beat GTA 6", "GTA 6 length", "GTA 6 212GB"],
+    keywords: ["GTA 6 file size", "GTA 6 storage", "how long to beat GTA 6", "GTA 6 length", "GTA 6 212GB", "GTA 6 Xbox file size"],
     published: GAPS_PUBLISHED,
-    updated: GAPS_PUBLISHED,
+    updated: UPDATES_AT,
     citations: [
       "https://www.playstation.com/en-us/games/grand-theft-auto-vi/",
+      "https://www.xbox.com/en-US/games/store/grand-theft-auto-vi/9P3H4968GRSM",
       "https://www.theverge.com/games/1025271/gta-vi-storage-space-rockstar-games",
       "https://www.news.com.au/technology/gaming/gta-6-release-australia-launch-times-download-size-and-why-its-a-bad-time-to-be-a-boss/news-story/eeb2f0ed1d624c365f65e50b92c974cf",
       "https://www.videogameschronicle.com/guide/how-long-to-beat-grand-theft-auto-6/",
@@ -412,7 +421,7 @@ export const NEWS: NewsItem[] = [
     faq: [
       {
         question: "How big is GTA 6?",
-        answer: "Rockstar says the download needs up to 212GB depending on your device, and PlayStation asks for at least 212GB free on PS5. One outlet reports a larger Xbox figure that Rockstar has not confirmed.",
+        answer: "Rockstar says the download needs up to 212GB depending on your device, and PlayStation asks for at least 212GB free on PS5. On Xbox, the Xbox Store listing carries a maximum install size of about 225GB (209.9GB in binary units). news.com.au reports about 234GB, which we could not match to any listing.",
       },
       {
         question: "How long is the GTA 6 story?",
