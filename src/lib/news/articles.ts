@@ -26,7 +26,7 @@ export interface NewsItem {
 export const NEWS_PUBLISHED = "2026-11-18T22:35:00+10:00";
 
 /** Streamer stories. Set to the approval time when they go live; `updated` is when the numbers were last checked. */
-export const STREAMERS_PUBLISHED = "2026-11-18T23:02:00+10:00";
+export const STREAMERS_PUBLISHED = "2026-11-18T23:10:00+10:00";
 
 export const newsPath = (slug: string) => `/news/${slug}`;
 
@@ -173,11 +173,11 @@ export const NEWS: NewsItem[] = [
   },
   {
     slug: "gta-6-streaming-viewership-peak",
-    title: "GTA 6 Streams Top 5M Viewers",
+    title: "GTA 6 Streams Top 4M Viewers",
     description:
-      "Trackers show GTA 6 streams above 5 million concurrent viewers across Twitch, Kick and YouTube on launch night. Figures, sources and how to read them.",
+      "Trackers show GTA 6 streams above 4 million concurrent viewers across Twitch, Kick and YouTube on launch night. Figures, sources and how to read them.",
     crumb: "Streaming viewership",
-    teaser: "Trackers put GTA 6 streams above 5 million concurrent viewers on launch night. Figures and caveats.",
+    teaser: "Trackers put GTA 6 streams above 4 million concurrent viewers on launch night. Figures and caveats.",
     tag: "Streamers",
     keywords: ["GTA 6 viewers", "GTA 6 Twitch", "GTA 6 Kick", "GTA 6 YouTube", "streaming record"],
     published: STREAMERS_PUBLISHED,

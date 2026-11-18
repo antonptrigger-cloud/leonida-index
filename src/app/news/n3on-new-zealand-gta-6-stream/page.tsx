@@ -9,8 +9,8 @@ export default function Page() {
   return (
     <NewsLayout slug={SLUG} kicker="News · Streamers" title="N3ON's New Zealand GTA 6 stream" source="NDTV, Moneycontrol, StreamStats">
       <Lede>
-        Streamer N3ON said he would fly to New Zealand to play GTA 6 at the local unlock. Outlets report that he travelled there and went live around the unlock, and a third-party
-        tracker showed his Kick stream above 75,000 viewers at about 22:52 AEST on 18 Nov.
+        Streamer N3ON said he would fly to New Zealand to play GTA 6 at the local unlock. Outlets report that he travelled there and went live around the unlock, and Kick&rsquo;s public
+        channel data showed his stream live with about 74,800 viewers at 23:10 AEST on 18 Nov.
       </Lede>
 
       <H2>What he said</H2>
@@ -25,9 +25,9 @@ export default function Page() {
       <H2>The numbers</H2>
       <Bullets>
         <li>
-          <Lead>Stream:</Lead> StreamStats lists a Kick stream titled &ldquo;PLAYING GTA 6 EARLY&rdquo; that started at 10:31 UTC (20:31 AEST), about half an hour before the 11:00 UTC unlock. At about 22:52 AEST it showed 75,431
-          live viewers, an average of 63,887 and a recorded peak of 73,313 for the stream. The stream was still live, so these figures will keep changing (
-          <Ext href="https://streamstats.io/channels/n3on?platform=kick">StreamStats</Ext>, a third-party tracker).
+          <Lead>Stream:</Lead> a Kick stream titled &ldquo;PLAYING GTA 6 EARLY&rdquo; started at 10:31 UTC (20:31 AEST), about half an hour before the 11:00 UTC unlock. Kick&rsquo;s public channel data showed it
+          live with 74,817 viewers at 23:10 AEST, and StreamStats showed 75,431 live viewers and an average of 63,887 at about 22:52 AEST. The stream was still live, so these figures will keep changing (
+          <Ext href="https://streamstats.io/channels/n3on?platform=kick">StreamStats</Ext>, a third-party tracker; <Ext href="https://kick.com/n3on">Kick</Ext>).
         </li>
         <li>
           <Lead>Context:</Lead> the same tracker puts his 30-day average at about 32,600 viewers, so the launch stream ran at about double his usual audience.
@@ -37,7 +37,7 @@ export default function Page() {
       <Callout title="Unverified rumour: no evidence" tone="unconfirmed">
         <p>
           A viral X post claimed N3ON was banned during the stream. We found no evidence of a ban. The post does not say what was banned or by whom, no outlet, platform or
-          N3ON himself has reported one, and his Kick stream stayed live afterwards. That last point cannot rule out an issue on another service, so we treat the claim as
+          N3ON himself has reported one, and his Kick stream stayed live afterwards. At 23:10 AEST Kick&rsquo;s public channel data did not list the channel as banned. That last point cannot rule out an issue on another service, so we treat the claim as
           unverified and are not linking to it.
         </p>
       </Callout>

@@ -6,18 +6,18 @@ const SLUG = "gta-6-streaming-viewership-peak";
 export const metadata = metaFor(newsPath(SLUG));
 
 const ROWS: string[][] = [
-  ["Twitch + Kick + YouTube", "5,024,407 live; 5,072,149 peak", "luciastream", "Live reading 23:00 AEST; peak set at 22:50 AEST"],
-  ["Twitch + Kick", "3,749,935", "NextCounts", "22:58 AEST"],
-  ["Twitch alone", "2,472,380", "NextCounts", "22:58 AEST"],
-  ["Kick alone", "1,277,555", "NextCounts", "22:58 AEST"],
+  ["Twitch + Kick + YouTube", "4,205,792 (also its all-time peak)", "luciastream", "Peak timestamped 11:06 UTC (21:06 AEST); shown on its live page at 23:10 AEST"],
+  ["Twitch + Kick", "3,688,850", "NextCounts", "23:08 AEST"],
+  ["Twitch alone", "2,413,733 (12,072 channels)", "NextCounts", "23:08 AEST"],
+  ["Kick alone", "1,275,117", "NextCounts", "23:08 AEST"],
 ];
 
 export default function Page() {
   return (
-    <NewsLayout slug={SLUG} kicker="News · Streamers" title="GTA 6 streams top 5M viewers" source="BBC, NextCounts, luciastream">
+    <NewsLayout slug={SLUG} kicker="News · Streamers" title="GTA 6 streams top 4M viewers" source="BBC, NextCounts, luciastream">
       <Lede>
-        About two hours after New Zealand unlocked GTA 6, third-party trackers show more than 5 million concurrent viewers across GTA streams on Twitch, Kick and YouTube. The US has
-        not unlocked yet, so these figures are likely to move. All figures are as of about 23:00 AEST on 18 Nov.
+        About two hours after New Zealand unlocked GTA 6, third-party trackers show more than 4 million concurrent viewers across GTA streams on Twitch, Kick and YouTube. The US has
+        not unlocked yet, so these figures are likely to move. All figures were checked at about 23:10 AEST on 18 Nov.
       </Lede>
 
       <H2>The numbers</H2>
@@ -28,11 +28,11 @@ export default function Page() {
           <Ext href="https://www.bbc.com/news/live/c60rkg21dl22t">BBC News</Ext>).
         </li>
         <li>
-          <Lead>Peaks today:</Lead> NextCounts records a Twitch peak of 2,506,576 and a Kick peak of 1,283,466 for 18 Nov (<Ext href="https://nextcounts.com/games/grand-theft-auto-vi">NextCounts</Ext>).
+          <Lead>Peaks today:</Lead> NextCounts records a Twitch peak of 2,506,576 and a Kick peak of 1,287,565 for 18 Nov, and a highest combined hourly sample of 3,753,219 over 48 hours (<Ext href="https://nextcounts.com/games/grand-theft-auto-vi">NextCounts</Ext>).
         </li>
         <li>
-          <Lead>Comparison:</Lead> luciastream says the highest GTA V peak it recorded was 992,344 concurrent viewers on 27 Aug 2026, across the same three platforms. Its live reading
-          covers 4,176 channels, with YouTube at about 1.34 million of the total (<Ext href="https://luciastream.com/press/">luciastream</Ext>).
+          <Lead>Comparison:</Lead> luciastream says the highest GTA V peak it recorded was 992,344 concurrent viewers on 27 Aug 2026, across the same three platforms. Its reading
+          covers 3,869 live channels, split about 2.11 million on Twitch, 1.06 million on Kick and 1.03 million on YouTube (<Ext href="https://luciastream.com/press/">luciastream</Ext>).
         </li>
       </Bullets>
 
