@@ -21,3 +21,4 @@ news | /news/gta-6-ps5-update-patches-servers | PS5 update, patches, servers | l
 news | /news/gta-6-release-countdown | Release time by region | live | official + reported | country vs time zone unconfirmed
 news | /news/gta-6-confirmed-so-far | What is confirmed | live | official |
 news | /news/gta-6-preload-editions-pricing | Preload and editions | live | official | US prices only
+news | /news/gta-6-festival-set-times-heat-night | Festival set times | live | official + reported | no livestream announced; charity list may be truncated

@@ -33,7 +33,7 @@ export default function Page() {
       <H2>The numbers</H2>
       <Bullets>
         <li>
-          <Lead>Metacritic (as of 23:49 AEST, 18 Nov):</Lead> Metascore 99, &ldquo;Universal Acclaim&rdquo;, from 147 critic reviews on the main listing, and 99 across all platforms from 153, read directly from{" "}
+          <Lead>Metacritic (as of 08:13 AEST, 19 Nov):</Lead> Metascore 99, &ldquo;Universal Acclaim&rdquo;, from 150 critic reviews on the main listing, and 99 across all platforms from 156, read directly from{" "}
           <Ext href="https://www.metacritic.com/game/grand-theft-auto-vi/">Metacritic</Ext>. It first appeared at 99 from 100 reviews at about 11:17 GMT (
           <Ext href="https://www.bbc.com/news/live/c60rkg21dl22t">BBC News</Ext>), so the score has held at 99 while the count has moved around.
         </li>
@@ -42,8 +42,8 @@ export default function Page() {
           showed 100% positive reviews, with none mixed or negative.
         </li>
         <li>
-          <Lead>Xbox and other aggregators:</Lead> Metacritic also lists an Xbox Series X page, at 99 from 14 reviews. OpenCritic shows a Top Critic Average of 98 with 100% of critics recommending it (as of 23:49 AEST, read directly from{" "}
-          <Ext href="https://opencritic.com/game/15398/grand-theft-auto-vi">OpenCritic</Ext>; <Ext href="https://www.polygon.com/gta-6-review-roundup/">Polygon</Ext> reported the same 98 earlier). Metacritic&rsquo;s user score is still &ldquo;tbd&rdquo;.
+          <Lead>Xbox and other aggregators:</Lead> Metacritic also lists an Xbox Series X page, at 99 from 14 reviews. OpenCritic now shows a Top Critic Average of 99, up from the 98 we read at 23:49 AEST on 18 Nov, with 99% of critics recommending it, down from 100% (as of 08:13 AEST, 19 Nov, read directly from{" "}
+          <Ext href="https://opencritic.com/game/15398/grand-theft-auto-vi">OpenCritic</Ext>; <Ext href="https://www.polygon.com/gta-6-review-roundup/">Polygon</Ext> reported 98 on launch day). OpenCritic&rsquo;s player rating stays hidden until 20 ratings; it showed 1 of 20. Metacritic&rsquo;s user score is still &ldquo;tbd&rdquo;.
         </li>
         <li>
           <Lead>Records:</Lead> Rockstar&rsquo;s previous best Metascore was 98 for GTA IV, and GTA V scored 97 on Xbox 360 and PS3 (
@@ -98,8 +98,8 @@ export default function Page() {
         <Source href="https://www.bbc.com/news/live/c60rkg21dl22t" label="BBC News live page, 18 Nov 2026" kind="Reputable outlet" />
         <Source href="https://insider-gaming.com/gta-6-gets-a-99-in-early-metacritic-review-scores/" label="Insider Gaming, 18 Nov 2026" kind="Reputable outlet" />
         <Source href="https://www.gamingbible.com/news/gta-6-review-round-up-highest-rated-game-all-time-916887-20261118" label="GAMINGbible, 18 Nov 2026" kind="Reputable outlet" />
-        <Source href="https://www.metacritic.com/game/grand-theft-auto-vi/" label="Metacritic: Grand Theft Auto VI (read 23:49 AEST, 18 Nov 2026)" kind="Review aggregator" />
-        <Source href="https://opencritic.com/game/15398/grand-theft-auto-vi" label="OpenCritic: Grand Theft Auto VI (read 23:49 AEST, 18 Nov 2026)" kind="Review aggregator" />
+        <Source href="https://www.metacritic.com/game/grand-theft-auto-vi/" label="Metacritic: Grand Theft Auto VI (read 08:13 AEST, 19 Nov 2026)" kind="Review aggregator" />
+        <Source href="https://opencritic.com/game/15398/grand-theft-auto-vi" label="OpenCritic: Grand Theft Auto VI (read 08:13 AEST, 19 Nov 2026)" kind="Review aggregator" />
         <Source href="https://www.polygon.com/gta-6-review-roundup/" label="Polygon review round-up, 18 Nov 2026" kind="Reputable outlet" />
         <Source href="https://www.aa.com.tr/en/science-technology/gta-vi-global-rollout-begins-with-new-zealand-launch/4129238" label="Anadolu Agency, 18 Nov 2026" kind="Reputable outlet" />
         <Source href="https://www.digitalfoundry.net/features/gta-6-ps5-vs-ps5-pro-xbox-series-x-and-series-s-which-console-plays-best" label="Digital Foundry: PS5, PS5 Pro, Xbox Series X and Series S, 18 Nov 2026" kind="Technical analysis" />
