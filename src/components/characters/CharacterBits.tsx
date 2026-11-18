@@ -8,16 +8,29 @@ const ACCENT: Record<Character["accent"], string> = {
   turq: "0,229,204",
 };
 
-/** Confirmed (Rockstar says so) or To be confirmed (secondary reporting only, or unknown). */
-export function ConfirmTag({ status }: { status: "confirmed" | "tbc" }) {
-  return status === "confirmed" ? (
-    <span
-      className="whitespace-nowrap text-[0.65rem] font-bold uppercase tracking-[0.18em] text-turq"
-      title="Stated on Rockstar's official Only in Leonida profile."
-    >
-      Confirmed
-    </span>
-  ) : (
+/** Confirmed (Rockstar or the person says so), Reported (credible outlets, no official statement) or To be confirmed (nothing solid yet). */
+export function ConfirmTag({ status }: { status: "confirmed" | "tbc" | "reported" }) {
+  if (status === "confirmed") {
+    return (
+      <span
+        className="whitespace-nowrap text-[0.65rem] font-bold uppercase tracking-[0.18em] text-turq"
+        title="Stated by Rockstar, or by the person involved, in a first-party source."
+      >
+        Confirmed
+      </span>
+    );
+  }
+  if (status === "reported") {
+    return (
+      <span
+        className="whitespace-nowrap text-[0.65rem] font-bold uppercase tracking-[0.18em] text-blue"
+        title="Reported by the outlet named, not stated by Rockstar. We recheck after launch."
+      >
+        Reported
+      </span>
+    );
+  }
+  return (
     <span
       className="whitespace-nowrap text-[0.65rem] font-bold uppercase tracking-[0.18em] text-orange"
       title="Not stated by Rockstar yet, or only seen in secondary reporting. We recheck after launch."
@@ -60,7 +73,7 @@ export function CharSources({ sources }: { sources: CharSource[] }) {
     <section aria-labelledby="sources" className="mt-16x">
       <h2 id="sources" className="vc-display text-3xl text-ink">Sources</h2>
       <p className="mt-2x text-sm text-muted">
-        Last verified: <time dateTime={LAST_VERIFIED}>{LAST_VERIFIED_LABEL}</time> (pre-launch). Wording on this page is our own. Rockstar&apos;s pages are the primary source. Anything from elsewhere stays in the blurred spoiler section and is marked To be confirmed.
+        Last verified: <time dateTime={LAST_VERIFIED}>{LAST_VERIFIED_LABEL}</time> (launch eve). Wording on this page is our own. Rockstar&apos;s pages are the primary source. Anything from elsewhere is marked Reported or To be confirmed, and plot details stay in the blurred section.
       </p>
       <ol className="mt-4x flex flex-col gap-3x text-sm">
         {sources.map((s) => (

@@ -10,7 +10,7 @@ import { Related } from "@/components/Related";
 import { Spoiler } from "@/components/guides/Spoiler";
 import { SpoilerWarning } from "@/components/guides/MissionBits";
 import { CharSources, CharacterPlaceholder, ConfirmTag } from "@/components/characters/CharacterBits";
-import { CHARACTERS, LAST_VERIFIED_LABEL, SOURCES, characterBySlug, characterPath } from "@/lib/characters/characters";
+import { CHARACTERS, LAST_VERIFIED_LABEL, REPORTED_NOTE, SOURCES, characterBySlug, characterPath } from "@/lib/characters/characters";
 
 export const dynamicParams = false;
 
@@ -33,6 +33,7 @@ export default async function CharacterPage({ params }: { params: Promise<{ slug
   const next = CHARACTERS[(i + 1) % CHARACTERS.length];
   const sources = c.sourceIds.map((id) => SOURCES[id]);
   const path = characterPath(c.slug);
+  const reported = c.tier === "reported";
 
   return (
     <article>
@@ -41,26 +42,35 @@ export default async function CharacterPage({ params }: { params: Promise<{ slug
       <PageHeader
         kicker={`Character · ${c.role}`}
         title={c.name}
-        verified={`${LAST_VERIFIED_LABEL} (pre-launch)`}
-        source="Rockstar Games, Only in Leonida"
+        verified={`${LAST_VERIFIED_LABEL} (${reported ? "launch eve" : "pre-launch"})`}
+        source={reported ? "GameSpot and PowerPyx (not Rockstar)" : "Rockstar Games, Only in Leonida"}
       />
 
       {c.spoiler ? (
         <SpoilerWarning>
-          Rockstar&apos;s own profile text is visible. Story and footage details from secondary reports stay blurred until you reveal them.
+          {reported
+            ? "Mission names, rewards and story events from launch-eve guides stay blurred until you reveal them."
+            : "Rockstar's own profile text is visible. Story and footage details from secondary reports stay blurred until you reveal them."}
         </SpoilerWarning>
       ) : null}
 
       <div className="grid gap-10x lg:grid-cols-12">
         <div className="lg:col-span-7">
           <p className="max-w-2xl text-xl leading-snug text-ink">{c.summary}</p>
-          <blockquote className="vc-bar mt-6x max-w-2xl">
-            <p className="text-lg text-ink-2">&ldquo;{c.quote}&rdquo;</p>
-            <footer className="mt-1x text-xs text-muted">Rockstar Games, Only in Leonida</footer>
-          </blockquote>
+          {reported ? (
+            <p className="vc-bar mt-6x max-w-2xl text-sm text-ink-2">
+              <ConfirmTag status="reported" /> <span className="ml-2x">{REPORTED_NOTE}</span>
+            </p>
+          ) : null}
+          {c.quote ? (
+            <blockquote className="vc-bar mt-6x max-w-2xl">
+              <p className="text-lg text-ink-2">&ldquo;{c.quote}&rdquo;</p>
+              <footer className="mt-1x text-xs text-muted">Rockstar Games, Only in Leonida</footer>
+            </blockquote>
+          ) : null}
 
           <section aria-labelledby="background" className="mt-16x">
-            <h2 id="background" className="vc-display text-3xl text-ink">What Rockstar says</h2>
+            <h2 id="background" className="vc-display text-3xl text-ink">{reported ? "What the guides say" : "What Rockstar says"}</h2>
             <div className="mt-4x max-w-2xl space-y-4x text-lg text-ink-2">
               {c.background.map((p) => (
                 <p key={p}>{p}</p>
@@ -88,17 +98,25 @@ export default async function CharacterPage({ params }: { params: Promise<{ slug
 
           {c.spoiler ? (
             <section aria-labelledby="footage" className="mt-16x">
-              <h2 id="footage" className="vc-display text-3xl text-ink">Seen in footage</h2>
+              <h2 id="footage" className="vc-display text-3xl text-ink">{c.spoilerTitle ?? "Seen in footage"}</h2>
               <p className="mt-2x text-sm text-muted">
-                From a secondary summary of An Extended Look, not from Rockstar&apos;s profile. <ConfirmTag status="tbc" />
+                {c.spoilerNote ?? "From a secondary summary of An Extended Look, not from Rockstar's profile."}{" "}
+                <ConfirmTag status={reported ? "reported" : "tbc"} />
               </p>
               <div className="mt-4x">
-                <Spoiler label="Footage notes">
+                <Spoiler label={reported ? "mission and story notes" : "Footage notes"}>
                   <ul className="flex list-disc flex-col gap-3x pl-6x text-ink-2 marker:text-pink">
                     {c.spoiler.map((s) => (
                       <li key={s}>{s}</li>
                     ))}
                   </ul>
+                  {c.spoilerLink ? (
+                    <p className="mt-4x text-sm">
+                      <Link href={c.spoilerLink.href} className="font-semibold text-blue hover:text-pink">
+                        {c.spoilerLink.label}
+                      </Link>
+                    </p>
+                  ) : null}
                 </Spoiler>
               </div>
             </section>
@@ -131,7 +149,7 @@ export default async function CharacterPage({ params }: { params: Promise<{ slug
               ))}
             </dl>
             <p className="mt-4x text-xs text-muted">
-              <span className="text-turq">Confirmed</span>: Rockstar&apos;s profile says so. <span className="text-orange">To be confirmed</span>: not stated yet, or secondary reporting only.
+              <span className="text-turq">Confirmed</span>: Rockstar or the person involved says so. <span className="text-blue">Reported</span>: credible outlets say so, with no official statement. <span className="text-orange">To be confirmed</span>: not stated yet.
             </p>
           </div>
         </aside>
