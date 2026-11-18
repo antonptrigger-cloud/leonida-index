@@ -72,7 +72,8 @@ export function pageGraph(path: string): Json[] {
     publisher: { "@id": ORG_ID },
     author: { "@id": ORG_ID },
     image,
-    dateModified: SITE.updated,
+    dateModified: r.updated ?? SITE.updated,
+    ...(r.published ? { datePublished: r.published } : {}),
     mainEntityOfPage: url,
   };
   if (r.kind === "article") out.push({ ...common, "@type": "Article", about: "Grand Theft Auto VI" });
