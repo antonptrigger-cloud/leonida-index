@@ -30,6 +30,9 @@ export const NEWS_PUBLISHED = "2026-11-18T22:35:00+10:00";
 /** Streamer stories. Set to the approval time when they go live; `updated` is when the numbers were last checked. */
 export const STREAMERS_PUBLISHED = "2026-11-18T23:10:00+10:00";
 
+/** SEO content-gap guides. Set to the moment they go live; bump `updated` on every fact change. */
+export const GAPS_PUBLISHED = "2026-11-18T23:38:00+10:00";
+
 export const newsPath = (slug: string) => `/news/${slug}`;
 
 export const NEWS: NewsItem[] = [
@@ -76,15 +79,15 @@ export const NEWS: NewsItem[] = [
   },
   {
     slug: "gta-6-ps5-update-patches-servers",
-    title: "GTA 6 PS5 Update, Patches & Servers",
+    title: "GTA 6 Server Status & Known Issues",
     description:
-      "PS5 needs a mandatory system update to play GTA 6. Pre-launch game patches, server status and what is still unconfirmed on launch night.",
-    crumb: "PS5 update and patches",
-    teaser: "The PS5 system update you must install, the two pre-launch patches, and how to check server status.",
-    tag: "Checklist",
-    keywords: ["GTA 6 PS5 update", "GTA 6 patch", "GTA 6 server status", "PS5 system software", "01.002.001"],
+      "Live GTA 6 server status with sources and times, known launch issues, the mandatory PS5 system update, and pre-launch patches. Updated through launch week.",
+    crumb: "Server status and known issues",
+    teaser: "Live status readings, known issues, the PS5 system update and the two pre-launch patches.",
+    tag: "Live tracker",
+    keywords: ["GTA 6 server status", "is GTA 6 down", "GTA 6 known issues", "GTA 6 PS5 update", "GTA 6 patch", "01.002.001"],
     published: NEWS_PUBLISHED,
-    updated: NEWS_PUBLISHED,
+    updated: GAPS_PUBLISHED,
     citations: [
       "https://x.com/PS_Support_US/status/2122863683881619685",
       "https://www.pushsquare.com/news/2026/11/gta-6-requires-new-ps5-firmware-update-to-play",
@@ -94,6 +97,11 @@ export const NEWS: NewsItem[] = [
       "https://insider-gaming.com/is-grand-theft-auto-6-down-gta-6-issues-explained/",
       "https://status.playstation.com/",
       "https://gtatracker.gg/online/server-status",
+      "https://downdetector.co.nz/status/gta-vi/",
+      "https://www.playstation.com/en-us/support/games/gta-vi-support/",
+      "https://www.polygon.com/gta-6-grand-theft-auto-no-code-physical-edition/",
+      "https://www.news.com.au/technology/gaming/gta-6-release-australia-launch-times-download-size-and-why-its-a-bad-time-to-be-a-boss/news-story/eeb2f0ed1d624c365f65e50b92c974cf",
+      "https://www.1news.co.nz/2026/11/18/gta-6-how-to-beat-the-download-rush-and-why-gamers-abroad-envy-kiwis/",
     ],
   },
   {
@@ -226,6 +234,194 @@ export const NEWS: NewsItem[] = [
       "https://www.bbc.com/news/live/c60rkg21dl22t",
       "https://www.rnz.co.nz/life/screens/games/the-grand-theft-auto-kiwi-hack-the-world-is-talking-about",
       "https://en.3dmgame.com/news/10688",
+    ],
+  },
+  {
+    slug: "gta-6-performance-ps5-pro-xbox",
+    title: "GTA 6 Performance: PS5, PS5 Pro & Xbox",
+    description:
+      "GTA 6 runs at 30fps on every console with no performance mode. What PS5 Pro gets, Xbox Series S and X resolution, and what reviewers measured.",
+    crumb: "Performance by console",
+    teaser: "30fps everywhere, no performance mode. PS5 Pro adds PSSR and ray-traced shadows. Resolutions and test results.",
+    tag: "Performance",
+    keywords: ["GTA 6 performance", "GTA 6 60fps", "GTA 6 PS5 Pro", "GTA 6 Xbox Series X", "GTA 6 Series S", "GTA 6 graphics modes"],
+    published: GAPS_PUBLISHED,
+    updated: GAPS_PUBLISHED,
+    citations: [
+      "https://gameinformer.com/2026/11/10/grand-theft-auto-vi-will-run-at-30-fps-on-all-consoles-but-ps5-pro-will-feature-improved",
+      "https://www.playstation.com/en-us/games/grand-theft-auto-vi/",
+      "https://www.gamespot.com/articles/gta-6-ps5-pro-features-frame-rates-and-xbox-cloud-gaming-details-confirmed-by-rockstar/",
+      "https://wccftech.com/grand-theft-auto-vi-amd-fsr-4-xbox-series-s-ray-tracing/",
+      "https://www.techradar.com/gaming/why-no-40fps-mode-for-gta-6-rockstar-says-the-complexity-of-simulating-and-rendering-our-world-requires-it-to-carefully-balance-how-we-spend-every-millisecond-of-both-the-central-processor-and-the-graphics-processor",
+      "https://www.digitalfoundry.net/reviews/grand-theft-auto-6-a-landmark-achievement-that-redefines-a-console-generation",
+      "https://za.ign.com/grand-theft-auto-vi/245779/gta-6-xbox-series-s-performance-how-does-the-weakest-console-handle-the-biggest-game-of-all-time",
+      "https://news.xbox.com/en-us/2026/11/10/grand-theft-auto-6-comes-to-xbox-cloud-gaming-november-19/",
+    ],
+    faq: [
+      {
+        question: "Does GTA 6 have a 60fps mode?",
+        answer: "No. Rockstar says GTA 6 targets 30fps on PS5, PS5 Pro, Xbox Series X and Xbox Series S, and no performance or balanced mode has been announced.",
+      },
+      {
+        question: "Is GTA 6 better on PS5 Pro?",
+        answer: "In image quality, yes. Rockstar lists PSSR upscaling and ray-traced shadows as PS5 Pro features. The frame-rate target is the same 30fps as every other console.",
+      },
+      {
+        question: "Is GTA 6 better on PS5 or Xbox Series X?",
+        answer: "Rockstar gives the same numbers for both: a 1440p base resolution upscaled to 4K at a 30fps target. Rockstar says the game plays best on PS5 and lists PS5-specific haptics, Tempest 3D Audio and faster loading. We have not found an independent Xbox Series X test.",
+      },
+      {
+        question: "How does GTA 6 run on Xbox Series S?",
+        answer: "Rockstar says it renders at 720p and uses AMD FSR 4 to reach 1080p. IGN's early look at the opening section found a mostly steady 30fps with a couple of drops as low as 24fps.",
+      },
+    ],
+  },
+  {
+    slug: "gta-6-pc-release-status",
+    title: "Is GTA 6 Coming to PC? Latest Status",
+    description:
+      "GTA 6 is PS5 and Xbox Series X|S only. What Rockstar and Take-Two have said about a PC version, past port gaps, and which PC rumours are unconfirmed.",
+    crumb: "GTA 6 on PC",
+    teaser: "No PC version announced. What is official, the GTA V and RDR2 port gaps, and which PC dates are only rumours.",
+    tag: "Platforms",
+    keywords: ["GTA 6 PC", "GTA 6 PC release date", "is GTA 6 on PC", "GTA 6 Steam", "GTA 6 system requirements"],
+    published: GAPS_PUBLISHED,
+    updated: GAPS_PUBLISHED,
+    citations: [
+      "https://www.rockstargames.com/VI",
+      "https://news.xbox.com/en-us/2026/11/10/grand-theft-auto-6-comes-to-xbox-cloud-gaming-november-19/",
+      "https://www.polygon.com/gta-6-pc-release-date-cloud-streaming-rockstar-news-xbox-mods/",
+      "https://gamerant.com/gta-6-online-take-two-statement-release-beyond/",
+      "https://www.pcgamer.com/games/grand-theft-auto/the-experiences-on-console-and-pc-tend-to-be-roughly-the-same-says-take-two-ceo-in-response-to-question-about-gta-roleplaying/",
+      "https://tech.yahoo.com/gaming/articles/gta-6-pc-release-date-150338948.html",
+      "https://www.gamespot.com/articles/gta-6-ps5-pro-features-frame-rates-and-xbox-cloud-gaming-details-confirmed-by-rockstar/",
+    ],
+    faq: [
+      {
+        question: "Is GTA 6 on PC?",
+        answer: "No. It is not on sale for PC, and Rockstar has not announced a PC version.",
+      },
+      {
+        question: "Can I stream GTA 6 to a PC?",
+        answer: "Not through anything Rockstar or Xbox has announced. The Xbox Cloud Gaming launch names Xbox consoles only.",
+      },
+      {
+        question: "Is there a GTA 6 PC release date?",
+        answer: "No. The only timelines in circulation are unnamed-source reports, which we treat as rumour.",
+      },
+      {
+        question: "How long did GTA V and Red Dead Redemption 2 take to reach PC?",
+        answer: "Per Yahoo Tech, GTA V took about 19 months (September 2013 to April 2015) and Red Dead Redemption 2 just over a year (October 2018 to November 2019). Neither sets a date for GTA 6.",
+      },
+    ],
+  },
+  {
+    slug: "gta-6-online-release-date",
+    title: "GTA 6 Online: Release Date & What We Know",
+    description:
+      "GTA 6 launches single-player with no online mode announced. What Take-Two has said, where the 2027 talk comes from, and which leaks are unconfirmed.",
+    crumb: "GTA 6 Online",
+    teaser: "No GTA 6 Online date. Launch is single-player, GTA Online continues, and the 2027 talk is a partner's expectation.",
+    tag: "Online",
+    keywords: ["GTA 6 Online", "GTA 6 Online release date", "GTA 6 multiplayer", "GTA Online after GTA 6", "GTA 6 2027"],
+    published: GAPS_PUBLISHED,
+    updated: GAPS_PUBLISHED,
+    citations: [
+      "https://www.playstation.com/en-us/games/grand-theft-auto-vi/",
+      "https://gamerant.com/gta-6-online-take-two-statement-release-beyond/",
+      "https://www.vice.com/en/article/gta-6-online-release-date/",
+      "https://www.theverge.com/games/997116/twitch-ceo-gta-vi-multiplayer-is-coming-in-2027",
+      "https://www.pcgamer.com/games/grand-theft-auto/the-experiences-on-console-and-pc-tend-to-be-roughly-the-same-says-take-two-ceo-in-response-to-question-about-gta-roleplaying/",
+      "https://www.gamespot.com/articles/gta-6-ps5-pro-features-frame-rates-and-xbox-cloud-gaming-details-confirmed-by-rockstar/",
+    ],
+    faq: [
+      {
+        question: "Does GTA 6 have online multiplayer?",
+        answer: "Not at launch. PlayStation lists it as a single-player experience, and no online mode has been announced.",
+      },
+      {
+        question: "When is GTA 6 Online coming out?",
+        answer: "There is no announced date or window. The 2027 timing is a partner's expectation, not Rockstar's.",
+      },
+      {
+        question: "Is GTA Online ending?",
+        answer: "No. Take-Two says it will keep supporting GTA Online after GTA 6 releases.",
+      },
+      {
+        question: "Can I play GTA Online with friends on 19 November?",
+        answer: "Yes, in the existing GTA Online in GTA V. GTA 6 itself is a single-player game at launch.",
+      },
+    ],
+  },
+  {
+    slug: "gta-6-game-pass-ps-plus-cloud",
+    title: "Is GTA 6 on Game Pass, PS Plus or Cloud?",
+    description:
+      "GTA 6 is a separate purchase, not on Game Pass or PS Plus lineups. How Xbox Cloud Gaming works on Xbox One and what is still unconfirmed.",
+    crumb: "Game Pass, PS Plus, cloud",
+    teaser: "A separate purchase. Xbox Cloud Gaming works once you own the game, including on Xbox One.",
+    tag: "Platforms",
+    keywords: ["GTA 6 Game Pass", "GTA 6 PS Plus", "GTA 6 Xbox Cloud Gaming", "GTA 6 Xbox One", "GTA 6 subscription"],
+    published: GAPS_PUBLISHED,
+    updated: GAPS_PUBLISHED,
+    citations: [
+      "https://news.xbox.com/en-us/2026/11/10/grand-theft-auto-6-comes-to-xbox-cloud-gaming-november-19/",
+      "https://blog.playstation.com/2026/11/10/playstation-plus-game-catalog-for-november-death-stranding-2-on-the-beach-like-a-dragon-pirate-yakuza-in-hawaii-atomfall-dragon-quest-iii-hd-2d-remake-and-more/",
+      "https://www.playstation.com/en-us/games/grand-theft-auto-vi/",
+      "https://www.gamespot.com/articles/gta-6-ps5-pro-features-frame-rates-and-xbox-cloud-gaming-details-confirmed-by-rockstar/",
+      "https://beebom.com/will-gta-6-be-on-xbox-game-pass/",
+    ],
+    faq: [
+      {
+        question: "Is GTA 6 free with Game Pass?",
+        answer: "No. Xbox says Grand Theft Auto VI must be purchased separately.",
+      },
+      {
+        question: "Is GTA 6 on PS Plus?",
+        answer: "It is not in Sony's November PlayStation Plus Game Catalog announcement, and the PlayStation Store sells it as a standalone purchase.",
+      },
+      {
+        question: "Can I play GTA 6 on Xbox One?",
+        answer: "Only through Xbox Cloud Gaming, at Xbox Series S graphics settings. There is no native Xbox One version.",
+      },
+      {
+        question: "Do I need a subscription to play GTA 6?",
+        answer: "PlayStation's store page lists the game as one player with offline play enabled. Playing through Xbox Cloud Gaming needs cloud playtime, which Xbox says can be bought without a Game Pass subscription.",
+      },
+    ],
+  },
+  {
+    slug: "gta-6-file-size-time-to-beat",
+    title: "GTA 6 File Size and Time to Beat",
+    description:
+      "GTA 6 needs up to 212GB of storage. How long the story takes, how long side content adds, and how long to 100%, per VGC and GameSpot.",
+    crumb: "File size and length",
+    teaser: "Clear 212GB. About 60 to 65 hours for the story, 90 to 100 with side content, 200+ for everything.",
+    tag: "Guide",
+    keywords: ["GTA 6 file size", "GTA 6 storage", "how long to beat GTA 6", "GTA 6 length", "GTA 6 212GB"],
+    published: GAPS_PUBLISHED,
+    updated: GAPS_PUBLISHED,
+    citations: [
+      "https://www.playstation.com/en-us/games/grand-theft-auto-vi/",
+      "https://www.theverge.com/games/1025271/gta-vi-storage-space-rockstar-games",
+      "https://www.news.com.au/technology/gaming/gta-6-release-australia-launch-times-download-size-and-why-its-a-bad-time-to-be-a-boss/news-story/eeb2f0ed1d624c365f65e50b92c974cf",
+      "https://www.videogameschronicle.com/guide/how-long-to-beat-grand-theft-auto-6/",
+      "https://www.gamespot.com/articles/how-long-to-beat-gta-6/",
+      "https://www.gamesradar.com/games/grand-theft-auto/how-long-is-gta-6-about-80-hours-according-to-one-rockstar-devs-playthrough/",
+    ],
+    faq: [
+      {
+        question: "How big is GTA 6?",
+        answer: "Rockstar says the download needs up to 212GB depending on your device, and PlayStation asks for at least 212GB free on PS5. One outlet reports a larger Xbox figure that Rockstar has not confirmed.",
+      },
+      {
+        question: "How long is the GTA 6 story?",
+        answer: "About 60 to 65 hours on main missions, per VGC and GameSpot.",
+      },
+      {
+        question: "How long does it take to 100% GTA 6?",
+        answer: "Both outlets estimate over 200 hours. Neither team has confirmed a full completion.",
+      },
     ],
   },
 ];
