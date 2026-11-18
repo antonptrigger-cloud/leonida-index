@@ -105,6 +105,18 @@ export function pageGraph(path: string): Json[] {
       ...(r.citations?.length ? { citation: r.citations } : {}),
     });
   }
+  if (r.kind === "profile") {
+    out.push({
+      ...common,
+      "@type": "Article",
+      about: {
+        "@type": "Thing",
+        name: r.crumb,
+        description: `${r.crumb}, a fictional character in Grand Theft Auto VI`,
+        subjectOf: { "@type": "VideoGame", name: "Grand Theft Auto VI", publisher: { "@type": "Organization", name: "Rockstar Games" } },
+      },
+    });
+  }
   if (r.kind === "howto" && r.steps) {
     out.push({
       ...common,
