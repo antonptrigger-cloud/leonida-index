@@ -56,6 +56,7 @@ behind a blur-to-reveal.
 | Mission guides, activities, beginner, edition compare, release date | Article, BreadcrumbList |
 | Wanted, stealing cars | HowTo, BreadcrumbList |
 | Characters | Article about a `Thing`, described as a fictional GTA VI character (deliberately not ProfilePage/Person, which would present fictional characters as real people); BreadcrumbList |
+| Cast (`/database/characters/cast`) | Article about the game (not a character profile, because it covers real people), FAQPage, BreadcrumbList. Never state a performer's role as fact unless Rockstar or the performer says it; otherwise label it Reported with its source. |
 | Section indexes (guides, missions, news, characters, secrets, map) | CollectionPage, BreadcrumbList |
 | About | AboutPage, BreadcrumbList |
 | Any page with `faq` data | FAQPage (from `<Faq>`) |

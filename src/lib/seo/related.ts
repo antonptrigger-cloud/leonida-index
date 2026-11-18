@@ -20,6 +20,7 @@
 import { MISSIONS, missionPath } from "@/lib/guides/missions";
 import { NEWS, newsPath } from "@/lib/news/articles";
 import { CHARACTERS, characterPath } from "@/lib/characters/characters";
+import { CAST_PATH } from "@/lib/characters/cast";
 import { ROUTES } from "./site";
 
 export type Section = "map" | "guide" | "news" | "character";
@@ -61,6 +62,12 @@ const ALIASES: Record<string, string[]> = {
   "dre-quan-priest": ["Dre'Quan", "Dre\u2019Quan"],
   "raul-bautista": ["Raul"],
   "real-dimez": ["Real Dimez"],
+  lori: ["Lori"],
+  kenton: ["Kenton"],
+  moses: ["Moses"],
+  randy: ["Randy"],
+  dunk: ["Dunk"],
+  tyrone: ["Tyrone"],
 };
 
 const TOPICS: { name: string; re: RegExp }[] = [
@@ -163,6 +170,22 @@ function buildItems(): Item[] {
       label: `Character · ${c.role}`,
       section: "character",
       blurb: c.summary,
+      tags,
+      date: "2026-11-18",
+    });
+  }
+
+  // Cast evidence page: about the people behind Lucia, Jason and Brian.
+  const cast = ROUTES[CAST_PATH];
+  if (cast) {
+    const tags = tagsFromText(`${cast.title} ${cast.description}`);
+    for (const slug of ["lucia-caminos", "jason-duval", "brian-heder"]) tags.add(`char:${slug}`);
+    items.push({
+      href: CAST_PATH,
+      title: cast.crumb,
+      label: "Character · Cast",
+      section: "character",
+      blurb: cast.description,
       tags,
       date: "2026-11-18",
     });

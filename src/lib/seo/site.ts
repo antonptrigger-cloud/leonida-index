@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { CHAPTER, LAST_VERIFIED, MISSIONS, missionPath } from "@/lib/guides/missions";
 import { NEWS, newsPath } from "@/lib/news/articles";
 import { CHARACTERS, LAST_VERIFIED as CHARACTERS_VERIFIED, characterPath } from "@/lib/characters/characters";
+import { CAST_DESCRIPTION, CAST_PATH, CAST_TITLE, CAST_VERIFIED } from "@/lib/characters/cast";
 
 export const SITE = {
   name: "Leonida Vice Guide",
@@ -254,7 +255,7 @@ export const ROUTES: Record<string, RouteSeo> = {
   },
   "/database/characters": {
     title: "GTA 6 Characters: Full Cast List",
-    description: "Every GTA 6 character Rockstar has profiled: Lucia Caminos, Jason Duval, Cal Hampton, Boobie Ike, Dre'Quan Priest, Raul Bautista, Brian Heder and Real Dimez.",
+    description: "GTA 6 characters: Lucia Caminos, Jason Duval, Brian Heder and the rest of Rockstar's profiles, plus fences like Moses and Randy. Every fact is labelled.",
     crumb: "Characters",
     kind: "collection",
     changeFrequency: "weekly",
@@ -265,7 +266,7 @@ export const ROUTES: Record<string, RouteSeo> = {
     CHARACTERS.map((c): [string, RouteSeo] => [
       characterPath(c.slug),
       {
-        title: `${c.name} (GTA 6 Character)`,
+        title: c.seoTitle ?? `${c.name} (GTA 6 Character)`,
         description: c.seoDescription,
         crumb: c.name,
         kind: "profile",
@@ -277,6 +278,17 @@ export const ROUTES: Record<string, RouteSeo> = {
       },
     ]),
   ),
+  // About real people (cast), so a plain Article about the game rather than a character profile.
+  [CAST_PATH]: {
+    title: CAST_TITLE,
+    description: CAST_DESCRIPTION,
+    crumb: "Cast",
+    kind: "article",
+    changeFrequency: "daily",
+    priority: 0.7,
+    updated: CAST_VERIFIED,
+    published: CAST_VERIFIED,
+  },
   "/sources": {
     title: "Sources & Verification",
     description: "How Leonida Vice Guide labels information: official, showcase, in-game and unverified sources for every GTA 6 fact on the site.",

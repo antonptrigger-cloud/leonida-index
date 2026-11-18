@@ -11,10 +11,32 @@
  *   renders behind the reveal pattern used by the mission guides.
  * - No Rockstar images are used. Pages show a text/gradient placeholder card instead.
  *
+ * Batch 2 (contacts and fences) adds characters Rockstar has not profiled. Those carry
+ * `tier: "reported"`: every claim comes from launch-eve guides (GameSpot, PowerPyx) and is
+ * shown as Reported, never Confirmed. A reported profile needs at least two independent
+ * established outlets. Mission names, rewards and plot beats live in `spoiler`.
+ *
  * This file must not import from src/lib/seo (site.ts imports it to build ROUTES).
  */
 
-export type CharSourceId = "rockstar-profiles" | "rockstar-home" | "wikipedia-extended-look";
+export type CharSourceId =
+  | "rockstar-profiles"
+  | "rockstar-home"
+  | "wikipedia-extended-look"
+  | "gamespot-money"
+  | "pp-fences"
+  | "pp-island-dreams"
+  | "pp-moses"
+  | "pp-key-cloner"
+  | "pp-slam-dunk"
+  | "pp-spin-on-this"
+  | "ap-root"
+  | "gamespot-root"
+  | "polygon-root"
+  | "tga-best-performance"
+  | "verge-perez"
+  | "polygon-perez"
+  | "vice-perez";
 
 export interface CharSource {
   id: CharSourceId;
@@ -29,7 +51,7 @@ export interface CharSource {
 export interface CharFact {
   label: string;
   value: string;
-  status: "confirmed" | "tbc";
+  status: "confirmed" | "tbc" | "reported";
 }
 
 export interface Relation {
@@ -40,11 +62,18 @@ export interface Relation {
   note: string;
 }
 
-export type CharGroup = "leads" | "vice-city" | "keys";
+export type CharGroup = "leads" | "vice-city" | "keys" | "contacts";
 
 export interface Character {
   slug: string;
   name: string;
+  /**
+   * "rockstar" (default): backed by Rockstar's own profile text.
+   * "reported": Rockstar has published nothing; everything is Reported from launch-eve guides.
+   */
+  tier?: "rockstar" | "reported";
+  /** Page title when "<name> (GTA 6 Character)" is not the best fit (60 characters or fewer). */
+  seoTitle?: string;
   group: CharGroup;
   /** One-line role shown on cards. */
   role: string;
@@ -53,8 +82,8 @@ export interface Character {
   /** Card accent: tints the gradient placeholder. */
   accent: "pink" | "blue" | "orange" | "turq";
   seoDescription: string;
-  /** One short line Rockstar uses for the character, quoted and attributed. */
-  quote: string;
+  /** One short line Rockstar uses for the character, quoted and attributed. Omit when Rockstar has none. */
+  quote?: string;
   /** Non-spoiler summary in our own words, safe to show by default. */
   summary: string;
   /** Longer background paragraphs, still non-spoiler. */
@@ -63,6 +92,12 @@ export interface Character {
   relationships: Relation[];
   /** Spoiler: footage and story beats reported in secondary sources. Blurred on the page. */
   spoiler?: string[];
+  /** Heading for the blurred block (default "Seen in footage"). */
+  spoilerTitle?: string;
+  /** Provenance line under the spoiler heading. */
+  spoilerNote?: string;
+  /** Optional link shown inside the blurred block, e.g. the matching mission guide. */
+  spoilerLink?: { href: string; label: string };
   /** Open questions, each shown with a "To be confirmed" tag. */
   tbc: string[];
   sourceIds: CharSourceId[];
@@ -95,16 +130,118 @@ export const SOURCES: Record<CharSourceId, CharSource> = {
     used: "Secondary plot summary of the 27-minute Extended Look video (blurred spoiler section only)",
     primary: false,
   },
+  "gamespot-money": {
+    id: "gamespot-money",
+    label: "GameSpot: Best Ways To Make Money Fast In GTA 6 (18 Nov 2026)",
+    url: "https://www.gamespot.com/articles/best-ways-to-make-money-fast-in-gta-6/",
+    used: "Describes Kenton, Moses, Randy, Dunk and Tyrone and what each offers",
+    primary: false,
+  },
+  "pp-fences": {
+    id: "pp-fences",
+    label: "PowerPyx: GTA 6 All Fence Locations (18 Nov 2026)",
+    url: "https://www.powerpyx.com/gta-6-all-fence-locations-how-to-fence-stolen-goods/",
+    used: "Where each fence is, what they buy and what they pay",
+    primary: false,
+  },
+  "pp-island-dreams": {
+    id: "pp-island-dreams",
+    label: "PowerPyx: Island Dreams (Work for Kenton) walkthrough (18 Nov 2026)",
+    url: "https://www.powerpyx.com/gta-6-island-dreams-work-for-kenton-walkthrough/",
+    used: "Kenton's name, shop and first mission (blurred spoiler section)",
+    primary: false,
+  },
+  "pp-moses": {
+    id: "pp-moses",
+    label: "PowerPyx: Moses (Take A Vehicle to Moses) walkthrough (18 Nov 2026)",
+    url: "https://www.powerpyx.com/gta-6-moses-take-a-vehicle-to-moses-walkthrough/",
+    used: "Moses's shop, rules and first mission (blurred spoiler section)",
+    primary: false,
+  },
+  "pp-key-cloner": {
+    id: "pp-key-cloner",
+    label: "PowerPyx: How to Get the Key Cloner (18 Nov 2026)",
+    url: "https://www.powerpyx.com/gta-6-how-to-get-key-cloner/",
+    used: "Randy's first mission and the Key Cloner unlock (blurred spoiler section)",
+    primary: false,
+  },
+  "pp-slam-dunk": {
+    id: "pp-slam-dunk",
+    label: "PowerPyx: Slam Dunk walkthrough (18 Nov 2026)",
+    url: "https://www.powerpyx.com/gta-6-slam-dunk-walkthrough/",
+    used: "Dunk's trailer and his first mission (blurred spoiler section)",
+    primary: false,
+  },
+  "ap-root": {
+    id: "ap-root",
+    label: "AP Entertainment (YouTube): Stephen Root confirms his role in Grand Theft Auto VI (posted 13 Sep 2026, US Pacific)",
+    url: "https://www.youtube.com/watch?v=kTFxs3AcBCQ",
+    used: "Root's own words: he says he is in the game. He does not name the character in the clip",
+    primary: false,
+  },
+  "gamespot-root": {
+    id: "gamespot-root",
+    label: "GameSpot: First GTA 6 Actor Officially Confirmed",
+    url: "https://www.gamespot.com/articles/first-gta-6-actor-officially-confirmed-and-its-a-big-name/",
+    used: "Reports Root's AP comments and says he plays Brian Heder, while noting he did not say so in the clip",
+    primary: false,
+  },
+  "polygon-root": {
+    id: "polygon-root",
+    label: "Polygon: GTA 6 actor beats Rockstar to the punch with surprise reveal (14 Sep 2026)",
+    url: "https://www.polygon.com/gta-6-first-actor-confirmed-stephen-root-widows-bay/",
+    used: "Reports Root's AP comments and says he is playing Brian Heder",
+    primary: false,
+  },
+  "tga-best-performance": {
+    id: "tga-best-performance",
+    label: "The Game Awards: Best Performance nominees 2026",
+    url: "https://thegameawards.com/categories/best-performance",
+    used: "Official nominee list. It names Manni L. Perez next to Grand Theft Auto VI and does not name a character",
+    primary: false,
+  },
+  "verge-perez": {
+    id: "verge-perez",
+    label: "The Verge: GTA VI's voice actor for Lucia was revealed by... The Game Awards (17 Nov 2026)",
+    url: "https://www.theverge.com/games/1035602/gta-vis-voice-actor-for-lucia-was-revealed-by-the-game-awards",
+    used: "Reports that the Game Awards nominee video lists Perez for her work in the game, and that Rockstar has not named its leads' performers",
+    primary: false,
+  },
+  "polygon-perez": {
+    id: "polygon-perez",
+    label: "Polygon: GTA 6's rumored Lucia actor confirmed for cast by Game Awards nomination",
+    url: "https://www.polygon.com/gta-6-lucia-actor-confirmed-game-awards-2026/",
+    used: "Says the nomination does not name Perez's role and that Rockstar has confirmed no cast members",
+    primary: false,
+  },
+  "vice-perez": {
+    id: "vice-perez",
+    label: "VICE: GTA 6 earns 8 nominations at The Game Awards",
+    url: "https://www.vice.com/en/article/gta-6-earns-8-nominations-at-the-game-awards-and-confirms-manni-l-perez-performance/",
+    used: "Notes that Perez has not technically been confirmed as playing Lucia",
+    primary: false,
+  },
+  "pp-spin-on-this": {
+    id: "pp-spin-on-this",
+    label: "PowerPyx: Spin On This (Shut Down the Labs) walkthrough (18 Nov 2026)",
+    url: "https://www.powerpyx.com/gta-6-spin-on-this-shut-down-the-labs-walkthrough/",
+    used: "Tyrone's side-mission series (blurred spoiler section)",
+    primary: false,
+  },
 };
 
 export const GROUPS: { id: CharGroup; title: string; blurb: string }[] = [
   { id: "leads", title: "The leads", blurb: "The two characters you play." },
   { id: "keys", title: "The Keys", blurb: "Jason's world: boats, bars and small-time smuggling." },
   { id: "vice-city", title: "Vice City", blurb: "Music, clubs and big scores." },
+  { id: "contacts", title: "Contacts and fences", blurb: "The people who buy stolen goods and hand out side work. Reported by launch-eve guides, not profiled by Rockstar." },
 ];
 
 export const CHARACTER_NOTE =
-  "Rockstar has only published short profiles so far. Everything marked Confirmed comes from those profiles, retold in our own words. Anything we could only find in secondary reporting is marked To be confirmed, and we will recheck every profile against the finished game after launch on 19 November 2026.";
+  "Rockstar has only published eight short profiles. Everything marked Confirmed comes from those profiles, retold in our own words. The contacts and fences are not profiled by Rockstar, so everything about them is marked Reported and attributed to the guide it came from (GameSpot or PowerPyx). Anything we could not find at all is marked To be confirmed, and we will recheck every profile against the finished game after launch on 19 November 2026.";
+
+export const REPORTED_NOTE =
+  "Rockstar has not published a profile for this character. Everything below comes from launch-eve guides by GameSpot and PowerPyx and is marked Reported. Story and mission details are blurred.";
 
 export const CHARACTERS: Character[] = [
   {
@@ -170,7 +307,11 @@ export const CHARACTERS: Character[] = [
       { label: "Family", value: "Her mother's dream of a better life dates from the family's time in Liberty City", status: "confirmed" },
       { label: "Crime and sentence length", value: "Not specified by Rockstar", status: "tbc" },
       { label: "Parents' names, age and appearance", value: "Not given in Rockstar's text", status: "tbc" },
-      { label: "Voice cast", value: "Not listed on the pages we checked", status: "tbc" },
+      {
+        label: "Voice cast",
+        value: "The Game Awards lists Manni L. Perez as a Best Performance nominee for GTA VI but does not name a character. Reports link her to Lucia. Rockstar has not confirmed it.",
+        status: "reported",
+      },
     ],
     relationships: [
       { name: "Jason Duval", slug: "jason-duval", note: "Co-lead and partner. Rockstar presents the partnership as a potential escape for her." },
@@ -181,9 +322,9 @@ export const CHARACTERS: Character[] = [
     tbc: [
       "Where she was born. Rockstar only ties her family's earlier years to Liberty City.",
       "What she was convicted of and how long the sentence was.",
-      "Who voices her.",
+      "Rockstar's own confirmation of who voices her.",
     ],
-    sourceIds: ["rockstar-profiles", "rockstar-home", "wikipedia-extended-look"],
+    sourceIds: ["rockstar-profiles", "rockstar-home", "wikipedia-extended-look", "tga-best-performance", "polygon-perez"],
   },
   {
     slug: "cal-hampton",
@@ -241,18 +382,22 @@ export const CHARACTERS: Character[] = [
       { label: "Family", value: "Third wife, Lori", status: "confirmed" },
       { label: "Link to Jason", value: "Lets him live rent-free in return for help with local shakedowns", status: "confirmed" },
       { label: "Age and appearance", value: "Rockstar only says he looks like a beach bum", status: "tbc" },
-      { label: "Voice cast", value: "Not listed on the pages we checked", status: "tbc" },
+      {
+        label: "Voice cast",
+        value: "Actor Stephen Root has said on camera that he is in the game but did not name his part. GameSpot and Polygon report that the part is Brian. Rockstar has not confirmed the role.",
+        status: "reported",
+      },
     ],
     relationships: [
       { name: "Jason Duval", slug: "jason-duval", note: "Landlord, and the man Jason does favours for." },
       { name: "Cal Hampton", slug: "cal-hampton", note: "Another associate in his circle." },
-      { name: "Lori", note: "His third wife. She is named in his profile but has no profile of her own yet." },
+      { name: "Lori", slug: "lori", note: "His third wife. She is named in his profile and has a short profile of her own." },
     ],
     spoiler: [
       "Wikipedia's summary of the Extended Look video has Brian handing Jason and Lucia a job over dinner and warning Jason against sinking deeper into crime.",
     ],
-    tbc: ["How central Brian is to the main story.", "Who voices him."],
-    sourceIds: ["rockstar-profiles", "wikipedia-extended-look"],
+    tbc: ["How central Brian is to the main story.", "Rockstar's own confirmation of who voices him."],
+    sourceIds: ["rockstar-profiles", "wikipedia-extended-look", "ap-root", "gamespot-root", "polygon-root"],
   },
   {
     slug: "boobie-ike",
@@ -389,6 +534,323 @@ export const CHARACTERS: Character[] = [
     ],
     tbc: ["Which member is which in game footage.", "Whether the names are stage names.", "Who voices them."],
     sourceIds: ["rockstar-profiles"],
+  },
+  {
+    slug: "lori",
+    name: "Lori",
+    group: "keys",
+    role: "Brian Heder's third wife",
+    initials: "L",
+    accent: "orange",
+    seoTitle: "Lori in GTA 6: Brian Heder's Third Wife",
+    seoDescription:
+      "Who is Lori in GTA 6? What Rockstar says about Brian Heder's third wife, her link to Jason and the Keys, and what is still to be confirmed.",
+    summary:
+      "Lori is Brian Heder's third wife. Rockstar names her inside Brian's profile and has not given her a profile of her own.",
+    background: [
+      "Rockstar mentions Lori twice, both times in Brian's entry. The first is a passing line: Brian still moves product through his boat yard together with his third wife, Lori. The profile does not say what part, if any, she plays in the business.",
+      "The second is her sangria. Jason lives rent-free in one of Brian's properties and, as part of that deal, is expected to drop by for Lori's sangria now and then. That invitation is the only personal detail Rockstar gives about her.",
+    ],
+    facts: [
+      { label: "Role", value: "Brian Heder's wife; Rockstar calls her his third", status: "confirmed" },
+      { label: "Link to Jason", value: "Jason is expected to stop by for her sangria from time to time", status: "confirmed" },
+      { label: "Where she lives or works", value: "Not stated. She is mentioned next to Brian's boat yard, which Rockstar places in the Keys", status: "tbc" },
+      { label: "Surname", value: "Rockstar gives only the name Lori", status: "tbc" },
+      { label: "Age, appearance and voice cast", value: "Not given in Rockstar's text", status: "tbc" },
+    ],
+    relationships: [
+      { name: "Brian Heder", slug: "brian-heder", note: "Her husband. She appears only in his profile." },
+      { name: "Jason Duval", slug: "jason-duval", note: "Rockstar has him visiting for her sangria as part of his rent-free arrangement with Brian." },
+    ],
+    tbc: [
+      "Her surname.",
+      "What she does at the boat yard, if anything.",
+      "Whether she appears in any missions.",
+      "Who voices her.",
+    ],
+    sourceIds: ["rockstar-profiles"],
+    faq: [
+      {
+        question: "Who is Lori in GTA 6?",
+        answer: "Lori is Brian Heder's third wife. Rockstar names her in Brian's official profile and has not given her a profile of her own.",
+      },
+      {
+        question: "How does Lori connect to Jason Duval?",
+        answer: "Rockstar says Jason lives rent-free in one of Brian's properties and is expected to visit for Lori's sangria now and then.",
+      },
+      {
+        question: "Does Lori have a surname or a voice actor?",
+        answer: "Neither is confirmed. Rockstar gives only her first name, and no performer for the role has been announced.",
+      },
+    ],
+  },
+  {
+    slug: "kenton",
+    name: "Kenton",
+    tier: "reported",
+    group: "contacts",
+    role: "Dive-shop owner and treasure contact",
+    initials: "K",
+    accent: "turq",
+    seoTitle: "Kenton in GTA 6: Key Lento Treasure Diver",
+    seoDescription:
+      "Kenton in GTA 6: the Key Lento dive-shop owner who hires Jason for treasure dives. What launch-eve guides report, with sources. Missions are blurred.",
+    summary:
+      "Kenton owns a beachside scuba-boat shop in Key Lento and sends Jason out to dive for treasure, according to launch-eve guides.",
+    background: [
+      "GameSpot says Kenton used to run with Brian Heder back in their prime and has since opened a scuba-boat tourist shop in Key Lento. PowerPyx says the shop is called Island Dreams and sits by the beach.",
+      "GameSpot adds that Kenton also does illegal treasure diving on the side and, as he has got older, wants someone younger to do the actual dives. He gives Jason rough dive locations around Key Lento. Jason takes a boat and scuba gear out to each one and searches the seabed. GameSpot says clearing every dive spot eventually brings in tens of thousands of dollars.",
+    ],
+    facts: [
+      { label: "Role", value: "Scuba-shop owner who hands out treasure-diving work (GameSpot)", status: "reported" },
+      { label: "Where", value: "Key Lento (PowerPyx lists the area under Mariana County)", status: "reported" },
+      { label: "Shop", value: "Island Dreams, by the beach (PowerPyx)", status: "reported" },
+      { label: "Past", value: "Once ran with Brian Heder (GameSpot)", status: "reported" },
+      { label: "Full name", value: "Kenton Rees. PowerPyx gives the surname; GameSpot uses only Kenton", status: "reported" },
+      { label: "Age and appearance", value: "Not given in the sources", status: "tbc" },
+      { label: "Voice cast", value: "Not listed in the sources", status: "tbc" },
+    ],
+    relationships: [
+      { name: "Jason Duval", slug: "jason-duval", note: "Works for Kenton on his treasure dives (GameSpot)." },
+      { name: "Brian Heder", slug: "brian-heder", note: "Kenton used to run with him, according to GameSpot." },
+    ],
+    spoilerTitle: "Missions and story",
+    spoilerNote: "From PowerPyx's Island Dreams walkthrough. Reported, not confirmed by Rockstar.",
+    spoiler: [
+      "PowerPyx names his first job Island Dreams (Work for Kenton). It is the ninth main mission, set in Chapter 1, and Jason can start it after Hey Arnold! (Meet Brian). The listed reward is $400.",
+      "In the mission Jason leads a bachelor party on a dive to a shipwreck. PowerPyx says the trip is cover: Kenton really wants treasure recovered near the wreck.",
+      "The dive goes wrong when a diver gets stuck and then a shark appears. PowerPyx says whether the diver survives only changes some closing dialogue and has no long-term effect. By the end Jason has agreed to keep working with Kenton.",
+    ],
+    spoilerLink: { href: "/guides/missions/island-dreams", label: "Read our Island Dreams mission guide" },
+    tbc: [
+      "His age, appearance and how long he ran with Brian.",
+      "Whether Rees is his final surname. Only PowerPyx gives it.",
+      "Who voices him.",
+    ],
+    sourceIds: ["gamespot-money", "pp-island-dreams"],
+    faq: [
+      {
+        question: "Who is Kenton in GTA 6?",
+        answer: "Kenton runs a scuba-boat shop in Key Lento and gives Jason treasure-diving work, according to GameSpot and PowerPyx. Rockstar has not published a profile, so everything about him is Reported.",
+      },
+      {
+        question: "Where is Kenton's shop?",
+        answer: "GameSpot places it in Key Lento. PowerPyx says it is called Island Dreams, sits by the beach and lists the area under Mariana County.",
+      },
+      {
+        question: "How much can you earn from Kenton's dives?",
+        answer: "GameSpot says finding all the treasure at every dive spot eventually pays tens of thousands of dollars. That is one outlet's estimate, so we mark it Reported.",
+      },
+    ],
+  },
+  {
+    slug: "moses",
+    name: "Moses",
+    tier: "reported",
+    group: "contacts",
+    role: "Mechanic and car fence",
+    initials: "M",
+    accent: "blue",
+    seoTitle: "Moses in GTA 6: Port Gellhorn Mechanic and Fence",
+    seoDescription:
+      "Moses in GTA 6: the Port Gellhorn mechanic who buys and registers stolen cars. What launch-eve guides report about him, with sources. Missions blurred.",
+    summary:
+      "Moses is a mechanic with a garage in Port Gellhorn who buys and registers stolen cars, according to launch-eve guides.",
+    background: [
+      "PowerPyx describes Moses as a mechanic with an auto shop in Port Gellhorn, in Kelly County. GameSpot says he is one of two characters who hand out vehicle contracts, and the first of them you meet. He explains the basics of stealing cars and supplies the tools for mid-range vehicles.",
+      "GameSpot says a delivery to Moses often pays upwards of $10,000. PowerPyx lists his rules: early on he only takes cars without a tracker, he refuses cars stolen too close to his garage, and the garage closes for a minute or two after each sale. PowerPyx also says he is still available as a fence once the story is over.",
+    ],
+    facts: [
+      { label: "Role", value: "Mechanic who buys and registers stolen cars (PowerPyx)", status: "reported" },
+      { label: "Where", value: "Port Gellhorn, Kelly County (PowerPyx; GameSpot says Port Gellhorn)", status: "reported" },
+      { label: "Buys", value: "Cars only. Early on, only cars without a tracker (PowerPyx)", status: "reported" },
+      { label: "Typical payout", value: "Often upwards of $10,000 per car (GameSpot)", status: "reported" },
+      { label: "Surname, age and appearance", value: "Not given in the sources", status: "tbc" },
+      { label: "Voice cast", value: "Not listed in the sources", status: "tbc" },
+    ],
+    relationships: [
+      { name: "Randy", slug: "randy", note: "The second car fence, who deals in higher-end cars later in the story (GameSpot)." },
+    ],
+    spoilerTitle: "Missions and story",
+    spoilerNote: "From PowerPyx's Moses walkthrough. Reported, not confirmed by Rockstar.",
+    spoiler: [
+      "PowerPyx names the introduction Moses (Take A Vehicle to Moses). It is the 31st main mission, set in Chapter 2, and only Lucia can start it, after Girl's Trip (Find Painkillers). Vicki sets it up by telling Lucia that a mechanic named Moses could get her a ride.",
+      "Moses leads Lucia to a yard behind his garage where three cars are parked. A phone app called Waink scans them for trackers. Lucia picks up the Slim Jim, a tool for opening locked cars without setting off the alarm, and uses it on a Montagne XL.",
+      "Moses then registers a car as Lucia's personal vehicle once she has resprayed it. If she did not bring a suitable car, she steals an untracked one from the main road in the middle of Port Gellhorn. PowerPyx also lists a Scooter Bros app, for having a personal vehicle delivered, among the rewards.",
+    ],
+    tbc: ["His surname, age and appearance.", "Whether his rules change later in the story.", "Who voices him."],
+    sourceIds: ["gamespot-money", "pp-moses", "pp-fences"],
+    faq: [
+      {
+        question: "Who is Moses in GTA 6?",
+        answer: "Moses is a mechanic with a garage in Port Gellhorn who buys and registers stolen cars, according to PowerPyx and GameSpot. Rockstar has not published a profile, so everything about him is Reported.",
+      },
+      {
+        question: "How much does Moses pay for a stolen car?",
+        answer: "GameSpot says deliveries to Moses often pay upwards of $10,000. That is one outlet's description, so we mark it Reported.",
+      },
+      {
+        question: "Does Moses buy every stolen car?",
+        answer: "No. PowerPyx says that early on he refuses cars with trackers and cars stolen too close to his garage, and that the garage is closed for a minute or two after each sale.",
+      },
+    ],
+  },
+  {
+    slug: "randy",
+    name: "Randy",
+    tier: "reported",
+    group: "contacts",
+    role: "High-end car fence",
+    initials: "R",
+    accent: "pink",
+    seoTitle: "Randy in GTA 6: Vice City High-End Car Fence",
+    seoDescription:
+      "Randy in GTA 6: the Vice City fence who buys high-end cars with advanced trackers. What launch-eve guides report, with sources. Missions are blurred.",
+    summary:
+      "Randy is a Vice City fence who buys high-end cars, according to launch-eve guides.",
+    background: [
+      "GameSpot says Randy deals in much higher-end cars than Moses and that you meet him further into the story. GameSpot places him in western Vice City, while PowerPyx's fence list puts him in Balsero. Neither gives an exact address, so we mark his location Reported.",
+      "GameSpot says Randy gives the player a list of more than a dozen cars to find around the map. The payout is large and gets bigger if the cars are delivered in decent condition. PowerPyx says he accepts certain high-end cars that carry advanced trackers, and that he is still available after the story.",
+    ],
+    facts: [
+      { label: "Role", value: "Fence for high-end cars (GameSpot)", status: "reported" },
+      { label: "Where", value: "Western Vice City (GameSpot); Balsero (PowerPyx)", status: "reported" },
+      { label: "Buys", value: "Certain high-end cars with advanced trackers (PowerPyx)", status: "reported" },
+      { label: "Extras", value: "A list of more than a dozen cars to find, with a bonus for good condition (GameSpot)", status: "reported" },
+      { label: "Surname, age and appearance", value: "Not given in the sources", status: "tbc" },
+      { label: "Voice cast", value: "Not listed in the sources", status: "tbc" },
+    ],
+    relationships: [
+      { name: "Moses", slug: "moses", note: "The car fence who handles cheaper vehicles (GameSpot)." },
+      { name: "Tyrone", slug: "tyrone", note: "Another Vice City fence in PowerPyx's list, though he buys narcotics, jewelry and marked bills rather than cars." },
+    ],
+    spoilerTitle: "Missions and story",
+    spoilerNote: "From PowerPyx's Key Cloner guide and GameSpot. Reported, not confirmed by Rockstar.",
+    spoiler: [
+      "PowerPyx names his first job Clonin' Keys, Makin' GS (Steal the Zorrusso for Randy). It is a main mission about halfway through Chapter 3 and, by PowerPyx's estimate, around 40 hours into the game.",
+      "At the start of that mission the Key Cloner installs itself in the phone settings. PowerPyx says it lets the player hack into high-end cars, which often carry advanced trackers that alert the police if you slow down. GameSpot likewise says Randy is the one who lets you clone keys to open more modern vehicles.",
+    ],
+    tbc: ["His surname, age and appearance.", "His exact location in Vice City.", "Who voices him."],
+    sourceIds: ["gamespot-money", "pp-fences", "pp-key-cloner"],
+    faq: [
+      {
+        question: "Who is Randy in GTA 6?",
+        answer: "Randy is a car fence in Vice City who deals in high-end vehicles, according to GameSpot and PowerPyx. Rockstar has not published a profile, so everything about him is Reported.",
+      },
+      {
+        question: "Where is Randy in GTA 6?",
+        answer: "GameSpot places him in western Vice City and PowerPyx lists him in Balsero. Neither gives an exact address, so the spot is Reported.",
+      },
+      {
+        question: "What kind of cars does Randy buy?",
+        answer: "GameSpot says he deals in much higher-end cars than Moses, and PowerPyx says he accepts certain high-end cars with advanced trackers. Both are Reported.",
+      },
+    ],
+  },
+  {
+    slug: "dunk",
+    name: "Dunk",
+    tier: "reported",
+    group: "contacts",
+    role: "Dealer and fence",
+    initials: "D",
+    accent: "orange",
+    seoTitle: "Dunk in GTA 6: Port Gellhorn Dealer and Fence",
+    seoDescription:
+      "Dunk in GTA 6: the Port Gellhorn dealer with a trailer who later fences stolen goods. What launch-eve guides report, with sources. Missions are blurred.",
+    summary:
+      "Dunk is a dealer with a trailer in Port Gellhorn who later buys stolen goods, according to launch-eve guides.",
+    background: [
+      "PowerPyx places Dunk in Port Gellhorn, in Kelly County, and gives him a trailer there. GameSpot lists him alongside Tyrone and Donnie as a dealer who pays out almost instantly when you drop off goods from gang hideouts.",
+      "As a fence, PowerPyx says Dunk pays low prices for narcotics and jewelry and very low prices for marked bills. It also says he stays available after the story, with a gap in the middle of it when he is temporarily unavailable.",
+    ],
+    facts: [
+      { label: "Role", value: "Dealer who also works as a fence (GameSpot, PowerPyx)", status: "reported" },
+      { label: "Where", value: "A trailer in Port Gellhorn, Kelly County (PowerPyx)", status: "reported" },
+      { label: "Pays", value: "Narcotics Low, jewelry Low, marked bills Very Low (PowerPyx)", status: "reported" },
+      { label: "Payment speed", value: "Almost instant for hideout goods (GameSpot)", status: "reported" },
+      { label: "Surname, age and appearance", value: "Not given in the sources", status: "tbc" },
+      { label: "Voice cast", value: "Not listed in the sources", status: "tbc" },
+    ],
+    relationships: [
+      { name: "Tyrone", slug: "tyrone", note: "Another dealer GameSpot lists with Dunk as paying almost instantly." },
+    ],
+    spoilerTitle: "Missions and story",
+    spoilerNote: "From PowerPyx's Slam Dunk walkthrough and GameSpot. Reported, not confirmed by Rockstar. Big story spoilers.",
+    spoiler: [
+      "PowerPyx says Dunk is unlocked as a fence after Slam Dunk, the 37th main mission, set in Chapter 2. Only Lucia can start it. Dunk phones her twice once the other Chapter 2 missions are done, then marks his trailer on the map.",
+      "GameSpot places Dunk in the stretch where Jason and Lucia are hiding out at the Starlet Motel in Port Gellhorn. Jason is bedridden after an injury, so Lucia is the one playable, and she needs stronger painkillers for him as well as cash for the room.",
+      "In PowerPyx's walkthrough, Dunk's plan is to lean on a retired doctor, Dr. Bill, who used to deal with a gang called the Kolts. The deal at the Kolts' docks turns into a shootout. At a second meeting spot Bill is shot, and Dunk takes the pills from the main building. Lucia brings them back to Jason.",
+      "The next day Dunk sends $1,700 through BuckMe and marks two robbery locations on the map.",
+    ],
+    tbc: ["His surname, age and appearance.", "Why he is unavailable for part of the story.", "Who voices him."],
+    sourceIds: ["gamespot-money", "pp-fences", "pp-slam-dunk"],
+    faq: [
+      {
+        question: "Who is Dunk in GTA 6?",
+        answer: "Dunk is a dealer with a trailer in Port Gellhorn who also works as a fence, according to PowerPyx and GameSpot. Rockstar has not published a profile, so everything about him is Reported.",
+      },
+      {
+        question: "What does Dunk pay for stolen goods?",
+        answer: "PowerPyx lists low prices for narcotics and jewelry and very low prices for marked bills. GameSpot says dealers like Dunk pay almost instantly. Both are Reported.",
+      },
+      {
+        question: "Is Dunk available after the story?",
+        answer: "PowerPyx says yes. It says he is still available after the story but becomes temporarily unavailable during it.",
+      },
+    ],
+  },
+  {
+    slug: "tyrone",
+    name: "Tyrone",
+    tier: "reported",
+    group: "contacts",
+    role: "Fence and side-mission giver",
+    initials: "T",
+    accent: "turq",
+    seoTitle: "Tyrone in GTA 6: La Perle Fence and Side Missions",
+    seoDescription:
+      "Tyrone in GTA 6: the La Perle fence who pays well for narcotics and hands out side missions. What guides report, with sources. Missions are blurred.",
+    summary:
+      "Tyrone is a fence in La Perle, Vice City, who also hands out a run of side missions, according to launch-eve guides.",
+    background: [
+      "PowerPyx places Tyrone in La Perle, in Vice City, and says he is still available after the story. In its fence list he pays High for narcotics and Medium for jewelry and marked bills.",
+      "GameSpot lists Tyrone with Dunk and Donnie as dealers who pay almost instantly when you drop off goods from gang hideouts. PowerPyx also credits him with a questline of side missions. The mission names are in the blurred section below.",
+    ],
+    facts: [
+      { label: "Role", value: "Fence who also gives side missions (PowerPyx)", status: "reported" },
+      { label: "Where", value: "La Perle, Vice City (PowerPyx)", status: "reported" },
+      { label: "Pays", value: "Narcotics High, jewelry Medium, marked bills Medium (PowerPyx)", status: "reported" },
+      { label: "Payment speed", value: "Almost instant for hideout goods (GameSpot)", status: "reported" },
+      { label: "Surname, age and appearance", value: "Not given in the sources", status: "tbc" },
+      { label: "Voice cast", value: "Not listed in the sources", status: "tbc" },
+    ],
+    relationships: [
+      { name: "Dunk", slug: "dunk", note: "Another dealer GameSpot lists with Tyrone as paying almost instantly." },
+      { name: "Randy", slug: "randy", note: "Another Vice City fence in PowerPyx's list, though Randy buys cars." },
+    ],
+    spoilerTitle: "Missions and story",
+    spoilerNote: "From PowerPyx's Spin On This walkthrough. Reported, not confirmed by Rockstar.",
+    spoiler: [
+      "PowerPyx lists Tyrone's questline as Here, Kitty Kitty, then Kitty Litter Labs, then Spin On This (Shut Down the Labs). The last one needs enough Kitty Litter Labs destroyed first, can only be started as Jason, pays $10,000 and begins near the town of Grayson in Lummox County.",
+      "In that mission Jason works with Tyrone and a man called Dook to raid a motel with a synthetics lab hidden under it. Jason plants explosives on two vats and chases a man named Rocky through a pipe as the lab goes up. The chase ends outside with Rocky being shot.",
+    ],
+    tbc: ["His surname, age and appearance.", "What the Kitty Litter operation is in the wider story.", "Who voices him."],
+    sourceIds: ["gamespot-money", "pp-fences", "pp-spin-on-this"],
+    faq: [
+      {
+        question: "Who is Tyrone in GTA 6?",
+        answer: "Tyrone is a fence in La Perle, Vice City, who also gives side missions, according to PowerPyx and GameSpot. Rockstar has not published a profile, so everything about him is Reported.",
+      },
+      {
+        question: "What does Tyrone pay for stolen goods?",
+        answer: "PowerPyx lists High for narcotics and Medium for jewelry and marked bills. GameSpot says dealers like Tyrone pay almost instantly. Both are Reported.",
+      },
+      {
+        question: "Is Tyrone available after the story?",
+        answer: "PowerPyx says yes, he is still available as a fence after the story.",
+      },
+    ],
   },
 ];
 
