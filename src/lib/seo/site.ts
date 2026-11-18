@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { LAST_VERIFIED, MISSIONS, missionPath } from "@/lib/guides/missions";
 import { HUB_VERIFIED } from "@/lib/guides/story";
 import { MONEY_VERIFIED } from "@/lib/guides/money";
+import { CHEATS_VERIFIED } from "@/lib/guides/cheats";
+import { TROPHIES_VERIFIED } from "@/lib/guides/trophies";
 import { NEWS, newsPath } from "@/lib/news/articles";
 import { CHARACTERS, LAST_VERIFIED as CHARACTERS_VERIFIED, characterPath } from "@/lib/characters/characters";
 import { DB_VERIFIED, REFERENCE_PAGES } from "@/lib/database/reference";
@@ -128,7 +130,7 @@ export const ROUTES: Record<string, RouteSeo> = {
   "/map/admin": { title: "Map moderation", description: "Moderator sign-in.", crumb: "Moderation", noindex: true },
   "/guides": {
     title: "GTA 6 Guides & Tips",
-    description: "GTA 6 guides and tips: every mission in order, the money guide, beginner advice, the wanted system, stealing cars and activities around Leonida.",
+    description: "GTA 6 guides and tips: every mission in order, money, cheats and trophies, beginner advice, the wanted system, stealing cars and activities around Leonida.",
     crumb: "Guides",
     kind: "collection",
     changeFrequency: "daily",
@@ -196,6 +198,26 @@ export const ROUTES: Record<string, RouteSeo> = {
     priority: 0.85,
     updated: MONEY_VERIFIED,
     published: MONEY_VERIFIED,
+  },
+  "/guides/cheats": {
+    title: "GTA 6 Cheats: How to Unlock Them and Codes So Far",
+    description: "GTA 6 cheats only work after you finish the story, and each one has its own challenge. Here's how to unlock them, enter them and what they switch off.",
+    crumb: "Cheats",
+    kind: "article",
+    changeFrequency: "daily",
+    priority: 0.85,
+    updated: CHEATS_VERIFIED,
+    published: CHEATS_VERIFIED,
+  },
+  "/guides/trophies": {
+    title: "GTA 6 Trophy List and Platinum Roadmap",
+    description: "All 55 GTA 6 trophies explained, from story unlocks to the 100% gold, plus a simple roadmap to the Vice Got a Price! platinum without wasted effort.",
+    crumb: "Trophies",
+    kind: "article",
+    changeFrequency: "weekly",
+    priority: 0.85,
+    updated: TROPHIES_VERIFIED,
+    published: TROPHIES_VERIFIED,
   },
   ...Object.fromEntries(
     MISSIONS.map((m): [string, RouteSeo] => [
