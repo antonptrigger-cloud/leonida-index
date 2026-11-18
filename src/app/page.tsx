@@ -5,6 +5,7 @@ import { Palm } from "@/components/Palm";
 import { Scenery, SKIES, type SceneId } from "@/components/Scenery";
 import { TILES } from "@/lib/map/config";
 import { metaFor } from "@/lib/seo/site";
+import { PageSchema } from "@/lib/seo/jsonld";
 
 export const metadata = metaFor("/");
 
@@ -100,6 +101,7 @@ function SectionTitle({ num, kicker, title, children }: { num: string; kicker: s
 export default function Home() {
   return (
     <div className="flex flex-col gap-24x pb-16x">
+      <PageSchema path="/" />
       {/* ---------- Hero: split, left-aligned headline, overlapping postcard ---------- */}
       <section className="relative isolate -mt-10x grid items-center gap-10x pt-[3.5rem] md:grid-cols-12 md:gap-0 md:pt-[5rem]">
         <PageBackdrop id="car" dim="strong" priority />

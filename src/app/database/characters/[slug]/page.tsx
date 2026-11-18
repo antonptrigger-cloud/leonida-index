@@ -4,6 +4,9 @@ import { notFound } from "next/navigation";
 import { metaFor } from "@/lib/seo/site";
 import { PageSchema } from "@/lib/seo/jsonld";
 import { PageHeader } from "@/components/PageHeader";
+import { Breadcrumbs } from "@/components/Breadcrumbs";
+import { Faq } from "@/components/Faq";
+import { Related } from "@/components/Related";
 import { Spoiler } from "@/components/guides/Spoiler";
 import { SpoilerWarning } from "@/components/guides/MissionBits";
 import { CharSources, CharacterPlaceholder, ConfirmTag } from "@/components/characters/CharacterBits";
@@ -33,12 +36,8 @@ export default async function CharacterPage({ params }: { params: Promise<{ slug
 
   return (
     <article>
-      <PageSchema path={path} />
-      <nav aria-label="Breadcrumb" className="mb-6x text-xs text-muted">
-        <Link href="/database/characters" className="hover:text-pink">Characters</Link>
-        <span aria-hidden> / </span>
-        <span className="text-ink-2">{c.name}</span>
-      </nav>
+      <PageSchema path={path} breadcrumbs={false} />
+      <Breadcrumbs path={path} />
       <PageHeader
         kicker={`Character · ${c.role}`}
         title={c.name}
@@ -138,6 +137,8 @@ export default async function CharacterPage({ params }: { params: Promise<{ slug
         </aside>
       </div>
 
+      <Faq items={c.faq} />
+
       <CharSources sources={sources} />
 
       <nav aria-label="More characters" className="mt-16x grid gap-4x border-t border-pink/20 pt-6x sm:grid-cols-2">
@@ -150,6 +151,7 @@ export default async function CharacterPage({ params }: { params: Promise<{ slug
           <span className="vc-display mt-1x block text-2xl text-ink">{next.name}</span>
         </Link>
       </nav>
+      <Related path={path} />
     </article>
   );
 }

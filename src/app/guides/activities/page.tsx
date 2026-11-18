@@ -1,11 +1,14 @@
 import { metaFor } from "@/lib/seo/site";
 import { PageSchema } from "@/lib/seo/jsonld";
 import { PageHeader } from "@/components/PageHeader";
+import { Breadcrumbs } from "@/components/Breadcrumbs";
+import { Related } from "@/components/Related";
 export const metadata = metaFor("/guides/activities");
 export default function Page() {
   return (
     <div>
-      <PageSchema path="/guides/activities" />
+      <PageSchema path="/guides/activities" breadcrumbs={false} />
+      <Breadcrumbs path="/guides/activities" />
       <PageHeader backdrop="boat" kicker="Guide" title="Activities" source="Showcase" />
       <ul className="max-w-xl list-disc space-y-2 pl-5 text-ink-2">
         <li>Gym and food / drink that change how you feel in the moment</li>
@@ -13,6 +16,7 @@ export default function Page() {
         <li>Basketball, pool, mini golf, races, base jump</li>
         <li>Animals to study, pet, or scold</li>
       </ul>
+      <Related path="/guides/activities" />
     </div>
   );
 }

@@ -21,6 +21,8 @@ export interface NewsItem {
   updated: string;
   /** Sources the article relies on, emitted as JSON-LD `citation`. */
   citations: string[];
+  /** Optional real Q&A, rendered visibly by <Faq> (which also emits FAQPage JSON-LD). Never invent questions. */
+  faq?: { question: string; answer: string }[];
 }
 
 export const NEWS_PUBLISHED = "2026-11-18T22:35:00+10:00";
