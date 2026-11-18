@@ -15,7 +15,8 @@ export const COORD_SPACE = { width: 1168, height: 784 } as const;
 /** Kept for existing callers: the logical pin space plus attribution text. */
 export const BASE_MAP = {
   ...COORD_SPACE,
-  attribution: "Illustrative fan map of Leonida (not the in-game geography)",
+  attribution:
+    'Illustrative fan map of Leonida (not the in-game geography) · Some landmark data: <a href="https://map.gtadb.org" target="_blank" rel="noopener">GTADB.org</a> (<a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">CC BY 4.0</a>)',
 } as const;
 
 /**
@@ -75,18 +76,43 @@ export const LIMITS = {
 
 export const SEED_AUTHOR = "Leonida Vice Guide";
 
-export const SUBMIT_TYPES = ["landmark", "secret", "collectible", "quest", "other"] as const;
+export const SUBMIT_TYPES = ["landmark", "shop", "property", "activity", "secret", "collectible", "quest", "other"] as const;
 export type SubmitType = (typeof SUBMIT_TYPES)[number];
 export type PinType = SubmitType | "region";
 
-export const PIN_TYPES: Record<PinType, { label: string; color: string }> = {
-  region: { label: "Regions", color: "#ff2d7b" },
-  landmark: { label: "Landmarks", color: "#4c9be8" },
-  secret: { label: "Secrets", color: "#a663cc" },
-  collectible: { label: "Collectibles", color: "#ff8c42" },
-  quest: { label: "Quests", color: "#3bb273" },
-  other: { label: "Other", color: "#ffd36b" },
+/**
+ * Where a pin comes from: "official" = named by Rockstar (trailers, rockstargames.com/VI, Newswire);
+ * "community" = marked by a player here; "gtadb" = imported from GTADB.org community landmark data (CC BY 4.0,
+ * see docs/DATA_CREDITS.md). Imported pins are always approximate.
+ */
+export const PIN_SOURCES = ["official", "community", "gtadb"] as const;
+export type PinSource = (typeof PIN_SOURCES)[number];
+
+/**
+ * Pin types. `glyph` keys into src/components/map/glyphs.ts (our own simple SVG glyphs).
+ * Region pins render as label chips; every other type is a glyph marker that appears and
+ * clusters once you zoom in past the overview (see LeafletMap.tsx).
+ */
+export const PIN_TYPES: Record<PinType, { label: string; color: string; glyph: string }> = {
+  region: { label: "Regions", color: "#ff2d7b", glyph: "region" },
+  landmark: { label: "Landmarks", color: "#4c9be8", glyph: "landmark" },
+  shop: { label: "Shops", color: "#00e5cc", glyph: "shop" },
+  property: { label: "Properties", color: "#e8d5a8", glyph: "property" },
+  activity: { label: "Activities", color: "#ff5c5c", glyph: "activity" },
+  secret: { label: "Secrets", color: "#a663cc", glyph: "secret" },
+  collectible: { label: "Collectibles", color: "#ff8c42", glyph: "collectible" },
+  quest: { label: "Quests", color: "#3bb273", glyph: "quest" },
+  other: { label: "Other", color: "#ffd36b", glyph: "other" },
 };
+
+export const SOURCE_LABELS: Record<PinSource, string> = {
+  official: "Named by Rockstar",
+  community: "Community pin",
+  gtadb: "Community research (GTADB.org)",
+};
+
+/** "Properties" -> "Property", "Shops" -> "Shop". */
+export const typeSingular = (t: PinType) => PIN_TYPES[t].label.replace(/ies$/, "y").replace(/s$/, "");
 
 export const REGIONS = [
   "Vice City",

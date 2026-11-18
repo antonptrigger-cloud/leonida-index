@@ -20,6 +20,8 @@ interface PinRow {
   y: number;
   gamer_tag: string;
   is_seed: boolean;
+  /** Missing until supabase/migrations/20261118000400_pin_types_and_source.sql is applied. */
+  source?: "official" | "community" | "gtadb" | null;
   approximate: boolean;
   spoiler: boolean;
   up_count: number;
@@ -40,8 +42,12 @@ interface CommentRow {
   created_at: string;
 }
 
-const PIN_COLUMNS =
+const BASE_COLUMNS =
   "id,status,type,name,description,region,occupant,x,y,gamer_tag,is_seed,approximate,spoiler,up_count,down_count,needs_review,review_reason,merged_into,created_at,reviewed_at";
+
+/** `source` only exists after the 20261118000400 migration; select it only when the column is there. */
+const WITH_SOURCE_COLUMNS = `${BASE_COLUMNS},source`;
+const isMissingSourceColumn = (message: string | undefined) => /\bsource\b/i.test(message ?? "") && /column|schema cache|does not exist/i.test(message ?? "");
 
 function toPin(r: PinRow): Pin {
   return {
@@ -56,6 +62,7 @@ function toPin(r: PinRow): Pin {
     y: Number(r.y),
     gamerTag: r.gamer_tag,
     isSeed: r.is_seed,
+    source: r.source === "official" || r.source === "community" || r.source === "gtadb" ? r.source : r.is_seed ? "official" : "community",
     approximate: r.approximate,
     spoiler: r.spoiler,
     upCount: r.up_count,
@@ -106,19 +113,33 @@ export function createSupabaseStore(url: string, serviceRoleKey: string): MapSto
     auth: { persistSession: false, autoRefreshToken: false },
   });
 
+  // null = not probed yet; false = the column is missing (migration not applied), so stop asking for it.
+  let hasSource: boolean | null = null;
+  const columns = () => (hasSource === false ? BASE_COLUMNS : WITH_SOURCE_COLUMNS);
+  /** Runs a pins query, retrying once without `source` when the migration hasn't been applied yet. */
+  async function withColumns<T>(run: (cols: string) => PromiseLike<{ data: T | null; error: { message: string } | null }>): Promise<T | null> {
+    let res = await run(columns());
+    if (res.error && hasSource !== false && isMissingSourceColumn(res.error.message)) {
+      hasSource = false;
+      res = await run(BASE_COLUMNS);
+    } else if (!res.error && hasSource === null) {
+      hasSource = true;
+    }
+    if (res.error) throw new Error(res.error.message);
+    return res.data;
+  }
+
   return {
     kind: "supabase",
 
     async listPins(statuses) {
-      const { data, error } = await sb.from("pins").select(PIN_COLUMNS).in("status", statuses).order("created_at").limit(5000);
-      if (error) throw new Error(error.message);
-      return (data as PinRow[]).map(toPin);
+      const data = await withColumns((cols) => sb.from("pins").select(cols).in("status", statuses).order("created_at").limit(5000));
+      return ((data ?? []) as unknown as PinRow[]).map(toPin);
     },
 
     async getPin(id) {
-      const { data, error } = await sb.from("pins").select(PIN_COLUMNS).eq("id", id).maybeSingle();
-      if (error) throw new Error(error.message);
-      return data ? toPin(data as PinRow) : null;
+      const data = await withColumns((cols) => sb.from("pins").select(cols).eq("id", id).maybeSingle());
+      return data ? toPin(data as unknown as PinRow) : null;
     },
 
     async createSubmission(input, ipHash, windowMinutes) {
@@ -145,9 +166,8 @@ export function createSupabaseStore(url: string, serviceRoleKey: string): MapSto
         const col = PATCH_COLUMNS[k as keyof Pin];
         if (col) row[col] = v;
       }
-      const { data, error } = await sb.from("pins").update(row).eq("id", id).select(PIN_COLUMNS).maybeSingle();
-      if (error) throw new Error(error.message);
-      return data ? toPin(data as PinRow) : null;
+      const data = await withColumns((cols) => sb.from("pins").update(row).eq("id", id).select(cols).maybeSingle());
+      return data ? toPin(data as unknown as PinRow) : null;
     },
 
     async vote(pinId, voterId, value, ipHash, limit, flag) {
