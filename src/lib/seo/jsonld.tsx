@@ -77,6 +77,34 @@ export function pageGraph(path: string): Json[] {
     mainEntityOfPage: url,
   };
   if (r.kind === "article") out.push({ ...common, "@type": "Article", about: "Grand Theft Auto VI" });
+  if (r.kind === "news") {
+    out.push({
+      ...common,
+      "@type": "NewsArticle",
+      "@id": `${url}#article`,
+      headline: r.title.slice(0, 110),
+      image: { "@type": "ImageObject", url: image, width: 1200, height: 630 },
+      datePublished: r.published,
+      dateModified: r.updated ?? r.published,
+      mainEntityOfPage: { "@type": "WebPage", "@id": url },
+      author: { "@type": "Organization", name: SITE.name, url: SITE.url },
+      publisher: {
+        "@type": "Organization",
+        "@id": ORG_ID,
+        name: SITE.name,
+        url: SITE.url,
+        logo: { "@type": "ImageObject", url: `${SITE.url}/icon-512.png`, width: 512, height: 512 },
+      },
+      about: {
+        "@type": "VideoGame",
+        name: "Grand Theft Auto VI",
+        publisher: { "@type": "Organization", name: "Rockstar Games" },
+        gamePlatform: ["PlayStation 5", "Xbox Series X|S"],
+      },
+      ...(r.keywords?.length ? { keywords: r.keywords.join(", ") } : {}),
+      ...(r.citations?.length ? { citation: r.citations } : {}),
+    });
+  }
   if (r.kind === "howto" && r.steps) {
     out.push({
       ...common,
