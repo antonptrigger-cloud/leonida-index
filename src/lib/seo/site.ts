@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { CHAPTER, LAST_VERIFIED, MISSIONS, missionPath } from "@/lib/guides/missions";
 
 export const SITE = {
   name: "Leonida Vice Guide",
@@ -38,6 +39,10 @@ export interface RouteSeo {
   priority?: number;
   /** Keep out of the index and the sitemap. */
   noindex?: boolean;
+  /** ISO date the page content was last verified (sitemap lastModified, JSON-LD dateModified). */
+  updated?: string;
+  /** ISO date first published (JSON-LD datePublished). */
+  published?: string;
 }
 
 const character = (name: string, blurb: string): RouteSeo => ({
@@ -117,7 +122,7 @@ export const ROUTES: Record<string, RouteSeo> = {
   "/map/admin": { title: "Map moderation", description: "Moderator sign-in.", crumb: "Moderation", noindex: true },
   "/guides": {
     title: "GTA 6 Guides & Tips",
-    description: "GTA 6 guides and tips: beginner advice, the wanted system, stealing cars and the activities around Leonida, updated as the game is played.",
+    description: "GTA 6 guides and tips: Chapter 1 mission walkthroughs, beginner advice, the wanted system, stealing cars and activities around Leonida.",
     crumb: "Guides",
     kind: "collection",
     changeFrequency: "daily",
@@ -166,6 +171,30 @@ export const ROUTES: Record<string, RouteSeo> = {
     changeFrequency: "weekly",
     priority: 0.7,
   },
+  "/guides/missions": {
+    title: `GTA 6 Mission Guides: Chapter ${CHAPTER.number} Walkthrough`,
+    description: `GTA 6 Chapter ${CHAPTER.number} (${CHAPTER.name}) mission guides: every mission from the Prologue to Feng Shui, with objectives, rewards and tips. Spoilers hidden.`,
+    crumb: "Missions",
+    kind: "collection",
+    changeFrequency: "daily",
+    priority: 0.85,
+    updated: LAST_VERIFIED,
+  },
+  ...Object.fromEntries(
+    MISSIONS.map((m): [string, RouteSeo] => [
+      missionPath(m.slug),
+      {
+        title: m.seoTitle,
+        description: m.seoDescription,
+        crumb: m.name,
+        kind: "article",
+        changeFrequency: "weekly",
+        priority: 0.75,
+        updated: LAST_VERIFIED,
+        published: LAST_VERIFIED,
+      },
+    ]),
+  ),
   "/secrets": {
     title: "GTA 6 Secrets & Easter Eggs",
     description: "GTA 6 secrets and easter eggs found by players after launch, verified before they are listed. Submit your own finds on the community map.",

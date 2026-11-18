@@ -668,6 +668,60 @@ a.vc-card:hover {
   pointer-events: none;
 }
 
+/* Spoiler reveal (mission guides). */
+.vc-spoiler {
+  position: relative;
+}
+.vc-spoiler__body {
+  transition: filter 0.3s ease;
+}
+.vc-spoiler[data-open="false"] .vc-spoiler__body {
+  filter: blur(7px);
+  user-select: none;
+  pointer-events: none;
+  min-height: 7rem;
+}
+.vc-spoiler__cover {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: repeating-linear-gradient(-45deg, rgba(255, 45, 120, 0.05) 0 10px, transparent 10px 20px), rgba(10, 10, 11, 0.45);
+  border: 1px dashed rgba(255, 45, 120, 0.4);
+}
+.vc-spoiler__btn {
+  background: #0a0a0b;
+}
+
+/* Spoiler warning banner. */
+.vc-warn {
+  position: relative;
+  border: 1px solid rgba(255, 140, 66, 0.55);
+  border-left: 3px solid #ff8c42;
+  background: linear-gradient(90deg, rgba(255, 140, 66, 0.12), transparent 60%), #121117;
+}
+
+/* Fact table (mission "at a glance"). */
+.vc-facts {
+  display: grid;
+  grid-template-columns: minmax(7rem, max-content) 1fr;
+  column-gap: 1.25rem;
+}
+.vc-facts > dt,
+.vc-facts > dd {
+  padding: 0.6rem 0;
+  border-bottom: 1px solid rgba(255, 45, 120, 0.16);
+}
+.vc-facts > dt {
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #a6a1b4;
+  padding-top: 0.8rem;
+}
+
 }
 
 @media (prefers-reduced-motion: reduce) {

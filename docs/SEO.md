@@ -18,3 +18,14 @@ Canonical host: `https://www.leonidaviceguide.com` (the bare domain 308-redirect
 - Preferred: a **Domain** property verified with a DNS TXT record at the DNS host (currently Porkbun).
 - Alternative: a **URL-prefix** property for `https://www.leonidaviceguide.com/` using the HTML tag. Set `GOOGLE_SITE_VERIFICATION` in Vercel (Production) to the tag's `content` value and redeploy.
 - Then submit `https://www.leonidaviceguide.com/sitemap.xml` under Sitemaps.
+
+## Mission guides
+
+Mission guides live in `src/lib/guides/missions.ts`. Each entry becomes a static page at
+`/guides/missions/<slug>` and gets a ROUTES entry automatically (title, description, Article
+JSON-LD, breadcrumb, sitemap with `lastModified` = `LAST_VERIFIED`). To add a mission, append
+to `MISSIONS`; there is no need to edit `site.ts`. Bump `LAST_VERIFIED` when guides are re-checked.
+
+Content rules: wording is our own; facts backed by one walkthrough use `status: "reported"`
+(facts) or `reported: true` (tips); story beats go in `objectives` / `spoiler`, which render
+behind a blur-to-reveal.

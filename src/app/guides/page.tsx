@@ -4,6 +4,7 @@ import Link from "next/link";
 import { PageHeader } from "@/components/PageHeader";
 
 const GUIDES = [
+  { href: "/guides/missions", title: "Mission guides: Chapter 1" },
   { href: "/guides/beginner", title: "Beginner" },
   { href: "/guides/wanted", title: "Wanted system" },
   { href: "/guides/stealing-cars", title: "Stealing cars" },
