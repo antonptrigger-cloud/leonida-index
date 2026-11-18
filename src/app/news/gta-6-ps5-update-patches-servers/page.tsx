@@ -59,12 +59,18 @@ export default function Page() {
       <H2>Servers and status</H2>
       <Bullets>
         <li>
-          Insider Gaming reported no performance or networking issues at the time of writing on 18 November (
-          <Ext href="https://insider-gaming.com/is-grand-theft-auto-6-down-gta-6-issues-explained/">Insider Gaming</Ext>). We found no reports of a PSN, Xbox or Rockstar outage as of
-          publication, but that only covers the first unlocks.
+          <Lead>As of 22:35 AEST (about 12:35 UTC), 18 Nov:</Lead> the 
+          <Ext href="https://status.playstation.com/">PlayStation service status page</Ext> read &ldquo;All services are up and running&rdquo;. GTATracker&rsquo;s read of
+          Microsoft&rsquo;s Xbox status feed and of Rockstar&rsquo;s service status page (12:24 UTC) also showed everything up, with no GTA VI entry on Rockstar&rsquo;s list yet (
+          <Ext href="https://gtatracker.gg/online/server-status">GTATracker</Ext>).
         </li>
         <li>
-          We could not load Rockstar&rsquo;s service status page (HTTP 500), so we have no live read of it. Check it, and your console network status, if something fails.
+          Insider Gaming likewise reported no performance or networking issues at the time of writing (
+          <Ext href="https://insider-gaming.com/is-grand-theft-auto-6-down-gta-6-issues-explained/">Insider Gaming</Ext>). We found no outage reports, but that only covers the first
+          unlocks. Status pages lag, so check them again at your own midnight.
+        </li>
+        <li>
+          We could not load Rockstar&rsquo;s own service status page ourselves (HTTP 500), so the Rockstar reading above is second-hand.
         </li>
         <li>
           Take-Two describes GTA VI as a single-player experience, so we expect day-one strain to land mostly on store and download systems. That is our expectation, not a
@@ -97,6 +103,8 @@ export default function Page() {
         <Source href="https://www.pushsquare.com/news/2026/11/gta-6-requires-new-ps5-firmware-update-to-play" label="Push Square, 18 Nov 2026" kind="Reputable outlet" />
         <Source href="https://www.vice.com/en/article/gta-6-second-day-one-patch-ps5-xbox/" label="VICE: second pre-launch patch, 16 Nov 2026" kind="Reputable outlet" />
         <Source href="https://insider-gaming.com/is-grand-theft-auto-6-down-gta-6-issues-explained/" label="Insider Gaming: Is GTA 6 down?, 18 Nov 2026" kind="Reputable outlet" />
+        <Source href="https://status.playstation.com/" label="PlayStation Service Status (read 18 Nov 2026)" kind="Official, platform holder" />
+        <Source href="https://gtatracker.gg/online/server-status" label="GTATracker: Rockstar, PSN and Xbox status feeds (12:24 UTC, 18 Nov)" kind="Third-party monitor" />
         <Source href="https://www.1news.co.nz/2026/11/18/gta-6-how-to-beat-the-download-rush-and-why-gamers-abroad-envy-kiwis/" label="1News NZ, 18 Nov 2026" kind="Reputable outlet" />
       </Sources>
     </NewsLayout>

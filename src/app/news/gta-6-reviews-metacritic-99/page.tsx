@@ -19,6 +19,7 @@ const SCORES: string[][] = [
   ["VGC", "5/5"],
   ["TheSixthAxis", "9/10"],
   ["Slant Magazine", "4.5/5"],
+  ["ScreenHub", "4/5 (Metacritic: 80)"],
 ];
 
 export default function Page() {
@@ -32,20 +33,24 @@ export default function Page() {
       <H2>The numbers</H2>
       <Bullets>
         <li>
-          <Lead>Metacritic:</Lead> 99, first reported from 100 critic reviews at about 11:17 GMT (
-          <Ext href="https://www.bbc.com/news/live/c60rkg21dl22t">BBC News</Ext>). Anadolu later cited 115 reviews (
-          <Ext href="https://www.aa.com.tr/en/science-technology/gta-vi-global-rollout-begins-with-new-zealand-launch/4129238">Anadolu</Ext>
-          ). The count keeps moving and the score can too.
+          <Lead>Metacritic (as of 22:35 AEST, 18 Nov):</Lead> 99 on the PS5 listing from 152 critic reviews, read directly from{" "}
+          <Ext href="https://www.metacritic.com/game/grand-theft-auto-vi/">Metacritic</Ext>. It first appeared at 99 from 100 reviews at about 11:17 GMT (
+          <Ext href="https://www.bbc.com/news/live/c60rkg21dl22t">BBC News</Ext>), so the score has held while the count has grown.
         </li>
         <li>
-          <Lead>Lowest confirmed:</Lead> 90 on Metacritic when the BBC wrote, so no score below 90 in the first wave.
+          <Lead>Lowest score:</Lead> 80 (ScreenHub) on the Metacritic page we read. The BBC&rsquo;s first-wave lowest was 90, so a few lower scores have arrived since. Metacritic
+          showed no mixed or negative reviews on its colour scale.
+        </li>
+        <li>
+          <Lead>Xbox and other aggregators:</Lead> Metacritic now also lists an Xbox Series X page, at 99 from 14 reviews. Polygon reports OpenCritic at 98 (
+          <Ext href="https://www.polygon.com/gta-6-review-roundup/">Polygon</Ext>). Metacritic&rsquo;s user score is still &ldquo;tbd&rdquo;.
         </li>
         <li>
           <Lead>Records:</Lead> Rockstar&rsquo;s previous best Metascore was 98 for GTA IV, and GTA V scored 97 on Xbox 360 and PS3 (
           <Ext href="https://insider-gaming.com/gta-6-gets-a-99-in-early-metacritic-review-scores/">Insider Gaming</Ext>).
         </li>
         <li>
-          <Lead>PS5 only, so far.</Lead> Reviewers appear to have had the PS5 version only, with no consensus yet on Xbox Series X|S (
+          <Lead>Mostly PS5 so far.</Lead> Reviewers appear to have had the PS5 version first, and most reviews are on the PS5 listing (
           <Ext href="https://www.gamingbible.com/news/gta-6-review-round-up-highest-rated-game-all-time-916887-20261118">GAMINGbible</Ext>).
         </li>
       </Bullets>
@@ -53,8 +58,8 @@ export default function Page() {
       <H2>Scores from named outlets</H2>
       <DataTable head={["Outlet", "Score"]} rows={SCORES} minWidth="20rem" />
       <p className="text-xs text-muted">
-        Scores as listed by <Ext href="https://www.gamingbible.com/news/gta-6-review-round-up-highest-rated-game-all-time-916887-20261118">GAMINGbible</Ext> and{" "}
-        <Ext href="https://www.bbc.com/news/live/c60rkg21dl22t">BBC News</Ext>. We list scores only. Full reviews can include light story discussion, so read them at your own risk.
+        Scores as listed by <Ext href="https://www.gamingbible.com/news/gta-6-review-round-up-highest-rated-game-all-time-916887-20261118">GAMINGbible</Ext>,{" "}
+        <Ext href="https://www.bbc.com/news/live/c60rkg21dl22t">BBC News</Ext>, <Ext href="https://www.polygon.com/gta-6-review-roundup/">Polygon</Ext> and Metacritic. We list scores only. Full reviews can include light story discussion, so read them at your own risk.
       </p>
 
       <H2>Performance notes</H2>
@@ -75,7 +80,7 @@ export default function Page() {
           embargo time.
         </li>
         <li>
-          <Lead>Final score.</Lead> The Metascore is a live aggregate and may shift as more reviews arrive.
+          <Lead>Final score.</Lead> The Metascore is a live aggregate and the review count was still rising when we checked. It may shift.
         </li>
       </Bullets>
 
@@ -90,6 +95,8 @@ export default function Page() {
         <Source href="https://www.bbc.com/news/live/c60rkg21dl22t" label="BBC News live page, 18 Nov 2026" kind="Reputable outlet" />
         <Source href="https://insider-gaming.com/gta-6-gets-a-99-in-early-metacritic-review-scores/" label="Insider Gaming, 18 Nov 2026" kind="Reputable outlet" />
         <Source href="https://www.gamingbible.com/news/gta-6-review-round-up-highest-rated-game-all-time-916887-20261118" label="GAMINGbible, 18 Nov 2026" kind="Reputable outlet" />
+        <Source href="https://www.metacritic.com/game/grand-theft-auto-vi/" label="Metacritic: Grand Theft Auto VI (read 18 Nov 2026)" kind="Review aggregator" />
+        <Source href="https://www.polygon.com/gta-6-review-roundup/" label="Polygon review round-up, 18 Nov 2026" kind="Reputable outlet" />
         <Source href="https://www.aa.com.tr/en/science-technology/gta-vi-global-rollout-begins-with-new-zealand-launch/4129238" label="Anadolu Agency, 18 Nov 2026" kind="Reputable outlet" />
         <Source href="https://www.digitalfoundry.net/reviews/grand-theft-auto-6-a-landmark-achievement-that-redefines-a-console-generation" label="Digital Foundry review, 18 Nov 2026" kind="Reputable outlet" />
       </Sources>

@@ -23,7 +23,7 @@ export interface NewsItem {
   citations: string[];
 }
 
-export const NEWS_PUBLISHED = "2026-11-18T22:31:00+10:00";
+export const NEWS_PUBLISHED = "2026-11-18T22:35:00+10:00";
 
 export const newsPath = (slug: string) => `/news/${slug}`;
 
@@ -64,6 +64,8 @@ export const NEWS: NewsItem[] = [
       "https://insider-gaming.com/gta-6-gets-a-99-in-early-metacritic-review-scores/",
       "https://www.gamingbible.com/news/gta-6-review-round-up-highest-rated-game-all-time-916887-20261118",
       "https://www.aa.com.tr/en/science-technology/gta-vi-global-rollout-begins-with-new-zealand-launch/4129238",
+      "https://www.metacritic.com/game/grand-theft-auto-vi/",
+      "https://www.polygon.com/gta-6-review-roundup/",
       "https://www.digitalfoundry.net/reviews/grand-theft-auto-6-a-landmark-achievement-that-redefines-a-console-generation",
     ],
   },
@@ -85,6 +87,8 @@ export const NEWS: NewsItem[] = [
       "https://www.theverge.com/games/1036395/if-you-want-to-play-gta-vi-on-ps5-tonight-download-yesterdays-firmware-update-first",
       "https://www.vice.com/en/article/gta-6-second-day-one-patch-ps5-xbox/",
       "https://insider-gaming.com/is-grand-theft-auto-6-down-gta-6-issues-explained/",
+      "https://status.playstation.com/",
+      "https://gtatracker.gg/online/server-status",
     ],
   },
   {
