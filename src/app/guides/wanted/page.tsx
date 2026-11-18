@@ -1,8 +1,11 @@
+import { metaFor } from "@/lib/seo/site";
+import { PageSchema } from "@/lib/seo/jsonld";
 import { PageHeader } from "@/components/PageHeader";
-export const metadata = { title: "Wanted system" };
+export const metadata = metaFor("/guides/wanted");
 export default function Page() {
   return (
     <div>
+      <PageSchema path="/guides/wanted" />
       <PageHeader kicker="Guide" title="Wanted system" source="Showcase" />
       <div className="max-w-xl space-y-4 text-ink-2">
         <p>Six-star wanted returns. A crime needs a witness or an alarm before heat starts.</p>

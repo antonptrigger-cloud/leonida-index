@@ -1,3 +1,5 @@
+import { metaFor } from "@/lib/seo/site";
+import { PageSchema } from "@/lib/seo/jsonld";
 import Link from "next/link";
 import { PageHeader } from "@/components/PageHeader";
 
@@ -8,11 +10,12 @@ const GUIDES = [
   { href: "/guides/activities", title: "Activities" },
 ];
 
-export const metadata = { title: "Guides" };
+export const metadata = metaFor("/guides");
 
 export default function Guides() {
   return (
     <div>
+      <PageSchema path="/guides" />
       <PageHeader kicker="Guides" title="How to play Leonida" />
       <ul className="flex flex-col gap-3">
         {GUIDES.map((g) => (

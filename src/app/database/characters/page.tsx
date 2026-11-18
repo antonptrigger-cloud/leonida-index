@@ -1,3 +1,5 @@
+import { metaFor } from "@/lib/seo/site";
+import { PageSchema } from "@/lib/seo/jsonld";
 import Link from "next/link";
 import { PageHeader } from "@/components/PageHeader";
 
@@ -12,11 +14,12 @@ const PEOPLE = [
   ["real-dimez", "Real Dimez"],
 ];
 
-export const metadata = { title: "Characters" };
+export const metadata = metaFor("/database/characters");
 
 export default function Page() {
   return (
     <div>
+      <PageSchema path="/database/characters" />
       <PageHeader kicker="Database" title="Characters" source="Official / Showcase" />
       <ul className="grid gap-2 sm:grid-cols-2">
         {PEOPLE.map(([slug, name]) => (

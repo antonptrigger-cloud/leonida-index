@@ -1,10 +1,13 @@
+import { metaFor } from "@/lib/seo/site";
+import { PageSchema } from "@/lib/seo/jsonld";
 import { PageHeader } from "@/components/PageHeader";
 
-export const metadata = { title: "Mount Kalaga" };
+export const metadata = metaFor("/map/mount-kalaga");
 
 export default function Page() {
   return (
     <div>
+      <PageSchema path="/map/mount-kalaga" />
       <PageHeader kicker="Region" title="Mount Kalaga" source="Official / Showcase" />
       <div className="flex max-w-xl flex-col gap-6 text-ink-2">
         <section>

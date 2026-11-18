@@ -1,9 +1,11 @@
+import { metaFor } from "@/lib/seo/site";
+import { PageSchema } from "@/lib/seo/jsonld";
 import Link from "next/link";
 import { PageHeader } from "@/components/PageHeader";
 import { getStore } from "@/lib/map/store";
 import type { Leaderboard, LeaderboardEntry } from "@/lib/map/types";
 
-export const metadata = { title: "Map leaderboard" };
+export const metadata = metaFor("/map/leaderboard");
 export const dynamic = "force-dynamic";
 
 function Board({ title, hint, rows, testId }: { title: string; hint: string; rows: LeaderboardEntry[]; testId: string }) {
@@ -42,6 +44,7 @@ export default async function LeaderboardPage() {
   }
   return (
     <div>
+      <PageSchema path="/map/leaderboard" />
       <PageHeader kicker="Community map" title="Leaderboard" source="Community submissions" />
       {!store ? (
         <p className="mb-6 rounded-lg border border-orange/40 bg-orange/10 px-3 py-2 text-sm text-orange">

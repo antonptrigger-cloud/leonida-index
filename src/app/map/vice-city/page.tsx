@@ -1,6 +1,8 @@
+import { metaFor } from "@/lib/seo/site";
+import { PageSchema } from "@/lib/seo/jsonld";
 import { PageHeader } from "@/components/PageHeader";
 
-export const metadata = { title: "Vice City" };
+export const metadata = metaFor("/map/vice-city");
 
 const LANDMARKS = [
   "Ocean Beach",
@@ -20,6 +22,7 @@ const LANDMARKS = [
 export default function Page() {
   return (
     <div>
+      <PageSchema path="/map/vice-city" />
       <PageHeader kicker="Region" title="Vice City" source="Official / Showcase" />
       <div className="flex max-w-2xl flex-col gap-8 text-ink-2">
         <section>
