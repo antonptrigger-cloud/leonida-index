@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { CommunityMap } from "@/components/map/CommunityMap";
 import { PIN_TYPES } from "@/lib/map/config";
+import { parseFilters } from "@/lib/map/filters";
 import { getLivePins } from "@/lib/map/service";
 import { PageSchema } from "@/lib/seo/jsonld";
 import { ROUTES, metaFor } from "@/lib/seo/site";
@@ -20,7 +21,8 @@ const REGION_LINKS = [
 
 export default async function MapIndex({ searchParams }: { searchParams: Promise<Record<string, string | string[] | undefined>> }) {
   const [{ pins, online }, sp] = await Promise.all([getLivePins(), searchParams]);
-  const q = typeof sp.q === "string" ? sp.q.slice(0, 80) : "";
+  // /map?q=… (WebSite SearchAction) plus shareable filters: types, official, region, spoilers, pin.
+  const filters = parseFilters(sp);
   // Spoiler-safe: the crawlable list only names non-spoiler, approved pins (getLivePins never returns pending ones).
   const listed = pins.filter((p) => !p.spoiler);
   return (
@@ -60,7 +62,7 @@ export default async function MapIndex({ searchParams }: { searchParams: Promise
           <Link href="/secrets">GTA 6 secrets</Link>
         </p>
       </section>
-      <CommunityMap initialPins={pins} online={online} initialQuery={q} />
+      <CommunityMap initialPins={pins} online={online} initialFilters={filters} />
     </>
   );
 }
