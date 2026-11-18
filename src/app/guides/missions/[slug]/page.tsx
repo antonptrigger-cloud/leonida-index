@@ -9,7 +9,7 @@ import { Faq } from "@/components/Faq";
 import { Related } from "@/components/Related";
 import { Spoiler } from "@/components/guides/Spoiler";
 import { SourcesList, SpoilerWarning, StatusTag } from "@/components/guides/MissionBits";
-import { CHAPTER, LAST_VERIFIED_LABEL, MISSIONS, ORDER_NOTE, missionBySlug, missionPath } from "@/lib/guides/missions";
+import { CHAPTER, CHAPTER_1_TOTAL, LAST_VERIFIED_LABEL, MISSIONS, ORDER_NOTE, missionBySlug, missionPath } from "@/lib/guides/missions";
 
 export const dynamicParams = false;
 
@@ -41,7 +41,7 @@ export default async function MissionPage({ params }: { params: Promise<{ slug: 
       <Breadcrumbs path={path} />
       <PageHeader
         backdrop="boat"
-        kicker={`Mission guide · Chapter ${CHAPTER.number} · ${String(m.order).padStart(2, "0")}/${String(MISSIONS.length).padStart(2, "0")}`}
+        kicker={`Mission guide · Chapter ${CHAPTER.number} · ${String(m.order).padStart(2, "0")}/${String(CHAPTER_1_TOTAL).padStart(2, "0")}`}
         title={m.name}
         verified={`${LAST_VERIFIED_LABEL} (pre-launch)`}
         source="PC Gamer, Press Start, PowerPyx"

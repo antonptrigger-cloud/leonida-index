@@ -5,7 +5,8 @@ import { PageHeader } from "@/components/PageHeader";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 
 const GUIDES = [
-  { href: "/guides/missions", title: "Mission guides: Chapter 1" },
+  { href: "/guides/missions", title: "All missions in order" },
+  { href: "/guides/money", title: "Money guide: fastest ways to earn cash" },
   { href: "/guides/beginner", title: "Beginner" },
   { href: "/guides/wanted", title: "Wanted system" },
   { href: "/guides/stealing-cars", title: "Stealing cars" },

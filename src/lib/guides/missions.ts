@@ -18,7 +18,8 @@ export type SourceId =
   | "powerpyxIndex"
   | "powerpyx"
   | "rockstar"
-  | "aprasi";
+  | "aprasi"
+  | "gamesgg";
 
 export interface MissionSource {
   id: SourceId;
@@ -63,13 +64,16 @@ export interface Mission {
 export const LAST_VERIFIED = "2026-11-18";
 export const LAST_VERIFIED_LABEL = "18 Nov 2026";
 
+/** Number of missions in Chapter 1 (see src/lib/guides/story.ts for the full list). */
+export const CHAPTER_1_TOTAL = 22;
+
 export const CHAPTER = {
   number: 1,
   name: "Just Like Paradise",
 };
 
 export const ORDER_NOTE =
-  "Order is a suggestion. PC Gamer and Press Start (from the in-game Story Recap) list Just a Scratch before Lab Fees, and count the Prologue as Chapter 1's first mission. PowerPyx lists Lab Fees first and gives the Prologue its own heading. According to PowerPyx, Gear Up, Lab Fees, Just a Scratch and Unwanted Attention all open up once Gone Fishing is done, so you can play them in any order.";
+  "Order is a suggestion. PC Gamer, Press Start (from the in-game Story Recap) and VGC all list Just a Scratch (4) before Lab Fees (5), and count the Prologue as Chapter 1's first mission. PowerPyx lists Lab Fees first and gives the Prologue its own heading. According to PowerPyx, Gear Up, Just a Scratch, Lab Fees and Unwanted Attention all open up once Gone Fishing is done, so you can play them in any order.";
 
 const PCGAMER: MissionSource = {
   id: "pcgamer",
@@ -106,6 +110,13 @@ const APRASI: MissionSource = {
   label: "Aprasi: Just Like Paradise walkthrough",
   url: "https://www.aprasi.com/de/blogs/trending-topics/gta-6-just-like-paradise-walkthrough-how-chapter-1-begins",
   used: "Early-hours tip (unverified)",
+};
+
+const GAMESGG_ISLAND: MissionSource = {
+  id: "gamesgg",
+  label: "GAMES.GG: How to complete Island Dreams",
+  url: "https://games.gg/grand-theft-auto-vi/guides/island-dreams-mission-walkthrough-grand-theft-auto-6/",
+  used: "Second source for the $400 reward and Kenton buying later treasure (secondary source)",
 };
 
 const PP_FACTS = "Quest giver, start point, reward, objective flow";
@@ -216,8 +227,39 @@ export const MISSIONS: Mission[] = [
     sources: [PCGAMER, PRESSSTART, pp("gta-6-gear-up-pick-up-another-gun-walkthrough", PP_FACTS), PP_INDEX, APRASI],
   },
   {
-    slug: "lab-fees",
+    slug: "just-a-scratch",
     order: 4,
+    name: "Just a Scratch",
+    startLabel: "Fix Your Car",
+    seoTitle: "GTA 6 Just a Scratch Mission Guide: Fixing the Ganado",
+    seoDescription:
+      "GTA 6 Just a Scratch (Fix Your Car) guide: getting Jason's Ganado repaired at Coastal Auto Care, what's free, and whether car upgrades are worth it yet.",
+    teaser: "The Ganado goes into the shop.",
+    intro: [
+      "Jason's car has seen better days. Just a Scratch is a quick trip to the garage to sort it out, and it doubles as the tutorial for repair and respray shops.",
+      "There is no story twist here. It's one of the shortest missions in the chapter.",
+    ],
+    facts: [
+      { label: "Chapter", value: "Chapter 1: Just Like Paradise", status: "confirmed" },
+      { label: "Playable", value: "Jason", status: "confirmed" },
+      { label: "Quest giver", value: "Jason (self-started after Gone Fishing)", status: "reported" },
+      { label: "Starts at", value: "Coastal Auto Care, Key Lento", status: "reported" },
+      { label: "Reward", value: "Free engine repair and respray", status: "reported" },
+    ],
+    objectives: [
+      "Drive Jason's '70 Ganado to Coastal Auto Care.",
+      "Talk to Joey outside, then drive into the garage.",
+      "Take the free full engine repair and pick a respray colour.",
+    ],
+    tips: [
+      { text: "If you wreck the Ganado beforehand, saving and reloading reportedly puts it back outside Jason's house.", reported: true },
+      { text: "Hold off on big upgrades. PowerPyx says this car gets replaced later and the upgrades go with it. You can't register a new personal vehicle until Chapter 2.", reported: true },
+    ],
+    sources: [PCGAMER, PRESSSTART, pp("gta-6-just-a-scratch-fix-your-car-walkthrough", PP_FACTS), PP_INDEX],
+  },
+  {
+    slug: "lab-fees",
+    order: 5,
     name: "Lab Fees",
     startLabel: "Collect Brian's Rent",
     seoTitle: "GTA 6 Lab Fees Mission Guide: Collecting Brian's Rent",
@@ -251,37 +293,6 @@ export const MISSIONS: Mission[] = [
       "The $600 figure comes from a single walkthrough. We will confirm it in-game after launch.",
     ],
     sources: [PCGAMER, PRESSSTART, pp("gta-6-lab-fees-collect-brians-rent-walkthrough", PP_FACTS), PP_INDEX, ROCKSTAR],
-  },
-  {
-    slug: "just-a-scratch",
-    order: 5,
-    name: "Just a Scratch",
-    startLabel: "Fix Your Car",
-    seoTitle: "GTA 6 Just a Scratch Mission Guide: Fixing the Ganado",
-    seoDescription:
-      "GTA 6 Just a Scratch (Fix Your Car) guide: getting Jason's Ganado repaired at Coastal Auto Care, what's free, and whether car upgrades are worth it yet.",
-    teaser: "The Ganado goes into the shop.",
-    intro: [
-      "Jason's car has seen better days. Just a Scratch is a quick trip to the garage to sort it out, and it doubles as the tutorial for repair and respray shops.",
-      "There is no story twist here. It's one of the shortest missions in the chapter.",
-    ],
-    facts: [
-      { label: "Chapter", value: "Chapter 1: Just Like Paradise", status: "confirmed" },
-      { label: "Playable", value: "Jason", status: "confirmed" },
-      { label: "Quest giver", value: "Jason (self-started after Gone Fishing)", status: "reported" },
-      { label: "Starts at", value: "Coastal Auto Care, Key Lento", status: "reported" },
-      { label: "Reward", value: "Free engine repair and respray", status: "reported" },
-    ],
-    objectives: [
-      "Drive Jason's '70 Ganado to Coastal Auto Care.",
-      "Talk to Joey outside, then drive into the garage.",
-      "Take the free full engine repair and pick a respray colour.",
-    ],
-    tips: [
-      { text: "If you wreck the Ganado beforehand, saving and reloading reportedly puts it back outside Jason's house.", reported: true },
-      { text: "Hold off on big upgrades. PowerPyx says this car gets replaced later and the upgrades go with it. You can't register a new personal vehicle until Chapter 2.", reported: true },
-    ],
-    sources: [PCGAMER, PRESSSTART, pp("gta-6-just-a-scratch-fix-your-car-walkthrough", PP_FACTS), PP_INDEX],
   },
   {
     slug: "unwanted-attention",
@@ -337,7 +348,7 @@ export const MISSIONS: Mission[] = [
       { label: "Chapter", value: "Chapter 1: Just Like Paradise", status: "confirmed" },
       { label: "Playable", value: "Jason", status: "confirmed" },
       { label: "Quest giver", value: "Brian and Mandy", status: "reported" },
-      { label: "Unlocks", value: "After Gear Up, Lab Fees, Just a Scratch and Unwanted Attention", status: "reported" },
+      { label: "Unlocks", value: "After Gear Up, Just a Scratch, Lab Fees and Unwanted Attention", status: "reported" },
       { label: "Reward", value: "A Macizo cigar, if you pick it up", status: "reported" },
     ],
     objectives: [
@@ -405,7 +416,7 @@ export const MISSIONS: Mission[] = [
       { label: "Playable", value: "Jason", status: "confirmed" },
       { label: "Quest giver", value: "Kenton Rees", status: "reported" },
       { label: "Starts at", value: "Kenton's Island Dreams shop on the beach, Key Lento", status: "reported" },
-      { label: "Reward", value: "$400", status: "reported" },
+      { label: "Reward", value: "$400", status: "confirmed" },
     ],
     objectives: [
       "Talk to Kenton at his shop.",
@@ -422,8 +433,9 @@ export const MISSIONS: Mission[] = [
     ],
     notes: [
       "Kenton has his own side questline later, with its own trophy (PowerPyx).",
+      "Kenton keeps the doubloons you recover, and the $400 is separate. He also offers to buy treasure Jason finds at other wrecks in the Keys (GAMES.GG). GameSpot says full dive spots can add up to tens of thousands of dollars over time; PC Gamer calls diving mildly lucrative but very time-consuming. See our money guide.",
     ],
-    sources: [PCGAMER, PRESSSTART, pp("gta-6-island-dreams-work-for-kenton-walkthrough", PP_FACTS), PP_INDEX],
+    sources: [PCGAMER, PRESSSTART, pp("gta-6-island-dreams-work-for-kenton-walkthrough", PP_FACTS), PP_INDEX, GAMESGG_ISLAND],
   },
   {
     slug: "feng-shui",
