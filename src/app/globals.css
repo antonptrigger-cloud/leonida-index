@@ -1,56 +1,292 @@
 @import "tailwindcss";
 
+/* ---- Vice City palette ----
+   Near-black base, neon pink / sunset orange / electric blue / turquoise accents.
+   Body text colours (ink, ink-2, muted, faint) all clear WCAG AA (4.5:1) on bg and card. */
+@theme {
+  --color-bg: #0a0a0b;
+  --color-bg-2: #0f0d13;
+  --color-card: #131218;
+  --color-line: #3a1f30;
+  --color-ink: #f5f3f7;
+  --color-ink-2: #d9d5e2;
+  --color-muted: #a6a1b4;
+  --color-faint: #8a8597;
+  --color-pink: #ff2d78;
+  --color-pink-2: #ff5c97;
+  --color-orange: #ff8c42;
+  --color-orange-2: #ff6b35;
+  --color-blue: #00d4ff;
+  --color-cobalt: #1e90ff;
+  --color-turq: #00e5cc;
+  --color-ok: #3bb273;
+
+  --font-sans: var(--font-body), system-ui, sans-serif;
+  --font-display: var(--font-display-face), "Arial Narrow", Impact, sans-serif;
+}
+
 :root {
-  --bg: #0b0b0c;
-  --bg-card: #161618;
-  --line: #2a2a2e;
-  --text: #f4f1ea;
-  --muted: #9a958c;
-  --accent: #ff2d7b;
-  --accent-2: #ffd36b;
+  --bg: #0a0a0b;
+  --bg-card: #131218;
+  --line: #3a1f30;
+  --text: #f5f3f7;
+  --muted: #a6a1b4;
+  --accent: #ff2d78;
+  --accent-2: #ff8c42;
+  --sunset: linear-gradient(90deg, #ff2d78 0%, #ff6b35 55%, #ff8c42 100%);
+  --neon-line: linear-gradient(90deg, transparent, #ff2d78 20%, #ff8c42 50%, #00d4ff 80%, transparent);
+  color-scheme: dark;
 }
 
 body {
   background: var(--bg);
   color: var(--text);
-  font-family: var(--font-geist-sans), system-ui, sans-serif;
+  font-family: var(--font-body), system-ui, sans-serif;
+}
+
+::selection {
+  background: rgba(255, 45, 120, 0.4);
+  color: #fff;
+}
+
+:focus-visible {
+  outline: 2px solid #00d4ff;
+  outline-offset: 2px;
+}
+
+/* Big headings: condensed display face with a pink to orange sunset fill. */
+.vc-heading {
+  font-family: var(--font-display-face), "Arial Narrow", Impact, sans-serif;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  line-height: 0.95;
+  width: fit-content;
+  max-width: 100%;
+  background: var(--sunset);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  text-shadow: none;
+  filter: drop-shadow(0 0 18px rgba(255, 45, 120, 0.22));
+}
+.vc-display {
+  font-family: var(--font-display-face), "Arial Narrow", Impact, sans-serif;
+  font-weight: 400;
+  letter-spacing: 0.04em;
+}
+
+/* Primary button: sunset gradient with dark text (AA contrast) and a soft neon glow. */
+.vc-btn {
+  background: var(--sunset);
+  color: #12070c;
+  font-weight: 700;
+  border: 0;
+  box-shadow: 0 0 0 1px rgba(255, 45, 120, 0.6), 0 0 14px rgba(255, 45, 120, 0.35);
+  transition: box-shadow 0.15s ease, transform 0.15s ease, filter 0.15s ease;
+}
+.vc-btn:hover:not(:disabled) {
+  filter: brightness(1.08);
+  box-shadow: 0 0 0 1px rgba(255, 140, 66, 0.8), 0 0 22px rgba(255, 45, 120, 0.5);
+}
+.vc-btn:active:not(:disabled) {
+  transform: translateY(1px);
+}
+.vc-btn:disabled {
+  filter: grayscale(0.6);
+  box-shadow: none;
+}
+
+/* Secondary button: electric blue outline. */
+.vc-btn-ghost {
+  border: 1px solid rgba(0, 212, 255, 0.55);
+  color: #bff4ff;
+  background: rgba(0, 212, 255, 0.06);
+  transition: box-shadow 0.15s ease, background 0.15s ease;
+}
+.vc-btn-ghost:hover {
+  background: rgba(0, 212, 255, 0.12);
+  box-shadow: 0 0 16px rgba(0, 212, 255, 0.3);
+}
+
+/* Cards: thin magenta border that warms up on hover. */
+.vc-card {
+  border: 1px solid rgba(255, 45, 120, 0.28);
+  background: linear-gradient(180deg, rgba(255, 45, 120, 0.05), rgba(19, 18, 24, 0.9) 40%), #131218;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease, transform 0.15s ease;
+}
+a.vc-card:hover,
+button.vc-card:hover {
+  border-color: rgba(255, 45, 120, 0.75);
+  box-shadow: 0 0 0 1px rgba(255, 45, 120, 0.25), 0 0 24px rgba(255, 45, 120, 0.18);
+}
+
+/* Glass overlay panels on the map. */
+.vc-glass {
+  border: 1px solid rgba(255, 45, 120, 0.32);
+  background: rgba(12, 10, 15, 0.9);
+  box-shadow: 0 10px 34px rgba(0, 0, 0, 0.55), 0 0 0 1px rgba(255, 45, 120, 0.06), 0 0 30px rgba(255, 45, 120, 0.08);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+}
+
+/* Neon hairline (header / footer edges). */
+.vc-neon-line {
+  height: 1px;
+  background: var(--neon-line);
+  box-shadow: 0 0 8px rgba(255, 45, 120, 0.55);
+}
+
+/* Header nav link states. */
+.vc-nav-link {
+  position: relative;
+  transition: color 0.15s ease, text-shadow 0.15s ease;
+}
+.vc-nav-link:hover {
+  color: #ff5c97;
+}
+.vc-nav-link[aria-current="page"] {
+  color: #ff5c97;
+  text-shadow: 0 0 10px rgba(255, 45, 120, 0.65);
+}
+.vc-nav-link[aria-current="page"]::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -6px;
+  height: 2px;
+  border-radius: 2px;
+  background: var(--sunset);
+  box-shadow: 0 0 8px rgba(255, 45, 120, 0.7);
+}
+
+/* Homepage hero: dusk sky, retro sun and a horizon grid. Pure CSS. */
+.vc-hero {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  background:
+    radial-gradient(120% 90% at 50% 110%, rgba(255, 107, 53, 0.35), transparent 55%),
+    radial-gradient(80% 70% at 85% 0%, rgba(0, 212, 255, 0.16), transparent 60%),
+    radial-gradient(70% 60% at 10% 10%, rgba(255, 45, 120, 0.22), transparent 60%),
+    linear-gradient(180deg, #120a1c 0%, #1d0b22 45%, #2a0f22 75%, #140a12 100%);
+}
+.vc-sun {
+  position: absolute;
+  right: 6%;
+  bottom: 20%;
+  width: min(40vw, 300px);
+  aspect-ratio: 1;
+  border-radius: 9999px;
+  background: linear-gradient(180deg, #ffd06b 0%, #ff8c42 40%, #ff2d78 85%);
+  box-shadow: 0 0 60px rgba(255, 45, 120, 0.45);
+  -webkit-mask: repeating-linear-gradient(180deg, #000 0 14px, transparent 14px 18px) bottom / 100% 55% no-repeat,
+    linear-gradient(#000, #000) top / 100% 45% no-repeat;
+  mask: repeating-linear-gradient(180deg, #000 0 14px, transparent 14px 18px) bottom / 100% 55% no-repeat,
+    linear-gradient(#000, #000) top / 100% 45% no-repeat;
+  opacity: 0.9;
+  z-index: -2;
+}
+@media (max-width: 639px) {
+  .vc-sun {
+    right: -10%;
+    bottom: 20%;
+    width: 46vw;
+    opacity: 0.55;
+  }
+}
+.vc-grid {
+  position: absolute;
+  inset: auto -20% 0 -20%;
+  height: 20%;
+  background-image:
+    linear-gradient(rgba(0, 212, 255, 0.35) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 212, 255, 0.35) 1px, transparent 1px);
+  background-size: 100% 18px, 44px 100%;
+  transform: perspective(260px) rotateX(58deg);
+  transform-origin: bottom;
+  -webkit-mask: linear-gradient(180deg, transparent, #000 60%);
+  mask: linear-gradient(180deg, transparent, #000 60%);
+  z-index: -1;
+}
+.vc-hero::after {
+  /* Horizon glow */
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 20%;
+  height: 1px;
+  background: var(--neon-line);
+  box-shadow: 0 0 14px rgba(255, 45, 120, 0.8);
+  z-index: -1;
+}
+.vc-palm {
+  position: absolute;
+  bottom: 0;
+  color: #07050a;
+  z-index: -1;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .vc-grid {
+    animation: vc-grid-scroll 6s linear infinite;
+  }
+}
+@keyframes vc-grid-scroll {
+  from {
+    background-position: 0 0, 0 0;
+  }
+  to {
+    background-position: 0 18px, 0 0;
+  }
 }
 
 /* ---- Community map (Leaflet) ---- */
 .lvg-map.leaflet-container {
-  background: #0b0b0c;
-  font-family: var(--font-geist-sans), system-ui, sans-serif;
+  background: #0a0a0b;
+  font-family: var(--font-body), system-ui, sans-serif;
 }
 .lvg-map .leaflet-control-zoom a,
 .lvg-map .leaflet-bar a {
-  background: #161618;
-  color: #f4f1ea;
-  border-color: #2a2a2e;
+  background: rgba(12, 10, 15, 0.92);
+  color: #f5f3f7;
+  border-color: rgba(255, 45, 120, 0.3);
 }
-.lvg-map .leaflet-control-zoom a:hover {
-  background: #2a2a2e;
-  color: #ff2d7b;
+.lvg-map .leaflet-control-zoom a:hover,
+.lvg-map .leaflet-bar a:hover {
+  background: #1b1520;
+  color: #ff5c97;
+  text-shadow: 0 0 8px rgba(255, 45, 120, 0.7);
 }
 .lvg-map .leaflet-bar {
-  border: 1px solid #2a2a2e;
+  border: 1px solid rgba(255, 45, 120, 0.4);
+  box-shadow: 0 0 14px rgba(255, 45, 120, 0.15);
+}
+.lvg-map .leaflet-bar a.leaflet-disabled {
+  color: #5a5566;
+  text-shadow: none;
 }
 .lvg-map .leaflet-control-attribution {
-  background: rgba(11, 11, 12, 0.8);
-  color: #9a958c;
+  background: rgba(10, 10, 11, 0.8);
+  color: #a6a1b4;
   font-size: 10px;
 }
 .lvg-map .leaflet-control-attribution a {
-  color: #9a958c;
+  color: #a6a1b4;
 }
 .lvg-map .leaflet-tooltip {
-  background: #161618;
-  color: #f4f1ea;
-  border: 1px solid #2a2a2e;
-  box-shadow: none;
+  background: rgba(12, 10, 15, 0.95);
+  color: #f5f3f7;
+  border: 1px solid rgba(255, 45, 120, 0.55);
+  box-shadow: 0 0 12px rgba(255, 45, 120, 0.3);
   font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
 }
 .lvg-map .leaflet-tooltip-top::before {
-  border-top-color: #2a2a2e;
+  border-top-color: rgba(255, 45, 120, 0.55);
 }
 .lvg-pin span {
   display: block;
@@ -58,8 +294,8 @@ body {
   height: 100%;
   border-radius: 9999px;
   background: var(--pin);
-  border: 2px solid #0b0b0c;
-  box-shadow: 0 0 0 1px rgba(244, 241, 234, 0.6), 0 2px 6px rgba(0, 0, 0, 0.6);
+  border: 2px solid #0a0a0b;
+  box-shadow: 0 0 0 1px rgba(245, 243, 247, 0.6), 0 2px 6px rgba(0, 0, 0, 0.6);
   transition: transform 0.12s ease;
 }
 .lvg-pin:hover span,
@@ -71,20 +307,20 @@ body {
 }
 .lvg-pin--region span {
   /* Hollow ring so the region label on the base map stays readable. */
-  background: rgba(255, 45, 123, 0.12);
+  background: rgba(255, 45, 120, 0.12);
   border: 3px solid var(--pin);
-  box-shadow: 0 0 0 1px rgba(11, 11, 12, 0.9), 0 0 8px rgba(255, 45, 123, 0.6);
+  box-shadow: 0 0 0 1px rgba(11, 11, 12, 0.9), 0 0 10px rgba(255, 45, 120, 0.7);
 }
 .lvg-pin--selected span {
-  box-shadow: 0 0 0 3px #ffd36b, 0 2px 10px rgba(0, 0, 0, 0.7);
+  box-shadow: 0 0 0 3px #00e5cc, 0 0 14px rgba(0, 229, 204, 0.6);
   transform: scale(1.25);
 }
 .lvg-pin--draft span {
-  background: #ffd36b;
+  background: #ff8c42;
   border-radius: 50% 50% 50% 0;
   transform: rotate(-45deg);
-  border: 2px solid #0b0b0c;
-  box-shadow: 0 0 0 2px #ff2d7b;
+  border: 2px solid #0a0a0b;
+  box-shadow: 0 0 0 2px #ff2d78, 0 0 14px rgba(255, 45, 120, 0.7);
 }
 
 /* Full-window map page: no page scroll behind the fixed map. */

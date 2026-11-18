@@ -4,7 +4,7 @@ export default function Page() {
   return (
     <div>
       <PageHeader kicker="Character" title="Raul Bautista" source="Official / Showcase" />
-      <p className="max-w-xl text-[#cfc9be]">Experienced bank robber always looking for new talent.</p>
+      <p className="max-w-xl text-ink-2">Experienced bank robber always looking for new talent.</p>
     </div>
   );
 }

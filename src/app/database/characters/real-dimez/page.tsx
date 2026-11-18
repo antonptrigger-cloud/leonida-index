@@ -4,7 +4,7 @@ export default function Page() {
   return (
     <div>
       <PageHeader kicker="Character" title="Real Dimez" source="Official / Showcase" />
-      <p className="max-w-xl text-[#cfc9be]">Bae-Luxe and Roxy. Rapping duo, friends since high school.</p>
+      <p className="max-w-xl text-ink-2">Bae-Luxe and Roxy. Rapping duo, friends since high school.</p>
     </div>
   );
 }

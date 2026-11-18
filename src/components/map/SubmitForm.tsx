@@ -5,7 +5,7 @@ import { LIMITS, PIN_TYPES, REGIONS, SUBMIT_TYPES, type SubmitType } from "@/lib
 import { validateSubmission, type FieldErrors } from "@/lib/map/validation";
 import { getSavedGamerTag, saveGamerTag } from "./local";
 
-const field = "w-full rounded-md border border-[#2a2a2e] bg-[#0b0b0c] px-2 py-1.5 text-sm outline-none focus:border-[#ffd36b]";
+const field = "w-full rounded-md border border-line bg-bg px-2 py-1.5 text-sm outline-none focus:border-blue";
 
 export function SubmitForm({
   draft,
@@ -71,33 +71,33 @@ export function SubmitForm({
   if (done) {
     return (
       <div className="flex flex-col gap-3" data-testid="submit-done">
-        <h2 className="text-xl font-semibold">Thanks, it&apos;s in the queue</h2>
-        <p className="text-sm text-[#cfc9be]">
+        <h2 className="vc-heading text-3xl">Thanks, it&apos;s in the queue</h2>
+        <p className="text-sm text-ink-2">
           Your pin is pending review. Once a moderator approves it, it goes live with “First marked by {gamerTag.trim()}”.
         </p>
-        <button onClick={onDone} className="self-start rounded-md border border-[#2a2a2e] px-3 py-1.5 text-sm hover:border-[#ffd36b]">
+        <button onClick={onDone} className="self-start rounded-md border border-line px-3 py-1.5 text-sm hover:border-orange">
           Back to the map
         </button>
       </div>
     );
   }
 
-  const err = (k: keyof FieldErrors) => (errors[k] ? <p className="mt-1 text-xs text-[#ff2d7b]">{errors[k]}</p> : null);
+  const err = (k: keyof FieldErrors) => (errors[k] ? <p className="mt-1 text-xs text-pink">{errors[k]}</p> : null);
 
   return (
     <form onSubmit={submit} className="flex flex-col gap-3" data-testid="submit-form" noValidate>
       <div className="flex items-start justify-between">
-        <h2 className="text-xl font-semibold tracking-tight">Submit a location</h2>
-        <button type="button" onClick={onCancel} className="text-sm text-[#9a958c] hover:text-[#ff2d7b]" aria-label="Cancel">
+        <h2 className="vc-heading text-3xl">Submit a location</h2>
+        <button type="button" onClick={onCancel} className="text-sm text-muted hover:text-pink" aria-label="Cancel">
           ✕
         </button>
       </div>
-      <p className={`rounded border px-2 py-1.5 text-xs ${draft ? "border-[#3bb273] text-[#3bb273]" : "border-[#ffd36b] text-[#ffd36b]"}`}>
+      <p className={`rounded border px-2 py-1.5 text-xs ${draft ? "border-ok text-ok" : "border-orange text-orange"}`}>
         {draft ? `Pin dropped. Drag it to fine-tune (${Math.round(draft.x)}, ${Math.round(draft.y)}).` : "Click the map to drop your pin."}
       </p>
       {err("position")}
 
-      <label className="text-xs text-[#9a958c]">
+      <label className="text-xs text-muted">
         Type *
         <select value={type} onChange={(e) => setType(e.target.value as SubmitType)} className={field} name="type">
           <option value="">Choose…</option>
@@ -110,14 +110,14 @@ export function SubmitForm({
         {err("type")}
       </label>
 
-      <label className="text-xs text-[#9a958c]">
+      <label className="text-xs text-muted">
         Name *
         <input value={name} onChange={(e) => setName(e.target.value)} maxLength={LIMITS.nameMax} className={field} name="name" />
         {err("name")}
       </label>
 
-      <label className="text-xs text-[#9a958c]">
-        Description * <span className="text-[#6f6b64]">(min {LIMITS.descriptionMin} characters)</span>
+      <label className="text-xs text-muted">
+        Description * <span className="text-faint">(min {LIMITS.descriptionMin} characters)</span>
         <textarea
           value={description}
           onChange={(e) => setDescription(e.target.value)}
@@ -126,14 +126,14 @@ export function SubmitForm({
           className={field}
           name="description"
         />
-        <span className={`block text-right ${description.trim().length < LIMITS.descriptionMin ? "text-[#6f6b64]" : "text-[#3bb273]"}`}>
+        <span className={`block text-right ${description.trim().length < LIMITS.descriptionMin ? "text-faint" : "text-ok"}`}>
           {description.trim().length}/{LIMITS.descriptionMin}+
         </span>
         {err("description")}
       </label>
 
-      <label className="text-xs text-[#9a958c]">
-        Region <span className="text-[#6f6b64]">(optional)</span>
+      <label className="text-xs text-muted">
+        Region <span className="text-faint">(optional)</span>
         <select value={region} onChange={(e) => setRegion(e.target.value)} className={field} name="region">
           <option value="">Not sure</option>
           {REGIONS.map((r) => (
@@ -145,24 +145,24 @@ export function SubmitForm({
         {err("region")}
       </label>
 
-      <label className="text-xs text-[#9a958c]">
-        Who / what is there <span className="text-[#6f6b64]">(optional)</span>
+      <label className="text-xs text-muted">
+        Who / what is there <span className="text-faint">(optional)</span>
         <input value={occupant} onChange={(e) => setOccupant(e.target.value)} maxLength={LIMITS.occupantMax} className={field} name="occupant" />
       </label>
 
-      <label className="text-xs text-[#9a958c]">
+      <label className="text-xs text-muted">
         Gamer tag / name *
         <input value={gamerTag} onChange={(e) => setGamerTag(e.target.value)} maxLength={LIMITS.gamerTagMax} className={field} name="gamerTag" />
         {err("gamerTag")}
       </label>
 
-      <label className="flex items-center gap-2 text-xs text-[#9a958c]">
-        <input type="checkbox" checked={spoiler} onChange={(e) => setSpoiler(e.target.checked)} className="accent-[#ff2d7b]" name="spoiler" />
+      <label className="flex items-center gap-2 text-xs text-muted">
+        <input type="checkbox" checked={spoiler} onChange={(e) => setSpoiler(e.target.checked)} className="accent-pink" name="spoiler" />
         Contains story spoilers
       </label>
 
       {serverError ? (
-        <p className="text-sm text-[#ff2d7b]" data-testid="submit-error">
+        <p className="text-sm text-pink" data-testid="submit-error">
           {serverError}
         </p>
       ) : null}
@@ -170,11 +170,11 @@ export function SubmitForm({
       <button
         type="submit"
         disabled={submitting}
-        className="rounded-md bg-[#ff2d7b] px-3 py-2 text-sm font-semibold text-white hover:bg-[#ff4f92] disabled:opacity-60"
+        className="vc-btn rounded-md px-3 py-2 text-sm disabled:opacity-60"
       >
         {submitting ? "Sending…" : "Send for review"}
       </button>
-      <p className="text-xs text-[#6f6b64]">
+      <p className="text-xs text-faint">
         Pins are checked before they go public. One submission per gamer tag per hour. No leaks or datamined content, please.
       </p>
     </form>

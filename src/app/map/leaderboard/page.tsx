@@ -8,17 +8,17 @@ export const dynamic = "force-dynamic";
 
 function Board({ title, hint, rows, testId }: { title: string; hint: string; rows: LeaderboardEntry[]; testId: string }) {
   return (
-    <section className="rounded-lg border border-[#2a2a2e] bg-[#161618] p-4" data-testid={testId}>
-      <h2 className="text-sm uppercase tracking-widest text-[#ffd36b]">{title}</h2>
-      <p className="mb-3 text-xs text-[#9a958c]">{hint}</p>
+    <section className="vc-card rounded-xl p-4" data-testid={testId}>
+      <h2 className="text-xs font-semibold uppercase tracking-[0.2em] text-turq">{title}</h2>
+      <p className="mb-3 text-xs text-muted">{hint}</p>
       {rows.length === 0 ? (
-        <p className="text-sm text-[#9a958c]">Nobody yet. Be the first.</p>
+        <p className="text-sm text-muted">Nobody yet. Be the first.</p>
       ) : (
         <ol className="flex flex-col">
           {rows.map((r, i) => (
-            <li key={r.gamerTag} className="flex justify-between border-b border-[#2a2a2e] py-2 text-sm last:border-0">
+            <li key={r.gamerTag} className="flex justify-between border-b border-line py-2 text-sm last:border-0">
               <span>
-                <span className="mr-3 inline-block w-5 text-right text-[#6f6b64]">{i + 1}</span>
+                <span className="mr-3 inline-block w-5 text-right text-faint">{i + 1}</span>
                 {r.gamerTag}
               </span>
               <span className="font-medium">{r.count}</span>
@@ -44,7 +44,7 @@ export default async function LeaderboardPage() {
     <div>
       <PageHeader kicker="Community map" title="Leaderboard" source="Community submissions" />
       {!store ? (
-        <p className="mb-6 rounded-lg border border-[#ffd36b]/40 bg-[#ffd36b]/10 px-3 py-2 text-sm text-[#ffd36b]">
+        <p className="mb-6 rounded-lg border border-orange/40 bg-orange/10 px-3 py-2 text-sm text-orange">
           Community submissions are offline right now.
         </p>
       ) : null}
@@ -53,7 +53,7 @@ export default async function LeaderboardPage() {
         <Board title="Most “first marked”" hint="New pins that went live with this player's name on them." rows={board.firstMarked} testId="board-first" />
       </div>
       <p className="mt-6 text-sm">
-        <Link href="/map" className="text-[#9a958c] hover:text-[#ff2d7b]">
+        <Link href="/map" className="text-muted hover:text-pink">
           ← Back to the map
         </Link>
       </p>

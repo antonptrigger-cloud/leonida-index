@@ -144,7 +144,7 @@ function CoordsReadout() {
     },
   });
   return (
-    <div className="pointer-events-none absolute bottom-6 left-3 z-[600] rounded bg-[#0b0b0c]/90 px-2 py-1 font-mono text-[11px] text-[#ffd36b]" data-testid="coords">
+    <div className="pointer-events-none absolute bottom-6 left-3 z-[600] rounded bg-bg/90 px-2 py-1 font-mono text-[11px] text-orange" data-testid="coords">
       {pos ? `pin ${pos.x}, ${pos.y} · src ${pos.sx}, ${pos.sy} · z ${pos.z.toFixed(2)}` : "move the cursor over the map"}
     </div>
   );

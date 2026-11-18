@@ -28,8 +28,8 @@ export function AdminLogin() {
   }
 
   return (
-    <form onSubmit={submit} className="flex max-w-sm flex-col gap-3 rounded-lg border border-[#2a2a2e] bg-[#161618] p-4">
-      <label className="text-xs text-[#9a958c]">
+    <form onSubmit={submit} className="flex max-w-sm flex-col gap-3 vc-card rounded-xl p-4">
+      <label className="text-xs text-muted">
         Moderator password
         <input
           type="password"
@@ -37,11 +37,11 @@ export function AdminLogin() {
           onChange={(e) => setPassword(e.target.value)}
           autoComplete="current-password"
           name="password"
-          className="mt-1 w-full rounded-md border border-[#2a2a2e] bg-[#0b0b0c] px-2 py-1.5 text-sm outline-none focus:border-[#ffd36b]"
+          className="mt-1 w-full rounded-md border border-line bg-bg px-2 py-1.5 text-sm outline-none focus:border-blue"
         />
       </label>
-      {error ? <p className="text-sm text-[#ff2d7b]">{error}</p> : null}
-      <button type="submit" disabled={busy} className="rounded-md bg-[#ff2d7b] px-3 py-2 text-sm font-semibold text-white hover:bg-[#ff4f92] disabled:opacity-60">
+      {error ? <p className="text-sm text-pink">{error}</p> : null}
+      <button type="submit" disabled={busy} className="vc-btn rounded-md px-3 py-2 text-sm disabled:opacity-60">
         {busy ? "Checking…" : "Sign in"}
       </button>
     </form>

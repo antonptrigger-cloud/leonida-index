@@ -17,7 +17,7 @@ export default function Guides() {
       <ul className="flex flex-col gap-3">
         {GUIDES.map((g) => (
           <li key={g.href}>
-            <Link href={g.href} className="text-[#ffd36b] hover:text-[#ff2d7b]">{g.title}</Link>
+            <Link href={g.href} className="text-orange hover:text-pink">{g.title}</Link>
           </li>
         ))}
       </ul>

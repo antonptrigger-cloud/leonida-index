@@ -112,30 +112,30 @@ export function PinDetails({
         <div>
           <p className="mb-1 text-xs uppercase tracking-[0.2em]" style={{ color: type.color }}>
             {type.label.replace(/s$/, "")}
-            {pin.region && pin.type !== "region" ? <span className="text-[#9a958c]"> · {pin.region}</span> : null}
+            {pin.region && pin.type !== "region" ? <span className="text-muted"> · {pin.region}</span> : null}
           </p>
-          <h2 className="text-xl font-semibold tracking-tight">{pin.name}</h2>
+          <h2 className="vc-heading pr-6 text-4xl">{pin.name}</h2>
         </div>
-        <button onClick={onClose} className="text-sm text-[#9a958c] hover:text-[#ff2d7b]" aria-label="Close details">
+        <button onClick={onClose} className="text-sm text-muted hover:text-pink" aria-label="Close details">
           ✕
         </button>
       </div>
 
       {pin.approximate ? (
-        <p className="rounded border border-[#2a2a2e] px-2 py-1 text-xs text-[#ffd36b]">Approximate position: confirm in game.</p>
+        <p className="rounded border border-line px-2 py-1 text-xs text-orange">Approximate position: confirm in game.</p>
       ) : null}
 
-      <p className="whitespace-pre-line text-sm text-[#cfc9be]">{pin.description}</p>
+      <p className="whitespace-pre-line text-sm text-ink-2">{pin.description}</p>
 
       {pin.occupant ? (
-        <p className="text-sm text-[#cfc9be]">
-          <span className="text-[#9a958c]">Who/what is there: </span>
+        <p className="text-sm text-ink-2">
+          <span className="text-muted">Who/what is there: </span>
           {pin.occupant}
         </p>
       ) : null}
 
-      <p className="text-xs text-[#9a958c]" data-testid="first-marked">
-        First marked by <span className="font-medium text-[#f4f1ea]">{pin.gamerTag}</span>
+      <p className="text-xs text-muted" data-testid="first-marked">
+        First marked by <span className="font-medium text-ink">{pin.gamerTag}</span>
       </p>
 
       <div className="flex items-center gap-2" data-testid="votes">
@@ -143,7 +143,7 @@ export function PinDetails({
           onClick={() => vote(1)}
           disabled={!online || busy}
           aria-pressed={myVote === 1}
-          className={`rounded-md border px-3 py-1.5 text-sm disabled:opacity-50 ${myVote === 1 ? "border-[#3bb273] bg-[#3bb273]/15" : "border-[#2a2a2e] hover:border-[#3bb273]"}`}
+          className={`rounded-md border px-3 py-1.5 text-sm disabled:opacity-50 ${myVote === 1 ? "border-ok bg-ok/15" : "border-line hover:border-ok"}`}
         >
           👍 <span data-testid="up-count">{pin.upCount}</span>
         </button>
@@ -151,38 +151,38 @@ export function PinDetails({
           onClick={() => vote(-1)}
           disabled={!online || busy}
           aria-pressed={myVote === -1}
-          className={`rounded-md border px-3 py-1.5 text-sm disabled:opacity-50 ${myVote === -1 ? "border-[#ff2d7b] bg-[#ff2d7b]/15" : "border-[#2a2a2e] hover:border-[#ff2d7b]"}`}
+          className={`rounded-md border px-3 py-1.5 text-sm disabled:opacity-50 ${myVote === -1 ? "border-pink bg-pink/15" : "border-line hover:border-pink"}`}
         >
           👎 <span data-testid="down-count">{pin.downCount}</span>
         </button>
-        <span className="text-xs text-[#9a958c]">Is this pin accurate?</span>
+        <span className="text-xs text-muted">Is this pin accurate?</span>
       </div>
-      {error ? <p className="text-xs text-[#ff2d7b]">{error}</p> : null}
+      {error ? <p className="text-xs text-pink">{error}</p> : null}
 
-      <section className="border-t border-[#2a2a2e] pt-4">
-        <h3 className="mb-2 text-sm uppercase tracking-widest text-[#ffd36b]">Comments</h3>
+      <section className="border-t border-line pt-4">
+        <h3 className="mb-2 text-xs font-semibold uppercase tracking-[0.2em] text-turq">Comments</h3>
         {!online ? (
-          <p className="text-xs text-[#9a958c]">Comments are offline right now.</p>
+          <p className="text-xs text-muted">Comments are offline right now.</p>
         ) : comments === null ? (
-          <p className="text-xs text-[#9a958c]">Loading…</p>
+          <p className="text-xs text-muted">Loading…</p>
         ) : comments.length === 0 ? (
-          <p className="text-xs text-[#9a958c]">No comments yet.</p>
+          <p className="text-xs text-muted">No comments yet.</p>
         ) : (
           <ul className="mb-3 flex max-h-64 flex-col gap-2 overflow-y-auto" data-testid="comments">
             {comments.map((c) => (
-              <li key={c.id} className="rounded-md border border-[#2a2a2e] bg-[#0b0b0c] p-2 text-sm">
-                <div className="mb-1 flex items-center justify-between text-xs text-[#9a958c]">
-                  <span className="font-medium text-[#f4f1ea]">{c.gamerTag}</span>
+              <li key={c.id} className="rounded-md border border-line bg-bg p-2 text-sm">
+                <div className="mb-1 flex items-center justify-between text-xs text-muted">
+                  <span className="font-medium text-ink">{c.gamerTag}</span>
                   <button
                     onClick={() => like(c)}
                     aria-pressed={liked.has(c.id)}
-                    className={`rounded px-1.5 ${liked.has(c.id) ? "text-[#ff2d7b]" : "hover:text-[#ff2d7b]"}`}
+                    className={`rounded px-1.5 ${liked.has(c.id) ? "text-pink" : "hover:text-pink"}`}
                     data-testid="comment-like"
                   >
                     ♥ {c.likeCount}
                   </button>
                 </div>
-                <p className="whitespace-pre-line break-words text-[#cfc9be]">{c.body}</p>
+                <p className="whitespace-pre-line break-words text-ink-2">{c.body}</p>
               </li>
             ))}
           </ul>
@@ -195,7 +195,7 @@ export function PinDetails({
               maxLength={LIMITS.gamerTagMax}
               placeholder="Gamer tag"
               aria-label="Gamer tag"
-              className="rounded-md border border-[#2a2a2e] bg-[#0b0b0c] px-2 py-1.5 text-sm outline-none focus:border-[#ffd36b]"
+              className="rounded-md border border-line bg-bg px-2 py-1.5 text-sm outline-none focus:border-blue"
             />
             <textarea
               value={body}
@@ -204,17 +204,17 @@ export function PinDetails({
               rows={2}
               placeholder="Add a short comment"
               aria-label="Comment"
-              className="rounded-md border border-[#2a2a2e] bg-[#0b0b0c] px-2 py-1.5 text-sm outline-none focus:border-[#ffd36b]"
+              className="rounded-md border border-line bg-bg px-2 py-1.5 text-sm outline-none focus:border-blue"
             />
             <div className="flex items-center justify-between">
-              <span className="text-xs text-[#9a958c]">
+              <span className="text-xs text-muted">
                 {body.length}/{LIMITS.commentMax}
               </span>
-              <button type="submit" className="rounded-md bg-[#f4f1ea] px-3 py-1.5 text-sm font-medium text-[#0b0b0c] hover:bg-[#ffd36b]">
+              <button type="submit" className="vc-btn rounded-md px-3 py-1.5 text-sm">
                 Post
               </button>
             </div>
-            {commentError ? <p className="text-xs text-[#ff2d7b]">{commentError}</p> : null}
+            {commentError ? <p className="text-xs text-pink">{commentError}</p> : null}
           </form>
         ) : null}
       </section>

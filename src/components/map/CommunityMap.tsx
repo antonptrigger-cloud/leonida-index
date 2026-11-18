@@ -10,7 +10,7 @@ import { SubmitForm } from "./SubmitForm";
 
 const LeafletMap = dynamic(() => import("./LeafletMap"), {
   ssr: false,
-  loading: () => <div className="flex h-full items-center justify-center text-sm text-[#9a958c]">Loading map…</div>,
+  loading: () => <div className="flex h-full items-center justify-center text-sm text-muted">Loading map…</div>,
 });
 
 const TYPE_KEYS = Object.keys(PIN_TYPES) as PinType[];
@@ -24,7 +24,7 @@ const REGION_PAGES = [
   { slug: "mount-kalaga", name: "Mount Kalaga" },
 ];
 
-const card = "rounded-xl border border-[#2a2a2e] bg-[#0b0b0c]/90 shadow-[0_8px_30px_rgba(0,0,0,0.45)] backdrop-blur";
+const card = "vc-glass rounded-xl";
 
 /** Keeps the full-window map flush under the (possibly wrapping) site header. */
 function useHeaderOffset() {
@@ -153,26 +153,26 @@ export function CommunityMap({ initialPins, online }: { initialPins: PublicPin[]
             onChange={(e) => setQuery(e.target.value)}
             placeholder="Search places, regions, gamer tags…"
             aria-label="Search pins"
-            className="min-w-0 flex-1 rounded-md border border-[#2a2a2e] bg-[#161618] px-3 py-2 text-sm outline-none focus:border-[#ffd36b]"
+            className="min-w-0 flex-1 rounded-md border border-line bg-card px-3 py-2 text-sm outline-none focus:border-blue"
           />
           <button
             onClick={submitting ? endSubmit : startSubmit}
             disabled={!online}
             title={online ? undefined : "Submissions are offline"}
-            className="shrink-0 rounded-md bg-[#ff2d7b] px-3 py-2 text-sm font-semibold text-white hover:bg-[#ff4f92] disabled:cursor-not-allowed disabled:opacity-40"
+            className="shrink-0 vc-btn rounded-md px-3 py-2 text-sm disabled:cursor-not-allowed disabled:opacity-40"
           >
             {submitting ? "Cancel submission" : "Submit a location"}
           </button>
         </div>
         <div className="flex flex-wrap items-center gap-2 text-xs">
-          <label className="flex cursor-pointer items-center gap-1.5 rounded-md border border-[#2a2a2e] bg-[#161618] px-2 py-1 text-[#cfc9be]">
-            <input type="checkbox" checked={showSpoilers} onChange={(e) => setShowSpoilers(e.target.checked)} className="accent-[#ff2d7b]" />
+          <label className="flex cursor-pointer items-center gap-1.5 rounded-md border border-line bg-card px-2 py-1 text-ink-2">
+            <input type="checkbox" checked={showSpoilers} onChange={(e) => setShowSpoilers(e.target.checked)} className="accent-pink" />
             Show spoilers
           </label>
           <button
             onClick={() => setFiltersOpen((v) => !v)}
             aria-expanded={filtersOpen}
-            className="rounded-md border border-[#2a2a2e] bg-[#161618] px-2 py-1 text-[#cfc9be] sm:hidden"
+            className="rounded-md border border-line bg-card px-2 py-1 text-ink-2 sm:hidden"
           >
             Filters {enabled.size < TYPE_KEYS.length ? `(${enabled.size}/${TYPE_KEYS.length})` : ""}
           </button>
@@ -183,11 +183,11 @@ export function CommunityMap({ initialPins, online }: { initialPins: PublicPin[]
               setListOpen((v) => !v || !!selected);
             }}
             aria-expanded={panelMode === "list"}
-            className="rounded-md border border-[#2a2a2e] bg-[#161618] px-2 py-1 text-[#cfc9be] hover:border-[#ffd36b]"
+            className="rounded-md border border-line bg-card px-2 py-1 text-ink-2 hover:border-orange"
           >
             Pins ({visible.length})
           </button>
-          <Link href="/map/leaderboard" className="ml-auto text-[#9a958c] hover:text-[#ff2d7b]">
+          <Link href="/map/leaderboard" className="ml-auto text-muted hover:text-pink">
             Leaderboard →
           </Link>
         </div>
@@ -197,23 +197,23 @@ export function CommunityMap({ initialPins, online }: { initialPins: PublicPin[]
               key={t}
               onClick={() => toggleType(t)}
               aria-pressed={enabled.has(t)}
-              className={`flex items-center gap-1.5 rounded-full border px-2.5 py-0.5 text-xs ${enabled.has(t) ? "border-[#2a2a2e] bg-[#161618] text-[#f4f1ea]" : "border-[#2a2a2e] text-[#6f6b64] line-through"}`}
+              className={`flex items-center gap-1.5 rounded-full border px-2.5 py-0.5 text-xs ${enabled.has(t) ? "border-line bg-card text-ink" : "border-line text-faint line-through"}`}
             >
               <span className="inline-block h-2 w-2 rounded-full" style={{ background: PIN_TYPES[t].color, opacity: enabled.has(t) ? 1 : 0.35 }} />
               {PIN_TYPES[t].label}
-              <span className="text-[#9a958c]">{counts[t] ?? 0}</span>
+              <span className="text-muted">{counts[t] ?? 0}</span>
             </button>
           ))}
         </div>
         {!online ? (
-          <p className="rounded-md border border-[#ffd36b]/40 bg-[#ffd36b]/10 px-2 py-1 text-xs text-[#ffd36b]" data-testid="offline-notice">
+          <p className="rounded-md border border-orange/40 bg-orange/10 px-2 py-1 text-xs text-orange" data-testid="offline-notice">
             Community submissions are offline right now. You can still browse the official pins.
           </p>
         ) : null}
       </div>
 
       {submitting && !draft ? (
-        <div className="pointer-events-none absolute inset-x-0 bottom-10 z-[900] mx-auto w-fit rounded-full bg-[#0b0b0c]/90 px-4 py-1.5 text-xs text-[#ffd36b]">
+        <div className="pointer-events-none absolute inset-x-0 bottom-10 z-[900] mx-auto w-fit rounded-full bg-bg/90 px-4 py-1.5 text-xs text-orange">
           Tap the map to drop your pin
         </div>
       ) : null}
@@ -232,8 +232,8 @@ export function CommunityMap({ initialPins, online }: { initialPins: PublicPin[]
             <div className="flex flex-col gap-4">
               <div className="flex items-start justify-between">
                 <div>
-                  <h2 className="mb-1 text-sm uppercase tracking-widest text-[#ffd36b]">{q ? "Results" : "Pins"}</h2>
-                  <p className="text-xs text-[#9a958c]">
+                  <h2 className="mb-1 text-xs font-semibold uppercase tracking-[0.2em] text-turq">{q ? "Results" : "Pins"}</h2>
+                  <p className="text-xs text-muted">
                     {visible.length} shown. Click a pin for details{online ? ", votes and comments" : ""}.
                   </p>
                 </div>
@@ -242,7 +242,7 @@ export function CommunityMap({ initialPins, online }: { initialPins: PublicPin[]
                     setListOpen(false);
                     setQuery("");
                   }}
-                  className="text-sm text-[#9a958c] hover:text-[#ff2d7b]"
+                  className="text-sm text-muted hover:text-pink"
                   aria-label="Close list"
                 >
                   ✕
@@ -251,20 +251,20 @@ export function CommunityMap({ initialPins, online }: { initialPins: PublicPin[]
               <ul className="flex flex-col gap-1 text-sm" data-testid="pin-list">
                 {visible.map((p) => (
                   <li key={p.id}>
-                    <button onClick={() => focus(p)} className="flex w-full items-center gap-2 rounded px-2 py-1 text-left hover:bg-[#161618]">
+                    <button onClick={() => focus(p)} className="flex w-full items-center gap-2 rounded px-2 py-1 text-left hover:bg-card">
                       <span className="inline-block h-2 w-2 shrink-0 rounded-full" style={{ background: PIN_TYPES[p.type].color }} />
                       <span className="truncate">{p.name}</span>
-                      {p.approximate ? <span className="ml-auto text-[10px] text-[#6f6b64]">approx.</span> : null}
+                      {p.approximate ? <span className="ml-auto text-[10px] text-faint">approx.</span> : null}
                     </button>
                   </li>
                 ))}
-                {visible.length === 0 ? <li className="text-xs text-[#9a958c]">Nothing matches.</li> : null}
+                {visible.length === 0 ? <li className="text-xs text-muted">Nothing matches.</li> : null}
               </ul>
               {online ? (
-                <div className="border-t border-[#2a2a2e] pt-4">
+                <div className="border-t border-line pt-4">
                   <div className="mb-2 flex items-center justify-between">
-                    <h2 className="text-sm uppercase tracking-widest text-[#ffd36b]">Top markers</h2>
-                    <Link href="/map/leaderboard" className="text-xs text-[#9a958c] hover:text-[#ff2d7b]">
+                    <h2 className="text-xs font-semibold uppercase tracking-[0.2em] text-turq">Top markers</h2>
+                    <Link href="/map/leaderboard" className="text-xs text-muted hover:text-pink">
                       Leaderboard →
                     </Link>
                   </div>
@@ -273,28 +273,28 @@ export function CommunityMap({ initialPins, online }: { initialPins: PublicPin[]
                       {leaders.slice(0, 5).map((l, i) => (
                         <li key={l.gamerTag} className="flex justify-between">
                           <span>
-                            <span className="mr-2 text-[#6f6b64]">{i + 1}.</span>
+                            <span className="mr-2 text-faint">{i + 1}.</span>
                             {l.gamerTag}
                           </span>
-                          <span className="text-[#9a958c]">{l.count}</span>
+                          <span className="text-muted">{l.count}</span>
                         </li>
                       ))}
                     </ol>
                   ) : (
-                    <p className="text-xs text-[#9a958c]">No community pins yet. Be the first to mark a spot.</p>
+                    <p className="text-xs text-muted">No community pins yet. Be the first to mark a spot.</p>
                   )}
                 </div>
               ) : null}
-              <div className="border-t border-[#2a2a2e] pt-4">
-                <h2 className="mb-2 text-sm uppercase tracking-widest text-[#ffd36b]">Region guides</h2>
+              <div className="border-t border-line pt-4">
+                <h2 className="mb-2 text-xs font-semibold uppercase tracking-[0.2em] text-turq">Region guides</h2>
                 <div className="grid grid-cols-2 gap-1 text-sm">
                   {REGION_PAGES.map((r) => (
-                    <Link key={r.slug} href={`/map/${r.slug}`} className="rounded px-2 py-1 text-[#cfc9be] hover:bg-[#161618] hover:text-[#ff2d7b]">
+                    <Link key={r.slug} href={`/map/${r.slug}`} className="rounded px-2 py-1 text-ink-2 hover:bg-card hover:text-pink">
                       {r.name}
                     </Link>
                   ))}
                 </div>
-                <p className="mt-3 text-xs text-[#6f6b64]">
+                <p className="mt-3 text-xs text-faint">
                   The base map is an illustration. Pins marked “approx.” are best guesses until they&apos;re confirmed in game.
                 </p>
               </div>

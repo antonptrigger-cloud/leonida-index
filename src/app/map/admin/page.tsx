@@ -13,7 +13,7 @@ export default async function AdminPage() {
     return (
       <div>
         <PageHeader kicker="Moderation" title="Pending pins" source="Private" />
-        <p className="text-[#9a958c]">Moderation is not configured. Set MOD_PASSWORD and MOD_SESSION_SECRET (see docs/COMMUNITY_MAP.md).</p>
+        <p className="text-muted">Moderation is not configured. Set MOD_PASSWORD and MOD_SESSION_SECRET (see docs/COMMUNITY_MAP.md).</p>
       </div>
     );
   }
@@ -33,7 +33,7 @@ export default async function AdminPage() {
       {queue ? (
         <AdminQueue initial={queue} />
       ) : (
-        <p className="text-[#9a958c]">The database isn&apos;t configured, so there&apos;s nothing to moderate yet.</p>
+        <p className="text-muted">The database isn&apos;t configured, so there&apos;s nothing to moderate yet.</p>
       )}
     </div>
   );

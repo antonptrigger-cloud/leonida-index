@@ -4,7 +4,7 @@ export default function Page() {
   return (
     <div>
       <PageHeader kicker="Secrets" title="Easter eggs" source="Unverified" />
-      <p className="text-[#9a958c]">Shell. Submit finds after launch. Nothing invented here.</p>
+      <p className="text-muted">Shell. Submit finds after launch. Nothing invented here.</p>
     </div>
   );
 }

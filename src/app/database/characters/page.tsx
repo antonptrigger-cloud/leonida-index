@@ -21,7 +21,7 @@ export default function Page() {
       <ul className="grid gap-2 sm:grid-cols-2">
         {PEOPLE.map(([slug, name]) => (
           <li key={slug}>
-            <Link href={`/database/characters/${slug}`} className="text-[#ffd36b] hover:text-[#ff2d7b]">{name}</Link>
+            <Link href={`/database/characters/${slug}`} className="text-orange hover:text-pink">{name}</Link>
           </li>
         ))}
       </ul>
