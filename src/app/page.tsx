@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import { PageBackdrop } from "@/components/PageBackdrop";
 import { Palm } from "@/components/Palm";
 import { Scenery, SKIES, type SceneId } from "@/components/Scenery";
 import { TILES } from "@/lib/map/config";
@@ -100,7 +101,8 @@ export default function Home() {
   return (
     <div className="flex flex-col gap-24x pb-16x">
       {/* ---------- Hero: split, left-aligned headline, overlapping postcard ---------- */}
-      <section className="relative grid items-center gap-10x pt-4x md:grid-cols-12 md:gap-0 md:pt-10x">
+      <section className="relative isolate -mt-10x grid items-center gap-10x pt-[3.5rem] md:grid-cols-12 md:gap-0 md:pt-[5rem]">
+        <PageBackdrop id="car" dim="strong" priority />
         <div className="pointer-events-none absolute inset-0 overflow-hidden" aria-hidden>
           <Palm className="absolute -left-24 -top-6 h-[110%] w-auto text-pink opacity-[0.06]" />
         </div>

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { CHAPTER, LAST_VERIFIED, MISSIONS, missionPath } from "@/lib/guides/missions";
 import { NEWS, newsPath } from "@/lib/news/articles";
+import { CHARACTERS, LAST_VERIFIED as CHARACTERS_VERIFIED, characterPath } from "@/lib/characters/characters";
 
 export const SITE = {
   name: "Leonida Vice Guide",
@@ -49,15 +50,6 @@ export interface RouteSeo {
   /** Sources relied on, emitted as JSON-LD citation (news). */
   citations?: string[];
 }
-
-const character = (name: string, blurb: string): RouteSeo => ({
-  title: `${name} (GTA 6 Character)`,
-  description: `${name} in GTA 6: who they are, what Rockstar has shown so far and where they fit in the story of Leonida. ${blurb}`,
-  crumb: name,
-  kind: "profile",
-  changeFrequency: "weekly",
-  priority: 0.5,
-});
 
 const region = (name: string, title: string, description: string): RouteSeo => ({
   title,
@@ -252,20 +244,28 @@ export const ROUTES: Record<string, RouteSeo> = {
   },
   "/database/characters": {
     title: "GTA 6 Characters: Full Cast List",
-    description: "Every confirmed GTA 6 character: Lucia Caminos, Jason Duval, Cal Hampton, Boobie Ike, Dre'Quan Priest, Raul Bautista, Brian Heder and Real Dimez.",
+    description: "Every GTA 6 character Rockstar has profiled so far: Lucia Caminos, Jason Duval, Cal Hampton, Boobie Ike, Dre'Quan Priest, Raul Bautista, Brian Heder and Real Dimez. Spoilers hidden.",
     crumb: "Characters",
     kind: "collection",
     changeFrequency: "weekly",
     priority: 0.7,
+    updated: CHARACTERS_VERIFIED,
   },
-  "/database/characters/lucia-caminos": character("Lucia Caminos", "One of the two playable leads."),
-  "/database/characters/jason-duval": character("Jason Duval", "One of the two playable leads."),
-  "/database/characters/cal-hampton": character("Cal Hampton", ""),
-  "/database/characters/boobie-ike": character("Boobie Ike", ""),
-  "/database/characters/dre-quan-priest": character("Dre'Quan Priest", ""),
-  "/database/characters/raul-bautista": character("Raul Bautista", ""),
-  "/database/characters/brian-heder": character("Brian Heder", ""),
-  "/database/characters/real-dimez": character("Real Dimez", ""),
+  ...Object.fromEntries(
+    CHARACTERS.map((c): [string, RouteSeo] => [
+      characterPath(c.slug),
+      {
+        title: `${c.name} (GTA 6 Character)`,
+        description: c.seoDescription,
+        crumb: c.name,
+        kind: "profile",
+        changeFrequency: "weekly",
+        priority: 0.6,
+        updated: CHARACTERS_VERIFIED,
+        published: CHARACTERS_VERIFIED,
+      },
+    ]),
+  ),
   "/sources": {
     title: "Sources & Verification",
     description: "How Leonida Vice Guide labels information: official, showcase, in-game and unverified sources for every GTA 6 fact on the site.",
