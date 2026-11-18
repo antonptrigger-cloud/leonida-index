@@ -1,4 +1,11 @@
 import type { Metadata } from "next";
+import { LAST_VERIFIED, MISSIONS, missionPath } from "@/lib/guides/missions";
+import { HUB_VERIFIED } from "@/lib/guides/story";
+import { MONEY_VERIFIED } from "@/lib/guides/money";
+import { NEWS, newsPath } from "@/lib/news/articles";
+import { CHARACTERS, LAST_VERIFIED as CHARACTERS_VERIFIED, characterPath } from "@/lib/characters/characters";
+import { DB_VERIFIED, REFERENCE_PAGES } from "@/lib/database/reference";
+import { CAST_DESCRIPTION, CAST_PATH, CAST_TITLE, CAST_VERIFIED } from "@/lib/characters/cast";
 
 export const SITE = {
   name: "Leonida Vice Guide",
@@ -31,23 +38,27 @@ export interface RouteSeo {
   description: string;
   /** Short label for breadcrumbs. */
   crumb: string;
-  kind?: "page" | "article" | "howto" | "collection" | "profile";
+  kind?: "page" | "article" | "news" | "howto" | "collection" | "profile";
+  /** For kind = "profile": "Thing" for a group or duo, otherwise "Person". */
+  profileType?: "Person" | "Thing";
   /** HowTo steps, when kind = "howto". */
   steps?: { name: string; text: string }[];
   changeFrequency?: ChangeFreq;
   priority?: number;
   /** Keep out of the index and the sitemap. */
   noindex?: boolean;
+  /** ISO date the page content was last verified (sitemap lastModified, JSON-LD dateModified). */
+  updated?: string;
+  /** ISO date first published (JSON-LD datePublished). */
+  published?: string;
+  /** JSON-LD keywords (news). */
+  keywords?: string[];
+  /** Sources relied on, emitted as JSON-LD citation (news). */
+  citations?: string[];
 }
 
-const character = (name: string, blurb: string): RouteSeo => ({
-  title: `${name} (GTA 6 Character)`,
-  description: `${name} in GTA 6: who they are, what Rockstar has shown so far and where they fit in the story of Leonida. ${blurb}`,
-  crumb: name,
-  kind: "profile",
-  changeFrequency: "weekly",
-  priority: 0.5,
-});
+/** Character profiles that describe a duo, not one person. */
+const GROUP_PROFILES = new Set(["real-dimez"]);
 
 const region = (name: string, title: string, description: string): RouteSeo => ({
   title,
@@ -71,7 +82,7 @@ export const ROUTES: Record<string, RouteSeo> = {
   "/map": {
     title: "GTA 6 Interactive Map: Vice City & Leonida",
     description:
-      "Free interactive GTA 6 map of Leonida: Vice City, Leonida Keys, Grassrivers, Port Gellhorn, Ambrosia and Mount Kalaga. Find landmarks, secrets and collectibles, and mark new spots for the community.",
+      "Free interactive GTA 6 map of Leonida: Vice City, Leonida Keys, Grassrivers, Port Gellhorn, Ambrosia and Mount Kalaga. Find landmarks and secrets.",
     crumb: "Map",
     kind: "collection",
     changeFrequency: "hourly",
@@ -117,11 +128,12 @@ export const ROUTES: Record<string, RouteSeo> = {
   "/map/admin": { title: "Map moderation", description: "Moderator sign-in.", crumb: "Moderation", noindex: true },
   "/guides": {
     title: "GTA 6 Guides & Tips",
-    description: "GTA 6 guides and tips: beginner advice, the wanted system, stealing cars and the activities around Leonida, updated as the game is played.",
+    description: "GTA 6 guides and tips: every mission in order, the money guide, beginner advice, the wanted system, stealing cars and activities around Leonida.",
     crumb: "Guides",
     kind: "collection",
     changeFrequency: "daily",
     priority: 0.85,
+    updated: LAST_VERIFIED,
   },
   "/guides/beginner": {
     title: "GTA 6 Beginner Guide: Tips for Your First Hours",
@@ -166,30 +178,86 @@ export const ROUTES: Record<string, RouteSeo> = {
     changeFrequency: "weekly",
     priority: 0.7,
   },
+  "/guides/missions": {
+    title: "GTA 6 Walkthrough: All Missions in Order",
+    description: "Every GTA 6 story mission in order across five chapters, with mission counts, spoiler-blurred chapter lists and links to each walkthrough as it goes live.",
+    crumb: "Missions",
+    kind: "collection",
+    changeFrequency: "daily",
+    priority: 0.9,
+    updated: HUB_VERIFIED,
+  },
+  "/guides/money": {
+    title: "GTA 6 Money Guide: Fastest Ways to Earn Cash",
+    description: "The fastest ways to make money in GTA 6 at every stage of the story, from Moses's car jobs to jewelry stores, Randy's wish list and late-game vaults.",
+    crumb: "Money guide",
+    kind: "article",
+    changeFrequency: "weekly",
+    priority: 0.85,
+    updated: MONEY_VERIFIED,
+    published: MONEY_VERIFIED,
+  },
+  ...Object.fromEntries(
+    MISSIONS.map((m): [string, RouteSeo] => [
+      missionPath(m.slug),
+      {
+        title: m.seoTitle,
+        description: m.seoDescription,
+        crumb: m.name,
+        kind: "article",
+        changeFrequency: "weekly",
+        priority: 0.75,
+        updated: LAST_VERIFIED,
+        published: LAST_VERIFIED,
+      },
+    ]),
+  ),
   "/secrets": {
     title: "GTA 6 Secrets & Easter Eggs",
     description: "GTA 6 secrets and easter eggs found by players after launch, verified before they are listed. Submit your own finds on the community map.",
     crumb: "Secrets",
+    // noindex until there is real, verified content (also keeps it out of the sitemap).
+    noindex: true,
     kind: "collection",
     changeFrequency: "daily",
     priority: 0.8,
   },
   "/news": {
     title: "GTA 6 News & Updates",
-    description: "The latest confirmed GTA 6 news: release date, platforms, editions and official updates from Rockstar, with sources.",
+    description: "GTA 6 launch news with sources: unlock times, reviews, the PS5 update, preload, editions, streamer viewership and what Rockstar has confirmed.",
     crumb: "News",
     kind: "collection",
     changeFrequency: "daily",
     priority: 0.7,
+    // The index changes whenever any story does.
+    updated: NEWS.map((n) => n.updated).sort().at(-1),
   },
   "/news/release-date": {
     title: "GTA 6 Release Date, Platforms & Price",
-    description: "GTA 6 launches 19 November 2026 on PS5 and Xbox Series X|S, with preload from 12 November. Platforms, PC status and edition prices.",
+    description: "GTA 6 launches 19 November 2026 on PS5 and Xbox Series X|S, with preload from 10 November. Platforms, PC status and edition prices.",
     crumb: "Release date",
     kind: "article",
     changeFrequency: "weekly",
     priority: 0.75,
+    updated: "2026-11-18",
   },
+  ...Object.fromEntries(
+    NEWS.map((n): [string, RouteSeo] => [
+      newsPath(n.slug),
+      {
+        title: n.title,
+        description: n.description,
+        crumb: n.crumb,
+        kind: "news",
+        changeFrequency: "weekly",
+        priority: 0.7,
+        published: n.published,
+        updated: n.updated,
+        keywords: n.keywords,
+        citations: n.citations,
+      },
+    ]),
+  ),
   "/tools/edition-compare": {
     title: "GTA 6 Editions Compared: Standard vs Ultimate",
     description: "GTA 6 Standard vs Ultimate edition: price, pre-order bonus, extra vehicles and venues side by side, so you can pick the right one.",
@@ -198,22 +266,66 @@ export const ROUTES: Record<string, RouteSeo> = {
     changeFrequency: "weekly",
     priority: 0.65,
   },
+  "/database": {
+    title: "GTA 6 Database: Characters, Vehicles, Weapons, Radio",
+    description: "The Leonida Vice Guide database: GTA 6 characters and cast, vehicle totals, weapons and Ammu-Nation stores, and radio stations. Every fact is labelled.",
+    crumb: "Database",
+    kind: "collection",
+    changeFrequency: "daily",
+    priority: 0.8,
+    updated: DB_VERIFIED,
+  },
+  ...Object.fromEntries(
+    REFERENCE_PAGES.map((p): [string, RouteSeo] => [
+      p.path,
+      {
+        title: p.seoTitle,
+        description: p.seoDescription,
+        crumb: p.crumb,
+        kind: "article",
+        changeFrequency: "daily",
+        priority: 0.7,
+        updated: DB_VERIFIED,
+        published: DB_VERIFIED,
+      },
+    ]),
+  ),
   "/database/characters": {
     title: "GTA 6 Characters: Full Cast List",
-    description: "Every confirmed GTA 6 character: Lucia Caminos, Jason Duval, Cal Hampton, Boobie Ike, Dre'Quan Priest, Raul Bautista, Brian Heder and Real Dimez.",
+    description: "GTA 6 characters: Lucia Caminos, Jason Duval, Brian Heder and the rest of Rockstar's profiles, plus fences like Moses and Randy. Every fact is labelled.",
     crumb: "Characters",
     kind: "collection",
     changeFrequency: "weekly",
     priority: 0.7,
+    updated: CHARACTERS_VERIFIED,
   },
-  "/database/characters/lucia-caminos": character("Lucia Caminos", "One of the two playable leads."),
-  "/database/characters/jason-duval": character("Jason Duval", "One of the two playable leads."),
-  "/database/characters/cal-hampton": character("Cal Hampton", ""),
-  "/database/characters/boobie-ike": character("Boobie Ike", ""),
-  "/database/characters/dre-quan-priest": character("Dre'Quan Priest", ""),
-  "/database/characters/raul-bautista": character("Raul Bautista", ""),
-  "/database/characters/brian-heder": character("Brian Heder", ""),
-  "/database/characters/real-dimez": character("Real Dimez", ""),
+  ...Object.fromEntries(
+    CHARACTERS.map((c): [string, RouteSeo] => [
+      characterPath(c.slug),
+      {
+        title: c.seoTitle ?? `${c.name} (GTA 6 Character)`,
+        description: c.seoDescription,
+        crumb: c.name,
+        kind: "profile",
+        profileType: GROUP_PROFILES.has(c.slug) ? "Thing" : "Person",
+        changeFrequency: "weekly",
+        priority: 0.6,
+        updated: CHARACTERS_VERIFIED,
+        published: CHARACTERS_VERIFIED,
+      },
+    ]),
+  ),
+  // About real people (cast), so a plain Article about the game rather than a character profile.
+  [CAST_PATH]: {
+    title: CAST_TITLE,
+    description: CAST_DESCRIPTION,
+    crumb: "Cast",
+    kind: "article",
+    changeFrequency: "daily",
+    priority: 0.7,
+    updated: CAST_VERIFIED,
+    published: CAST_VERIFIED,
+  },
   "/sources": {
     title: "Sources & Verification",
     description: "How Leonida Vice Guide labels information: official, showcase, in-game and unverified sources for every GTA 6 fact on the site.",
@@ -230,19 +342,22 @@ export const ROUTES: Record<string, RouteSeo> = {
   },
 };
 
+/** Longest "title | brand" we allow before dropping the brand suffix. */
+export const MAX_BRANDED_TITLE = 62;
+
 export function absoluteUrl(path: string): string {
   return path === "/" ? SITE.url : `${SITE.url}${path}`;
 }
 
 /** Breadcrumb trail for a path, using the nearest registered ancestors. */
-export function crumbsFor(path: string): { name: string; url: string }[] {
-  const out: { name: string; url: string }[] = [{ name: "Home", url: SITE.url }];
+export function crumbsFor(path: string): { name: string; url: string; path: string }[] {
+  const out: { name: string; url: string; path: string }[] = [{ name: "Home", url: SITE.url, path: "/" }];
   if (path === "/") return out;
   const parts = path.split("/").filter(Boolean);
   for (let i = 1; i <= parts.length; i++) {
     const p = "/" + parts.slice(0, i).join("/");
     const r = ROUTES[p];
-    if (r) out.push({ name: r.crumb, url: absoluteUrl(p) });
+    if (r) out.push({ name: r.crumb, url: absoluteUrl(p), path: p });
   }
   return out;
 }
@@ -252,20 +367,27 @@ export function metaFor(path: string): Metadata {
   const r = ROUTES[path];
   if (!r) throw new Error(`No SEO entry for ${path}`);
   const url = absoluteUrl(path);
-  const ogTitle = r.absoluteTitle ? r.title : `${r.title} | ${SITE.name}`;
+  // Search results cut titles at roughly 60 characters. When adding the " | Leonida Vice Guide"
+  // suffix would push past MAX_BRANDED_TITLE, show the page title on its own (the brand stays in og:site_name).
+  const branded = `${r.title} | ${SITE.name}`;
+  const bare = r.absoluteTitle || branded.length > MAX_BRANDED_TITLE;
+  const ogTitle = bare ? r.title : branded;
   return {
-    title: r.absoluteTitle ? { absolute: r.title } : r.title,
+    title: bare ? { absolute: r.title } : r.title,
     description: r.description,
     alternates: { canonical: path },
     ...(r.noindex ? { robots: { index: false, follow: false, nocache: true } } : {}),
     openGraph: {
-      type: r.kind === "article" || r.kind === "howto" ? "article" : "website",
+      type: r.kind === "article" || r.kind === "news" || r.kind === "howto" ? "article" : "website",
       url,
       title: ogTitle,
       description: r.description,
       siteName: SITE.name,
       locale: SITE.locale,
       images: [OG_IMAGE],
+      ...((r.kind === "news" || r.kind === "article" || r.kind === "howto") && r.published
+        ? { publishedTime: r.published, modifiedTime: r.updated ?? r.published }
+        : {}),
     },
     twitter: { card: "summary_large_image", title: ogTitle, description: r.description, images: [OG_IMAGE.url] },
   };

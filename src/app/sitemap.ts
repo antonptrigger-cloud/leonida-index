@@ -20,7 +20,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     .filter(([, r]) => !r.noindex)
     .map(([path, r]) => ({
       url: absoluteUrl(path),
-      lastModified: path.startsWith("/map") ? mapUpdated : SITE.updated,
+      lastModified: path.startsWith("/map") ? mapUpdated : (r.updated ?? SITE.updated),
       changeFrequency: r.changeFrequency,
       priority: r.priority,
     }));

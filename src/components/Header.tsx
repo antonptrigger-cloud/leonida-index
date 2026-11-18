@@ -1,11 +1,12 @@
 import Link from "next/link";
 import { LogoMark } from "@/components/LogoMark";
 import { NavLinks, type NavItem } from "@/components/NavLinks";
+import { HeaderBackdrop } from "@/components/HeaderBackdrop";
 
 const NAV: NavItem[] = [
   { href: "/map", label: "Map" },
   { href: "/guides", label: "Guides" },
-  { href: "/database/characters", label: "Database", match: "/database" },
+  { href: "/database", label: "Database", match: "/database" },
   { href: "/tools/edition-compare", label: "Tools", match: "/tools" },
   { href: "/news", label: "News" },
   { href: "/secrets", label: "Secrets" },
@@ -14,6 +15,7 @@ const NAV: NavItem[] = [
 export function Header() {
   return (
     <header className="relative z-40 bg-[rgba(10,10,11,0.86)] backdrop-blur-md">
+      <HeaderBackdrop />
       <div className="mx-auto flex max-w-6xl flex-wrap items-center gap-x-10x gap-y-2x px-4x py-3x sm:px-gutter">
         <Link href="/" className="group flex shrink-0 items-center gap-3x" aria-label="Leonida Vice Guide home">
           <LogoMark className="h-9 w-auto drop-shadow-[0_0_10px_rgba(255,45,120,0.45)] transition-transform duration-300 group-hover:-rotate-3 sm:h-10" />
