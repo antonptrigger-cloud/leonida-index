@@ -406,6 +406,12 @@ a.vc-card:hover {
   white-space: nowrap;
   transition: color 0.15s ease, text-shadow 0.15s ease;
 }
+@media (max-width: 639px) {
+  .vc-nav-link {
+    font-size: 1.05rem;
+    letter-spacing: 0.05em;
+  }
+}
 .vc-nav-link::after {
   content: "";
   position: absolute;
@@ -710,12 +716,17 @@ a.vc-card:hover {
   text-shadow: none;
 }
 .lvg-map .leaflet-control-attribution {
-  background: rgba(10, 10, 11, 0.8);
-  color: #a6a1b4;
-  font-size: 10px;
+  background: rgba(10, 10, 11, 0.9);
+  color: #d9d5e2;
+  font-size: 12px;
+  line-height: 1.5;
+  padding: 2px 8px;
+  max-width: calc(100vw - 16px);
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.8);
 }
 .lvg-map .leaflet-control-attribution a {
-  color: #a6a1b4;
+  color: #ff5c97;
+  text-decoration: underline;
 }
 .lvg-map .leaflet-tooltip {
   background: rgba(12, 10, 15, 0.95);
@@ -729,39 +740,127 @@ a.vc-card:hover {
 .lvg-map .leaflet-tooltip-top::before {
   border-top-color: rgba(255, 45, 120, 0.55);
 }
-.lvg-pin span {
+/* Glyph markers (see src/components/map/glyphs.ts). The svg tip is the anchor. */
+.lvg-pin svg {
+  display: block;
+  width: 28px;
+  height: 37px;
+  overflow: visible;
+  filter: drop-shadow(0 2px 3px rgba(0, 0, 0, 0.7));
+  transform-origin: 50% 100%;
+  transition: transform 0.14s ease, filter 0.14s ease;
+}
+.lvg-pin:hover svg,
+.lvg-pin:focus-visible svg {
+  transform: scale(1.18);
+  filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.55)) drop-shadow(0 2px 3px rgba(0, 0, 0, 0.7));
+}
+.lvg-pin:focus-visible {
+  outline: none;
+}
+.lvg-pin--selected svg {
+  transform: scale(1.3);
+  filter: drop-shadow(0 0 10px #00e5cc) drop-shadow(0 0 3px #00e5cc);
+}
+@media (pointer: coarse) {
+  .lvg-pin svg {
+    transform: scale(1.15);
+  }
+  .lvg-pin--selected svg {
+    transform: scale(1.4);
+  }
+}
+
+/* Region label chips. --lvg-s is 1 at native resolution and doubles per zoom level (set in LeafletMap), so the
+   chip keeps clear of the region label baked into the base image at every zoom. */
+.lvg-region {
+  pointer-events: auto;
+  /* Leaflet positions the marker with `transform`; the individual `translate` property stacks on top of it. */
+  translate: -50% calc(14px + 14px * var(--lvg-s, 0.5));
+}
+.lvg-region--tall {
+  translate: -50% calc(22px + 22px * var(--lvg-s, 0.5));
+}
+.lvg-region__chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.15rem 0.55rem 0.1rem;
+  font-family: var(--font-display-face), Impact, sans-serif;
+  font-size: 0.95rem;
+  line-height: 1.1;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  color: #f5f3f7;
+  background: rgba(10, 10, 11, 0.88);
+  border: 1px solid #ff2d78;
+  box-shadow: 0 0 12px rgba(255, 45, 120, 0.55), 0 2px 6px rgba(0, 0, 0, 0.6);
+  clip-path: polygon(6px 0, 100% 0, calc(100% - 6px) 100%, 0 100%);
+  cursor: pointer;
+  transition: background 0.15s ease, box-shadow 0.15s ease;
+}
+.lvg-region__chip i {
+  width: 0.5rem;
+  height: 0.5rem;
+  background: #ff2d78;
+  transform: rotate(45deg);
+  box-shadow: 0 0 6px #ff2d78;
+}
+.lvg-region--approx .lvg-region__chip {
+  border-style: dashed;
+}
+.lvg-region:hover .lvg-region__chip,
+.lvg-region:focus-visible .lvg-region__chip,
+.lvg-region--selected .lvg-region__chip {
+  background: #2a1020;
+  box-shadow: 0 0 16px rgba(0, 229, 204, 0.7), 0 2px 6px rgba(0, 0, 0, 0.6);
+  border-color: #00e5cc;
+}
+.lvg-region:focus-visible {
+  outline: none;
+}
+
+/* Clusters: dark neon discs with the count. */
+.lvg-cluster span {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+  border-radius: 9999px;
+  font-family: var(--font-display-face), Impact, sans-serif;
+  font-size: 1.15rem;
+  letter-spacing: 0.04em;
+  color: #f5f3f7;
+  background: radial-gradient(circle at 35% 30%, #3a1630, #120a14);
+  border: 2px solid #ff2d78;
+  box-shadow: 0 0 0 3px rgba(255, 45, 120, 0.22), 0 0 14px rgba(255, 45, 120, 0.6), 0 2px 6px rgba(0, 0, 0, 0.6);
+  transition: transform 0.14s ease, border-color 0.14s ease;
+}
+.lvg-cluster:hover span,
+.lvg-cluster:focus-visible span {
+  transform: scale(1.12);
+  border-color: #00e5cc;
+}
+.lvg-cluster:focus-visible {
+  outline: none;
+}
+
+/* Submission draft pin (our own teardrop, dropped by clicking the map). */
+.lvg-pin--draft span {
   display: block;
   width: 100%;
   height: 100%;
-  border-radius: 9999px;
-  background: var(--pin);
-  border: 2px solid #0a0a0b;
-  box-shadow: 0 0 0 1px rgba(245, 243, 247, 0.6), 0 2px 6px rgba(0, 0, 0, 0.6);
-  transition: transform 0.12s ease;
-}
-.lvg-pin:hover span,
-.lvg-pin:focus span {
-  transform: scale(1.2);
-}
-.lvg-pin--approx span {
-  border-style: dashed;
-}
-.lvg-pin--region span {
-  /* Hollow ring so the region label on the base map stays readable. */
-  background: rgba(255, 45, 120, 0.12);
-  border: 3px solid var(--pin);
-  box-shadow: 0 0 0 1px rgba(11, 11, 12, 0.9), 0 0 10px rgba(255, 45, 120, 0.7);
-}
-.lvg-pin--selected span {
-  box-shadow: 0 0 0 3px #00e5cc, 0 0 14px rgba(0, 229, 204, 0.6);
-  transform: scale(1.25);
-}
-.lvg-pin--draft span {
   background: #ff8c42;
   border-radius: 50% 50% 50% 0;
   transform: rotate(-45deg);
   border: 2px solid #0a0a0b;
   box-shadow: 0 0 0 2px #ff2d78, 0 0 14px rgba(255, 45, 120, 0.7);
+}
+
+.lvg-dropmode .leaflet-marker-icon:not(.lvg-pin--draft) {
+  pointer-events: none;
 }
 
 /* Full-window map page: no page scroll behind the fixed map. */
@@ -810,12 +909,7 @@ body:has(.lvg-fullmap) {
   }
 }
 
-@media (max-width: 639px) {
-  header nav[aria-label="Main"] {
-    -webkit-mask-image: linear-gradient(90deg, #000 85%, transparent);
-    mask-image: linear-gradient(90deg, #000 85%, transparent);
-  }
-}
+/* The mobile nav wraps instead of scrolling, so it needs no fade mask. */
 }
 
 @media (max-width: 639px) {
