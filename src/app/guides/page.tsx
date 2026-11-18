@@ -2,6 +2,7 @@ import { metaFor } from "@/lib/seo/site";
 import { PageSchema } from "@/lib/seo/jsonld";
 import Link from "next/link";
 import { PageHeader } from "@/components/PageHeader";
+import { Breadcrumbs } from "@/components/Breadcrumbs";
 
 const GUIDES = [
   { href: "/guides/missions", title: "Mission guides: Chapter 1" },
@@ -16,7 +17,8 @@ export const metadata = metaFor("/guides");
 export default function Guides() {
   return (
     <div>
-      <PageSchema path="/guides" />
+      <PageSchema path="/guides" breadcrumbs={false} />
+      <Breadcrumbs path="/guides" />
       <PageHeader backdrop="boat" dim="strong" kicker="Guides" title="How to play Leonida" />
       <ul className="flex flex-col gap-3">
         {GUIDES.map((g) => (

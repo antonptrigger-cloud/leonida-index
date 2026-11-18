@@ -55,6 +55,8 @@ export interface Mission {
   /** Non-spoiler tips. */
   tips: { text: string; reported?: boolean }[];
   notes?: string[];
+  /** Optional real Q&A, rendered visibly by <Faq> (which also emits FAQPage JSON-LD). Never invent questions. */
+  faq?: { question: string; answer: string }[];
   sources: MissionSource[];
 }
 

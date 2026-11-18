@@ -1,11 +1,14 @@
 import { metaFor } from "@/lib/seo/site";
 import { PageSchema } from "@/lib/seo/jsonld";
 import { PageHeader } from "@/components/PageHeader";
+import { Breadcrumbs } from "@/components/Breadcrumbs";
+import { Related } from "@/components/Related";
 export const metadata = metaFor("/tools/edition-compare");
 export default function Page() {
   return (
     <div>
-      <PageSchema path="/tools/edition-compare" />
+      <PageSchema path="/tools/edition-compare" breadcrumbs={false} />
+      <Breadcrumbs path="/tools/edition-compare" />
       <PageHeader kicker="Tool" title="Standard vs Ultimate" source="Official" />
       <div className="overflow-x-auto">
         <table className="w-full min-w-[32rem] border-collapse text-left text-sm">
@@ -26,6 +29,7 @@ export default function Page() {
         </table>
       </div>
       <p className="mt-4 text-xs text-muted">Confirm against Rockstar’s official editions page before you treat a row as final.</p>
+      <Related path="/tools/edition-compare" />
     </div>
   );
 }

@@ -3,6 +3,7 @@ import { metaFor } from "@/lib/seo/site";
 import { PageSchema } from "@/lib/seo/jsonld";
 import { PageHeader } from "@/components/PageHeader";
 import { NEWS, newsPath } from "@/lib/news/articles";
+import { Breadcrumbs } from "@/components/Breadcrumbs";
 
 export const metadata = metaFor("/news");
 
@@ -12,7 +13,8 @@ export default function Page() {
   const [lead, ...rest] = NEWS;
   return (
     <div>
-      <PageSchema path="/news" />
+      <PageSchema path="/news" breadcrumbs={false} />
+      <Breadcrumbs path="/news" />
       <PageHeader backdrop="skyline" dim="strong" kicker="News · Launch week" title="Launch news" source="Official + reputable outlets" verified="18 Nov 2026" />
 
       <div className="grid gap-10x lg:grid-cols-12">

@@ -1,6 +1,9 @@
 import Link from "next/link";
 import { PageHeader } from "@/components/PageHeader";
 import { PageSchema } from "@/lib/seo/jsonld";
+import { Breadcrumbs } from "@/components/Breadcrumbs";
+import { Faq } from "@/components/Faq";
+import { Related } from "@/components/Related";
 import { NEWS, newsBySlug, newsPath } from "@/lib/news/articles";
 
 /** External source link. Opens in a new tab. */
@@ -135,18 +138,14 @@ export function NewsLayout({
   const related = NEWS.filter((n) => n.slug !== slug).slice(0, 3);
   return (
     <article>
-      <PageSchema path={newsPath(slug)} />
-      <nav aria-label="Breadcrumb" className="mb-6x text-xs text-muted">
-        <Link href="/news" className="hover:text-pink">
-          News
-        </Link>
-        <span aria-hidden> / </span>
-        <span className="text-ink-2">{item.crumb}</span>
-      </nav>
+      <PageSchema path={newsPath(slug)} breadcrumbs={false} />
+      <Breadcrumbs path={newsPath(slug)} />
       <PageHeader backdrop="skyline" dim="strong" kicker={kicker} title={title} verified={`${fmt.format(new Date(item.updated))} AEST`} source={source} />
 
       <div className="grid gap-10x lg:grid-cols-12">
-        <div className="flex min-w-0 max-w-2xl flex-col gap-4x text-ink-2 lg:col-span-8">{children}</div>
+        <div className="flex min-w-0 max-w-2xl flex-col gap-4x text-ink-2 lg:col-span-8">{children}
+          <Faq items={item.faq} />
+        </div>
         <aside className="flex flex-col gap-6x lg:col-span-4">
           <div className="vc-card p-6x [border-left-color:#00e5cc]">
             <h2 className="vc-kicker">{spoilerFree ? "Spoiler-free" : "Spoilers"}</h2>
@@ -181,6 +180,7 @@ export function NewsLayout({
           </div>
         </aside>
       </div>
+      <Related path={newsPath(slug)} />
       <p className="mt-16x text-xs text-muted">Fan site. Not affiliated with Rockstar Games or Take-Two Interactive.</p>
     </article>
   );

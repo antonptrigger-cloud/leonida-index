@@ -66,6 +66,8 @@ export interface Character {
   /** Open questions, each shown with a "To be confirmed" tag. */
   tbc: string[];
   sourceIds: CharSourceId[];
+  /** Optional real Q&A, rendered visibly by <Faq> (which also emits FAQPage JSON-LD). Never invent questions. */
+  faq?: { question: string; answer: string }[];
 }
 
 export const LAST_VERIFIED = "2026-11-18";
@@ -113,7 +115,7 @@ export const CHARACTERS: Character[] = [
     initials: "JD",
     accent: "blue",
     seoDescription:
-      "Jason Duval in GTA 6: the ex-Army playable lead who works for Keys drug runners and wants a quieter life. What Rockstar has said, his ties to Lucia, Brian and Cal.",
+      "Jason Duval in GTA 6: the ex-Army playable lead who runs errands for Keys drug runners and wants a quieter life. His ties to Lucia, Brian and Cal.",
     quote: "Jason wants an easy life, but things just keep getting harder.",
     summary:
       "Jason is one of the two characters you play in GTA 6. He is an ex-soldier who wants a calm life and keeps being pulled back into crime.",
@@ -153,7 +155,7 @@ export const CHARACTERS: Character[] = [
     initials: "LC",
     accent: "pink",
     seoDescription:
-      "Lucia Caminos in GTA 6: the fighter who just got out of Leonida Penitentiary and has a plan. What Rockstar has said about her past, her family and her partnership with Jason.",
+      "Lucia Caminos in GTA 6: the fighter fresh out of Leonida Penitentiary with a plan. What Rockstar says about her past, her family and her partnership with Jason.",
     quote: "The only thing that matters is who you know and what you got.",
     summary:
       "Lucia is the second playable lead of GTA 6: a fighter fresh out of prison who is determined to make her own luck this time.",

@@ -4,13 +4,15 @@ import { PageSchema } from "@/lib/seo/jsonld";
 import { PageHeader } from "@/components/PageHeader";
 import { CharacterPlaceholder } from "@/components/characters/CharacterBits";
 import { CHARACTERS, CHARACTER_NOTE, GROUPS, LAST_VERIFIED_LABEL, characterPath } from "@/lib/characters/characters";
+import { Breadcrumbs } from "@/components/Breadcrumbs";
 
 export const metadata = metaFor("/database/characters");
 
 export default function CharactersIndex() {
   return (
     <div>
-      <PageSchema path="/database/characters" />
+      <PageSchema path="/database/characters" breadcrumbs={false} />
+      <Breadcrumbs path="/database/characters" />
       <PageHeader
         kicker="Database"
         title="Characters"
