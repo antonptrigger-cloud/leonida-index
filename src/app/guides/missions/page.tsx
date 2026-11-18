@@ -17,6 +17,7 @@ export default function MissionsIndex() {
         <span className="text-ink-2">Missions</span>
       </nav>
       <PageHeader
+        backdrop="boat"
         kicker={`Mission guides · Chapter ${CHAPTER.number}`}
         title={CHAPTER.name}
         verified={`${LAST_VERIFIED_LABEL} (pre-launch)`}

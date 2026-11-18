@@ -17,7 +17,7 @@ export default function Guides() {
   return (
     <div>
       <PageSchema path="/guides" />
-      <PageHeader kicker="Guides" title="How to play Leonida" />
+      <PageHeader backdrop="boat" dim="strong" kicker="Guides" title="How to play Leonida" />
       <ul className="flex flex-col gap-3">
         {GUIDES.map((g) => (
           <li key={g.href}>

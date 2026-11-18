@@ -143,7 +143,7 @@ export function NewsLayout({
         <span aria-hidden> / </span>
         <span className="text-ink-2">{item.crumb}</span>
       </nav>
-      <PageHeader kicker={kicker} title={title} verified={`${fmt.format(new Date(item.updated))} AEST`} source={source} />
+      <PageHeader backdrop="skyline" dim="strong" kicker={kicker} title={title} verified={`${fmt.format(new Date(item.updated))} AEST`} source={source} />
 
       <div className="grid gap-10x lg:grid-cols-12">
         <div className="flex min-w-0 max-w-2xl flex-col gap-4x text-ink-2 lg:col-span-8">{children}</div>
