@@ -8,14 +8,15 @@ export function PageHeader({
   source?: string;
 }) {
   return (
-    <div className="mb-8">
-      {kicker ? (
-        <p className="mb-2 text-xs font-semibold uppercase tracking-[0.25em] text-turq">{kicker}</p>
-      ) : null}
-      <h1 className="vc-heading text-5xl sm:text-6xl">{title}</h1>
-      <p className="mt-3 text-xs text-muted">
-        Last verified: pre-launch · Source: {source}
-      </p>
+    <div className="mb-10x">
+      {kicker ? <p className="vc-kicker mb-4x">{kicker}</p> : null}
+      <h1 className="vc-heading text-[clamp(3.5rem,10vw,6.5rem)]">{title}</h1>
+      <div className="mt-6x flex items-center gap-4x">
+        <span className="vc-neon-line w-16 shrink-0" aria-hidden />
+        <p className="text-xs text-muted">
+          Last verified: pre-launch · Source: {source}
+        </p>
+      </div>
     </div>
   );
 }

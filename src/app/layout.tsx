@@ -33,9 +33,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${display.variable} ${body.variable} h-full`}>
-      <body className="flex min-h-full flex-col bg-bg text-ink antialiased">
+      <body className="flex min-h-full flex-col text-ink antialiased">
         <Header />
-        <main className="mx-auto w-full max-w-5xl flex-1 px-4 py-10">{children}</main>
+        <main className="mx-auto w-full max-w-6xl flex-1 px-4x py-10x sm:px-gutter">{children}</main>
         <Footer />
       </body>
     </html>

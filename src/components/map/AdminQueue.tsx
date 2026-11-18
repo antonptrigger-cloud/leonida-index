@@ -7,7 +7,7 @@ import { toSource } from "@/lib/map/geo";
 import type { ModerationQueue, QueueItem } from "@/lib/map/service";
 import type { Pin } from "@/lib/map/types";
 
-const field = "w-full rounded-md border border-line bg-bg px-2 py-1.5 text-sm outline-none focus:border-blue";
+const field = "mt-1x w-full border border-pink/25 bg-[#0c0a10] px-3x py-2x text-sm text-ink outline-none transition-colors placeholder:text-faint focus:border-blue";
 const btn = "rounded-md border px-3 py-1.5 text-xs font-medium disabled:opacity-40";
 
 /** Small crop of the base map centred on the pin. */
@@ -111,7 +111,7 @@ function Card({ item, mode, onAction, busy }: { item: QueueItem; mode: "pending"
   const [editing, setEditing] = useState(false);
   const held = issues.length > 0;
   return (
-    <li className="vc-card rounded-xl p-4" data-testid={`${mode}-item`}>
+    <li className="vc-card p-4" data-testid={`${mode}-item`}>
       <div className="flex flex-col gap-4 sm:flex-row">
         <MiniMap x={pin.x} y={pin.y} />
         <div className="min-w-0 flex-1">

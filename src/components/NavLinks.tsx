@@ -17,7 +17,7 @@ export function NavLinks({ items }: { items: NavItem[] }) {
             key={item.href}
             href={item.href}
             aria-current={active ? "page" : undefined}
-            className="vc-nav-link py-1"
+            className="vc-nav-link"
           >
             {item.label}
           </Link>

@@ -5,7 +5,7 @@ import { LIMITS, PIN_TYPES, REGIONS, SUBMIT_TYPES, type SubmitType } from "@/lib
 import { validateSubmission, type FieldErrors } from "@/lib/map/validation";
 import { getSavedGamerTag, saveGamerTag } from "./local";
 
-const field = "w-full rounded-md border border-line bg-bg px-2 py-1.5 text-sm outline-none focus:border-blue";
+const field = "mt-1x w-full border border-pink/25 bg-[#0c0a10] px-3x py-2x text-sm text-ink outline-none transition-colors placeholder:text-faint focus:border-blue";
 
 export function SubmitForm({
   draft,
@@ -71,11 +71,11 @@ export function SubmitForm({
   if (done) {
     return (
       <div className="flex flex-col gap-3" data-testid="submit-done">
-        <h2 className="vc-heading text-3xl">Thanks, it&apos;s in the queue</h2>
+        <h2 className="vc-heading text-[2.6rem]">Thanks, it&apos;s in the queue</h2>
         <p className="text-sm text-ink-2">
           Your pin is pending review. Once a moderator approves it, it goes live with “First marked by {gamerTag.trim()}”.
         </p>
-        <button onClick={onDone} className="self-start rounded-md border border-line px-3 py-1.5 text-sm hover:border-orange">
+        <button onClick={onDone} className="vc-btn-ghost self-start">
           Back to the map
         </button>
       </div>
@@ -85,19 +85,19 @@ export function SubmitForm({
   const err = (k: keyof FieldErrors) => (errors[k] ? <p className="mt-1 text-xs text-pink">{errors[k]}</p> : null);
 
   return (
-    <form onSubmit={submit} className="flex flex-col gap-3" data-testid="submit-form" noValidate>
+    <form onSubmit={submit} className="flex flex-col gap-4x" data-testid="submit-form" noValidate>
       <div className="flex items-start justify-between">
-        <h2 className="vc-heading text-3xl">Submit a location</h2>
+        <h2 className="vc-heading text-[2.6rem]">Submit a location</h2>
         <button type="button" onClick={onCancel} className="text-sm text-muted hover:text-pink" aria-label="Cancel">
           ✕
         </button>
       </div>
-      <p className={`rounded border px-2 py-1.5 text-xs ${draft ? "border-ok text-ok" : "border-orange text-orange"}`}>
+      <p className={`border-l-2 px-3x py-2x text-xs ${draft ? "border-ok text-ok" : "border-orange text-orange"}`}>
         {draft ? `Pin dropped. Drag it to fine-tune (${Math.round(draft.x)}, ${Math.round(draft.y)}).` : "Click the map to drop your pin."}
       </p>
       {err("position")}
 
-      <label className="text-xs text-muted">
+      <label className="text-[0.7rem] font-semibold uppercase tracking-[0.14em] text-muted">
         Type *
         <select value={type} onChange={(e) => setType(e.target.value as SubmitType)} className={field} name="type">
           <option value="">Choose…</option>
@@ -110,13 +110,13 @@ export function SubmitForm({
         {err("type")}
       </label>
 
-      <label className="text-xs text-muted">
+      <label className="text-[0.7rem] font-semibold uppercase tracking-[0.14em] text-muted">
         Name *
         <input value={name} onChange={(e) => setName(e.target.value)} maxLength={LIMITS.nameMax} className={field} name="name" />
         {err("name")}
       </label>
 
-      <label className="text-xs text-muted">
+      <label className="text-[0.7rem] font-semibold uppercase tracking-[0.14em] text-muted">
         Description * <span className="text-faint">(min {LIMITS.descriptionMin} characters)</span>
         <textarea
           value={description}
@@ -132,7 +132,7 @@ export function SubmitForm({
         {err("description")}
       </label>
 
-      <label className="text-xs text-muted">
+      <label className="text-[0.7rem] font-semibold uppercase tracking-[0.14em] text-muted">
         Region <span className="text-faint">(optional)</span>
         <select value={region} onChange={(e) => setRegion(e.target.value)} className={field} name="region">
           <option value="">Not sure</option>
@@ -145,12 +145,12 @@ export function SubmitForm({
         {err("region")}
       </label>
 
-      <label className="text-xs text-muted">
+      <label className="text-[0.7rem] font-semibold uppercase tracking-[0.14em] text-muted">
         Who / what is there <span className="text-faint">(optional)</span>
         <input value={occupant} onChange={(e) => setOccupant(e.target.value)} maxLength={LIMITS.occupantMax} className={field} name="occupant" />
       </label>
 
-      <label className="text-xs text-muted">
+      <label className="text-[0.7rem] font-semibold uppercase tracking-[0.14em] text-muted">
         Gamer tag / name *
         <input value={gamerTag} onChange={(e) => setGamerTag(e.target.value)} maxLength={LIMITS.gamerTagMax} className={field} name="gamerTag" />
         {err("gamerTag")}
@@ -170,7 +170,7 @@ export function SubmitForm({
       <button
         type="submit"
         disabled={submitting}
-        className="vc-btn rounded-md px-3 py-2 text-sm disabled:opacity-60"
+        className="vc-cta mt-2x self-start"
       >
         {submitting ? "Sending…" : "Send for review"}
       </button>

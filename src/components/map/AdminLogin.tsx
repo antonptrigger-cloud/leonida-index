@@ -28,7 +28,7 @@ export function AdminLogin() {
   }
 
   return (
-    <form onSubmit={submit} className="flex max-w-sm flex-col gap-3 vc-card rounded-xl p-4">
+    <form onSubmit={submit} className="flex max-w-sm flex-col gap-3 vc-card p-4">
       <label className="text-xs text-muted">
         Moderator password
         <input

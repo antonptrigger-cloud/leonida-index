@@ -8,7 +8,7 @@ export const dynamic = "force-dynamic";
 
 function Board({ title, hint, rows, testId }: { title: string; hint: string; rows: LeaderboardEntry[]; testId: string }) {
   return (
-    <section className="vc-card rounded-xl p-4" data-testid={testId}>
+    <section className="vc-card p-4" data-testid={testId}>
       <h2 className="text-xs font-semibold uppercase tracking-[0.2em] text-turq">{title}</h2>
       <p className="mb-3 text-xs text-muted">{hint}</p>
       {rows.length === 0 ? (

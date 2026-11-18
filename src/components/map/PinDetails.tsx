@@ -107,14 +107,14 @@ export function PinDetails({
   const type = PIN_TYPES[pin.type];
 
   return (
-    <div className="flex flex-col gap-4" data-testid="pin-details">
+    <div className="flex flex-col gap-4x" data-testid="pin-details">
       <div className="flex items-start justify-between gap-3">
         <div>
-          <p className="mb-1 text-xs uppercase tracking-[0.2em]" style={{ color: type.color }}>
+          <p className="mb-2x text-[0.65rem] font-bold uppercase tracking-[0.32em]" style={{ color: type.color }}>
             {type.label.replace(/s$/, "")}
             {pin.region && pin.type !== "region" ? <span className="text-muted"> · {pin.region}</span> : null}
           </p>
-          <h2 className="vc-heading pr-6 text-4xl">{pin.name}</h2>
+          <h2 className="vc-heading pr-6x text-[3rem]">{pin.name}</h2>
         </div>
         <button onClick={onClose} className="text-sm text-muted hover:text-pink" aria-label="Close details">
           ✕
@@ -122,7 +122,7 @@ export function PinDetails({
       </div>
 
       {pin.approximate ? (
-        <p className="rounded border border-line px-2 py-1 text-xs text-orange">Approximate position: confirm in game.</p>
+        <p className="border-l-2 border-orange bg-orange/10 px-3x py-1x text-xs text-orange">Approximate position: confirm in game.</p>
       ) : null}
 
       <p className="whitespace-pre-line text-sm text-ink-2">{pin.description}</p>
@@ -143,7 +143,8 @@ export function PinDetails({
           onClick={() => vote(1)}
           disabled={!online || busy}
           aria-pressed={myVote === 1}
-          className={`rounded-md border px-3 py-1.5 text-sm disabled:opacity-50 ${myVote === 1 ? "border-ok bg-ok/15" : "border-line hover:border-ok"}`}
+          className="vc-chip text-sm disabled:opacity-50"
+          style={{ ["--chip" as string]: "#3bb273" }}
         >
           👍 <span data-testid="up-count">{pin.upCount}</span>
         </button>
@@ -151,7 +152,7 @@ export function PinDetails({
           onClick={() => vote(-1)}
           disabled={!online || busy}
           aria-pressed={myVote === -1}
-          className={`rounded-md border px-3 py-1.5 text-sm disabled:opacity-50 ${myVote === -1 ? "border-pink bg-pink/15" : "border-line hover:border-pink"}`}
+          className="vc-chip text-sm disabled:opacity-50"
         >
           👎 <span data-testid="down-count">{pin.downCount}</span>
         </button>
@@ -159,8 +160,8 @@ export function PinDetails({
       </div>
       {error ? <p className="text-xs text-pink">{error}</p> : null}
 
-      <section className="border-t border-line pt-4">
-        <h3 className="mb-2 text-xs font-semibold uppercase tracking-[0.2em] text-turq">Comments</h3>
+      <section className="border-t border-pink/20 pt-4x">
+        <h3 className="vc-display mb-3x text-[1.6rem] leading-none text-ink">Comments</h3>
         {!online ? (
           <p className="text-xs text-muted">Comments are offline right now.</p>
         ) : comments === null ? (
@@ -170,7 +171,7 @@ export function PinDetails({
         ) : (
           <ul className="mb-3 flex max-h-64 flex-col gap-2 overflow-y-auto" data-testid="comments">
             {comments.map((c) => (
-              <li key={c.id} className="rounded-md border border-line bg-bg p-2 text-sm">
+              <li key={c.id} className="border-l-2 border-pink/40 bg-[#0c0a10] px-3x py-2x text-sm">
                 <div className="mb-1 flex items-center justify-between text-xs text-muted">
                   <span className="font-medium text-ink">{c.gamerTag}</span>
                   <button
@@ -195,7 +196,7 @@ export function PinDetails({
               maxLength={LIMITS.gamerTagMax}
               placeholder="Gamer tag"
               aria-label="Gamer tag"
-              className="rounded-md border border-line bg-bg px-2 py-1.5 text-sm outline-none focus:border-blue"
+              className="w-full border border-pink/25 bg-[#0c0a10] px-3x py-2x text-sm text-ink outline-none transition-colors placeholder:text-faint focus:border-blue"
             />
             <textarea
               value={body}
@@ -210,7 +211,7 @@ export function PinDetails({
               <span className="text-xs text-muted">
                 {body.length}/{LIMITS.commentMax}
               </span>
-              <button type="submit" className="vc-btn rounded-md px-3 py-1.5 text-sm">
+              <button type="submit" className="vc-btn">
                 Post
               </button>
             </div>
