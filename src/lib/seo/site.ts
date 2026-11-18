@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { CHAPTER, LAST_VERIFIED, MISSIONS, missionPath } from "@/lib/guides/missions";
+import { NEWS, newsPath } from "@/lib/news/articles";
 
 export const SITE = {
   name: "Leonida Vice Guide",
@@ -32,7 +33,7 @@ export interface RouteSeo {
   description: string;
   /** Short label for breadcrumbs. */
   crumb: string;
-  kind?: "page" | "article" | "howto" | "collection" | "profile";
+  kind?: "page" | "article" | "news" | "howto" | "collection" | "profile";
   /** HowTo steps, when kind = "howto". */
   steps?: { name: string; text: string }[];
   changeFrequency?: ChangeFreq;
@@ -43,6 +44,10 @@ export interface RouteSeo {
   updated?: string;
   /** ISO date first published (JSON-LD datePublished). */
   published?: string;
+  /** JSON-LD keywords (news). */
+  keywords?: string[];
+  /** Sources relied on, emitted as JSON-LD citation (news). */
+  citations?: string[];
 }
 
 const character = (name: string, blurb: string): RouteSeo => ({
@@ -205,7 +210,7 @@ export const ROUTES: Record<string, RouteSeo> = {
   },
   "/news": {
     title: "GTA 6 News & Updates",
-    description: "The latest confirmed GTA 6 news: release date, platforms, editions and official updates from Rockstar, with sources.",
+    description: "GTA 6 launch news with sources: unlock times, reviews, the PS5 update and patches, preload, editions and what Rockstar has confirmed.",
     crumb: "News",
     kind: "collection",
     changeFrequency: "daily",
@@ -213,12 +218,30 @@ export const ROUTES: Record<string, RouteSeo> = {
   },
   "/news/release-date": {
     title: "GTA 6 Release Date, Platforms & Price",
-    description: "GTA 6 launches 19 November 2026 on PS5 and Xbox Series X|S, with preload from 12 November. Platforms, PC status and edition prices.",
+    description: "GTA 6 launches 19 November 2026 on PS5 and Xbox Series X|S, with preload from 10 November. Platforms, PC status and edition prices.",
     crumb: "Release date",
     kind: "article",
     changeFrequency: "weekly",
     priority: 0.75,
+    updated: "2026-11-18",
   },
+  ...Object.fromEntries(
+    NEWS.map((n): [string, RouteSeo] => [
+      newsPath(n.slug),
+      {
+        title: n.title,
+        description: n.description,
+        crumb: n.crumb,
+        kind: "news",
+        changeFrequency: "weekly",
+        priority: 0.7,
+        published: n.published,
+        updated: n.updated,
+        keywords: n.keywords,
+        citations: n.citations,
+      },
+    ]),
+  ),
   "/tools/edition-compare": {
     title: "GTA 6 Editions Compared: Standard vs Ultimate",
     description: "GTA 6 Standard vs Ultimate edition: price, pre-order bonus, extra vehicles and venues side by side, so you can pick the right one.",
@@ -288,13 +311,14 @@ export function metaFor(path: string): Metadata {
     alternates: { canonical: path },
     ...(r.noindex ? { robots: { index: false, follow: false, nocache: true } } : {}),
     openGraph: {
-      type: r.kind === "article" || r.kind === "howto" ? "article" : "website",
+      type: r.kind === "article" || r.kind === "news" || r.kind === "howto" ? "article" : "website",
       url,
       title: ogTitle,
       description: r.description,
       siteName: SITE.name,
       locale: SITE.locale,
       images: [OG_IMAGE],
+      ...(r.kind === "news" && r.published ? { publishedTime: r.published, modifiedTime: r.updated ?? r.published } : {}),
     },
     twitter: { card: "summary_large_image", title: ogTitle, description: r.description, images: [OG_IMAGE.url] },
   };

@@ -15,3 +15,9 @@ guide | /guides/activities | Activities | live | showcase |
 tool | /tools/edition-compare | Editions | live | official |
 news | /news/release-date | Release date | live | official |
 meta | /sources | Sources | live | editorial |
+news | /news/gta-6-live-new-zealand-launch-report | Live in New Zealand | live | official + reported | 
+news | /news/gta-6-reviews-metacritic-99 | GTA 6 reviews | live | reported | Metacritic aggregate moves; recheck
+news | /news/gta-6-ps5-update-patches-servers | PS5 update, patches, servers | live | official + reported | Rockstar status page unverified
+news | /news/gta-6-release-countdown | Release time by region | live | official + reported | country vs time zone unconfirmed
+news | /news/gta-6-confirmed-so-far | What is confirmed | live | official |
+news | /news/gta-6-preload-editions-pricing | Preload and editions | live | official | US prices only
