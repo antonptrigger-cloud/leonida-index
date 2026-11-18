@@ -36,6 +36,12 @@ export const GAPS_PUBLISHED = "2026-11-18T23:38:00+10:00";
 /** Fact-update batch (tracker, file size, performance, reviews, preload). Web Bot: set to the moment the edits go live. */
 export const UPDATES_AT = "2026-11-18T23:50:00+10:00";
 
+/** 19 Nov 08:00 AEST batch (tracker refresh, reviews refresh). Web Bot: set to the moment these edits go live. */
+export const UPDATES_0800_AT = "2026-11-19T08:13:00+10:00";
+
+/** Festival set times / Heat night piece. Web Bot: set to the moment it goes live. */
+export const FESTIVAL_PUBLISHED = "2026-11-19T08:13:00+10:00";
+
 export const newsPath = (slug: string) => `/news/${slug}`;
 
 export const NEWS: NewsItem[] = [
@@ -60,6 +66,43 @@ export const NEWS: NewsItem[] = [
     ],
   },
   {
+    slug: "gta-6-festival-set-times-heat-night",
+    title: "GTA 6 Festival Set Times and Heat Night",
+    description:
+      "Rockstar's GTA VI: The Festival set times for 21 Nov in Miami, in Brisbane time, plus the Heat's Vice City night. Tickets, charities, no livestream yet.",
+    crumb: "Festival set times",
+    teaser: "Travis Scott closes Rockstar's Miami launch festival. Every set in Miami and Brisbane time, plus the Heat's Vice City night.",
+    tag: "Launch events",
+    keywords: ["GTA 6 festival", "GTA VI The Festival set times", "Travis Scott GTA 6", "Mana Wynwood", "A Night in Vice City", "Miami Heat GTA 6"],
+    published: FESTIVAL_PUBLISHED,
+    updated: FESTIVAL_PUBLISHED,
+    citations: [
+      "https://x.com/RockstarGames/status/2123068976045453338",
+      "https://x.com/RockstarGames/status/2123069155775541350",
+      "https://x.com/RockstarGames/status/2123098923434713278",
+      "https://www.rockstargames.com/VI/gtavi-thefestival",
+      "https://gtavi-thefestival.miami",
+      "https://www.complex.com/music/a/tracewilliamcowen/gta-6-festival-set-times-charities",
+      "https://www.espn.com/nba/story/_/id/50085674/miami-heat-night-vice-city-game",
+      "https://www.nba.com/heat/game/0022600260-bucks-vs-heat-miami-fl-11-18-2026",
+      "https://www.nba.com/news/heat-unveil-vice-city-court",
+    ],
+    faq: [
+      {
+        question: "When is GTA VI: The Festival?",
+        answer: "Saturday 21 November 2026 at Mana Wynwood in Miami, with doors at 4:00pm Miami time. That is 07:00 AEST on Sunday 22 November in Brisbane.",
+      },
+      {
+        question: "What time is Travis Scott at the GTA 6 festival?",
+        answer: "Rockstar's schedule lists Cactus Jack presents Travis Scott, Don Toliver, Kodak Black and Sofaygo from 12:40am to 2:00am Miami time, which is 15:40 to 17:00 AEST on Sunday 22 November by our conversion.",
+      },
+      {
+        question: "Is the GTA 6 festival being livestreamed?",
+        answer: "We have not found a livestream or broadcast announced by Rockstar or on the festival and DICE pages, as of 08:13 AEST on 19 November.",
+      },
+    ],
+  },
+  {
     slug: "gta-6-reviews-metacritic-99",
     title: "GTA 6 Reviews: Metacritic 99 Ties the Record",
     description:
@@ -69,7 +112,7 @@ export const NEWS: NewsItem[] = [
     tag: "Reviews",
     keywords: ["GTA 6 reviews", "Metacritic", "GTA 6 score", "Ocarina of Time", "performance", "PS5 Pro"],
     published: NEWS_PUBLISHED,
-    updated: UPDATES_AT,
+    updated: UPDATES_0800_AT,
     citations: [
       "https://www.bbc.com/news/live/c60rkg21dl22t",
       "https://insider-gaming.com/gta-6-gets-a-99-in-early-metacritic-review-scores/",
@@ -92,7 +135,7 @@ export const NEWS: NewsItem[] = [
     tag: "Live tracker",
     keywords: ["GTA 6 server status", "is GTA 6 down", "GTA 6 known issues", "GTA 6 PS5 update", "GTA 6 patch", "01.002.001"],
     published: NEWS_PUBLISHED,
-    updated: UPDATES_AT,
+    updated: UPDATES_0800_AT,
     citations: [
       "https://x.com/PS_Support_US/status/2122863683881619685",
       "https://www.pushsquare.com/news/2026/11/gta-6-requires-new-ps5-firmware-update-to-play",
@@ -108,6 +151,23 @@ export const NEWS: NewsItem[] = [
       "https://www.polygon.com/gta-6-grand-theft-auto-no-code-physical-edition/",
       "https://www.news.com.au/technology/gaming/gta-6-release-australia-launch-times-download-size-and-why-its-a-bad-time-to-be-a-boss/news-story/eeb2f0ed1d624c365f65e50b92c974cf",
       "https://www.1news.co.nz/2026/11/18/gta-6-how-to-beat-the-download-rush-and-why-gamers-abroad-envy-kiwis/",
+      "https://downdetector.com.au/status/gta-vi/",
+      "https://downdetector.com.au/status/playstation-network/",
+      "https://www.axios.com/2026/11/18/gta-6-playstation-psn-servers",
+      "https://www.theguardian.com/games/2026/nov/18/playstation-down-grand-theft-auto-vi-game-release",
+      "https://www.androidauthority.com/playstation-outage-nov-2026-3736853/",
+      "https://www.polygon.com/gta-6-is-psn-down-detector-account-services-busy-server-connection-error/",
+      "https://www.gamesradar.com/games/grand-theft-auto/ps5-users-report-playstation-network-errors-as-gta-6-fever-hits-with-some-struggling-to-redeem-codes/",
+    ],
+    faq: [
+      {
+        question: "Is GTA 6 down?",
+        answer: "At 08:04-08:06 AEST on 19 Nov, PlayStation's status page showed all services up, and Rockstar, PSN and Xbox feeds relayed by GTATracker showed up. Downdetector Australia showed \"possible problems\" from user reports for GTA VI and PSN, which are not confirmed outages.",
+      },
+      {
+        question: "Was PSN down before GTA 6 launched?",
+        answer: "Yes, briefly. On 18 Nov (US afternoon) Sony's status page warned of difficulty launching games, apps or network features. Axios says the page showed all issues resolved by 2:30pm ET (05:30 AEST, 19 Nov), while Android Authority says the page showed all services operational at 3:05pm ET (06:05 AEST). Sony has not given a cause in anything we read, and outlets differ on how serious it was.",
+      },
     ],
   },
   {

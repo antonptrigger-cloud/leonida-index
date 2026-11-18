@@ -10,33 +10,35 @@ const L = "text-pink underline underline-offset-2";
 
 // Update this block each hourly run: reading time (AEST), source, result.
 const STATUS: React.ReactNode[][] = [
-  ["PlayStation Network", "All services up and running (account management, gaming and social, video, store, direct)", <Ext key="ps" href="https://status.playstation.com/">PlayStation Service Status</Ext>, "23:50 AEST"],
-  ["PSN via GTATracker", "Up, all five listed services up", <Ext key="gtp" href="https://gtatracker.gg/online/server-status">GTATracker, relaying Sony&rsquo;s feed</Ext>, "13:45 UTC (23:45 AEST)"],
-  ["Xbox network", "Up. Account, safety, store, social and sharing services all up", <Ext key="gtx" href="https://gtatracker.gg/online/server-status">GTATracker, relaying Microsoft&rsquo;s feed</Ext>, "13:45 UTC (23:45 AEST)"],
-  ["Rockstar service status", "GTA Online, Red Dead Online, Online Services and Cfx up. No GTA VI entry listed", <Ext key="gt2" href="https://gtatracker.gg/online/server-status">GTATracker, reading Rockstar&rsquo;s page</Ext>, "13:43 UTC (23:43 AEST)"],
-  ["User reports (New Zealand)", "No current problems", <Ext key="dd" href="https://downdetector.co.nz/status/gta-vi/">Downdetector NZ</Ext>, "23:50 AEST"],
+  ["PlayStation Network", "All services up and running (account management, gaming and social, video, store, direct)", <Ext key="ps" href="https://status.playstation.com/">PlayStation Service Status</Ext>, "08:04 AEST, 19 Nov"],
+  ["PSN via GTATracker", "Up, all five listed services up", <Ext key="gtp" href="https://gtatracker.gg/online/server-status">GTATracker, relaying Sony&rsquo;s feed</Ext>, "22:00 UTC, 18 Nov (08:00 AEST)"],
+  ["Xbox network", "Up. Account, safety, store, social and sharing services all up", <Ext key="gtx" href="https://gtatracker.gg/online/server-status">GTATracker, relaying Microsoft&rsquo;s feed</Ext>, "22:00 UTC, 18 Nov (08:00 AEST)"],
+  ["Rockstar service status", "GTA Online, Red Dead Online, Online Services and Cfx up. No GTA VI entry listed", <Ext key="gt2" href="https://gtatracker.gg/online/server-status">GTATracker, reading Rockstar&rsquo;s page</Ext>, "21:57 UTC, 18 Nov (07:57 AEST)"],
+  ["User reports: GTA VI (Australia)", "\u201cPossible problems\u201d. Most reported: game launch (58%), then server connection", <Ext key="dda" href="https://downdetector.com.au/status/gta-vi/">Downdetector AU</Ext>, "08:05 AEST, 19 Nov"],
+  ["User reports: PSN (Australia)", "\u201cPossible problems\u201d. Server connection 41%, login 24%, then game launch", <Ext key="ddp" href="https://downdetector.com.au/status/playstation-network/">Downdetector AU</Ext>, "08:06 AEST, 19 Nov"],
+  ["User reports: GTA VI (New Zealand)", "No current problems", <Ext key="dd" href="https://downdetector.co.nz/status/gta-vi/">Downdetector NZ</Ext>, "08:04 AEST, 19 Nov"],
 ];
 
 export default function Page() {
   return (
     <NewsLayout slug={SLUG} kicker="News · Live tracker" title="GTA 6 Server Status & Known Issues" source="Official status pages + reported">
       <Lede>
-        Last checked 23:50 AEST on 18 Nov: we found no confirmed GTA 6 outage, though news.com.au reports some PlayStation players in Australia hit login, download and purchase problems before the unlock.
-        PS5 owners still need a mandatory system update, and two pre-launch patches are out. This page is updated through launch week.
+        Latest readings, 08:00 to 08:06 AEST on 19 Nov: the PlayStation status page shows everything up, and Xbox and Rockstar&rsquo;s status feeds (read second-hand via GTATracker) show up too. PlayStation Network had a disruption on 18 Nov (US time) that Sony&rsquo;s status page acknowledged and later cleared,
+        and Downdetector Australia shows &ldquo;possible problems&rdquo; in user reports for both GTA VI and PSN. Those are user reports, not confirmed outages. PS5 owners still need a mandatory system update. This page is updated through launch week.
       </Lede>
 
       <H2>Live status</H2>
       <DataTable head={["Service", "Reading", "Source", "When"]} rows={STATUS} minWidth="40rem" />
       <Bullets>
         <li>
-          Insider Gaming likewise reported no performance or networking issues at the time of writing (<Ext href="https://insider-gaming.com/is-grand-theft-auto-6-down-gta-6-issues-explained/">Insider Gaming</Ext>).
+          Before the PSN disruption, Insider Gaming reported no performance or networking issues at the time of writing (<Ext href="https://insider-gaming.com/is-grand-theft-auto-6-down-gta-6-issues-explained/">Insider Gaming</Ext>).
         </li>
         <li>
-          We could not load Rockstar&rsquo;s own service status page ourselves (it returned an error), so the Rockstar reading above is second-hand. GTA 6 is unlocking region by region, so the real test of store and network load comes when Europe and the Americas unlock.
+          We could not load Rockstar&rsquo;s own service status page ourselves (it returned an error), so the Rockstar reading above is second-hand. GTA 6 is unlocking region by region, so the bigger tests of store and network load come when Europe and the Americas unlock.
         </li>
         <li>
-          <Lead>Where the unlock has reached:</Lead> Rockstar releases at midnight local time, rolling by region. By our conversion from store listings, New Zealand unlocked at 21:00 AEST (11:00 UTC), and Australian stores list 23:00 AEST (13:00 UTC), including for Brisbane.
-          Japan follows at 01:00 AEST on 19 Nov and central Europe from about 09:00 AEST, then the UK and the Americas. See the <Link href={newsPath("gta-6-release-countdown")} className={L}>release time by region</Link> for the caveats.
+          <Lead>Where the unlock has reached:</Lead> Rockstar releases at midnight local time, rolling by region. By our conversion from store listings, New Zealand unlocked at 21:00 AEST (11:00 UTC) on 18 Nov, and Australian stores list 23:00 AEST (13:00 UTC), including for Brisbane. By 08:00 AEST on 19 Nov it was also live in Japan and the rest of Asia, India and the Gulf.
+          Central Europe follows at 09:00 AEST, the UK and Ireland at 10:00 AEST and the US East Coast at 15:00 AEST. See the <Link href={newsPath("gta-6-release-countdown")} className={L}>release time by region</Link> for the caveats.
         </li>
         <li>
           Take-Two describes GTA VI as a single-player title, so we expect day-one strain to land mostly on store and download systems. That is our expectation, not a reported fact.
@@ -48,6 +50,21 @@ export default function Page() {
 
       <H2>Known issues</H2>
       <Bullets>
+        <li>
+          <Lead>PlayStation Network disruption, 18 Nov (official, since cleared):</Lead> on Wednesday (US time), Sony&rsquo;s status page flagged a problem with gaming and social services: &ldquo;You might have difficulty launching games, apps or network features. We&rsquo;re working to resolve the issue as soon as possible&rdquo; (
+          <Ext href="https://www.axios.com/2026/11/18/gta-6-playstation-psn-servers">Axios</Ext>, <Ext href="https://www.theguardian.com/games/2026/nov/18/playstation-down-grand-theft-auto-vi-game-release">The Guardian</Ext>).
+          Axios says the page showed all issues resolved by 2:30pm ET (05:30 AEST, 19 Nov). Android Authority&rsquo;s 3:05pm ET update (06:05 AEST) also says the status site showed all services operational, while Downdetector reports were still climbing (
+          <Ext href="https://www.androidauthority.com/playstation-outage-nov-2026-3736853/">Android Authority</Ext>). The two outlets differ on the clear time, so treat both as approximate.
+        </li>
+        <li>
+          <Lead>What players reported:</Lead> failed sign-ins, server connection errors and stalled downloads. The Guardian says some consoles passed the internet connection test but failed the &ldquo;Sign in to online services&rdquo; check, and cites 1,228 Downdetector reports by Wednesday afternoon US time.
+          Polygon lists messages such as &ldquo;Sony services are busy&rdquo; and error codes WS-116449-5, CE-34861-2 and WS-37505-0 (<Ext href="https://www.polygon.com/gta-6-is-psn-down-detector-account-services-busy-server-connection-error/">Polygon, 4:03pm ET</Ext>).
+          GamesRadar+, writing earlier in the day, said the PlayStation status page was still green and the problems might be isolated or minor. Its UK-based staff had trouble redeeming codes and upgrading a GTA 6 edition, and some players said downloads went through after repeated attempts (<Ext href="https://www.gamesradar.com/games/grand-theft-auto/ps5-users-report-playstation-network-errors-as-gta-6-fever-hits-with-some-struggling-to-redeem-codes/">GamesRadar+</Ext>).
+        </li>
+        <li>
+          <Lead>Cause: not confirmed.</Lead> Sony has not given one in anything we read, and Axios says PlayStation did not immediately respond to a request for comment. The Guardian notes the timing raised questions about a link to the new PS5 system update, but says no official cause has been established. Axios reports Xbox players had no network issues on Wednesday.
+          Downdetector counts are user reports, not confirmed outages.
+        </li>
         <li>
           <Lead>Reported (limited):</Lead> some physical code-in-box copies arrived without a usable code. Polygon reports a grey strip that could not be scratched off, on both PlayStation and Xbox editions, with retailer responses varying. It says the problem does not appear to be widespread (<Ext href="https://www.polygon.com/gta-6-grand-theft-auto-no-code-physical-edition/">Polygon, 14 Nov</Ext>).
           PlayStation&rsquo;s guidance is that if a code is missing or unreadable, contact the retailer (<Ext href="https://www.playstation.com/en-us/support/games/gta-vi-support/">PlayStation Support</Ext>).
@@ -137,9 +154,16 @@ export default function Page() {
       </Callout>
 
       <Sources>
-        <Source href="https://status.playstation.com/"  label="PlayStation Service Status (read 23:50 AEST, 18 Nov 2026)" kind="Official, platform holder" />
-        <Source href="https://gtatracker.gg/online/server-status"  label="GTATracker: Rockstar, PSN and Xbox status feeds (13:43-13:45 UTC, 18 Nov)" kind="Third-party monitor" />
-        <Source href="https://downdetector.co.nz/status/gta-vi/"  label="Downdetector NZ: GTA VI (read 23:50 AEST)" kind="User-report aggregator" />
+        <Source href="https://status.playstation.com/"  label="PlayStation Service Status (read 08:04 AEST, 19 Nov 2026)" kind="Official, platform holder" />
+        <Source href="https://gtatracker.gg/online/server-status"  label="GTATracker: Rockstar, PSN and Xbox status feeds (21:57-22:00 UTC, 18 Nov)" kind="Third-party monitor" />
+        <Source href="https://downdetector.co.nz/status/gta-vi/"  label="Downdetector NZ: GTA VI (read 08:04 AEST, 19 Nov)" kind="User-report aggregator" />
+        <Source href="https://downdetector.com.au/status/gta-vi/" label="Downdetector AU: GTA VI (read 08:05 AEST, 19 Nov)" kind="User-report aggregator" />
+        <Source href="https://downdetector.com.au/status/playstation-network/" label="Downdetector AU: PlayStation Network (read 08:06 AEST, 19 Nov)" kind="User-report aggregator" />
+        <Source href="https://www.axios.com/2026/11/18/gta-6-playstation-psn-servers" label="Axios: PlayStation outage before GTA VI launch, 18 Nov 2026" kind="Reputable outlet" />
+        <Source href="https://www.theguardian.com/games/2026/nov/18/playstation-down-grand-theft-auto-vi-game-release" label="The Guardian: PlayStation network problems, 18 Nov 2026" kind="Reputable outlet" />
+        <Source href="https://www.androidauthority.com/playstation-outage-nov-2026-3736853/" label="Android Authority: PlayStation outage, 18 Nov 2026 (updated 3:05pm ET)" kind="Reputable outlet" />
+        <Source href="https://www.polygon.com/gta-6-is-psn-down-detector-account-services-busy-server-connection-error/" label="Polygon: PSN outage on release eve, 18 Nov 2026" kind="Reputable outlet" />
+        <Source href="https://www.gamesradar.com/games/grand-theft-auto/ps5-users-report-playstation-network-errors-as-gta-6-fever-hits-with-some-struggling-to-redeem-codes/" label="GamesRadar+: PSN errors and code redemption, 18 Nov 2026" kind="Reputable outlet" />
         <Source href="https://www.playstation.com/en-us/support/games/gta-vi-support/" label="PlayStation Support: Grand Theft Auto VI" kind="Official, platform holder" />
         <Source href="https://www.polygon.com/gta-6-grand-theft-auto-no-code-physical-edition/" label="Polygon: physical code issues, 14 Nov 2026" kind="Reputable outlet" />
         <Source href="https://x.com/PS_Support_US/status/2122863683881619685" label="PlayStation Support US on X, 18 Nov 2026" kind="Official, platform holder" />
