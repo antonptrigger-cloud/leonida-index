@@ -16,7 +16,7 @@ export const COORD_SPACE = { width: 1168, height: 784 } as const;
 export const BASE_MAP = {
   ...COORD_SPACE,
   attribution:
-    'Illustrative fan map of Leonida (not the in-game geography) · Some landmark data: <a href="https://map.gtadb.org" target="_blank" rel="noopener">GTADB.org</a> (<a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">CC BY 4.0</a>)',
+    'Illustrative placeholder map (not the in-game geography) until Rockstar’s official map · Some landmark data: <a href="https://map.gtadb.org" target="_blank" rel="noopener">GTADB.org</a> (<a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">CC BY 4.0</a>)',
 } as const;
 
 /**
