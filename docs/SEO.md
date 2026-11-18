@@ -4,7 +4,7 @@ Canonical host: `https://www.leonidaviceguide.com` (the bare domain 308-redirect
 
 ## Where things live
 - `src/lib/seo/site.ts`: the route registry. Every indexable page has a title, description, breadcrumb label, schema kind, and sitemap priority/frequency here. `metaFor(path)` builds the page's Next.js metadata (canonical, OpenGraph, Twitter).
-- `src/lib/seo/jsonld.tsx`: JSON-LD. The root layout emits Organization + WebSite (with a SearchAction to `/map?q=`). `<PageSchema path>` adds Article / NewsArticle / HowTo / ProfilePage / CollectionPage / WebPage (and a BreadcrumbList unless the page renders `<Breadcrumbs>`, see below).
+- `src/lib/seo/jsonld.tsx`: JSON-LD. The root layout emits Organization + WebSite (with a SearchAction to `/map?q=`). `<PageSchema path>` adds Article / NewsArticle / HowTo / CollectionPage / WebPage (and a BreadcrumbList unless the page renders `<Breadcrumbs>`, see below).
 - `src/app/sitemap.ts` and `src/app/robots.ts`: generated from the registry. Routes marked `noindex` (e.g. `/map/admin`) are excluded from the sitemap and get a `noindex, nofollow` meta tag. `/api/` and `/map/admin` are disallowed in robots.txt.
 - `src/app/opengraph-image.tsx`: the 1200x630 share image (original art, Bebas Neue under the OFL in `src/assets/fonts`).
 - `src/app/icon.svg`, `apple-icon.png`, `favicon.ico`, `public/icon-*.png`, `src/app/manifest.ts`: icons and the web manifest.
@@ -55,11 +55,11 @@ behind a blur-to-reveal.
 | News stories | NewsArticle (+ citations, keywords), BreadcrumbList |
 | Mission guides, activities, beginner, edition compare, release date | Article, BreadcrumbList |
 | Wanted, stealing cars | HowTo, BreadcrumbList |
-| Characters | ProfilePage whose mainEntity is a `Person` (`Thing` for the Real Dimez duo), described as a fictional GTA VI character; BreadcrumbList |
+| Characters | Article about a `Thing`, described as a fictional GTA VI character (deliberately not ProfilePage/Person, which would present fictional characters as real people); BreadcrumbList |
 | Section indexes (guides, missions, news, characters, secrets, map) | CollectionPage, BreadcrumbList |
 | About | AboutPage, BreadcrumbList |
 | Any page with `faq` data | FAQPage (from `<Faq>`) |
 
 ## Sitemap and robots
 
-The sitemap lists every non-`noindex` entry in `ROUTES` (map, guides, missions, news, characters, secrets, tools, sources, about). `lastModified` comes from each route's `updated` (the news index uses the newest story's `updated`; the guides index uses `LAST_VERIFIED`); map pages use the newest approved pin. `robots.txt` allows everything except `/map/admin` and `/api/`, and links the sitemap.
+The sitemap lists every non-`noindex` entry in `ROUTES` (map, guides, missions, news, characters, tools, sources, about; `/secrets` is `noindex` and omitted until it has real content). `lastModified` comes from each route's `updated` (the news index uses the newest story's `updated`; the guides index uses `LAST_VERIFIED`); map pages use the newest approved pin. `robots.txt` allows everything except `/map/admin` and `/api/`, and links the sitemap.

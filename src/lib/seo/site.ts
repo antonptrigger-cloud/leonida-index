@@ -202,6 +202,8 @@ export const ROUTES: Record<string, RouteSeo> = {
     title: "GTA 6 Secrets & Easter Eggs",
     description: "GTA 6 secrets and easter eggs found by players after launch, verified before they are listed. Submit your own finds on the community map.",
     crumb: "Secrets",
+    // noindex until there is real, verified content (also keeps it out of the sitemap).
+    noindex: true,
     kind: "collection",
     changeFrequency: "daily",
     priority: 0.8,

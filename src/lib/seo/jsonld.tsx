@@ -132,17 +132,15 @@ export function pageGraph(path: string, opts: { breadcrumbs?: boolean } = {}): J
     });
   }
   if (r.kind === "profile") {
-    // A profile page about one fictional character (or duo). `Person` for individuals,
-    // `Thing` for groups; the description always says the subject is fictional.
+    // Fictional characters: keep this a plain Article about a Thing. ProfilePage/Person markup would
+    // describe a fictional character as a real person, which is misleading for rich-result policies.
     out.push({
       ...common,
-      "@type": "ProfilePage",
-      mainEntity: {
-        "@type": r.profileType ?? "Person",
-        "@id": `${url}#character`,
+      "@type": "Article",
+      about: {
+        "@type": "Thing",
         name: r.crumb,
         description: `${r.crumb}, a fictional character in Grand Theft Auto VI`,
-        url,
         subjectOf: { "@type": "VideoGame", name: "Grand Theft Auto VI", publisher: { "@type": "Organization", name: "Rockstar Games" } },
       },
     });
