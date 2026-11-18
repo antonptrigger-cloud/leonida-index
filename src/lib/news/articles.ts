@@ -42,6 +42,12 @@ export const UPDATES_0800_AT = "2026-11-19T08:13:00+10:00";
 /** Festival set times / Heat night piece. Web Bot: set to the moment it goes live. */
 export const FESTIVAL_PUBLISHED = "2026-11-19T08:13:00+10:00";
 
+/** 19 Nov 09:00 AEST batch (tracker refresh). PLACEHOLDER, Web Bot: set to the moment these edits go live. */
+export const UPDATES_0900_AT = "2026-11-19T09:08:00+10:00";
+
+/** Sales estimate piece. PLACEHOLDER, Web Bot: set to the moment it goes live. */
+export const SALES_PUBLISHED = "2026-11-19T09:08:00+10:00";
+
 export const newsPath = (slug: string) => `/news/${slug}`;
 
 export const NEWS: NewsItem[] = [
@@ -63,6 +69,35 @@ export const NEWS: NewsItem[] = [
       "https://www.vice.com/en/article/gta-6-new-zealand-worldwide-release-times/",
       "https://blog.playstation.com/2026/11/10/pre-load-grand-theft-auto-vi-on-ps5-starting-today/",
       "https://www.1news.co.nz/2026/11/18/gta-6-how-to-beat-the-download-rush-and-why-gamers-abroad-envy-kiwis/",
+    ],
+  },
+  {
+    slug: "gta-6-sales-17-million-sensor-tower",
+    title: "GTA 6 Sales: 17M Copies Estimated",
+    description:
+      "Sensor Tower estimates GTA 6 has sold over 17 million copies for $1.65B+, per Reuters and CNBC. Not an official figure yet. Take-Two shares rose.",
+    crumb: "Sales estimate",
+    teaser: "Sensor Tower puts GTA 6 at over 17 million copies and $1.65B+. Rockstar and Take-Two have not published a sales figure.",
+    tag: "Sales",
+    keywords: ["GTA 6 sales", "GTA 6 copies sold", "GTA 6 Sensor Tower", "GTA 6 pre-orders", "Take-Two shares GTA 6", "GTA 6 record"],
+    published: SALES_PUBLISHED,
+    updated: SALES_PUBLISHED,
+    citations: [
+      "https://www.investing.com/news/stock-market-news/gamers-get-ready-to-enter-vice-city-as-grand-theft-auto-vi-begins-globalrollout-5035485",
+      "https://www.cnbc.com/2026/11/18/gta-vi-publisher-take-two-jumps-as-gamers-relish-blockbuster-release.html",
+      "https://sensortower.com/blog/gta-vi-breaks-record-greater-than-1b-pre-order-or-sensor-tower-report",
+      "https://sensortower.com/grand-theft-auto-VI/sales-tracker",
+      "https://taketwointeractivesoftwareinc.gcs-web.com/news-releases/news-release-details/take-two-interactive-software-inc-reports-results-fiscal-4/",
+    ],
+    faq: [
+      {
+        question: "How many copies has GTA 6 sold?",
+        answer: "There is no official figure yet. Sensor Tower estimates over 17 million copies for more than $1.65 billion, as reported by Reuters, and CNBC cites its tracker at roughly 17.1 million units as of early Wednesday 18 Nov (US time).",
+      },
+      {
+        question: "Has Rockstar or Take-Two announced GTA 6 sales?",
+        answer: "Not in anything we found as of 09:05 AEST on 19 Nov. Take-Two's last official word, on 9 Nov, was that pre-orders were continuing to reach unprecedented levels.",
+      },
     ],
   },
   {
@@ -135,7 +170,7 @@ export const NEWS: NewsItem[] = [
     tag: "Live tracker",
     keywords: ["GTA 6 server status", "is GTA 6 down", "GTA 6 known issues", "GTA 6 PS5 update", "GTA 6 patch", "01.002.001"],
     published: NEWS_PUBLISHED,
-    updated: UPDATES_0800_AT,
+    updated: UPDATES_0900_AT,
     citations: [
       "https://x.com/PS_Support_US/status/2122863683881619685",
       "https://www.pushsquare.com/news/2026/11/gta-6-requires-new-ps5-firmware-update-to-play",
@@ -158,11 +193,13 @@ export const NEWS: NewsItem[] = [
       "https://www.androidauthority.com/playstation-outage-nov-2026-3736853/",
       "https://www.polygon.com/gta-6-is-psn-down-detector-account-services-busy-server-connection-error/",
       "https://www.gamesradar.com/games/grand-theft-auto/ps5-users-report-playstation-network-errors-as-gta-6-fever-hits-with-some-struggling-to-redeem-codes/",
+      "https://downdetector.co.uk/status/gta-vi/",
+      "https://allestoerungen.de/stoerung/gta-vi/",
     ],
     faq: [
       {
         question: "Is GTA 6 down?",
-        answer: "At 08:04-08:06 AEST on 19 Nov, PlayStation's status page showed all services up, and Rockstar, PSN and Xbox feeds relayed by GTATracker showed up. Downdetector Australia showed \"possible problems\" from user reports for GTA VI and PSN, which are not confirmed outages.",
+        answer: "At 08:59-09:03 AEST on 19 Nov, PlayStation's status feed listed no active issues for the US, UK, Europe, Australia or New Zealand, and Rockstar, PSN and Xbox feeds relayed by GTATracker showed up. Downdetector user reports showed \"possible problems\" in Germany just after its 09:00 AEST unlock and \"problems\" in the UK, which had not yet unlocked, while Australia was back to no current problems. User reports are not confirmed outages, and we could not see what the UK and German reports were about.",
       },
       {
         question: "Was PSN down before GTA 6 launched?",
