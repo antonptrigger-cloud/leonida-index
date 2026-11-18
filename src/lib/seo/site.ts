@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
-import { CHAPTER, LAST_VERIFIED, MISSIONS, missionPath } from "@/lib/guides/missions";
+import { LAST_VERIFIED, MISSIONS, missionPath } from "@/lib/guides/missions";
+import { HUB_VERIFIED } from "@/lib/guides/story";
+import { MONEY_VERIFIED } from "@/lib/guides/money";
 import { NEWS, newsPath } from "@/lib/news/articles";
 import { CHARACTERS, LAST_VERIFIED as CHARACTERS_VERIFIED, characterPath } from "@/lib/characters/characters";
 import { DB_VERIFIED, REFERENCE_PAGES } from "@/lib/database/reference";
@@ -126,7 +128,7 @@ export const ROUTES: Record<string, RouteSeo> = {
   "/map/admin": { title: "Map moderation", description: "Moderator sign-in.", crumb: "Moderation", noindex: true },
   "/guides": {
     title: "GTA 6 Guides & Tips",
-    description: "GTA 6 guides and tips: Chapter 1 mission walkthroughs, beginner advice, the wanted system, stealing cars and activities around Leonida.",
+    description: "GTA 6 guides and tips: every mission in order, the money guide, beginner advice, the wanted system, stealing cars and activities around Leonida.",
     crumb: "Guides",
     kind: "collection",
     changeFrequency: "daily",
@@ -177,13 +179,23 @@ export const ROUTES: Record<string, RouteSeo> = {
     priority: 0.7,
   },
   "/guides/missions": {
-    title: `GTA 6 Mission Guides: Chapter ${CHAPTER.number} Walkthrough`,
-    description: `GTA 6 Chapter ${CHAPTER.number} (${CHAPTER.name}) mission guides: every mission from the Prologue to Feng Shui, with objectives, rewards and tips. Spoilers hidden.`,
+    title: "GTA 6 Walkthrough: All Missions in Order",
+    description: "Every GTA 6 story mission in order across five chapters, with mission counts, spoiler-blurred chapter lists and links to each walkthrough as it goes live.",
     crumb: "Missions",
     kind: "collection",
     changeFrequency: "daily",
+    priority: 0.9,
+    updated: HUB_VERIFIED,
+  },
+  "/guides/money": {
+    title: "GTA 6 Money Guide: Fastest Ways to Earn Cash",
+    description: "The fastest ways to make money in GTA 6 at every stage of the story, from Moses's car jobs to jewelry stores, Randy's wish list and late-game vaults.",
+    crumb: "Money guide",
+    kind: "article",
+    changeFrequency: "weekly",
     priority: 0.85,
-    updated: LAST_VERIFIED,
+    updated: MONEY_VERIFIED,
+    published: MONEY_VERIFIED,
   },
   ...Object.fromEntries(
     MISSIONS.map((m): [string, RouteSeo] => [

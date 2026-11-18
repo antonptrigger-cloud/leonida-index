@@ -29,12 +29,24 @@ export function StatusTag({ status }: { status: "confirmed" | "reported" }) {
   );
 }
 
-export function SourcesList({ sources }: { sources: MissionSource[] }) {
+export interface PlainSource {
+  label: string;
+  url: string;
+  used: string;
+}
+
+export function SourcesList({
+  sources,
+  verified = { iso: LAST_VERIFIED, label: `${LAST_VERIFIED_LABEL} (pre-launch)` },
+}: {
+  sources: (MissionSource | PlainSource)[];
+  verified?: { iso: string; label: string };
+}) {
   return (
     <section aria-labelledby="sources" className="mt-16x">
       <h2 id="sources" className="vc-display text-3xl text-ink">Sources</h2>
       <p className="mt-2x text-sm text-muted">
-        Last verified: <time dateTime={LAST_VERIFIED}>{LAST_VERIFIED_LABEL}</time> (pre-launch). Wording on this page is our own. &ldquo;Reported&rdquo; means a single walkthrough says so and we have not confirmed it yet.
+        Last verified: <time dateTime={verified.iso}>{verified.label}</time>. Wording on this page is our own. &ldquo;Reported&rdquo; means a single walkthrough says so and we have not confirmed it yet.
       </p>
       <ol className="mt-4x flex flex-col gap-3x text-sm">
         {sources.map((s) => (
