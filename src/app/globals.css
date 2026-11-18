@@ -86,3 +86,28 @@ body {
   border: 2px solid #0b0b0c;
   box-shadow: 0 0 0 2px #ff2d7b;
 }
+
+/* Full-window map page: no page scroll behind the fixed map. */
+html:has(.lvg-fullmap),
+body:has(.lvg-fullmap) {
+  overflow: hidden;
+  overscroll-behavior: none;
+}
+.lvg-map .leaflet-tile {
+  image-rendering: auto;
+}
+.lvg-map .leaflet-control-zoom {
+  margin-bottom: 28px !important;
+}
+
+/* Leaflet 1.9.4 blends tiles with plus-lighter to hide seams, but over our scaled tiles that draws
+   bright outlines in some browsers. Plain compositing looks clean here. */
+.lvg-map .lvg-tiles .leaflet-tile {
+  mix-blend-mode: normal;
+}
+.lvg-map .lvg-whole-map {
+  font-size: 18px;
+  line-height: 30px;
+  text-align: center;
+  text-decoration: none;
+}

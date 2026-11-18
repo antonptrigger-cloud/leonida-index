@@ -2,7 +2,8 @@
 
 import { useRouter } from "next/navigation";
 import { useState } from "react";
-import { BASE_MAP, LIMITS, PIN_TYPES, REGIONS, type PinType } from "@/lib/map/config";
+import { LIMITS, PIN_TYPES, REGIONS, TILES, type PinType } from "@/lib/map/config";
+import { toSource } from "@/lib/map/geo";
 import type { ModerationQueue, QueueItem } from "@/lib/map/service";
 import type { Pin } from "@/lib/map/types";
 
@@ -13,18 +14,23 @@ const btn = "rounded-md border px-3 py-1.5 text-xs font-medium disabled:opacity-
 function MiniMap({ x, y }: { x: number; y: number }) {
   const w = 168;
   const h = 112;
-  const scale = 1.5;
+  // Show the whole base map at ~1.5x the original 1168px width, centred on the pin.
+  const bgW = 1752;
+  const bgH = (bgW * TILES.height) / TILES.width;
+  const { sx, sy } = toSource(x, y);
+  const px = (sx / TILES.width) * bgW;
+  const py = (sy / TILES.height) * bgH;
   return (
     <div
       className="relative shrink-0 overflow-hidden rounded border border-[#2a2a2e]"
       style={{
         width: w,
         height: h,
-        backgroundImage: `url(${BASE_MAP.url})`,
-        backgroundSize: `${BASE_MAP.width * scale}px ${BASE_MAP.height * scale}px`,
-        backgroundPosition: `${w / 2 - x * scale}px ${h / 2 - y * scale}px`,
+        backgroundImage: `url(${TILES.preview.url})`,
+        backgroundSize: `${bgW}px ${bgH}px`,
+        backgroundPosition: `${w / 2 - px}px ${h / 2 - py}px`,
         backgroundRepeat: "no-repeat",
-        backgroundColor: "#0b0b0c",
+        backgroundColor: TILES.background,
       }}
       aria-label={`Map position ${Math.round(x)}, ${Math.round(y)}`}
     >

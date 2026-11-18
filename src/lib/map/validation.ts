@@ -1,5 +1,6 @@
-import { BASE_MAP, LIMITS, REGIONS, SUBMIT_TYPES, PIN_TYPES, type PinType, type SubmitType } from "./config";
+import { LIMITS, REGIONS, SUBMIT_TYPES, PIN_TYPES, type PinType, type SubmitType } from "./config";
 import type { PinEdit, SubmissionInput } from "./types";
+import { onBaseMap } from "./geo";
 
 /** Strip control characters and angle brackets, collapse whitespace. Output is always rendered as text. */
 export function cleanText(value: unknown, max: number, multiline = false): string {
@@ -32,10 +33,7 @@ function inBounds(x: unknown, y: unknown): boolean {
     typeof y === "number" &&
     Number.isFinite(x) &&
     Number.isFinite(y) &&
-    x >= 0 &&
-    y >= 0 &&
-    x <= BASE_MAP.width &&
-    y <= BASE_MAP.height
+    onBaseMap(x, y)
   );
 }
 

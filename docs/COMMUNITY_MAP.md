@@ -96,11 +96,69 @@ curl ... -d '{"action":"merge","into":"<live pin id>"}' ...
 Public endpoints: `GET /api/map/pins`, `POST /api/map/submissions`, `POST /api/map/pins/<id>/vote`,
 `GET|POST /api/map/pins/<id>/comments`, `POST /api/map/comments/<id>/like`, `GET /api/map/leaderboard`.
 
-## 6. Swapping the base map
+## 6. The base map: deep-zoom tiles, and swapping in a new map
 
-The base image is `public/map/leonida-base.jpg`, an illustrative fan map (not the in-game geography).
-To replace it, add the new image to `public/map/` and update `BASE_MAP` (url, width, height) in
-`src/lib/map/config.ts`. Pins are stored in image pixel coordinates (x from the left, y from the top), so a
-different layout means re-placing pins (edit `x`/`y` in the admin API or in `src/lib/map/seed-pins.json`).
-Also update `MAP_WIDTH_KM` so the 50 m duplicate radius stays meaningful. Regenerate the seed SQL with
-`node scripts/gen-seed-sql.mjs`.
+`/map` is a deep-zoom tiled map (Leaflet `CRS.Simple` plus a tile layer), not one stretched image. It fills the
+window below the header, starts filled edge to edge, and zooms smoothly (wheel, pinch, + / -). The "whole map"
+button (bottom right) zooms out to the full map. Tiles are only drawn up to the source's native resolution plus
+one overzoom step, so it never shows a blurry upscale beyond that.
+
+- Source image: `assets/map/` (not served directly).
+- Tiles: `public/map/tiles/{z}/{x}/{y}.webp` (256 px, generated, committed).
+- Manifest: `src/lib/map/base-map.json` (size, zoom levels, tile URL with a cache-busting version, preview, calibration).
+- Preview (admin mini maps): `public/map/base-preview.webp`.
+
+The current source is the illustrative fan map `assets/map/leonida-base.jpg` (1168x784, not the in-game
+geography). It gives native zoom levels 0 to 3 and a max zoom of 4. That is 29 tiles, about 250 KB. The source
+resolution limits the detail: a large official map automatically gets more zoom levels.
+
+### Swapping in the official map (about 5 minutes)
+
+1. **Check the licence.** Use only an image Rockstar has published officially (or one you have the rights to),
+   never leaked material, and keep any credit they ask for. Update the attribution in
+   `src/lib/map/config.ts` (`BASE_MAP.attribution`).
+2. **Add the file.** Save the largest clean version (PNG or JPG) as e.g. `assets/map/leonida-official.png`.
+3. **Generate tiles:**
+   ```bash
+   npm run map:tiles -- assets/map/leonida-official.png
+   # options: --background "#04182f" (colour behind the edges)  --quality 82 (webp)  --keep-calibration
+   ```
+   This replaces `public/map/tiles/`, the preview and `base-map.json`, and prints the zoom levels and tile size.
+   `maxNativeZoom = ceil(log2(longest side / 256))`, with one extra overzoom level.
+
+   | Source (longest side, 3:2 map) | Native zooms | Approx. tiles | Approx. size |
+   | --- | --- | --- | --- |
+   | 1,168 px (current) | 0 to 3 | 29 | 0.25 MB |
+   | 4,096 px | 0 to 4 | ~240 | ~6 MB |
+   | 8,192 px | 0 to 5 | ~950 | ~25 MB |
+   | 16,384 px | 0 to 6 | ~3,700 | ~90 MB |
+
+   Up to about 8k fits comfortably in the repo and on Vercel. For larger maps, downscale to 8192 px first, or move
+   the tiles to object storage and point `urlTemplate` in the manifest there.
+4. **Check pin alignment.** Run `npm run dev` and open `/map?coords=1`. The readout (bottom left) shows the pin
+   coordinates under the cursor (`pin x, y`), the source pixel (`src`) and the zoom.
+   - By default, a new map is assumed to show the same area as the old one (the old 1168x784 frame stretched
+     over the new image), so existing pins scale with it.
+   - **If the new map is framed differently but shows the same places**, calibrate with two well-separated
+     landmarks. For each, take its old pin coordinates (from the pin list, the bot API, or `?coords=1` before the
+     swap) and the source pixel of the same spot on the new map (from `?coords=1` after the swap). Then run:
+     ```bash
+     npm run map:calibrate -- "x1,y1=sx1,sy1" "x2,y2=sx2,sy2"     # add --dry-run to preview
+     # e.g. npm run map:calibrate -- "712,312=5120,2210" "176,329=1090,2330"
+     ```
+     This fits the scale and offset into `base-map.json`. No database change is needed, because pins keep their
+     stored coordinates. Re-running `map:tiles` keeps the calibration only with `--keep-calibration`.
+   - **If the new map's geography is different** (for example, the official map replaces our illustrative one),
+     the seed region pins need moving, not calibrating. Hover each place with `?coords=1`, read `pin x, y`, and
+     update it with the admin bot API `edit` action (`{"action":"edit","x":...,"y":...}`) or in the Supabase
+     table editor. Also update `src/lib/map/seed-pins.json` and regenerate the seed SQL with
+     `node scripts/gen-seed-sql.mjs` so fresh installs match.
+5. **Fix the scale.** Set `MAP_WIDTH_KM` in `src/lib/map/config.ts` to the real width of the area covered by the
+   original 1168 px frame, so the 50 m duplicate radius stays meaningful.
+6. **Ship it.** Run `npm run lint && npm run typecheck && npm run build`, commit `assets/map/`,
+   `public/map/tiles/`, `public/map/base-preview.webp` and `src/lib/map/base-map.json`, and push. Vercel redeploys.
+   The tile URL carries a content hash, so browsers pick up the new tiles straight away.
+
+Pins may sit outside the old frame (negative coordinates) after calibration. The
+`20261118000300_calibrated_coords` migration removes the old non-negative checks, and the app accepts any point
+that lands on the current base image.
