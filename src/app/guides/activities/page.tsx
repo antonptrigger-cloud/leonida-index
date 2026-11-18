@@ -6,7 +6,7 @@ export default function Page() {
   return (
     <div>
       <PageSchema path="/guides/activities" />
-      <PageHeader kicker="Guide" title="Activities" source="Showcase" />
+      <PageHeader backdrop="boat" kicker="Guide" title="Activities" source="Showcase" />
       <ul className="max-w-xl list-disc space-y-2 pl-5 text-ink-2">
         <li>Gym and food / drink that change how you feel in the moment</li>
         <li>Scuba, kayak, swim, jet ski, fish</li>

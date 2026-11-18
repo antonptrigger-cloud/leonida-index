@@ -6,7 +6,7 @@ export default function Page() {
   return (
     <div>
       <PageSchema path="/secrets" />
-      <PageHeader kicker="Secrets" title="Easter eggs" source="Unverified" />
+      <PageHeader backdrop="pier" dim="light" kicker="Secrets" title="Easter eggs" source="Unverified" />
       <p className="text-muted">Shell. Submit finds after launch. Nothing invented here.</p>
     </div>
   );

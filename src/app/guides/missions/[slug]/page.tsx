@@ -43,6 +43,7 @@ export default async function MissionPage({ params }: { params: Promise<{ slug: 
         <span className="text-ink-2">{m.name}</span>
       </nav>
       <PageHeader
+        backdrop="boat"
         kicker={`Mission guide · Chapter ${CHAPTER.number} · ${String(m.order).padStart(2, "0")}/${String(MISSIONS.length).padStart(2, "0")}`}
         title={m.name}
         verified={`${LAST_VERIFIED_LABEL} (pre-launch)`}

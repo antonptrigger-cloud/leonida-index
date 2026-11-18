@@ -6,7 +6,7 @@ export default function Page() {
   return (
     <div>
       <PageSchema path="/guides/beginner" />
-      <PageHeader kicker="Guide" title="First hours in Leonida" source="Showcase" />
+      <PageHeader backdrop="boat" kicker="Guide" title="First hours in Leonida" source="Showcase" />
       <div className="max-w-xl space-y-4 text-ink-2">
         <p>You play Lucia Caminos and Jason Duval. You can switch between them, including mid-job.</p>
         <p>The story is a couple under pressure across the state of Leonida, not just Vice City.</p>

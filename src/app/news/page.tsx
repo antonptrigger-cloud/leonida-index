@@ -13,7 +13,7 @@ export default function Page() {
   return (
     <div>
       <PageSchema path="/news" />
-      <PageHeader kicker="News · Launch week" title="Launch news" source="Official + reputable outlets" verified="18 Nov 2026" />
+      <PageHeader backdrop="skyline" dim="strong" kicker="News · Launch week" title="Launch news" source="Official + reputable outlets" verified="18 Nov 2026" />
 
       <div className="grid gap-10x lg:grid-cols-12">
         <div className="lg:col-span-8">
