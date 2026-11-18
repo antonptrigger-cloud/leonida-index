@@ -25,6 +25,9 @@ export interface NewsItem {
 
 export const NEWS_PUBLISHED = "2026-11-18T22:35:00+10:00";
 
+/** Streamer stories. Set to the approval time when they go live; `updated` is when the numbers were last checked. */
+export const STREAMERS_PUBLISHED = "2026-11-18T23:10:00+10:00";
+
 export const newsPath = (slug: string) => `/news/${slug}`;
 
 export const NEWS: NewsItem[] = [
@@ -149,6 +152,78 @@ export const NEWS: NewsItem[] = [
       "https://www.xbox.com/en-US/games/store/grand-theft-auto-vi-ultimate-edition-upgrade/9pn4llbr8rch",
       "https://www.engadget.com/2311841/gta-6-now-available-for-preload/",
       "https://taketwointeractivesoftwareinc.gcs-web.com/news-releases/news-release-details/rockstar-games-announces-pre-orders-grand-theft-auto-vi/",
+    ],
+  },
+  {
+    slug: "n3on-new-zealand-gta-6-stream",
+    title: "N3ON's New Zealand GTA 6 Stream",
+    description:
+      "N3ON said he would fly to New Zealand to play GTA 6 at the local unlock. What outlets report, tracker viewer numbers, and an unverified ban rumour.",
+    crumb: "N3ON's New Zealand stream",
+    teaser: "N3ON said he would fly to New Zealand for the first unlock. What outlets report, plus tracker numbers.",
+    tag: "Streamers",
+    keywords: ["N3ON GTA 6", "N3ON New Zealand", "GTA 6 stream", "Kick", "StreamStats"],
+    published: STREAMERS_PUBLISHED,
+    updated: STREAMERS_PUBLISHED,
+    citations: [
+      "https://sports.ndtv.com/us/us-streamers/n3on-announces-gta-6-livestream-from-new-zealand-at-6-am-est-flies-across-the-world-for-early-gta-6-access-12343208",
+      "https://www.moneycontrol.com/technology/gta-6-launched-in-new-zealand-american-gamer-and-streamer-n3on-travelled-there-to-play-it-hours-before-rest-of-the-world-article-14083594.html",
+      "https://streamstats.io/channels/n3on?platform=kick",
+    ],
+  },
+  {
+    slug: "gta-6-streaming-viewership-peak",
+    title: "GTA 6 Streams Top 4M Viewers",
+    description:
+      "Trackers show GTA 6 streams above 4 million concurrent viewers across Twitch, Kick and YouTube on launch night. Figures, sources and how to read them.",
+    crumb: "Streaming viewership",
+    teaser: "Trackers put GTA 6 streams above 4 million concurrent viewers on launch night. Figures and caveats.",
+    tag: "Streamers",
+    keywords: ["GTA 6 viewers", "GTA 6 Twitch", "GTA 6 Kick", "GTA 6 YouTube", "streaming record"],
+    published: STREAMERS_PUBLISHED,
+    updated: STREAMERS_PUBLISHED,
+    citations: [
+      "https://www.bbc.com/news/live/c60rkg21dl22t",
+      "https://nextcounts.com/games/grand-theft-auto-vi",
+      "https://luciastream.com/press/",
+    ],
+  },
+  {
+    slug: "gta-6-launch-streams-schedule",
+    title: "GTA 6 Launch Streams: Who Goes Live",
+    description:
+      "Kai Cenat, IShowSpeed and YouTube's 24-hour stream start before the US unlock. Start times in ET and Brisbane time, plus what is unconfirmed.",
+    crumb: "Launch streams",
+    teaser: "Kai Cenat starts 8 PM ET, IShowSpeed 9 PM, YouTube at midnight ET. Times in ET and Brisbane.",
+    tag: "Streamers",
+    keywords: ["GTA 6 streams", "Kai Cenat GTA 6", "IShowSpeed GTA 6", "GTA 6 YouTube stream", "launch schedule"],
+    published: STREAMERS_PUBLISHED,
+    updated: STREAMERS_PUBLISHED,
+    citations: [
+      "https://x.com/KaiCenat/status/2122427634743214114",
+      "https://x.com/ishowspeedsui/status/2122463228987129932",
+      "https://www.sportskeeda.com/us/streamers/news-kai-cenat-s-gta-6-marathon-livestream-date-time-livestream-link",
+      "https://www.techtimes.com/articles/330968/20261117/ishowspeed-gta-6-stream-starts-3-hours-before-us-unlock-plans-10-12-hour-days-no-marathon.htm",
+    ],
+  },
+  {
+    slug: "streamers-new-zealand-trick-warnings",
+    title: "Streamers and the NZ Trick: Ban Risk",
+    description:
+      "One German streamer says Twitch warned him about the New Zealand trick. What Twitch, Xbox and PlayStation sources say, and what is still unconfirmed.",
+    crumb: "Streamers and the NZ trick",
+    teaser: "One streamer says Twitch warned him about the New Zealand trick. What is reported, and what is not confirmed.",
+    tag: "Streamers",
+    keywords: ["New Zealand trick", "GTA 6 ban", "Twitch suspension", "Xbox region", "PSN suspension"],
+    published: STREAMERS_PUBLISHED,
+    updated: STREAMERS_PUBLISHED,
+    citations: [
+      "https://www.notebookcheck.net/Streamer-faces-ban-for-using-GTA-6-early-unlock-time-trick-on-release-date.1451653.0.html",
+      "https://cybernews.com/news/new-zealand-method-gta6-twitch-account-ban/",
+      "https://www.purexbox.com/news/2026/11/xbox-fans-urge-caution-over-new-zealand-trick-for-gta-6-while-others-say-its-a-non-issue",
+      "https://www.bbc.com/news/live/c60rkg21dl22t",
+      "https://www.rnz.co.nz/life/screens/games/the-grand-theft-auto-kiwi-hack-the-world-is-talking-about",
+      "https://en.3dmgame.com/news/10688",
     ],
   },
 ];
