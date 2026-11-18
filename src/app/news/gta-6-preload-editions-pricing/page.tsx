@@ -31,7 +31,8 @@ export default function Page() {
         <li>
           <Lead>Space:</Lead> up to 212GB, depending on device (
           <Ext href="https://www.theverge.com/games/1025271/gta-vi-storage-space-rockstar-games">The Verge</Ext>). Sony says to clear at least 212GB on PS5 (
-          <Ext href="https://www.playstation.com/en-us/games/grand-theft-auto-vi/">PlayStation</Ext>).
+          <Ext href="https://www.playstation.com/en-us/games/grand-theft-auto-vi/">PlayStation</Ext>). The Xbox Store listing carries a maximum install size of about 225GB (209.9GB in binary units), and news.com.au reports about 234GB on Xbox, so leave extra room there (
+          <Ext href="https://www.xbox.com/en-US/games/store/grand-theft-auto-vi/9P3H4968GRSM">Xbox Store</Ext>, <Link href={newsPath("gta-6-file-size-time-to-beat")} className={L}>file size guide</Link>).
         </li>
         <li>
           <Lead>It does not unlock early.</Lead> The game stays locked until midnight local time on 19 November. Check your region in the{" "}

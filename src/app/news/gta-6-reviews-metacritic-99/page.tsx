@@ -33,17 +33,17 @@ export default function Page() {
       <H2>The numbers</H2>
       <Bullets>
         <li>
-          <Lead>Metacritic (as of 22:35 AEST, 18 Nov):</Lead> 99 on the PS5 listing from 152 critic reviews, read directly from{" "}
+          <Lead>Metacritic (as of 23:49 AEST, 18 Nov):</Lead> Metascore 99, &ldquo;Universal Acclaim&rdquo;, from 147 critic reviews on the main listing, and 99 across all platforms from 153, read directly from{" "}
           <Ext href="https://www.metacritic.com/game/grand-theft-auto-vi/">Metacritic</Ext>. It first appeared at 99 from 100 reviews at about 11:17 GMT (
-          <Ext href="https://www.bbc.com/news/live/c60rkg21dl22t">BBC News</Ext>), so the score has held while the count has grown.
+          <Ext href="https://www.bbc.com/news/live/c60rkg21dl22t">BBC News</Ext>), so the score has held at 99 while the count has moved around.
         </li>
         <li>
           <Lead>Lowest score:</Lead> 80 (ScreenHub) on the Metacritic page we read. The BBC&rsquo;s first-wave lowest was 90, so a few lower scores have arrived since. Metacritic
-          showed no mixed or negative reviews on its colour scale.
+          showed 100% positive reviews, with none mixed or negative.
         </li>
         <li>
-          <Lead>Xbox and other aggregators:</Lead> Metacritic now also lists an Xbox Series X page, at 99 from 14 reviews. Polygon reports OpenCritic at 98 (
-          <Ext href="https://www.polygon.com/gta-6-review-roundup/">Polygon</Ext>). Metacritic&rsquo;s user score is still &ldquo;tbd&rdquo;.
+          <Lead>Xbox and other aggregators:</Lead> Metacritic also lists an Xbox Series X page, at 99 from 14 reviews. OpenCritic shows a Top Critic Average of 98 with 100% of critics recommending it (as of 23:49 AEST, read directly from{" "}
+          <Ext href="https://opencritic.com/game/15398/grand-theft-auto-vi">OpenCritic</Ext>; <Ext href="https://www.polygon.com/gta-6-review-roundup/">Polygon</Ext> reported the same 98 earlier). Metacritic&rsquo;s user score is still &ldquo;tbd&rdquo;.
         </li>
         <li>
           <Lead>Records:</Lead> Rockstar&rsquo;s previous best Metascore was 98 for GTA IV, and GTA V scored 97 on Xbox 360 and PS3 (
@@ -70,7 +70,10 @@ export default function Page() {
         <Ext href="https://www.digitalfoundry.net/reviews/grand-theft-auto-6-a-landmark-achievement-that-redefines-a-console-generation">Digital Foundry</Ext>).
       </p>
       <p>
-        We have not seen a published Xbox Series X or Series S performance breakdown yet. Treat any Xbox frame-rate claim as <Lead>unverified</Lead> for now.
+        Digital Foundry has since published a four-console test. It reports 1440p and a 30fps target on PS5, PS5 Pro and Xbox Series X, with Series X holding 30fps a little loosely and dipping into the mid-20s with vehicle destruction. Series S renders at 720p, upscaled to about 1080p with FSR 4,
+        and spends large parts of the game in the mid to high 20s. Digital Foundry calls it &ldquo;the hardest to recommend&rdquo; (<Ext href="https://www.digitalfoundry.net/features/gta-6-ps5-vs-ps5-pro-xbox-series-x-and-series-s-which-console-plays-best">Digital Foundry</Ext>).
+        IGN&rsquo;s Series S test covered only the opening section and found mostly 30fps with a couple of drops to 24fps (<Ext href="https://www.ign.com/articles/gta-6-xbox-series-s-performance">IGN</Ext>).
+        Full detail is in our <Link href={newsPath("gta-6-performance-ps5-pro-xbox")} className={L}>performance guide</Link>.
       </p>
 
       <H2>What is unconfirmed</H2>
@@ -95,9 +98,12 @@ export default function Page() {
         <Source href="https://www.bbc.com/news/live/c60rkg21dl22t" label="BBC News live page, 18 Nov 2026" kind="Reputable outlet" />
         <Source href="https://insider-gaming.com/gta-6-gets-a-99-in-early-metacritic-review-scores/" label="Insider Gaming, 18 Nov 2026" kind="Reputable outlet" />
         <Source href="https://www.gamingbible.com/news/gta-6-review-round-up-highest-rated-game-all-time-916887-20261118" label="GAMINGbible, 18 Nov 2026" kind="Reputable outlet" />
-        <Source href="https://www.metacritic.com/game/grand-theft-auto-vi/" label="Metacritic: Grand Theft Auto VI (read 18 Nov 2026)" kind="Review aggregator" />
+        <Source href="https://www.metacritic.com/game/grand-theft-auto-vi/" label="Metacritic: Grand Theft Auto VI (read 23:49 AEST, 18 Nov 2026)" kind="Review aggregator" />
+        <Source href="https://opencritic.com/game/15398/grand-theft-auto-vi" label="OpenCritic: Grand Theft Auto VI (read 23:49 AEST, 18 Nov 2026)" kind="Review aggregator" />
         <Source href="https://www.polygon.com/gta-6-review-roundup/" label="Polygon review round-up, 18 Nov 2026" kind="Reputable outlet" />
         <Source href="https://www.aa.com.tr/en/science-technology/gta-vi-global-rollout-begins-with-new-zealand-launch/4129238" label="Anadolu Agency, 18 Nov 2026" kind="Reputable outlet" />
+        <Source href="https://www.digitalfoundry.net/features/gta-6-ps5-vs-ps5-pro-xbox-series-x-and-series-s-which-console-plays-best" label="Digital Foundry: PS5, PS5 Pro, Xbox Series X and Series S, 18 Nov 2026" kind="Technical analysis" />
+        <Source href="https://www.ign.com/articles/gta-6-xbox-series-s-performance" label="IGN: Xbox Series S performance, 18 Nov 2026" kind="Reputable outlet, opening section only" />
         <Source href="https://www.digitalfoundry.net/reviews/grand-theft-auto-6-a-landmark-achievement-that-redefines-a-console-generation" label="Digital Foundry review, 18 Nov 2026" kind="Reputable outlet" />
       </Sources>
     </NewsLayout>

@@ -17,9 +17,9 @@ const ROWS: React.ReactNode[][] = [
 
 export default function Page() {
   return (
-    <NewsLayout slug={SLUG} kicker="News · Guide" title="GTA 6 File Size and Time to Beat" source="PlayStation, The Verge, VGC, GameSpot">
+    <NewsLayout slug={SLUG} kicker="News · Guide" title="GTA 6 File Size and Time to Beat" source="PlayStation, Xbox Store, The Verge, VGC, GameSpot">
       <Lede>
-        Clear 212GB before you play, and plan for roughly 60 to 65 hours if you stick to the story. Add side content and you are looking at 90 to 100 hours or more.
+        Clear 212GB on PS5 and about 225GB on Xbox before you play, and plan for roughly 60 to 65 hours if you stick to the story. Add side content and you are looking at 90 to 100 hours or more.
       </Lede>
 
       <H2>File size</H2>
@@ -32,11 +32,16 @@ export default function Page() {
         </li>
         <li>
           <Lead>Patches add more.</Lead> Two small pre-launch patches have gone out (about 1GB, then 602.5MB on PS5), and the PS5 also needed a system update. See the{" "}
-          <Link href={newsPath("gta-6-ps5-update-patches-servers")} className={L}>server status and known issues tracker</Link>. Keep a few spare gigabytes free beyond 212GB.
+          <Link href={newsPath("gta-6-ps5-update-patches-servers")} className={L}>server status and known issues tracker</Link>. Keep a few spare gigabytes free beyond the base size.
         </li>
         <li>
-          <Lead>Xbox:</Lead> Rockstar&rsquo;s figure covers both consoles: &ldquo;up to 212GB depending on your device&rdquo;. news.com.au reports about 234GB on Xbox, a different number from Rockstar&rsquo;s (<Ext href="https://www.news.com.au/technology/gaming/gta-6-release-australia-launch-times-download-size-and-why-its-a-bad-time-to-be-a-boss/news-story/eeb2f0ed1d624c365f65e50b92c974cf">news.com.au</Ext>).
-          Neither Rockstar nor Microsoft has confirmed that figure to us, and we have not verified an Xbox Store size ourselves. Leave extra room on Xbox and check the size shown on your own pre-load before deleting anything.
+          <Lead>Official (Xbox Store listing):</Lead> the Xbox Store page for the Standard Edition does not show a size on screen, but its page data lists a maximum install size of 225,336,647,680 bytes. That is about 225.3GB counted in decimal units,
+          or 209.9GB in binary units (<Ext href="https://www.xbox.com/en-US/games/store/grand-theft-auto-vi/9P3H4968GRSM">Xbox Store</Ext>). We do not know which unit your Xbox download screen uses, so allow for the larger figure.
+        </li>
+        <li>
+          <Lead>Reported (news.com.au):</Lead> about 234GB on Xbox and 212GB on PS5 (<Ext href="https://www.news.com.au/technology/gaming/gta-6-release-australia-launch-times-download-size-and-why-its-a-bad-time-to-be-a-boss/news-story/eeb2f0ed1d624c365f65e50b92c974cf">news.com.au</Ext>).
+          We could not match 234GB to the Xbox Store listing, and neither Rockstar nor Microsoft has confirmed it. Some reports put Xbox as low as 210GB, which is the Store figure in binary units. The reported range is therefore about 210GB to 234GB.
+          Leave extra room on Xbox and check the size shown on your own download before deleting anything.
         </li>
       </Bullets>
       <p>
@@ -73,8 +78,9 @@ export default function Page() {
 
       <Sources>
         <Source href="https://www.playstation.com/en-us/games/grand-theft-auto-vi/" label="PlayStation Store: Grand Theft Auto VI" kind="Official, platform holder" />
+        <Source href="https://www.xbox.com/en-US/games/store/grand-theft-auto-vi/9P3H4968GRSM" label="Xbox Store: Grand Theft Auto VI (Standard Edition), read 18 Nov 2026" kind="Official, platform holder (install size in page data)" />
         <Source href="https://www.theverge.com/games/1025271/gta-vi-storage-space-rockstar-games" label="The Verge, 3 Nov 2026" kind="Reputable outlet quoting Rockstar" />
-        <Source href="https://www.news.com.au/technology/gaming/gta-6-release-australia-launch-times-download-size-and-why-its-a-bad-time-to-be-a-boss/news-story/eeb2f0ed1d624c365f65e50b92c974cf" label="news.com.au: GTA 6 release in Australia, 18 Nov 2026" kind="Reputable outlet (Xbox size, single source)" />
+        <Source href="https://www.news.com.au/technology/gaming/gta-6-release-australia-launch-times-download-size-and-why-its-a-bad-time-to-be-a-boss/news-story/eeb2f0ed1d624c365f65e50b92c974cf" label="news.com.au: GTA 6 release in Australia, 18 Nov 2026" kind="Reputable outlet (234GB Xbox figure, single source)" />
         <Source href="https://www.videogameschronicle.com/guide/how-long-to-beat-grand-theft-auto-6/" label="VGC: How long to beat GTA 6, 18 Nov 2026" kind="Reputable outlet" />
         <Source href="https://www.gamespot.com/articles/how-long-to-beat-gta-6/" label="GameSpot: How long to beat GTA 6, 18 Nov 2026" kind="Reputable outlet" />
         <Source href="https://www.gamesradar.com/games/grand-theft-auto/how-long-is-gta-6-about-80-hours-according-to-one-rockstar-devs-playthrough/" label="GamesRadar+, 27 Aug 2026" kind="Reputable outlet citing NYT" />
