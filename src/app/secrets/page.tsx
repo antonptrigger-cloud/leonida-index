@@ -1,8 +1,11 @@
+import { metaFor } from "@/lib/seo/site";
+import { PageSchema } from "@/lib/seo/jsonld";
 import { PageHeader } from "@/components/PageHeader";
-export const metadata = { title: "Secrets" };
+export const metadata = metaFor("/secrets");
 export default function Page() {
   return (
     <div>
+      <PageSchema path="/secrets" />
       <PageHeader kicker="Secrets" title="Easter eggs" source="Unverified" />
       <p className="text-muted">Shell. Submit finds after launch. Nothing invented here.</p>
     </div>

@@ -1,3 +1,4 @@
+import { metaFor } from "@/lib/seo/site";
 import { cookies } from "next/headers";
 import { PageHeader } from "@/components/PageHeader";
 import { AdminLogin } from "@/components/map/AdminLogin";
@@ -5,7 +6,7 @@ import { AdminQueue } from "@/components/map/AdminQueue";
 import { MOD_COOKIE, moderationConfigured, verifySessionToken } from "@/lib/map/auth";
 import { getModerationQueue } from "@/lib/map/service";
 
-export const metadata = { title: "Map moderation", robots: { index: false, follow: false } };
+export const metadata = metaFor("/map/admin");
 export const dynamic = "force-dynamic";
 
 export default async function AdminPage() {

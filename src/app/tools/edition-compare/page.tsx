@@ -1,8 +1,11 @@
+import { metaFor } from "@/lib/seo/site";
+import { PageSchema } from "@/lib/seo/jsonld";
 import { PageHeader } from "@/components/PageHeader";
-export const metadata = { title: "Edition compare" };
+export const metadata = metaFor("/tools/edition-compare");
 export default function Page() {
   return (
     <div>
+      <PageSchema path="/tools/edition-compare" />
       <PageHeader kicker="Tool" title="Standard vs Ultimate" source="Official" />
       <div className="overflow-x-auto">
         <table className="w-full min-w-[32rem] border-collapse text-left text-sm">

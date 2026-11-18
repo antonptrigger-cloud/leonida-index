@@ -1,7 +1,11 @@
+import Image from "next/image";
 import Link from "next/link";
 import { Palm } from "@/components/Palm";
 import { Scenery, SKIES, type SceneId } from "@/components/Scenery";
 import { TILES } from "@/lib/map/config";
+import { metaFor } from "@/lib/seo/site";
+
+export const metadata = metaFor("/");
 
 const GUIDE = [
   { href: "/news/release-date", title: "What’s confirmed", body: "19 Nov 2026 · PS5 and Xbox Series X|S" },
@@ -104,9 +108,10 @@ export default function Home() {
           <p className="vc-kicker">The unofficial field guide<span className="hidden sm:inline">&nbsp;· Issue 01</span></p>
           <h1 className="mt-6x">
             <span className="vc-display block text-[clamp(1.5rem,3.4vw,2.4rem)] leading-none tracking-[0.12em] text-ink-2">
-              Welcome to
+              Welcome to{" "}
             </span>
             <span className="vc-heading -ml-1 block text-[clamp(5.75rem,29vw,13rem)]">Leonida</span>
+            <span className="sr-only">: GTA 6 interactive map, guides and secrets</span>
           </h1>
           <p className="mt-6x max-w-[36ch] text-[0.95rem] leading-relaxed text-muted">
             Map, guides, database and tools for Vice City and the state of Leonida.
@@ -182,14 +187,13 @@ export default function Home() {
         <div className="grid gap-10x md:grid-cols-12 md:gap-gutter">
           <Link href="/map" className="vc-cut group block md:col-span-7" style={{ ["--cut" as string]: "28px" }}>
             <div className="relative overflow-hidden">
-              {/* eslint-disable-next-line @next/next/no-img-element -- versioned static asset, already sized */}
-              <img
+              <Image
                 src={TILES.preview.url}
                 width={TILES.preview.width}
                 height={TILES.preview.height}
                 alt="Illustrated fan map of Leonida"
                 className="aspect-[16/10] w-full object-cover opacity-80 transition-transform duration-700 group-hover:scale-105"
-                loading="lazy"
+                sizes="(min-width: 1152px) 640px, (min-width: 768px) 56vw, 100vw"
               />
               <div className="absolute inset-0 bg-[linear-gradient(180deg,transparent_35%,rgba(10,10,11,0.95))]" />
               <div className="absolute inset-0 bg-[repeating-linear-gradient(180deg,rgba(0,0,0,0.18)_0_1px,transparent_1px_3px)]" />

@@ -39,11 +39,20 @@ function useHeaderOffset() {
   }, []);
 }
 
-export function CommunityMap({ initialPins, online }: { initialPins: PublicPin[]; online: boolean }) {
+export function CommunityMap({
+  initialPins,
+  online,
+  initialQuery = "",
+}: {
+  initialPins: PublicPin[];
+  online: boolean;
+  /** From /map?q=… (WebSite SearchAction target). */
+  initialQuery?: string;
+}) {
   useHeaderOffset();
   const [pins, setPins] = useState<PublicPin[]>(initialPins);
   const [enabled, setEnabled] = useState<Set<PinType>>(new Set(TYPE_KEYS));
-  const [query, setQuery] = useState("");
+  const [query, setQuery] = useState(initialQuery);
   const [showSpoilers, setShowSpoilers] = useState(false);
   const [selectedId, setSelectedId] = useState<string | null>(null);
   const [submitting, setSubmitting] = useState(false);
@@ -145,7 +154,7 @@ export function CommunityMap({ initialPins, online }: { initialPins: PublicPin[]
 
       {/* Controls: submit (desktop), search, spoilers, filters */}
       <div className={`${card} vc-glass--cut absolute left-2x right-2x top-2x z-[1000] flex flex-col gap-3x p-3x sm:left-3x sm:right-auto sm:top-3x sm:w-[440px] sm:p-4x`}>
-        <h1 className="sr-only">Leonida community map</h1>
+        <h2 className="sr-only">Map controls</h2>
         <div className="hidden items-center justify-between gap-4x sm:flex">
           <div className="leading-none">
             <p className="text-[0.6rem] font-bold uppercase tracking-[0.32em] text-turq">Community map</p>

@@ -1,8 +1,11 @@
+import { metaFor } from "@/lib/seo/site";
+import { PageSchema } from "@/lib/seo/jsonld";
 import { PageHeader } from "@/components/PageHeader";
-export const metadata = { title: "Activities" };
+export const metadata = metaFor("/guides/activities");
 export default function Page() {
   return (
     <div>
+      <PageSchema path="/guides/activities" />
       <PageHeader kicker="Guide" title="Activities" source="Showcase" />
       <ul className="max-w-xl list-disc space-y-2 pl-5 text-ink-2">
         <li>Gym and food / drink that change how you feel in the moment</li>
