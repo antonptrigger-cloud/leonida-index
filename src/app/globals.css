@@ -1,17 +1,827 @@
 @import "tailwindcss";
 
-:root {
-  --bg: #0b0b0c;
-  --bg-card: #161618;
-  --line: #2a2a2e;
-  --text: #f4f1ea;
-  --muted: #9a958c;
-  --accent: #ff2d7b;
-  --accent-2: #ffd36b;
+/* =====================================================================
+   LEONIDA VICE GUIDE — visual identity
+   80s Miami travel magazine: dusk gradients, neon hairlines, skewed
+   pink CTAs with an offset blue print shadow, postcards, palms.
+   All decoration is original CSS/SVG. No Rockstar assets.
+   ===================================================================== */
+@theme {
+  /* Colour */
+  --color-bg: #0a0a0b;
+  --color-bg-2: #0f0d13;
+  --color-card: #131218;
+  --color-line: #3a1f30;
+  --color-ink: #f5f3f7;
+  --color-ink-2: #d9d5e2;
+  --color-muted: #a6a1b4;
+  --color-faint: #8a8597;
+  --color-cream: #f6e7cf;
+  --color-pink: #ff2d78;
+  --color-pink-2: #ff5c97;
+  --color-orange: #ff8c42;
+  --color-orange-2: #ff6b35;
+  --color-blue: #00d4ff;
+  --color-cobalt: #1e90ff;
+  --color-turq: #00e5cc;
+  --color-ok: #3bb273;
+
+  /* Type */
+  --font-sans: var(--font-body), system-ui, sans-serif;
+  --font-display: var(--font-display-face), "Arial Narrow", Impact, sans-serif;
+
+  /* Spacing scale (use these, not ad-hoc values): 4 / 8 / 12 / 16 / 24 / 40 / 64 / 96 */
+  --spacing-1x: 0.25rem;
+  --spacing-2x: 0.5rem;
+  --spacing-3x: 0.75rem;
+  --spacing-4x: 1rem;
+  --spacing-6x: 1.5rem;
+  --spacing-gutter: 1.5rem;
+  --spacing-10x: 2.5rem;
+  --spacing-16x: 4rem;
+  --spacing-24x: 6rem;
 }
 
-body {
+:root {
+  --bg: #0a0a0b;
+  --text: #f5f3f7;
+  --sunset: linear-gradient(92deg, #ff2d78 0%, #ff4d5e 38%, #ff6b35 70%, #ff8c42 100%);
+  --dusk: linear-gradient(180deg, #160a24 0%, #2a0d2e 38%, #5a1638 62%, #ff6b35 100%);
+  --neon-line: linear-gradient(90deg, transparent, #ff2d78 18%, #ff8c42 50%, #00d4ff 82%, transparent);
+  --ease-out: cubic-bezier(0.2, 0.7, 0.2, 1);
+  --grain: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='180' height='180'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 0.55 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+  color-scheme: dark;
+}
+
+html {
   background: var(--bg);
+  overflow-x: clip;
+}
+body {
+  position: relative;
   color: var(--text);
-  font-family: var(--font-geist-sans), system-ui, sans-serif;
+  background: transparent;
+  font-family: var(--font-body), system-ui, sans-serif;
+  overflow-x: clip;
+}
+
+/* Atmosphere: soft neon corners + film grain + faint scanlines behind everything. */
+body::before,
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: -1;
+}
+body::before {
+  background:
+    radial-gradient(60vw 50vh at -10% -10%, rgba(255, 45, 120, 0.16), transparent 60%),
+    radial-gradient(55vw 45vh at 110% 0%, rgba(0, 212, 255, 0.11), transparent 60%),
+    radial-gradient(70vw 50vh at 100% 110%, rgba(255, 107, 53, 0.09), transparent 60%),
+    radial-gradient(50vw 40vh at 0% 100%, rgba(0, 229, 204, 0.06), transparent 60%),
+    var(--bg);
+}
+body::after {
+  background-image:
+    repeating-linear-gradient(180deg, rgba(255, 255, 255, 0.022) 0 1px, transparent 1px 3px),
+    var(--grain);
+  opacity: 0.55;
+  mix-blend-mode: overlay;
+}
+
+::selection {
+  background: rgba(255, 45, 120, 0.45);
+  color: #fff;
+}
+:focus-visible {
+  outline: 2px solid #00d4ff;
+  outline-offset: 3px;
+}
+
+@layer components {
+/* ---------- Type ---------- */
+.vc-display {
+  font-family: var(--font-display-face), "Arial Narrow", Impact, sans-serif;
+  font-weight: 400;
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+}
+.vc-heading {
+  font-family: var(--font-display-face), "Arial Narrow", Impact, sans-serif;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: -0.005em;
+  line-height: 0.86;
+  width: fit-content;
+  max-width: 100%;
+  background: var(--sunset);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  filter: drop-shadow(0 0 22px rgba(255, 45, 120, 0.25));
+}
+.vc-outline {
+  font-family: var(--font-display-face), "Arial Narrow", Impact, sans-serif;
+  text-transform: uppercase;
+  color: transparent;
+  -webkit-text-stroke: 1.5px #ff5c97;
+}
+.vc-outline--faint {
+  -webkit-text-stroke: 1px rgba(255, 92, 151, 0.35);
+}
+.vc-kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: #00e5cc;
+}
+.vc-kicker::before {
+  content: "";
+  width: 2rem;
+  height: 1px;
+  background: currentColor;
+  box-shadow: 0 0 8px currentColor;
+}
+
+/* ---------- Buttons ----------
+   Solid pink parallelogram, near-black condensed label (5.6:1), soft glow and an
+   offset blue "print" shadow. The shape lives on ::before so the label stays upright. */
+.vc-cta,
+.vc-btn {
+  position: relative;
+  isolation: isolate;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5em;
+  padding: 0.72em 1.5em 0.62em;
+  border: 0;
+  background: transparent;
+  color: #0a0a0b;
+  font-family: var(--font-display-face), "Arial Narrow", Impact, sans-serif;
+  font-weight: 400;
+  font-size: 1.125rem;
+  line-height: 1;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: transform 0.18s var(--ease-out);
+}
+.vc-cta::before,
+.vc-btn::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: #ff2d78;
+  transform: skewX(-14deg);
+  box-shadow: 4px 4px 0 0 #00d4ff, 0 0 22px rgba(255, 45, 120, 0.45);
+  transition: transform 0.18s var(--ease-out), box-shadow 0.18s var(--ease-out), background 0.18s ease;
+}
+.vc-cta:hover:not(:disabled),
+.vc-btn:hover:not(:disabled) {
+  transform: translate(-2px, -2px);
+}
+.vc-cta:hover:not(:disabled)::before,
+.vc-btn:hover:not(:disabled)::before {
+  background: #ff3f86;
+  box-shadow: 6px 6px 0 0 #00d4ff, 0 0 30px rgba(255, 45, 120, 0.6);
+}
+.vc-cta:active:not(:disabled),
+.vc-btn:active:not(:disabled) {
+  transform: translate(2px, 2px);
+}
+.vc-cta:active:not(:disabled)::before,
+.vc-btn:active:not(:disabled)::before {
+  box-shadow: 0 0 0 0 #00d4ff, 0 0 16px rgba(255, 45, 120, 0.5);
+}
+.vc-cta:disabled,
+.vc-btn:disabled {
+  color: #c9c4d3;
+  cursor: not-allowed;
+}
+.vc-cta:disabled::before,
+.vc-btn:disabled::before {
+  background: #3a2a33;
+  box-shadow: none;
+}
+.vc-btn {
+  font-size: 1rem;
+  padding: 0.6em 1.15em 0.5em;
+}
+.vc-cta--xl {
+  font-size: 1.375rem;
+  padding: 0.7em 1.6em 0.6em;
+}
+
+.vc-btn-ghost {
+  position: relative;
+  isolation: isolate;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.72em 1.5em 0.62em;
+  color: #bff4ff;
+  font-family: var(--font-display-face), "Arial Narrow", Impact, sans-serif;
+  font-size: 1.125rem;
+  line-height: 1;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  transition: color 0.18s ease;
+}
+.vc-btn-ghost::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  border: 1.5px solid rgba(0, 212, 255, 0.7);
+  transform: skewX(-14deg);
+  transition: background 0.18s ease, box-shadow 0.18s ease;
+}
+.vc-btn-ghost:hover {
+  color: #fff;
+}
+.vc-btn-ghost:hover::before {
+  background: rgba(0, 212, 255, 0.1);
+  box-shadow: 0 0 18px rgba(0, 212, 255, 0.35);
+}
+
+/* Small skewed chip (filters, tags). */
+.vc-chip {
+  position: relative;
+  isolation: isolate;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.3rem 0.7rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #d9d5e2;
+  transition: color 0.15s ease;
+}
+.vc-chip::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  transform: skewX(-14deg);
+  border: 1px solid rgba(255, 45, 120, 0.3);
+  background: rgba(19, 18, 24, 0.85);
+  transition: border-color 0.15s ease, background 0.15s ease, box-shadow 0.15s ease;
+}
+.vc-chip:hover::before {
+  border-color: rgba(255, 92, 151, 0.8);
+}
+.vc-chip[aria-pressed="true"]::before,
+.vc-chip[aria-expanded="true"]::before,
+.vc-chip--on::before,
+.vc-chip:has(input:checked)::before {
+  border-color: var(--chip, #ff2d78);
+  background: color-mix(in srgb, var(--chip, #ff2d78) 16%, #131218);
+  box-shadow: 0 0 12px color-mix(in srgb, var(--chip, #ff2d78) 35%, transparent);
+}
+.vc-chip[aria-pressed="false"] {
+  color: #8a8597;
+}
+
+/* ---------- Surfaces ---------- */
+/* Base card: thin magenta border. */
+.vc-card {
+  position: relative;
+  border: 1px solid rgba(255, 45, 120, 0.3);
+  border-left: 3px solid #ff2d78;
+  background: linear-gradient(160deg, rgba(255, 45, 120, 0.06), transparent 45%), #121117;
+  transition: border-color 0.2s ease, transform 0.25s var(--ease-out), box-shadow 0.25s ease;
+}
+a.vc-card:hover {
+  border-color: rgba(255, 92, 151, 0.8);
+  box-shadow: 0 0 26px rgba(255, 45, 120, 0.16);
+}
+
+/* Clipped corners (top-right + bottom-left), with a gradient hairline. */
+.vc-cut {
+  --cut: 18px;
+  position: relative;
+  isolation: isolate;
+  clip-path: polygon(0 0, calc(100% - var(--cut)) 0, 100% var(--cut), 100% 100%, var(--cut) 100%, 0 calc(100% - var(--cut)));
+  background: linear-gradient(135deg, rgba(255, 45, 120, 0.85), rgba(255, 140, 66, 0.5) 50%, rgba(0, 212, 255, 0.6));
+}
+.vc-cut::before {
+  content: "";
+  position: absolute;
+  inset: 1px;
+  z-index: -1;
+  clip-path: polygon(0 0, calc(100% - var(--cut) + 0.5px) 0, 100% calc(var(--cut) - 0.5px), 100% 100%, calc(var(--cut) - 0.5px) 100%, 0 calc(100% - var(--cut) + 0.5px));
+  background: var(--cut-bg, #121117);
+}
+
+/* Offset frame: a second border sits behind, shifted down-right; it slides on hover. */
+.vc-offset {
+  position: relative;
+}
+.vc-offset::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  transform: translate(8px, 8px);
+  border: 1px solid rgba(0, 212, 255, 0.45);
+  pointer-events: none;
+  z-index: -1;
+  transition: transform 0.25s var(--ease-out), border-color 0.25s ease;
+}
+.vc-offset:hover::after {
+  transform: translate(12px, 12px);
+  border-color: rgba(0, 212, 255, 0.85);
+}
+
+/* One-sided accent bar that grows on hover. */
+.vc-bar {
+  position: relative;
+  padding-left: 1.25rem;
+}
+.vc-bar::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.35rem;
+  bottom: 0.35rem;
+  width: 3px;
+  background: var(--bar, #ff2d78);
+  box-shadow: 0 0 10px var(--bar, #ff2d78);
+  transition: width 0.22s var(--ease-out);
+}
+.vc-bar:hover::before {
+  width: 7px;
+}
+
+/* Glass panels over the map. */
+.vc-glass {
+  border: 1px solid rgba(255, 45, 120, 0.34);
+  background: linear-gradient(160deg, rgba(255, 45, 120, 0.07), transparent 40%), rgba(11, 9, 14, 0.9);
+  box-shadow: 0 14px 40px rgba(0, 0, 0, 0.6), 0 0 34px rgba(255, 45, 120, 0.08);
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+}
+.vc-glass--cut {
+  clip-path: polygon(0 0, calc(100% - 16px) 0, 100% 16px, 100% 100%, 0 100%);
+}
+
+.vc-neon-line {
+  height: 1px;
+  background: var(--neon-line);
+  box-shadow: 0 0 10px rgba(255, 45, 120, 0.6);
+}
+
+/* Section title with a big outlined index number behind it. */
+.vc-section-title {
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  gap: 1rem;
+}
+.vc-section-title [data-num] {
+  font-family: var(--font-display-face), Impact, sans-serif;
+  font-size: clamp(4rem, 9vw, 7rem);
+  line-height: 0.75;
+  color: transparent;
+  -webkit-text-stroke: 1px rgba(0, 212, 255, 0.55);
+}
+
+/* ---------- Header nav ---------- */
+.vc-nav-link {
+  position: relative;
+  padding: 0.35rem 0.1rem;
+  font-family: var(--font-display-face), Impact, sans-serif;
+  font-size: 1.1875rem;
+  line-height: 1;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #d9d5e2;
+  white-space: nowrap;
+  transition: color 0.15s ease, text-shadow 0.15s ease;
+}
+.vc-nav-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -0.2rem;
+  height: 3px;
+  width: 100%;
+  transform: scaleX(0) skewX(-20deg);
+  transform-origin: left;
+  background: #ff2d78;
+  box-shadow: 0 0 10px rgba(255, 45, 120, 0.8);
+  transition: transform 0.22s var(--ease-out);
+}
+.vc-nav-link:hover {
+  color: #fff;
+}
+.vc-nav-link:hover::after {
+  transform: scaleX(0.55) skewX(-20deg);
+}
+.vc-nav-link[aria-current="page"] {
+  color: #fff;
+  text-shadow: 0 0 12px rgba(255, 45, 120, 0.85);
+}
+.vc-nav-link[aria-current="page"]::after {
+  transform: scaleX(1) skewX(-20deg);
+}
+
+/* ---------- Homepage ---------- */
+.vc-full-bleed {
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+}
+.vc-ticker {
+  transform: rotate(-1.6deg);
+  background: #ff2d78;
+  color: #0a0a0b;
+  box-shadow: 0 0 30px rgba(255, 45, 120, 0.35), 0 6px 0 #00d4ff;
+  overflow: hidden;
+}
+.vc-ticker__track {
+  display: flex;
+  width: max-content;
+  gap: 2.5rem;
+  padding: 0.6rem 0;
+  animation: vc-marquee 38s linear infinite;
+}
+@keyframes vc-marquee {
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+/* "Greetings from" postcard. */
+.vc-postcard {
+  position: relative;
+  aspect-ratio: 3 / 2;
+  padding: 0.75rem;
+  background: #f6e7cf;
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.55), 0 0 0 1px rgba(255, 255, 255, 0.2), 0 0 60px rgba(255, 45, 120, 0.25);
+  transform: rotate(3deg);
+  transition: transform 0.4s var(--ease-out);
+}
+.vc-postcard:hover {
+  transform: rotate(1deg) translateY(-4px);
+}
+.vc-postcard__scene {
+  position: relative;
+  height: 100%;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 70% 64%, #ffd36b 0 13%, transparent 13.4%),
+    var(--dusk);
+}
+.vc-postcard__sea {
+  position: absolute;
+  inset: 62% 0 0 0;
+  background:
+    repeating-linear-gradient(180deg, rgba(255, 140, 66, 0.55) 0 2px, transparent 2px 9px),
+    linear-gradient(180deg, #2b1a5a, #0d1440);
+}
+.vc-postcard__word {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+.vc-postcard__word strong {
+  font-family: var(--font-display-face), Impact, sans-serif;
+  font-weight: 400;
+  font-size: clamp(3.5rem, 9vw, 6.5rem);
+  line-height: 0.85;
+  letter-spacing: 0.02em;
+  background:
+    linear-gradient(180deg, #fff6d6 0%, #ffd36b 30%, #ff8c42 55%, #ff2d78 80%, #b0157a 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  -webkit-text-stroke: 1px rgba(10, 10, 11, 0.35);
+  filter: drop-shadow(3px 3px 0 #0a0a0b) drop-shadow(5px 5px 0 #00d4ff);
+}
+.vc-postcard__word em {
+  font-family: "Brush Script MT", "Segoe Script", cursive;
+  font-style: italic;
+  font-size: clamp(1.25rem, 3vw, 1.9rem);
+  color: #fff;
+  text-shadow: 0 0 12px rgba(255, 45, 120, 0.9), 2px 2px 0 #ff2d78;
+  transform: rotate(-6deg) translateY(0.35rem);
+}
+.vc-stamp {
+  position: absolute;
+  top: -1.1rem;
+  right: -0.9rem;
+  width: 5.5rem;
+  height: 5.5rem;
+  border-radius: 9999px;
+  border: 2px dashed rgba(0, 229, 204, 0.85);
+  color: #00e5cc;
+  display: grid;
+  place-items: center;
+  text-align: center;
+  font-size: 0.55rem;
+  font-weight: 800;
+  letter-spacing: 0.2em;
+  line-height: 1.4;
+  text-transform: uppercase;
+  background: rgba(10, 10, 11, 0.85);
+  transform: rotate(-14deg);
+  box-shadow: 0 0 18px rgba(0, 229, 204, 0.35);
+}
+
+/* Destination posters (bento). */
+.vc-poster {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  min-height: 13rem;
+  padding: 1.25rem;
+  color: #fff;
+  background: var(--sky);
+  transition: transform 0.3s var(--ease-out), box-shadow 0.3s ease;
+}
+.vc-poster::before {
+  /* legibility fade for the title */
+  content: "";
+  position: absolute;
+  inset: 40% 0 0 0;
+  z-index: -1;
+  background: linear-gradient(180deg, transparent, rgba(10, 10, 11, 0.8));
+}
+.vc-poster__art {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  transition: transform 0.6s var(--ease-out);
+}
+.vc-poster__art svg {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: auto;
+}
+.vc-poster:hover {
+  transform: translate(-3px, -3px);
+  box-shadow: 6px 6px 0 #00d4ff, 0 0 40px rgba(255, 45, 120, 0.3);
+}
+.vc-poster:hover .vc-poster__art {
+  transform: scale(1.06) translateY(-2%);
+}
+.vc-poster__no {
+  position: absolute;
+  top: 1rem;
+  left: 1.25rem;
+  font-size: 0.6875rem;
+  font-weight: 800;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.92);
+  text-shadow: 0 1px 6px rgba(0, 0, 0, 0.6);
+}
+.vc-poster__name {
+  font-family: var(--font-display-face), Impact, sans-serif;
+  text-transform: uppercase;
+  line-height: 0.85;
+  letter-spacing: 0.005em;
+  text-shadow: 3px 3px 0 rgba(10, 10, 11, 0.55), 0 0 30px rgba(255, 45, 120, 0.35);
+}
+.vc-poster__go {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-top: 0.6rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #fff;
+  opacity: 0.8;
+  transition: gap 0.2s var(--ease-out), opacity 0.2s ease;
+}
+.vc-poster:hover .vc-poster__go {
+  gap: 0.9rem;
+  opacity: 1;
+}
+
+/* Magazine index rows. */
+.vc-index-row {
+  position: relative;
+  display: grid;
+  grid-template-columns: 3rem 1fr auto;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem 0.25rem;
+  border-bottom: 1px solid rgba(255, 45, 120, 0.2);
+  transition: padding 0.22s var(--ease-out), background 0.22s ease;
+}
+.vc-index-row::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 0;
+  background: linear-gradient(90deg, rgba(255, 45, 120, 0.18), transparent);
+  transition: width 0.3s var(--ease-out);
+}
+.vc-index-row:hover {
+  padding-left: 1rem;
+}
+.vc-index-row:hover::before {
+  width: 100%;
+}
+.vc-index-row__num {
+  font-family: var(--font-display-face), Impact, sans-serif;
+  font-size: 2rem;
+  line-height: 1;
+  color: transparent;
+  -webkit-text-stroke: 1px rgba(0, 212, 255, 0.75);
+}
+.vc-index-row__arrow {
+  color: #8a8597;
+  transition: transform 0.22s var(--ease-out), color 0.2s ease;
+}
+.vc-index-row:hover .vc-index-row__arrow {
+  transform: translateX(6px);
+  color: #ff8c42;
+}
+
+.vc-palm {
+  position: absolute;
+  bottom: 0;
+  color: #07050a;
+  pointer-events: none;
+}
+
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+  .vc-ticker__track {
+    animation: none;
+  }
+}
+
+/* ---- Community map (Leaflet) ---- */
+.lvg-map.leaflet-container {
+  background: #0a0a0b;
+  font-family: var(--font-body), system-ui, sans-serif;
+}
+.lvg-map .leaflet-control-zoom a,
+.lvg-map .leaflet-bar a {
+  background: rgba(12, 10, 15, 0.92);
+  color: #f5f3f7;
+  border-color: rgba(255, 45, 120, 0.3);
+}
+.lvg-map .leaflet-control-zoom a:hover,
+.lvg-map .leaflet-bar a:hover {
+  background: #1b1520;
+  color: #ff5c97;
+  text-shadow: 0 0 8px rgba(255, 45, 120, 0.7);
+}
+.lvg-map .leaflet-bar {
+  border: 1px solid rgba(255, 45, 120, 0.4);
+  box-shadow: 0 0 14px rgba(255, 45, 120, 0.15);
+}
+.lvg-map .leaflet-bar a.leaflet-disabled {
+  color: #5a5566;
+  text-shadow: none;
+}
+.lvg-map .leaflet-control-attribution {
+  background: rgba(10, 10, 11, 0.8);
+  color: #a6a1b4;
+  font-size: 10px;
+}
+.lvg-map .leaflet-control-attribution a {
+  color: #a6a1b4;
+}
+.lvg-map .leaflet-tooltip {
+  background: rgba(12, 10, 15, 0.95);
+  color: #f5f3f7;
+  border: 1px solid rgba(255, 45, 120, 0.55);
+  box-shadow: 0 0 12px rgba(255, 45, 120, 0.3);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+.lvg-map .leaflet-tooltip-top::before {
+  border-top-color: rgba(255, 45, 120, 0.55);
+}
+.lvg-pin span {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border-radius: 9999px;
+  background: var(--pin);
+  border: 2px solid #0a0a0b;
+  box-shadow: 0 0 0 1px rgba(245, 243, 247, 0.6), 0 2px 6px rgba(0, 0, 0, 0.6);
+  transition: transform 0.12s ease;
+}
+.lvg-pin:hover span,
+.lvg-pin:focus span {
+  transform: scale(1.2);
+}
+.lvg-pin--approx span {
+  border-style: dashed;
+}
+.lvg-pin--region span {
+  /* Hollow ring so the region label on the base map stays readable. */
+  background: rgba(255, 45, 120, 0.12);
+  border: 3px solid var(--pin);
+  box-shadow: 0 0 0 1px rgba(11, 11, 12, 0.9), 0 0 10px rgba(255, 45, 120, 0.7);
+}
+.lvg-pin--selected span {
+  box-shadow: 0 0 0 3px #00e5cc, 0 0 14px rgba(0, 229, 204, 0.6);
+  transform: scale(1.25);
+}
+.lvg-pin--draft span {
+  background: #ff8c42;
+  border-radius: 50% 50% 50% 0;
+  transform: rotate(-45deg);
+  border: 2px solid #0a0a0b;
+  box-shadow: 0 0 0 2px #ff2d78, 0 0 14px rgba(255, 45, 120, 0.7);
+}
+
+/* Full-window map page: no page scroll behind the fixed map. */
+html:has(.lvg-fullmap),
+body:has(.lvg-fullmap) {
+  overflow: hidden;
+  overscroll-behavior: none;
+}
+.lvg-map .leaflet-tile {
+  image-rendering: auto;
+}
+.lvg-map .leaflet-control-zoom {
+  margin-bottom: 28px !important;
+}
+
+/* Leaflet 1.9.4 blends tiles with plus-lighter to hide seams, but over our scaled tiles that draws
+   bright outlines in some browsers. Plain compositing looks clean here. */
+.lvg-map .lvg-tiles .leaflet-tile {
+  mix-blend-mode: normal;
+}
+.lvg-map .lvg-whole-map {
+  font-size: 18px;
+  line-height: 30px;
+  text-align: center;
+  text-decoration: none;
+}
+
+@layer components {
+/* Map side panel / bottom sheet: sunset bar along the top edge. */
+.vc-panel::before {
+  content: "";
+  position: sticky;
+  display: block;
+  top: -1.5rem;
+  height: 3px;
+  margin: -1.5rem -1.5rem 1.25rem;
+  background: var(--sunset);
+  box-shadow: 0 0 14px rgba(255, 45, 120, 0.7);
+  z-index: 2;
+}
+@media (max-width: 639px) {
+  .vc-panel {
+    border-left: 0;
+    border-right: 0;
+    border-bottom: 0;
+  }
+}
+
+@media (max-width: 639px) {
+  header nav[aria-label="Main"] {
+    -webkit-mask-image: linear-gradient(90deg, #000 85%, transparent);
+    mask-image: linear-gradient(90deg, #000 85%, transparent);
+  }
+}
+}
+
+@media (max-width: 639px) {
+  .vc-stamp {
+    right: -0.25rem;
+    width: 4.75rem;
+    height: 4.75rem;
+  }
 }

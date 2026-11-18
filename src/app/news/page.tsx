@@ -6,7 +6,7 @@ export default function Page() {
     <div>
       <PageHeader kicker="News" title="Official only, for now" source="Official" />
       <ul className="space-y-2">
-        <li><Link href="/news/release-date" className="text-[#ffd36b]">Release date and platforms</Link></li>
+        <li><Link href="/news/release-date" className="text-orange">Release date and platforms</Link></li>
       </ul>
     </div>
   );

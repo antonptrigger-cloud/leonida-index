@@ -1,0 +1,23 @@
+{
+  "source": "leonida-base.jpg",
+  "width": 1168,
+  "height": 784,
+  "tileSize": 256,
+  "minNativeZoom": 0,
+  "maxNativeZoom": 3,
+  "maxZoom": 4,
+  "urlTemplate": "/map/tiles/{z}/{x}/{y}.webp?v=c146f088f3",
+  "preview": {
+    "url": "/map/base-preview.webp?v=c146f088f3",
+    "width": 1168,
+    "height": 784
+  },
+  "background": "#04182f",
+  "calibration": {
+    "a": 1,
+    "b": 0,
+    "c": 1,
+    "d": 0
+  },
+  "generatedAt": "2026-11-18T03:25:34.996Z"
+}

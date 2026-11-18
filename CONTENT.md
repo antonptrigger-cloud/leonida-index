@@ -1,6 +1,7 @@
 type | slug | title | status | source | notes
 page | / | Home | live | editorial |
-map | /map | Leonida map | live | official |
+map | /map | Leonida community map | live | official + community |
+map | /map/leaderboard | Map leaderboard | live | community |
 map | /map/vice-city | Vice City | live | official |
 map | /map/leonida-keys | Leonida Keys | live | official |
 map | /map/grassrivers | Grassrivers | live | official |

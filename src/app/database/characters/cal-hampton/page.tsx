@@ -4,7 +4,7 @@ export default function Page() {
   return (
     <div>
       <PageHeader kicker="Character" title="Cal Hampton" source="Official / Showcase" />
-      <p className="max-w-xl text-[#cfc9be]">Jason’s friend. Prefers snooping on Coast Guard comms from home.</p>
+      <p className="max-w-xl text-ink-2">Jason’s friend. Prefers snooping on Coast Guard comms from home.</p>
     </div>
   );
 }

@@ -1,29 +1,39 @@
 import Link from "next/link";
+import { LogoMark } from "@/components/LogoMark";
+import { NavLinks, type NavItem } from "@/components/NavLinks";
 
-const NAV = [
+const NAV: NavItem[] = [
   { href: "/map", label: "Map" },
   { href: "/guides", label: "Guides" },
-  { href: "/database/characters", label: "Database" },
-  { href: "/tools/edition-compare", label: "Tools" },
+  { href: "/database/characters", label: "Database", match: "/database" },
+  { href: "/tools/edition-compare", label: "Tools", match: "/tools" },
   { href: "/news", label: "News" },
   { href: "/secrets", label: "Secrets" },
 ];
 
 export function Header() {
   return (
-    <header className="border-b border-[#2a2a2e] bg-[#0b0b0c]">
-      <div className="mx-auto flex max-w-5xl items-center justify-between gap-4 px-4 py-3">
-        <Link href="/" className="text-sm font-semibold tracking-wide text-[#f4f1ea] hover:text-[#ff2d7b]">
-          Leonida Vice Guide
+    <header className="relative z-40 bg-[rgba(10,10,11,0.86)] backdrop-blur-md">
+      <div className="mx-auto flex max-w-6xl flex-wrap items-center gap-x-10x gap-y-2x px-4x py-3x sm:px-gutter">
+        <Link href="/" className="group flex shrink-0 items-center gap-3x" aria-label="Leonida Vice Guide home">
+          <LogoMark className="h-9 w-auto drop-shadow-[0_0_10px_rgba(255,45,120,0.45)] transition-transform duration-300 group-hover:-rotate-3 sm:h-10" />
+          <span className="flex flex-col leading-none">
+            <span className="vc-display text-[1.9rem] leading-[0.8] tracking-[0.01em] text-ink sm:text-[2.15rem]">Leonida</span>
+            <span className="mt-1 text-[0.6rem] font-bold uppercase tracking-[0.42em] text-pink-2">Vice Guide</span>
+          </span>
         </Link>
-        <nav className="flex flex-wrap items-center gap-3 text-sm text-[#9a958c]">
-          {NAV.map((item) => (
-            <Link key={item.href} href={item.href} className="hover:text-[#ff2d7b]">
-              {item.label}
-            </Link>
-          ))}
+        <nav
+          className="-mx-4x flex w-[calc(100%+2rem)] items-center gap-6x overflow-x-auto px-4x pb-1 [scrollbar-width:none] sm:mx-0 sm:w-auto sm:flex-1 sm:justify-end sm:overflow-visible sm:px-0 sm:pb-0"
+          aria-label="Main"
+        >
+          <NavLinks items={NAV} />
         </nav>
+        <span className="hidden items-center gap-2x border-l border-pink/30 pl-6x text-[0.65rem] font-bold uppercase tracking-[0.3em] text-turq lg:flex">
+          <span className="inline-block h-1.5 w-1.5 rounded-full bg-turq shadow-[0_0_8px_#00e5cc]" />
+          Launch 19.11.26
+        </span>
       </div>
+      <div className="vc-neon-line" aria-hidden />
     </header>
   );
 }

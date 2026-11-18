@@ -4,7 +4,7 @@ export default function Page() {
   return (
     <div>
       <PageHeader kicker="Character" title="Jason Duval" source="Official / Showcase" />
-      <p className="max-w-xl text-[#cfc9be]">Ex-military, working the Keys for drug runners. Lucia’s partner.</p>
+      <p className="max-w-xl text-ink-2">Ex-military, working the Keys for drug runners. Lucia’s partner.</p>
     </div>
   );
 }
