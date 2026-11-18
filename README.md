@@ -34,3 +34,9 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+
+## Community map
+
+The interactive map at `/map` (submissions, moderation, votes, comments, leaderboard) needs a free
+Supabase project and a few env vars. See [docs/COMMUNITY_MAP.md](docs/COMMUNITY_MAP.md) and `.env.example`.
+Without them the site still builds and the map shows the official pins read-only.
