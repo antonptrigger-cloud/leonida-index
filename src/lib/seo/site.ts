@@ -210,7 +210,7 @@ export const ROUTES: Record<string, RouteSeo> = {
   },
   "/news": {
     title: "GTA 6 News & Updates",
-    description: "GTA 6 launch news with sources: unlock times, reviews, the PS5 update and patches, preload, editions and what Rockstar has confirmed.",
+    description: "GTA 6 launch news with sources: unlock times, reviews, the PS5 update, preload, editions, streamer viewership and what Rockstar has confirmed.",
     crumb: "News",
     kind: "collection",
     changeFrequency: "daily",
