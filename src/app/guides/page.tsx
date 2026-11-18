@@ -7,6 +7,8 @@ import { Breadcrumbs } from "@/components/Breadcrumbs";
 const GUIDES = [
   { href: "/guides/missions", title: "All missions in order" },
   { href: "/guides/money", title: "Money guide: fastest ways to earn cash" },
+  { href: "/guides/cheats", title: "Cheats: how to unlock them and the codes so far" },
+  { href: "/guides/trophies", title: "Trophy list and platinum roadmap" },
   { href: "/guides/beginner", title: "Beginner" },
   { href: "/guides/wanted", title: "Wanted system" },
   { href: "/guides/stealing-cars", title: "Stealing cars" },

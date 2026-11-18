@@ -9,6 +9,9 @@ const nextConfig: NextConfig = {
       { source: "/map/base-preview.webp", headers: immutable },
     ];
   },
+  async redirects() {
+    return [{ source: "/guides/achievements", destination: "/guides/trophies", permanent: true }];
+  },
   images: {
     // Map assets carry a ?v=<hash> cache-buster that changes when the base map is swapped.
     localPatterns: [{ pathname: "/map/**" }, { pathname: "/**", search: "" }],
