@@ -4,6 +4,7 @@ import { JsonLd, PageSchema } from "@/lib/seo/jsonld";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { SectionTitle } from "@/components/hub/SectionTitle";
 import { TapeCard } from "@/components/hub/TapeCard";
+import { HubGrid } from "@/components/hub/HubGrid";
 import { JumpNav } from "@/components/hub/JumpNav";
 import "@/components/hub/hub.css";
 import { PageBackdrop } from "@/components/PageBackdrop";
@@ -239,13 +240,13 @@ export default function Guides() {
           <SectionTitle id="progression-title" num="03" kicker={HUB_SECTIONS[1].kicker} title={HUB_SECTIONS[1].title}>
             {HUB_SECTIONS[1].blurb}
           </SectionTitle>
-          <ul className="gh-grid">
+          <HubGrid count={money.length}>
             {money.map((g, i) => (
               <li key={g.href}>
                 <TapeCard href={g.href} title={g.title} blurb={g.blurb} tag={g.tag} accent={g.accent} file={i + 1} tilt={i % 2 ? 1 : -1} />
               </li>
             ))}
-          </ul>
+          </HubGrid>
         </section>
       ) : null}
 
@@ -255,13 +256,13 @@ export default function Guides() {
           <SectionTitle id="systems-title" num="04" kicker={HUB_SECTIONS[2].kicker} title={HUB_SECTIONS[2].title}>
             {HUB_SECTIONS[2].blurb}
           </SectionTitle>
-          <ul className="gh-grid gh-grid--stagger">
+          <HubGrid count={systems.length} stagger>
             {systems.map((g, i) => (
               <li key={g.href}>
                 <TapeCard href={g.href} title={g.title} blurb={g.blurb} tag={g.tag} accent={g.accent} file={i + 1} tilt={i % 2 ? 1 : -1} />
               </li>
             ))}
-          </ul>
+          </HubGrid>
         </section>
       ) : null}
 

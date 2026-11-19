@@ -230,11 +230,15 @@
 .gh-grid {
   display: grid;
   gap: 1.5rem;
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 16.5rem), 1fr));
+  grid-template-columns: 1fr;
 }
 .gh-grid > li { display: flex; }
 @media (min-width: 640px) {
-  .gh-grid--stagger > li:nth-child(even) { margin-top: 1.75rem; }
+  .gh-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .gh-grid[data-stagger] > li:nth-child(even) { margin-top: 1.75rem; }
+}
+@media (min-width: 1100px) {
+  .gh-grid { grid-template-columns: repeat(var(--cols, 3), minmax(0, 1fr)); }
 }
 
 /* ---------- Featured case (01) ---------- */
