@@ -2,12 +2,14 @@
 
 import "leaflet/dist/leaflet.css";
 import L from "leaflet";
-import { createContext, useContext, useEffect, useMemo, useState } from "react";
+import { createContext, useContext, useEffect, useId, useMemo, useRef, useState } from "react";
 import { MapContainer, Marker, TileLayer, Tooltip, useMap, useMapEvents } from "react-leaflet";
 import { BASES, DEFAULT_BASE, type BaseId, type BaseMap } from "@/lib/map/bases";
 import type { TileManifest } from "@/lib/map/config";
 import { markerHtml } from "./glyphs";
 import { onBaseMap } from "@/lib/map/geo";
+import { LABELS, LABEL_PRIORITY, type LabelKind, type MapLabel } from "@/lib/map/labels";
+import { Occupancy, textWidth, type Rect } from "@/lib/map/label-layout";
 import type { PublicPin } from "@/lib/map/types";
 
 /**
@@ -95,6 +97,36 @@ function regionIcon(name: string, selected: boolean, approximate: boolean, tall:
       className: `lvg-region${offset ? "" : " lvg-region--label"}${selected ? " lvg-region--selected" : ""}${approximate ? " lvg-region--approx" : ""}${tall ? " lvg-region--tall" : ""}`,
       html: `<span class="lvg-region__chip"><i aria-hidden="true"></i>${escapeHtml(name)}</span>`,
       // No fixed size: the container is exactly the chip, offset with CSS `translate` (see globals.css).
+      iconSize: null as unknown as L.PointExpression,
+    });
+    iconCache.set(key, icon);
+  }
+  return icon;
+}
+
+/** District / region / water label: plain text with a dark halo, not interactive. `below` hangs it under its anchor pin. */
+function labelIcon(kind: LabelKind, name: string, below: boolean): L.DivIcon {
+  const key = `label-${kind}-${name}-${below}`;
+  let icon = iconCache.get(key);
+  if (!icon) {
+    icon = L.divIcon({
+      className: `lvg-label lvg-label--${kind}${below ? " lvg-label--below" : ""}`,
+      html: `<span aria-hidden="true">${escapeHtml(name)}</span>`,
+      iconSize: null as unknown as L.PointExpression,
+    });
+    iconCache.set(key, icon);
+  }
+  return icon;
+}
+
+/** Pin name next to its marker (z6+). `side` is which side of the marker head the text sits on. */
+function pinNameIcon(name: string, side: "r" | "l"): L.DivIcon {
+  const key = `pinname-${name}-${side}`;
+  let icon = iconCache.get(key);
+  if (!icon) {
+    icon = L.divIcon({
+      className: `lvg-pinname lvg-pinname--${side}`,
+      html: `<span aria-hidden="true">${escapeHtml(name)}</span>`,
       iconSize: null as unknown as L.PointExpression,
     });
     iconCache.set(key, icon);
@@ -298,7 +330,13 @@ function FlyTo({ target }: { target: { id?: string; x: number; y: number; key: n
   const geo = useGeo();
   useEffect(() => {
     if (!target) return;
-    map.flyTo(geo.toLatLng(target), Math.max(map.getZoom(), geo.tiles.maxNativeZoom - 0.5), { duration: 0.6 });
+    // Aim at the middle of the part of the map the floating controls leave free, not at the map centre, so the pin is never
+    // parked under the desktop filter card (or the phone's top and bottom bars).
+    const zoom = Math.max(map.getZoom(), geo.tiles.maxNativeZoom - 0.5);
+    const { top, bottom, left, right } = coveredEdges(map);
+    const shift = L.point((left - right) / 2, (top - bottom) / 2);
+    const centre = map.unproject(map.project(geo.toLatLng(target), zoom).subtract(shift), zoom);
+    map.flyTo(centre, zoom, { duration: 0.6 });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [target, map]);
   return null;
@@ -387,6 +425,114 @@ function clusterPins(map: L.Map, geo: Geo, pins: PublicPin[], zoom: number, keep
   return out;
 }
 
+/** Label zoom thresholds in labels.json are written for the art base (7200px wide, z6 native). Other bases scale to match. */
+const LABEL_REF = { width: 7200, nativeZoom: 6 };
+/** Pin names show at native resolution (z6 on the art base: one source pixel per screen pixel) and above. */
+const PIN_NAME_MAX_CHARS = 28;
+
+/** Label text metrics per kind (font px, letter spacing in em, box height px). Phones get the same sizes: 12px+ stays legible. */
+const LABEL_FONT: Record<LabelKind, { px: number; narrowPx: number; spacing: number; h: number }> = {
+  region: { px: 18, narrowPx: 15, spacing: 0.16, h: 26 },
+  water: { px: 14, narrowPx: 13, spacing: 0.1, h: 20 },
+  district: { px: 15, narrowPx: 13.5, spacing: 0.1, h: 20 },
+  place: { px: 13.5, narrowPx: 13, spacing: 0.08, h: 18 },
+};
+
+interface PlacedLabel {
+  label: MapLabel;
+  ll: L.LatLngTuple;
+  below: boolean;
+}
+interface PlacedName {
+  pin: PublicPin;
+  side: "r" | "l";
+  text: string;
+}
+
+const clip = (t: string, n: number) => (t.length > n ? `${t.slice(0, n - 1).trimEnd()}…` : t);
+
+/**
+ * Decides which labels fit at this zoom. Everything is measured in projected screen pixels, so the result only changes
+ * when the zoom does. Order of claims on screen space: pin markers and clusters, region chips, then labels by priority
+ * (region > water > district > place), then pin names (selected first, then official ones). A label that would overlap
+ * something already placed is dropped; zooming in spreads things out and brings it back.
+ */
+function layoutLabels(args: {
+  map: L.Map;
+  geo: Geo;
+  zoom: number;
+  narrow: boolean;
+  regionsVisible: boolean;
+  regions: PublicPin[];
+  singles: PublicPin[];
+  clusterPoints: { x: number; y: number }[];
+  selectedId: string | null;
+}): { labels: PlacedLabel[]; names: PlacedName[] } {
+  const { map, geo, zoom, narrow, regionsVisible, regions, singles, clusterPoints, selectedId } = args;
+  // Same on-screen size per pin-space unit as the art base would have at this "label zoom", whichever base is showing.
+  const labelZoom = zoom - geo.tiles.maxNativeZoom + LABEL_REF.nativeZoom + Math.log2(geo.tiles.width / LABEL_REF.width);
+  const occ = new Occupancy();
+  const at = (p: { id?: string; x: number; y: number }) => {
+    const ll = geo.toLatLng(p);
+    return { ll, pt: map.project(ll, zoom) };
+  };
+  const labels: PlacedLabel[] = [];
+  const anchored = new Set<string>();
+  const place = (l: MapLabel) => {
+    const f = LABEL_FONT[l.kind];
+    const w = textWidth(l.name, narrow ? f.narrowPx : f.px, { spacingEm: f.spacing, display: true }) + 8;
+    const { ll, pt } = at({ id: l.anchor, x: l.x, y: l.y });
+    const below = !!l.anchor && l.kind !== "region";
+    const r: Rect = below
+      ? { x0: pt.x - w / 2, y0: pt.y + 3, x1: pt.x + w / 2, y1: pt.y + 3 + f.h }
+      : { x0: pt.x - w / 2, y0: pt.y - f.h / 2, x1: pt.x + w / 2, y1: pt.y + f.h / 2 };
+    if (!occ.tryPlace(r, 3)) return;
+    labels.push({ label: l, ll, below });
+    if (l.anchor) anchored.add(l.anchor);
+  };
+  const wanted = LABELS.filter((l) => (l.kind === "region" ? !regionsVisible : labelZoom >= l.minZoom)).sort(
+    (a, b) => LABEL_PRIORITY[a.kind] - LABEL_PRIORITY[b.kind] || a.minZoom - b.minZoom,
+  );
+  // Region names are the map's headings: they claim their space before any pin does (a pin may sit over one; the text is big).
+  for (const l of wanted.filter((l) => l.kind === "region")) place(l);
+  for (const p of singles) {
+    const { pt } = at(p);
+    occ.reserve({ x0: pt.x - 14, y0: pt.y - 36, x1: pt.x + 14, y1: pt.y });
+  }
+  for (const c of clusterPoints) occ.reserve({ x0: c.x - 24, y0: c.y - 24, x1: c.x + 24, y1: c.y + 24 });
+  if (regionsVisible) {
+    for (const r of regions) {
+      const { pt } = at(r);
+      const w = textWidth(r.name, 15, { spacingEm: 0.1, display: true }) + 40;
+      occ.reserve({ x0: pt.x - w / 2, y0: pt.y - 14, x1: pt.x + w / 2, y1: pt.y + 14 });
+    }
+  }
+  for (const l of wanted.filter((l) => l.kind !== "region")) place(l);
+
+  const names: PlacedName[] = [];
+  if (zoom >= geo.tiles.maxNativeZoom - 0.01) {
+    const shown = new Set(labels.map((l) => l.label.name.toLowerCase()));
+    const order = [...singles].sort(
+      (a, b) =>
+        Number(b.id === selectedId) - Number(a.id === selectedId) ||
+        Number(b.source === "official") - Number(a.source === "official") ||
+        a.name.localeCompare(b.name),
+    );
+    for (const p of order) {
+      // The pin and its own district label would say the same thing twice.
+      if (anchored.has(p.id) || shown.has(p.name.toLowerCase())) continue;
+      const text = clip(p.name, PIN_NAME_MAX_CHARS);
+      const w = textWidth(text, 12, { display: false }) + 14;
+      const { pt } = at(p);
+      const right: Rect = { x0: pt.x + 16, y0: pt.y - 31, x1: pt.x + 16 + w, y1: pt.y - 13 };
+      const left: Rect = { x0: pt.x - 16 - w, y0: pt.y - 31, x1: pt.x - 16, y1: pt.y - 13 };
+      if (occ.tryPlace(right, 2)) names.push({ pin: p, side: "r", text });
+      else if (occ.tryPlace(left, 2)) names.push({ pin: p, side: "l", text });
+    }
+  }
+  return { labels, names };
+}
+
 function PinLayer({
   pins,
   selectedId,
@@ -419,8 +565,35 @@ function PinLayer({
     return clusterPins(map, geo, places, zoom, keep);
   }, [map, geo, places, zoom, placesVisible, selectedId]);
 
+  const narrow = map.getSize().x < NARROW_PX;
+  const layout = useMemo(() => {
+    const singles = clusters.filter((c) => c.pins.length === 1).map((c) => c.pins[0]);
+    const clusterPoints = clusters.filter((c) => c.pins.length > 1).map((c) => ({ x: c.x, y: c.y }));
+    return layoutLabels({ map, geo, zoom, narrow, regionsVisible, regions, singles, clusterPoints, selectedId });
+  }, [map, geo, zoom, narrow, regionsVisible, regions, clusters, selectedId]);
+
   return (
     <>
+      {layout.labels.map((l) => (
+        <Marker
+          key={l.label.id}
+          position={l.ll}
+          icon={labelIcon(l.label.kind, l.label.name, l.below)}
+          interactive={false}
+          keyboard={false}
+          zIndexOffset={-300}
+        />
+      ))}
+      {layout.names.map((n) => (
+        <Marker
+          key={`name-${n.pin.id}`}
+          position={geo.toLatLng(n.pin)}
+          icon={pinNameIcon(n.text, n.side)}
+          interactive={false}
+          keyboard={false}
+          zIndexOffset={-100}
+        />
+      ))}
       {regionsVisible
         ? regions.map((p) => (
             <Marker
@@ -463,7 +636,13 @@ function PinLayer({
             eventHandlers={{
               click: () => {
                 const b = L.latLngBounds(c.pins.map((p) => geo.toLatLng(p)));
-                map.flyToBounds(b, { maxZoom: Math.min(geo.tiles.maxZoom, zoom + 1.5), padding: [70, 70], duration: 0.5 });
+                const e = coveredEdges(map);
+                map.flyToBounds(b, {
+                  maxZoom: Math.min(geo.tiles.maxZoom, zoom + 1.5),
+                  paddingTopLeft: [e.left + 70, e.top + 40],
+                  paddingBottomRight: [e.right + 40, e.bottom + 40],
+                  duration: 0.5,
+                });
               },
             }}
             keyboard={true}
@@ -591,6 +770,7 @@ export default function LeafletMap({
       <WholeMapButton />
       <PinsAndHint pins={pins} selectedId={selectedId} onSelect={onSelect} showAllPlaces={showAllPlaces} />
       <AttributionPrefix />
+      <BaseNote />
       {draft ? (
         <Marker position={geo.toLatLng(draft)} icon={draftIcon} draggable eventHandlers={draftHandlers} zIndexOffset={2000} />
       ) : null}
@@ -599,6 +779,52 @@ export default function LeafletMap({
       {showCoords ? <CoordsReadout /> : null}
     </MapContainer>
     </GeoContext.Provider>
+  );
+}
+
+/**
+ * "Illustrative base map" chip. The picture under the pins is a stand-in until Rockstar's official map is out; this says so
+ * on the map itself and opens a short explanation. Lives inside the map container, so it must keep clicks away from the map.
+ */
+function BaseNote() {
+  const geo = useGeo();
+  const [open, setOpen] = useState(false);
+  const ref = useRef<HTMLDivElement>(null);
+  const panelId = useId();
+  useEffect(() => {
+    if (!ref.current) return;
+    L.DomEvent.disableClickPropagation(ref.current);
+    L.DomEvent.disableScrollPropagation(ref.current);
+  }, []);
+  useEffect(() => {
+    if (!open) return;
+    const onKey = (e: KeyboardEvent) => e.key === "Escape" && setOpen(false);
+    document.addEventListener("keydown", onKey);
+    return () => document.removeEventListener("keydown", onKey);
+  }, [open]);
+  const { chip, title, body } = geo.base.note;
+  return (
+    <div
+      ref={ref}
+      data-testid="base-note"
+      className="absolute right-2 top-[9.25rem] z-[900] flex max-w-[calc(100%-1rem)] flex-col items-end gap-1 sm:bottom-10 sm:left-3 sm:right-auto sm:top-auto sm:flex-col-reverse sm:items-start"
+    >
+      <button type="button" className="lvg-note" aria-expanded={open} aria-controls={panelId} onClick={() => setOpen((v) => !v)}>
+        <span aria-hidden="true" className="lvg-note__i">
+          i
+        </span>
+        {chip}
+      </button>
+      {open ? (
+        <div id={panelId} role="note" className="lvg-note__panel">
+          <strong>{title}</strong>
+          <p>{body}</p>
+          <button type="button" className="lvg-note__close" onClick={() => setOpen(false)}>
+            Got it
+          </button>
+        </div>
+      ) : null}
+    </div>
   );
 }
 

@@ -300,6 +300,10 @@
     }
   ],
   "pinOverrides": {
+    "seed-washington-beach": [
+      1033.3,
+      736.7
+    ],
     "seed-lake-leonida": [
       733,
       470
