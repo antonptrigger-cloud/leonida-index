@@ -9,6 +9,8 @@ import { SF_VERIFIED } from "@/lib/guides/strangers";
 import { BASICS_UPDATED } from "@/lib/guides/basics";
 import { MAPSIZE_PUBLISHED, MAPSIZE_VERIFIED } from "@/lib/guides/map-size";
 import { FASTTRAVEL_PUBLISHED, FASTTRAVEL_VERIFIED } from "@/lib/guides/fast-travel";
+import { CLOTHES_PUBLISHED, CLOTHES_VERIFIED } from "@/lib/guides/change-clothes";
+import { FIRSTPERSON_PUBLISHED, FIRSTPERSON_VERIFIED } from "@/lib/guides/first-person";
 import { GARAGES_PUBLISHED, GARAGES_VERIFIED } from "@/lib/guides/garages";
 import { SAVING_PUBLISHED, SAVING_STEPS, SAVING_VERIFIED } from "@/lib/guides/saving";
 import { SWITCH_PUBLISHED, SWITCH_STEPS, SWITCH_VERIFIED } from "@/lib/guides/switching";
@@ -138,7 +140,7 @@ export const ROUTES: Record<string, RouteSeo> = {
     kind: "collection",
     changeFrequency: "daily",
     priority: 0.85,
-    updated: FASTTRAVEL_VERIFIED, // the hub gained the fast travel card
+    updated: CLOTHES_VERIFIED, // the hub gained the change clothes and first-person cards
   },
   "/guides/beginner": {
     title: "GTA 6 Beginner Guide: Tips for Your First Hours",
@@ -297,6 +299,26 @@ export const ROUTES: Record<string, RouteSeo> = {
     priority: 0.8,
     updated: SWITCH_VERIFIED,
     published: SWITCH_PUBLISHED,
+  },
+  "/guides/change-clothes": {
+    title: "GTA 6 How to Change Clothes and Save Outfits to Your Trunk",
+    description: "How to change clothes in GTA 6 at your safehouse wardrobe or car trunk, how to save spare outfits to the trunk, and why police care what you wear.",
+    crumb: "Change clothes",
+    kind: "article",
+    changeFrequency: "weekly",
+    priority: 0.8,
+    updated: CLOTHES_VERIFIED,
+    published: CLOTHES_PUBLISHED,
+  },
+  "/guides/first-person": {
+    title: "GTA 6 First-Person Mode: How to Use First-Person View",
+    description: "GTA 6 has no full first-person mode, but you can inspect up close and aim through scopes. See the inputs, where outlets disagree and the driving limits.",
+    crumb: "First-person view",
+    kind: "article",
+    changeFrequency: "weekly",
+    priority: 0.8,
+    updated: FIRSTPERSON_VERIFIED,
+    published: FIRSTPERSON_PUBLISHED,
   },
   ...Object.fromEntries(
     MISSIONS.map((m): [string, RouteSeo] => [
