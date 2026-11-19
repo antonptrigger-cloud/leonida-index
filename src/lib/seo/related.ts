@@ -20,6 +20,7 @@
 import { MISSIONS, missionPath } from "@/lib/guides/missions";
 import { NEWS, newsPath } from "@/lib/news/articles";
 import { CHARACTERS, characterPath } from "@/lib/characters/characters";
+import { cardAllowed, introChapter } from "@/lib/spoiler-characters";
 import { CAST_PATH } from "@/lib/characters/cast";
 import { REFERENCE_PAGES } from "@/lib/database/reference";
 import { ROUTES } from "./site";
@@ -38,6 +39,8 @@ export interface RelatedItem {
 }
 
 interface Item extends RelatedItem {
+  /** Slug of the profile this item is the card for (character items only). */
+  charSlug?: string;
   /** Section hubs are never ranked; they are pinned by explicit rules in relatedFor(). */
   hub?: boolean;
   tags: Set<string>;
@@ -181,6 +184,7 @@ function buildItems(): Item[] {
       label: `Character · ${c.role}`,
       section: "character",
       blurb: c.summary,
+      charSlug: c.slug,
       tags,
       date: "2026-11-18",
     });
@@ -314,12 +318,31 @@ export function relatedFor(path: string, limit = 6): RelatedItem[] {
   const self = items.find((i) => i.href === path);
   if (!self) return [];
 
+  // A character card is "related" only when the page itself names that character, or, from a map page,
+  // when the character is located in that region. The card's own relationship tags (char:jason-duval on
+  // every side-quest profile) must not count: they made any page that mentions Jason or Lucia eligible
+  // for every character whose profile lists them as a relationship.
+  const names = (a: Item, b: Item) => !!b.charSlug && a.tags.has(`char:${b.charSlug}`);
+  const sharesLoc = (a: Item, b: Item) => [...a.tags].some((t) => t.startsWith("loc:") && b.tags.has(t));
+  // Used for the cast card only. Profile pages list every allowed card and rank them by relationship tags.
   const sharesChar = (a: Item, b: Item) => [...a.tags].some((t) => t.startsWith("char:") && b.tags.has(t));
-  // A character is only "related" when it is actually named (or, from a map page, located there).
+  // Spoiler safety: a page may only show cards for characters introduced in its own chapter or earlier.
+  // Mission pages use their chapter, a profile page uses the profile's intro chapter, everything else is Chapter 1.
+  const selfMission = MISSIONS.find((m) => missionPath(m.slug) === path);
+  const selfChar = self.section === "character" ? self.charSlug : undefined;
+  const pageChapter = selfMission ? (selfMission.chapter ?? 1) : selfChar ? introChapter(selfChar) : 1;
   // Hidden Chapter 2 mission pages never link to character cards: a card's summary can name Chapter 2 places or people.
-  const selfHidden = MISSIONS.some((m) => m.hidden && missionPath(m.slug) === path);
-  const eligible = (i: Item) =>
-    i.section !== "character" || (!selfHidden && (self.section === "map" || self.section === "character" || sharesChar(self, i)));
+  const selfHidden = !!selfMission?.hidden;
+  const eligible = (i: Item) => {
+    if (i.section !== "character") return true;
+    if (selfHidden) return false;
+    // The cast page has no single character: keep the original rule (shares a lead or Brian with the page).
+    if (!i.charSlug) return self.section === "map" || self.section === "character" || sharesChar(self, i);
+    if (!cardAllowed(i.charSlug, pageChapter, selfChar)) return false;
+    if (self.section === "map") return sharesLoc(self, i);
+    if (self.section === "character") return true;
+    return names(self, i);
+  };
 
   const ranked = items
     .filter((i) => i.href !== path && !i.hub && eligible(i))
