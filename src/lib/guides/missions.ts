@@ -1117,6 +1117,165 @@ export const MISSIONS: Mission[] = [
     ],
     updated: "2026-11-19T14:11:22+10:00",
   },
+  {
+    slug: "day-release",
+    order: 16,
+    name: "Day Release",
+    startLabel: "Meet Mattia & Kat",
+    seoTitle: "GTA 6 Day Release Mission Guide: Walkthrough",
+    seoDescription:
+      "GTA 6 Day Release walkthrough: yacht party, jet ski race, the free dress pick, the night drive through Vice City and the relationship boosts to grab.",
+    teaser: "Jason and Lucia head out for a day and night with Mattia and his friends.",
+    intro: [
+      "Day Release is the 16th story mission. VGC says Jason and Lucia celebrate Lucia's temporary freedom in Vice City, and that you control Lucia for most of the mission. Neither VGC nor PowerPyx describes any combat.",
+      "What is worth knowing before you start is the handful of small choices that raise Jason and Lucia's relationship, and the free dress pick. The objectives and story notes stay behind the blur.",
+    ],
+    facts: [
+      { label: "Chapter", value: "Chapter 1: Just Like Paradise, mission 16 (PC Gamer, Push Square, Press Start, GamesRadar+, VGC)", status: "confirmed" },
+      { label: "Playable", value: "Lucia for most of the mission, with control returning to Jason at the end (VGC and PowerPyx)", status: "confirmed" },
+      { label: "Combat", value: "None described in either walkthrough (VGC and PowerPyx)", status: "confirmed" },
+      { label: "Quest giver", value: "Mattia (PowerPyx)", status: "reported" },
+      { label: "Unlocks after", value: "Down to Earth, with a call from Mattia (PowerPyx)", status: "reported" },
+      { label: "Starts at", value: "The Rusty Anchor bar in Key Lento, Mariana County (PowerPyx). VGC also begins at a bar and ends at The Rusty Anchor.", status: "reported" },
+      { label: "Cash reward", value: "None listed (PowerPyx)", status: "reported" },
+    ],
+    objectives: [
+      "Meet Lucia at the bar, where her ankle monitor is taken off (VGC and PowerPyx). PowerPyx says to order a drink from the bartender at the back to start the mission.",
+      "Take the speedboat out to the yacht (VGC and PowerPyx). PowerPyx says it is a long ride and the group talks along the way.",
+      "Choose to ride a jet ski solo or with Jason (VGC and PowerPyx). Both say riding with Jason raises their relationship.",
+      "Race Mattia back to the yacht, jumping the ramps on the way if you like (VGC and PowerPyx). PowerPyx says it doesn't matter whether you win or lose.",
+      "Shoot the champagne bottles using slow-motion aim (VGC and PowerPyx). Both say hitting them only changes a short line of dialogue afterwards.",
+      "Pick a dress for Lucia (VGC and PowerPyx). VGC says the dress you choose is permanently unlocked for Lucia and the others can be bought later. PowerPyx only says she wears it for the rest of the mission, so the permanent unlock is reported by VGC alone.",
+      "Find Mattia on the lower decks of the yacht (VGC and PowerPyx). PowerPyx says he is in the middle room on the lowest deck, two decks down, and that you walk around the deck to reach the second staircase. VGC says there are two optional photos on the way, one of some documents to send to Cal and one at the front of the boat that raises the relationship.",
+      "Keep up with Mattia in a sports car through Vice City at night (VGC and PowerPyx). VGC says the only way to fail this section is to destroy the car. PowerPyx says resetting the car after a crash fully repairs it.",
+      "Drive on to the next stop (VGC and PowerPyx). VGC says Mattia stops at a hotel, and that the second drive has the game's drug filter on, which makes the road harder to see. PowerPyx points you to the Huxley Motel and says to follow the pink line on the minimap.",
+      "Follow Mattia into the club and join him at his table, then dance with Jason as Lucia (VGC and PowerPyx). VGC says hitting the dance flourish prompts improves the relationship. PowerPyx says holding hands when you enter the club sometimes does.",
+      "After the cutscenes, find Jason at the end of a long hallway (VGC and PowerPyx). PowerPyx says to take the right-hand door.",
+      "Jason and Lucia leave over a balcony and control returns to Jason (VGC and PowerPyx). VGC ends the mission at The Rusty Anchor and PowerPyx says Key Lento. PowerPyx says you can hold hands during the exit to improve the relationship again.",
+    ],
+    spoiler:
+      "Light story notes only: the night out ends when the party breaks up, and Jason and Lucia slip away over a balcony (VGC and PowerPyx). PowerPyx adds that security was alerted by the noise.",
+    tips: [
+      { text: "Ride the jet ski with Jason. VGC and PowerPyx both say it raises their relationship." },
+      { text: "More relationship chances: VGC lists the photo at the front of the boat and the dance flourish prompts, and PowerPyx lists holding hands at the club and on the exit.", reported: true },
+      { text: "Take your time over the dress. VGC says the one you pick is permanently unlocked, but PowerPyx only says Lucia wears it for the rest of the mission, so don't count on it staying.", reported: true },
+      { text: "Don't wreck the car on the night drives. VGC says destroying it is the only way to fail, and PowerPyx says a reset after a crash repairs it.", reported: true },
+      { text: "Neither walkthrough describes any combat, so there is no loadout to prepare." },
+      { text: "Keep a manual save. PowerPyx, Push Square and GamesRadar+ all say story missions can't be replayed." },
+    ],
+    notes: [
+      "Order: PC Gamer, Push Square, Press Start, GamesRadar+ and VGC all list Day Release 16th, between Clear Skies and Swamped, so that is the order used here. PowerPyx calls it the 17th main mission and says it starts via a call after Down to Earth.",
+      "Dress: VGC says the chosen dress is permanently unlocked for Lucia. PowerPyx only says she wears it for the rest of the mission. We attribute the permanent unlock to VGC and don't state it as fact.",
+    ],
+    faq: [
+      {
+        question: "Does winning the jet ski race matter?",
+        answer: "PowerPyx says it doesn't matter whether you win or lose (Reported). VGC doesn't mention any reward or penalty tied to the result.",
+      },
+      {
+        question: "Do I need to hit every champagne bottle?",
+        answer: "No. VGC and PowerPyx both say it only changes a short line of dialogue afterwards (Confirmed).",
+      },
+      {
+        question: "Do I keep the dress?",
+        answer: "VGC says the dress you pick is permanently unlocked for Lucia and the others can be bought later (Reported, VGC only). PowerPyx only says she wears it for the rest of the mission, so we can't confirm it stays unlocked.",
+      },
+      {
+        question: "How do I improve Jason and Lucia's relationship here?",
+        answer: "Ride the jet ski with Jason (Confirmed, VGC and PowerPyx). VGC also lists the photo at the front of the boat and the dance flourish prompts, and PowerPyx lists holding hands at the club and on the exit (Reported).",
+      },
+      {
+        question: "Can Day Release fail?",
+        answer: "VGC says the only way to fail the night driving sections is to destroy the car (Reported). Neither walkthrough describes any other fail state.",
+      },
+    ],
+    sources: [
+      PCGAMER,
+      PRESSSTART,
+      vgc("gta-6-day-release-mission-walkthrough", "VGC: GTA 6 Day Release mission walkthrough (18 Nov 2026)", "Objective flow, dress, photos, fail state, mission order"),
+      pp("gta-6-day-release-meet-mattia-kat-walkthrough", "Map label, quest giver, start point, requirement, reward, objective flow, relationship boosts"),
+      PP_INDEX,
+      PUSHSQUARE,
+      gr("gta-6-mission-list", "GamesRadar+: GTA 6 mission list", "Mission order and no mission replay"),
+    ],
+    updated: "2026-11-19T15:23:43+10:00",
+  },
+  {
+    slug: "swamped",
+    order: 17,
+    name: "Swamped",
+    startLabel: "Meet Brian",
+    seoTitle: "GTA 6 Swamped Mission Guide: Walkthrough & Tips",
+    seoDescription:
+      "GTA 6 Swamped walkthrough: ride out with Brian, fight your way clear, chase from the helicopter and win the boat chase without failing the mission.",
+    teaser: "Jason rides out with Brian to meet the Kingfishers.",
+    intro: [
+      "Swamped is the 17th story mission. VGC says Jason and Brian drive out to the Kingfishers' camp to try to reconcile after the violence of the last few missions, and both VGC and PowerPyx describe a fight on foot, a helicopter section and a boat chase.",
+      "Go in with full health and ammo, because VGC says there are many Kingfishers at the camp. VGC says this mission covers a big early-game moment and doesn't spell it out, so the one hint we include sits behind the blur along with the objectives.",
+    ],
+    facts: [
+      { label: "Chapter", value: "Chapter 1: Just Like Paradise, mission 17 (PC Gamer, Push Square, Press Start, GamesRadar+, VGC)", status: "confirmed" },
+      { label: "Playable", value: "Jason (VGC and PowerPyx)", status: "confirmed" },
+      { label: "Quest giver", value: "Brian (VGC and PowerPyx)", status: "confirmed" },
+      { label: "Enemies", value: "The Kingfishers (VGC and PowerPyx)", status: "confirmed" },
+      { label: "Unlocks after", value: "Day Release, Clear Skies and Building a Life (PowerPyx's requirement)", status: "reported" },
+      { label: "Starts at", value: "Brian's marina in Key Lento, Mariana County (PowerPyx says to enter the back room of Brian's Marina; VGC says to speak to Brian at the bar)", status: "reported" },
+      { label: "Cash reward", value: "None listed (PowerPyx)", status: "reported" },
+    ],
+    objectives: [
+      "Speak to Brian and get in his truck (VGC and PowerPyx). PowerPyx says it is a long drive to the Kingfishers' camp in the north-west of Mariana County, and that you follow Brian on foot when you arrive.",
+      "Walk through the camp with Brian (VGC and PowerPyx). VGC says you speak to a few Kingfishers at the far end. PowerPyx says you go to a pig pen and wait for Brian to talk to someone.",
+      "When things go wrong, escape with Brian (VGC and PowerPyx). PowerPyx says Brian has a green dot on the minimap. VGC says Lori is captured during the escape, so your goal becomes reaching her with Brian, and that you don't have to kill every Kingfisher to progress but leaving is tough without killing a significant number.",
+      "At the edge of the camp, take the helicopter and go after Lori (VGC and PowerPyx). PowerPyx says it is on the left of the area.",
+      "Shoot the Kingfishers from the helicopter as they try to get away (VGC and PowerPyx). VGC says you are prompted to destroy a truck, which takes out a significant number of them.",
+      "The outlets differ on what happens next. VGC says killing Lori's kidnapper here ends the mission, and that otherwise the kidnapper escapes on a fanboat. PowerPyx says that whatever you do, one of the Kingfishers always puts her in another boat.",
+      "Chase her by boat and jump across (VGC and PowerPyx). Both say you need to get close to the side of her boat. PowerPyx says you hold the button to jump, that the jump won't trigger if you are too far, and that enemy fire can destroy your engine and force a checkpoint restart. VGC says you can instead shoot the Kingfisher driving the boat.",
+      "PowerPyx says a button-mash prompt takes out the last enemy, the rest is cutscenes, and you spawn back at home. It says you can then choose to tell Lucia some news, which improves your relationship with her.",
+    ],
+    spoiler:
+      "PowerPyx says an inspection prompt at the pig pen reveals what has already happened to someone you know, and that the meeting is an ambush set by the Kingfishers (Reported). VGC only says that things go terribly wrong.",
+    tips: [
+      { text: "Go in with full health and ammo. VGC says there are many Kingfishers in the first part of the mission.", reported: true },
+      { text: "You don't have to kill every Kingfisher at the camp, but VGC says getting out is tough without killing a significant number. Stay with Brian and head for the edge of the camp.", reported: true },
+      { text: "From the helicopter, take the truck prompt if it appears. VGC says it takes out a significant number of enemies.", reported: true },
+      { text: "Watch your aim. VGC lists accidentally shooting the person you are chasing, or letting the Kingfishers get away with them, as the main fail states.", reported: true },
+      { text: "Get right alongside the boat. VGC and PowerPyx both say you need to be close to jump across, and PowerPyx says enemy fire can destroy your engine and force a checkpoint restart, so close the gap quickly." },
+      { text: "At home afterwards, PowerPyx says choosing to tell Lucia some news improves your relationship, while staying quiet skips the boost.", reported: true },
+      { text: "Keep a manual save. PowerPyx, Push Square and GamesRadar+ all say story missions can't be replayed." },
+    ],
+    notes: [
+      "Order: PC Gamer, Push Square, Press Start, GamesRadar+ and VGC all list Swamped 17th, straight after Day Release. PowerPyx calls it the 20th main mission and says it opens once Day Release, Clear Skies and Building a Life are done.",
+      "Helicopter section: VGC and PowerPyx disagree on whether killing the target from the helicopter ends the mission. We show both and attribute them.",
+    ],
+    faq: [
+      {
+        question: "Why did Swamped fail during the chase?",
+        answer: "VGC says the main fail states are the Kingfishers escaping with the person you are chasing, or you accidentally shooting them (Reported). PowerPyx adds that a destroyed boat engine sends you back to a checkpoint (Reported).",
+      },
+      {
+        question: "Why won't the boat jump trigger?",
+        answer: "You are too far away. VGC and PowerPyx both say you need to get close to the side of the other boat, and PowerPyx says to drive very close before holding the jump button (Confirmed).",
+      },
+      {
+        question: "Can I skip the boat section by killing the target from the helicopter?",
+        answer: "VGC and PowerPyx disagree. VGC says killing the target from the helicopter ends the mission (Reported). PowerPyx says that whatever you do, the chase always continues by boat (Reported). Be ready for the boat section either way.",
+      },
+      {
+        question: "Do I have to kill every Kingfisher at the camp?",
+        answer: "VGC says no, but that getting out of that part of the camp is tough without killing a significant number of them (Reported).",
+      },
+    ],
+    sources: [
+      PCGAMER,
+      PRESSSTART,
+      vgc("gta-6-swamped-mission-walkthrough", "VGC: GTA 6 Swamped mission walkthrough (18 Nov 2026)", "Objective flow, fail states, helicopter section, mission order"),
+      pp("gta-6-swamped-walkthrough", "Map label, quest giver, start point, requirement, reward, objective flow, boat chase"),
+      PP_INDEX,
+      PUSHSQUARE,
+      gr("gta-6-mission-list", "GamesRadar+: GTA 6 mission list", "Mission order and no mission replay"),
+    ],
+    updated: "2026-11-19T15:23:43+10:00",
+  },
 ];
 
 export const missionPath = (slug: string) => `/guides/missions/${slug}`;
