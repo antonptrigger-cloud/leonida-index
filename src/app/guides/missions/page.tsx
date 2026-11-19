@@ -89,7 +89,7 @@ export default function MissionsIndex() {
         kicker={`Mission guides · ${STORY_CHAPTERS.length} chapters · ${STORY_TOTAL} story missions`}
         title="GTA 6 Missions in Order"
         verified={HUB_VERIFIED_LABEL}
-        source="PC Gamer, Press Start, VGC, PowerPyx"
+        source="PC Gamer, Press Start, Push Square, VGC, PowerPyx"
       />
 
       <SpoilerWarning>
@@ -216,7 +216,7 @@ export default function MissionsIndex() {
           <div className="vc-card p-6x [border-left-color:#00d4ff]">
             <h2 className="vc-kicker">How we check</h2>
             <p className="mt-4x text-sm text-ink-2">
-              Mission names are facts, but the order and counts come from outlet lists. We use PC Gamer, Press Start and VGC, and mark anything the lists disagree on as <strong className="text-orange">Reported</strong>.
+              Mission names are facts, but the order and counts come from outlet lists. We use PC Gamer, Press Start, Push Square and VGC, with PowerPyx for the optional labels, and mark anything the lists disagree on as <strong className="text-orange">Reported</strong>.
             </p>
             <p className="mt-3x text-xs text-muted">
               Last verified <time dateTime={HUB_VERIFIED}>{HUB_VERIFIED_LABEL}</time>.
