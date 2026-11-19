@@ -23,8 +23,13 @@ import {
 export const metadata = metaFor("/guides/missions");
 
 const norm = (t: string) => t.toLowerCase().replace(/[^a-z0-9]/g, "");
-const guideFor = (t: StoryMission): Mission | undefined =>
-  t.title ? MISSIONS.find((x) => norm(x.name) === norm(t.title as string)) : undefined;
+// Hidden-title missions (Chapter 1 only so far) are matched by position, never by name.
+const guideFor = (t: StoryMission, chapterNumber: number, index: number): Mission | undefined =>
+  t.title
+    ? MISSIONS.find((x) => !x.hidden && norm(x.name) === norm(t.title as string))
+    : chapterNumber === 1
+      ? MISSIONS.find((x) => x.hidden && x.order === index + 1)
+      : undefined;
 
 const HIDDEN_LABEL = "Hidden (major spoiler)";
 
@@ -34,7 +39,7 @@ function ChapterList({ chapterNumber }: { chapterNumber: number }) {
   return (
     <ol className="flex flex-col border-t border-pink/20">
       {chapter.missions.map((mission, i) => {
-        const guide = guideFor(mission);
+        const guide = guideFor(mission, chapterNumber, i);
         const num = (
           <span className="vc-index-row__num">{String(i + 1).padStart(2, "0")}</span>
         );
@@ -45,10 +50,10 @@ function ChapterList({ chapterNumber }: { chapterNumber: number }) {
               <Link href={missionPath(guide.slug)} className="vc-index-row">
                 {num}
                 <span className="relative">
-                  <span className="vc-display block text-[1.75rem] leading-none text-ink">{guide.name}</span>
+                  <span className="vc-display block text-[1.75rem] leading-none text-ink">{guide.hidden ? HIDDEN_LABEL : guide.name}</span>
                   <span className="mt-1x block text-[0.8rem] text-muted">
                     {guide.teaser}
-                    {guide.startLabel ? <span className="text-faint"> · starts as &ldquo;{guide.startLabel}&rdquo;</span> : null}
+                    {guide.startLabel && !guide.hidden ? <span className="text-faint"> · starts as &ldquo;{guide.startLabel}&rdquo;</span> : null}
                     {overall}
                   </span>
                 </span>

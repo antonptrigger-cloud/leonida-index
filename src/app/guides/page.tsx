@@ -42,8 +42,10 @@ export default function Guides() {
 
   const chapter1 = STORY_CHAPTERS[0];
   const lockedChapters = STORY_CHAPTERS.slice(1);
-  const guideFor = (title: string | null) => (title ? MISSIONS.find((x) => norm(x.name) === norm(title)) : undefined);
-  const live = chapter1.missions.filter((t) => guideFor(t.title)).length;
+  // Hidden-title missions are matched by position in Chapter 1, never by name.
+  const guideFor = (title: string | null, index: number) =>
+    title ? MISSIONS.find((x) => !x.hidden && norm(x.name) === norm(title)) : MISSIONS.find((x) => x.hidden && x.order === index + 1);
+  const live = chapter1.missions.filter((t, i) => guideFor(t.title, i)).length;
 
   const nav = [
     { id: "start", num: "01", label: "Start here", accent: "pink" as Accent },
@@ -182,10 +184,16 @@ export default function Guides() {
               </p>
               <ol className="gh-chips">
                 {chapter1.missions.map((t, i) => {
-                  const guide = guideFor(t.title);
+                  const guide = guideFor(t.title, i);
                   const n = String(i + 1).padStart(2, "0");
                   if (!t.title) {
-                    return (
+                    return guide ? (
+                      <li key={i}>
+                        <Link href={missionPath(guide.slug)} className="gh-chip" data-state="live">
+                          <span aria-hidden>{n}</span> Hidden title
+                        </Link>
+                      </li>
+                    ) : (
                       <li key={i} className="gh-chip" data-state="hidden">
                         <span aria-hidden>{n}</span> Hidden title
                       </li>

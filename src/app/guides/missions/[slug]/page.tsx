@@ -140,7 +140,7 @@ export default async function MissionPage({ params }: { params: Promise<{ slug: 
         {prev ? (
           <Link href={missionPath(prev.slug)} className="vc-card block p-4x">
             <span className="text-xs uppercase tracking-[0.2em] text-muted">← Previous</span>
-            <span className="vc-display mt-1x block text-2xl text-ink">{prev.name}</span>
+            <span className="vc-display mt-1x block text-2xl text-ink">{prev.hidden ? "Previous mission" : prev.name}</span>
           </Link>
         ) : (
           <Link href="/guides/missions" className="vc-card block p-4x">
@@ -151,7 +151,7 @@ export default async function MissionPage({ params }: { params: Promise<{ slug: 
         {next ? (
           <Link href={missionPath(next.slug)} className="vc-card block p-4x sm:text-right">
             <span className="text-xs uppercase tracking-[0.2em] text-muted">Next →</span>
-            <span className="vc-display mt-1x block text-2xl text-ink">{next.name}</span>
+            <span className="vc-display mt-1x block text-2xl text-ink">{next.hidden ? "Next mission" : next.name}</span>
           </Link>
         ) : (
           <Link href="/guides/missions" className="vc-card block p-4x sm:text-right">

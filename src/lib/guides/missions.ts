@@ -42,6 +42,8 @@ export interface Fact {
 
 export interface Mission {
   slug: string;
+  /** True when the real mission name is hidden on the hub as a major spoiler. Links to and from this page use neutral text ("Next mission" / "Previous mission"), and the real name or map label may only appear inside a spoiler blur. */
+  hidden?: boolean;
   /** Position in the suggested order (see ORDER_NOTE). */
   order: number;
   name: string;
@@ -1275,6 +1277,164 @@ export const MISSIONS: Mission[] = [
       gr("gta-6-mission-list", "GamesRadar+: GTA 6 mission list", "Mission order and no mission replay"),
     ],
     updated: "2026-11-19T15:23:43+10:00",
+  },
+  {
+    slug: "chapter-1-mission-18",
+    hidden: true,
+    order: 18,
+    name: "Chapter 1, Mission 18",
+    seoTitle: "GTA 6 Chapter 1 Mission 18 Guide: Walkthrough & Tips",
+    seoDescription:
+      "GTA 6 Chapter 1 mission 18 walkthrough: pack every item in the trailer, handle the fight outside, grab the missable revolver and get rid of the car.",
+    teaser: "A tidy-up job in Key Lento that comes straight after Swamped.",
+    intro: [
+      "This is the 18th story mission, and it comes straight after Swamped. Jason has a job to do in Key Lento: clear out a trailer, deal with some unwelcome visitors and then get rid of a car. It is short, but PowerPyx says there is a missable weapon in the car, so read the tips before you do anything to it.",
+      "This mission's real name is itself a major spoiler, which is why our mission list hides it and this page uses a neutral title. The objectives and story notes stay behind the blur.",
+    ],
+    facts: [
+      { label: "Chapter", value: "Chapter 1: Just Like Paradise, mission 18 (PC Gamer, Push Square, Press Start, GamesRadar+, VGC)", status: "confirmed" },
+      { label: "Starts at", value: "A trailer in Key Lento, Mariana County (VGC and PowerPyx)", status: "confirmed" },
+      { label: "Combat", value: "A fistfight with three men outside the trailer (VGC and PowerPyx). PowerPyx says you can skip it.", status: "confirmed" },
+      { label: "Playable", value: "Jason (PowerPyx)", status: "reported" },
+      { label: "Quest giver", value: "Brian (PowerPyx). VGC ends the mission with a call to Brian.", status: "reported" },
+      { label: "Unlocks after", value: "Swamped, starting automatically as soon as it ends (PowerPyx)", status: "reported" },
+      { label: "Reward", value: "A unique revolver, if you take it from the car's trunk before destroying the car (PowerPyx). No cash listed.", status: "reported" },
+    ],
+    objectives: [
+      "Go to the trailer. VGC says you can take down the flag outside first. Go inside and pick up the bag on the bed, which is marked (VGC and PowerPyx).",
+      "Collect the rest of the belongings in the trailer (VGC and PowerPyx). PowerPyx says slow motion highlights them. Both list a photo on the wall by the TV, a flight schedule by the Patriot Beer neon sign, clothes, a map on the fridge and an ID on a shelf. They differ on two spots: the clothes are in the drawers or wardrobe (VGC) or on the shelf in front of the bed (PowerPyx), and the ID is on the shelf across from the fridge (VGC) or to the right of the door (PowerPyx). PowerPyx also lists a message on the phone.",
+      "There is an optional drug interaction in the trailer (VGC and PowerPyx). PowerPyx says it temporarily lowers health and raises stamina and doesn't matter either way.",
+      "Three men from the earlier bar fight are waiting outside (VGC and PowerPyx). VGC says to fight all three and that they are slightly more aggressive than in the bar. PowerPyx says you can either beat them up or run to the car and drive off.",
+      "Drive the car out of Key Lento (VGC and PowerPyx). VGC says to follow the pink map line out of the region and PowerPyx says to follow the road north.",
+      "Before you destroy the car, open its trunk. PowerPyx says it holds a missable unique weapon variant.",
+      "Destroy the car (VGC and PowerPyx). VGC says to find a quiet spot first. Both mention a fuel can in the car: VGC says it is in the back and PowerPyx says it is in the trunk, and to pour it over the car and set it alight. VGC also says you can shoot the engine a few times, and PowerPyx says you can drive the car into the ocean and let it sink.",
+      "Leave the area. VGC says you then call Brian, which ends the mission. PowerPyx says destroying the car finishes it.",
+    ],
+    spoiler:
+      "PowerPyx's quest description says Brian wants the owner's place to look as if he packed up and left town (Reported). Its map label for the mission is \"Head to Donnie's Trailer\", and it names the unique revolver Donnie's H&L .38 (both PowerPyx, Reported). VGC also calls the belongings Donnie's.",
+    tips: [
+      { text: "Open the trunk before you destroy the car. PowerPyx says it holds a missable unique revolver.", reported: true },
+      { text: "GamesRadar+ says unique weapon variants can't be modified, but once you have one it is permanently unlocked for both Jason and Lucia.", reported: true },
+      { text: "Use slow motion in the trailer. PowerPyx says it highlights everything you need to pack.", reported: true },
+      { text: "If you'd rather skip the fight outside, PowerPyx says you can run to the car and drive off. VGC only describes fighting and says the three men are slightly more aggressive than in the bar, so have some health ready if you stay.", reported: true },
+      { text: "Pick a quiet spot before you destroy the car, as VGC suggests.", reported: true },
+      { text: "Keep a manual save. PowerPyx, Push Square and GamesRadar+ all say story missions can't be replayed." },
+    ],
+    notes: [
+      "Name: our mission list hides this mission's title because the name alone is a major spoiler. VGC, PowerPyx and Push Square all print it, so the source links below carry it in their web addresses. We label them neutrally and keep the name out of the page text, links and schema.",
+      "Order: PC Gamer, Push Square, Press Start, GamesRadar+ and VGC all list this mission 18th, straight after Swamped. PowerPyx calls it the 21st main mission.",
+      "Fight or flee: VGC describes fighting the three men and doesn't mention skipping the fight. PowerPyx says you can run to the car instead. We show both.",
+    ],
+    faq: [
+      {
+        question: "Where is the missable weapon in this mission?",
+        answer: "PowerPyx says it is in the trunk of the car you drive away, and to open the trunk before you destroy the car (Reported).",
+      },
+      {
+        question: "Do I have to fight the three men outside?",
+        answer: "VGC describes fighting all three. PowerPyx says you can either beat them up or run to the car and drive off (Reported, each).",
+      },
+      {
+        question: "How do I destroy the car?",
+        answer: "VGC and PowerPyx both mention a fuel can in the car (Confirmed). VGC adds shooting the engine a few times, and PowerPyx adds driving the car into the ocean and letting it sink (Reported).",
+      },
+      {
+        question: "I can't find all the items in the trailer. Any tips?",
+        answer: "PowerPyx says slow motion highlights them (Reported). Both outlets list spots by the TV, the neon sign, the fridge and the shelves, and a couple of the locations differ between them.",
+      },
+      {
+        question: "Does the optional interaction in the trailer matter?",
+        answer: "PowerPyx says it only changes your health and stamina for a short while and doesn't matter either way (Reported).",
+      },
+    ],
+    sources: [
+      PCGAMER,
+      PRESSSTART,
+      vgc("gta-6-don-gone-mission-walkthrough", "VGC walkthrough (18 Nov 2026)", "Objective flow, item spots, fight, destroying the car, mission order"),
+      pp("gta-6-don-gone-head-to-donnies-trailer-walkthrough", "Quest giver, start point, requirement, reward, objective flow"),
+      PP_INDEX,
+      PUSHSQUARE,
+      gr("gta-6-weapon-ownership-explained", "GamesRadar+: how weapon ownership works in GTA 6 (19 Nov 2026)", "Unique weapon variants stay unlocked for both characters and can't be modified"),
+      gr("gta-6-mission-list", "GamesRadar+: GTA 6 mission list", "Mission order and no mission replay"),
+    ],
+    updated: "2026-11-19T16:13:15+10:00",
+  },
+  {
+    slug: "recalibration",
+    order: 19,
+    name: "Recalibration",
+    startLabel: "Talk to Lucia",
+    seoTitle: "GTA 6 Recalibration Mission Guide: Walkthrough & Tips",
+    seoDescription:
+      "GTA 6 Recalibration walkthrough: buy the six-pack, take the boat out, learn the fishing controls, grill the catch and save before the Chapter 1 finale.",
+    teaser: "Jason and Lucia take a six-pack to Cal, then go fishing and grill the catch.",
+    intro: [
+      "Recalibration is the 19th story mission. VGC says Jason and Lucia cheer Cal up after the recent events of the game with a beer run, a boat trip out fishing and a fish grill back at the dock. Neither walkthrough describes any combat.",
+      "The thing to know before you start is the save advice. VGC and PowerPyx both advise a separate save before the Chapter 1 finale, and they place the point of no return differently (see the notes). What you lose stays behind the blur.",
+    ],
+    facts: [
+      { label: "Chapter", value: "Chapter 1: Just Like Paradise, mission 19 (PC Gamer, Push Square, Press Start, GamesRadar+, VGC)", status: "confirmed" },
+      { label: "Playable", value: "Jason (VGC and PowerPyx)", status: "confirmed" },
+      { label: "Combat", value: "None described in either walkthrough (VGC and PowerPyx)", status: "confirmed" },
+      { label: "Quest giver", value: "Lucia (PowerPyx)", status: "reported" },
+      { label: "Unlocks after", value: "A call from Lucia at some point during or after the previous story mission. The mission then starts when you return home (PowerPyx)", status: "reported" },
+      { label: "Starts at", value: "Jason's house in Key Lento (PowerPyx). VGC says you start by heading to Cal's house.", status: "reported" },
+      { label: "Cash reward", value: "None listed (PowerPyx)", status: "reported" },
+    ],
+    objectives: [
+      "Head to Cal's house, stopping at the marked liquor store to buy a six-pack for Cal (VGC and PowerPyx). PowerPyx says any six-pack from the fridge works and that it is paid for as soon as you pick it up, so you don't need the till.",
+      "At Cal's, talk to him (VGC and PowerPyx). PowerPyx says he is on a lounger behind the house, by the water.",
+      "Take the boat to the marked fishing spot (VGC and PowerPyx). PowerPyx says it is about two minutes away.",
+      "Catch some fish with Cal (VGC and PowerPyx). VGC gives the PlayStation controls: hold L2 to grip the rod, press R2 to cast, rotate the right stick to attract fish and press R2 when one bites. PowerPyx says to turn the right stick clockwise. When the fish fights, push the left stick against its pull while spinning the right stick to reel it in (VGC and PowerPyx). VGC says Jason grabs the fish automatically once it is close.",
+      "Return to Cal's dock (VGC and PowerPyx).",
+      "Grill the fish, flipping each piece before it burns (VGC and PowerPyx). PowerPyx says there are three pieces, the grill is to the right of where Cal stands, and you flip them until the colour change shows both sides are done.",
+      "Follow Lucia when she walks off (VGC and PowerPyx). PowerPyx says she is at the front of Cal's house. Talk to her there, then drive home to finish (VGC and PowerPyx).",
+    ],
+    spoiler:
+      "PowerPyx says you permanently lose Jason's home in Key Lento and never recover it for the rest of the game (Reported). VGC says you lose access to Jason's Ultimate Edition vehicles, and that you can return to Key Lento a few hours into Chapter 2 (Reported). These are different claims, one about the home and one about the area.",
+    tips: [
+      { text: "Learn the fishing here. VGC and PowerPyx describe the same controls, with the right stick to attract fish and the left stick against the fish's pull." },
+      { text: "Flip the fish early. VGC says to flip them before they burn, and PowerPyx says to flip until both sides look well done." },
+      { text: "PowerPyx says you will lose all the pocket cash you bring in, and recommends putting at least $5,000 into the Family Savings account first (Reported). Our money guide explains the accounts.", reported: true },
+      { text: "Keep a separate manual save. VGC says not to start Tourist Trap until you have finished exploring. PowerPyx recommends keeping a permanent manual save and saving in a different slot afterwards. Story missions can't be replayed (PowerPyx and GamesRadar+).", reported: true },
+    ],
+    notes: [
+      "Save advice: VGC and PowerPyx both advise a separate save before the Chapter 1 finale, but they place the point of no return differently. VGC says it is the mission Tourist Trap, the first of three linked missions (Tourist Trap, Home Sweet Home and Discharge Time) that end Chapter 1, and that once you start it you can't free-roam as both characters for several hours (Reported, VGC). PowerPyx puts its warning at the end of Recalibration, saying this is the last chance to free-roam in Chapter 1 and that you won't be able to play as Jason for a long time (Reported, PowerPyx).",
+      "Order: PC Gamer, Push Square, Press Start, GamesRadar+ and VGC all list Recalibration 19th. PowerPyx calls it the 22nd main mission.",
+    ],
+    faq: [
+      {
+        question: "How do I fish in GTA 6?",
+        answer: "VGC gives the PlayStation controls: hold L2 to grip the rod, press R2 to cast, rotate the right stick to attract fish and press R2 when one bites. Then push the left stick against the fish's pull while spinning the right stick to reel it in. PowerPyx describes the same left and right stick technique (Confirmed).",
+      },
+      {
+        question: "Which six-pack should I buy?",
+        answer: "PowerPyx says any six-pack from the fridge works and that it is paid for when you pick it up (Reported).",
+      },
+      {
+        question: "How do I stop the fish burning?",
+        answer: "VGC says to flip each piece before it burns. PowerPyx says to flip them until both sides look well done and you can see the colour change (Reported, each).",
+      },
+      {
+        question: "Is there a point of no return around Recalibration?",
+        answer: "VGC says the point of no return is the mission Tourist Trap, and PowerPyx puts its warning at the end of Recalibration. Both advise a separate save before the Chapter 1 finale (Reported, each).",
+      },
+      {
+        question: "Is there any combat in Recalibration?",
+        answer: "No. Neither VGC nor PowerPyx describes a fight (Confirmed).",
+      },
+    ],
+    sources: [
+      PCGAMER,
+      PRESSSTART,
+      vgc("gta-6-recalibration-mission-walkthrough", "VGC: GTA 6 Recalibration mission walkthrough (18 Nov 2026)", "Objective flow, fishing controls, mission order"),
+      vgc("gta-6-chapter-1-warning-read-this-before-finishing-chapter-1-of-gta-6", "VGC: GTA 6 Chapter 1 warning (18 Nov 2026)", "Where the point of no return is and what it locks"),
+      pp("gta-6-recalibration-talk-to-lucia-walkthrough", "Map label, quest giver, start point, requirement, reward, objective flow, save and cash warning"),
+      PP_INDEX,
+      PUSHSQUARE,
+      gr("gta-6-mission-list", "GamesRadar+: GTA 6 mission list", "Mission order and no mission replay"),
+    ],
+    updated: "2026-11-19T16:13:15+10:00",
   },
 ];
 
