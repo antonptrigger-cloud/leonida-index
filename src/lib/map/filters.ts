@@ -1,10 +1,13 @@
 import { isBaseId, type BaseId } from "./bases";
+import { isCategory, type PinCategory } from "./categories";
 import { PIN_TYPES, REGIONS, type PinType } from "./config";
 
 /** Filter state that lives in the URL (/map?types=shop,landmark&official=1&region=vice-city&pin=seed-ocean-beach). */
 export interface InitialFilters {
   q: string;
   types: PinType[] | null;
+  /** Vendor categories (?cats=gas,clothing). Empty = no category filter. */
+  cats: PinCategory[];
   official: boolean;
   region: string | null;
   spoilers: boolean;
@@ -13,7 +16,7 @@ export interface InitialFilters {
   base: BaseId | null;
 }
 
-export const NO_FILTERS: InitialFilters = { q: "", types: null, official: false, region: null, spoilers: false, pin: null, base: null };
+export const NO_FILTERS: InitialFilters = { q: "", types: null, cats: [], official: false, region: null, spoilers: false, pin: null, base: null };
 
 export const regionSlug = (name: string) => name.toLowerCase().replace(/\s+/g, "-");
 const regionFromSlug = (v: string | null) => REGIONS.find((r) => regionSlug(r) === v) ?? null;
@@ -27,6 +30,7 @@ export function parseFilters(sp: Record<string, string | string[] | undefined>):
   return {
     q: (one("q") ?? "").slice(0, 80),
     types: types.length ? types : null,
+    cats: (one("cats") ?? "").split(",").filter(isCategory),
     official: one("official") === "1",
     region: regionFromSlug(one("region")),
     spoilers: one("spoilers") === "1",

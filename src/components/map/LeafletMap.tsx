@@ -8,6 +8,7 @@ import { BASES, DEFAULT_BASE, type BaseId, type BaseMap } from "@/lib/map/bases"
 import type { TileManifest } from "@/lib/map/config";
 import { markerHtml } from "./glyphs";
 import { onBaseMap } from "@/lib/map/geo";
+import { CATEGORIES } from "@/lib/map/categories";
 import { LABELS, LABEL_PRIORITY, type LabelKind, type MapLabel } from "@/lib/map/labels";
 import { Occupancy, textWidth, type Rect } from "@/lib/map/label-layout";
 import type { PublicPin } from "@/lib/map/types";
@@ -69,13 +70,13 @@ const iconCache = new Map<string, L.DivIcon>();
 const escapeHtml = (t: string) => t.replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[c] as string);
 
 /** Glyph marker for every non-region type. See glyphs.ts for what the outline and tick mean. */
-function pinIcon(type: PublicPin["type"], selected: boolean, approximate: boolean, source: PublicPin["source"]): L.DivIcon {
-  const key = `${type}-${selected}-${approximate}-${source}`;
+function pinIcon(type: PublicPin["type"], selected: boolean, approximate: boolean, source: PublicPin["source"], category: PublicPin["category"] = null): L.DivIcon {
+  const key = `${type}-${selected}-${approximate}-${source}-${category ?? ""}`;
   let icon = iconCache.get(key);
   if (!icon) {
     icon = L.divIcon({
       className: `lvg-pin${selected ? " lvg-pin--selected" : ""}${approximate ? " lvg-pin--approx" : ""}`,
-      html: markerHtml(type, { approximate, source }),
+      html: markerHtml(type, { approximate, source, category }),
       iconSize: [28, 37],
       iconAnchor: [14, 36],
       tooltipAnchor: [0, -33],
@@ -625,10 +626,10 @@ function PinLayer({
             <Marker
               key={p.id}
               position={geo.toLatLng(p)}
-              icon={pinIcon(p.type, p.id === selectedId, p.approximate, p.source)}
+              icon={pinIcon(p.type, p.id === selectedId, p.approximate, p.source, p.category)}
               eventHandlers={{ click: () => onSelect(p.id) }}
               keyboard={true}
-              title={p.name}
+              title={p.category ? `${p.name} (${CATEGORIES[p.category].short})` : p.name}
               zIndexOffset={p.id === selectedId ? 1000 : 100}
             >
               <Tooltip direction="top" offset={[0, 0]} opacity={0.95}>
