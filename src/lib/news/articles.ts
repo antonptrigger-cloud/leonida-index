@@ -66,9 +66,55 @@ export const SALES_PUBLISHED = "2026-11-19T09:08:00+10:00";
 /** 19 Nov 11:00 AEST batch (tracker refresh after the UK unlock, refresh queue batch A). PLACEHOLDER, Web Bot: set to the moment these edits go live. */
 export const UPDATES_1100_AT = "2026-11-19T11:07:00+10:00";
 
+/** Age rating quick-answer page: boards re-read 11:46-11:48 AEST 19 Nov 2026. Also used for `updated` until the first fact change; bump `updated` on every edit. */
+export const AGE_RATING_PUBLISHED = "2026-11-19T11:48:00+10:00";
+
 export const newsPath = (slug: string) => `/news/${slug}`;
 
 export const NEWS: NewsItem[] = [
+  {
+    slug: "gta-6-age-rating",
+    title: "GTA 6 Age Rating: ESRB, ACB, USK & More",
+    description:
+      "GTA 6 is rated M 17+ by the ESRB, R 18+ in Australia and R18 in New Zealand, with no youth release from USK. Official ratings and content descriptors.",
+    crumb: "Age rating",
+    teaser: "ESRB M 17+, Australia R 18+, New Zealand R18 and USK no youth release. What each board lists, and where we found no entry.",
+    tag: "Explainer",
+    category: "launch",
+    keywords: ["GTA 6 age rating", "GTA 6 ESRB", "GTA 6 PEGI", "GTA 6 R18+", "GTA 6 USK", "GTA 6 rating Australia", "is GTA 6 for kids"],
+    published: AGE_RATING_PUBLISHED,
+    updated: AGE_RATING_PUBLISHED,
+    citations: [
+      "https://www.esrb.org/ratings/41627/grand-theft-auto-vi/",
+      "https://www.classification.gov.au/titles/grand-theft-auto-vi-12",
+      "https://www.classificationoffice.govt.nz/find-a-rating/quick-takes/grand-theft-auto-vi/",
+      "https://usk.de/?s=Grand+Theft+Auto+VI",
+      "https://pegi.info/search-pegi?q=Grand+Theft+Auto+VI",
+      "https://www.cero.biz/search/",
+    ],
+    faq: [
+      {
+        question: "What is GTA 6's age rating?",
+        answer: "The ESRB rates it M for Mature 17+. Australia's Classification Board lists R 18+, New Zealand's Classification Office lists it as R18, and Germany's USK lists no youth release (keine Jugendfreigabe).",
+      },
+      {
+        question: "Is GTA 6 rated PEGI 18?",
+        answer: "We cannot confirm it. A search of pegi.info for Grand Theft Auto VI returned no results when we checked at 11:46 AEST on 19 Nov, so we are not quoting a PEGI rating. We will update this page if PEGI lists the game.",
+      },
+      {
+        question: "Why is GTA 6 rated M or R 18+?",
+        answer: "The ESRB lists blood and gore, intense violence, mature humor, nudity, strong language, strong sexual content and use of drugs and alcohol. Australia's advice is high impact violence, sex scenes and drug use. USK cites drastic violence, drugs and criminal role models.",
+      },
+      {
+        question: "Is GTA 6 suitable for children?",
+        answer: "No official board we could open gives it a rating below 17. The ESRB says Mature 17+, and the Australian, New Zealand and German entries are all 18 and over (R 18+, R18 and no youth release).",
+      },
+      {
+        question: "Does GTA 6 have in-game purchases?",
+        answer: "The ESRB listing carries an In-Game Purchases label, and USK lists In-Game-Käufe (in-game purchases) as a usage note.",
+      },
+    ],
+  },
   {
     slug: "gta-6-live-new-zealand-launch-report",
     title: "GTA 6 Is Live in New Zealand: Launch Report",
