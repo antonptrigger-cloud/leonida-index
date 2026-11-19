@@ -203,7 +203,7 @@ export const ROUTES: Record<string, RouteSeo> = {
   },
   "/guides/money": {
     title: "GTA 6 Money Guide: Fastest Ways to Earn Cash",
-    description: "The fastest ways to make money in GTA 6 at every stage of the story, from Moses's car jobs to jewelry stores, Randy's wish list and late-game vaults.",
+    description: "The fastest ways to make money in GTA 6 at every stage of the story, from early car jobs to jewelry stores, fence wish lists and late-game vaults.",
     crumb: "Money guide",
     kind: "article",
     changeFrequency: "weekly",
@@ -449,7 +449,7 @@ export const ROUTES: Record<string, RouteSeo> = {
   ),
   "/database/characters": {
     title: "GTA 6 Characters: Full Cast List",
-    description: "GTA 6 characters: Lucia Caminos, Jason Duval, Brian Heder and the rest of Rockstar's profiles, plus fences like Moses and Randy. Every fact is labelled.",
+    description: "GTA 6 characters: Lucia Caminos, Jason Duval, Brian Heder and the rest of Rockstar's profiles, plus the fences and side-quest cast. Every fact is labelled.",
     crumb: "Characters",
     kind: "collection",
     changeFrequency: "weekly",

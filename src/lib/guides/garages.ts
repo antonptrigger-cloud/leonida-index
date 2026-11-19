@@ -57,7 +57,7 @@ export const GARAGES_FAQ: { question: string; answer: string }[] = [
   {
     question: "When can you buy garages in GTA 6?",
     answer:
-      "Not at the start. PowerPyx and GameSpot both place garages in the Port Gellhorn stretch of the story, once the mechanic Moses starts registering cars for you (Confirmed). GameSpot puts that at about 30% of the way through. PowerPyx says a Vice City Real Estate app arrives on your phone a short while later and sells every purchasable garage (Reported).",
+      "Not at the start. PowerPyx and GameSpot both place garages in a later stretch of the story, once a mechanic starts registering cars for you (Confirmed). GameSpot puts that at about 30% of the way through. PowerPyx says a Vice City Real Estate app arrives on your phone a short while later and sells every purchasable garage (Reported).",
   },
   {
     question: "How much do all the GTA 6 garages cost?",
@@ -103,7 +103,7 @@ export const GARAGES_SOURCES = [
   {
     label: "PowerPyx: GTA 6 How to Get New Personal Car",
     url: "https://www.powerpyx.com/gta-6-how-to-get-new-personal-car/",
-    used: "Registering at Moses's garage, and the one starting garage slot that our vehicles database also cites",
+    used: "Registering at the mechanic's garage, and the one starting garage slot that our vehicles database also cites",
   },
   {
     label: "GamesRadar+: Complete GTA 6 Trophy and Achievement list",

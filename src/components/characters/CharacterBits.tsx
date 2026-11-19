@@ -1,5 +1,7 @@
 import type { Character, CharSource } from "@/lib/characters/characters";
 import { LAST_VERIFIED, LAST_VERIFIED_LABEL } from "@/lib/characters/characters";
+import { Spoiler } from "@/components/guides/Spoiler";
+import { splitSources } from "@/lib/spoiler-sources";
 
 const ACCENT: Record<Character["accent"], string> = {
   pink: "255,45,120",
@@ -75,19 +77,44 @@ export function CharSources({ sources, verified }: { sources: CharSource[]; veri
       <p className="mt-2x text-sm text-muted">
         Last verified: <time dateTime={verified?.iso ?? LAST_VERIFIED}>{verified?.label ?? LAST_VERIFIED_LABEL}</time> ({verified?.note ?? "launch eve"}). Wording on this page is our own. Rockstar&apos;s pages are the primary source. Anything from elsewhere is marked Reported or To be confirmed, and plot details stay in the blurred section.
       </p>
-      <ol className="mt-4x flex flex-col gap-3x text-sm">
-        {sources.map((s) => (
-          <li key={s.url} className="vc-bar">
-            <a href={s.url} target="_blank" rel="noopener noreferrer nofollow" className="text-blue hover:text-pink">
-              {s.label}
-            </a>
-            <span className="block text-xs text-muted">
-              {s.primary ? "Primary · " : "Secondary · "}
-              {s.used}
-            </span>
-          </li>
-        ))}
-      </ol>
+      <SourceList sources={sources} />
     </section>
+  );
+}
+
+type ListedSource = { url: string; label: string; used: string; primary?: boolean };
+
+function SourceItems({ sources }: { sources: ListedSource[] }) {
+  return (
+    <ol className="mt-4x flex flex-col gap-3x text-sm">
+      {sources.map((s) => (
+        <li key={s.url} className="vc-bar">
+          <a href={s.url} target="_blank" rel="noopener noreferrer nofollow" className="text-blue hover:text-pink">
+            {s.label}
+          </a>
+          <span className="block text-xs text-muted">
+            {s.primary ? "Primary \u00b7 " : "Secondary \u00b7 "}
+            {s.used}
+          </span>
+        </li>
+      ))}
+    </ol>
+  );
+}
+
+/** Source list. Sources whose title or address names a Chapter 2+ story mission or story place sit behind a blur. */
+export function SourceList({ sources }: { sources: ListedSource[] }) {
+  const { open, hidden } = splitSources(sources);
+  return (
+    <>
+      <SourceItems sources={open} />
+      {hidden.length > 0 ? (
+        <div className="mt-4x">
+          <Spoiler label="more sources (the titles name story missions)">
+            <SourceItems sources={hidden} />
+          </Spoiler>
+        </div>
+      ) : null}
+    </>
   );
 }
