@@ -87,6 +87,12 @@ export const UPDATES_1700_AT = "2026-11-19T17:10:14+10:00";
 /** 19 Nov 18:00 AEST batch (tracker readings 17:52-17:58 AEST, NBN record piece). Set to the time of the edit. */
 export const UPDATES_1800_AT = "2026-11-19T18:03:18+10:00";
 
+/** 19 Nov 19:00 AEST batch (tracker readings 18:58-19:05 AEST, Game Awards piece). PLACEHOLDER: Web Bot sets this to the time of the edit. */
+export const UPDATES_1900_AT = "2026-11-19T19:08:00+10:00";
+
+/** Game Awards nominations piece. PLACEHOLDER: Web Bot sets this to the go-live time. */
+export const TGA_NOMS_PUBLISHED = "2026-11-19T19:08:00+10:00";
+
 /** NBN traffic record piece. Set to the time of the edit. */
 export const NBN_RECORD_PUBLISHED = "2026-11-19T18:03:18+10:00";
 
@@ -99,6 +105,48 @@ export const AGE_RATING_PUBLISHED = "2026-11-19T11:48:00+10:00";
 export const newsPath = (slug: string) => `/news/${slug}`;
 
 export const NEWS: NewsItem[] = [
+  {
+    slug: "gta-6-game-awards-nominations",
+    title: "GTA 6 Leads The Game Awards 2026",
+    description:
+      "GTA 6 leads The Game Awards 2026 with eight nominations, including Game of the Year. Every category, its rivals, the Lucia actor question and voting dates.",
+    crumb: "Game Awards nominations",
+    teaser: "Eight nominations, Game of the Year included. Every category, the rivals, what the Best Performance nod confirms and when voting closes.",
+    tag: "Awards",
+    category: "reviews",
+    keywords: ["GTA 6 Game Awards", "The Game Awards 2026 nominees", "GTA 6 Game of the Year", "GTA 6 nominations", "Manni L. Perez", "Game Awards 2026 date"],
+    published: TGA_NOMS_PUBLISHED,
+    updated: TGA_NOMS_PUBLISHED,
+    citations: [
+      "https://thegameawards.com/nominees",
+      "https://thegameawards.com/categories/best-performance",
+      "https://www.shacknews.com/article/151383/gta-6-the-game-awards-2026-nominations",
+      "https://www.gamespot.com/articles/here-are-the-most-nominated-games-and-publishers-at-the-game-awards-this-year/",
+      "https://www.polygon.com/game-awards-2026-nominees-most-nominations-gta-6-zelda/",
+      "https://www.videogameschronicle.com/news/gta-6-is-the-most-nominated-game-at-the-game-awards-2026/",
+      "https://www.theverge.com/games/1035602/gta-vis-voice-actor-for-lucia-was-revealed-by-the-game-awards",
+      "https://www.polygon.com/gta-6-lucia-actor-confirmed-game-awards-2026/",
+      "https://www.pcgamer.com/games/live/news/grand-theft-auto-6-live-launch-coverage/",
+    ],
+    faq: [
+      {
+        question: "How many Game Awards nominations did GTA 6 get?",
+        answer: "Eight, the most of any game at The Game Awards 2026: Game of the Year, Best Game Direction, Best Narrative, Best Art Direction, Best Score and Music, Best Audio Design, Best Performance (Manni L. Perez) and Best Action/Adventure. GameSpot, Polygon, Shacknews and VGC all report eight.",
+      },
+      {
+        question: "Is GTA 6 nominated for Game of the Year?",
+        answer: "Yes. The other Game of the Year nominees are 007 First Light, Control Resonant, Phantom Blade Zero, Resident Evil Requiem and The Legend of Zelda: Ocarina of Time.",
+      },
+      {
+        question: "Does the nomination confirm who plays Lucia?",
+        answer: "Not officially. The Game Awards lists Manni L. Perez as a Best Performance nominee for GTA VI without naming a character. Outlets link her to Lucia, but Polygon and The Verge say Rockstar has not confirmed its cast.",
+      },
+      {
+        question: "When are The Game Awards 2026?",
+        answer: "Thursday 10 December (US time), live from the Peacock Theater in Los Angeles, per VGC. Fan ballots must be finalised before 9pm ET on 9 December, which is 12:00 pm AEST on 10 December.",
+      },
+    ],
+  },
   {
     slug: "gta-6-nbn-australia-traffic-record",
     title: "GTA 6 Breaks Australia's NBN Record",
@@ -334,7 +382,7 @@ export const NEWS: NewsItem[] = [
     live: true,
     keywords: ["GTA 6 server status", "is GTA 6 down", "GTA 6 known issues", "GTA 6 PS5 update", "GTA 6 patch", "01.002.001"],
     published: NEWS_PUBLISHED,
-    updated: UPDATES_1800_AT,
+    updated: UPDATES_1900_AT,
     citations: [
       "https://x.com/PS_Support_US/status/2122863683881619685",
       "https://www.pushsquare.com/news/2026/11/gta-6-requires-new-ps5-firmware-update-to-play",
@@ -344,6 +392,7 @@ export const NEWS: NewsItem[] = [
       "https://insider-gaming.com/is-grand-theft-auto-6-down-gta-6-issues-explained/",
       "https://www.digitalfoundry.net/features/gta-6-ps5-vs-ps5-pro-xbox-series-x-and-series-s-which-console-plays-best",
       "https://status.playstation.com/",
+      "https://support.rockstargames.com/servicestatus",
       "https://gtatracker.gg/online/server-status",
       "https://downdetector.co.nz/status/gta-vi/",
       "https://www.playstation.com/en-us/support/games/gta-vi-support/",
@@ -372,7 +421,7 @@ export const NEWS: NewsItem[] = [
     faq: [
       {
         question: "Is GTA 6 down?",
-        answer: "At 17:52-17:58 AEST on 19 Nov, about three hours after the US and Canada unlocked at 15:00 AEST, PlayStation's status feed listed no active issues for the US, Canada, Mexico, Brazil, the UK, Ireland, France, Germany, Italy, Spain, Australia, New Zealand or Japan, and Microsoft's Xbox status feed showed no incidents. Rockstar's services showed up on GTATracker's relay of its page. Shortly after the US unlock, Mashable reports Sony's status page flagged a Gaming and Social issue at 12:33 a.m. ET (15:33 AEST); it had cleared by our 16:00 AEST reading. Downdetector user reports headlined \"problems\" for PlayStation Network in the US and Australia and \"possible problems\" for Xbox network in the US (mostly server connection, downloads and login), which the platforms' own feeds did not reflect, so that severity is disputed. For GTA VI itself, Downdetector showed no current problems in the US, Australia and New Zealand, and \"possible problems\" in the UK and Germany. User reports are not confirmed outages.",
+        answer: "At 18:58-19:05 AEST on 19 Nov, about four hours after the US and Canada unlocked at 15:00 AEST, PlayStation's status feed listed no active issues for the US, Canada, Mexico, Brazil, the UK, Ireland, France, Germany, Italy, Spain, Australia, New Zealand or Japan, and Microsoft's Xbox status feed showed no incidents. Rockstar's own service status page showed all services operational, with no GTA VI entry. Shortly after the US unlock, Mashable reports Sony's status page flagged a Gaming and Social issue at 12:33 a.m. ET (15:33 AEST); it had cleared by our 16:00 AEST reading. Downdetector user reports headlined \"problems\" for PlayStation Network in the US and \"possible problems\" for PlayStation Network in Australia and for Xbox network in the US (mostly server connection, downloads and login), which the platforms' own feeds did not reflect, so that severity is disputed. For GTA VI itself, Downdetector showed no current problems in the US and New Zealand, and \"possible problems\" in the UK, Germany and Australia. User reports are not confirmed outages.",
       },
       {
         question: "Was PSN down before GTA 6 launched?",
