@@ -47,7 +47,7 @@ export default function Page() {
           <Lead>Gone as a visible NPC type:</Lead> Polygon says hireable sex workers are not returning and that, as a highly visible type of NPC, they are gone. It leaves room for one to turn up somewhere among the game&rsquo;s many encounters (<Ext href={POLY}>Polygon</Ext>).
         </li>
         <li>
-          <Lead>Strip clubs are still there:</Lead> PC Gamer and Polygon both say you can still visit strip clubs, and PC Gamer says Jason and Lucia can go together. PC Gamer adds that you cannot pursue other characters while the story is built around the couple (<Ext href={PCG}>PC Gamer</Ext>).
+          <Lead>Strip clubs are still there:</Lead> PC Gamer and Polygon both say you can still visit strip clubs, and PC Gamer says Jason and Lucia can go together. PC Gamer adds, as its own view, that Rockstar has not added the ability to do much more because it does not fit the story, which is built around the couple (<Ext href={PCG}>PC Gamer</Ext>).
         </li>
         <li>
           <Lead>Fan reaction:</Lead> Polygon says the decision has disappointed fans who saw the feature as a franchise staple, while most players do not seem to mind. That is Polygon&rsquo;s read, not a survey.

@@ -97,7 +97,7 @@ export const UPDATES_1900_AT = "2026-11-19T19:08:00+10:00";
 export const UPDATES_0500_AT = "2026-11-20T05:03:00+10:00";
 
 /** No-prostitutes explainer (Rockstar statement via Shacknews). Set to the edit time; Web Bot adjusts if it goes live later. */
-export const NO_PROSTITUTES_PUBLISHED = "2026-11-20T08:06:15+10:00";
+export const NO_PROSTITUTES_PUBLISHED = "2026-11-20T08:09:43+10:00";
 
 /** DE-CIX traffic record piece. Set to the edit time. */
 export const DECIX_RECORD_PUBLISHED = "2026-11-20T05:03:00+10:00";
@@ -119,11 +119,11 @@ export const newsPath = (slug: string) => `/news/${slug}`;
 export const NEWS: NewsItem[] = [
   {
     slug: "gta-6-no-prostitutes-rockstar",
-    title: "No Prostitutes in GTA 6, Rockstar Says",
+    title: "GTA 6 Has No Hireable Prostitutes",
     description:
-      "You can't hire prostitutes in GTA 6, a series staple since GTA III. Rockstar's full statement to Shacknews, what outlets report and what is still in.",
+      "Shacknews reports you can't hire prostitutes in GTA 6, a series staple since GTA III. Rockstar's statement to Shacknews, what outlets say and what is still in.",
     crumb: "No prostitutes in GTA 6",
-    teaser: "A GTA staple since 2001 is gone. Rockstar's statement to Shacknews word for word, what it does and doesn't say, and what's still in Leonida.",
+    teaser: "Shacknews and Polygon say a GTA staple since 2001 is gone. Rockstar's statement to Shacknews word for word, what it does and doesn't say, and what's still in.",
     tag: "Explainer",
     category: "launch",
     keywords: ["GTA 6 prostitutes", "can you hire prostitutes in GTA 6", "GTA 6 removed features", "GTA 6 strip clubs", "Rockstar statement Shacknews", "GTA 6 Jason and Lucia"],
@@ -140,8 +140,8 @@ export const NEWS: NewsItem[] = [
         answer: "No. Shacknews reports that you cannot solicit prostitutes in GTA 6, and Polygon says hireable sex workers are not returning as an NPC type. The feature had been in the series since GTA III in 2001.",
       },
       {
-        question: "Why did Rockstar remove prostitutes from GTA 6?",
-        answer: "In a statement to Shacknews, Rockstar said GTA VI is about \"a couple in a bind, lovers on the run\", that many aspects of previous titles are not present, and that everything in the game was chosen to support Jason and Lucia's story. The statement does not mention prostitutes by name.",
+        question: "Why are there no prostitutes in GTA 6?",
+        answer: "Shacknews says Rockstar removed the feature. In a statement to Shacknews, Rockstar said GTA VI is about \"a couple in a bind, lovers on the run\", that many aspects of previous titles are not present, and that everything in the game was chosen to support Jason and Lucia's story. The statement does not mention prostitutes by name.",
       },
       {
         question: "Are there strip clubs in GTA 6?",
