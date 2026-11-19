@@ -290,6 +290,7 @@ export const NEWS_GUIDES: Record<string, string[]> = {
   "/news/gta-6-online-release-date": ["/guides/missions", "/guides/beginner"],
   "/news/gta-6-festival-set-times-heat-night": ["/guides/beginner", "/guides/activities"],
   "/news/gta-6-sales-17-million-sensor-tower": ["/guides/beginner", "/guides/missions"],
+  "/news/gta-6-age-rating": ["/guides/beginner", "/tools/edition-compare"],
 };
 
 /** Fewest related links a content page may end up with (also enforced by `npm run seo:audit`). */
