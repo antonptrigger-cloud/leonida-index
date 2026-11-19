@@ -26,6 +26,10 @@ const norm = (t: string) => t.toLowerCase().replace(/[^a-z0-9]/g, "");
 const guideFor = (t: StoryMission): Mission | undefined =>
   t.title ? MISSIONS.find((x) => norm(x.name) === norm(t.title as string)) : undefined;
 
+/** Heist rows that link to /guides/heists (they render inside the chapter spoiler blur). */
+const HEIST_ROWS = new Set(["thecartelheist", "hiddencharges", "companyproperty", "vciatakedown"]);
+const isHeist = (t: StoryMission) => Boolean(t.title) && HEIST_ROWS.has(norm(t.title as string));
+
 const HIDDEN_LABEL = "Hidden (major spoiler)";
 
 function ChapterList({ chapterNumber }: { chapterNumber: number }) {
@@ -65,7 +69,13 @@ function ChapterList({ chapterNumber }: { chapterNumber: number }) {
             <span className="relative">
               <span className="vc-display block text-[1.75rem] leading-none text-ink">{mission.title ?? HIDDEN_LABEL}</span>
               <span className="mt-1x block text-[0.8rem] text-muted">
-                Guide coming
+                {isHeist(mission) ? (
+                  <Link href="/guides/heists" className="text-orange hover:text-pink">
+                    Heist guide
+                  </Link>
+                ) : (
+                  "Guide coming"
+                )}
                 {mission.optional ? <span className="text-faint"> · optional per PowerPyx</span> : null}
                 {overall}
               </span>

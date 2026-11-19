@@ -35,6 +35,7 @@ const HUB_META: Record<string, HubMeta> = {
   "/guides/cheats": { title: "Cheats & codes", blurb: "Cheats unlock after the story. How to enter them and the codes so far.", tag: "Cheats", accent: "orange", section: "money" },
   "/guides/trophies": { title: "Trophies & platinum", blurb: "All 55 trophies explained, plus a roadmap to the platinum.", tag: "Trophies", accent: "orange", section: "money" },
   "/guides/collectibles": { title: "Collectibles", blurb: "Card sets, WAiNK scans and which ones the 100% needs.", tag: "Collectibles", accent: "orange", section: "money" },
+  "/guides/heists": { title: "Heists", blurb: "How heist prep works and what outlets agree on, with mission names blurred.", tag: "Heists", accent: "turq", section: "systems" },
   "/guides/wanted": { title: "Wanted system", blurb: "Six stars, witnesses, hollow stars and how to lose the cops.", tag: "Systems", accent: "turq", section: "systems" },
   "/guides/stealing-cars": { title: "Stealing cars", blurb: "Hot-wire the old ones, clone keys for the new ones.", tag: "Systems", accent: "turq", section: "systems" },
   "/guides/activities": { title: "Activities", blurb: "Diving, jet skis, fishing, hoops, mini golf and the rest.", tag: "Activities", accent: "turq", section: "systems" },
