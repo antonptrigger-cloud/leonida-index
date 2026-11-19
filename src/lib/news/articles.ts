@@ -78,6 +78,9 @@ export const UPDATES_1400_AT = "2026-11-19T14:09:45+10:00";
 /** 19 Nov 15:00 AEST batch (tracker readings 14:59-15:10 AEST, first US readings). Set to the time of the edit. */
 export const UPDATES_1500_AT = "2026-11-19T15:20:30+10:00";
 
+/** 19 Nov 16:00 AEST batch (tracker readings 15:54-16:02 AEST, refresh queue batch B). Set to the time of the edit. */
+export const UPDATES_1600_AT = "2026-11-19T16:08:22+10:00";
+
 /** Age rating quick-answer page: boards re-read 11:46-11:48 AEST 19 Nov 2026. Also used for `updated` until the first fact change; bump `updated` on every edit. */
 export const AGE_RATING_PUBLISHED = "2026-11-19T11:48:00+10:00";
 
@@ -131,17 +134,18 @@ export const NEWS: NewsItem[] = [
     slug: "gta-6-live-new-zealand-launch-report",
     title: "GTA 6 Is Live in New Zealand: Launch Report",
     description:
-      "GTA 6 unlocked in New Zealand at 11:00 UTC on 18 Nov. What is confirmed, who unlocks next, what we could not verify, and how to dodge spoilers.",
+      "GTA 6 unlocked in New Zealand at 11:00 UTC on 18 Nov. What is confirmed, who unlocked next, what we could not verify, and how to dodge spoilers.",
     crumb: "Live in New Zealand",
-    teaser: "New Zealand unlocked first at 11:00 UTC. What is confirmed, who is next, and what we could not verify.",
+    teaser: "New Zealand unlocked first at 11:00 UTC. What is confirmed, who came next, and what we could not verify.",
     tag: "Launch night",
     pinned: true,
     keywords: ["GTA 6", "New Zealand", "launch", "unlock time", "Leonida", "Vice City", "spoilers"],
     published: NEWS_PUBLISHED,
-    updated: NEWS_PUBLISHED,
+    updated: UPDATES_1600_AT,
     citations: [
       "https://www.bbc.com/news/live/c60rkg21dl22t",
       "https://www.aa.com.tr/en/science-technology/gta-vi-global-rollout-begins-with-new-zealand-launch/4129238",
+      "https://www.vice.com/en/article/gta-6-us-canada-launch-ps5-download-size-game-sharing/",
       "https://www.polygon.com/gta-6-out-now-spoiler-warning-new-zealand-release/",
       "https://www.vice.com/en/article/gta-6-new-zealand-worldwide-release-times/",
       "https://blog.playstation.com/2026/11/10/pre-load-grand-theft-auto-vi-on-ps5-starting-today/",
@@ -250,7 +254,7 @@ export const NEWS: NewsItem[] = [
     live: true,
     keywords: ["GTA 6 server status", "is GTA 6 down", "GTA 6 known issues", "GTA 6 PS5 update", "GTA 6 patch", "01.002.001"],
     published: NEWS_PUBLISHED,
-    updated: UPDATES_1500_AT,
+    updated: UPDATES_1600_AT,
     citations: [
       "https://x.com/PS_Support_US/status/2122863683881619685",
       "https://www.pushsquare.com/news/2026/11/gta-6-requires-new-ps5-firmware-update-to-play",
@@ -277,6 +281,9 @@ export const NEWS: NewsItem[] = [
       "https://allestoerungen.de/stoerung/gta-vi/",
       "https://downdetector.com/status/gta-vi/",
       "https://downdetector.com/status/playstation-network/",
+      "https://downdetector.com/status/xbox-live/",
+      "https://support.xbox.com/en-US/xbox-live-status",
+      "https://www.vice.com/en/article/gta-6-us-canada-launch-ps5-download-size-game-sharing/",
       "https://www.bbc.com/news/live/c60rkg21dl22t",
       "https://www.standard.co.uk/news/tech/travis-scott-sony-miami-currys-grand-theft-auto-b1305482.html",
       "https://www.3djuegos.com/ps4/noticias/playstation-network-psn-se-ha-caido-espana-para-algunos-jugadores-estreno-gta-6-ha-saturado-servidores-ps5-momentos",
@@ -284,7 +291,7 @@ export const NEWS: NewsItem[] = [
     faq: [
       {
         question: "Is GTA 6 down?",
-        answer: "At 14:59-15:10 AEST on 19 Nov, in the first minutes after the scheduled US unlock at 15:00 AEST, PlayStation's status feed listed no active issues for the US, Canada, Mexico, Brazil, the UK, Ireland, France, Germany, Italy, Spain, Australia or New Zealand, and Rockstar, PSN and Xbox feeds relayed by GTATracker showed up. Downdetector user reports on PlayStation Network in the US and Australia headlined \"problems\" (mostly downloads, server connection and login), which Sony's feed did not reflect, so that severity is disputed. For GTA VI itself, Downdetector showed no current problems in the US, Australia and New Zealand, and \"possible problems\" in the UK and Germany. User reports are not confirmed outages, and we could not see what the UK or German reports were about.",
+        answer: "At 16:00-16:02 AEST on 19 Nov, an hour after the US and Canada unlocked at 15:00 AEST, PlayStation's status feed listed no active issues for the US, Canada, Mexico, Brazil, the UK, Ireland, France, Germany, Italy, Spain, Australia, New Zealand or Japan, and Microsoft's Xbox status feed showed no incidents. Rockstar's services showed up on GTATracker's relay of its page. GTATracker's relay of Sony's feed briefly showed Gaming and Social as degraded at 15:55 AEST and up again at 16:00 AEST; Sony's own feed did not show it when we read it, so that is unconfirmed. Downdetector user reports headlined \"problems\" for PlayStation Network in the US and Australia and for Xbox network in the US (mostly server connection, downloads and game launch), which the platforms' own feeds did not reflect, so that severity is disputed. For GTA VI itself, Downdetector showed no current problems in the US and New Zealand, and \"possible problems\" in the UK, Germany and Australia. User reports are not confirmed outages.",
       },
       {
         question: "Was PSN down before GTA 6 launched?",
@@ -296,14 +303,14 @@ export const NEWS: NewsItem[] = [
     slug: "gta-6-release-countdown",
     title: "GTA 6 Release Time by Region",
     description:
-      "GTA 6 unlocks at midnight local time on 19 Nov 2026. Unlock times by region in local, UTC and Brisbane time, what is unconfirmed, and spoiler tips.",
+      "GTA 6 unlocked at midnight local time on 19 Nov 2026. Unlock times by region in local, UTC and Brisbane time, what is unconfirmed, and spoiler tips.",
     crumb: "Release time by region",
     teaser: "Midnight local time, region by region, in local, UTC and Brisbane time.",
     tag: "Countdown",
-    live: true,
+    live: false,
     keywords: ["GTA 6 release time", "GTA 6 unlock time", "GTA 6 countdown", "midnight launch", "Brisbane"],
     published: NEWS_PUBLISHED,
-    updated: NEWS_PUBLISHED,
+    updated: UPDATES_1600_AT,
     citations: [
       "https://www.rockstargames.com/VI",
       "https://blog.playstation.com/2026/11/10/pre-load-grand-theft-auto-vi-on-ps5-starting-today/",
@@ -311,6 +318,7 @@ export const NEWS: NewsItem[] = [
       "https://kotaku.com/gta-6-pre-load-times-install-size-and-global-release-times-confirmed-2000752787",
       "https://www.digitalfoundry.net/news/2026/11/rockstar-officially-confirms-gta-6-regional-release-times-and-theyre-not-what-we-thought",
       "https://www.vice.com/en/article/gta-6-new-zealand-worldwide-release-times/",
+      "https://www.vice.com/en/article/gta-6-us-canada-launch-ps5-download-size-game-sharing/",
     ],
   },
   {
@@ -323,7 +331,7 @@ export const NEWS: NewsItem[] = [
     tag: "Explainer",
     keywords: ["GTA 6 confirmed", "GTA 6 release date", "GTA 6 price", "GTA 6 platforms", "GTA 6 PC"],
     published: NEWS_PUBLISHED,
-    updated: NEWS_PUBLISHED,
+    updated: UPDATES_1600_AT,
     citations: [
       "https://taketwointeractivesoftwareinc.gcs-web.com/news-releases/news-release-details/rockstar-games-announces-pre-orders-grand-theft-auto-vi/",
       "https://www.rockstargames.com/VI",
@@ -331,6 +339,7 @@ export const NEWS: NewsItem[] = [
       "https://news.xbox.com/en-us/2026/11/10/grand-theft-auto-6-comes-to-xbox-cloud-gaming-november-19/",
       "https://www.theverge.com/games/1025271/gta-vi-storage-space-rockstar-games",
       "https://www.usatoday.com/story/tech/gaming/2026/11/09/gta-6-preload-consoles-release-date-file-size/92640419007/",
+      "https://www.vice.com/en/article/gta-6-us-canada-launch-ps5-download-size-game-sharing/",
     ],
   },
   {
@@ -373,15 +382,15 @@ export const NEWS: NewsItem[] = [
   },
   {
     slug: "gta-6-streaming-viewership-peak",
-    title: "GTA 6 Streams Top 4M Viewers",
+    title: "GTA 6 Streams Peak Above 6M Viewers",
     description:
-      "Trackers show GTA 6 streams above 4 million concurrent viewers across Twitch, Kick and YouTube on launch night. Figures, sources and how to read them.",
+      "Trackers put GTA 6 launch streams above 6 million concurrent viewers across Twitch, Kick and YouTube. Recorded peaks, latest readings and caveats.",
     crumb: "Streaming viewership",
-    teaser: "Trackers put GTA 6 streams above 4 million concurrent viewers on launch night. Figures and caveats.",
+    teaser: "Trackers put GTA 6 launch streams above 6 million concurrent viewers. Peaks, the latest reading after the US unlock, and caveats.",
     tag: "Streamers",
     keywords: ["GTA 6 viewers", "GTA 6 Twitch", "GTA 6 Kick", "GTA 6 YouTube", "streaming record"],
     published: STREAMERS_PUBLISHED,
-    updated: STREAMERS_PUBLISHED,
+    updated: UPDATES_1600_AT,
     citations: [
       "https://www.bbc.com/news/live/c60rkg21dl22t",
       "https://nextcounts.com/games/grand-theft-auto-vi",

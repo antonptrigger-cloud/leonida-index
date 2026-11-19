@@ -12,8 +12,9 @@ export default function Page() {
   return (
     <NewsLayout slug={SLUG} kicker="News · Launch night" title="Live in New Zealand" source="Reputable outlets + official">
       <Lede>
-        GTA 6 is playable. New Zealand hit midnight on 19 November at 11:00 UTC on 18 November, which was 9 PM in Brisbane, and several outlets
-        report it went live there on schedule. The rest of the world follows as each region reaches its own midnight.
+        GTA 6 is out on PS5 and Xbox Series X|S. New Zealand went first: it hit midnight on 19 November at 11:00 UTC on 18 November, which
+        was 9 PM in Brisbane, and several outlets reported it went live there on schedule. The rolling launch reached the US and Canada at midnight
+        Eastern, 15:00 in Brisbane on 19 November, <Ext href="https://www.vice.com/en/article/gta-6-us-canada-launch-ps5-download-size-game-sharing/">VICE reports</Ext>. This is our launch-night report from the New Zealand unlock, kept as a record.
       </Lede>
 
       <H2>What we verified</H2>
@@ -58,15 +59,16 @@ export default function Page() {
         </li>
       </Bullets>
 
-      <H2>Who unlocks next</H2>
+      <H2>Who unlocked next</H2>
       <p>
-        Times are midnight local on 19 November. Australia&rsquo;s east coast (Sydney, Melbourne) is 13:00 UTC tonight, 23:00 in Brisbane. Japan and South
-        Korea are 15:00 UTC, Central Europe 23:00 UTC, the UK 00:00 UTC on 19 November and US Eastern 05:00 UTC. The full table is in our{" "}
+        Times were midnight local on 19 November. Australia&rsquo;s east coast (Sydney, Melbourne) was 13:00 UTC on 18 November, 23:00 in Brisbane. Japan and South
+        Korea were 15:00 UTC, Central Europe 23:00 UTC, the UK 00:00 UTC on 19 November and US Eastern 05:00 UTC. The full table is in our{" "}
         <Link href={newsPath("gta-6-release-countdown")} className={L}>release time by region</Link>.
       </p>
       <p>
         <Lead>Brisbane is not settled.</Lead> Store-listing schedules put Australia at 13:00 UTC (Sydney time). Queensland does not use daylight saving, so a strict
-        Brisbane midnight would be 14:00 UTC. Rockstar has not spelled it out, so trust the countdown on your own store page.
+        Brisbane midnight would be 14:00 UTC. Rockstar has not spelled it out. Australian store listings gave 23:00 AEST (13:00 UTC), including for Brisbane; see our{" "}
+        <Link href={newsPath("gta-6-ps5-update-patches-servers")} className={L}>server status tracker</Link>.
       </p>
 
       <H2>The &ldquo;New Zealand trick&rdquo;</H2>
@@ -77,7 +79,7 @@ export default function Page() {
 
       <H2>Spoilers</H2>
       <p>
-        Players are live-streaming and posting while most of the world is still on 18 November. Mute GTA keywords, skip Leonida tags and avoid comment
+        Players were live-streaming and posting while most of the world was still on 18 November. Mute GTA keywords, skip Leonida tags and avoid comment
         sections until you have played. This page contains no story, mission or character details.
       </p>
 
@@ -89,6 +91,7 @@ export default function Page() {
       </p>
 
       <Sources>
+        <Source href="https://www.vice.com/en/article/gta-6-us-canada-launch-ps5-download-size-game-sharing/" label="VICE: GTA 6 is now out in the US and Canada, 19 Nov 2026" kind="News outlet" />
         <Source href="https://www.bbc.com/news/live/c60rkg21dl22t" label="BBC News live page, 18 Nov 2026" kind="Reputable outlet" />
         <Source href="https://www.aa.com.tr/en/science-technology/gta-vi-global-rollout-begins-with-new-zealand-launch/4129238" label="Anadolu Agency, 18 Nov 2026" kind="Reputable outlet" />
         <Source href="https://www.polygon.com/gta-6-out-now-spoiler-warning-new-zealand-release/" label="Polygon, 18 Nov 2026" kind="Reputable outlet" />
