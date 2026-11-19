@@ -44,7 +44,11 @@ export interface Mission {
   slug: string;
   /** True when the real mission name is hidden on the hub as a major spoiler. Links to and from this page use neutral text ("Next mission" / "Previous mission"), and the real name or map label may only appear inside a spoiler blur. */
   hidden?: boolean;
-  /** Position in the suggested order (see ORDER_NOTE). */
+  /** Chapter number. Defaults to 1. */
+  chapter?: number;
+  /** Position inside its chapter. Defaults to `order` (Chapter 1 only). */
+  chapterOrder?: number;
+  /** Position in the suggested order (see ORDER_NOTE). For Chapter 2 onwards this is the overall story number. */
   order: number;
   name: string;
   /** Map / phone label shown before the mission starts, when known. */
@@ -65,6 +69,8 @@ export interface Mission {
   /** Optional real Q&A, rendered visibly by <Faq> (which also emits FAQPage JSON-LD). Never invent questions. */
   faq?: { question: string; answer: string }[];
   sources: MissionSource[];
+  /** Override for the "Source:" line in the page header. */
+  sourceLabel?: string;
   /** ISO 8601 date or timestamp of this page's last edit. Falls back to FAQ_UPDATED. Drives sitemap lastmod and dateModified. */
   updated?: string;
 }
@@ -1657,9 +1663,159 @@ export const MISSIONS: Mission[] = [
       PUSHSQUARE,
       gr("gta-6-mission-list", "GamesRadar+: GTA 6 mission list", "No mission replay"),
     ],
-    updated: "2026-11-19T18:08:35+10:00",
+    updated: "2026-11-19T23:20:00+10:00",
+  },
+  {
+    slug: "chapter-2-mission-1",
+    hidden: true,
+    chapter: 2,
+    chapterOrder: 1,
+    order: 23,
+    name: "Chapter 2, Mission 1",
+    seoTitle: "GTA 6 Chapter 2 Mission 1 Guide: Walkthrough & Tips",
+    seoDescription:
+      "GTA 6 Chapter 2 Mission 1 walkthrough: how the opening mission of the chapter plays, how long it takes, what to save first and where it sits in the story order.",
+    teaser: "A very short opening mission that starts Chapter 2, straight after Discharge Time.",
+    intro: [
+      "This is the first mission of Chapter 2 and the 23rd story mission overall. VGC calls it one of the shortest missions in GTA 6, and VGC and PowerPyx both describe it as mostly a cutscene with one short interactive part. Neither lists a choice, a collectible or a cash reward in it.",
+      "Our mission list keeps Chapter 2 names behind a blur, so this page uses a neutral title. The mission's name, the objective flow and what happens all stay behind the blur.",
+    ],
+    facts: [
+      { label: "Chapter", value: "Chapter 2, mission 1, and 23rd overall (VGC; Push Square lists it first in Chapter 2). PowerPyx numbers it 26th because it counts differently.", status: "confirmed" },
+      { label: "Unlocks after", value: "Discharge Time, the last mission of Chapter 1 (VGC and PowerPyx)", status: "confirmed" },
+      { label: "Length", value: "Very short, built around a cutscene (VGC and PowerPyx)", status: "confirmed" },
+      { label: "Starts", value: "Straight after Discharge Time, with no marker to drive to (PowerPyx)", status: "reported" },
+      { label: "Cash reward", value: "None listed (PowerPyx)", status: "reported" },
+      { label: "Trophy", value: "PowerPyx says the Chapter 1 completion trophy unlocks here (see our trophies guide)", status: "reported" },
+    ],
+    objectives: [
+      "Watch the opening scene. The mission picks up straight after Chapter 1 ends (VGC and PowerPyx).",
+      "You control Lucia and look through what is in the bag the pair took earlier (VGC and PowerPyx).",
+      "Inspect the first item, a small statue of a woman. Turn it over and read the note underneath (VGC and PowerPyx). PowerPyx lists the only objective as \"Read the note\".",
+      "Look at the second item, a hard drive. You can't do anything with it yet, because the pair have no computer to plug it into (VGC and PowerPyx).",
+      "That is the whole mission (VGC). PowerPyx lists nothing else to do.",
+    ],
+    spoiler:
+      "The mission is called What's in the Bag? (VGC, PowerPyx and our mission list). VGC says Jason and Lucia have fled Key Lento and are staying at a motel in Kelly County, and that the early part of Chapter 2 is about playing as Lucia while Jason recovers. PowerPyx lists the start as Kelly County, Starlet Motel, though its own description says a Port Gellhorn motel room (Reported, PowerPyx). The note under the statue reads \"From my collection. She reminded me of someone.\" VGC says to keep that in mind for later (Reported, VGC). PowerPyx adds that Captain Méndez is on the news blaming the pair for the attack, and that finishing the mission lets you play as Lucia in free roam (Reported, PowerPyx). The next mission is Ambulance Chaser in Push Square's list and ours. PowerPyx's next link points to Take Care of Jason instead, which no other outlet lists (Reported, PowerPyx).",
+    tips: [
+      { text: "Make a manual save once it ends. It is a clean start-of-chapter point, and Push Square and GamesRadar+ say story missions can't be replayed. A separate slot, so you can come back to the start of Chapter 2, is our own suggestion.", reported: true, link: { href: "/guides/saving", label: "How to save" } },
+      { text: "Don't worry about the controls. Neither VGC nor PowerPyx lists a way to fail it or any combat (Reported).", reported: true },
+      { text: "Not sure who you can swap to at this point? Our switching characters guide explains when swapping opens up.", link: { href: "/guides/switch-characters", label: "Switching characters" } },
+      { text: "Keep the relationship going. The relationship guide covers the four levels and the actions that add hearts.", link: { href: "/guides/relationship", label: "Relationship levels guide" } },
+      { text: "PowerPyx says the Chapter 1 completion trophy unlocks here, even though this mission belongs to Chapter 2 (Reported).", reported: true, link: { href: "/guides/trophies", label: "Trophy guide" } },
+    ],
+    notes: [
+      "Order: VGC lists this mission 23rd, and Push Square lists it first in Chapter 2, straight after Discharge Time. PowerPyx calls it the 26th main mission using its own count, so treat the overall number as Reported.",
+    ],
+    faq: [
+      {
+        question: "How long is the first mission of Chapter 2?",
+        answer: "Very short. VGC calls it one of the shortest missions in the game and says it is mostly a cutscene, and PowerPyx calls it a very short mission with a single objective (Confirmed).",
+      },
+      {
+        question: "Can you fail the first mission of Chapter 2?",
+        answer: "Neither VGC nor PowerPyx lists a way to fail it or any combat in it (Reported).",
+      },
+      {
+        question: "Is anything missable in it?",
+        answer: "Neither VGC nor PowerPyx lists a collectible, a choice or a cash reward. PowerPyx says the Chapter 1 completion trophy unlocks here (Reported).",
+      },
+      {
+        question: "Which mission number is it?",
+        answer: "It is the first mission of Chapter 2 and the 23rd overall in VGC's count and Push Square's list (Confirmed). PowerPyx numbers it 26th because it counts differently (Reported).",
+      },
+      {
+        question: "Does it start by itself?",
+        answer: "PowerPyx says it starts immediately after Discharge Time, and VGC says it takes place right after Chapter 1 ends (Reported).",
+      },
+    ],
+    sources: [
+      vgc("gta-6-whats-in-the-bag-walkthrough", "VGC: GTA 6 mission walkthrough, Chapter 2 mission 1 (19 Nov 2026)", "Mission number, length, objective flow, the early-chapter focus"),
+      pp("gta-6-whats-in-the-bag-walkthrough", "Start point, objective, reward, mission order and next link"),
+      PUSHSQUARE,
+    ],
+    sourceLabel: "VGC, PowerPyx, Push Square",
+    updated: "2026-11-20T00:11:00+10:00",
+  },
+  {
+    slug: "chapter-2-mission-2",
+    hidden: true,
+    chapter: 2,
+    chapterOrder: 2,
+    order: 24,
+    name: "Chapter 2, Mission 2",
+    seoTitle: "GTA 6 Chapter 2 Mission 2 Guide: Walkthrough & Tips",
+    seoDescription:
+      "GTA 6 Chapter 2 Mission 2 walkthrough: where it sits in the story order, whether it has a reward, if it can end in different ways and what to know first.",
+    teaser: "The second mission of Chapter 2, straight after Chapter 2, Mission 1.",
+    intro: [
+      "This is the second mission of Chapter 2 and the 24th story mission overall (VGC and Push Square's list). VGC says it can end in a few different ways, and PowerPyx lists two objectives and no reward. Neither lists a collectible or a unique weapon in it.",
+      "Our mission list keeps Chapter 2 names behind a blur, so this page uses a neutral title. The mission's name, the steps and what happens all stay behind the blur.",
+    ],
+    facts: [
+      { label: "Chapter", value: "Chapter 2, mission 2, and 24th overall (VGC; Push Square lists it second in Chapter 2). PowerPyx numbers it 35th because it counts differently.", status: "confirmed" },
+      { label: "Unlocks after", value: "Chapter 2, Mission 1 (PowerPyx's requirement line; VGC and Push Square list it next)", status: "confirmed" },
+      { label: "Starts", value: "PowerPyx says the marker appears as soon as you first step outside after the previous mission", status: "reported" },
+      { label: "Endings", value: "VGC says it can end in a few different ways. PowerPyx describes only one.", status: "reported" },
+      { label: "Objectives", value: "Two (PowerPyx)", status: "reported" },
+      { label: "Reward", value: "None listed (PowerPyx)", status: "reported" },
+    ],
+    objectives: [
+      "Head to the marker. VGC says Lucia is looking for the ambulance she and Jason used to escape Vice City, and that you hear voices as you get close (Reported, VGC). PowerPyx says the barn is slightly east of Starlet Motel, and that the marker appears as soon as you first leave your motel room (Reported, PowerPyx).",
+      "Get into the barn. VGC and PowerPyx both say to climb the stairs at the back to the raised platform. VGC adds that a side door also works and that the stairs are probably the intended way (Confirmed for the stairs, Reported for the side door).",
+      "Lucia shouts at the locals who took the ambulance and they drive off (VGC). PowerPyx says a group of addicts found it and drive away with it as you go up (Reported, each). Jump down to the barn floor and take the quad bike (VGC) or ATV (PowerPyx) parked there (Confirmed).",
+      "Chase it. PowerPyx says to stay close and not crash (Reported, PowerPyx). VGC says you can shoot while riding, and that if you hit the tyres quickly the people inside flee early and you only have to blow the ambulance up (Reported, VGC).",
+      "If you don't stop it, it ends up against a tree further south (VGC and PowerPyx, Confirmed). VGC says you can then kill the people and rob them, or let them go, and that it doesn't change the objective (Reported, VGC).",
+      "Destroy the ambulance (VGC and PowerPyx, Confirmed). VGC only says to blow it up. PowerPyx says to pick up the red gas canister behind it, pour the fuel over it and use the Ignite prompt on the trail, or throw the canister into the back and shoot it if you have a gun (Reported, PowerPyx).",
+      "Leave straight away. PowerPyx says the explosion alerts the police (Reported, PowerPyx). Destroying the ambulance finishes the mission.",
+    ],
+    spoiler:
+      "The mission is called Ambulance Chaser (VGC, PowerPyx and our mission list), and PowerPyx shows the map label Move the Ambulance. The vehicle is the ambulance Jason and Lucia used to get away at the end of Chapter 1. Locals found it, and the point of the mission is to get rid of it before it can be used as evidence (VGC and PowerPyx). You play as Lucia (VGC and PowerPyx). The next mission is Just Moved In in Push Square's list and ours, and we have no guide for it yet. PowerPyx's own previous and next links point to other missions, because it uses its own order (Reported, PowerPyx).",
+    tips: [
+      { text: "Make a manual save once it ends. Push Square and GamesRadar+ say story missions can't be replayed.", reported: true, link: { href: "/guides/saving", label: "How to save" } },
+      { text: "Be ready to leave. PowerPyx warns that finishing the mission alerts the police, so plan your exit before you finish it (Reported).", reported: true, link: { href: "/guides/wanted", label: "Wanted system guide" } },
+      { text: "Don't worry about missing a reward. PowerPyx lists none, and neither it nor VGC lists a collectible or unique weapon (Reported).", reported: true },
+      { text: "The ending isn't fixed. VGC says it can finish in a few different ways, so you can't miss a required step by playing it your own way (Reported).", reported: true },
+    ],
+    notes: [
+      "Order: VGC lists this mission 24th and Push Square lists it second in Chapter 2, straight after the first mission of the chapter. PowerPyx calls it the 35th main mission using its own count, so treat the overall number as Reported.",
+    ],
+    faq: [
+      {
+        question: "Which mission number is Chapter 2 Mission 2?",
+        answer: "It is the second mission of Chapter 2 and the 24th overall in VGC's count and Push Square's list (Confirmed). PowerPyx numbers it 35th because it counts differently (Reported).",
+      },
+      {
+        question: "Do I need to finish Chapter 2 Mission 1 first?",
+        answer: "Yes. PowerPyx lists the first mission of Chapter 2 as its requirement, and VGC and Push Square list this one second (Confirmed).",
+      },
+      {
+        question: "How does it start?",
+        answer: "PowerPyx says the marker appears as soon as you first step outside after the previous mission (Reported).",
+      },
+      {
+        question: "Can it end in different ways?",
+        answer: "VGC says it can end in a few different ways depending on how the early part goes. PowerPyx describes only one route (Reported).",
+      },
+      {
+        question: "Is there a reward?",
+        answer: "PowerPyx lists none. Neither PowerPyx nor VGC lists a collectible or a unique weapon in it (Reported).",
+      },
+    ],
+    sources: [
+      vgc("gta-6-ambulance-chaser-mission-walkthrough", "VGC: GTA 6 mission walkthrough, Chapter 2 mission 2 (19 Nov 2026)", "Mission number, objective flow, the early-stop and choice details"),
+      pp("gta-6-ambulance-chaser-move-the-ambulance-walkthrough", "Start point, objectives, destroy method, reward, police warning and mission order"),
+      PUSHSQUARE,
+    ],
+    sourceLabel: "VGC, PowerPyx, Push Square",
+    updated: "2026-11-20T00:11:00+10:00",
   },
 ];
+
+/** Chapter a mission belongs to (Chapter 1 unless stated). */
+export const missionChapter = (m: Mission) => m.chapter ?? 1;
+/** Position of a mission inside its chapter. */
+export const missionChapterOrder = (m: Mission) => m.chapterOrder ?? m.order;
 
 export const missionPath = (slug: string) => `/guides/missions/${slug}`;
 export const missionBySlug = (slug: string) => MISSIONS.find((m) => m.slug === slug);

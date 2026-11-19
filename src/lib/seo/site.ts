@@ -12,6 +12,7 @@ import { FASTTRAVEL_PUBLISHED, FASTTRAVEL_VERIFIED } from "@/lib/guides/fast-tra
 import { CLOTHES_PUBLISHED, CLOTHES_VERIFIED } from "@/lib/guides/change-clothes";
 import { FIRSTPERSON_PUBLISHED, FIRSTPERSON_VERIFIED } from "@/lib/guides/first-person";
 import { DIFFICULTY_PUBLISHED, DIFFICULTY_VERIFIED } from "@/lib/guides/difficulty";
+import { RELATIONSHIP_PUBLISHED, RELATIONSHIP_VERIFIED } from "@/lib/guides/relationship";
 import { GARAGES_PUBLISHED, GARAGES_VERIFIED } from "@/lib/guides/garages";
 import { SAVING_PUBLISHED, SAVING_STEPS, SAVING_VERIFIED } from "@/lib/guides/saving";
 import { SWITCH_PUBLISHED, SWITCH_STEPS, SWITCH_VERIFIED } from "@/lib/guides/switching";
@@ -141,7 +142,7 @@ export const ROUTES: Record<string, RouteSeo> = {
     kind: "collection",
     changeFrequency: "daily",
     priority: 0.85,
-    updated: DIFFICULTY_VERIFIED, // the hub gained the difficulty card
+    updated: DIFFICULTY_VERIFIED, // the hub gained the relationship and difficulty cards
   },
   "/guides/beginner": {
     title: "GTA 6 Beginner Guide: Tips for Your First Hours",
@@ -330,6 +331,16 @@ export const ROUTES: Record<string, RouteSeo> = {
     priority: 0.8,
     updated: DIFFICULTY_VERIFIED,
     published: DIFFICULTY_PUBLISHED,
+  },
+  "/guides/relationship": {
+    title: "GTA 6 Relationship Guide: Raise Jason & Lucia's Level",
+    description: "How to raise Jason and Lucia's relationship in GTA 6: the four levels, actions that add hearts, what lowers it and how to check your status.",
+    crumb: "Relationship",
+    kind: "article",
+    changeFrequency: "weekly",
+    priority: 0.8,
+    updated: RELATIONSHIP_VERIFIED,
+    published: RELATIONSHIP_PUBLISHED,
   },
   ...Object.fromEntries(
     MISSIONS.map((m): [string, RouteSeo] => [
