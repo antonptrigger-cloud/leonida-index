@@ -47,6 +47,7 @@ const HUB_META: Record<string, HubMeta> = {
   "/guides/garages": { title: "Garages", blurb: "Every garage, its price and area, and how slots work. Both outlets' figures shown.", tag: "Systems", accent: "turq", section: "systems" },
   "/guides/activities": { title: "Activities", blurb: "Diving, jet skis, fishing, hoops, mini golf and the rest.", tag: "Activities", accent: "turq", section: "systems" },
   "/guides/map-size": { title: "Map size", blurb: "Rockstar's size comparisons, one outlet's 175 km² measurement and timed crossings.", tag: "Map", accent: "turq", section: "systems" },
+  "/guides/bigfoot-skunk-ape": { title: "Bigfoot & Skunk Ape", blurb: "Where Bigfoot shows up, how to start Kirk's three-part quest and where the tree effigies are. Outlets differ on the spot.", tag: "Side missions", accent: "turq", section: "systems" },
   "/guides/strangers-and-freaks": { title: "Strangers & Freaks", blurb: "Which side-mission questlines count, and when they open.", tag: "Side missions", accent: "turq", section: "systems" },
 };
 

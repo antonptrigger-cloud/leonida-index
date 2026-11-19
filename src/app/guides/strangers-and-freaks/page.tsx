@@ -149,6 +149,9 @@ export default function StrangersGuide() {
                 <strong className="text-ink">Do the other characters anyway.</strong> Andy, Billy, Tyrone and others have their own trophies, so they&apos;re worth finishing. Just don&apos;t expect the Strangers &amp; Freaks counter to move. See our <A href="/guides/trophies">trophy list and roadmap</A>.
               </li>
               <li className="vc-bar text-ink-2">
+                <strong className="text-ink">Want the details on one strand?</strong> Our <A href="/guides/bigfoot-skunk-ape">Bigfoot and Skunk Ape guide</A> walks through how to start Kirk&apos;s quests and where the tree effigies are.
+              </li>
+              <li className="vc-bar text-ink-2">
                 <strong className="text-ink">Missable errands don&apos;t break it.</strong> PowerPyx says missable side jobs don&apos;t count toward trophies, so missing one won&apos;t cost you this trophy<R />.
               </li>
               <li className="vc-bar text-ink-2">
@@ -177,6 +180,7 @@ export default function StrangersGuide() {
             <h2 className="vc-kicker">More guides</h2>
             <ul className="mt-4x flex flex-col gap-2x text-sm">
               <li><A href="/guides/trophies">Trophy list and platinum roadmap</A></li>
+              <li><A href="/guides/bigfoot-skunk-ape">Bigfoot &amp; Skunk Ape (Kirk&apos;s quests)</A></li>
               <li><A href="/guides/collectibles">Collectibles</A></li>
               <li><A href="/guides/missions">All missions in order</A></li>
               <li><A href="/guides/money">Money guide</A></li>

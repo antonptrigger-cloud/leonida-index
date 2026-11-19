@@ -11,6 +11,7 @@ import { MAPSIZE_PUBLISHED, MAPSIZE_VERIFIED } from "@/lib/guides/map-size";
 import { FASTTRAVEL_PUBLISHED, FASTTRAVEL_VERIFIED } from "@/lib/guides/fast-travel";
 import { CLOTHES_PUBLISHED, CLOTHES_VERIFIED } from "@/lib/guides/change-clothes";
 import { FIRSTPERSON_PUBLISHED, FIRSTPERSON_VERIFIED } from "@/lib/guides/first-person";
+import { BIGFOOT_PUBLISHED, BIGFOOT_VERIFIED } from "@/lib/guides/bigfoot";
 import { DIFFICULTY_PUBLISHED, DIFFICULTY_VERIFIED } from "@/lib/guides/difficulty";
 import { RELATIONSHIP_PUBLISHED, RELATIONSHIP_VERIFIED } from "@/lib/guides/relationship";
 import { GARAGES_PUBLISHED, GARAGES_VERIFIED } from "@/lib/guides/garages";
@@ -142,7 +143,7 @@ export const ROUTES: Record<string, RouteSeo> = {
     kind: "collection",
     changeFrequency: "daily",
     priority: 0.85,
-    updated: DIFFICULTY_VERIFIED, // the hub gained the relationship and difficulty cards
+    updated: BIGFOOT_VERIFIED, // the hub gained the bigfoot card
   },
   "/guides/beginner": {
     title: "GTA 6 Beginner Guide: Tips for Your First Hours",
@@ -321,6 +322,16 @@ export const ROUTES: Record<string, RouteSeo> = {
     priority: 0.8,
     updated: FIRSTPERSON_VERIFIED,
     published: FIRSTPERSON_PUBLISHED,
+  },
+  "/guides/bigfoot-skunk-ape": {
+    title: "GTA 6 Bigfoot Guide: Skunk Ape Location and Kirk's Quests",
+    description: "Where to find Bigfoot (the Skunk Ape) in GTA 6, how to start Kirk's three-part quest from a flyer, and where to find the Pelican Valley tree effigies.",
+    crumb: "Bigfoot & Skunk Ape",
+    kind: "article",
+    changeFrequency: "weekly",
+    priority: 0.8,
+    updated: BIGFOOT_VERIFIED,
+    published: BIGFOOT_PUBLISHED,
   },
   "/guides/difficulty": {
     title: "GTA 6 Difficulty Settings: Is There an Easy Mode?",

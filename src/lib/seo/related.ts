@@ -128,7 +128,7 @@ function buildItems(): Item[] {
   }
 
   // Static guides and tools: from their registry copy.
-  const GUIDE_PATHS = ["/guides/beginner", "/guides/wanted", "/guides/stealing-cars", "/guides/activities", "/guides/money", "/guides/cheats", "/guides/trophies", "/guides/collectibles", "/guides/strangers-and-freaks", "/guides/map-size", "/guides/fast-travel", "/guides/garages", "/guides/saving", "/guides/switch-characters", "/guides/change-clothes", "/guides/first-person", "/guides/relationship", "/guides/difficulty", "/tools/edition-compare"];
+  const GUIDE_PATHS = ["/guides/beginner", "/guides/wanted", "/guides/stealing-cars", "/guides/activities", "/guides/money", "/guides/cheats", "/guides/trophies", "/guides/collectibles", "/guides/strangers-and-freaks", "/guides/bigfoot-skunk-ape", "/guides/map-size", "/guides/fast-travel", "/guides/garages", "/guides/saving", "/guides/switch-characters", "/guides/change-clothes", "/guides/first-person", "/guides/relationship", "/guides/difficulty", "/tools/edition-compare"];
   for (const href of GUIDE_PATHS) {
     const r = ROUTES[href];
     if (!r) continue;
