@@ -2,8 +2,9 @@
  * Data for /guides/strangers-and-freaks. QC'd 19 Nov 2026.
  * Trophy text: PC Gamer, GamesRadar+, TrueTrophies, TrueAchievements (Confirmed).
  * Which questlines count: PowerPyx plus IndiaTimes agree on Kirk, Kyle and Yago counting and on Andy,
- * Billy and Tyrone not counting. IndiaTimes is outside the usual outlet list but is the only second
- * source for this specific claim, so it is cited for it and flagged on the page.
+ * Billy and Tyrone not counting. IndiaTimes is outside the usual outlet list. On 19 Nov we searched for a main-outlet second source
+ * (PC Gamer, GamesRadar+, Push Square, TrueTrophies, TrueAchievements) and found none that says which
+ * questlines count, so IndiaTimes stays as the second source and is labelled "not a main outlet" wherever it is cited.
  * Held back: Pilot Pete (PowerPyx only among established outlets), plus Shirley, Yasmani and Eddie
  * Acosta "not counting" (PowerPyx only), and every reward figure (secondary sites only).
  * Must not import from src/lib/seo (site.ts imports it).
@@ -40,7 +41,7 @@ export const SF_FAQ: { question: string; answer: string }[] = [
   {
     question: "Do all side characters count toward the trophy?",
     answer:
-      "No. PowerPyx and IndiaTimes both say only some questlines count. Several characters, such as Andy, Billy and Tyrone, have their own trophy but don't move the Strangers & Freaks counter (Reported).",
+      "No. PowerPyx says only some questlines count, and IndiaTimes (not one of our main outlets) says the same. Several characters, such as Andy, Billy and Tyrone, have their own trophy but don't move the Strangers & Freaks counter (Reported).",
   },
   {
     question: "How do I know which ones counted?",
@@ -49,17 +50,17 @@ export const SF_FAQ: { question: string; answer: string }[] = [
   },
   {
     question: "Can I finish them after the story?",
-    answer: "Yes. PowerPyx and IndiaTimes both say the trophy-related questlines stay available in free roam after the story (Reported).",
+    answer: "Yes. PowerPyx says the trophy-related questlines stay available in free roam after the story, and IndiaTimes (not one of our main outlets) says the same (Reported).",
   },
   {
     question: "Is this list complete?",
     answer:
-      "No. Three of the eight qualifying strands are confirmed by two outlets so far. PowerPyx names one more that we're holding until a second main outlet matches it, so four or five remain unknown.",
+      "No. Three of the eight qualifying strands are matched by two outlets so far (PowerPyx and IndiaTimes, which is not a main outlet). PowerPyx names one more that we're holding until a second main outlet matches it, so four or five remain unknown.",
   },
   {
     question: "Does Kenton's questline count?",
     answer:
-      "Kenton has his own trophy, This Was No Boat Accident. Neither PowerPyx nor IndiaTimes says it moves the Strangers & Freaks counter, so check your progress when you finish it.",
+      "Kenton has a trophy of his own for finishing his final mission, according to GamesRadar+, PC Gamer and PowerPyx. Neither PowerPyx nor IndiaTimes (not a main outlet) says his questline moves the Strangers & Freaks counter, so check your trophy progress when you finish it (Reported).",
   },
 ];
 
@@ -72,7 +73,7 @@ export const SF_SOURCES = [
   {
     label: "IndiaTimes: GTA 6 stranger missions guide (18 Nov 2026)",
     url: "https://www.indiatimes.com/game-guides/gta-6-stranger-missions-guide-all-7-confirmed-characters-side-activities-and-achievements-explained/articleshow/135967097.html",
-    used: "Second source that Kirk, Kyle and Yago count and Andy, Billy and Tyrone don't (not on our usual outlet list)",
+    used: "Second source that Kirk, Kyle and Yago count and Andy, Billy and Tyrone don't. Not one of our main outlets, so every claim it backs is labelled Reported",
   },
   {
     label: "Push Square: GTA 6 chapters and story missions",

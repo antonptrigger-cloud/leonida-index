@@ -107,6 +107,10 @@ export const TROPHY_FAQ: { question: string; answer: string }[] = [
   {
     question: "Do cheats disable trophies?",
     answer: "Yes, while a cheat is active. GamesRadar+ and Push Square both say trophies and saving are switched off for the session. See our cheats guide for details (Reported).",
+  },  {
+    question: "Do any trophies mention your partner?",
+    answer:
+      "Two trophy descriptions do. Hot Together is for losing a 4-star wanted level with your partner and escaping the heat, and Retail Therapy is for robbing 3 shops back to back with your partner without losing your wanted level. GamesRadar+, PC Gamer and TrueTrophies print the same wording (Confirmed).",
   },
 ];
 
@@ -125,6 +129,11 @@ export const TROPHY_SOURCES = [
     label: "GamesRadar+: The complete GTA 6 trophy and achievement list (18 Nov 2026)",
     url: "https://www.gamesradar.com/games/grand-theft-auto/gta-6-trophy-achievement-list/",
     used: "Grades, requirements and totals in brackets, including the secret trophies",
+  },
+  {
+    label: "PC Gamer: GTA 6 achievement list (18 Nov 2026)",
+    url: "https://www.pcgamer.com/games/grand-theft-auto/gta-6-achievements-list/",
+    used: "Same trophy text, used as a second check on the partner trophies",
   },
   {
     label: "Push Square: GTA 6 cheats and unlock conditions",
