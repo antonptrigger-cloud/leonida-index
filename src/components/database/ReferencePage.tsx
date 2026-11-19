@@ -4,7 +4,7 @@ import { PageHeader } from "@/components/PageHeader";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { Faq } from "@/components/Faq";
 import { Related } from "@/components/Related";
-import { ConfirmTag } from "@/components/characters/CharacterBits";
+import { ConfirmTag, SourceList } from "@/components/characters/CharacterBits";
 import { Spoiler } from "@/components/guides/Spoiler";
 import { SpoilerWarning } from "@/components/guides/MissionBits";
 import { DB_VERIFIED, DB_VERIFIED_LABEL, REFERENCE_PAGES, REFERENCE_BY_PATH, type RefTable } from "@/lib/database/reference";
@@ -158,14 +158,7 @@ export function ReferencePage({ path }: { path: string }) {
         <p className="mt-2x text-sm text-muted">
           Last verified: <time dateTime={updated}>{updatedLabel}</time>{page.updated ? "" : " (launch eve)"}. Wording on this page is our own. &ldquo;Reported&rdquo; means an outlet other than Rockstar says so and we have not confirmed it in the finished game. Plot details stay in the blurred section.
         </p>
-        <ol className="mt-4x flex flex-col gap-3x text-sm">
-          {page.sources.map((s) => (
-            <li key={s.url} className="vc-bar">
-              <a href={s.url} target="_blank" rel="noopener noreferrer nofollow" className="text-blue hover:text-pink">{s.label}</a>
-              <span className="block text-xs text-muted">{s.primary ? "Primary · " : "Secondary · "}{s.used}</span>
-            </li>
-          ))}
-        </ol>
+        <SourceList sources={page.sources} />
       </section>
 
       <Related path={path} />

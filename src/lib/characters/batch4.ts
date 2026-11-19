@@ -98,13 +98,13 @@ export const BATCH4_CHARACTERS: Character[] = [
       "Kyle is a farmer who also flies a crop duster. PowerPyx and GameSpot both describe his farm and his three-part side quest, but Rockstar has not published a profile.",
     background: [
       "GameSpot places Kyle's farm in East Kelly County and writes \"Kyle McKittrick's farm\". PowerPyx names only McKittrick Farm. We use his first name alone until a second outlet gives a surname.",
-      "Kyle advertises with flyers. PowerPyx says one hangs on the wall outside the reception of the Starlet Motel in Kelly County, and that reading it marks his quest on the map. The flyer mentions a pilot job at his farm. GameSpot and most PowerPyx pages write Starlet; one PowerPyx page prints Scarlet.",
+      "Kyle advertises with flyers. PowerPyx says one hangs on a wall at a place in Kelly County, and that reading it marks his quest on the map. The flyer mentions a pilot job at his farm.",
       "PowerPyx lists three parts in his questline, which either Jason or Lucia can start. The follow-up quests arrive by phone message after long gaps, and PowerPyx says the questline counts toward the Strangers & Freaks trophy. GameSpot calls it \"one of the wilder ones in GTA 6\".",
     ],
     facts: [
       { label: "Role", value: "Farmer and crop-duster pilot", status: "reported" },
       { label: "Farm", value: "McKittrick Farm, in East Kelly County per GameSpot", status: "reported" },
-      { label: "First flyer", value: "Outside the Starlet Motel reception, Kelly County (PowerPyx)", status: "reported" },
+      { label: "First flyer", value: "On a wall in Kelly County (PowerPyx)", status: "reported" },
       { label: "Questline", value: "Three parts; either lead can start it; counts toward Strangers & Freaks (PowerPyx)", status: "reported" },
       { label: "Surname", value: "GameSpot writes McKittrick; PowerPyx names only the farm", status: "tbc" },
       { label: "Age and voice actor", value: "Not given by any outlet we checked", status: "tbc" },
@@ -125,9 +125,9 @@ export const BATCH4_CHARACTERS: Character[] = [
     sourceIds: ["pp-kyle-farm", "pp-kyle-chem", "pp-sf-list", "gs-plane"],
     faq: [
       { question: "Who is Kyle in GTA 6?", answer: "Kyle is a side-quest character who runs McKittrick Farm and flies a crop duster. PowerPyx and GameSpot both describe him; Rockstar has not published a profile." },
-      { question: "How do you meet Kyle?", answer: "PowerPyx says you find one of his flyers outside the Starlet Motel reception in Kelly County. Reading it marks his quest on the map." },
+      { question: "How do you meet Kyle?", answer: "PowerPyx says you find one of his flyers on a wall in Kelly County. Reading it marks his quest on the map." },
       { question: "Does Kyle count toward the Strangers & Freaks trophy?", answer: "Yes. PowerPyx marks his questline as one of the strands that count." },
-      { question: "Where is Kyle's farm?", answer: "GameSpot places it in East Kelly County. PowerPyx calls it McKittrick Farm and puts the first flyer outside the Starlet Motel in Kelly County." },
+      { question: "Where is Kyle's farm?", answer: "GameSpot places it in East Kelly County. PowerPyx calls it McKittrick Farm and puts the first flyer at a place in Kelly County." },
     ],
   },
 
@@ -205,7 +205,7 @@ export const BATCH4_CHARACTERS: Character[] = [
       "PowerPyx places Thrillbilly Mud Club in Kelly County and lists five parts in Billy's questline. Either Jason or Lucia can start the first part, and Billy contacts you by phone for the next ones, with a delay between them.",
       "PowerPyx says the questline does not count toward the Strangers & Freaks trophy, but that it has a trophy of its own.",
       "Wyman is folded into this page. PowerPyx lists him as one of Billy's crew, alongside Ricardo, Brittney and Billy. GameSpot says Wyman is tied to two Ultimate Edition bonuses: the '67 Vapid Dominator Buggy, unlocked by visiting the Mud Club track with him, and the Classic Car Collection, a set of abandoned classic cars you restore. Wyman has too little sourced detail for his own page.",
-      "PowerPyx's Coffee Break page and GameSpot write the Starlet Motel, while PowerPyx's Mud Club walkthrough prints Scarlet Motel once. We do not treat either spelling as settled.",
+      "PowerPyx and GameSpot spell one Kelly County place name two ways. We do not treat either spelling as settled.",
     ],
     facts: [
       { label: "Role", value: "Leads a crew of dirt-bike racers (PowerPyx)", status: "reported" },

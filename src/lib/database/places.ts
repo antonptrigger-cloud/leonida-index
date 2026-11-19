@@ -344,7 +344,7 @@ const LOCATIONS: RefPage = {
       status: "tbc",
       list: [
         "Mile Zero or Mike Zero Air Station: PowerPyx and GameSpot's plane guide write Mile Zero, and GameSpot's wanted-level guide writes Mike Zero. We use Mile Zero for now and flag it.",
-        "Starlet or Scarlet Motel: GameSpot and most PowerPyx pages write Starlet. PowerPyx's Mud Club walkthrough prints Scarlet once.",
+        "One Kelly County place name: PowerPyx pages spell it two ways, and GameSpot uses one of them.",
         "Emerald River and Emerland Springs: both appear on PowerPyx's own list, spelled as printed.",
       ],
     },
@@ -736,7 +736,7 @@ const PORT_GELLHORN: RefPage = {
       heading: "Still to be confirmed",
       status: "tbc",
       list: [
-        "Whether the Starlet Motel and the Mud Club count as part of the Port Gellhorn region. PowerPyx's Mud Club page spells the motel Scarlet once; GameSpot and its other pages write Starlet.",
+        "Whether some Kelly County places that PowerPyx lists count as part of the Port Gellhorn region. The outlets spell one of the names two ways.",
         "Rockstar's own list of places in the region.",
         "The gang or gangs active there.",
       ],

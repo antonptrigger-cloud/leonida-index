@@ -40,16 +40,16 @@ export const MONEY_SOURCES = [
   {
     label: "PowerPyx: GTA 6 money guide, how to get money fast (18 Nov 2026)",
     url: "https://www.powerpyx.com/gta-6-money-guide-how-to-get-money-fast/",
-    used: "Chapter-by-chapter methods, Moses, jewelry, Pay 'n' Spray and Randy payouts, vault robberies",
+    used: "Chapter-by-chapter methods, car jobs, jewelry, Pay 'n' Spray and fence payouts, vault robberies",
   },
   {
     label: "GameSpot: Best ways to make money fast in GTA 6 (18 Nov 2026)",
     url: "https://www.gamespot.com/articles/best-ways-to-make-money-fast-in-gta-6/",
-    used: "Kenton's dives, gang hideouts, Moses and Randy contracts, Pay 'n' Spray, rent money in Port Gellhorn",
+    used: "Kenton's dives, gang hideouts, fence contracts, Pay 'n' Spray, rent money in Port Gellhorn",
   },
   {
     label: "PC Gamer: GTA 6, the fastest ways to make money (18 Nov 2026)",
     url: "https://www.pcgamer.com/games/grand-theft-auto/gta-6-how-to-make-money/",
-    used: "Moses payouts and cooldown, back-door store jobs, Randy, diving",
+    used: "Car-job payouts and cooldown, back-door store jobs, fences, diving",
   },
 ];

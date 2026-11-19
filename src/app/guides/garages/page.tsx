@@ -78,7 +78,7 @@ export default function GaragesGuide() {
             <H2 id="when">When can you buy garages?</H2>
             <div className="mt-4x max-w-2xl space-y-4x text-ink-2">
               <p>
-                <strong className="text-ink">Not at the start.</strong> PowerPyx and GameSpot both put garages in the Port Gellhorn stretch of the story, once Moses, the mechanic there, starts registering cars for you<C />. GameSpot puts that at roughly 30% of the way through<R />.
+                <strong className="text-ink">Not at the start.</strong> PowerPyx and GameSpot both put garages in a later stretch of the story, once a mechanic starts registering cars for you<C />. GameSpot puts that at roughly 30% of the way through<R />.
               </p>
               <p>
                 PowerPyx says a short while later a new phone app, <strong className="text-ink">Vice City Real Estate</strong>, is installed and sells every purchasable garage<R />. GameSpot also mentions the app, and says you can buy a garage by walking up to it instead<R />.
@@ -95,10 +95,10 @@ export default function GaragesGuide() {
             <H2 id="how">How to buy a garage, step by step</H2>
             <Steps>
               <li>
-                <strong className="text-ink">Play on until Moses is registering cars for you in Port Gellhorn.</strong> Garages aren&apos;t available before that<C />.
+                <strong className="text-ink">Play on until a mechanic is registering cars for you.</strong> Garages aren&apos;t available before that<C />.
               </li>
               <li>
-                <strong className="text-ink">Wait for the phone notification that Vice City Real Estate is installed.</strong> PowerPyx describes it arriving shortly after the Moses car job<R />.
+                <strong className="text-ink">Wait for the phone notification that Vice City Real Estate is installed.</strong> PowerPyx describes it arriving shortly after a car job<R />.
               </li>
               <li>
                 <strong className="text-ink">Open the app and pick a garage you can afford.</strong> Prices run from {usd(4000)} to {usd(40000)}<C />.
@@ -107,7 +107,7 @@ export default function GaragesGuide() {
                 <strong className="text-ink">Or drive to a garage and buy it there.</strong> GameSpot says this works too<R />.
               </li>
               <li>
-                <strong className="text-ink">Register a car at Moses&apos;s shop and park it.</strong> PowerPyx says each garage spot lets you register one more vehicle<R />. What you can register, and when, is on our <A href="/database/vehicles">vehicles database</A>.
+                <strong className="text-ink">Register a car at the mechanic&apos;s shop and park it.</strong> PowerPyx says each garage spot lets you register one more vehicle<R />. What you can register, and when, is on our <A href="/database/vehicles">vehicles database</A>.
               </li>
             </Steps>
           </section>
@@ -152,7 +152,7 @@ export default function GaragesGuide() {
             <H2 id="free">Free garages from the story</H2>
             <Bullets>
               <B>
-                <strong className="text-ink">Port Gellhorn Station Garage.</strong> Moses gives it to you as part of the main story, and GameSpot places it north of his auto shop<C />.
+                <strong className="text-ink">Port Gellhorn Station Garage.</strong> A mechanic gives it to you as part of the main story, and GameSpot places it north of his auto shop<C />.
               </B>
               <B>
                 <strong className="text-ink">Paradise Garage.</strong> GameSpot says Ultimate Edition owners get it free in north-eastern Watson Bay, and that it stores the &rsquo;67 Vapid Dominator Buggy<R />. PowerPyx doesn&apos;t list it.
@@ -214,7 +214,7 @@ export default function GaragesGuide() {
                 <strong className="text-ink">Don&apos;t blow your cash early.</strong> Garages are optional and the story hands you free ones later<R />. Our <A href="/guides/money">money guide</A> covers ways to fund them.
               </B>
               <B>
-                <strong className="text-ink">Check what&apos;s stored.</strong> GameSpot says your personal vehicles show in the Scooter Bros app, and that Moses&apos;s shop or any Pay &lsquo;n&rsquo; Spray shows the cars you have stored<R />.
+                <strong className="text-ink">Check what&apos;s stored.</strong> GameSpot says your personal vehicles show in the Scooter Bros app, and that the mechanic&apos;s shop or any Pay &lsquo;n&rsquo; Spray shows the cars you have stored<R />.
               </B>
               <B>
                 Still collecting cars to fill them? See <A href="/guides/stealing-cars">how stealing cars works</A>.

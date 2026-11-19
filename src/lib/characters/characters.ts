@@ -685,7 +685,7 @@ const BASE_CHARACTERS: Character[] = [
       { name: "Randy", slug: "randy", note: "The second car fence, who deals in higher-end cars later in the story (GameSpot)." },
     ],
     spoilerTitle: "Missions and story",
-    spoilerNote: "From PowerPyx's Moses walkthrough. Reported, not confirmed by Rockstar.",
+    spoilerNote: "From PowerPyx's walkthrough. Reported, not confirmed by Rockstar.",
     spoiler: [
       "PowerPyx names the introduction Moses (Take A Vehicle to Moses). It is the 31st main mission, set in Chapter 2, and only Lucia can start it, after Girl's Trip (Find Painkillers). Vicki sets it up by telling Lucia that a mechanic named Moses could get her a ride.",
       "Moses leads Lucia to a yard behind his garage where three cars are parked. A phone app called Waink scans them for trackers. Lucia picks up the Slim Jim, a tool for opening locked cars without setting off the alarm, and uses it on a Montagne XL.",
@@ -789,7 +789,7 @@ const BASE_CHARACTERS: Character[] = [
       { name: "Tyrone", slug: "tyrone", note: "Another dealer GameSpot lists with Dunk as paying almost instantly." },
     ],
     spoilerTitle: "Missions and story",
-    spoilerNote: "From PowerPyx's Slam Dunk walkthrough and GameSpot. Reported, not confirmed by Rockstar. Big story spoilers.",
+    spoilerNote: "From PowerPyx's walkthrough and GameSpot. Reported, not confirmed by Rockstar. Big story spoilers.",
     spoiler: [
       "PowerPyx says Dunk is unlocked as a fence after Slam Dunk, the 37th main mission, set in Chapter 2. Only Lucia can start it. Dunk phones her twice once the other Chapter 2 missions are done, then marks his trailer on the map.",
       "GameSpot places Dunk in the stretch where Jason and Lucia are hiding out at the Starlet Motel in Port Gellhorn. Jason is bedridden after an injury, so Lucia is the one playable, and she needs stronger painkillers for him as well as cash for the room.",
