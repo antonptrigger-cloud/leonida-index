@@ -2156,6 +2156,166 @@ export const MISSIONS: Mission[] = [
     sourceLabel: "PowerPyx, PC Gamer, GameSpot, Push Square",
     updated: "2026-11-20T05:08:00+10:00",
   },
+  {
+    slug: "chapter-2-mission-7",
+    hidden: true,
+    chapter: 2,
+    chapterOrder: 7,
+    order: 29,
+    name: "Chapter 2, Mission 7",
+    seoTitle: "GTA 6 Chapter 2 Mission 7 Walkthrough & Tips",
+    seoDescription:
+      "GTA 6 Chapter 2 Mission 7 walkthrough: the objectives, tips for the combat sections, cover and healing, and the rewards PowerPyx reports so far.",
+    teaser: "The seventh mission of Chapter 2, straight after Chapter 2, Mission 6.",
+    intro: [
+      "This is the seventh mission of Chapter 2 and the 29th story mission overall (PC Gamer and Push Square list it in that order). You play as Lucia. PowerPyx lists nine objectives, including a driving escape and a large firefight where it advises staying in cover and healing, so go in with healing items.",
+      "Our mission list keeps Chapter 2 names behind a blur, so this page uses a neutral title. The mission's name, the people, the gang and the places all stay behind the blur.",
+    ],
+    facts: [
+      { label: "Chapter", value: "Chapter 2, mission 7, and 29th overall (PC Gamer and Push Square). PowerPyx numbers it 37th because it counts differently.", status: "confirmed" },
+      { label: "Unlocks after", value: "Chapter 2, Mission 6 (PC Gamer and Push Square put it next in order)", status: "confirmed" },
+      { label: "Playable as", value: "Lucia (PC Gamer's one-line summary names her, and PowerPyx lists her as the character)", status: "confirmed" },
+      { label: "Starts", value: "PowerPyx says to finish the earlier Chapter 2 main missions, then wait for two phone calls from the contact. The mission is then marked on the map.", status: "reported" },
+      { label: "Objectives", value: "Nine (PowerPyx)", status: "reported" },
+      { label: "Combat", value: "PowerPyx says some enemies are inside buildings, and advises staying in cover, taking it slowly and healing with Zombix", status: "reported" },
+      { label: "New fence", value: "The mission's contact becomes a fence you can sell to (PowerPyx)", status: "reported" },
+      { label: "Cash", value: "$1,700 sent through the BuckMe app the next day (PowerPyx)", status: "reported" },
+      { label: "Robbery locations", value: "The same next-day call marks two places to rob on the map (PowerPyx)", status: "reported" },
+    ],
+    objectives: [
+      "Wait for Dunk to call you twice. PowerPyx says that after the earlier Chapter 2 main missions the mission is then marked in Port Gellhorn at Dunk's trailer (Reported, PowerPyx).",
+      "Follow Dunk. He leads you to wait behind a dumpster near a convenience store while time moves on to the afternoon. Dr. Bill arrives, you enter the store, and you follow him to his car, where Dunk forces him into it at gunpoint. PowerPyx says Bill has retired and can't get prescription medication, but used to deal with the Kolts gang (Reported, PowerPyx).",
+      "Drive the car to the docks, where the Kolts gang is waiting. Dunk hopes to get painkillers from them (Reported, PowerPyx).",
+      "Drive to the office. The Kolts let you through the gate, and you drive slowly after the man walking in front of the car. The gang gets suspicious that nobody knew Bill was coming, and starts shooting (Reported, PowerPyx).",
+      "Escape the compound by reversing the car out quickly, then keep driving until you lose the Kolts (Reported, PowerPyx).",
+      "Pick up Dr. Bill. He phones Declan, his pill dealer in the gang, then jumps out of the car and knocks himself out while running. Go after him, and a short scene puts him in the trunk (Reported, PowerPyx).",
+      "Go to the meeting spot at the airstrip south-west of Port Gellhorn. The Kolts shoot Bill straight away, then open fire on you too (Reported, PowerPyx).",
+      "Defend yourself. Kill all the Kolts, including those inside the buildings. PowerPyx says to heal with Zombix if needed, stay in cover and take it slowly. Then enter the main building in the centre to find Dunk, who grabs the pills (Reported, PowerPyx).",
+      "Drive Dunk back to his trailer, where the mission started. A cutscene has Lucia take the painkillers to Jason at the motel, and the mission ends when you spawn outside it (Reported, PowerPyx).",
+    ],
+    spoiler:
+      "The mission is called Slam Dunk in our mission list, Push Square's list and PC Gamer, whose one-line summary is that Dunk and Lucia team up (Confirmed). PowerPyx's quest description is that Lucia goes to Dunk's trailer to find out how he plans to get stronger painkillers for Jason, (Reported, PowerPyx). Looting Dr. Bill's body at the airstrip is optional and gives around $1,000 more (Reported, PowerPyx).",
+    tips: [
+      { text: "Go in with healing items. PowerPyx's advice for the large firefight is to heal with Zombix if needed, stay in cover and take it slowly (Reported). Stocking up beforehand is our own suggestion.", reported: true },
+      { text: "In the driving escape, PowerPyx says to reverse the car out quickly and then drive until the pursuers drop off (Reported).", reported: true, link: { href: "/guides/wanted", label: "Wanted level guide" } },
+      { text: "If a fight seems over but the objective hasn't moved on, check inside the buildings. PowerPyx says some enemies are indoors (Reported).", reported: true },
+      { text: "The next-day call pays $1,700 and marks two robbery locations on the map (PowerPyx), so you have extra money to plan for once you are free between missions (Reported).", reported: true, link: { href: "/guides/money", label: "Money guide" } },
+      { text: "Make a manual save before you start, so you can retry if the mission goes wrong. This is our own suggestion.", reported: false, link: { href: "/guides/saving", label: "How to save" } },
+    ],
+    notes: [
+      "Order: PC Gamer and Push Square both list this mission seventh in Chapter 2, straight after the sixth. PowerPyx calls it the 37th main mission using its own count, so treat the overall number as Reported.",
+      "PowerPyx is the only full walkthrough for this mission so far, so the objectives, start condition and every reward are labelled Reported. PC Gamer and Push Square confirm the name, the order and Lucia.",
+      "The objective list hasn't been checked against the on-screen prompts.",
+    ],
+    faq: [
+      {
+        question: "Which mission number is Chapter 2 Mission 7?",
+        answer: "It is the seventh mission of Chapter 2 and the 29th overall (Confirmed, PC Gamer and Push Square). PowerPyx numbers it 37th because it counts differently (Reported).",
+      },
+      {
+        question: "How do you start Chapter 2 Mission 7?",
+        answer: "PowerPyx says to finish the earlier Chapter 2 main missions and wait for two phone calls. The mission is then marked on your map (Reported).",
+      },
+      {
+        question: "What if I get stuck in the big fight?",
+        answer: "PowerPyx says some enemies are inside the buildings, so clear those too. Stay in cover, take it slowly and heal when you need to (Reported).",
+      },
+      {
+        question: "How much does Chapter 2 Mission 7 pay?",
+        answer: "PowerPyx says $1,700 through the BuckMe app the next day, plus two robbery locations marked on your map (Reported).",
+      },
+      {
+        question: "Does this mission unlock anything?",
+        answer: "PowerPyx says it unlocks a new fence you can sell to (Reported).",
+      },
+    ],
+    sources: [
+      pp("gta-6-slam-dunk-walkthrough", "Objectives, start condition, combat advice and rewards"),
+      PCGAMER,
+      PUSHSQUARE,
+    ],
+    sourceLabel: "PowerPyx, PC Gamer, Push Square",
+    updated: "2026-11-20T06:15:00+10:00",
+  },
+  {
+    slug: "chapter-2-mission-8",
+    hidden: true,
+    chapter: 2,
+    chapterOrder: 8,
+    order: 30,
+    name: "Chapter 2, Mission 8",
+    seoTitle: "GTA 6 Chapter 2 Mission 8 Walkthrough & Tips",
+    seoDescription:
+      "GTA 6 Chapter 2 Mission 8 walkthrough: the timed objectives, how to lose a two-star wanted level, and the rewards PowerPyx reports so far.",
+    teaser: "The eighth mission of Chapter 2, straight after Chapter 2, Mission 7.",
+    intro: [
+      "This is the eighth mission of Chapter 2 and the 30th story mission overall (PC Gamer and Push Square list it in that order). PowerPyx lists six objectives, a run of timed sections that each give you one minute, and a police chase at the end that you can shake with a simple route.",
+      "Our mission list keeps Chapter 2 names behind a blur, so this page uses a neutral title. The mission's name, the people, the places and what happens at the end all stay behind the blur.",
+    ],
+    facts: [
+      { label: "Chapter", value: "Chapter 2, mission 8, and 30th overall (PC Gamer and Push Square). PowerPyx numbers it 39th because it counts differently.", status: "confirmed" },
+      { label: "Unlocks after", value: "Chapter 2, Mission 7 (PC Gamer and Push Square put it next in order, and PowerPyx's requirement line is the same mission)", status: "confirmed" },
+      { label: "Characters", value: "PC Gamer's one-line summary names both Jason and Lucia. PowerPyx says you start it as Lucia.", status: "reported" },
+      { label: "Starts", value: "PowerPyx says to wait for a phone call after the previous mission, which takes about half a day, and that finishing any other open main missions helps trigger it. The marker then turns pink on the map.", status: "reported" },
+      { label: "Objectives", value: "Six (PowerPyx)", status: "reported" },
+      { label: "Timed sections", value: "A one-minute timer shows in the bottom-right corner, the same for each one, and PowerPyx says it is more than enough time", status: "reported" },
+      { label: "Wanted level", value: "The mission ends with a two-star wanted level. PowerPyx says taking the small off-road paths makes the escape easy.", status: "reported" },
+      { label: "Rewards", value: "Both lead characters now have a personal vehicle, and a story trophy or achievement unlocks (PowerPyx)", status: "reported" },
+      { label: "What follows", value: "PowerPyx says the next mission starts straight away", status: "reported" },
+    ],
+    objectives: [
+      "Wait for the phone call after Slam Dunk. PowerPyx says it takes half a day or so, then the motel icon turns pink on the map at the Starlet Motel in Kelly County (Reported, PowerPyx).",
+      "Go to Hank's Waffles. At the start a cutscene passes time until Jason is back to full health, then he and Lucia go on to rob several stores. Drive to the waffle house first (Reported, PowerPyx).",
+      "Rob the diner. Pull out your gun, aim at the staff and press the threaten button. They put the cash from the register on the counter, so grab it. A one-minute timer appears in the bottom-right corner (the same for the next robberies). Leave the store when you are done and you spawn at the next one (Reported, PowerPyx).",
+      "Rob the liquor store. You spawn inside, so aim at the clerk and take the money. Get in the car to spawn at the next store (Reported, PowerPyx).",
+      "Rob the thrift store. Repeat the same steps (Reported, PowerPyx).",
+      "Get in the car. Jason and Lucia rob two more stores, a gas station and another liquor store, and you end up back in the car with a two-star wanted level (Reported, PowerPyx).",
+      "Lose the cops. PowerPyx says taking the small off-road paths escapes the police easily. A cutscene then has them arrive back at the Starlet Motel and spend the night together. The next morning Vicki comes in to get her laptop back, and the next mission starts immediately. Jason becomes playable again, and a story trophy or achievement unlocks (Reported, PowerPyx).",
+    ],
+    spoiler:
+      "The mission is called Breakfast Run in our mission list, Push Square's list and PC Gamer, whose one-line summary is that Jason and Lucia go for waffles (Confirmed). PowerPyx shows the map label Check on Jason, and its quest description is to head back to the motel and check how Jason is doing (Reported, PowerPyx). We have not named the trophy or achievement.",
+    tips: [
+      { text: "Don't panic about the clock. PowerPyx says each timer is one minute, the same every time, and more than enough (Reported).", reported: true },
+      { text: "Leave the main road for the chase. PowerPyx says the small off-road paths make losing the police easy (Reported).", reported: true, link: { href: "/guides/wanted", label: "Wanted level guide" } },
+      { text: "Check your health and your car before you take the call. The chase is the only hard part, so this is our own suggestion.", reported: false },
+      { text: "Do any shopping or side activities before you take the call. PowerPyx says the next mission starts straight away, and the advice is our own suggestion.", reported: false, link: { href: "/guides/money", label: "Money guide" } },
+      { text: "Make a manual save before you start, so you can retry if the mission goes wrong. This is our own suggestion.", reported: false, link: { href: "/guides/saving", label: "How to save" } },
+    ],
+    notes: [
+      "Order: PC Gamer and Push Square both list this mission eighth in Chapter 2, straight after the seventh. PowerPyx calls it the 39th main mission using its own count, so treat the overall number as Reported.",
+      "PowerPyx is the only full walkthrough for this mission so far, so the objectives, start condition, timers and rewards are labelled Reported. PC Gamer and Push Square confirm the name, the order and the lead characters.",
+      "We have left out the name of the story trophy or achievement. The objective list hasn't been checked against the on-screen prompts.",
+    ],
+    faq: [
+      {
+        question: "Which mission number is Chapter 2 Mission 8?",
+        answer: "It is the eighth mission of Chapter 2 and the 30th overall (Confirmed, PC Gamer and Push Square). PowerPyx numbers it 39th because it counts differently (Reported).",
+      },
+      {
+        question: "How do you start Chapter 2 Mission 8?",
+        answer: "Finish Chapter 2 Mission 7 and wait for a phone call. PowerPyx says it takes about half a day, and clearing other open main missions helps (Reported).",
+      },
+      {
+        question: "How long do the timed sections last?",
+        answer: "PowerPyx says each has a one-minute timer in the bottom-right corner, and that it is more than enough (Reported).",
+      },
+      {
+        question: "How do you lose the police at the end?",
+        answer: "PowerPyx says to take the small off-road paths (Reported).",
+      },
+      {
+        question: "What does this mission unlock?",
+        answer: "PowerPyx says both lead characters get a personal vehicle, and a story trophy or achievement unlocks (Reported).",
+      },
+    ],
+    sources: [
+      pp("gta-6-breakfast-run-check-on-jason-walkthrough", "Objectives, start condition, timers, wanted level and rewards"),
+      PCGAMER,
+      PUSHSQUARE,
+    ],
+    sourceLabel: "PowerPyx, PC Gamer, Push Square",
+    updated: "2026-11-20T06:15:00+10:00",
+  },
 ];
 
 /** Chapter a mission belongs to (Chapter 1 unless stated). */
