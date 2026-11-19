@@ -10,23 +10,24 @@ const L = "text-pink underline underline-offset-2";
 
 // Update this block each hourly run: reading time (AEST), source, result.
 const STATUS: React.ReactNode[][] = [
-  ["PlayStation Network", "No active issues listed for the US, Canada, Brazil, the UK, Ireland, Germany, France, Australia or New Zealand", <Ext key="ps" href="https://status.playstation.com/">PlayStation Service Status</Ext>, "11:03 AEST, 19 Nov"],
-  ["PSN via GTATracker", "Up, all five listed services up", <Ext key="gtp" href="https://gtatracker.gg/online/server-status">GTATracker, relaying Sony&rsquo;s feed</Ext>, "01:00 UTC, 19 Nov (11:00 AEST)"],
-  ["Xbox network", "Up. Account, safety, store, social and sharing services all up", <Ext key="gtx" href="https://gtatracker.gg/online/server-status">GTATracker, relaying Microsoft&rsquo;s feed</Ext>, "01:00 UTC, 19 Nov (11:00 AEST)"],
-  ["Rockstar service status", "GTA Online, Red Dead Online, Online Services and Cfx up. No GTA VI entry listed", <Ext key="gt2" href="https://gtatracker.gg/online/server-status">GTATracker, reading Rockstar&rsquo;s page</Ext>, "00:58 UTC, 19 Nov (10:58 AEST)"],
-  ["User reports: GTA VI (UK)", "\u201cPossible problems\u201d (was \u201cproblems\u201d at 09:03, before the unlock). Read about an hour after the UK unlock at 10:00 AEST. No category breakdown shown to us. Not a confirmed outage", <Ext key="ddu" href="https://downdetector.co.uk/status/gta-vi/">Downdetector UK</Ext>, "11:04 AEST, 19 Nov"],
-  ["User reports: GTA VI (Germany)", "\u201cPossible problems\u201d. Top category 46% (was 48% at 09:03; category name not shown to us). Not a confirmed outage", <Ext key="dde" href="https://allestoerungen.de/stoerung/gta-vi/">Allestörungen (Downdetector DE)</Ext>, "11:04 AEST, 19 Nov"],
-  ["User reports: GTA VI (Australia)", "No current problems. Most reported: game launch (60%), then server connection", <Ext key="dda" href="https://downdetector.com.au/status/gta-vi/">Downdetector AU</Ext>, "11:04 AEST, 19 Nov"],
-  ["User reports: PSN (Australia)", "\u201cPossible problems\u201d. Server connection 37% (was 40% at 09:02), then login and game launch", <Ext key="ddp" href="https://downdetector.com.au/status/playstation-network/">Downdetector AU</Ext>, "11:04 AEST, 19 Nov"],
-  ["User reports: GTA VI (New Zealand)", "No current problems", <Ext key="dd" href="https://downdetector.co.nz/status/gta-vi/">Downdetector NZ</Ext>, "11:04 AEST, 19 Nov"],
+  ["PlayStation Network", "No active issues listed for the US, Canada, Mexico, Brazil, the UK, Ireland, France, Germany, Italy, Spain, Australia or New Zealand", <Ext key="ps" href="https://status.playstation.com/">PlayStation Service Status</Ext>, "12:59 AEST, 19 Nov"],
+  ["PSN via GTATracker", "Up, all five listed services up", <Ext key="gtp" href="https://gtatracker.gg/online/server-status">GTATracker, relaying Sony&rsquo;s feed</Ext>, "02:50 UTC, 19 Nov (12:50 AEST)"],
+  ["Xbox network", "Up. Account, safety, store, social and sharing services all up", <Ext key="gtx" href="https://gtatracker.gg/online/server-status">GTATracker, relaying Microsoft&rsquo;s feed</Ext>, "02:50 UTC, 19 Nov (12:50 AEST)"],
+  ["Rockstar service status", "GTA Online, Red Dead Online, Online Services and Cfx up. No GTA VI entry listed", <Ext key="gt2" href="https://gtatracker.gg/online/server-status">GTATracker, reading Rockstar&rsquo;s page</Ext>, "02:48 UTC, 19 Nov (12:48 AEST)"],
+  ["User reports: GTA VI (UK)", "\u201cPossible problems\u201d, unchanged since 11:04. Top category 69% (category name not shown to us). Read three hours after the UK unlock at 10:00 AEST. Not a confirmed outage", <Ext key="ddu" href="https://downdetector.co.uk/status/gta-vi/">Downdetector UK</Ext>, "13:00 AEST, 19 Nov"],
+  ["User reports: GTA VI (Germany)", "No current problems (was \u201cpossible problems\u201d at 11:04 and 12:00). Top category 45% (category name not shown to us)", <Ext key="dde" href="https://allestoerungen.de/stoerung/gta-vi/">Allestörungen (Downdetector DE)</Ext>, "13:00 AEST, 19 Nov"],
+  ["User reports: GTA VI (Australia)", "No current problems (was \u201cpossible problems\u201d at 12:00). Most reported: game launch (62%), then server connection", <Ext key="dda" href="https://downdetector.com.au/status/gta-vi/">Downdetector AU</Ext>, "13:00 AEST, 19 Nov"],
+  ["User reports: PSN (Australia)", "\u201cPossible problems\u201d. Server connection 37% (38% at 12:00), then login and downloads/updates. Not a confirmed outage", <Ext key="ddp" href="https://downdetector.com.au/status/playstation-network/">Downdetector AU</Ext>, "13:00 AEST, 19 Nov"],
+  ["User reports: GTA VI (New Zealand)", "No current problems", <Ext key="dd" href="https://downdetector.co.nz/status/gta-vi/">Downdetector NZ</Ext>, "13:00 AEST, 19 Nov"],
+  ["User reports: GTA VI (US)", "No current problems. Baseline before the US East Coast unlock at 15:00 AEST", <Ext key="ddus" href="https://downdetector.com/status/gta-vi/">Downdetector US</Ext>, "13:00 AEST, 19 Nov"],
 ];
 
 export default function Page() {
   return (
     <NewsLayout slug={SLUG} kicker="News · Live tracker" title="GTA 6 Server Status & Known Issues" source="Official status pages + reported">
       <Lede>
-        Latest readings as read by our team, 10:58 to 11:04 AEST on 19 Nov, about an hour after the UK unlock: PlayStation&rsquo;s status feed lists no active issues for the US, Canada, Brazil, the UK, Ireland, Germany, France, Australia or New Zealand, and Xbox and Rockstar&rsquo;s status feeds (read second-hand via GTATracker) show up too.
-        Downdetector user reports show &ldquo;possible problems&rdquo; in the UK, eased from &ldquo;problems&rdquo; before the unlock, and in Germany. Australia and New Zealand show no current problems. Those are user reports, not confirmed outages. At a London gaming bar the BBC reported that some players got on straight away while others were waiting to connect.
+        Latest readings as read by our team at 12:48-13:00 AEST on 19 Nov, three hours after the UK unlock and two hours before the US East Coast unlocks: PlayStation&rsquo;s status feed lists no active issues for the US, Canada, Mexico, Brazil, the UK, Ireland, France, Germany, Italy, Spain, Australia or New Zealand, and Xbox and Rockstar&rsquo;s status feeds (read second-hand via GTATracker) show up too.
+        Downdetector user reports for GTA VI show &ldquo;possible problems&rdquo; only in the UK now. Germany and Australia have dropped back to no current problems, and New Zealand and the US show none. Those are user reports, not confirmed outages. At a London gaming bar the BBC reported that some players got on straight away while others were waiting to connect, and 3DJuegos reported a fresh rise in PSN reports in Spain at the midnight unlock.
         PlayStation Network had a disruption on 18 Nov (US time) that Sony&rsquo;s status page acknowledged and later cleared. PS5 owners still need a mandatory system update. This page is updated through launch week.
       </Lede>
 
@@ -75,6 +76,14 @@ export default function Page() {
         <li>
           <Lead>Reported (UK unlock, limited):</Lead> in its live coverage, the BBC reported from the XP Tavern gaming bar in London at 00:07 GMT (10:07 AEST): &ldquo;Some were able to get on straight away. Others are waiting impatiently to connect&rdquo; (
           <Ext href="https://www.bbc.com/news/live/c60rkg21dl22t">BBC live page</Ext>). It does not say what was holding players up or how widespread it was, and PlayStation&rsquo;s status feed listed no UK issue when we read it at 11:03 AEST.
+        </li>
+        <li>
+          <Lead>Reported (UK, after the unlock):</Lead> The Standard, carrying PA&rsquo;s report, says the PSN issues from Wednesday &ldquo;appeared to be cleared up by midnight&rdquo;, with PlayStation declaring all of its services &ldquo;up and running&rdquo; in the hours after the game went live (
+          <Ext href="https://www.standard.co.uk/news/tech/travis-scott-sony-miami-currys-grand-theft-auto-b1305482.html">The Standard</Ext>).
+        </li>
+        <li>
+          <Lead>Reported (Spain, limited):</Lead> 3DJuegos says Downdetector showed a new rise in PlayStation Network reports in Spain from midnight, as GTA 6 unlocked there, after which the number of reports fell noticeably. It says Sony&rsquo;s status page showed all services operational and that GTA 6 is not confirmed as the cause (
+          <Ext href="https://www.3djuegos.com/ps4/noticias/playstation-network-psn-se-ha-caido-espana-para-algunos-jugadores-estreno-gta-6-ha-saturado-servidores-ps5-momentos">3DJuegos, in Spanish</Ext>). PlayStation&rsquo;s feed listed no issue for Spain when we read it at 12:00 AEST.
         </li>
         <li>
           <Lead>Reported (pre-unlock):</Lead> news.com.au says several PlayStation players in Australia reported login, download and purchasing problems in the hours before the unlock (<Ext href="https://www.news.com.au/technology/gaming/gta-6-release-australia-launch-times-download-size-and-why-its-a-bad-time-to-be-a-boss/news-story/eeb2f0ed1d624c365f65e50b92c974cf">news.com.au, 18 Nov</Ext>).
@@ -161,12 +170,17 @@ export default function Page() {
       </Callout>
 
       <Sources>
+        <Source href="https://www.standard.co.uk/news/tech/travis-scott-sony-miami-currys-grand-theft-auto-b1305482.html" label="The Standard (PA): GTA VI goes live in the UK, 19 Nov 2026" kind="Reputable outlet" />
+        <Source href="https://www.3djuegos.com/ps4/noticias/playstation-network-psn-se-ha-caido-espana-para-algunos-jugadores-estreno-gta-6-ha-saturado-servidores-ps5-momentos" label="3DJuegos: PSN problems in Spain at launch, 19 Nov 2026 (in Spanish)" kind="Reputable outlet" />
         <Source href="https://www.bbc.com/news/live/c60rkg21dl22t" label="BBC live coverage: UK release, 19 Nov 2026 (00:07 GMT entry, read 11:07 AEST)" kind="Reputable outlet" />
-        <Source href="https://status.playstation.com/"  label="PlayStation Service Status (read 11:03 AEST, 19 Nov 2026)" kind="Official, platform holder" />
-        <Source href="https://gtatracker.gg/online/server-status"  label="GTATracker: Rockstar, PSN and Xbox status feeds (00:58-01:00 UTC, 19 Nov)" kind="Third-party monitor" />
-        <Source href="https://downdetector.co.nz/status/gta-vi/"  label="Downdetector NZ: GTA VI (read 11:04 AEST, 19 Nov)" kind="User-report aggregator" />
-        <Source href="https://downdetector.com.au/status/gta-vi/" label="Downdetector AU: GTA VI (read 11:04 AEST, 19 Nov)" kind="User-report aggregator" />
-        <Source href="https://downdetector.com.au/status/playstation-network/" label="Downdetector AU: PlayStation Network (read 11:04 AEST, 19 Nov)" kind="User-report aggregator" />
+        <Source href="https://status.playstation.com/"  label="PlayStation Service Status (read 12:59 AEST, 19 Nov 2026)" kind="Official, platform holder" />
+        <Source href="https://gtatracker.gg/online/server-status"  label="GTATracker: Rockstar, PSN and Xbox status feeds (02:48-02:50 UTC, 19 Nov)" kind="Third-party monitor" />
+        <Source href="https://downdetector.co.nz/status/gta-vi/"  label="Downdetector NZ: GTA VI (read 13:00 AEST, 19 Nov)" kind="User-report aggregator" />
+        <Source href="https://downdetector.com.au/status/gta-vi/" label="Downdetector AU: GTA VI (read 13:00 AEST, 19 Nov)" kind="User-report aggregator" />
+        <Source href="https://downdetector.com.au/status/playstation-network/" label="Downdetector AU: PlayStation Network (read 13:00 AEST, 19 Nov)" kind="User-report aggregator" />
+        <Source href="https://downdetector.co.uk/status/gta-vi/" label="Downdetector UK: GTA VI (read 13:00 AEST, 19 Nov)" kind="User-report aggregator" />
+        <Source href="https://downdetector.com/status/gta-vi/" label="Downdetector US: GTA VI (read 13:00 AEST, 19 Nov)" kind="User-report aggregator" />
+        <Source href="https://allestoerungen.de/stoerung/gta-vi/" label="Allestörungen (Downdetector DE): GTA VI (read 13:00 AEST, 19 Nov)" kind="User-report aggregator" />
         <Source href="https://www.axios.com/2026/11/18/gta-6-playstation-psn-servers" label="Axios: PlayStation outage before GTA VI launch, 18 Nov 2026" kind="Reputable outlet" />
         <Source href="https://www.theguardian.com/games/2026/nov/18/playstation-down-grand-theft-auto-vi-game-release" label="The Guardian: PlayStation network problems, 18 Nov 2026" kind="Reputable outlet" />
         <Source href="https://www.androidauthority.com/playstation-outage-nov-2026-3736853/" label="Android Authority: PlayStation outage, 18 Nov 2026 (updated 3:05pm ET)" kind="Reputable outlet" />
