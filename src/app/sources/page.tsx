@@ -20,7 +20,7 @@ export default function Page() {
         Pins marked <strong className="text-turq">official</strong> are places Rockstar names itself. Pins marked GTADB use landmark data from{" "}
         <a href="https://map.gtadb.org" className="underline" target="_blank" rel="noopener">GTADB.org</a> and its contributors,
         licensed <a href="https://creativecommons.org/licenses/by/4.0/" className="underline" target="_blank" rel="noopener">CC BY 4.0</a>.
-        We changed it: filtered, re-typed and repositioned onto our own base map, so those positions are approximate. We do not use
+        We changed it: filtered, re-typed and repositioned onto the base map, so those positions are approximate. We do not use
         their map tiles or photos. Community pins are marked by players and reviewed by moderators.
       </p>
       <p className="mt-3 max-w-xl text-ink-2">

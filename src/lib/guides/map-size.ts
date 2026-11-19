@@ -1,18 +1,18 @@
 /**
- * Data for /guides/map-size. QC'd 19 Nov 2026 by re-reading every cited page.
+ * Data for /guides/map-size. QC'd 19 Nov 2026 by re-reading every cited page. Updated 20 Nov 2026 for Rockstar's printable map.
  * Rules for this page:
  * - Confirmed = a Rockstar comparison carried by two main outlets. Reported = one outlet's own figure or test.
  * - Rockstar has not published an area in km² or miles in any source we found. The only km² figure is PowerPyx's.
  * - The land-only figure on the page (about 113 to 114 km²) is our own arithmetic on PowerPyx's numbers and is worded that way.
- * - Rockstar's printable Leonida map is NOT claimed to be out: rockstargames.com/VI/downloads showed no map at the time of checking.
+ * - Rockstar's printable Leonida map ("Leonida Map & Cover Art Poster") is listed on rockstargames.com/VI/downloads as of 20 Nov 2026 (checked 1:35 AM AEST). We do not derive an area from its scale bar.
  * - Pre-launch fan reconstructions and secondary-site sums are not used. No story or mission details on this page.
  * Must not import from src/lib/seo (site.ts imports it).
  */
 
 export const MAPSIZE_PUBLISHED = "2026-11-19";
 /** Last edit, ISO 8601 with offset (Brisbane). Drives sitemap lastmod and dateModified. */
-export const MAPSIZE_VERIFIED = "2026-11-19T12:17:59+10:00";
-export const MAPSIZE_VERIFIED_LABEL = "19 Nov 2026";
+export const MAPSIZE_VERIFIED = "2026-11-20T01:37:00+10:00";
+export const MAPSIZE_VERIFIED_LABEL = "20 Nov 2026";
 
 export interface SizeClaim {
   claim: string;
@@ -88,6 +88,11 @@ export const MAPSIZE_FAQ: { question: string; answer: string }[] = [
 ];
 
 export const MAPSIZE_SOURCES = [
+  {
+    label: "Rockstar Games: GTA VI downloads, Leonida Map & Cover Art Poster",
+    url: "https://www.rockstargames.com/VI/downloads",
+    used: "That the printable official map is released and listed (checked 20 Nov 2026). No area figure is taken from it",
+  },
   {
     label: "PowerPyx: GTA 6 Full World Map Revealed (18 Nov 2026)",
     url: "https://www.powerpyx.com/gta-6-full-world-map-revealed/",
