@@ -24,7 +24,14 @@ export default function Page() {
         their map tiles or photos. Community pins are marked by players and reviewed by moderators.
       </p>
       <p className="mt-3 max-w-xl text-ink-2">
-        The base map is our own AI-generated illustration, cleaned and upscaled with open tools (Real-ESRGAN, BSD-3-Clause; LaMa, Apache-2.0).
+        The default base map is Rockstar’s official Leonida map:{" "}
+        <a href="https://www.rockstargames.com/VI/downloads" className="underline" target="_blank" rel="noopener">Leonida Map &amp; Cover Art Poster</a>.{" "}
+        <strong className="text-turq">Map © Rockstar Games.</strong> We converted its colours to sRGB, cropped it to its frame and cut it into tiles; we did not
+        retouch or upscale it. County, city and district names we draw are the ones printed on that poster, and pins of places it prints sit at the printed
+        label. This site is a fan site, not affiliated with or endorsed by Rockstar Games or Take-Two.
+      </p>
+      <p className="mt-3 max-w-xl text-ink-2">
+        The alternative base map (choose “Custom art” in the map’s base selector) is our own AI-generated illustration, cleaned and upscaled with open tools (Real-ESRGAN, BSD-3-Clause; LaMa, Apache-2.0).
         It is not Rockstar’s map and not the in-game geography, and it carries an “Illustrative base map” note on the map itself. Region and district names on it are drawn by the site and come only from Rockstar’s own pages; positions are approximate.
       </p>
       <p className="mt-3 max-w-xl text-ink-2">

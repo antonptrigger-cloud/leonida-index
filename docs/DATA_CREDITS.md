@@ -71,6 +71,15 @@ and the wording in `sourceUrl` and `sourceQuote`. No name comes from GTADB, the 
 * Not labelled, because Rockstar names them but nobody can place them: Gambit Bay. Not used at all: district names that exist only
   in GTADB or the leaks (for example Vice Beach, Salton, Crosstown).
 
+## Official base map (Map © Rockstar Games)
+
+The default base map is Rockstar's *Leonida Map & Cover Art Poster* from <https://www.rockstargames.com/VI/downloads>, used as
+published (colour-converted to sRGB, cropped to its frame, tiled; no retouching). Credit: "Map © Rockstar Games" in the map
+attribution, on `/sources` and in `docs/OFFICIAL_MAP.md`, which also summarises Rockstar's terms and the open licensing question.
+`src/lib/map/official-labels.json` (95 county, city, district, place and water names) and the seed-pin positions on this base come
+from the names and positions printed on the poster itself; GTADB pins are placed by district name (credited as above) and, where
+their name is printed on the poster, at the printed label.
+
 ## Base map art
 
 The default map image is the site owner's own AI-generated artwork, cleaned (LaMa inpainting, Apache-2.0) and upscaled

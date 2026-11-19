@@ -1,0 +1,23 @@
+{
+  "source": "official_srgb_map.png",
+  "width": 5379,
+  "height": 7503,
+  "tileSize": 256,
+  "minNativeZoom": 0,
+  "maxNativeZoom": 5,
+  "maxZoom": 6,
+  "urlTemplate": "/map/official/{z}/{x}/{y}.webp?v=848a7aed89",
+  "preview": {
+    "url": "/map/official-preview.webp?v=848a7aed89",
+    "width": 1147,
+    "height": 1600
+  },
+  "background": "#00a7c6",
+  "calibration": {
+    "a": 1,
+    "b": 0,
+    "c": 1,
+    "d": 0
+  },
+  "generatedAt": "2026-11-19T14:21:40.911Z"
+}

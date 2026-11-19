@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 // Builds a deep-zoom tile pyramid for the community map from one big image.
 //
-//   npm run map:tiles -- path/to/source.png [--id legacy|art] [--background "#04182f"] [--quality 82] [--keep-calibration]
+//   npm run map:tiles -- path/to/source.png [--id legacy|art|official] [--background "#04182f"] [--quality 82] [--keep-calibration]
 //
 // Output for --id legacy (default, the original placeholder map):
 //   public/map/tiles/{z}/{x}/{y}.webp   256px tiles, z = 0 .. maxNativeZoom
@@ -9,6 +9,8 @@
 //   src/lib/map/base-map.json           manifest the map reads (sizes, zooms, URL template, calibration)
 // Output for --id art (the owner's custom art, see docs/CUSTOM_MAP_ART.md):
 //   public/map/art/{z}/{x}/{y}.webp, public/map/art-preview.webp, src/lib/map/base-art.json
+// Output for --id official (Rockstar's official map poster, see docs/OFFICIAL_MAP.md):
+//   public/map/official/{z}/{x}/{y}.webp, public/map/official-preview.webp, src/lib/map/base-official.json
 // Each base is a separate pyramid + manifest, so bases can be added, swapped or removed independently (src/lib/map/bases.ts).
 //
 // maxNativeZoom is the level where the image is shown at 1 source pixel per screen pixel.
@@ -44,9 +46,10 @@ const baseId = opt("id", "legacy");
 const LAYOUT = {
   legacy: { dir: "public/map/tiles", url: "/map/tiles", preview: "public/map/base-preview.webp", previewUrl: "/map/base-preview.webp", manifest: "src/lib/map/base-map.json" },
   art: { dir: "public/map/art", url: "/map/art", preview: "public/map/art-preview.webp", previewUrl: "/map/art-preview.webp", manifest: "src/lib/map/base-art.json" },
+  official: { dir: "public/map/official", url: "/map/official", preview: "public/map/official-preview.webp", previewUrl: "/map/official-preview.webp", manifest: "src/lib/map/base-official.json" },
 }[baseId];
 if (!LAYOUT) {
-  console.error(`Unknown --id ${baseId} (legacy | art). Add a layout entry here and in src/lib/map/bases.ts for new bases.`);
+  console.error(`Unknown --id ${baseId} (legacy | art | official). Add a layout entry here and in src/lib/map/bases.ts for new bases.`);
   process.exit(1);
 }
 const background = opt("background", "#04182f");
@@ -116,9 +119,9 @@ let calibration = {
   c: srcH / COORD_SPACE.height,
   d: 0,
 };
-if (baseId === "art") {
+if (baseId === "art" || baseId === "official") {
   // The art base does not use a linear calibration: pins go through the control-point transform in
-  // src/lib/map/pin-transform.ts, which outputs source pixels directly.
+  // src/lib/map/pin-transform.ts (art) or official-transform.ts (official), which output source pixels directly.
   calibration = { a: 1, b: 0, c: 1, d: 0 };
 } else if (flag("keep-calibration") && existsSync(manifestPath)) {
   calibration = JSON.parse(readFileSync(manifestPath, "utf8")).calibration ?? calibration;

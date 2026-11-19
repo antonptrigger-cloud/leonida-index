@@ -1,0 +1,576 @@
+{
+ "_doc": "Names printed on the official Leonida Map & Cover Art Poster (rockstargames.com/VI/downloads) and the pixel position of the centre of each printed label in the 5379x7503 sRGB master (public/map/official). Read off the poster itself (OCR + visual check); nothing from GTADB, leaks or community data.",
+ "source": "Leonida Map & Cover Art Poster, rockstargames.com/VI/downloads",
+ "places": [
+  {
+   "name": "Lummox County",
+   "kind": "county",
+   "x": 2676,
+   "y": 1383
+  },
+  {
+   "name": "Leonard County",
+   "kind": "county",
+   "x": 3840,
+   "y": 2648
+  },
+  {
+   "name": "Kelly County",
+   "kind": "county",
+   "x": 2265,
+   "y": 2928
+  },
+  {
+   "name": "Vice-Dale County",
+   "kind": "county",
+   "x": 3967,
+   "y": 4332
+  },
+  {
+   "name": "Mariana County",
+   "kind": "county",
+   "x": 2183,
+   "y": 5565
+  },
+  {
+   "name": "East Lummox County",
+   "kind": "county",
+   "x": 3483,
+   "y": 1205
+  },
+  {
+   "name": "South West Lummox County",
+   "kind": "county",
+   "x": 2016,
+   "y": 1699
+  },
+  {
+   "name": "North Leonard County",
+   "kind": "county",
+   "x": 3257,
+   "y": 1797
+  },
+  {
+   "name": "North Kelly County",
+   "kind": "county",
+   "x": 2641,
+   "y": 2015
+  },
+  {
+   "name": "South Leonard County",
+   "kind": "county",
+   "x": 3306,
+   "y": 3225
+  },
+  {
+   "name": "South Kelly County",
+   "kind": "county",
+   "x": 2079,
+   "y": 3794
+  },
+  {
+   "name": "West Vice-Dale County",
+   "kind": "county",
+   "x": 2434,
+   "y": 4034
+  },
+  {
+   "name": "South Vice-Dale County",
+   "kind": "county",
+   "x": 3368,
+   "y": 5155
+  },
+  {
+   "name": "Vice City",
+   "kind": "region",
+   "x": 3750,
+   "y": 3912
+  },
+  {
+   "name": "Port Gellhorn",
+   "kind": "region",
+   "x": 1556,
+   "y": 2625
+  },
+  {
+   "name": "Grassrivers",
+   "kind": "region",
+   "x": 2405,
+   "y": 5039
+  },
+  {
+   "name": "Ambrosia",
+   "kind": "region",
+   "x": 3039,
+   "y": 2622
+  },
+  {
+   "name": "Mount Kalaga National Park",
+   "kind": "region",
+   "x": 2650,
+   "y": 1593
+  },
+  {
+   "name": "Key Lento",
+   "kind": "region",
+   "x": 3086,
+   "y": 6379
+  },
+  {
+   "name": "Vice Beach",
+   "kind": "district",
+   "x": 4715,
+   "y": 3666
+  },
+  {
+   "name": "Ocean Beach",
+   "kind": "district",
+   "x": 4777,
+   "y": 3928
+  },
+  {
+   "name": "Washington Beach",
+   "kind": "district",
+   "x": 4796,
+   "y": 3314
+  },
+  {
+   "name": "Little Cuba",
+   "kind": "district",
+   "x": 3611,
+   "y": 4011
+  },
+  {
+   "name": "Downtown",
+   "kind": "district",
+   "x": 3854,
+   "y": 4026
+  },
+  {
+   "name": "Salton",
+   "kind": "district",
+   "x": 3390,
+   "y": 4073
+  },
+  {
+   "name": "Rockridge",
+   "kind": "district",
+   "x": 3571,
+   "y": 3734
+  },
+  {
+   "name": "Bayside",
+   "kind": "district",
+   "x": 3952,
+   "y": 3532
+  },
+  {
+   "name": "La Perle",
+   "kind": "district",
+   "x": 3750,
+   "y": 3472
+  },
+  {
+   "name": "Crosstown",
+   "kind": "district",
+   "x": 3832,
+   "y": 3724
+  },
+  {
+   "name": "Stockyard",
+   "kind": "district",
+   "x": 3975,
+   "y": 3355
+  },
+  {
+   "name": "Southside",
+   "kind": "district",
+   "x": 3406,
+   "y": 4934
+  },
+  {
+   "name": "Tequesta",
+   "kind": "district",
+   "x": 3689,
+   "y": 4503
+  },
+  {
+   "name": "Tequesta Retreat",
+   "kind": "district",
+   "x": 4010,
+   "y": 4482
+  },
+  {
+   "name": "Peacock Bay",
+   "kind": "district",
+   "x": 3638,
+   "y": 4852
+  },
+  {
+   "name": "Port Vice City",
+   "kind": "district",
+   "x": 4452,
+   "y": 4196
+  },
+  {
+   "name": "Waxman Island",
+   "kind": "district",
+   "x": 4254,
+   "y": 4011
+  },
+  {
+   "name": "Starfish Island",
+   "kind": "district",
+   "x": 4338,
+   "y": 3862
+  },
+  {
+   "name": "Casanova Island",
+   "kind": "district",
+   "x": 4394,
+   "y": 3541
+  },
+  {
+   "name": "Rialto Islands",
+   "kind": "district",
+   "x": 4228,
+   "y": 3493
+  },
+  {
+   "name": "Vespucci Island",
+   "kind": "district",
+   "x": 4205,
+   "y": 3626
+  },
+  {
+   "name": "Catalan Island",
+   "kind": "district",
+   "x": 4118,
+   "y": 3584
+  },
+  {
+   "name": "Gloriana Key",
+   "kind": "district",
+   "x": 4403,
+   "y": 4741
+  },
+  {
+   "name": "Catalan Key",
+   "kind": "district",
+   "x": 4009,
+   "y": 4874
+  },
+  {
+   "name": "Dalton Island",
+   "kind": "district",
+   "x": 4795,
+   "y": 4500
+  },
+  {
+   "name": "Penmarch Isle",
+   "kind": "district",
+   "x": 4414,
+   "y": 3300
+  },
+  {
+   "name": "Waning Sands",
+   "kind": "district",
+   "x": 4072,
+   "y": 2357
+  },
+  {
+   "name": "Hamlet",
+   "kind": "city",
+   "x": 3043,
+   "y": 5216
+  },
+  {
+   "name": "Capri",
+   "kind": "city",
+   "x": 1466,
+   "y": 3971
+  },
+  {
+   "name": "Grayson",
+   "kind": "city",
+   "x": 2002,
+   "y": 1530
+  },
+  {
+   "name": "Millport",
+   "kind": "city",
+   "x": 3608,
+   "y": 1622
+  },
+  {
+   "name": "Bonanza",
+   "kind": "city",
+   "x": 2588,
+   "y": 928
+  },
+  {
+   "name": "Moreau",
+   "kind": "city",
+   "x": 2780,
+   "y": 1113
+  },
+  {
+   "name": "Belville",
+   "kind": "city",
+   "x": 3598,
+   "y": 2930
+  },
+  {
+   "name": "Watson Bay",
+   "kind": "city",
+   "x": 2299,
+   "y": 5362
+  },
+  {
+   "name": "Southwind",
+   "kind": "city",
+   "x": 1705,
+   "y": 6539
+  },
+  {
+   "name": "Pelican Valley",
+   "kind": "district",
+   "x": 2814,
+   "y": 5586
+  },
+  {
+   "name": "Shoeless Keys",
+   "kind": "district",
+   "x": 3295,
+   "y": 5768
+  },
+  {
+   "name": "Corsair Key",
+   "kind": "district",
+   "x": 3704,
+   "y": 5631
+  },
+  {
+   "name": "Gellhorn",
+   "kind": "district",
+   "x": 1838,
+   "y": 3336
+  },
+  {
+   "name": "Emerald Springs",
+   "kind": "district",
+   "x": 2457,
+   "y": 3123
+  },
+  {
+   "name": "Lake Leonida",
+   "kind": "water",
+   "x": 3295,
+   "y": 2280
+  },
+  {
+   "name": "Allied Crystal",
+   "kind": "place",
+   "x": 2970,
+   "y": 2750
+  },
+  {
+   "name": "Tisha-Wocka Flea Market",
+   "kind": "place",
+   "x": 2997,
+   "y": 3760
+  },
+  {
+   "name": "Vice City International Airport",
+   "kind": "place",
+   "x": 3062,
+   "y": 4302
+  },
+  {
+   "name": "Gellhorn Raceway",
+   "kind": "place",
+   "x": 1537,
+   "y": 3240
+  },
+  {
+   "name": "Evergreen Mall",
+   "kind": "place",
+   "x": 3958,
+   "y": 2516
+  },
+  {
+   "name": "Leonida State Prison",
+   "kind": "place",
+   "x": 2133,
+   "y": 3440
+  },
+  {
+   "name": "Sahara Arena",
+   "kind": "place",
+   "x": 3963,
+   "y": 3876
+  },
+  {
+   "name": "Thrillbilly Mud Club",
+   "kind": "place",
+   "x": 2574,
+   "y": 2283
+  },
+  {
+   "name": "Ambrosia Raceway Park",
+   "kind": "place",
+   "x": 2921,
+   "y": 2221
+  },
+  {
+   "name": "Mile Zero Air Station",
+   "kind": "place",
+   "x": 1398,
+   "y": 6671
+  },
+  {
+   "name": "Wild Hog Point",
+   "kind": "place",
+   "x": 1225,
+   "y": 2878
+  },
+  {
+   "name": "Okchiloba Bay",
+   "kind": "water",
+   "x": 2323,
+   "y": 826
+  },
+  {
+   "name": "Partridge Bay",
+   "kind": "water",
+   "x": 3446,
+   "y": 726
+  },
+  {
+   "name": "San Malo Bay",
+   "kind": "water",
+   "x": 1718,
+   "y": 1498
+  },
+  {
+   "name": "Draper Bay",
+   "kind": "water",
+   "x": 1266,
+   "y": 2523
+  },
+  {
+   "name": "Capri Sound",
+   "kind": "water",
+   "x": 1060,
+   "y": 3804
+  },
+  {
+   "name": "Catalan Bay",
+   "kind": "water",
+   "x": 4600,
+   "y": 4364
+  },
+  {
+   "name": "Gambit Bay",
+   "kind": "water",
+   "x": 3045,
+   "y": 6016
+  },
+  {
+   "name": "Gulf of Leonida",
+   "kind": "water",
+   "x": 555,
+   "y": 4848
+  },
+  {
+   "name": "Leonida Bay",
+   "kind": "water",
+   "x": 1976,
+   "y": 5810
+  },
+  {
+   "name": "Leonida Straits",
+   "kind": "water",
+   "x": 1528,
+   "y": 7206
+  },
+  {
+   "name": "Atlantic Ocean",
+   "kind": "water",
+   "x": 4850,
+   "y": 2318
+  },
+  {
+   "name": "Peregrine Bay",
+   "kind": "water",
+   "x": 3511,
+   "y": 5618
+  },
+  {
+   "name": "Draper Island",
+   "kind": "island",
+   "x": 1228,
+   "y": 2172
+  },
+  {
+   "name": "Hyde Island",
+   "kind": "island",
+   "x": 3121,
+   "y": 714
+  },
+  {
+   "name": "Saint Attaway Islands",
+   "kind": "island",
+   "x": 2855,
+   "y": 845
+  },
+  {
+   "name": "Frampton Islands",
+   "kind": "island",
+   "x": 3519,
+   "y": 960
+  },
+  {
+   "name": "Featherstone Islands",
+   "kind": "island",
+   "x": 2000,
+   "y": 1042
+  },
+  {
+   "name": "Riquezas Keys",
+   "kind": "island",
+   "x": 1065,
+   "y": 6354
+  },
+  {
+   "name": "Goose Key",
+   "kind": "island",
+   "x": 1410,
+   "y": 6484
+  },
+  {
+   "name": "Permit Keys",
+   "kind": "island",
+   "x": 1913,
+   "y": 6464
+  },
+  {
+   "name": "Maroon Key",
+   "kind": "island",
+   "x": 2402,
+   "y": 6572
+  },
+  {
+   "name": "Abismo Key",
+   "kind": "island",
+   "x": 2402,
+   "y": 6850
+  },
+  {
+   "name": "Fleeca Field",
+   "kind": "place",
+   "x": 3472,
+   "y": 3652
+  }
+ ]
+}

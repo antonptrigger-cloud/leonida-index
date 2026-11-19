@@ -11,13 +11,13 @@ const field = "mt-1x w-full border border-pink/25 bg-[#0c0a10] px-3x py-2x text-
 const btn = "rounded-md border px-3 py-1.5 text-xs font-medium disabled:opacity-40";
 
 /** Small crop of the base map centred on the pin. */
-function MiniMap({ x, y }: { x: number; y: number }) {
+function MiniMap({ id, x, y }: { id: string; x: number; y: number }) {
   const w = 168;
   const h = 112;
   // Show the whole base map at ~1.5x the original 1168px width, centred on the pin.
   const bgW = 1752;
   const bgH = (bgW * TILES.height) / TILES.width;
-  const { sx, sy } = toSource(x, y);
+  const { sx, sy } = toSource(x, y, undefined, id);
   const px = (sx / TILES.width) * bgW;
   const py = (sy / TILES.height) * bgH;
   return (
@@ -113,7 +113,7 @@ function Card({ item, mode, onAction, busy }: { item: QueueItem; mode: "pending"
   return (
     <li className="vc-card p-4" data-testid={`${mode}-item`}>
       <div className="flex flex-col gap-4 sm:flex-row">
-        <MiniMap x={pin.x} y={pin.y} />
+        <MiniMap id={pin.id} x={pin.x} y={pin.y} />
         <div className="min-w-0 flex-1">
           <div className="flex flex-wrap items-center gap-2">
             <span className="text-xs uppercase tracking-[0.2em]" style={{ color: PIN_TYPES[pin.type]?.color }}>
