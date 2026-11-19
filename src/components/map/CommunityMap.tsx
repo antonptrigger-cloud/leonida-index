@@ -176,7 +176,7 @@ export function CommunityMap({
   const panelMode: "submit" | "details" | "list" | null = submitting ? "submit" : selected ? "details" : listOpen || q ? "list" : null;
 
   return (
-    <div className="lvg-fullmap fixed inset-x-0 bottom-0 z-30" style={{ top: "var(--lvg-header-h, 49px)", background: BASES[baseId].tiles.background }}>
+    <div data-map-host className="lvg-fullmap fixed inset-x-0 bottom-0 z-30" style={{ top: "var(--lvg-header-h, 49px)", background: BASES[baseId].tiles.background }}>
       <div className="absolute inset-0" data-testid="map">
         <LeafletMap
           baseId={baseId}
@@ -193,7 +193,7 @@ export function CommunityMap({
       </div>
 
       {/* Controls: submit (desktop), search, spoilers, filters */}
-      <div className={`${card} vc-glass--cut absolute left-2x right-2x top-2x z-[1000] flex flex-col gap-3x p-3x sm:left-3x sm:right-auto sm:top-3x sm:w-[440px] sm:p-4x`}>
+      <div data-map-ui className={`${card} vc-glass--cut absolute left-2x right-2x top-2x z-[1000] flex flex-col gap-3x p-3x sm:left-3x sm:right-auto sm:top-3x sm:w-[440px] sm:p-4x`}>
         {breadcrumb ? <div className="lvg-crumb -mb-1x">{breadcrumb}</div> : null}
         <h2 className="sr-only">Map controls</h2>
         <div className="hidden items-center justify-between gap-4x sm:flex">
@@ -351,7 +351,7 @@ export function CommunityMap({
 
       {/* Mobile: the main action sits at thumb height. */}
       {!panelMode || panelMode === "list" ? (
-        <div className="absolute bottom-[5.25rem] left-4x z-[1000] sm:hidden">
+        <div data-map-ui className="absolute bottom-[5.25rem] left-4x z-[1000] sm:hidden">
           <button
             onClick={submitting ? endSubmit : startSubmit}
             disabled={!online}

@@ -137,17 +137,71 @@ function startZoom(map: L.Map, geo: Geo) {
   return { fitZ, start: Math.min(coverZ, fitZ + 1, geo.tiles.maxZoom) };
 }
 
+/** Below this container width the start view frames the island clear of the floating controls instead of cover-fitting the image. */
+const NARROW_PX = 640;
+
+/**
+ * Pixels at the top and bottom of the map that floating controls cover (elements marked `data-map-ui`, e.g. the search card and the
+ * mobile submit button). Falls back to sane values when none are found.
+ */
+function coveredEdges(map: L.Map): { top: number; bottom: number } {
+  const c = map.getContainer().getBoundingClientRect();
+  let top = 0;
+  let bottom = 0;
+  const host = map.getContainer().closest("[data-map-host]") ?? document;
+  host.querySelectorAll<HTMLElement>("[data-map-ui]").forEach((el) => {
+    const r = el.getBoundingClientRect();
+    if (r.width === 0 || r.height === 0) return;
+    if (r.top + r.height / 2 < c.top + c.height / 2) top = Math.max(top, r.bottom - c.top);
+    else bottom = Math.max(bottom, c.bottom - r.top);
+  });
+  // The "Zoom in to see N more places" chip (ZoomHint, bottom-[9.5rem] on phones) mounts after the first fit, so reserve its band.
+  return { top: top || 120, bottom: Math.max(bottom, 188) };
+}
+
+/**
+ * Phones: frame the whole island (Port Gellhorn to Vice City, Mount Kalaga to Leonida Keys) between the floating controls.
+ * Returns the zoom it chose, which becomes the lowest zoom the map may sit at.
+ */
+function frameIsland(map: L.Map, geo: Geo, box: NonNullable<BaseMap["startBox"]>, fitZ: number): number {
+  const { top, bottom } = coveredEdges(map);
+  // zoomSnap would round the fit down by up to a quarter level (a ~19% smaller island): fit exactly, then restore it.
+  const snap = map.options.zoomSnap;
+  map.options.zoomSnap = 0;
+  map.setMinZoom(0);
+  // maxBounds is smaller than a tall phone viewport at this zoom, which would re-centre the view and undo the padding.
+  map.setMaxBounds(undefined as unknown as L.LatLngBounds);
+  map.fitBounds(L.latLngBounds([box.y0, box.x0], [box.y1, box.x1]), {
+    paddingTopLeft: [6, top + 8],
+    paddingBottomRight: [6, bottom + 8],
+    animate: false,
+  });
+  map.options.zoomSnap = snap;
+  map.setMaxBounds(L.latLngBounds(geo.maxBounds.getSouthWest(), geo.maxBounds.getNorthEast()).extend(map.getBounds()));
+  const z = map.getZoom();
+  map.setMinZoom(Math.min(fitZ, z, geo.tiles.maxZoom));
+  return z;
+}
+
 function FitToView() {
   const map = useMap();
   const geo = useGeo();
   useEffect(() => {
     let first = true;
+    // The island frame can be smaller than the whole-image fit (the controls eat room); never zoom out less than it.
+    let floorZ = Infinity;
     const fit = () => {
       map.invalidateSize();
       const { fitZ, start } = startZoom(map, geo);
-      map.setMinZoom(Math.min(fitZ, geo.tiles.maxZoom));
-      if (first) map.setView(geo.bounds.getCenter(), start, { animate: false });
-      else if (map.getZoom() < fitZ) map.fitBounds(geo.bounds, { animate: false });
+      const box = geo.base.startBox;
+      const framed = first && !!box && map.getContainer().clientWidth < NARROW_PX;
+      // Raising minZoom above the current zoom would animate a zoom-in that fights the island frame below.
+      if (!framed) map.setMinZoom(Math.min(fitZ, floorZ, geo.tiles.maxZoom));
+      if (first) {
+        if (framed && box) {
+          floorZ = frameIsland(map, geo, box, fitZ);
+        } else map.setView(geo.bounds.getCenter(), start, { animate: false });
+      } else if (map.getZoom() < Math.min(fitZ, floorZ)) map.fitBounds(geo.bounds, { animate: false });
       first = false;
     };
     fit();
@@ -417,7 +471,7 @@ function ZoomHint({ hiddenCount, show }: { hiddenCount: number; show: boolean })
   const geo = useGeo();
   if (!show || hiddenCount === 0) return null;
   return (
-    <div className="pointer-events-none absolute inset-x-0 bottom-[7.5rem] z-[900] flex justify-center sm:bottom-10x">
+    <div className="pointer-events-none absolute inset-x-0 bottom-[9.5rem] z-[900] flex justify-center sm:bottom-10x">
       <button
         type="button"
         onClick={() => map.setZoom(map.getMinZoom() + Math.min(1.25, (geo.tiles.maxZoom - map.getMinZoom()) * 0.6))}
