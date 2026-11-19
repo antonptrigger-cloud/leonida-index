@@ -8,7 +8,7 @@ import { COLLECT_VERIFIED } from "@/lib/guides/collectibles";
 import { SF_VERIFIED } from "@/lib/guides/strangers";
 import { NEWS, newsPath } from "@/lib/news/articles";
 import { CHARACTERS, LAST_VERIFIED as CHARACTERS_VERIFIED, characterPath } from "@/lib/characters/characters";
-import { DB_VERIFIED, REFERENCE_PAGES } from "@/lib/database/reference";
+import { DB_UPDATED, DB_VERIFIED, REFERENCE_PAGES } from "@/lib/database/reference";
 import { CAST_DESCRIPTION, CAST_PATH, CAST_TITLE, CAST_VERIFIED } from "@/lib/characters/cast";
 
 export const SITE = {
@@ -312,12 +312,12 @@ export const ROUTES: Record<string, RouteSeo> = {
   },
   "/database": {
     title: "GTA 6 Database: Characters, Vehicles, Weapons, Radio",
-    description: "The Leonida Vice Guide database: GTA 6 characters and cast, vehicle totals, weapons and Ammu-Nation stores, and radio stations. Every fact is labelled.",
+    description: "The Leonida Vice Guide database: GTA 6 characters and cast, gangs, locations, vehicle totals, weapons and Ammu-Nation stores, and radio. Every fact is labelled.",
     crumb: "Database",
     kind: "collection",
     changeFrequency: "daily",
     priority: 0.8,
-    updated: DB_VERIFIED,
+    updated: DB_UPDATED,
   },
   ...Object.fromEntries(
     REFERENCE_PAGES.map((p): [string, RouteSeo] => [
@@ -329,8 +329,8 @@ export const ROUTES: Record<string, RouteSeo> = {
         kind: "article",
         changeFrequency: "daily",
         priority: 0.7,
-        updated: DB_VERIFIED,
-        published: DB_VERIFIED,
+        updated: p.updated ?? DB_VERIFIED,
+        published: p.updated ?? DB_VERIFIED,
       },
     ]),
   ),
@@ -341,7 +341,7 @@ export const ROUTES: Record<string, RouteSeo> = {
     kind: "collection",
     changeFrequency: "weekly",
     priority: 0.7,
-    updated: CHARACTERS_VERIFIED,
+    updated: DB_UPDATED,
   },
   ...Object.fromEntries(
     CHARACTERS.map((c): [string, RouteSeo] => [
@@ -354,8 +354,8 @@ export const ROUTES: Record<string, RouteSeo> = {
         profileType: GROUP_PROFILES.has(c.slug) ? "Thing" : "Person",
         changeFrequency: "weekly",
         priority: 0.6,
-        updated: CHARACTERS_VERIFIED,
-        published: CHARACTERS_VERIFIED,
+        updated: c.updated ?? CHARACTERS_VERIFIED,
+        published: c.updated ?? CHARACTERS_VERIFIED,
       },
     ]),
   ),

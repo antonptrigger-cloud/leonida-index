@@ -9,6 +9,21 @@ import { Spoiler } from "@/components/guides/Spoiler";
 import { SpoilerWarning } from "@/components/guides/MissionBits";
 import { DB_VERIFIED, DB_VERIFIED_LABEL, REFERENCE_PAGES, REFERENCE_BY_PATH, type RefTable } from "@/lib/database/reference";
 
+const MONTHS = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+/** "2026-11-19" becomes "19 Nov 2026". */
+function dateLabel(iso: string): string {
+  const [y, m, d] = iso.split("-").map(Number);
+  return `${d} ${MONTHS[m - 1]} ${y}`;
+}
+
+/** Cells that are site paths (such as /map/vice-city) render as links. */
+function Cell({ value }: { value: string }) {
+  if (/^\/[a-z0-9/-]+$/.test(value)) {
+    return <Link href={value} className="text-blue hover:text-pink">{value}</Link>;
+  }
+  return <>{value}</>;
+}
+
 function Table({ table }: { table: RefTable }) {
   const [first, ...rest] = table.columns;
   return (
@@ -28,7 +43,7 @@ function Table({ table }: { table: RefTable }) {
             <tr key={row.join("|")}>
               <th scope="row" className="py-3x pr-4x font-semibold text-ink">{row[0]}</th>
               {row.slice(1).map((cell, i) => (
-                <td key={i} className="py-3x pr-4x last:pr-0">{cell}</td>
+                <td key={i} className="py-3x pr-4x last:pr-0"><Cell value={cell} /></td>
               ))}
             </tr>
           ))}
@@ -42,12 +57,14 @@ function Table({ table }: { table: RefTable }) {
 export function ReferencePage({ path }: { path: string }) {
   const page = REFERENCE_BY_PATH[path];
   if (!page) throw new Error(`No reference page for ${path}`);
-  const others = REFERENCE_PAGES.filter((p) => p.path !== path);
+  const others = REFERENCE_PAGES.filter((p) => p.path !== path && !p.child);
+  const updated = page.updated ?? DB_VERIFIED;
+  const updatedLabel = page.updated ? dateLabel(page.updated) : DB_VERIFIED_LABEL;
   return (
     <article>
       <PageSchema path={path} breadcrumbs={false} />
       <Breadcrumbs path={path} />
-      <PageHeader kicker={page.kicker} title={page.h1} verified={`${DB_VERIFIED_LABEL} (launch eve)`} source={page.sourceLine} />
+      <PageHeader kicker={page.kicker} title={page.h1} verified={`${updatedLabel}${page.updated ? "" : " (launch eve)"}`} source={page.sourceLine} />
 
       <div className="grid gap-10x lg:grid-cols-12">
         <div className="lg:col-span-8">
@@ -67,6 +84,16 @@ export function ReferencePage({ path }: { path: string }) {
               {s.list ? (
                 <ul className="mt-4x grid max-w-2xl list-disc gap-x-8x gap-y-1x pl-6x text-ink-2 marker:text-pink sm:grid-cols-2">
                   {s.list.map((i) => <li key={i}>{i}</li>)}
+                </ul>
+              ) : null}
+              {s.links ? (
+                <ul className="mt-4x flex max-w-2xl flex-col gap-2x">
+                  {s.links.map((l) => (
+                    <li key={l.href} className="vc-bar">
+                      <Link href={l.href} className="font-semibold text-blue hover:text-pink">{l.label}</Link>
+                      {l.note ? <span className="block text-sm text-ink-2">{l.note}</span> : null}
+                    </li>
+                  ))}
                 </ul>
               ) : null}
               {s.after ? (
@@ -96,8 +123,21 @@ export function ReferencePage({ path }: { path: string }) {
 
         <aside className="flex flex-col gap-6x lg:col-span-4">
           <div className="vc-card p-6x [border-left-color:#00d4ff]">
+            {page.related?.length ? (
+              <>
+                <h2 className="vc-kicker">Related</h2>
+                <ul className="mt-4x mb-6x flex flex-col gap-2x text-sm">
+                  {page.related.map((r) => (
+                    <li key={r.href}><Link href={r.href} className="text-blue hover:text-pink">{r.label}</Link></li>
+                  ))}
+                </ul>
+              </>
+            ) : null}
             <h2 className="vc-kicker">More in the database</h2>
             <ul className="mt-4x flex flex-col gap-2x text-sm">
+              {page.child ? (
+                <li><Link href={page.child.parentPath} className="text-blue hover:text-pink">{page.child.parentLabel}</Link></li>
+              ) : null}
               {others.map((p) => (
                 <li key={p.path}><Link href={p.path} className="text-blue hover:text-pink">{p.cardTitle}</Link></li>
               ))}
@@ -105,7 +145,7 @@ export function ReferencePage({ path }: { path: string }) {
               <li><Link href="/database" className="text-blue hover:text-pink">Database home</Link></li>
             </ul>
             <p className="mt-4x text-xs text-muted">
-              Last verified <time dateTime={DB_VERIFIED}>{DB_VERIFIED_LABEL}</time>.
+              Last verified <time dateTime={updated}>{updatedLabel}</time>.
             </p>
           </div>
         </aside>
@@ -116,7 +156,7 @@ export function ReferencePage({ path }: { path: string }) {
       <section aria-labelledby="sources" className="mt-16x">
         <h2 id="sources" className="vc-display text-3xl text-ink">Sources</h2>
         <p className="mt-2x text-sm text-muted">
-          Last verified: <time dateTime={DB_VERIFIED}>{DB_VERIFIED_LABEL}</time> (launch eve). Wording on this page is our own. &ldquo;Reported&rdquo; means an outlet other than Rockstar says so and we have not confirmed it in the finished game. Plot details stay in the blurred section.
+          Last verified: <time dateTime={updated}>{updatedLabel}</time>{page.updated ? "" : " (launch eve)"}. Wording on this page is our own. &ldquo;Reported&rdquo; means an outlet other than Rockstar says so and we have not confirmed it in the finished game. Plot details stay in the blurred section.
         </p>
         <ol className="mt-4x flex flex-col gap-3x text-sm">
           {page.sources.map((s) => (
