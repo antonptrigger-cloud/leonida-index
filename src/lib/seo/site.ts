@@ -8,6 +8,7 @@ import { COLLECT_VERIFIED } from "@/lib/guides/collectibles";
 import { SF_VERIFIED } from "@/lib/guides/strangers";
 import { BASICS_UPDATED } from "@/lib/guides/basics";
 import { MAPSIZE_PUBLISHED, MAPSIZE_VERIFIED } from "@/lib/guides/map-size";
+import { GARAGES_PUBLISHED, GARAGES_VERIFIED } from "@/lib/guides/garages";
 import { SAVING_PUBLISHED, SAVING_STEPS, SAVING_VERIFIED } from "@/lib/guides/saving";
 import { SWITCH_PUBLISHED, SWITCH_STEPS, SWITCH_VERIFIED } from "@/lib/guides/switching";
 import { NEWS, newsPath } from "@/lib/news/articles";
@@ -136,7 +137,7 @@ export const ROUTES: Record<string, RouteSeo> = {
     kind: "collection",
     changeFrequency: "daily",
     priority: 0.85,
-    updated: SAVING_VERIFIED, // the hub gained the saving and switch-characters cards
+    updated: GARAGES_VERIFIED, // the hub gained the garages card
   },
   "/guides/beginner": {
     title: "GTA 6 Beginner Guide: Tips for Your First Hours",
@@ -253,6 +254,16 @@ export const ROUTES: Record<string, RouteSeo> = {
     priority: 0.8,
     updated: MAPSIZE_VERIFIED,
     published: MAPSIZE_PUBLISHED,
+  },
+  "/guides/garages": {
+    title: "GTA 6 Garages: All Locations, Prices and How to Buy",
+    description: "Where to buy every GTA 6 garage, what each one costs, when the real estate app unlocks, and how garages add slots so you can register more cars.",
+    crumb: "Garages",
+    kind: "article",
+    changeFrequency: "weekly",
+    priority: 0.8,
+    updated: GARAGES_VERIFIED,
+    published: GARAGES_PUBLISHED,
   },
   "/guides/saving": {
     title: "GTA 6 How to Save: Save Slots, Autosave & Tips",
