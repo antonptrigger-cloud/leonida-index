@@ -34,6 +34,8 @@ const HUB_META: Record<string, HubMeta> = {
   "/guides/saving": { title: "How to save", blurb: "Save slots, the autosave, when saving is blocked and a slot plan for every chapter.", tag: "Basics", accent: "blue", section: "start" },
   "/guides/switch-characters": { title: "Switching characters", blurb: "When Jason and Lucia can swap, the button combo, and partner commands.", tag: "Basics", accent: "blue", section: "start" },
   "/guides/first-person": { title: "First-person view", blurb: "No full first-person mode, but an inspect view and scoped aiming. Where the outlets differ.", tag: "Basics", accent: "blue", section: "start" },
+  "/guides/relationship": { title: "Relationship levels", blurb: "The four levels, the actions that add hearts and what costs them, with the outlets' sources.", tag: "Basics", accent: "blue", section: "start" },
+  "/guides/difficulty": { title: "Difficulty settings", blurb: "No difficulty levels, but aim settings and two accessibility toggles. Which claims are one outlet's.", tag: "Basics", accent: "blue", section: "start" },
   "/guides/money": { title: "Money guide", blurb: "The fastest ways to earn cash at every stage of the story.", tag: "Money", accent: "orange", section: "money" },
   "/guides/cheats": { title: "Cheats & codes", blurb: "Cheats unlock after the story. How to enter them and the codes so far.", tag: "Cheats", accent: "orange", section: "money" },
   "/guides/trophies": { title: "Trophies & platinum", blurb: "All 55 trophies explained, plus a roadmap to the platinum.", tag: "Trophies", accent: "orange", section: "money" },
@@ -83,4 +85,4 @@ export const HUB_SECTIONS: { id: HubSectionId; num: string; label: string; kicke
 
 /** Featured card in "Start here", and the numbered list beside it (only entries that exist are shown). */
 export const START_FEATURE = "/guides/missions";
-export const START_SIDE = ["/guides/beginner", "/guides/saving", "/guides/switch-characters", "/guides/first-person", "/guides/money", "/guides/cheats", "/guides/trophies"];
+export const START_SIDE = ["/guides/beginner", "/guides/saving", "/guides/switch-characters", "/guides/first-person", "/guides/relationship", "/guides/difficulty", "/guides/money", "/guides/cheats", "/guides/trophies"];

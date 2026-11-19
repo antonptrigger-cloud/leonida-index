@@ -20,6 +20,9 @@ export default function Page() {
           <Link href="/guides/saving" className="text-orange hover:text-pink">how saving works</Link>.
         </p>
         <p>The story is a couple under pressure across the state of Leonida, not just Vice City.</p>
+        <p>
+          Struggling with the shootouts or the driving? GTA 6 has no difficulty levels, but there are <Link href="/guides/difficulty" className="text-orange hover:text-pink">settings that can help</Link>.
+        </p>
         <p>Spend time off the mission marker. Activities, animals, and random encounters are part of the design.</p>
         <p>
           There is no free fast travel, so getting around the map is a skill of its own. See <Link href="/guides/fast-travel" className="text-orange hover:text-pink">how fast travel works</Link>.

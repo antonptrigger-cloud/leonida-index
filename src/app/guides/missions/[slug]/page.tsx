@@ -9,7 +9,8 @@ import { Faq } from "@/components/Faq";
 import { Related } from "@/components/Related";
 import { Spoiler } from "@/components/guides/Spoiler";
 import { SourcesList, SpoilerWarning, StatusTag } from "@/components/guides/MissionBits";
-import { CHAPTER, CHAPTER_1_TOTAL, LAST_VERIFIED_LABEL, MISSIONS, ORDER_NOTE, missionBySlug, missionPath } from "@/lib/guides/missions";
+import { LAST_VERIFIED_LABEL, MISSIONS, ORDER_NOTE, missionBySlug, missionChapter, missionChapterOrder, missionPath } from "@/lib/guides/missions";
+import { STORY_CHAPTERS } from "@/lib/guides/story";
 
 export const dynamicParams = false;
 
@@ -23,6 +24,10 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   return metaFor(missionPath(slug));
 }
 
+const MONTHS = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+/** "2026-11-20T00:11:00+10:00" -> "20 Nov 2026" (date as written, in Brisbane time). */
+const dateLabel = (iso: string) => `${Number(iso.slice(8, 10))} ${MONTHS[Number(iso.slice(5, 7)) - 1]} ${iso.slice(0, 4)}`;
+
 const ORDER_SENSITIVE = new Set(["prologue", "lab-fees", "just-a-scratch"]);
 
 export default async function MissionPage({ params }: { params: Promise<{ slug: string }> }) {
@@ -33,6 +38,8 @@ export default async function MissionPage({ params }: { params: Promise<{ slug: 
   const prev = MISSIONS[i - 1];
   const next = MISSIONS[i + 1];
   const path = missionPath(m.slug);
+  const chapterNumber = missionChapter(m);
+  const chapterTotal = STORY_CHAPTERS.find((c) => c.number === chapterNumber)?.missions.length ?? 0;
   const notes = [...(m.notes ?? []), ...(ORDER_SENSITIVE.has(m.slug) ? [ORDER_NOTE] : [])];
 
   return (
@@ -41,10 +48,10 @@ export default async function MissionPage({ params }: { params: Promise<{ slug: 
       <Breadcrumbs path={path} />
       <PageHeader
         backdrop="boat"
-        kicker={`Mission guide · Chapter ${CHAPTER.number} · ${String(m.order).padStart(2, "0")}/${String(CHAPTER_1_TOTAL).padStart(2, "0")}`}
+        kicker={`Mission guide · Chapter ${chapterNumber} · ${String(missionChapterOrder(m)).padStart(2, "0")}/${String(chapterTotal).padStart(2, "0")}`}
         title={m.name}
-        verified={m.updated ? "19 Nov 2026" : `${LAST_VERIFIED_LABEL} (pre-launch)`}
-        source={m.sources.some((x) => x.id === "vgc") ? "PC Gamer, Press Start, VGC, PowerPyx" : "PC Gamer, Press Start, PowerPyx"}
+        verified={m.updated ? dateLabel(m.updated) : `${LAST_VERIFIED_LABEL} (pre-launch)`}
+        source={m.sourceLabel ?? (m.sources.some((x) => x.id === "vgc") ? "PC Gamer, Press Start, VGC, PowerPyx" : "PC Gamer, Press Start, PowerPyx")}
       />
 
       <SpoilerWarning />
@@ -140,7 +147,7 @@ export default async function MissionPage({ params }: { params: Promise<{ slug: 
 
       <Faq items={m.faq} />
 
-      <SourcesList sources={m.sources} verified={m.updated ? { iso: m.updated, label: "19 Nov 2026" } : undefined} />
+      <SourcesList sources={m.sources} verified={m.updated ? { iso: m.updated, label: dateLabel(m.updated) } : undefined} />
 
       <nav aria-label="More missions" className="mt-16x grid gap-4x border-t border-pink/20 pt-6x sm:grid-cols-2">
         {prev ? (
@@ -151,7 +158,7 @@ export default async function MissionPage({ params }: { params: Promise<{ slug: 
         ) : (
           <Link href="/guides/missions" className="vc-card block p-4x">
             <span className="text-xs uppercase tracking-[0.2em] text-muted">← All missions</span>
-            <span className="vc-display mt-1x block text-2xl text-ink">Chapter {CHAPTER.number}</span>
+            <span className="vc-display mt-1x block text-2xl text-ink">Chapter {chapterNumber}</span>
           </Link>
         )}
         {next ? (
@@ -162,7 +169,7 @@ export default async function MissionPage({ params }: { params: Promise<{ slug: 
         ) : (
           <Link href="/guides/missions" className="vc-card block p-4x sm:text-right">
             <span className="text-xs uppercase tracking-[0.2em] text-muted">All missions →</span>
-            <span className="vc-display mt-1x block text-2xl text-ink">Chapter {CHAPTER.number}</span>
+            <span className="vc-display mt-1x block text-2xl text-ink">Chapter {chapterNumber}</span>
           </Link>
         )}
       </nav>

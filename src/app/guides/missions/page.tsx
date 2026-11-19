@@ -7,7 +7,7 @@ import { Faq } from "@/components/Faq";
 import { Related } from "@/components/Related";
 import { Spoiler } from "@/components/guides/Spoiler";
 import { SourcesList, SpoilerWarning } from "@/components/guides/MissionBits";
-import { MISSIONS, ORDER_NOTE, missionPath, type Mission } from "@/lib/guides/missions";
+import { MISSIONS, ORDER_NOTE, missionChapter, missionChapterOrder, missionPath, type Mission } from "@/lib/guides/missions";
 import {
   HUB_FAQ,
   HUB_SOURCES,
@@ -23,13 +23,18 @@ import {
 export const metadata = metaFor("/guides/missions");
 
 const norm = (t: string) => t.toLowerCase().replace(/[^a-z0-9]/g, "");
-// Hidden-title missions (Chapter 1 only so far) are matched by position, never by name.
+// Hidden-title missions are matched by chapter and position, never by name.
 const guideFor = (t: StoryMission, chapterNumber: number, index: number): Mission | undefined =>
   t.title
     ? MISSIONS.find((x) => !x.hidden && norm(x.name) === norm(t.title as string))
-    : chapterNumber === 1
-      ? MISSIONS.find((x) => x.hidden && x.order === index + 1)
-      : undefined;
+    : MISSIONS.find((x) => x.hidden && missionChapter(x) === chapterNumber && missionChapterOrder(x) === index + 1);
+// Chapter 2+ guides sit behind the chapter blur, but their own names are neutral. The blurred list shows the real mission name
+// (from the Story Recap) and links to the neutral page.
+const chapterGuideFor = (t: StoryMission, chapterNumber: number, index: number): Mission | undefined =>
+  guideFor(t, chapterNumber, index) ??
+  (t.title && chapterNumber > 1
+    ? MISSIONS.find((x) => x.hidden && missionChapter(x) === chapterNumber && missionChapterOrder(x) === index + 1)
+    : undefined);
 
 const HIDDEN_LABEL = "Hidden (major spoiler)";
 
@@ -39,7 +44,7 @@ function ChapterList({ chapterNumber }: { chapterNumber: number }) {
   return (
     <ol className="flex flex-col border-t border-pink/20">
       {chapter.missions.map((mission, i) => {
-        const guide = guideFor(mission, chapterNumber, i);
+        const guide = chapterGuideFor(mission, chapterNumber, i);
         const num = (
           <span className="vc-index-row__num">{String(i + 1).padStart(2, "0")}</span>
         );
@@ -50,7 +55,7 @@ function ChapterList({ chapterNumber }: { chapterNumber: number }) {
               <Link href={missionPath(guide.slug)} className="vc-index-row">
                 {num}
                 <span className="relative">
-                  <span className="vc-display block text-[1.75rem] leading-none text-ink">{guide.hidden ? HIDDEN_LABEL : guide.name}</span>
+                  <span className="vc-display block text-[1.75rem] leading-none text-ink">{guide.hidden ? (chapterNumber > 1 ? mission.title ?? HIDDEN_LABEL : HIDDEN_LABEL) : guide.name}</span>
                   <span className="mt-1x block text-[0.8rem] text-muted">
                     {guide.teaser}
                     {guide.startLabel && !guide.hidden ? <span className="text-faint"> · starts as &ldquo;{guide.startLabel}&rdquo;</span> : null}
@@ -84,7 +89,7 @@ function ChapterList({ chapterNumber }: { chapterNumber: number }) {
 }
 
 export default function MissionsIndex() {
-  const withGuides = MISSIONS.length;
+  const withGuides = MISSIONS.filter((x) => missionChapter(x) === 1).length;
   return (
     <div>
       <PageSchema path="/guides/missions" breadcrumbs={false} />
