@@ -93,6 +93,12 @@ export const UPDATES_1800_AT = "2026-11-19T18:03:18+10:00";
 /** 19 Nov 19:00 AEST batch (tracker readings 18:58-19:05 AEST, Game Awards piece). Set to the time of the edit. */
 export const UPDATES_1900_AT = "2026-11-19T19:08:00+10:00";
 
+/** 20 Nov 05:00 AEST batch (viewership update with Streams Charts day-one recap). Set to the edit time. */
+export const UPDATES_0500_AT = "2026-11-20T05:03:00+10:00";
+
+/** DE-CIX traffic record piece. Set to the edit time. */
+export const DECIX_RECORD_PUBLISHED = "2026-11-20T05:03:00+10:00";
+
 /** Game Awards nominations piece. PLACEHOLDER: Web Bot sets this to the go-live time. */
 export const TGA_NOMS_PUBLISHED = "2026-11-19T19:08:00+10:00";
 
@@ -179,6 +185,37 @@ export const NEWS: NewsItem[] = [
       {
         question: "How long does GTA 6 take to download on the NBN?",
         answer: "WhistleOut estimates almost two full days on NBN 12, just under five hours on NBN 100 and under an hour on NBN 500, assuming you max out your connection the whole time. Our own maths for the 212GB PS5 download gives about 39 hours, 4.7 hours and 56 minutes at full plan speed.",
+      },
+    ],
+  },
+  {
+    slug: "gta-6-internet-traffic-record-de-cix",
+    title: "GTA 6 Launch: DE-CIX Traffic Record Explained",
+    description:
+      "DE-CIX says its exchanges hit a record 33.03Tbps around GTA 6's launch. What was measured, when, and why it is not a reading of the whole internet.",
+    crumb: "DE-CIX record",
+    teaser: "33.03Tbps across DE-CIX's exchanges on launch eve, 0.02Tbps above its pre-download record. What it measured and what it doesn't.",
+    tag: "Launch night",
+    category: "launch",
+    keywords: ["GTA 6 internet record", "GTA 6 DE-CIX", "GTA 6 internet traffic", "did GTA 6 break the internet", "GTA 6 download traffic", "33 Tbps"],
+    published: DECIX_RECORD_PUBLISHED,
+    updated: DECIX_RECORD_PUBLISHED,
+    citations: [
+      "https://www.de-cix.net/en/about-de-cix/media/press-releases/gta-vi-global-data-traffic-hits-record-breaking-high",
+      "https://variety.com/2026/gaming/news/gta-6-launch-livestream-internet-traffic-records-1236953145/",
+    ],
+    faq: [
+      {
+        question: "Did the GTA 6 launch set an internet traffic record?",
+        answer: "At DE-CIX, yes. The internet exchange operator says traffic across its exchanges worldwide hit a record 33.03 terabits per second at 20:20 CET on 18 November around the GTA 6 launch, just above the 33.01Tbps it recorded when pre-downloads began on 10 November. It does not say how much of the traffic was GTA 6.",
+      },
+      {
+        question: "Did GTA 6 break the whole internet?",
+        answer: "No. The 33.03Tbps record is the combined traffic across DE-CIX's own internet exchanges, not a total for all internet use, and the DE-CIX release does not report an outage. Australia's NBN reported a separate record of its own on launch night.",
+      },
+      {
+        question: "What is DE-CIX?",
+        answer: "DE-CIX runs internet exchanges, hubs where content providers and network operators swap traffic directly. Its Frankfurt exchange, which it calls Europe's largest, has more than 1,100 connected networks, and its release lists peaks at exchanges in cities including Dallas, New York, Madrid, Dubai and Singapore.",
       },
     ],
   },
@@ -517,19 +554,33 @@ export const NEWS: NewsItem[] = [
   },
   {
     slug: "gta-6-streaming-viewership-peak",
-    title: "GTA 6 Streams Peak Above 6M Viewers",
+    title: "GTA 6 Streams Peak at 7.9M Viewers",
     description:
-      "Trackers put GTA 6 launch streams above 6 million concurrent viewers across Twitch, Kick and YouTube. Recorded peaks, latest readings and caveats.",
+      "Streams Charts says GTA 6 launch streams peaked at 7.91 million viewers, with 125 million hours watched on day one. Platform peaks, records and caveats.",
     crumb: "Streaming viewership",
-    teaser: "Trackers put GTA 6 launch streams above 6 million concurrent viewers. Peaks, the latest reading after the US unlock, and caveats.",
+    teaser: "Streams Charts puts the day-one peak at 7.91 million viewers and 125 million hours watched. Platform peaks, top streamers and caveats.",
     tag: "Streamers",
-    keywords: ["GTA 6 viewers", "GTA 6 Twitch", "GTA 6 Kick", "GTA 6 YouTube", "streaming record"],
+    keywords: ["GTA 6 viewers", "GTA 6 Twitch record", "GTA 6 Kick", "GTA 6 YouTube", "streaming record", "GTA 6 Streams Charts", "most watched game launch"],
     published: STREAMERS_PUBLISHED,
-    updated: UPDATES_1600_AT,
+    updated: UPDATES_0500_AT,
     citations: [
+      "https://streamscharts.com/news/gta-6-day1-recap",
+      "https://x.com/StreamsCharts/status/2123408702220992617",
+      "https://x.com/StreamsCharts/status/2123452504167833655",
+      "https://variety.com/2026/gaming/news/gta-6-launch-livestream-internet-traffic-records-1236953145/",
       "https://www.bbc.com/news/live/c60rkg21dl22t",
       "https://nextcounts.com/games/grand-theft-auto-vi",
       "https://luciastream.com/press/",
+    ],
+    faq: [
+      {
+        question: "How many people watched GTA 6 streams at launch?",
+        answer: "Analytics firm Streams Charts says GTA 6 peaked at 7.91 million concurrent viewers across livestreaming platforms in its first 24 hours, with 125.47 million hours watched. Other trackers recorded lower combined peaks: NextCounts 7.4 million and luciastream 6.4 million. These are third-party tracker figures, not official platform numbers.",
+      },
+      {
+        question: "Did GTA 6 break the Twitch record?",
+        answer: "Streams Charts says GTA 6 is now the most popular game ever on Twitch and Kick, with a Twitch peak of 3.31 million per Variety. Twitch told Variety that GTA 6 streams beat Valorant's 2020 record of 1.7 million concurrent viewers within six hours of the New Zealand unlock.",
+      },
     ],
   },
   {

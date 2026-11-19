@@ -293,6 +293,7 @@ export const NEWS_GUIDES: Record<string, string[]> = {
   "/news/gta-6-age-rating": ["/guides/beginner", "/tools/edition-compare"],
   "/news/gta-6-gta-plus-story-perks": ["/guides/money", "/tools/edition-compare"],
   "/news/gta-6-nbn-australia-traffic-record": ["/guides/beginner", "/tools/edition-compare"],
+  "/news/gta-6-internet-traffic-record-de-cix": ["/guides/beginner", "/tools/edition-compare"],
   "/news/gta-6-game-awards-nominations": ["/database/characters/cast", "/guides/beginner"],
 };
 
