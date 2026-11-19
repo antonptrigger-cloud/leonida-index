@@ -8,6 +8,7 @@ import { COLLECT_VERIFIED } from "@/lib/guides/collectibles";
 import { SF_VERIFIED } from "@/lib/guides/strangers";
 import { BASICS_UPDATED } from "@/lib/guides/basics";
 import { MAPSIZE_PUBLISHED, MAPSIZE_VERIFIED } from "@/lib/guides/map-size";
+import { GARAGES_PUBLISHED, GARAGES_VERIFIED } from "@/lib/guides/garages";
 import { NEWS, newsPath } from "@/lib/news/articles";
 import { CHARACTERS, LAST_VERIFIED as CHARACTERS_VERIFIED, characterPath } from "@/lib/characters/characters";
 import { DB_UPDATED, DB_VERIFIED, REFERENCE_PAGES } from "@/lib/database/reference";
@@ -134,7 +135,7 @@ export const ROUTES: Record<string, RouteSeo> = {
     kind: "collection",
     changeFrequency: "daily",
     priority: 0.85,
-    updated: MAPSIZE_VERIFIED, // the hub gained the map-size card
+    updated: GARAGES_VERIFIED, // the hub gained the garages card
   },
   "/guides/beginner": {
     title: "GTA 6 Beginner Guide: Tips for Your First Hours",
@@ -251,6 +252,16 @@ export const ROUTES: Record<string, RouteSeo> = {
     priority: 0.8,
     updated: MAPSIZE_VERIFIED,
     published: MAPSIZE_PUBLISHED,
+  },
+  "/guides/garages": {
+    title: "GTA 6 Garages: All Locations, Prices and How to Buy",
+    description: "Where to buy every GTA 6 garage, what each one costs, when the real estate app unlocks, and how garages add slots so you can register more cars.",
+    crumb: "Garages",
+    kind: "article",
+    changeFrequency: "weekly",
+    priority: 0.8,
+    updated: GARAGES_VERIFIED,
+    published: GARAGES_PUBLISHED,
   },
   ...Object.fromEntries(
     MISSIONS.map((m): [string, RouteSeo] => [
