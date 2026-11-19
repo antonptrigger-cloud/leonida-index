@@ -137,43 +137,54 @@ function startZoom(map: L.Map, geo: Geo) {
   return { fitZ, start: Math.min(coverZ, fitZ + 1, geo.tiles.maxZoom) };
 }
 
-/** Below this container width the start view frames the island clear of the floating controls instead of cover-fitting the image. */
+/** Below this container width the layout is the phone one (full-width controls on top and bottom, no side panel). */
 const NARROW_PX = 640;
 
 /**
- * Pixels at the top and bottom of the map that floating controls cover (elements marked `data-map-ui`, e.g. the search card and the
- * mobile submit button). Falls back to sane values when none are found.
+ * Pixels of the map covered by floating controls (elements marked `data-map-ui`), per edge. A control spanning most of the width is
+ * a top or bottom bar (phone search card, submit button); a narrower one is a side panel (the desktop search/filter card), counted
+ * from the edge it hangs off. Floors reserve what mounts after the first fit or lives outside `data-map-ui`: the zoom hint chip,
+ * the zoom buttons and the attribution.
  */
-function coveredEdges(map: L.Map): { top: number; bottom: number } {
-  const c = map.getContainer().getBoundingClientRect();
+function coveredEdges(map: L.Map): { top: number; bottom: number; left: number; right: number } {
+  const el = map.getContainer();
+  const c = el.getBoundingClientRect();
+  const narrow = c.width < NARROW_PX;
   let top = 0;
   let bottom = 0;
-  const host = map.getContainer().closest("[data-map-host]") ?? document;
-  host.querySelectorAll<HTMLElement>("[data-map-ui]").forEach((el) => {
-    const r = el.getBoundingClientRect();
+  let left = 0;
+  let right = 0;
+  const host = el.closest("[data-map-host]") ?? document;
+  host.querySelectorAll<HTMLElement>("[data-map-ui]").forEach((ui) => {
+    const r = ui.getBoundingClientRect();
     if (r.width === 0 || r.height === 0) return;
-    if (r.top + r.height / 2 < c.top + c.height / 2) top = Math.max(top, r.bottom - c.top);
-    else bottom = Math.max(bottom, c.bottom - r.top);
+    if (r.width > c.width * 0.6) {
+      if (r.top + r.height / 2 < c.top + c.height / 2) top = Math.max(top, r.bottom - c.top);
+      else bottom = Math.max(bottom, c.bottom - r.top);
+    } else if (r.left + r.width / 2 < c.left + c.width / 2) left = Math.max(left, r.right - c.left);
+    else right = Math.max(right, c.right - r.left);
   });
-  // The "Zoom in to see N more places" chip (ZoomHint, bottom-[9.5rem] on phones) mounts after the first fit, so reserve its band.
-  return { top: top || 120, bottom: Math.max(bottom, 188) };
+  return narrow
+    ? { top: top || 120, bottom: Math.max(bottom, 188), left: 0, right: 0 }
+    : { top: Math.max(top, 4), bottom: Math.max(bottom, 96), left, right: Math.max(right, 72) };
 }
 
 /**
- * Phones: frame the whole island (Port Gellhorn to Vice City, Mount Kalaga to Leonida Keys) between the floating controls.
+ * Frame the whole island (Port Gellhorn to Vice City, Mount Kalaga to Leonida Keys) in the part of the map the floating controls
+ * leave free: between the search card and the submit button on phones, right of the search/filter card on desktop.
  * Returns the zoom it chose, which becomes the lowest zoom the map may sit at.
  */
 function frameIsland(map: L.Map, geo: Geo, box: NonNullable<BaseMap["startBox"]>, fitZ: number): number {
-  const { top, bottom } = coveredEdges(map);
+  const { top, bottom, left, right } = coveredEdges(map);
   // zoomSnap would round the fit down by up to a quarter level (a ~19% smaller island): fit exactly, then restore it.
   const snap = map.options.zoomSnap;
   map.options.zoomSnap = 0;
   map.setMinZoom(0);
-  // maxBounds is smaller than a tall phone viewport at this zoom, which would re-centre the view and undo the padding.
+  // maxBounds is smaller than the viewport at this zoom, which would re-centre the view and undo the padding.
   map.setMaxBounds(undefined as unknown as L.LatLngBounds);
   map.fitBounds(L.latLngBounds([box.y0, box.x0], [box.y1, box.x1]), {
-    paddingTopLeft: [6, top + 8],
-    paddingBottomRight: [6, bottom + 8],
+    paddingTopLeft: [left ? left + 12 : 6, top + 8],
+    paddingBottomRight: [right || 6, bottom + 8],
     animate: false,
   });
   map.options.zoomSnap = snap;
@@ -194,7 +205,7 @@ function FitToView() {
       map.invalidateSize();
       const { fitZ, start } = startZoom(map, geo);
       const box = geo.base.startBox;
-      const framed = first && !!box && map.getContainer().clientWidth < NARROW_PX;
+      const framed = first && !!box;
       // Raising minZoom above the current zoom would animate a zoom-in that fights the island frame below.
       if (!framed) map.setMinZoom(Math.min(fitZ, floorZ, geo.tiles.maxZoom));
       if (first) {
