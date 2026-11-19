@@ -1,9 +1,12 @@
 """Align the Vice City detail (homography from SIFT, see align.py) onto the upscaled full map and blend with a
 feathered, colour-matched mask. Output: work/composite.png at 4x the full-map source pixels."""
-import cv2, numpy as np, json
+import cv2, numpy as np, json, sys
 cv2.setNumThreads(8)
 H=np.array(json.load(open('work/H.json')))
-full=cv2.imread('work/full-x4.png'); vc=cv2.imread('work/vc-x4.png')
+# optional args: <full-x4.png> <vc-x4.png> (defaults below)
+FULL_IN=sys.argv[1] if len(sys.argv)>1 else 'work/full-x4.png'
+VC_IN=sys.argv[2] if len(sys.argv)>2 else 'work/vc-x4.png'
+full=cv2.imread(FULL_IN); vc=cv2.imread(VC_IN)
 S=6  # composite pixels per full-map source pixel (ESRGAN gives 4x; VC detail is ~7.9x after 4x of its ~2x native)
 K=S/4
 full=cv2.resize(full,(round(full.shape[1]*K),round(full.shape[0]*K)),interpolation=cv2.INTER_LANCZOS4)

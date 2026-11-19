@@ -25,7 +25,7 @@ export default function Page() {
       </p>
       <p className="mt-3 max-w-xl text-ink-2">
         The base map is our own AI-generated illustration, cleaned and upscaled with open tools (Real-ESRGAN, BSD-3-Clause; LaMa, Apache-2.0).
-        It is not Rockstar’s map and not the in-game geography. Region names on it are drawn by the site.
+        It is not Rockstar’s map and not the in-game geography, and it carries an “Illustrative base map” note on the map itself. Region and district names on it are drawn by the site and come only from Rockstar’s own pages; positions are approximate.
       </p>
     </div>
   );
