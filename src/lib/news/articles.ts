@@ -57,13 +57,13 @@ export const UPDATES_0800_AT = "2026-11-19T08:13:00+10:00";
 /** Festival set times / Heat night piece. Web Bot: set to the moment it goes live. */
 export const FESTIVAL_PUBLISHED = "2026-11-19T08:13:00+10:00";
 
-/** 19 Nov 09:00 AEST batch (tracker refresh). PLACEHOLDER, Web Bot: set to the moment these edits go live. */
+/** 19 Nov 09:00 AEST batch (tracker refresh). Set to the time of the edit. */
 export const UPDATES_0900_AT = "2026-11-19T09:08:00+10:00";
 
 /** Sales estimate piece. PLACEHOLDER, Web Bot: set to the moment it goes live. */
 export const SALES_PUBLISHED = "2026-11-19T09:08:00+10:00";
 
-/** 19 Nov 11:00 AEST batch (tracker refresh after the UK unlock, refresh queue batch A). PLACEHOLDER, Web Bot: set to the moment these edits go live. */
+/** 19 Nov 11:00 AEST batch (tracker refresh after the UK unlock, refresh queue batch A). Set to the time of the edit. */
 export const UPDATES_1100_AT = "2026-11-19T11:07:00+10:00";
 
 /** 19 Nov 12:00 AEST batch (tracker refresh, readings 11:46-12:01 AEST). */
@@ -74,6 +74,9 @@ export const UPDATES_1300_AT = "2026-11-19T13:05:00+10:00";
 
 /** 19 Nov 14:00 AEST batch (tracker readings 13:54-14:04 AEST). */
 export const UPDATES_1400_AT = "2026-11-19T14:09:45+10:00";
+
+/** 19 Nov 15:00 AEST batch (tracker readings 14:59-15:10 AEST, first US readings). Set to the time of the edit. */
+export const UPDATES_1500_AT = "2026-11-19T15:20:30+10:00";
 
 /** Age rating quick-answer page: boards re-read 11:46-11:48 AEST 19 Nov 2026. Also used for `updated` until the first fact change; bump `updated` on every edit. */
 export const AGE_RATING_PUBLISHED = "2026-11-19T11:48:00+10:00";
@@ -247,7 +250,7 @@ export const NEWS: NewsItem[] = [
     live: true,
     keywords: ["GTA 6 server status", "is GTA 6 down", "GTA 6 known issues", "GTA 6 PS5 update", "GTA 6 patch", "01.002.001"],
     published: NEWS_PUBLISHED,
-    updated: UPDATES_1400_AT,
+    updated: UPDATES_1500_AT,
     citations: [
       "https://x.com/PS_Support_US/status/2122863683881619685",
       "https://www.pushsquare.com/news/2026/11/gta-6-requires-new-ps5-firmware-update-to-play",
@@ -273,6 +276,7 @@ export const NEWS: NewsItem[] = [
       "https://downdetector.co.uk/status/gta-vi/",
       "https://allestoerungen.de/stoerung/gta-vi/",
       "https://downdetector.com/status/gta-vi/",
+      "https://downdetector.com/status/playstation-network/",
       "https://www.bbc.com/news/live/c60rkg21dl22t",
       "https://www.standard.co.uk/news/tech/travis-scott-sony-miami-currys-grand-theft-auto-b1305482.html",
       "https://www.3djuegos.com/ps4/noticias/playstation-network-psn-se-ha-caido-espana-para-algunos-jugadores-estreno-gta-6-ha-saturado-servidores-ps5-momentos",
@@ -280,7 +284,7 @@ export const NEWS: NewsItem[] = [
     faq: [
       {
         question: "Is GTA 6 down?",
-        answer: "At 13:54-14:04 AEST on 19 Nov, four hours after the UK unlock and an hour before the US East Coast unlock, PlayStation's status feed listed no active issues for the US, Canada, Mexico, Brazil, the UK, Ireland, France, Germany, Italy, Spain, Australia or New Zealand, and Rockstar, PSN and Xbox feeds relayed by GTATracker showed up. Downdetector user reports showed \"possible problems\" for GTA VI in the UK and Germany, and no current problems in Australia, New Zealand or the US. User reports are not confirmed outages, and we could not see what the UK or German reports were about.",
+        answer: "At 14:59-15:10 AEST on 19 Nov, in the first minutes after the scheduled US unlock at 15:00 AEST, PlayStation's status feed listed no active issues for the US, Canada, Mexico, Brazil, the UK, Ireland, France, Germany, Italy, Spain, Australia or New Zealand, and Rockstar, PSN and Xbox feeds relayed by GTATracker showed up. Downdetector user reports on PlayStation Network in the US and Australia headlined \"problems\" (mostly downloads, server connection and login), which Sony's feed did not reflect, so that severity is disputed. For GTA VI itself, Downdetector showed no current problems in the US, Australia and New Zealand, and \"possible problems\" in the UK and Germany. User reports are not confirmed outages, and we could not see what the UK or German reports were about.",
       },
       {
         question: "Was PSN down before GTA 6 launched?",
