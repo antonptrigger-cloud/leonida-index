@@ -162,6 +162,9 @@ export default function CheatsGuide() {
                 <strong className="text-ink">Many challenges overlap with exploring.</strong> Our <A href="/map">interactive map</A> and <A href="/guides/activities">activities guide</A> help with collectibles, races and stunts.
               </li>
               <li className="vc-bar text-ink-2">
+                <strong className="text-ink">Want it easier before the credits?</strong> Cheats only unlock after the story, so see our <A href="/guides/difficulty">difficulty settings guide</A> for the settings that can ease things in the meantime.
+              </li>
+              <li className="vc-bar text-ink-2">
                 <strong className="text-ink">Cash cheat vs earning it.</strong> The $250,000 cheat is a one-off, so see our <A href="/guides/money">money guide</A> for ways to earn properly.
               </li>
             </ul>

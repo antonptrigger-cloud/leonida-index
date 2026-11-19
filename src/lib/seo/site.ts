@@ -11,6 +11,7 @@ import { MAPSIZE_PUBLISHED, MAPSIZE_VERIFIED } from "@/lib/guides/map-size";
 import { FASTTRAVEL_PUBLISHED, FASTTRAVEL_VERIFIED } from "@/lib/guides/fast-travel";
 import { CLOTHES_PUBLISHED, CLOTHES_VERIFIED } from "@/lib/guides/change-clothes";
 import { FIRSTPERSON_PUBLISHED, FIRSTPERSON_VERIFIED } from "@/lib/guides/first-person";
+import { DIFFICULTY_PUBLISHED, DIFFICULTY_VERIFIED } from "@/lib/guides/difficulty";
 import { GARAGES_PUBLISHED, GARAGES_VERIFIED } from "@/lib/guides/garages";
 import { SAVING_PUBLISHED, SAVING_STEPS, SAVING_VERIFIED } from "@/lib/guides/saving";
 import { SWITCH_PUBLISHED, SWITCH_STEPS, SWITCH_VERIFIED } from "@/lib/guides/switching";
@@ -140,7 +141,7 @@ export const ROUTES: Record<string, RouteSeo> = {
     kind: "collection",
     changeFrequency: "daily",
     priority: 0.85,
-    updated: CLOTHES_VERIFIED, // the hub gained the change clothes and first-person cards
+    updated: DIFFICULTY_VERIFIED, // the hub gained the difficulty card
   },
   "/guides/beginner": {
     title: "GTA 6 Beginner Guide: Tips for Your First Hours",
@@ -319,6 +320,16 @@ export const ROUTES: Record<string, RouteSeo> = {
     priority: 0.8,
     updated: FIRSTPERSON_VERIFIED,
     published: FIRSTPERSON_PUBLISHED,
+  },
+  "/guides/difficulty": {
+    title: "GTA 6 Difficulty Settings: Is There an Easy Mode?",
+    description: "GTA 6 has no difficulty levels. See how to adjust aim, the two accessibility toggles Push Square calls an easy mode, and what cheats do after the story.",
+    crumb: "Difficulty",
+    kind: "article",
+    changeFrequency: "weekly",
+    priority: 0.8,
+    updated: DIFFICULTY_VERIFIED,
+    published: DIFFICULTY_PUBLISHED,
   },
   ...Object.fromEntries(
     MISSIONS.map((m): [string, RouteSeo] => [
