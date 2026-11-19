@@ -153,6 +153,13 @@ const vgc = (path: string, label: string, used: string): MissionSource => ({
   used,
 });
 
+const gr = (path: string, label: string, used: string): MissionSource => ({
+  id: "gamesradar",
+  label,
+  url: `https://www.gamesradar.com/games/grand-theft-auto/${path}/`,
+  used,
+});
+
 const PP_FACTS = "Quest giver, start point, reward, objective flow";
 
 export const MISSIONS: Mission[] = [
@@ -788,6 +795,168 @@ export const MISSIONS: Mission[] = [
       PUSHSQUARE,
     ],
     updated: "2026-11-19T12:16:13+10:00",
+  },
+  {
+    slug: "buck-me",
+    order: 12,
+    name: "Buck Me",
+    startLabel: "Set Up Bank Account",
+    seoTitle: "GTA 6 Buck Me Mission Guide: BuckMe App & Family Savings",
+    seoDescription:
+      "GTA 6 Buck Me walkthrough: the bank visit, how BuckMe and Family Savings work, the roughly $1,000 cash cut-off and what you can't undo. Spoilers hidden.",
+    teaser: "A short errand that switches on the banking app you'll rely on for the rest of the game.",
+    intro: [
+      "Buck Me is the 12th story mission. It is more of an errand than an action job, but it unlocks the BuckMe banking app, which is how most of your money is handled from here on.",
+      "A few minutes spent understanding pocket cash, your checking account and Family Savings now will save confusion later, so this page covers how the app works as well as the mission. The step-by-step and the story notes stay behind the blur.",
+    ],
+    facts: [
+      { label: "Chapter", value: "Chapter 1: Just Like Paradise, mission 12 (PC Gamer, Push Square, Press Start, VGC)", status: "confirmed" },
+      { label: "Playable", value: "Jason", status: "confirmed" },
+      { label: "Reward", value: "The BuckMe banking app", status: "confirmed" },
+      { label: "Quest giver", value: "Lucia, by phone call", status: "reported" },
+      { label: "Unlocks after", value: "Coming Home, with the call about half a day later (PowerPyx)", status: "reported" },
+      { label: "Starts at", value: "Key Lento, Mariana County (PowerPyx)", status: "reported" },
+      { label: "Welcome deposit", value: "$100 into your checking account (PowerPyx)", status: "reported" },
+    ],
+    objectives: [
+      "Head to the bank as Jason and ask at the counter. The teller sends you to the manager (VGC and PowerPyx). PowerPyx puts the bank in Key Lento and calls it a Fleeca branch, with the manager at a table in the right-hand corner.",
+      "Follow the manager into his office. VGC says Lucia joins you there.",
+      "The meeting makes clear that a normal account isn't possible for the pair (VGC and PowerPyx). PowerPyx says it is down to a failed credit check and that the manager suggests the BuckMe app instead. VGC says you are asked whether Jason has any savings, and can answer that he has nothing or that there is cash at his house. Neither outlet says your answer changes anything.",
+      "A cutscene returns you to Jason's house, where the phone and the BuckMe app are introduced (VGC and PowerPyx).",
+      "Open your phone and select BuckMe. PowerPyx describes the icon as a purple \"B\" and says $100 has landed in your checking account as a welcome gift. GamesRadar+ says Up on the D-pad pulls out the phone.",
+      "Move money into Family Savings with the \"Buck Yourself\" option (GamesRadar+ and PowerPyx both name it). PowerPyx has you move the $100.",
+      "VGC says the evening ends with some TV on the couch with Lucia and then bed, which completes the mission.",
+    ],
+    spoiler:
+      "The bank meeting shows how little financial history Jason and Lucia have between them, which is why they end up with an app rather than a branch account. PowerPyx says the manager turns them down on credit grounds and offers BuckMe instead (Reported). VGC says the night ends quietly at home with Lucia (Reported).",
+    tips: [
+      { text: "Treat the pocket-cash cut-off as around $1,000. PowerPyx says shops take pocket cash up to $999 and route anything over $1,000 through BuckMe, and GamesRadar+ says cash covers smaller purchases up to $1,000. Bigger purchases are charged to your BuckMe account." },
+      { text: "Family Savings is one-way. Money you move in can never be withdrawn or spent (PowerPyx and GamesRadar+), so keep enough in checking and pocket cash for early spending." },
+      { text: "Pocket cash is lost if you die. PowerPyx says some of your checking balance is also lost on death, but less. GamesRadar+ says pocket cash is lost if you are wasted or busted." },
+      { text: "If your checking account hits its limit, incoming payments stay pending until you spend or move money (PowerPyx and GamesRadar+). Both say the limits rise as you progress." },
+      { text: "PowerPyx says you can deposit at any ATM and that the app has an ATM finder that sets a waypoint. GamesRadar+ also suggests using ATMs to protect pocket cash.", reported: true },
+      { text: "PowerPyx says each Family Savings goal raises your checking limit and some goals unlock price-reduction perks, tracked in an optional story-long mission called Save for the Future. GamesRadar+ describes five savings tiers and an interest boost if you reach a target before the limit increases.", reported: true },
+      { text: "GamesRadar+ says the state of your savings affects some character interactions and the ending, and gives no more detail.", reported: true },
+      { text: "Keep a manual save. PowerPyx and Push Square say story missions can't be replayed." },
+    ],
+    notes: [
+      "Order: PC Gamer, Push Square, Press Start and VGC list Buck Me 12th, straight after Coming Home and before Clean Up After Donnie. PowerPyx plays Clean Up After Donnie first and numbers Buck Me 13th. Both open the day after Coming Home, so either order works.",
+      "Pocket-cash limit: PowerPyx says $999 and GamesRadar+ says $1,000. We write it as around $1,000.",
+      "Details only one outlet gives, such as the bank's name and location, the $100 gift, the credit check and the icon colour, are marked Reported.",
+    ],
+    faq: [
+      {
+        question: "Can I take money back out of Family Savings?",
+        answer: "No. PowerPyx and GamesRadar+ both say money moved into Family Savings can never be withdrawn or spent (Confirmed).",
+      },
+      {
+        question: "Why can't I pay for something with cash?",
+        answer: "Shops take pocket cash for smaller purchases, around $1,000 and under. PowerPyx says $999 and GamesRadar+ says $1,000. Anything bigger goes through your BuckMe account (Confirmed).",
+      },
+      {
+        question: "What happens to my money if I die?",
+        answer: "Both PowerPyx and GamesRadar+ say you lose your pocket cash. PowerPyx adds that some checking balance is lost too, but less (Confirmed for pocket cash, Reported for the checking loss).",
+      },
+      {
+        question: "Why aren't my payments arriving?",
+        answer: "If your checking account is at its limit, incoming payments sit as pending until you spend or move money (Confirmed: PowerPyx and GamesRadar+).",
+      },
+      {
+        question: "Should I play Buck Me or Clean Up After Donnie first?",
+        answer: "Either works. PC Gamer, Push Square, Press Start and VGC list Buck Me first, while PowerPyx plays Clean Up After Donnie first. Both open the day after Coming Home (Confirmed for the list order).",
+      },
+      {
+        question: "Can I replay Buck Me?",
+        answer: "No. PowerPyx and Push Square both say story missions can't be replayed, so keep a manual save if you want a way back (Confirmed).",
+      },
+    ],
+    sources: [
+      PCGAMER,
+      PRESSSTART,
+      vgc("gta-6-buck-me-mission-walkthrough", "VGC: GTA 6 Buck Me mission walkthrough (18 Nov 2026)", "Objective flow, Lucia in the meeting, the savings question, the TV scene, mission order"),
+      pp("gta-6-buck-me-set-up-bank-account-walkthrough", "Start point, quest giver, credit check, welcome deposit, BuckMe rules, $999 cash cut-off"),
+      pp("gta-6-save-for-the-future-walkthrough", "Savings goals, checking-limit upgrades and perks"),
+      gr("gta-6-money-buckme-bank-account-manage", "GamesRadar+: How to manage money in GTA 6 and use BuckMe bank (19 Nov 2026)", "Pocket cash, checking account, the $1,000 cut-off, lost cash, pending payments"),
+      gr("gta-6-family-savings", "GamesRadar+: GTA 6 Family Savings explained (19 Nov 2026)", "Buck Yourself, one-way savings, five tiers, shared account"),
+      PP_INDEX,
+      PUSHSQUARE,
+    ],
+    updated: "2026-11-19T13:12:51+10:00",
+  },
+  {
+    slug: "clean-up-after-donnie",
+    order: 13,
+    name: "Clean Up After Donnie",
+    startLabel: "Donnie's Drop",
+    seoTitle: "GTA 6 Clean Up After Donnie Mission Guide: Walkthrough",
+    seoDescription:
+      "GTA 6 Clean Up After Donnie walkthrough: how it starts, how the payout arrives, whether to play it before Buck Me and tips. Story spoilers hidden.",
+    teaser: "One of Donnie's packages has gone missing and Jason is sent to track it down.",
+    intro: [
+      "Clean Up After Donnie is the 13th story mission. Donnie needs a missing package found, and Jason is the one sent out to look for it.",
+      "It is a short job, but it can matter for your wallet: VGC says Donnie becomes a buyer for items you pick up around the swamps once it is done (Reported). The objectives and story notes stay behind the blur.",
+    ],
+    facts: [
+      { label: "Chapter", value: "Chapter 1: Just Like Paradise, mission 13 (PC Gamer, Push Square, Press Start, VGC)", status: "confirmed" },
+      { label: "Playable", value: "Jason", status: "confirmed" },
+      { label: "Quest giver", value: "Donnie, by phone call (PowerPyx)", status: "reported" },
+      { label: "Unlocks after", value: "Coming Home, with Donnie's call the next morning (PowerPyx)", status: "reported" },
+      { label: "Starts at", value: "The swamps in the south-west of Hamlet, Vice-Dale County (PowerPyx)", status: "reported" },
+      { label: "Cash reward", value: "$600, paid later to Jason's mailbox (PowerPyx)", status: "reported" },
+    ],
+    objectives: [
+      "Head for the marker as Jason. The package isn't where Donnie said it would be: VGC says it is a riverbank and the package is missing, and PowerPyx says a pink search area appears (VGC and PowerPyx).",
+      "PowerPyx says a fisherman on the docks points out the package on the shore under a roof. Examine it (VGC and PowerPyx).",
+      "Take the boat that sits by the package and drive it downriver to the marked shack (VGC and PowerPyx). VGC calls it a fan boat.",
+      "Kingfishers gang members are at the shack (VGC and PowerPyx). VGC says you can talk to them but they turn hostile, and suggests shooting early because the boat has little cover. PowerPyx counts three of them.",
+      "Go inside the shack and take the package of cocaine (VGC and PowerPyx).",
+      "VGC says a sniper rifle is in the shack and that more Kingfishers arrive by boat, so you need to deal with them before moving on. PowerPyx doesn't mention a second wave.",
+      "VGC says to call Donnie, who tells you to leave the package at his old tool box behind his trailer. PowerPyx says the trailer is marked in Key Lento with a green fence icon, that you can drive the boat there, and that you put the bag in the container.",
+    ],
+    spoiler:
+      "Donnie's last delivery went wrong, and the package turns up empty by the water. Both walkthroughs send you after the Kingfishers gang, who have it at a shack downriver. Getting it back means a small boat raid on the gang's shack (VGC and PowerPyx). Afterwards VGC says Donnie buys drugs you drop at his trailer and sends you the locations of more of his lost packages (Reported).",
+    tips: [
+      { text: "Go in armed. VGC says the fight at the shack can't be avoided, and PowerPyx simply says to take the gang out.", reported: true },
+      { text: "Don't expect the $600 straight away. PowerPyx says it arrives later in the mailbox at Jason's house.", reported: true },
+      { text: "VGC says that after this mission Donnie buys narcotics you drop at his trailer, which it calls an effective early money-maker, and sends you package locations. See our money guide for other early earners.", reported: true },
+      { text: "PowerPyx lists a follow-up optional job, Find the Lost Drugs, later in Chapter 1.", reported: true },
+      { text: "Keep a manual save. PowerPyx and Push Square say story missions can't be replayed." },
+    ],
+    notes: [
+      "Order: PC Gamer, Push Square, Press Start and VGC list Clean Up After Donnie 13th, straight after Buck Me. PowerPyx plays it first and numbers it 12th, with Buck Me 13th. Both open the day after Coming Home, so either order works.",
+      "Where VGC and PowerPyx describe the same step differently, such as a tool box versus a container, we name both and attribute them.",
+    ],
+    faq: [
+      {
+        question: "Where does Clean Up After Donnie start?",
+        answer: "PowerPyx says it starts in the swamps south-west of Hamlet, after Donnie calls the morning after Coming Home. Its map label is \"Donnie's Drop\" (Reported).",
+      },
+      {
+        question: "I finished the mission but didn't get paid. Is it bugged?",
+        answer: "Probably not. PowerPyx says the $600 arrives later in Jason's mailbox. VGC doesn't list a cash reward (Reported).",
+      },
+      {
+        question: "Does Donnie have more work after this mission?",
+        answer: "VGC says he sends you the locations of more packages and buys drugs dropped at his trailer, and PowerPyx lists a follow-up optional job, Find the Lost Drugs (Reported).",
+      },
+      {
+        question: "Should I play this before Buck Me?",
+        answer: "Either order works. PC Gamer, Push Square, Press Start and VGC list Buck Me first, while PowerPyx plays Clean Up After Donnie first. Both open the day after Coming Home (Confirmed for the list order).",
+      },
+      {
+        question: "Can I replay Clean Up After Donnie?",
+        answer: "No. PowerPyx and Push Square both say story missions can't be replayed, so keep a manual save if you want a way back (Confirmed).",
+      },
+    ],
+    sources: [
+      PCGAMER,
+      PRESSSTART,
+      vgc("gta-6-clean-up-after-donnie-mission-walkthrough", "VGC: GTA 6 Clean Up After Donnie mission walkthrough (18 Nov 2026)", "Objective flow, fan boat, sniper rifle, tool box, Donnie as a buyer, mission order"),
+      pp("gta-6-clean-up-after-donnie-donnies-drop-walkthrough", "Start point, quest giver, $600 reward, fisherman, three Kingfishers, trailer location"),
+      PP_INDEX,
+      PUSHSQUARE,
+    ],
+    updated: "2026-11-19T13:12:51+10:00",
   },
 ];
 
