@@ -70,6 +70,10 @@ begin
 end;
 $$;
 
+-- Same privileges as before: only the service role (the Next.js route handlers) may call it.
+revoke execute on function public.submit_location(text, text, text, text, text, double precision, double precision, text, boolean, text, integer, text) from public, anon, authenticated;
+grant execute on function public.submit_location(text, text, text, text, text, double precision, double precision, text, boolean, text, integer, text) to service_role;
+
 -- 3. Seed pins with a category: places Rockstar has officially named (see docs/DATA_CREDITS.md). Existing rows only get their category.
 -- BEGIN GENERATED SEED (scripts/gen-category-sql.mjs)
 insert into public.pins (id, status, type, name, description, region, x, y, gamer_tag, is_seed, approximate, source, category, created_at, reviewed_at)
