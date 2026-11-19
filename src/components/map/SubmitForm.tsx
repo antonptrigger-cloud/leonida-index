@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { CATEGORIES, CATEGORY_GROUPS, CATEGORY_IDS } from "@/lib/map/categories";
 import { LIMITS, REGIONS, SUBMIT_TYPES, typeSingular, type SubmitType } from "@/lib/map/config";
 import { validateSubmission, type FieldErrors } from "@/lib/map/validation";
 import { getSavedGamerTag, saveGamerTag } from "./local";
@@ -20,6 +21,7 @@ export function SubmitForm({
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
   const [region, setRegion] = useState("");
+  const [category, setCategory] = useState("");
   const [occupant, setOccupant] = useState("");
   const [gamerTag, setGamerTag] = useState("");
   const [spoiler, setSpoiler] = useState(false);
@@ -34,7 +36,7 @@ export function SubmitForm({
     setGamerTag((t) => t || getSavedGamerTag());
   }, []);
 
-  const payload = { type, name, description, region: region || null, occupant: occupant || null, gamerTag, spoiler, x: draft?.x, y: draft?.y };
+  const payload = { type, name, description, region: region || null, category: category || null, occupant: occupant || null, gamerTag, spoiler, x: draft?.x, y: draft?.y };
   // Live client-side validation once the user has tried to submit.
   const live = attempted ? validateSubmission(payload) : null;
   const errors: FieldErrors = { ...serverFields, ...(live && !live.ok ? live.errors : {}) };
@@ -108,6 +110,23 @@ export function SubmitForm({
           ))}
         </select>
         {err("type")}
+      </label>
+
+      <label className="text-[0.7rem] font-semibold uppercase tracking-[0.14em] text-muted">
+        Vendor / service category <span className="text-faint">(optional, for shops, services and places to stay)</span>
+        <select value={category} onChange={(e) => setCategory(e.target.value)} className={field} name="category">
+          <option value="">None / not a vendor</option>
+          {CATEGORY_GROUPS.map((g) => (
+            <optgroup key={g.id} label={g.label}>
+              {CATEGORY_IDS.filter((c) => CATEGORIES[c].group === g.id).map((c) => (
+                <option key={c} value={c}>
+                  {CATEGORIES[c].label}
+                </option>
+              ))}
+            </optgroup>
+          ))}
+        </select>
+        {err("category")}
       </label>
 
       <label className="text-[0.7rem] font-semibold uppercase tracking-[0.14em] text-muted">
