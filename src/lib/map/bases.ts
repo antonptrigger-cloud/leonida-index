@@ -24,6 +24,8 @@ export interface BaseMap {
   attribution: string;
   /** True when the image has place names painted into it (region chips are then offset below them). */
   bakedLabels: boolean;
+  /** Optional box (source pixels) around the land and region labels. Narrow screens start framed on it instead of the whole image. */
+  startBox?: { x0: number; y0: number; x1: number; y1: number };
   pinToSource(pin: { id?: string; x: number; y: number }): { sx: number; sy: number };
   sourceToPin(sx: number, sy: number): { x: number; y: number };
 }
@@ -54,6 +56,8 @@ const art: BaseMap = {
   tiles: artManifest as TileManifest,
   attribution: `Illustrative AI-made map art, not the in-game geography · ${GTADB_CREDIT}`,
   bakedLabels: false,
+  // Land mask extent (x 64..1084, y 76..1541 of the 1200x1648 art) plus room for the region chips, x6 composite scale.
+  startBox: { x0: 20 * 6, y0: 40 * 6, x1: 1140 * 6, y1: 1580 * 6 },
   pinToSource({ id, x, y }) {
     const fixed = id ? positions[id] : undefined;
     if (fixed) return { sx: fixed[0], sy: fixed[1] };
