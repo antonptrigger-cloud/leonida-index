@@ -1962,6 +1962,104 @@ export const MISSIONS: Mission[] = [
     sourceLabel: "VGC, PowerPyx, Push Square",
     updated: "2026-11-20T03:14:00+10:00",
   },
+  {
+    slug: "chapter-2-mission-5",
+    hidden: true,
+    chapter: 2,
+    chapterOrder: 5,
+    order: 27,
+    name: "Chapter 2, Mission 5",
+    seoTitle: "GTA 6 Chapter 2 Mission 5 Walkthrough & Tips",
+    seoDescription:
+      "GTA 6 Chapter 2 Mission 5 walkthrough: how to get the slim jim, how car trackers work, step-by-step objectives and what the mission unlocks.",
+    teaser: "The fifth mission of Chapter 2, straight after Chapter 2, Mission 4.",
+    intro: [
+      "This is the fifth mission of Chapter 2 and the 27th story mission overall (Push Square's list, and PC Gamer calls it the fifth in Chapter 2). It is where you get the slim jim, which PC Gamer says opens locked cars without breaking a window or setting off an alarm. What you bring with you matters: PowerPyx says a car without a tracker can be kept, and a tracked one means a detour later.",
+      "Our mission list keeps Chapter 2 names behind a blur, so this page uses a neutral title. The mission's name, the people, the places and the objective flow all stay behind the blur.",
+    ],
+    facts: [
+      { label: "Chapter", value: "Chapter 2, mission 5, and 27th overall (Push Square's list; PC Gamer calls it the fifth mission of Chapter 2). PowerPyx numbers it 31st because it counts differently.", status: "confirmed" },
+      { label: "Unlocks after", value: "Chapter 2, Mission 4 (PC Gamer says it comes just after that mission, and PowerPyx's requirement line is the same one)", status: "confirmed" },
+      { label: "Starts", value: "PowerPyx says you can bring a car with you, and that one without a tracker can be registered at the end", status: "reported" },
+      { label: "Slim jim", value: "You get it here. It opens locked cars with no broken window and no alarm, using a short stick mini-game (PC Gamer and PowerPyx)", status: "confirmed" },
+      { label: "Buys stolen cars", value: "A contact starts buying stolen cars after this mission (PC Gamer and PowerPyx). PC Gamer says he only buys older, low-end cars. PowerPyx says he refuses any car with a tracker.", status: "reported" },
+      { label: "Free registered car", value: "Lucia gets one (PowerPyx)", status: "reported" },
+      { label: "Scooter Bros app", value: "PowerPyx lists it as a reward here, to have your personal car delivered. Push Square describes the app but doesn't say when you get it.", status: "reported" },
+      { label: "Objectives", value: "Seven (PowerPyx)", status: "reported" },
+    ],
+    objectives: [
+      "Bring a car to the mechanic's garage in Port Gellhorn, Kelly County. If your car has no tracker, you can register it at the end as your personal vehicle. If it has a tracker, you will be sent out later for an untracked one (Reported, PowerPyx).",
+      "Follow the mechanic to the yard behind the garage, where three cars are parked (Reported, PowerPyx).",
+      "Scan the cars with your scanning app (PowerPyx calls it the Waink app, and PC Gamer says it was installed earlier in Chapter 1). The bottom right of the screen shows no tracker, a standard tracker or an advanced tracker (Confirmed, PC Gamer and PowerPyx).",
+      "Pick up the slim jim, which he hands over and shows you how to use (Confirmed, PC Gamer and PowerPyx).",
+      "Break into the marked car, a Montagne XL (PowerPyx). Interact with the door, then tilt the right stick to the sweet spot (Confirmed for the stick mini-game, PC Gamer and PowerPyx). PowerPyx says the bar turns from white to pink at the right spot, and Push Square also describes a pink sweet spot (Reported).",
+      "Walk back to the garage with the mechanic. He now offers to register stolen cars for you (Reported, PowerPyx).",
+      "Only if you didn't bring a suitable car: steal one without a tracker from the big main road in the middle of Port Gellhorn and drive it back. PowerPyx says he won't accept a car stolen too close to his garage (Reported, PowerPyx).",
+      "Respray the car in a new colour, then choose Register. It becomes Lucia's personal vehicle and the mission ends (Reported, PowerPyx).",
+    ],
+    spoiler:
+      "The mission is called Moses in our mission list, Push Square's list and PC Gamer, after the mechanic who runs the garage (Confirmed). PowerPyx shows the map label Take A Vehicle to Moses (Reported). PC Gamer says it comes just after Girls' Trip. PowerPyx's quest description says Vicki told Lucia that Moses could set her up with a ride if she took a low-key vehicle to his auto shop (Reported, PowerPyx). You play as Lucia (PowerPyx). PowerPyx lists Moses's questline as this mission, then Daily Driver, Steal Vehicles for Moses and Collect Moses' Gift (Reported, PowerPyx).",
+    tips: [
+      { text: "Scan before you steal. The scanning app shows trackers, and PowerPyx says the buyer of stolen cars refuses any car with a tracker.", reported: true },
+      { text: "Know the tracker types. PowerPyx says cheap cars usually have no tracker, mid-range cars a standard one and supercars an advanced one (Reported). On what a standard tracker does, the outlets differ: PowerPyx says it alerts the police to where you stole the car, while PC Gamer says it only stops you modifying the car at a mod shop until you register it (Reported, conflict). Both say an advanced tracker brings the police if you drive too slowly.", reported: true, link: { href: "/guides/stealing-cars", label: "Stealing cars guide" } },
+      { text: "The slim jim doesn't start every car. PC Gamer says it won't start a keyless car, and that keyless cars need a key cloner you get later in the story. Some cars only need to be unlocked before you can hotwire them (Reported).", reported: true },
+      { text: "Check the trunk. PC Gamer says the slim jim also lets you pop a car's trunk without setting off an alarm (Reported).", reported: true },
+      { text: "Mind your garage space. PowerPyx says registering a new personal car later needs a free slot, so you have to buy more garages or sell a car (Reported).", reported: true, link: { href: "/guides/garages", label: "Garages guide" } },
+      { text: "Selling untracked cars is early money. PowerPyx calls it the fastest way to make money so far, with a short closed period of 1 to 2 minutes after each sale (Reported).", reported: true, link: { href: "/guides/money", label: "Money guide" } },
+      { text: "Make a manual save before you start, so you can retry if the mission goes wrong. This is our own suggestion.", reported: false, link: { href: "/guides/saving", label: "How to save" } },
+    ],
+    notes: [
+      "Order: Push Square lists this mission fifth in Chapter 2, straight after the fourth mission, and PC Gamer calls it the fifth mission of Chapter 2. PowerPyx calls it the 31st main mission using its own count, so treat the overall number as Reported.",
+      "PowerPyx is the only full walkthrough for this mission so far. PC Gamer confirms the slim jim, its mini-game and the rules for the buyer of stolen cars, so everything else is Reported.",
+      "The objective list is written from PowerPyx and hasn't been checked against the on-screen prompts.",
+    ],
+    faq: [
+      {
+        question: "Which mission number is Chapter 2 Mission 5?",
+        answer: "It is the fifth mission of Chapter 2 and the 27th overall in Push Square's list, and PC Gamer calls it the fifth in Chapter 2 (Confirmed). PowerPyx numbers it 31st because it counts differently (Reported).",
+      },
+      {
+        question: "When do you get the slim jim in GTA 6?",
+        answer: "In this mission. PC Gamer and PowerPyx both say it is handed over here and that it opens locked cars without a broken window or an alarm (Confirmed).",
+      },
+      {
+        question: "What car should I bring?",
+        answer: "One without a tracker. PowerPyx says you can then keep it and register it as your personal vehicle at the end (Reported).",
+      },
+      {
+        question: "Does the slim jim work on every car?",
+        answer: "No. PC Gamer says it won't start a keyless car, which needs a key cloner you get later in the story (Reported).",
+      },
+      {
+        question: "What does a car tracker do?",
+        answer: "The outlets differ on standard trackers. PowerPyx says they alert the police to where you stole the car, and PC Gamer says they only block mod-shop upgrades until the car is registered. Both say an advanced tracker brings the police if you drive too slowly (Reported).",
+      },
+    ],
+    sources: [
+      pp("gta-6-moses-take-a-vehicle-to-moses-walkthrough", "Start point, requirement, objectives, trackers, rewards, registering and selling cars, and mission order"),
+      {
+        id: "pcgamer",
+        label: "PC Gamer: How to get a slim jim in GTA 6 (18 Nov 2026)",
+        url: "https://www.pcgamer.com/games/grand-theft-auto/gta-6-slim-jim/",
+        used: "The mission it comes from and its order, the slim jim mini-game, the trunk and the keyless-car limit",
+      },
+      {
+        id: "pcgamer",
+        label: "PC Gamer: GTA 6 changes the way you steal cars (18 Nov 2026)",
+        url: "https://www.pcgamer.com/games/grand-theft-auto/gta-6-how-to-steal-cars/",
+        used: "The scanning app, tracker types, the slim jim and the rules for selling stolen cars",
+      },
+      PUSHSQUARE,
+      {
+        id: "pushsquare",
+        label: "Push Square: GTA 6 tips and tricks you need to know",
+        url: "https://www.pushsquare.com/guides/gta-6-tips-and-tricks-you-need-to-know",
+        used: "The pink sweet spot in the break-in mini-games and what the Scooter Bros app does",
+      },
+    ],
+    sourceLabel: "PowerPyx, PC Gamer, Push Square",
+    updated: "2026-11-20T04:13:00+10:00",
+  },
 ];
 
 /** Chapter a mission belongs to (Chapter 1 unless stated). */
