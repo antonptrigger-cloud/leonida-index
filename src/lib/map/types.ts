@@ -1,3 +1,4 @@
+import type { PinCategory } from "./categories";
 import type { PinSource, PinType, SubmitType } from "./config";
 
 export type PinStatus = "pending" | "approved" | "rejected" | "merged" | "hidden";
@@ -18,6 +19,8 @@ export interface Pin {
   /** "official" = named by Rockstar; "community" = marked by a player. Defaults from `isSeed` until the DB has the column. */
   source: PinSource;
   approximate: boolean;
+  /** Vendor / service kind (gas, clothing, bar ...). null for most pins; needs the 20261119000500 migration to persist. */
+  category: PinCategory | null;
   spoiler: boolean;
   upCount: number;
   downCount: number;
@@ -43,6 +46,7 @@ export type PublicPin = Pick<
   | "isSeed"
   | "source"
   | "approximate"
+  | "category"
   | "spoiler"
   | "upCount"
   | "downCount"
@@ -57,6 +61,7 @@ export interface SubmissionInput {
   occupant: string | null;
   gamerTag: string;
   spoiler: boolean;
+  category: PinCategory | null;
   x: number;
   y: number;
 }
@@ -69,6 +74,7 @@ export interface PinEdit {
   occupant?: string | null;
   spoiler?: boolean;
   approximate?: boolean;
+  category?: PinCategory | null;
   x?: number;
   y?: number;
 }
@@ -113,6 +119,7 @@ export function toPublicPin(p: Pin): PublicPin {
     isSeed: p.isSeed,
     source: p.source,
     approximate: p.approximate,
+    category: p.category,
     spoiler: p.spoiler,
     upCount: p.upCount,
     downCount: p.downCount,
