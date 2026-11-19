@@ -23,7 +23,22 @@ export interface NewsItem {
   citations: string[];
   /** Optional real Q&A, rendered visibly by <Faq> (which also emits FAQPage JSON-LD). Never invent questions. */
   faq?: { question: string; answer: string }[];
+
+  /*
+   * Optional /news index controls. All of these have sensible defaults (see src/lib/news/hub.ts),
+   * so a new article only needs the fields above. Documented in CONTENT.md.
+   */
+  /** Topic filter on the index. Default: derived from `tag` (see TAG_CATEGORY in hub.ts). */
+  category?: NewsCategory;
+  /** Updating/evergreen page (server tracker, reviews, release countdown). Shown in the "Live trackers" strip with an "Updated HH:MM AEST" badge instead of the story lists. */
+  live?: boolean;
+  /** Keep among the top stories after it stops being the newest. */
+  pinned?: boolean;
+  /** Send straight to the Archive, even if it is new (e.g. a superseded or pre-launch piece). */
+  archived?: boolean;
 }
+
+export type NewsCategory = "launch" | "servers" | "reviews" | "sales" | "events" | "streamers" | "platforms";
 
 export const NEWS_PUBLISHED = "2026-11-18T22:35:00+10:00";
 
@@ -59,6 +74,7 @@ export const NEWS: NewsItem[] = [
     crumb: "Live in New Zealand",
     teaser: "New Zealand unlocked first at 11:00 UTC. What is confirmed, who is next, and what we could not verify.",
     tag: "Launch night",
+    pinned: true,
     keywords: ["GTA 6", "New Zealand", "launch", "unlock time", "Leonida", "Vice City", "spoilers"],
     published: NEWS_PUBLISHED,
     updated: NEWS_PUBLISHED,
@@ -145,6 +161,7 @@ export const NEWS: NewsItem[] = [
     crumb: "GTA 6 reviews",
     teaser: "Metacritic opened at 99, level with Ocarina of Time. Scores, performance notes and what is still unconfirmed.",
     tag: "Reviews",
+    live: true,
     keywords: ["GTA 6 reviews", "Metacritic", "GTA 6 score", "Ocarina of Time", "performance", "PS5 Pro"],
     published: NEWS_PUBLISHED,
     updated: UPDATES_0800_AT,
@@ -168,6 +185,7 @@ export const NEWS: NewsItem[] = [
     crumb: "Server status and known issues",
     teaser: "Live status readings, known issues, the PS5 system update and the two pre-launch patches.",
     tag: "Live tracker",
+    live: true,
     keywords: ["GTA 6 server status", "is GTA 6 down", "GTA 6 known issues", "GTA 6 PS5 update", "GTA 6 patch", "01.002.001"],
     published: NEWS_PUBLISHED,
     updated: UPDATES_0900_AT,
@@ -215,6 +233,7 @@ export const NEWS: NewsItem[] = [
     crumb: "Release time by region",
     teaser: "Midnight local time, region by region, in local, UTC and Brisbane time.",
     tag: "Countdown",
+    live: true,
     keywords: ["GTA 6 release time", "GTA 6 unlock time", "GTA 6 countdown", "midnight launch", "Brisbane"],
     published: NEWS_PUBLISHED,
     updated: NEWS_PUBLISHED,
