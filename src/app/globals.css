@@ -1019,6 +1019,20 @@ body:has(.lvg-fullmap) {
   letter-spacing: 0.08em;
   color: #ffe1ec;
 }
+.lvg-label--county {
+  font-size: 17px;
+  letter-spacing: 0.14em;
+  color: #fff;
+}
+.lvg-label--city {
+  font-size: 15.5px;
+  letter-spacing: 0.1em;
+}
+.lvg-label--island {
+  font-size: 14px;
+  letter-spacing: 0.08em;
+  color: #ffe9c4;
+}
 .lvg-label--water {
   font-size: 14px;
   letter-spacing: 0.1em;
@@ -1030,6 +1044,9 @@ body:has(.lvg-fullmap) {
   .lvg-label--district { font-size: 13.5px; }
   .lvg-label--place { font-size: 13px; }
   .lvg-label--water { font-size: 13px; }
+  .lvg-label--county { font-size: 14px; }
+  .lvg-label--city { font-size: 13.5px; }
+  .lvg-label--island { font-size: 13px; }
 }
 .lvg-pinname {
   translate: 16px -31px;

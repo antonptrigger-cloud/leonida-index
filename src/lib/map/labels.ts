@@ -1,4 +1,6 @@
 import data from "./labels.json";
+import officialData from "./official-labels.json";
+import type { BaseId } from "./bases";
 
 /**
  * District / region / water labels drawn over the map (zoom-dependent text, not pins).
@@ -10,7 +12,7 @@ import data from "./labels.json";
  * x/y are stored pin coordinates (COORD_SPACE), so labels follow whichever base is showing, exactly like pins do.
  * `anchor` is the id of a seed pin whose fixed art position the label shares.
  */
-export type LabelKind = "region" | "district" | "place" | "water";
+export type LabelKind = "region" | "county" | "district" | "city" | "place" | "water" | "island";
 
 export interface MapLabel {
   id: string;
@@ -26,9 +28,16 @@ export interface MapLabel {
   sourceUrl: string;
   sourceQuote: string;
   placement: string;
+  /** Official base only: height (source px) of the same name printed on the poster. The label is drawn only while that print is too small to read. */
+  printedPx?: number;
 }
 
 export const LABELS: MapLabel[] = data.labels as MapLabel[];
+/** Every name the official poster prints (county, city, district, place and water names), read off the poster; see docs/OFFICIAL_MAP.md. */
+export const OFFICIAL_LABELS: MapLabel[] = officialData.labels as MapLabel[];
+
+/** The label set for a base: the official poster has its own names, the other bases use the PR A set. */
+export const labelsFor = (base: BaseId): MapLabel[] => (base === "official" ? OFFICIAL_LABELS : LABELS);
 
 /** Drawing priority when labels collide: lower wins. */
-export const LABEL_PRIORITY: Record<LabelKind, number> = { region: 0, water: 1, district: 2, place: 3 };
+export const LABEL_PRIORITY: Record<LabelKind, number> = { region: 0, county: 0.5, water: 1, city: 1.5, district: 2, island: 2.5, place: 3 };

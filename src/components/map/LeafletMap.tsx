@@ -9,7 +9,7 @@ import type { TileManifest } from "@/lib/map/config";
 import { markerHtml } from "./glyphs";
 import { onBaseMap } from "@/lib/map/geo";
 import { CATEGORIES } from "@/lib/map/categories";
-import { LABELS, LABEL_PRIORITY, type LabelKind, type MapLabel } from "@/lib/map/labels";
+import { LABEL_PRIORITY, labelsFor, type LabelKind, type MapLabel } from "@/lib/map/labels";
 import { Occupancy, textWidth, type Rect } from "@/lib/map/label-layout";
 import type { PublicPin } from "@/lib/map/types";
 
@@ -437,7 +437,12 @@ const LABEL_FONT: Record<LabelKind, { px: number; narrowPx: number; spacing: num
   water: { px: 14, narrowPx: 13, spacing: 0.1, h: 20 },
   district: { px: 15, narrowPx: 13.5, spacing: 0.1, h: 20 },
   place: { px: 13.5, narrowPx: 13, spacing: 0.08, h: 18 },
+  county: { px: 17, narrowPx: 14, spacing: 0.14, h: 24 },
+  city: { px: 15.5, narrowPx: 13.5, spacing: 0.1, h: 21 },
+  island: { px: 14, narrowPx: 13, spacing: 0.08, h: 19 },
 };
+/** On the official base our label is drawn only while the poster's own print of the same name is smaller than this (screen px). */
+const PRINT_LEGIBLE_PX = 11;
 
 interface PlacedLabel {
   label: MapLabel;
@@ -502,7 +507,8 @@ function layoutLabels(args: {
       if (l.anchor) anchored.add(l.anchor);
     }
   };
-  const wanted = LABELS.filter((l) => (l.kind === "region" ? !regionsVisible : labelZoom >= l.minZoom)).sort(
+  const printTooSmall = (l: MapLabel) => !l.printedPx || l.printedPx * 2 ** (zoom - geo.tiles.maxNativeZoom) < PRINT_LEGIBLE_PX;
+  const wanted = labelsFor(geo.base.id).filter((l) => (l.kind === "region" ? !regionsVisible : labelZoom >= l.minZoom) && printTooSmall(l)).sort(
     (a, b) => LABEL_PRIORITY[a.kind] - LABEL_PRIORITY[b.kind] || a.minZoom - b.minZoom,
   );
   for (const p of singles) {
@@ -611,7 +617,7 @@ function PinLayer({
             <Marker
               key={p.id}
               position={geo.toLatLng(p)}
-              icon={regionIcon(p.name, p.id === selectedId, p.approximate, geo.base.bakedLabels && p.name === "Mount Kalaga", geo.base.bakedLabels)}
+              icon={regionIcon(p.name, p.id === selectedId, p.approximate, geo.base.id === "legacy" && p.name === "Mount Kalaga", geo.base.bakedLabels)}
               eventHandlers={{ click: () => onSelect(p.id) }}
               keyboard={true}
               title={`${p.name} (region)`}

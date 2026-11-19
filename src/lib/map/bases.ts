@@ -1,6 +1,9 @@
 import legacyManifest from "./base-map.json";
 import artManifest from "./base-art.json";
 import artPositions from "./art-pin-positions.json";
+import officialManifest from "./base-official.json";
+import officialPositions from "./official-pin-positions.json";
+import { officialToPin, pinToOfficial } from "./official-transform";
 import { artToPin, pinToArt } from "./pin-transform";
 import type { TileManifest } from "./config";
 
@@ -9,13 +12,13 @@ import type { TileManifest } from "./config";
  * plus a rule for turning stored pin coordinates into that base's source pixels.
  *
  * Stored pin coordinates never change: they live in the legacy 1168x784 "pin space" (see COORD_SPACE in
- * config.ts). A base only describes how to draw them. To add Rockstar's official map later: generate its
- * tiles, add an entry here with the control points for it, and set DEFAULT_BASE. Nothing in Supabase moves.
+ * config.ts). A base only describes how to draw them. The official Rockstar map is the default base (scripts/official/,
+ * docs/OFFICIAL_MAP.md); a future replacement is added the same way. Nothing in Supabase moves.
  */
-export type BaseId = "art" | "legacy";
-export const BASE_IDS: BaseId[] = ["art", "legacy"];
-/** The base shown by default. `?base=legacy` switches to the old placeholder. */
-export const DEFAULT_BASE: BaseId = "art";
+export type BaseId = "official" | "art" | "legacy";
+export const BASE_IDS: BaseId[] = ["official", "art", "legacy"];
+/** The base shown by default: Rockstar's official map. `?base=art` shows the custom art, `?base=legacy` the old placeholder. */
+export const DEFAULT_BASE: BaseId = "official";
 
 export interface BaseMap {
   id: BaseId;
@@ -89,5 +92,32 @@ const art: BaseMap = {
   },
 };
 
-export const BASES: Record<BaseId, BaseMap> = { art, legacy };
-export const isBaseId = (v: unknown): v is BaseId => v === "art" || v === "legacy";
+const officialFixed = officialPositions as unknown as Record<string, [number, number]>;
+const official: BaseMap = {
+  id: "official",
+  label: "Official map (Rockstar)",
+  tiles: officialManifest as TileManifest,
+  attribution: `Map © Rockstar Games (<a href="https://www.rockstargames.com/VI/downloads" target="_blank" rel="noopener">Leonida Map &amp; Cover Art Poster</a>) · ${GTADB_CREDIT}`,
+  note: {
+    chip: "Official Rockstar map",
+    title: "Official Rockstar map",
+    body: "This is Rockstar’s official Leonida map poster (Map © Rockstar Games). Names printed on it are exact. Pins for places the poster does not print are placed by district and marked approximate, and the pins of places it does print sit at the printed label.",
+  },
+  // The poster has its own place names printed in, so region chips hang below them and our labels only fill in where the print is too small to read.
+  bakedLabels: true,
+  // Land and islands (without the legend, seal and title in the sea), official source pixels.
+  startBox: { x0: 380, y0: 420, x1: 5120, y1: 7080 },
+  pinToSource({ id, x, y }) {
+    const fixed = id ? officialFixed[id] : undefined;
+    if (fixed) return { sx: fixed[0], sy: fixed[1] };
+    const [sx, sy] = pinToOfficial(x, y);
+    return { sx, sy };
+  },
+  sourceToPin(sx, sy) {
+    const [x, y] = officialToPin(sx, sy);
+    return { x, y };
+  },
+};
+
+export const BASES: Record<BaseId, BaseMap> = { official, art, legacy };
+export const isBaseId = (v: unknown): v is BaseId => v === "official" || v === "art" || v === "legacy";
