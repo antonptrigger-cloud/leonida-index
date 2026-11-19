@@ -1735,7 +1735,80 @@ export const MISSIONS: Mission[] = [
       PUSHSQUARE,
     ],
     sourceLabel: "VGC, PowerPyx, Push Square",
-    updated: "2026-11-19T23:20:00+10:00",
+    updated: "2026-11-20T00:11:00+10:00",
+  },
+  {
+    slug: "chapter-2-mission-2",
+    hidden: true,
+    chapter: 2,
+    chapterOrder: 2,
+    order: 24,
+    name: "Chapter 2, Mission 2",
+    seoTitle: "GTA 6 Chapter 2 Mission 2 Guide: Walkthrough & Tips",
+    seoDescription:
+      "GTA 6 Chapter 2 Mission 2 walkthrough: where it sits in the story order, whether it has a reward, if it can end in different ways and what to know first.",
+    teaser: "The second mission of Chapter 2, straight after Chapter 2, Mission 1.",
+    intro: [
+      "This is the second mission of Chapter 2 and the 24th story mission overall (VGC and Push Square's list). VGC says it can end in a few different ways, and PowerPyx lists two objectives and no reward. Neither lists a collectible or a unique weapon in it.",
+      "Our mission list keeps Chapter 2 names behind a blur, so this page uses a neutral title. The mission's name, the steps and what happens all stay behind the blur.",
+    ],
+    facts: [
+      { label: "Chapter", value: "Chapter 2, mission 2, and 24th overall (VGC; Push Square lists it second in Chapter 2). PowerPyx numbers it 35th because it counts differently.", status: "confirmed" },
+      { label: "Unlocks after", value: "Chapter 2, Mission 1 (PowerPyx's requirement line; VGC and Push Square list it next)", status: "confirmed" },
+      { label: "Starts", value: "PowerPyx says the marker appears as soon as you first step outside after the previous mission", status: "reported" },
+      { label: "Endings", value: "VGC says it can end in a few different ways. PowerPyx describes only one.", status: "reported" },
+      { label: "Objectives", value: "Two (PowerPyx)", status: "reported" },
+      { label: "Reward", value: "None listed (PowerPyx)", status: "reported" },
+    ],
+    objectives: [
+      "Head to the marker. VGC says Lucia is looking for the ambulance she and Jason used to escape Vice City, and that you hear voices as you get close (Reported, VGC). PowerPyx says the barn is slightly east of Starlet Motel, and that the marker appears as soon as you first leave your motel room (Reported, PowerPyx).",
+      "Get into the barn. VGC and PowerPyx both say to climb the stairs at the back to the raised platform. VGC adds that a side door also works and that the stairs are probably the intended way (Confirmed for the stairs, Reported for the side door).",
+      "Lucia shouts at the locals who took the ambulance and they drive off (VGC). PowerPyx says a group of addicts found it and drive away with it as you go up (Reported, each). Jump down to the barn floor and take the quad bike (VGC) or ATV (PowerPyx) parked there (Confirmed).",
+      "Chase it. PowerPyx says to stay close and not crash (Reported, PowerPyx). VGC says you can shoot while riding, and that if you hit the tyres quickly the people inside flee early and you only have to blow the ambulance up (Reported, VGC).",
+      "If you don't stop it, it ends up against a tree further south (VGC and PowerPyx, Confirmed). VGC says you can then kill the people and rob them, or let them go, and that it doesn't change the objective (Reported, VGC).",
+      "Destroy the ambulance (VGC and PowerPyx, Confirmed). VGC only says to blow it up. PowerPyx says to pick up the red gas canister behind it, pour the fuel over it and use the Ignite prompt on the trail, or throw the canister into the back and shoot it if you have a gun (Reported, PowerPyx).",
+      "Leave straight away. PowerPyx says the explosion alerts the police (Reported, PowerPyx). Destroying the ambulance finishes the mission.",
+    ],
+    spoiler:
+      "The mission is called Ambulance Chaser (VGC, PowerPyx and our mission list), and PowerPyx shows the map label Move the Ambulance. The vehicle is the ambulance Jason and Lucia used to get away at the end of Chapter 1. Locals found it, and the point of the mission is to get rid of it before it can be used as evidence (VGC and PowerPyx). You play as Lucia (VGC and PowerPyx). The next mission is Just Moved In in Push Square's list and ours, and we have no guide for it yet. PowerPyx's own previous and next links point to other missions, because it uses its own order (Reported, PowerPyx).",
+    tips: [
+      { text: "Make a manual save once it ends. Push Square and GamesRadar+ say story missions can't be replayed.", reported: true, link: { href: "/guides/saving", label: "How to save" } },
+      { text: "Be ready to leave. PowerPyx warns that finishing the mission alerts the police, so plan your exit before you finish it (Reported).", reported: true, link: { href: "/guides/wanted", label: "Wanted system guide" } },
+      { text: "Don't worry about missing a reward. PowerPyx lists none, and neither it nor VGC lists a collectible or unique weapon (Reported).", reported: true },
+      { text: "The ending isn't fixed. VGC says it can finish in a few different ways, so you can't miss a required step by playing it your own way (Reported).", reported: true },
+    ],
+    notes: [
+      "Order: VGC lists this mission 24th and Push Square lists it second in Chapter 2, straight after the first mission of the chapter. PowerPyx calls it the 35th main mission using its own count, so treat the overall number as Reported.",
+    ],
+    faq: [
+      {
+        question: "Which mission number is Chapter 2 Mission 2?",
+        answer: "It is the second mission of Chapter 2 and the 24th overall in VGC's count and Push Square's list (Confirmed). PowerPyx numbers it 35th because it counts differently (Reported).",
+      },
+      {
+        question: "Do I need to finish Chapter 2 Mission 1 first?",
+        answer: "Yes. PowerPyx lists the first mission of Chapter 2 as its requirement, and VGC and Push Square list this one second (Confirmed).",
+      },
+      {
+        question: "How does it start?",
+        answer: "PowerPyx says the marker appears as soon as you first step outside after the previous mission (Reported).",
+      },
+      {
+        question: "Can it end in different ways?",
+        answer: "VGC says it can end in a few different ways depending on how the early part goes. PowerPyx describes only one route (Reported).",
+      },
+      {
+        question: "Is there a reward?",
+        answer: "PowerPyx lists none. Neither PowerPyx nor VGC lists a collectible or a unique weapon in it (Reported).",
+      },
+    ],
+    sources: [
+      vgc("gta-6-ambulance-chaser-mission-walkthrough", "VGC: GTA 6 mission walkthrough, Chapter 2 mission 2 (19 Nov 2026)", "Mission number, objective flow, the early-stop and choice details"),
+      pp("gta-6-ambulance-chaser-move-the-ambulance-walkthrough", "Start point, objectives, destroy method, reward, police warning and mission order"),
+      PUSHSQUARE,
+    ],
+    sourceLabel: "VGC, PowerPyx, Push Square",
+    updated: "2026-11-20T00:11:00+10:00",
   },
 ];
 
