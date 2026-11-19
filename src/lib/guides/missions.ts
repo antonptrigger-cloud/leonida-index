@@ -23,7 +23,8 @@ export type SourceId =
   | "pushsquare"
   | "vgc"
   | "gamesradar"
-  | "pcgamerAch";
+  | "pcgamerAch"
+  | "gamespot";
 
 export interface MissionSource {
   id: SourceId;
@@ -2000,7 +2001,7 @@ export const MISSIONS: Mission[] = [
     spoiler:
       "The mission is called Moses in our mission list, Push Square's list and PC Gamer, after the mechanic who runs the garage (Confirmed). PowerPyx shows the map label Take A Vehicle to Moses (Reported). PC Gamer says it comes just after Girls' Trip. PowerPyx's quest description says Vicki told Lucia that Moses could set her up with a ride if she took a low-key vehicle to his auto shop (Reported, PowerPyx). You play as Lucia (PowerPyx). PowerPyx lists Moses's questline as this mission, then Daily Driver, Steal Vehicles for Moses and Collect Moses' Gift (Reported, PowerPyx).",
     tips: [
-      { text: "Scan before you steal. The scanning app shows trackers, and PowerPyx says the buyer of stolen cars refuses any car with a tracker.", reported: true },
+      { text: "Scan before you steal. The scanning app shows trackers, and PowerPyx says the buyer of stolen cars refuses any car with a tracker, and PC Gamer says the app also tells you whether a car is suitable for sale to him.", reported: true },
       { text: "Know the tracker types. PowerPyx says cheap cars usually have no tracker, mid-range cars a standard one and supercars an advanced one (Reported). On what a standard tracker does, the outlets differ: PowerPyx says it alerts the police to where you stole the car, while PC Gamer says it only stops you modifying the car at a mod shop until you register it (Reported, conflict). Both say an advanced tracker brings the police if you drive too slowly.", reported: true, link: { href: "/guides/stealing-cars", label: "Stealing cars guide" } },
       { text: "The slim jim doesn't start every car. PC Gamer says it won't start a keyless car, and that keyless cars need a key cloner you get later in the story. Some cars only need to be unlocked before you can hotwire them (Reported).", reported: true },
       { text: "Check the trunk. PC Gamer says the slim jim also lets you pop a car's trunk without setting off an alarm (Reported).", reported: true },
@@ -2059,6 +2060,101 @@ export const MISSIONS: Mission[] = [
     ],
     sourceLabel: "PowerPyx, PC Gamer, Push Square",
     updated: "2026-11-20T04:13:00+10:00",
+  },
+  {
+    slug: "chapter-2-mission-6",
+    hidden: true,
+    chapter: 2,
+    chapterOrder: 6,
+    order: 28,
+    name: "Chapter 2, Mission 6",
+    seoTitle: "GTA 6 Chapter 2 Mission 6 Walkthrough & Tips",
+    seoDescription:
+      "GTA 6 Chapter 2 Mission 6 walkthrough: objectives, the payout and condition bonus, and the garage and real estate app rewards reported so far.",
+    teaser: "The sixth mission of Chapter 2, straight after Chapter 2, Mission 5.",
+    intro: [
+      "This is the sixth mission of Chapter 2 and the 28th story mission overall (PC Gamer and Push Square list it in that order). It is a short car-theft job for Lucia: you get one specific car out of a spot with enemies around and bring it back. PowerPyx lists only two objectives, and says the car's condition decides a cash bonus.",
+      "Our mission list keeps Chapter 2 names behind a blur, so this page uses a neutral title. The mission's name, the people, the car and the places all stay behind the blur.",
+    ],
+    facts: [
+      { label: "Chapter", value: "Chapter 2, mission 6, and 28th overall (PC Gamer and Push Square). PowerPyx numbers it 38th because it counts differently.", status: "confirmed" },
+      { label: "Unlocks after", value: "Chapter 2, Mission 5 (PC Gamer and Push Square put it next in order, and PowerPyx's requirement line is the same mission)", status: "confirmed" },
+      { label: "Type", value: "A car-theft job for Lucia (PC Gamer's one-line summary says Lucia does a grand theft auto)", status: "confirmed" },
+      { label: "Starts", value: "PowerPyx says a phone message with a picture of the target car arrives shortly after the previous mission, and that marks the mission on the map", status: "reported" },
+      { label: "Objectives", value: "Two: search the area for the car, then deliver it (PowerPyx)", status: "reported" },
+      { label: "Enemies", value: "There are enemies around the car. PowerPyx says you can take them out however you like, or just run to the car and drive away", status: "reported" },
+      { label: "Payout", value: "$1,250, plus $500 if the car is delivered in good condition (PowerPyx)", status: "reported" },
+      { label: "Free garage", value: "A free garage comes from a story contact (GameSpot lists one as given through the main story, and PowerPyx says it arrives shortly after this mission)", status: "confirmed" },
+      { label: "Real estate app", value: "PowerPyx says the Vice City Real Estate app unlocks here, for buying garages. GameSpot and PC Gamer both say garages are bought through that app.", status: "reported" },
+    ],
+    objectives: [
+      "Wait for the phone message. PowerPyx says Moses sends a picture of the '82 Canis Crawler he wants stolen shortly after the previous mission, and that this marks the mission on the map (Reported, PowerPyx).",
+      "Search the marked area for the '82 Crawler. PowerPyx says it is a white jeep standing in the middle of the search area, near the old Trader's Union building (Reported, PowerPyx).",
+      "Deal with the enemies nearby however you like, or run straight to the car and drive away (Reported, PowerPyx).",
+      "Drive the car to Moses's garage in Port Gellhorn, which PowerPyx says is not far away. Deliver it to finish. The car must arrive in good condition to earn the $500 bonus (Reported, PowerPyx).",
+    ],
+    spoiler:
+      "The mission is called Daily Driver in our mission list, Push Square's list and PC Gamer, whose one-line summary is that Lucia does a grand theft auto (Confirmed). PowerPyx shows the map label Steal the Crawler for Moses, and says Moses wants the car stolen from clients who didn't pay him (Reported, PowerPyx). PowerPyx lists Moses's questline as the previous mission, then Daily Driver, Steal Vehicles for Moses and Collect Moses' Gift (Reported, PowerPyx). The free garage is the Port Gellhorn Station Garage, which GameSpot says is north of Moses' auto shop and is given to you by Moses as part of the main story (Confirmed, GameSpot and PowerPyx).",
+    tips: [
+      { text: "The $500 bonus depends on the car arriving in good condition (PowerPyx), so avoid wrecking it on the way back. Treating it gently is our own suggestion, not a sourced step.", reported: true },
+      { text: "You don't have to clear the enemies. PowerPyx says you can fight them or just run to the car and drive away (Reported).", reported: true },
+      { text: "This one is a delivery job, so the car is handed over rather than kept. Your own keeper car comes from the previous mission.", reported: false, link: { href: "/guides/missions/chapter-2-mission-5", label: "Previous mission" } },
+      { text: "Garage space: PC Gamer says each garage holds a single car, while GameSpot says garages hold one or a couple of cars. The outlets differ, so check the capacity in game before you buy (Reported, conflict).", reported: true, link: { href: "/guides/garages", label: "Garages guide" } },
+      { text: "Selling stolen cars is still an option. PC Gamer says one buyer only takes older, low-end cars, and that the scanning app tells you whether a car is suitable for sale to him (Reported).", reported: true, link: { href: "/guides/stealing-cars", label: "Stealing cars guide" } },
+      { text: "Compare the money options before you buy a garage.", reported: false, link: { href: "/guides/money", label: "Money guide" } },
+      { text: "Make a manual save before you start, so you can retry if the mission goes wrong. This is our own suggestion.", reported: false, link: { href: "/guides/saving", label: "How to save" } },
+    ],
+    notes: [
+      "Order: PC Gamer and Push Square both list this mission sixth in Chapter 2, straight after the fifth mission. PowerPyx calls it the 38th main mission using its own count, so treat the overall number as Reported.",
+      "PowerPyx is the only full walkthrough for this mission so far, and it is short. The steps, the payout and the timing of the garage and the real estate app are PowerPyx-only, so they are labelled Reported. PC Gamer, Push Square and GameSpot confirm the order, the type of mission and the free garage.",
+      "The objective list hasn't been checked against the on-screen prompts.",
+    ],
+    faq: [
+      {
+        question: "Which mission number is Chapter 2 Mission 6?",
+        answer: "It is the sixth mission of Chapter 2 and the 28th overall (Confirmed, PC Gamer and Push Square). PowerPyx numbers it 38th because it counts differently (Reported).",
+      },
+      {
+        question: "How do you start Chapter 2 Mission 6?",
+        answer: "Finish Chapter 2 Mission 5 and wait. PowerPyx says a phone message with a picture of the target car arrives shortly afterwards and marks the mission on your map (Reported).",
+      },
+      {
+        question: "Do you have to fight the enemies?",
+        answer: "No. PowerPyx says you can take them out however you like or just run to the car and drive away (Reported).",
+      },
+      {
+        question: "How much does Chapter 2 Mission 6 pay?",
+        answer: "PowerPyx says $1,250, plus $500 if the car is delivered in good condition (Reported).",
+      },
+      {
+        question: "When can you buy garages in GTA 6?",
+        answer: "GameSpot and PC Gamer say garages are bought through the Vice City Real Estate app on your phone. PowerPyx says the app unlocks in this mission (Reported).",
+      },
+    ],
+    sources: [
+      pp("gta-6-daily-driver-steal-the-crawler-for-moses-walkthrough", "Objectives, payout and condition bonus, enemies, free garage and real estate app timing"),
+      {
+        id: "pcgamer",
+        label: "PC Gamer: GTA 6 mission list (18 Nov 2026)",
+        url: "https://www.pcgamer.com/games/grand-theft-auto/gta-6-mission-list/",
+        used: "Mission name, order and one-line summary",
+      },
+      {
+        id: "pcgamer",
+        label: "PC Gamer: GTA 6 changes the way you steal cars (18 Nov 2026)",
+        url: "https://www.pcgamer.com/games/grand-theft-auto/gta-6-how-to-steal-cars/",
+        used: "The scanning app, selling stolen cars, and buying garages through the real estate app",
+      },
+      {
+        id: "gamespot",
+        label: "GameSpot: All garage locations and prices in GTA 6 (18 Nov 2026)",
+        url: "https://www.gamespot.com/articles/all-garage-locations-and-prices-in-gta-6/",
+        used: "The free story garage, buying garages through the real estate app, and garage capacity",
+      },
+      PUSHSQUARE,
+    ],
+    sourceLabel: "PowerPyx, PC Gamer, GameSpot, Push Square",
+    updated: "2026-11-20T05:08:00+10:00",
   },
 ];
 
