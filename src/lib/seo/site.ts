@@ -8,6 +8,7 @@ import { COLLECT_VERIFIED } from "@/lib/guides/collectibles";
 import { SF_VERIFIED } from "@/lib/guides/strangers";
 import { BASICS_UPDATED } from "@/lib/guides/basics";
 import { MAPSIZE_PUBLISHED, MAPSIZE_VERIFIED } from "@/lib/guides/map-size";
+import { FASTTRAVEL_PUBLISHED, FASTTRAVEL_VERIFIED } from "@/lib/guides/fast-travel";
 import { NEWS, newsPath } from "@/lib/news/articles";
 import { CHARACTERS, LAST_VERIFIED as CHARACTERS_VERIFIED, characterPath } from "@/lib/characters/characters";
 import { DB_UPDATED, DB_VERIFIED, REFERENCE_PAGES } from "@/lib/database/reference";
@@ -134,7 +135,7 @@ export const ROUTES: Record<string, RouteSeo> = {
     kind: "collection",
     changeFrequency: "daily",
     priority: 0.85,
-    updated: MAPSIZE_VERIFIED, // the hub gained the map-size card
+    updated: FASTTRAVEL_VERIFIED, // the hub gained the fast travel card
   },
   "/guides/beginner": {
     title: "GTA 6 Beginner Guide: Tips for Your First Hours",
@@ -251,6 +252,16 @@ export const ROUTES: Record<string, RouteSeo> = {
     priority: 0.8,
     updated: MAPSIZE_VERIFIED,
     published: MAPSIZE_PUBLISHED,
+  },
+  "/guides/fast-travel": {
+    title: "GTA 6 Fast Travel: RydeMe, Taxis and Skipping Rides",
+    description: "How to fast travel in GTA 6: unlock and book RydeMe, skip the ride for about $100, call a taxi, use buses and trains, and know when to just drive.",
+    crumb: "Fast travel",
+    kind: "article",
+    changeFrequency: "weekly",
+    priority: 0.8,
+    updated: FASTTRAVEL_VERIFIED,
+    published: FASTTRAVEL_PUBLISHED,
   },
   ...Object.fromEntries(
     MISSIONS.map((m): [string, RouteSeo] => [

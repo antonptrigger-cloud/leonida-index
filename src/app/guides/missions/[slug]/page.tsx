@@ -94,6 +94,12 @@ export default async function MissionPage({ params }: { params: Promise<{ slug: 
                 <li key={t.text} className="vc-bar text-ink-2">
                   {t.text}
                   {t.reported ? <StatusTag status="reported" /> : null}
+                  {t.link ? (
+                    <>
+                      {" "}
+                      <Link href={t.link.href} className="text-orange hover:text-pink">{t.link.label}</Link>
+                    </>
+                  ) : null}
                 </li>
               ))}
             </ul>

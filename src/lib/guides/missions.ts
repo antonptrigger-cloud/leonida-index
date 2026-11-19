@@ -60,7 +60,7 @@ export interface Mission {
   /** Spoiler: story notes. */
   spoiler?: string;
   /** Non-spoiler tips. */
-  tips: { text: string; reported?: boolean }[];
+  tips: { text: string; reported?: boolean; /** Optional contextual link shown after the tip. */ link?: { href: string; label: string } }[];
   notes?: string[];
   /** Optional real Q&A, rendered visibly by <Faq> (which also emits FAQPage JSON-LD). Never invent questions. */
   faq?: { question: string; answer: string }[];
@@ -840,6 +840,7 @@ export const MISSIONS: Mission[] = [
       { text: "PowerPyx says each Family Savings goal raises your checking limit and some goals unlock price-reduction perks, tracked in an optional story-long mission called Save for the Future. GamesRadar+ describes five savings tiers and an interest boost if you reach a target before the limit increases.", reported: true },
       { text: "GamesRadar+ says the state of your savings affects some character interactions and the ending, and gives no more detail.", reported: true },
       { text: "Keep a manual save. PowerPyx and Push Square say story missions can't be replayed." },
+      { text: "VGC says the RydeMe rideshare app, which lets you pay to skip trips across the map, needs this bank account and unlocks during this mission. GamesRadar+ gives a later date, so the outlets disagree.", reported: true, link: { href: "/guides/fast-travel", label: "Read our fast travel guide" } },
     ],
     notes: [
       "Order: PC Gamer, Push Square, Press Start and VGC list Buck Me 12th, straight after Coming Home and before Clean Up After Donnie. PowerPyx plays Clean Up After Donnie first and numbers Buck Me 13th. Both open the day after Coming Home, so either order works.",
@@ -883,7 +884,7 @@ export const MISSIONS: Mission[] = [
       PP_INDEX,
       PUSHSQUARE,
     ],
-    updated: "2026-11-19T13:12:51+10:00",
+    updated: "2026-11-19T21:25:00+10:00",
   },
   {
     slug: "clean-up-after-donnie",
