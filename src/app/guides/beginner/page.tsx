@@ -4,6 +4,7 @@ import { PageHeader } from "@/components/PageHeader";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { Related } from "@/components/Related";
 import { Faq } from "@/components/Faq";
+import Link from "next/link";
 import { BEGINNER_FAQ } from "@/lib/guides/basics";
 export const metadata = metaFor("/guides/beginner");
 export default function Page() {
@@ -13,7 +14,11 @@ export default function Page() {
       <Breadcrumbs path="/guides/beginner" />
       <PageHeader backdrop="boat" kicker="Guide" title="First hours in Leonida" source="Showcase" />
       <div className="max-w-xl space-y-4 text-ink-2">
-        <p>You play Lucia Caminos and Jason Duval. You can switch between them, including mid-job.</p>
+        <p>
+          You play Lucia Caminos and Jason Duval. Free switching between them opens partway through the story, and it works mid-job. See{" "}
+          <Link href="/guides/switch-characters" className="text-orange hover:text-pink">how to switch characters</Link> and{" "}
+          <Link href="/guides/saving" className="text-orange hover:text-pink">how saving works</Link>.
+        </p>
         <p>The story is a couple under pressure across the state of Leonida, not just Vice City.</p>
         <p>Spend time off the mission marker. Activities, animals, and random encounters are part of the design.</p>
       </div>
