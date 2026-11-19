@@ -9,6 +9,9 @@ import { SF_VERIFIED } from "@/lib/guides/strangers";
 import { BASICS_UPDATED } from "@/lib/guides/basics";
 import { MAPSIZE_PUBLISHED, MAPSIZE_VERIFIED } from "@/lib/guides/map-size";
 import { FASTTRAVEL_PUBLISHED, FASTTRAVEL_VERIFIED } from "@/lib/guides/fast-travel";
+import { GARAGES_PUBLISHED, GARAGES_VERIFIED } from "@/lib/guides/garages";
+import { SAVING_PUBLISHED, SAVING_STEPS, SAVING_VERIFIED } from "@/lib/guides/saving";
+import { SWITCH_PUBLISHED, SWITCH_STEPS, SWITCH_VERIFIED } from "@/lib/guides/switching";
 import { NEWS, newsPath } from "@/lib/news/articles";
 import { CHARACTERS, LAST_VERIFIED as CHARACTERS_VERIFIED, characterPath } from "@/lib/characters/characters";
 import { DB_UPDATED, DB_VERIFIED, REFERENCE_PAGES } from "@/lib/database/reference";
@@ -262,6 +265,38 @@ export const ROUTES: Record<string, RouteSeo> = {
     priority: 0.8,
     updated: FASTTRAVEL_VERIFIED,
     published: FASTTRAVEL_PUBLISHED,
+  },
+  "/guides/garages": {
+    title: "GTA 6 Garages: All Locations, Prices and How to Buy",
+    description: "Where to buy every GTA 6 garage, what each one costs, when the real estate app unlocks, and how garages add slots so you can register more cars.",
+    crumb: "Garages",
+    kind: "article",
+    changeFrequency: "weekly",
+    priority: 0.8,
+    updated: GARAGES_VERIFIED,
+    published: GARAGES_PUBLISHED,
+  },
+  "/guides/saving": {
+    title: "GTA 6 How to Save: Save Slots, Autosave & Tips",
+    description: "How to save in GTA 6: the pause-menu steps, 15 manual slots, how the autosave works, when saving is blocked, and a slot plan for every chapter.",
+    crumb: "How to save",
+    kind: "howto",
+    steps: SAVING_STEPS,
+    changeFrequency: "weekly",
+    priority: 0.8,
+    updated: SAVING_VERIFIED,
+    published: SAVING_PUBLISHED,
+  },
+  "/guides/switch-characters": {
+    title: "GTA 6 How to Switch Characters: Jason & Lucia",
+    description: "How to switch between Jason and Lucia in GTA 6: when free switching unlocks, the button combo, why a character is greyed out, and partner commands to use.",
+    crumb: "Switch characters",
+    kind: "howto",
+    steps: SWITCH_STEPS,
+    changeFrequency: "weekly",
+    priority: 0.8,
+    updated: SWITCH_VERIFIED,
+    published: SWITCH_PUBLISHED,
   },
   ...Object.fromEntries(
     MISSIONS.map((m): [string, RouteSeo] => [

@@ -258,7 +258,7 @@ const VEHICLES: RefPage = {
       heading: "Owning, registering and selling a car",
       status: "reported",
       paragraphs: [
-        "PowerPyx says you can steal almost any vehicle off the street, but only Jason's personal vehicle is yours from the start. Later you can register a stolen car as your own, as long as it has no tracker. The Waink app scans a car for one. You begin with one garage slot, you can buy more, and once your slots are full you have to sell a car to make room.",
+        "PowerPyx says you can steal almost any vehicle off the street, but only Jason's personal vehicle is yours from the start. Later you can register a stolen car as your own, as long as it has no tracker. The Waink app scans a car for one. It also says you begin with one garage slot, you can buy more, and once your slots are full you have to sell a car to make room. GameSpot says you start with four owned-vehicle slots instead (Jason and Lucia can each own a car), so the two outlets don't agree. Our garages guide shows both.",
         "GameSpot adds that GTA+ members get 10% extra cash when they sell an eligible vehicle.",
         "Our stealing cars guide covers the theft side. This page sticks to the counts and the named vehicles.",
       ],
@@ -332,6 +332,12 @@ const VEHICLES: RefPage = {
       url: "https://www.powerpyx.com/gta-6-how-to-get-new-personal-car/",
       primary: false,
       used: "Registering, trackers, garages and selling",
+    },
+    {
+      label: "GameSpot: How To Own More Cars And Other Vehicles In GTA 6",
+      url: "https://www.gamespot.com/articles/how-to-own-more-cars-and-other-vehicles-in-gta-6/",
+      primary: false,
+      used: "Starting owned-vehicle slots and how garages add more",
     },
     {
       label: "PowerPyx: GTA 6 All Cheats",

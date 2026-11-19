@@ -9,7 +9,9 @@ export async function getLivePins(): Promise<{ pins: PublicPin[]; online: boolea
   const store = getStore();
   if (!store) return { pins: SEED_PINS.map(toPublicPin), online: false };
   try {
-    const pins = await store.listPins(["approved"]);
+    const seedCategory = new Map(SEED_PINS.map((s) => [s.id, s.category]));
+    // Seed pins stored before the category migration have no category in the database; the seed file knows it.
+    const pins = (await store.listPins(["approved"])).map((p) => (p.category || !seedCategory.get(p.id) ? p : { ...p, category: seedCategory.get(p.id) ?? null }));
     // Seed pins always show, even if the seed migration hasn't been run yet.
     const ids = new Set(pins.map((p) => p.id));
     const merged = [...pins, ...SEED_PINS.filter((s) => !ids.has(s.id))];

@@ -1,6 +1,7 @@
 import { LIMITS, REGIONS, SUBMIT_TYPES, PIN_TYPES, type PinType, type SubmitType } from "./config";
 import type { PinEdit, SubmissionInput } from "./types";
 import { onBaseMap } from "./geo";
+import { isCategory } from "./categories";
 
 /** Strip control characters and angle brackets, collapse whitespace. Output is always rendered as text. */
 export function cleanText(value: unknown, max: number, multiline = false): string {
@@ -54,6 +55,8 @@ export function validateSubmission(raw: unknown): { ok: true; value: SubmissionI
     errors.description = `Description needs at least ${LIMITS.descriptionMin} characters (${description.length} so far).`;
   if (gamerTag.length < LIMITS.gamerTagMin) errors.gamerTag = "Gamer tag / name is required.";
   if (regionRaw && !region) errors.region = "Unknown region.";
+  const categoryRaw = typeof r.category === "string" ? r.category.trim() : "";
+  if (categoryRaw && !isCategory(categoryRaw)) errors.category = "Unknown category.";
   const x = typeof r.x === "number" ? Math.round(r.x * 10) / 10 : NaN;
   const y = typeof r.y === "number" ? Math.round(r.y * 10) / 10 : NaN;
   if (!inBounds(x, y)) errors.position = "Drop a pin on the map first.";
@@ -69,6 +72,7 @@ export function validateSubmission(raw: unknown): { ok: true; value: SubmissionI
       occupant,
       gamerTag,
       spoiler: r.spoiler === true,
+      category: isCategory(categoryRaw) ? categoryRaw : null,
       x,
       y,
     },
@@ -98,6 +102,7 @@ export function validateEdit(raw: unknown): PinEdit {
   if ("occupant" in r) e.occupant = cleanText(r.occupant, LIMITS.occupantMax) || null;
   if (typeof r.spoiler === "boolean") e.spoiler = r.spoiler;
   if (typeof r.approximate === "boolean") e.approximate = r.approximate;
+  if ("category" in r) e.category = isCategory(r.category) ? r.category : null;
   if (inBounds(r.x, r.y)) {
     e.x = r.x as number;
     e.y = r.y as number;

@@ -982,3 +982,123 @@ body:has(.lvg-fullmap) {
     height: 4.75rem;
   }
 }
+
+/* ---- Map labels (district / region / water names) and pin names (z6+) -------------------------------------------------
+   Plain text with a dark halo so it reads on the light art, in the same narrow display face as the region chips. Not
+   interactive: pins and chips keep the clicks. Sizes are px (not scaled with zoom) and never go below 12px for phones. */
+.lvg-label,
+.lvg-pinname {
+  pointer-events: none;
+  white-space: nowrap;
+}
+.lvg-label {
+  translate: -50% -50%;
+  font-family: var(--font-display-face), Impact, sans-serif;
+  text-transform: uppercase;
+  line-height: 1;
+  color: #f5f3f7;
+  /* Outline first, fill on top: a crisp dark edge that keeps the letters bright on both light land and blue water. */
+  paint-order: stroke fill;
+  -webkit-text-stroke: 3.5px rgba(10, 10, 11, 0.88);
+  text-shadow: 0 1px 5px rgba(10, 10, 11, 0.85);
+}
+.lvg-label--below {
+  translate: -50% 3px;
+}
+.lvg-label--region {
+  font-size: 18px;
+  letter-spacing: 0.16em;
+  color: #ff8fb3;
+}
+.lvg-label--district {
+  font-size: 15px;
+  letter-spacing: 0.1em;
+}
+.lvg-label--place {
+  font-size: 13.5px;
+  letter-spacing: 0.08em;
+  color: #ffe1ec;
+}
+.lvg-label--water {
+  font-size: 14px;
+  letter-spacing: 0.1em;
+  font-style: italic;
+  color: #9eeeff;
+}
+@media (max-width: 639px) {
+  .lvg-label--region { font-size: 15px; }
+  .lvg-label--district { font-size: 13.5px; }
+  .lvg-label--place { font-size: 13px; }
+  .lvg-label--water { font-size: 13px; }
+}
+.lvg-pinname {
+  translate: 16px -31px;
+}
+.lvg-pinname--l {
+  translate: calc(-100% - 16px) -31px;
+}
+.lvg-pinname span {
+  display: block;
+  padding: 2px 6px 1px;
+  font-size: 12px;
+  line-height: 1.25;
+  font-weight: 600;
+  color: #f5f3f7;
+  background: rgba(10, 10, 11, 0.86);
+  border-left: 2px solid #ff2d78;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.55);
+}
+
+/* "Illustrative base map" chip + explanation */
+.lvg-note {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  min-height: 28px;
+  padding: 0.2rem 0.65rem 0.2rem 0.45rem;
+  font-size: 0.75rem;
+  letter-spacing: 0.03em;
+  color: #e9e6ee;
+  background: rgba(10, 10, 11, 0.86);
+  border: 1px solid rgba(0, 229, 204, 0.55);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+  cursor: pointer;
+}
+.lvg-note:hover,
+.lvg-note[aria-expanded="true"] {
+  border-color: #00e5cc;
+  background: #12202a;
+}
+.lvg-note__i {
+  display: inline-flex;
+  width: 1rem;
+  height: 1rem;
+  align-items: center;
+  justify-content: center;
+  font-family: Georgia, serif;
+  font-style: italic;
+  font-weight: 700;
+  font-size: 0.7rem;
+  color: #0a0a0b;
+  background: #00e5cc;
+  border-radius: 9999px;
+}
+.lvg-note__panel {
+  width: min(19rem, calc(100vw - 1.5rem));
+  padding: 0.75rem 0.85rem;
+  font-size: 0.8rem;
+  line-height: 1.4;
+  color: #e9e6ee;
+  background: rgba(10, 10, 11, 0.94);
+  border: 1px solid rgba(0, 229, 204, 0.55);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.6);
+}
+.lvg-note__panel p {
+  margin: 0.35rem 0 0.6rem;
+}
+.lvg-note__close {
+  font-size: 0.75rem;
+  color: #00e5cc;
+  text-decoration: underline;
+  cursor: pointer;
+}
