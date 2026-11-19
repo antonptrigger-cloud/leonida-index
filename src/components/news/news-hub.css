@@ -18,8 +18,9 @@
 
 /* ---------- Hero extras ---------- */
 .nh-onair {
+  width: fit-content;
   margin-bottom: 1rem;
-  display: inline-flex;
+  display: flex;
   align-items: center;
   gap: 0.6rem;
   padding: 0.3rem 0.75rem;

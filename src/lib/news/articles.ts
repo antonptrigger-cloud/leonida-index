@@ -26,7 +26,7 @@ export interface NewsItem {
 
   /*
    * Optional /news index controls. All of these have sensible defaults (see src/lib/news/hub.ts),
-   * so a new article only needs the fields above. Documented in CONTENT.md.
+   * so a new article only needs the fields above. Documented in docs/NEWS_INDEX.md.
    */
   /** Topic filter on the index. Default: derived from `tag` (see TAG_CATEGORY in hub.ts). */
   category?: NewsCategory;
