@@ -43,8 +43,8 @@ export default async function MissionPage({ params }: { params: Promise<{ slug: 
         backdrop="boat"
         kicker={`Mission guide · Chapter ${CHAPTER.number} · ${String(m.order).padStart(2, "0")}/${String(CHAPTER_1_TOTAL).padStart(2, "0")}`}
         title={m.name}
-        verified={`${LAST_VERIFIED_LABEL} (pre-launch)`}
-        source="PC Gamer, Press Start, PowerPyx"
+        verified={m.updated ? "19 Nov 2026" : `${LAST_VERIFIED_LABEL} (pre-launch)`}
+        source={m.sources.some((x) => x.id === "vgc") ? "PC Gamer, Press Start, VGC, PowerPyx" : "PC Gamer, Press Start, PowerPyx"}
       />
 
       <SpoilerWarning />
@@ -134,7 +134,7 @@ export default async function MissionPage({ params }: { params: Promise<{ slug: 
 
       <Faq items={m.faq} />
 
-      <SourcesList sources={m.sources} />
+      <SourcesList sources={m.sources} verified={m.updated ? { iso: m.updated, label: "19 Nov 2026" } : undefined} />
 
       <nav aria-label="More missions" className="mt-16x grid gap-4x border-t border-pink/20 pt-6x sm:grid-cols-2">
         {prev ? (

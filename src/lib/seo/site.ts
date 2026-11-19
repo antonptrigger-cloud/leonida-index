@@ -7,6 +7,7 @@ import { TROPHIES_VERIFIED } from "@/lib/guides/trophies";
 import { COLLECT_VERIFIED } from "@/lib/guides/collectibles";
 import { SF_VERIFIED } from "@/lib/guides/strangers";
 import { BASICS_UPDATED } from "@/lib/guides/basics";
+import { MAPSIZE_PUBLISHED, MAPSIZE_VERIFIED } from "@/lib/guides/map-size";
 import { NEWS, newsPath } from "@/lib/news/articles";
 import { CHARACTERS, LAST_VERIFIED as CHARACTERS_VERIFIED, characterPath } from "@/lib/characters/characters";
 import { DB_UPDATED, DB_VERIFIED, REFERENCE_PAGES } from "@/lib/database/reference";
@@ -133,7 +134,7 @@ export const ROUTES: Record<string, RouteSeo> = {
     kind: "collection",
     changeFrequency: "daily",
     priority: 0.85,
-    updated: LAST_VERIFIED,
+    updated: MAPSIZE_VERIFIED, // the hub gained the map-size card
   },
   "/guides/beginner": {
     title: "GTA 6 Beginner Guide: Tips for Your First Hours",
@@ -241,6 +242,16 @@ export const ROUTES: Record<string, RouteSeo> = {
     updated: SF_VERIFIED,
     published: SF_VERIFIED,
   },
+  "/guides/map-size": {
+    title: "GTA 6 Map Size: How Big Is Leonida?",
+    description: "How big is the GTA 6 map? Rockstar's size comparisons, PowerPyx's 175 km² measurement and Kotaku's timed crossings of Leonida, each figure attributed.",
+    crumb: "Map size",
+    kind: "article",
+    changeFrequency: "weekly",
+    priority: 0.8,
+    updated: MAPSIZE_VERIFIED,
+    published: MAPSIZE_PUBLISHED,
+  },
   ...Object.fromEntries(
     MISSIONS.map((m): [string, RouteSeo] => [
       missionPath(m.slug),
@@ -251,7 +262,7 @@ export const ROUTES: Record<string, RouteSeo> = {
         kind: "article",
         changeFrequency: "weekly",
         priority: 0.75,
-        updated: FAQ_UPDATED,
+        updated: m.updated ?? FAQ_UPDATED,
         published: LAST_VERIFIED,
       },
     ]),

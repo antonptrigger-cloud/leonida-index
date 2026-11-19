@@ -38,6 +38,7 @@ const HUB_META: Record<string, HubMeta> = {
   "/guides/wanted": { title: "Wanted system", blurb: "Six stars, witnesses, hollow stars and how to lose the cops.", tag: "Systems", accent: "turq", section: "systems" },
   "/guides/stealing-cars": { title: "Stealing cars", blurb: "Hot-wire the old ones, clone keys for the new ones.", tag: "Systems", accent: "turq", section: "systems" },
   "/guides/activities": { title: "Activities", blurb: "Diving, jet skis, fishing, hoops, mini golf and the rest.", tag: "Activities", accent: "turq", section: "systems" },
+  "/guides/map-size": { title: "Map size", blurb: "Rockstar's size comparisons, one outlet's 175 km² measurement and timed crossings.", tag: "Map", accent: "turq", section: "systems" },
   "/guides/strangers-and-freaks": { title: "Strangers & Freaks", blurb: "Which side-mission questlines count, and when they open.", tag: "Side missions", accent: "turq", section: "systems" },
 };
 
