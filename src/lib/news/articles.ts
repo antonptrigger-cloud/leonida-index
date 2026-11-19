@@ -72,6 +72,9 @@ export const UPDATES_1200_AT = "2026-11-19T12:04:00+10:00";
 /** 19 Nov 13:00 AEST batch (tracker readings 12:48-13:00 AEST, Heat result, launch streams past tense). */
 export const UPDATES_1300_AT = "2026-11-19T13:05:00+10:00";
 
+/** 19 Nov 14:00 AEST batch (tracker readings 13:54-14:04 AEST). */
+export const UPDATES_1400_AT = "2026-11-19T14:09:45+10:00";
+
 /** Age rating quick-answer page: boards re-read 11:46-11:48 AEST 19 Nov 2026. Also used for `updated` until the first fact change; bump `updated` on every edit. */
 export const AGE_RATING_PUBLISHED = "2026-11-19T11:48:00+10:00";
 
@@ -244,7 +247,7 @@ export const NEWS: NewsItem[] = [
     live: true,
     keywords: ["GTA 6 server status", "is GTA 6 down", "GTA 6 known issues", "GTA 6 PS5 update", "GTA 6 patch", "01.002.001"],
     published: NEWS_PUBLISHED,
-    updated: UPDATES_1300_AT,
+    updated: UPDATES_1400_AT,
     citations: [
       "https://x.com/PS_Support_US/status/2122863683881619685",
       "https://www.pushsquare.com/news/2026/11/gta-6-requires-new-ps5-firmware-update-to-play",
@@ -277,7 +280,7 @@ export const NEWS: NewsItem[] = [
     faq: [
       {
         question: "Is GTA 6 down?",
-        answer: "At 12:48-13:00 AEST on 19 Nov, three hours after the UK unlock and two hours before the US East Coast unlock, PlayStation's status feed listed no active issues for the US, Canada, Mexico, Brazil, the UK, Ireland, France, Germany, Italy, Spain, Australia or New Zealand, and Rockstar, PSN and Xbox feeds relayed by GTATracker showed up. Downdetector user reports showed \"possible problems\" for GTA VI in the UK only, and no current problems in Australia, Germany, New Zealand or the US. User reports are not confirmed outages, and we could not see what the UK reports were about.",
+        answer: "At 13:54-14:04 AEST on 19 Nov, four hours after the UK unlock and an hour before the US East Coast unlock, PlayStation's status feed listed no active issues for the US, Canada, Mexico, Brazil, the UK, Ireland, France, Germany, Italy, Spain, Australia or New Zealand, and Rockstar, PSN and Xbox feeds relayed by GTATracker showed up. Downdetector user reports showed \"possible problems\" for GTA VI in the UK and Germany, and no current problems in Australia, New Zealand or the US. User reports are not confirmed outages, and we could not see what the UK or German reports were about.",
       },
       {
         question: "Was PSN down before GTA 6 launched?",
