@@ -6,6 +6,7 @@ import { CHEATS_VERIFIED } from "@/lib/guides/cheats";
 import { TROPHIES_VERIFIED } from "@/lib/guides/trophies";
 import { COLLECT_VERIFIED } from "@/lib/guides/collectibles";
 import { SF_VERIFIED } from "@/lib/guides/strangers";
+import { HEIST_VERIFIED } from "@/lib/guides/heists";
 import { NEWS, newsPath } from "@/lib/news/articles";
 import { CHARACTERS, LAST_VERIFIED as CHARACTERS_VERIFIED, characterPath } from "@/lib/characters/characters";
 import { DB_VERIFIED, REFERENCE_PAGES } from "@/lib/database/reference";
@@ -230,6 +231,16 @@ export const ROUTES: Record<string, RouteSeo> = {
     priority: 0.8,
     updated: COLLECT_VERIFIED,
     published: COLLECT_VERIFIED,
+  },
+  "/guides/heists": {
+    title: "GTA 6 Heists Guide: Prep Missions and What's Confirmed",
+    description: "GTA 6 heist prep explained: what the prep missions do, what outlets agree on and what's only reported once. Mission names stay behind spoiler blurs.",
+    crumb: "Heists",
+    kind: "article",
+    changeFrequency: "daily",
+    priority: 0.8,
+    updated: HEIST_VERIFIED,
+    published: HEIST_VERIFIED,
   },
   "/guides/strangers-and-freaks": {
     title: "GTA 6 Strangers & Freaks: Which Side Missions Count",
