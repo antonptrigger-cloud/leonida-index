@@ -449,6 +449,7 @@ interface PlacedName {
   text: string;
 }
 
+const latLngTuple = (ll: L.LatLng): L.LatLngTuple => [ll.lat, ll.lng];
 const clip = (t: string, n: number) => (t.length > n ? `${t.slice(0, n - 1).trimEnd()}…` : t);
 
 /**
@@ -478,23 +479,31 @@ function layoutLabels(args: {
   };
   const labels: PlacedLabel[] = [];
   const anchored = new Set<string>();
-  const place = (l: MapLabel) => {
+  const place = (l: MapLabel, force = false) => {
     const f = LABEL_FONT[l.kind];
     const w = textWidth(l.name, narrow ? f.narrowPx : f.px, { spacingEm: f.spacing, display: true }) + 8;
     const { ll, pt } = at({ id: l.anchor, x: l.x, y: l.y });
     const below = !!l.anchor && l.kind !== "region";
-    const r: Rect = below
-      ? { x0: pt.x - w / 2, y0: pt.y + 3, x1: pt.x + w / 2, y1: pt.y + 3 + f.h }
-      : { x0: pt.x - w / 2, y0: pt.y - f.h / 2, x1: pt.x + w / 2, y1: pt.y + f.h / 2 };
-    if (!occ.tryPlace(r, 3)) return;
-    labels.push({ label: l, ll, below });
-    if (l.anchor) anchored.add(l.anchor);
+    // A region heading may slide up or down a little to stay clear of pins; the others just give way.
+    const shifts = force ? [0, -30, 30, -60, 60, -90, 90, -120, 120] : [0];
+    for (const dy of shifts) {
+      const r: Rect = below
+        ? { x0: pt.x - w / 2, y0: pt.y + 3, x1: pt.x + w / 2, y1: pt.y + 3 + f.h }
+        : { x0: pt.x - w / 2, y0: pt.y + dy - f.h / 2, x1: pt.x + w / 2, y1: pt.y + dy + f.h / 2 };
+      if (!occ.tryPlace(r, 3)) continue;
+      labels.push({ label: l, ll: dy ? latLngTuple(map.unproject(L.point(pt.x, pt.y + dy), zoom)) : ll, below });
+      if (l.anchor) anchored.add(l.anchor);
+      return;
+    }
+    // Headings always show, even if something is under them.
+    if (force && l.kind === "region") {
+      labels.push({ label: l, ll, below });
+      if (l.anchor) anchored.add(l.anchor);
+    }
   };
   const wanted = LABELS.filter((l) => (l.kind === "region" ? !regionsVisible : labelZoom >= l.minZoom)).sort(
     (a, b) => LABEL_PRIORITY[a.kind] - LABEL_PRIORITY[b.kind] || a.minZoom - b.minZoom,
   );
-  // Region names are the map's headings: they claim their space before any pin does (a pin may sit over one; the text is big).
-  for (const l of wanted.filter((l) => l.kind === "region")) place(l);
   for (const p of singles) {
     const { pt } = at(p);
     occ.reserve({ x0: pt.x - 14, y0: pt.y - 36, x1: pt.x + 14, y1: pt.y });
@@ -507,6 +516,8 @@ function layoutLabels(args: {
       occ.reserve({ x0: pt.x - w / 2, y0: pt.y - 14, x1: pt.x + w / 2, y1: pt.y + 14 });
     }
   }
+  // Region names are the map's headings: they always show, sliding clear of pins when they can.
+  for (const l of wanted.filter((l) => l.kind === "region")) place(l, true);
   for (const l of wanted.filter((l) => l.kind !== "region")) place(l);
 
   const names: PlacedName[] = [];
@@ -757,7 +768,8 @@ export default function LeafletMap({
         minNativeZoom={TILES.minNativeZoom}
         maxNativeZoom={TILES.maxNativeZoom}
         minZoom={-4}
-        maxZoom={TILES.maxZoom}
+        // Leaflet drops all tiles when round(zoom) > the layer's maxZoom, so a fractional map cap (6.5 -> tile zoom 7) needs the layer rounded up.
+        maxZoom={Math.ceil(TILES.maxZoom)}
         bounds={geo.bounds}
         noWrap
         keepBuffer={4}
