@@ -1770,7 +1770,7 @@ export const MISSIONS: Mission[] = [
       "Leave straight away. PowerPyx says the explosion alerts the police (Reported, PowerPyx). Destroying the ambulance finishes the mission.",
     ],
     spoiler:
-      "The mission is called Ambulance Chaser (VGC, PowerPyx and our mission list), and PowerPyx shows the map label Move the Ambulance. The vehicle is the ambulance Jason and Lucia used to get away at the end of Chapter 1. Locals found it, and the point of the mission is to get rid of it before it can be used as evidence (VGC and PowerPyx). You play as Lucia (VGC and PowerPyx). The next mission is Just Moved In in Push Square's list and ours, and we have no guide for it yet. PowerPyx's own previous and next links point to other missions, because it uses its own order (Reported, PowerPyx).",
+      "The mission is called Ambulance Chaser (VGC, PowerPyx and our mission list), and PowerPyx shows the map label Move the Ambulance. The vehicle is the ambulance Jason and Lucia used to get away at the end of Chapter 1. Locals found it, and the point of the mission is to get rid of it before it can be used as evidence (VGC and PowerPyx). You play as Lucia (VGC and PowerPyx). The next mission is Just Moved In in Push Square's list and ours, and our guide for it is the next mission page. PowerPyx's own previous and next links point to other missions, because it uses its own order (Reported, PowerPyx).",
     tips: [
       { text: "Make a manual save once it ends. Push Square and GamesRadar+ say story missions can't be replayed.", reported: true, link: { href: "/guides/saving", label: "How to save" } },
       { text: "Be ready to leave. PowerPyx warns that finishing the mission alerts the police, so plan your exit before you finish it (Reported).", reported: true, link: { href: "/guides/wanted", label: "Wanted system guide" } },
@@ -1809,6 +1809,158 @@ export const MISSIONS: Mission[] = [
     ],
     sourceLabel: "VGC, PowerPyx, Push Square",
     updated: "2026-11-20T00:11:00+10:00",
+  },
+  {
+    slug: "chapter-2-mission-3",
+    hidden: true,
+    chapter: 2,
+    chapterOrder: 3,
+    order: 25,
+    name: "Chapter 2, Mission 3",
+    seoTitle: "GTA 6 Chapter 2 Mission 3 Walkthrough & Tips",
+    seoDescription:
+      "GTA 6 Chapter 2 Mission 3 walkthrough: step-by-step objectives, where it sits in the story order, what it rewards and what to know before you start.",
+    teaser: "The third mission of Chapter 2, straight after Chapter 2, Mission 2.",
+    intro: [
+      "This is the third mission of Chapter 2 and the 25th story mission overall (VGC and Push Square's list). VGC and PowerPyx both describe it as a short errand, and neither mentions any combat. It rewards a relationship increase, and PowerPyx lists a single objective.",
+      "Our mission list keeps Chapter 2 names behind a blur, so this page uses a neutral title. The mission's name, the places, the objective flow and what happens all stay behind the blur.",
+    ],
+    facts: [
+      { label: "Chapter", value: "Chapter 2, mission 3, and 25th overall (VGC; Push Square lists it third in Chapter 2). PowerPyx numbers it 29th because it counts differently.", status: "confirmed" },
+      { label: "Unlocks after", value: "Chapter 2, Mission 2 (VGC's order and Push Square's list). PowerPyx's requirement line names the first mission of the chapter instead, because it lists missions differently.", status: "reported" },
+      { label: "Starts", value: "PowerPyx says it is marked on the map straight after the first mission of Chapter 2", status: "reported" },
+      { label: "Reward", value: "A relationship increase between Jason and Lucia (VGC and PowerPyx). VGC says you need to collect every item for it.", status: "confirmed" },
+      { label: "Cash or weapon reward", value: "None listed (VGC and PowerPyx)", status: "reported" },
+      { label: "Objectives", value: "One (PowerPyx)", status: "reported" },
+    ],
+    objectives: [
+      "Go to the store. PowerPyx names it as the Alpha convenience store, at the gas station across the street from Starlet Motel in Kelly County. VGC calls it the grocery store (Reported, PowerPyx for the name). You play as Lucia (VGC and PowerPyx).",
+      "Once you are inside, eight items show up as markers on the minimap (VGC and PowerPyx, Confirmed). PowerPyx says the markers only show if the minimap is switched on in the interface settings (Reported, PowerPyx). VGC says Focus Mode (L3 and R3) highlights what you are missing (Reported, VGC).",
+      "The items: soda, protein bars, gauze, a bandana, hair clippers and a makeup bag (VGC and PowerPyx, Confirmed). The other two differ. PowerPyx lists fruit and soup, and VGC lists apples and soap (Reported, conflict). Follow the minimap marker rather than the name.",
+      "Take the items off the shelves. You pay as you pick each one up, so there is no need to go to the counter (VGC and PowerPyx, Confirmed).",
+      "Leave and head back to your room at the motel (VGC and PowerPyx, Confirmed). VGC says that if you destroy your vehicle, or get too far away from it, you have to go back to the store (Reported, VGC).",
+      "Go inside to finish. VGC says you speak to Jason, and that your relationship level goes up only if you grabbed every item (Reported, VGC). PowerPyx ends the mission when you return to your room and lists the reward as a relationship increase.",
+    ],
+    spoiler:
+      "The mission is called Just Moved In (VGC, PowerPyx and our mission list). VGC says Lucia is getting supplies for Jason, who is still out of action after the events at the end of Chapter 1 (VGC). VGC then has the motel owner turn up about unpaid rent. You can pay it, or give up Lucia's necklace as collateral, and VGC says you are unlikely to have enough cash at this point (Reported, VGC). After that Jason asks for stronger painkillers, and asking around the motel sends Lucia to Vicki in Room 10, which leads into the next mission (Reported, VGC). PowerPyx doesn't include the rent scene. It lists a separate mission, Overnight Charges (See Linda, The Manager), as a requirement for the next mission, and no other outlet lists it, so we haven't added it to the hub (Reported, PowerPyx).",
+    tips: [
+      { text: "Turn the minimap on before you start. PowerPyx says the item markers only show if it is enabled in the interface settings (Reported).", reported: true },
+      { text: "Stuck on the last item? VGC suggests Focus Mode (L3 and R3 on PlayStation) to highlight what you are missing (Reported).", reported: true },
+      { text: "Collect every item. VGC says the relationship increase only happens if you grab them all (Reported).", reported: true, link: { href: "/guides/relationship", label: "Relationship levels guide" } },
+      { text: "Keep some cash on you. PowerPyx says items are paid for the moment you pick them up (Reported).", reported: true, link: { href: "/guides/money", label: "Money guide" } },
+      { text: "Make a manual save once it ends. Push Square and GamesRadar+ say story missions can't be replayed.", reported: true, link: { href: "/guides/saving", label: "How to save" } },
+    ],
+    notes: [
+      "Order: VGC lists this mission 25th and Push Square lists it third in Chapter 2, straight after the second mission. PowerPyx calls it the 29th main mission using its own count, and it lists one extra mission that the other outlets don't, so treat the overall number as Reported.",
+      "The objective list is written from VGC and PowerPyx and hasn't been checked against the on-screen prompts.",
+    ],
+    faq: [
+      {
+        question: "Which mission number is Chapter 2 Mission 3?",
+        answer: "It is the third mission of Chapter 2 and the 25th overall in VGC's count and Push Square's list (Confirmed). PowerPyx numbers it 29th because it counts differently (Reported).",
+      },
+      {
+        question: "What is the reward?",
+        answer: "A relationship increase between Jason and Lucia (VGC and PowerPyx, Confirmed). VGC says you need every item for it, and neither outlet lists cash or a weapon (Reported).",
+      },
+      {
+        question: "Does it have any combat?",
+        answer: "Neither VGC nor PowerPyx mentions any combat in it (Reported).",
+      },
+      {
+        question: "Do the outlets agree on every detail?",
+        answer: "Mostly. They agree on the number of items and the reward, but two item names differ between VGC and PowerPyx, so follow the minimap markers. The page's blurred objectives show both versions (Reported).",
+      },
+      {
+        question: "How does it start?",
+        answer: "PowerPyx says it is marked on the map straight after the first mission of Chapter 2. VGC doesn't describe a trigger (Reported).",
+      },
+    ],
+    sources: [
+      vgc("gta-6-just-moved-in-mission-walkthrough", "VGC: GTA 6 mission walkthrough, Chapter 2 mission 3 (19 Nov 2026)", "Mission number, objective flow, reward and the Focus Mode tip"),
+      pp("gta-6-just-moved-in-walkthrough", "Start point, requirement, objective, item list, reward and mission order"),
+      PUSHSQUARE,
+    ],
+    sourceLabel: "VGC, PowerPyx, Push Square",
+    updated: "2026-11-20T03:14:00+10:00",
+  },
+  {
+    slug: "chapter-2-mission-4",
+    hidden: true,
+    chapter: 2,
+    chapterOrder: 4,
+    order: 26,
+    name: "Chapter 2, Mission 4",
+    seoTitle: "GTA 6 Chapter 2 Mission 4 Walkthrough & Tips",
+    seoDescription:
+      "GTA 6 Chapter 2 Mission 4 walkthrough: step-by-step objectives, where the outlets disagree, where it sits in the story order and what to know before you start.",
+    teaser: "The fourth mission of Chapter 2, straight after Chapter 2, Mission 3.",
+    intro: [
+      "This is the fourth mission of Chapter 2 and the 26th story mission overall (VGC; Push Square lists it fourth in Chapter 2). It is a long one: PowerPyx lists 16 objectives. The outlets disagree on two points. PowerPyx says a standoff in the middle can be talked down, while VGC describes a fight, and they put the end of the chase in different places.",
+      "Our mission list keeps Chapter 2 names behind a blur, so this page uses a neutral title. The mission's name, the people, the places and the objective flow all stay behind the blur.",
+    ],
+    facts: [
+      { label: "Chapter", value: "Chapter 2, mission 4, and 26th overall (VGC; Push Square lists it fourth in Chapter 2). PowerPyx numbers it 30th because it counts differently.", status: "confirmed" },
+      { label: "Unlocks after", value: "Chapter 2, Mission 3 (VGC's order and Push Square's list). PowerPyx lists two earlier missions as requirements, one of which the other outlets don't list.", status: "reported" },
+      { label: "Starts", value: "PowerPyx says it is marked with a pink search area after the first couple of Chapter 2 missions", status: "reported" },
+      { label: "Objectives", value: "16 (PowerPyx)", status: "reported" },
+      { label: "The standoff", value: "PowerPyx says choosing Defuse twice in a row avoids a fight. VGC says the group turns hostile and you have to fight.", status: "reported" },
+      { label: "The chase", value: "VGC says destroying the car you are chasing fails the mission", status: "reported" },
+      { label: "Reward", value: "PowerPyx says the $50 you pay early on is paid back through the BuckMe app. VGC lists no reward.", status: "reported" },
+    ],
+    objectives: [
+      "Ask around the motel. PowerPyx says a man named Zach, standing between your room and reception, sends you to Room 10 and Vicki (Reported, PowerPyx). VGC has you start by speaking to Vicki, who lives at the motel. You play as Lucia (VGC and PowerPyx, Confirmed).",
+      "Buy the painkillers from Vicki. PowerPyx puts the price at $50 and says you pay her to get the pills (Reported, PowerPyx). VGC says you can use the bong while you wait, which is optional (Reported, VGC).",
+      "Take them back to your room. Jason points out they are not what you need (PowerPyx says they are over-the-counter pills; VGC calls them duds), so Lucia goes back to Vicki's room (Confirmed). VGC says you can choose to help Vicki up or leave her, and she gets up herself (Reported, VGC).",
+      "Drive to town in Vicki's car. PowerPyx says to Port Gellhorn, the town west of the motel, and the Delights club where Vicki works (Reported, PowerPyx; VGC also has you park at Delights, so the club stop is Confirmed).",
+      "Wait while Vicki collects her pay, and follow her through the club. PowerPyx says her boss is Frankie Delight. Then go back to the car (Confirmed).",
+      "Check Dunk's trailer. He isn't home. Next try the boatyard, where Dunk's friends tell you he has gone to the car wash (VGC and PowerPyx, Confirmed).",
+      "Go to the car wash, get out and open the shutter. Inside, Dunk is in trouble with a gang called the Kolts, and he escapes through the shutter (VGC and PowerPyx, Confirmed). The outlets differ on what comes next: PowerPyx says choosing Defuse twice in a row earns professional reputation and the gang leaves without a fight, and lists Provoke or attacking as alternatives (Reported, PowerPyx). VGC says the gang turns hostile and attacks you, so be ready to take them out (Reported, VGC).",
+      "Chase Dunk's car. VGC says destroying it fails the mission and doesn't think you can catch him before he crashes. VGC says the crash is at the gun range, and PowerPyx says a farm (Reported, conflict).",
+      "Find Dunk and drive him home. VGC says he is in the far paddock to the right of the gun range's main reception building (Reported, VGC). Get him into the car and drive back to his trailer to end the mission (VGC and PowerPyx, Confirmed).",
+    ],
+    spoiler:
+      "The mission is called Girls' Trip in our mission list (PC Gamer and Press Start spell it that way). VGC and PowerPyx write it as Girl's Trip, and Push Square's list has Girls' Trap. PowerPyx adds Find Painkillers to the name. Lucia is looking for stronger painkillers for Jason, who is recovering (VGC and PowerPyx). Vicki, a neighbour at the motel, works at the Delights club, and takes Lucia to Dunk, a dealer who is in trouble with the Kolts, a gang VGC says has several hideouts in Kelly County. At the end, Dunk doesn't have the painkillers yet but says he will have some soon (VGC and PowerPyx, Confirmed). PowerPyx says he can get more from his supplier, Doctor Bill with the Pill (Reported, PowerPyx).",
+    tips: [
+      { text: "Try Defuse first if you would rather skip the fight. PowerPyx says two in a row ends the standoff peacefully (Reported). VGC describes a fight, so be ready either way.", reported: true },
+      { text: "Hold your fire in the chase. VGC says destroying the car you are chasing fails the mission, so stay close until it crashes (Reported).", reported: true, link: { href: "/guides/wanted", label: "Wanted system guide" } },
+      { text: "Carry $50 before you start. PowerPyx says you pay it early on and get it back through BuckMe afterwards (Reported).", reported: true, link: { href: "/guides/money", label: "Money guide" } },
+      { text: "Follow the on-screen marker for the end of the chase. VGC and PowerPyx put it in different places (Reported).", reported: true },
+      { text: "Make a manual save once it ends. Push Square and GamesRadar+ say story missions can't be replayed.", reported: true, link: { href: "/guides/saving", label: "How to save" } },
+    ],
+    notes: [
+      "Order: VGC lists this mission 26th and Push Square lists it fourth in Chapter 2, straight after the third mission. PowerPyx calls it the 30th main mission using its own count, and it lists one extra mission that the other outlets don't, so treat the overall number as Reported.",
+      "The objective list is written from VGC and PowerPyx and hasn't been checked against the on-screen prompts.",
+    ],
+    faq: [
+      {
+        question: "Which mission number is Chapter 2 Mission 4?",
+        answer: "It is the fourth mission of Chapter 2 and the 26th overall in VGC's count and Push Square's list (Confirmed). PowerPyx numbers it 30th because it counts differently (Reported).",
+      },
+      {
+        question: "Can you avoid the fight in the middle of it?",
+        answer: "PowerPyx says yes: choose Defuse twice in a row. VGC describes the group attacking, so be ready either way (Reported, the outlets differ).",
+      },
+      {
+        question: "Can you destroy the car you are chasing?",
+        answer: "No. VGC says destroying it fails the mission, and that you can't catch it before it crashes (Reported).",
+      },
+      {
+        question: "Do you get your money back?",
+        answer: "PowerPyx says the $50 you pay early on is paid back through BuckMe. VGC lists no reward (Reported).",
+      },
+      {
+        question: "Where does the chase end?",
+        answer: "The outlets disagree. The blurred objectives show each one's version, so follow the on-screen marker (Reported).",
+      },
+    ],
+    sources: [
+      vgc("gta-6-girls-trip-mission-walkthrough", "VGC: GTA 6 mission walkthrough, Chapter 2 mission 4 (19 Nov 2026)", "Mission number, objective flow, the standoff outcome and the fail rule in the chase"),
+      pp("gta-6-girls-trip-find-painkillers-walkthrough", "Start point, objectives, the Defuse route, the $50 and its repayment, and mission order"),
+      PUSHSQUARE,
+    ],
+    sourceLabel: "VGC, PowerPyx, Push Square",
+    updated: "2026-11-20T03:14:00+10:00",
   },
 ];
 
