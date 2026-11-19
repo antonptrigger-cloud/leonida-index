@@ -38,6 +38,8 @@ export interface RelatedItem {
 }
 
 interface Item extends RelatedItem {
+  /** Section hubs are never ranked; they are pinned by explicit rules in relatedFor(). */
+  hub?: boolean;
   tags: Set<string>;
   /** Sortable recency (ISO string); newer sorts first. */
   date: string;
@@ -80,7 +82,15 @@ const TOPICS: { name: string; re: RegExp }[] = [
   { name: "console", re: /\b(PS5|PlayStation|Xbox|update|patch(es)?|servers?)\b/i },
   { name: "launch", re: /\b(unlock|launch|release|countdown|midnight)\b/i },
   { name: "activities", re: /\b(fishing|diving|dive|scuba|jet skis?|activities|basketball|mini golf|wildlife)\b/i },
-  { name: "secrets", re: /\b(secrets?|easter eggs?|collectibles?)\b/i },
+  { name: "secrets", re: /\b(secrets?|easter eggs?)\b/i },
+  { name: "money", re: /\b(money|cash|payouts?|vaults?|heists?)\b/i },
+  { name: "cheats", re: /\b(cheats?)\b/i },
+  { name: "trophies", re: /\b(trophy|trophies|platinum|achievements?)\b/i },
+  { name: "collectibles", re: /\b(collectibles?|card sets?|WAiNK)\b/i },
+  { name: "story", re: /\b(missions?|walkthroughs?|chapters?)\b/i },
+  { name: "online", re: /\b(online|multiplayer|co-?op)\b/i },
+  { name: "pc", re: /\b(PC|Steam|Game Pass|cloud)\b/ },
+  { name: "sales", re: /\b(sales?|sold|million|revenue|units)\b/i },
 ];
 
 const esc = (s: string) => s.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
@@ -207,6 +217,12 @@ function buildItems(): Item[] {
     });
   }
 
+  // Section hubs, pinned by rule (see relatedFor): all missions for mission pages, all guides for news.
+  items.push(
+    { href: "/guides/missions", title: "All missions in order", label: "Walkthrough hub", section: "guide", hub: true, tags: new Set(), date: "" },
+    { href: "/guides", title: "All guides", label: "Guides hub", section: "guide", hub: true, tags: new Set(), date: "" },
+  );
+
   // Map pages: linked to, never modified. Tagged with their own region.
   for (const [href, r] of Object.entries(ROUTES)) {
     if (!href.startsWith("/map") || r.noindex || href === "/map/leaderboard") continue;
@@ -249,11 +265,41 @@ function score(a: Item, b: Item, idf: Map<string, number>): number {
   return s;
 }
 
+/**
+ * Guides a news story should send readers to, in order. Set by hand because a story's own words
+ * rarely name the guide a reader needs next. Stories not listed fall back to the best topic match,
+ * then to the guides hub. Keys are /news/<slug> paths; values must be registered guide routes
+ * (checked by `npm run seo:audit`).
+ */
+export const NEWS_GUIDES: Record<string, string[]> = {
+  "/news/gta-6-live-new-zealand-launch-report": ["/guides/beginner", "/guides/missions"],
+  "/news/gta-6-reviews-metacritic-99": ["/guides/missions", "/guides/beginner"],
+  "/news/gta-6-ps5-update-patches-servers": ["/guides/beginner"],
+  "/news/gta-6-release-countdown": ["/guides/beginner", "/guides/missions"],
+  "/news/gta-6-confirmed-so-far": ["/guides/beginner", "/guides/wanted", "/guides/activities"],
+  "/news/gta-6-preload-editions-pricing": ["/tools/edition-compare", "/guides/beginner"],
+  "/news/release-date": ["/tools/edition-compare", "/guides/beginner"],
+  "/news/n3on-new-zealand-gta-6-stream": ["/guides/missions", "/guides/beginner"],
+  "/news/gta-6-streaming-viewership-peak": ["/guides/missions", "/guides/beginner"],
+  "/news/gta-6-launch-streams-schedule": ["/guides/missions", "/guides/beginner"],
+  "/news/streamers-new-zealand-trick-warnings": ["/guides/beginner", "/guides/missions"],
+  "/news/gta-6-performance-ps5-pro-xbox": ["/guides/beginner"],
+  "/news/gta-6-pc-release-status": ["/guides/beginner"],
+  "/news/gta-6-game-pass-ps-plus-cloud": ["/guides/beginner"],
+  "/news/gta-6-file-size-time-to-beat": ["/guides/missions", "/guides/trophies", "/guides/beginner"],
+  "/news/gta-6-online-release-date": ["/guides/missions", "/guides/beginner"],
+  "/news/gta-6-festival-set-times-heat-night": ["/guides/beginner", "/guides/activities"],
+  "/news/gta-6-sales-17-million-sensor-tower": ["/guides/beginner", "/guides/missions"],
+};
+
+/** Fewest related links a content page may end up with (also enforced by `npm run seo:audit`). */
+export const MIN_LINKS = 4;
+
 const SECTION_ORDER: Section[] = ["character", "map", "guide", "news"];
 
 /** Drop internal scoring fields. Missions carry no blurb (their teasers are light spoilers). */
-const strip = ({ tags: _t, date: _d, ...rest }: Item): RelatedItem => {
-  void _t; void _d;
+const strip = ({ tags: _t, date: _d, hub: _h, ...rest }: Item): RelatedItem => {
+  void _t; void _d; void _h;
   return rest;
 };
 
@@ -263,8 +309,12 @@ export function relatedFor(path: string, limit = 6): RelatedItem[] {
   const self = items.find((i) => i.href === path);
   if (!self) return [];
 
+  const sharesChar = (a: Item, b: Item) => [...a.tags].some((t) => t.startsWith("char:") && b.tags.has(t));
+  // A character is only "related" when it is actually named (or, from a map page, located there).
+  const eligible = (i: Item) => i.section !== "character" || self.section === "map" || self.section === "character" || sharesChar(self, i);
+
   const ranked = items
-    .filter((i) => i.href !== path)
+    .filter((i) => i.href !== path && !i.hub && eligible(i))
     .map((i) => ({ item: i, score: score(self, i, idf) }))
     .sort((a, b) => b.score - a.score || (a.item.date < b.item.date ? 1 : -1));
 
@@ -275,6 +325,12 @@ export function relatedFor(path: string, limit = 6): RelatedItem[] {
     if (i && !has(i) && picked.length < limit && count(i.section) < cap) picked.push(i);
   };
 
+  const hub = (href: string) => items.find((i) => i.href === href); // any item by href (hubs included)
+  const isMission = path.startsWith("/guides/missions/");
+  // 0) Mission pages always link back to the full walkthrough.
+  if (isMission) add(hub("/guides/missions"));
+  // 0b) News links to the guides it points readers at.
+  for (const g of NEWS_GUIDES[path] ?? []) add(hub(g));
   // 1) Own section: best two matches (falls back to latest, via the date tie-break).
   for (const r of ranked.filter((r) => r.item.section === self.section).slice(0, 2)) add(r.item);
   // 2) Best match from every other section, when it shares at least one tag.
@@ -286,7 +342,17 @@ export function relatedFor(path: string, limit = 6): RelatedItem[] {
   for (const r of ranked) if (r.score > 0) add(r.item);
   // 4) Fallback: latest in the same section, then latest anywhere.
   for (const r of ranked.filter((r) => r.item.section === self.section)) add(r.item);
-  for (const r of ranked) add(r.item, limit);
+  // Last resort, only to reach a useful minimum: the newest items anywhere.
+  for (const r of ranked) if (picked.length < MIN_LINKS) add(r.item, limit);
+
+  // News should point readers at a guide. If no guide matched, offer the guides hub.
+  if (self.section === "news" && !picked.some((p) => p.section === "guide")) {
+    const guides = hub("/guides");
+    if (guides) {
+      if (picked.length >= limit) picked.pop();
+      picked.push(guides);
+    }
+  }
 
   // Always offer the interactive map from content pages that did not match a region.
   if (self.section !== "map" && !picked.some((p) => p.section === "map")) {

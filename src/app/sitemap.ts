@@ -1,27 +1,36 @@
 import type { MetadataRoute } from "next";
-import { ROUTES, SITE, absoluteUrl } from "@/lib/seo/site";
+import { ROUTES, absoluteUrl, lastModifiedOf } from "@/lib/seo/site";
 import { getLivePins } from "@/lib/map/service";
 
-// Rebuilt at most hourly so newly approved pins refresh the map's lastModified.
+// Rebuilt at most hourly so newly approved pins refresh the map's lastmod.
 export const revalidate = 3600;
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   // Approved (public) pins only: getLivePins never returns pending or rejected rows.
-  let mapUpdated: string = SITE.updated;
+  let mapUpdated: string | undefined;
   try {
     const { pins } = await getLivePins();
-    const newest = pins.map((p) => p.createdAt).filter(Boolean).sort().at(-1);
-    if (newest && newest > mapUpdated) mapUpdated = newest;
+    mapUpdated = pins.map((p) => p.createdAt).filter(Boolean).sort().at(-1);
   } catch {
-    // Store offline: fall back to the static date.
+    // Store offline: omit lastmod for map pages rather than guess.
   }
 
-  return Object.entries(ROUTES)
-    .filter(([, r]) => !r.noindex)
-    .map(([path, r]) => ({
+  const entries = Object.entries(ROUTES).filter(([, r]) => !r.noindex);
+  // The home page changes whenever any content page does.
+  const newest = entries
+    .map(([path, r]) => (path.startsWith("/map") ? undefined : lastModifiedOf(r)))
+    .filter((d): d is string => Boolean(d))
+    .map((d) => new Date(d).getTime())
+    .reduce((a, b) => Math.max(a, b), 0);
+
+  return entries.map(([path, r]) => {
+    // lastmod comes from each item's own updated (then published) date; nothing is invented.
+    const own = path.startsWith("/map") ? mapUpdated : path === "/" ? (newest ? new Date(newest).toISOString() : undefined) : lastModifiedOf(r);
+    return {
       url: absoluteUrl(path),
-      lastModified: path.startsWith("/map") ? mapUpdated : (r.updated ?? SITE.updated),
+      ...(own ? { lastModified: own } : {}),
       changeFrequency: r.changeFrequency,
       priority: r.priority,
-    }));
+    };
+  });
 }

@@ -10,7 +10,9 @@
     "typecheck": "tsc --noEmit",
     "map:tiles": "node scripts/map-tiles.mjs",
     "map:calibrate": "node scripts/map-calibrate.mjs",
-    "seo:audit": "npx --yes tsx scripts/seo-audit.ts"
+    "seo:audit": "npx --yes tsx scripts/seo-audit.ts",
+    "indexnow": "node scripts/indexnow.mjs",
+    "seo:verify": "node scripts/seo-verify.mjs"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.119.0",
