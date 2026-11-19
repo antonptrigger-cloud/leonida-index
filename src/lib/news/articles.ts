@@ -84,6 +84,12 @@ export const UPDATES_1600_AT = "2026-11-19T16:08:22+10:00";
 /** 19 Nov 17:00 AEST batch (tracker readings 17:00-17:05 AEST, GTA+ perks piece). Set to the time of the edit. */
 export const UPDATES_1700_AT = "2026-11-19T17:10:14+10:00";
 
+/** 19 Nov 18:00 AEST batch (tracker readings 17:52-17:58 AEST, NBN record piece). Set to the time of the edit. */
+export const UPDATES_1800_AT = "2026-11-19T18:03:18+10:00";
+
+/** NBN traffic record piece. Set to the time of the edit. */
+export const NBN_RECORD_PUBLISHED = "2026-11-19T18:03:18+10:00";
+
 /** GTA+ story-mode perks piece. Set to the time of the edit. */
 export const GTA_PLUS_PUBLISHED = "2026-11-19T17:10:14+10:00";
 
@@ -93,6 +99,38 @@ export const AGE_RATING_PUBLISHED = "2026-11-19T11:48:00+10:00";
 export const newsPath = (slug: string) => `/news/${slug}`;
 
 export const NEWS: NewsItem[] = [
+  {
+    slug: "gta-6-nbn-australia-traffic-record",
+    title: "GTA 6 Breaks Australia's NBN Record",
+    description:
+      "GTA 6's launch pushed Australia's NBN to a record 36.54Tbps, says NBN Co. The numbers, what the big telcos saw, and download times by NBN plan.",
+    crumb: "NBN record",
+    teaser: "36.54Tbps on launch night, beating a record set a week earlier. NBN Co's numbers, what the telcos saw, and download times by plan.",
+    tag: "Launch night",
+    category: "launch",
+    keywords: ["GTA 6 NBN record", "GTA 6 Australia download", "NBN traffic record", "GTA 6 download time NBN", "GTA 6 Telstra Optus TPG", "did GTA 6 break the internet"],
+    published: NBN_RECORD_PUBLISHED,
+    updated: NBN_RECORD_PUBLISHED,
+    citations: [
+      "https://www.techradar.com/computing/wi-fi-broadband/no-gta-6-didnt-break-the-australian-internet-but-it-sure-did-break-records",
+      "https://www.gadgetguy.com.au/gta-6-breaks-two-australian-nbn-internet-records-in-one-week/",
+      "https://www.whistleout.com.au/Broadband/News/Grand-Theft-Auto-6-NBN-download-record",
+    ],
+    faq: [
+      {
+        question: "Did GTA 6 break the NBN record?",
+        answer: "Yes. TechRadar, GadgetGuy and WhistleOut all report that NBN Co says its network peaked at 36.54Tbps overnight heading into 19 November as GTA 6 launched, the most data it has moved in a single second. TechRadar and GadgetGuy give the previous record as 33.19Tbps, set about a week earlier.",
+      },
+      {
+        question: "Did GTA 6 crash the internet in Australia?",
+        answer: "We did not see TechRadar, GadgetGuy or WhistleOut report an NBN outage. WhistleOut says NBN Co put the launch-night peak about 20% above baseline, and TechRadar's headline says GTA 6 didn't break the Australian internet.",
+      },
+      {
+        question: "How long does GTA 6 take to download on the NBN?",
+        answer: "WhistleOut estimates almost two full days on NBN 12, just under five hours on NBN 100 and under an hour on NBN 500, assuming you max out your connection the whole time. Our own maths for the 212GB PS5 download gives about 39 hours, 4.7 hours and 56 minutes at full plan speed.",
+      },
+    ],
+  },
   {
     slug: "gta-6-gta-plus-story-perks",
     title: "GTA 6 GTA+ Perks: What You Get",
@@ -296,7 +334,7 @@ export const NEWS: NewsItem[] = [
     live: true,
     keywords: ["GTA 6 server status", "is GTA 6 down", "GTA 6 known issues", "GTA 6 PS5 update", "GTA 6 patch", "01.002.001"],
     published: NEWS_PUBLISHED,
-    updated: UPDATES_1700_AT,
+    updated: UPDATES_1800_AT,
     citations: [
       "https://x.com/PS_Support_US/status/2122863683881619685",
       "https://www.pushsquare.com/news/2026/11/gta-6-requires-new-ps5-firmware-update-to-play",
@@ -334,7 +372,7 @@ export const NEWS: NewsItem[] = [
     faq: [
       {
         question: "Is GTA 6 down?",
-        answer: "At 17:00-17:05 AEST on 19 Nov, two hours after the US and Canada unlocked at 15:00 AEST, PlayStation's status feed listed no active issues for the US, Canada, Mexico, Brazil, the UK, Ireland, France, Germany, Italy, Spain, Australia, New Zealand or Japan, and Microsoft's Xbox status feed showed no incidents. Rockstar's services showed up on GTATracker's relay of its page. Shortly after the US unlock, Mashable reports Sony's status page flagged a Gaming and Social issue at 12:33 a.m. ET (15:33 AEST); it had cleared by our 16:00 AEST reading. Downdetector user reports still headlined \"problems\" for PlayStation Network and Xbox network in the US and \"possible problems\" for PSN in Australia (mostly server connection, downloads and game launch), which the platforms' own feeds did not reflect, so that severity is disputed. For GTA VI itself, Downdetector showed no current problems in the US, Australia and New Zealand, and \"possible problems\" in the UK and Germany. User reports are not confirmed outages.",
+        answer: "At 17:52-17:58 AEST on 19 Nov, about three hours after the US and Canada unlocked at 15:00 AEST, PlayStation's status feed listed no active issues for the US, Canada, Mexico, Brazil, the UK, Ireland, France, Germany, Italy, Spain, Australia, New Zealand or Japan, and Microsoft's Xbox status feed showed no incidents. Rockstar's services showed up on GTATracker's relay of its page. Shortly after the US unlock, Mashable reports Sony's status page flagged a Gaming and Social issue at 12:33 a.m. ET (15:33 AEST); it had cleared by our 16:00 AEST reading. Downdetector user reports headlined \"problems\" for PlayStation Network in the US and Australia and \"possible problems\" for Xbox network in the US (mostly server connection, downloads and login), which the platforms' own feeds did not reflect, so that severity is disputed. For GTA VI itself, Downdetector showed no current problems in the US, Australia and New Zealand, and \"possible problems\" in the UK and Germany. User reports are not confirmed outages.",
       },
       {
         question: "Was PSN down before GTA 6 launched?",

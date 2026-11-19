@@ -25,3 +25,4 @@ news | /news/gta-6-festival-set-times-heat-night | Festival set times | live | o
 news | /news/gta-6-sales-17-million-sensor-tower | Sales estimate | live | reported (Sensor Tower estimates) | no official sales figure yet; update when Take-Two publishes
 news | /news/gta-6-age-rating | Age rating | live | official ratings boards | PEGI and CERO: no entry found 19 Nov 11:46-11:47 AEST; recheck; ACB page read via fetch tool, not direct
 news | /news/gta-6-gta-plus-story-perks | GTA+ perks | live | reported (IGN, GameSpot, Polygon) | Chapter 3 timing differs between outlets (from vs after completing); Rockstar Newswire did not load for us, no official post cited
+news | /news/gta-6-nbn-australia-traffic-record | NBN record | live | reported (NBN Co via TechRadar, GadgetGuy, WhistleOut; telco figures via WhistleOut only) | no NBN Co press release seen; GadgetGuy dates preload from 12 Nov but preload opened 10 Nov, so we do not repeat that
