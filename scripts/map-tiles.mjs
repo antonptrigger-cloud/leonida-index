@@ -1,12 +1,15 @@
 #!/usr/bin/env node
 // Builds a deep-zoom tile pyramid for the community map from one big image.
 //
-//   npm run map:tiles -- path/to/source.png [--background "#04182f"] [--quality 82] [--keep-calibration]
+//   npm run map:tiles -- path/to/source.png [--id legacy|art] [--background "#04182f"] [--quality 82] [--keep-calibration]
 //
-// Output:
+// Output for --id legacy (default, the original placeholder map):
 //   public/map/tiles/{z}/{x}/{y}.webp   256px tiles, z = 0 .. maxNativeZoom
 //   public/map/base-preview.webp        downscaled copy (admin mini maps)
 //   src/lib/map/base-map.json           manifest the map reads (sizes, zooms, URL template, calibration)
+// Output for --id art (the owner's custom art, see docs/CUSTOM_MAP_ART.md):
+//   public/map/art/{z}/{x}/{y}.webp, public/map/art-preview.webp, src/lib/map/base-art.json
+// Each base is a separate pyramid + manifest, so bases can be added, swapped or removed independently (src/lib/map/bases.ts).
 //
 // maxNativeZoom is the level where the image is shown at 1 source pixel per screen pixel.
 // The map allows MAX_OVERZOOM extra levels above that, then caps zoom so it never goes mushy.
@@ -31,18 +34,27 @@ const opt = (name, fallback) => {
   return i >= 0 ? args[i + 1] : fallback;
 };
 const flag = (name) => args.includes(`--${name}`);
-const VALUE_OPTS = ["--background", "--quality"];
+const VALUE_OPTS = ["--background", "--quality", "--id"];
 const source = args.find((a, i) => !a.startsWith("--") && !(i > 0 && VALUE_OPTS.includes(args[i - 1])));
 if (!source || !existsSync(source)) {
   console.error("Usage: npm run map:tiles -- path/to/source.png [--background \"#04182f\"] [--quality 82] [--keep-calibration]");
+  process.exit(1);
+}
+const baseId = opt("id", "legacy");
+const LAYOUT = {
+  legacy: { dir: "public/map/tiles", url: "/map/tiles", preview: "public/map/base-preview.webp", previewUrl: "/map/base-preview.webp", manifest: "src/lib/map/base-map.json" },
+  art: { dir: "public/map/art", url: "/map/art", preview: "public/map/art-preview.webp", previewUrl: "/map/art-preview.webp", manifest: "src/lib/map/base-art.json" },
+}[baseId];
+if (!LAYOUT) {
+  console.error(`Unknown --id ${baseId} (legacy | art). Add a layout entry here and in src/lib/map/bases.ts for new bases.`);
   process.exit(1);
 }
 const background = opt("background", "#04182f");
 const quality = Number(opt("quality", "82"));
 
 const root = path.resolve(path.dirname(new URL(import.meta.url).pathname), "..");
-const outDir = path.join(root, "public/map/tiles");
-const manifestPath = path.join(root, "src/lib/map/base-map.json");
+const outDir = path.join(root, LAYOUT.dir);
+const manifestPath = path.join(root, LAYOUT.manifest);
 
 sharp.cache(false);
 const input = readFileSync(source);
@@ -96,7 +108,7 @@ const preview = await sharp(input, { limitInputPixels: false })
   .resize(Math.round(srcW * previewScale), Math.round(srcH * previewScale), { kernel: "lanczos3" })
   .webp({ quality: 80 })
   .toBuffer();
-writeFileSync(path.join(root, "public/map/base-preview.webp"), preview);
+writeFileSync(path.join(root, LAYOUT.preview), preview);
 
 let calibration = {
   a: srcW / COORD_SPACE.width,
@@ -104,7 +116,11 @@ let calibration = {
   c: srcH / COORD_SPACE.height,
   d: 0,
 };
-if (flag("keep-calibration") && existsSync(manifestPath)) {
+if (baseId === "art") {
+  // The art base does not use a linear calibration: pins go through the control-point transform in
+  // src/lib/map/pin-transform.ts, which outputs source pixels directly.
+  calibration = { a: 1, b: 0, c: 1, d: 0 };
+} else if (flag("keep-calibration") && existsSync(manifestPath)) {
   calibration = JSON.parse(readFileSync(manifestPath, "utf8")).calibration ?? calibration;
 }
 
@@ -116,8 +132,8 @@ const manifest = {
   minNativeZoom: 0,
   maxNativeZoom,
   maxZoom: maxNativeZoom + MAX_OVERZOOM,
-  urlTemplate: `/map/tiles/{z}/{x}/{y}.webp?v=${version}`,
-  preview: { url: `/map/base-preview.webp?v=${version}`, width: Math.round(srcW * previewScale), height: Math.round(srcH * previewScale) },
+  urlTemplate: `${LAYOUT.url}/{z}/{x}/{y}.webp?v=${version}`,
+  preview: { url: `${LAYOUT.previewUrl}?v=${version}`, width: Math.round(srcW * previewScale), height: Math.round(srcH * previewScale) },
   background,
   calibration,
   generatedAt: new Date().toISOString(),

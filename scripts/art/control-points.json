@@ -1,0 +1,312 @@
+{
+  "_doc": "Control points for the custom-art base. legacy = pin space (1168x784, the canonical stored coordinates). art = pixels of full-orig.jpg (1200x1648). Positions are judgement calls matched by region/neighbourhood, NOT surveyed: every pin placed through them is approximate.",
+  "points": [
+    {
+      "name": "Mount Kalaga (region)",
+      "legacy": [
+        573,
+        86
+      ],
+      "art": [
+        520,
+        330
+      ]
+    },
+    {
+      "name": "Ambrosia (region)",
+      "legacy": [
+        568,
+        342
+      ],
+      "art": [
+        640,
+        548
+      ]
+    },
+    {
+      "name": "Port Gellhorn (region)",
+      "legacy": [
+        233,
+        348
+      ],
+      "art": [
+        245,
+        450
+      ]
+    },
+    {
+      "name": "Vice City (region)",
+      "legacy": [
+        860,
+        354
+      ],
+      "art": [
+        880,
+        830
+      ]
+    },
+    {
+      "name": "Grassrivers (region)",
+      "legacy": [
+        590,
+        502
+      ],
+      "art": [
+        571,
+        1247
+      ]
+    },
+    {
+      "name": "Leonida Keys (region)",
+      "legacy": [
+        586,
+        693
+      ],
+      "art": [
+        420,
+        1490
+      ]
+    },
+    {
+      "name": "Allied Crystal",
+      "legacy": [
+        536,
+        376
+      ],
+      "art": [
+        600,
+        590
+      ]
+    },
+    {
+      "name": "Ocean Beach",
+      "legacy": [
+        975,
+        393
+      ],
+      "art": [
+        1040,
+        880
+      ]
+    },
+    {
+      "name": "Washington Beach",
+      "legacy": [
+        969,
+        479
+      ],
+      "art": [
+        1035,
+        985
+      ]
+    },
+    {
+      "name": "Little Cuba",
+      "legacy": [
+        798,
+        411
+      ],
+      "art": [
+        815,
+        870
+      ]
+    },
+    {
+      "name": "Vice City Port",
+      "legacy": [
+        844,
+        462
+      ],
+      "art": [
+        880,
+        995
+      ]
+    },
+    {
+      "name": "Ocean View Hotel",
+      "legacy": [
+        967,
+        342
+      ],
+      "art": [
+        1040,
+        800
+      ]
+    },
+    {
+      "name": "Shore Court Garage",
+      "legacy": [
+        952,
+        411
+      ],
+      "art": [
+        1018,
+        915
+      ]
+    },
+    {
+      "name": "Brian's Marina",
+      "legacy": [
+        684,
+        673
+      ],
+      "art": [
+        690,
+        1400
+      ]
+    },
+    {
+      "name": "Rusty Anchor",
+      "legacy": [
+        479,
+        656
+      ],
+      "art": [
+        340,
+        1500
+      ]
+    },
+    {
+      "name": "Keys scuba",
+      "legacy": [
+        545,
+        741
+      ],
+      "art": [
+        470,
+        1535
+      ]
+    },
+    {
+      "name": "Grassrivers airboats",
+      "legacy": [
+        593,
+        547
+      ],
+      "art": [
+        600,
+        1290
+      ]
+    },
+    {
+      "name": "Kalaga outdoors",
+      "legacy": [
+        536,
+        148
+      ],
+      "art": [
+        470,
+        300
+      ]
+    },
+    {
+      "name": "Gambit Bay",
+      "legacy": [
+        1004,
+        502
+      ],
+      "art": [
+        1085,
+        1010
+      ]
+    },
+    {
+      "name": "frame NW",
+      "legacy": [
+        0,
+        0
+      ],
+      "art": [
+        0,
+        0
+      ]
+    },
+    {
+      "name": "frame N",
+      "legacy": [
+        584,
+        0
+      ],
+      "art": [
+        600,
+        0
+      ]
+    },
+    {
+      "name": "frame NE",
+      "legacy": [
+        1168,
+        0
+      ],
+      "art": [
+        1200,
+        0
+      ]
+    },
+    {
+      "name": "frame E",
+      "legacy": [
+        1168,
+        392
+      ],
+      "art": [
+        1200,
+        824
+      ]
+    },
+    {
+      "name": "frame SE",
+      "legacy": [
+        1168,
+        784
+      ],
+      "art": [
+        1200,
+        1648
+      ]
+    },
+    {
+      "name": "frame S",
+      "legacy": [
+        584,
+        784
+      ],
+      "art": [
+        600,
+        1648
+      ]
+    },
+    {
+      "name": "frame SW",
+      "legacy": [
+        0,
+        784
+      ],
+      "art": [
+        0,
+        1648
+      ]
+    },
+    {
+      "name": "frame W",
+      "legacy": [
+        0,
+        392
+      ],
+      "art": [
+        0,
+        824
+      ]
+    }
+  ],
+  "pinOverrides": {
+    "seed-lake-leonida": [
+      733,
+      470
+    ],
+    "seed-one-eyed-willies": [
+      765,
+      505
+    ]
+  }
+}
