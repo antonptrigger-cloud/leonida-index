@@ -109,16 +109,29 @@ def land_palette(img, box):
     lo, hi = np.percentile(lum, 40), np.percentile(lum, 92)
     return px[lum <= lo].mean(0), px[lum >= hi].mean(0)
 
+def ring_palette(img, blob, band=(4, 40)):
+    """Light / dark land colours from the land hugging the blob (so the patch matches the island it sits on); None if too little land."""
+    m = (blob > 0).astype(np.uint8)
+    ring = (cv2.dilate(m, K(2 * band[1] + 1)) > 0) & (cv2.dilate(m, K(2 * band[0] + 1)) == 0)
+    hsv = cv2.cvtColor(img, cv2.COLOR_BGR2HSV)
+    land = ring & (hsv[:, :, 1] > 60) & (hsv[:, :, 0] > 20) & (hsv[:, :, 0] < 50)
+    px = img[land]
+    if len(px) < 300:
+        return None
+    lum = px.astype(float).mean(1)
+    lo, hi = np.percentile(lum, 25), np.percentile(lum, 80)
+    return px[lum <= lo].mean(0), px[lum >= hi].mean(0)
+
 def paint_land(img, blob, seed=1, palette_box=(520, 300, 700, 430), rim=None):
     """Replace the masked blob with plain land: a soft two-tone green field with fine grain. `blob` is a 0/255 mask.
     The blob edge is the coastline, so it stays; no roads, runways or buildings are invented."""
     rng = np.random.default_rng(seed)
-    dark, light = land_palette(img, palette_box)
+    dark, light = ring_palette(img, blob) or land_palette(img, palette_box)
     H, W = blob.shape
     def noise(s):
         n = cv2.GaussianBlur(rng.standard_normal((H, W)).astype(np.float32), (0, 0), s)
         return (n - n.mean()) / (n.std() + 1e-6)
-    t = np.clip(0.5 + 0.34 * noise(16) + 0.18 * noise(6), 0, 1)[..., None]
+    t = np.clip(0.5 + 0.24 * noise(16) + 0.12 * noise(6), 0, 1)[..., None]
     fill = dark[None, None, :] * (1 - t) + light[None, None, :] * t
     fill = fill + 3.5 * noise(1.2)[..., None]
     if rim is not None:    # sandy rim (BGR) along the coast, fading inward
@@ -147,7 +160,7 @@ FULL_TEXT_BOXES = [(262, 1520, 300, 1536),   # leftover label under the Keys mai
 VC_TEXT_BOXES = [(1188, 566, 1232, 586)]    # garbled "label" on the Vice City port water
 FULL_BLOBS = [
     # Leonida Keys main island: grey disc with an invented two-runway "X" and tan taxiway strips
-    dict(name='keys-island', box=(228, 1413, 350, 1535), kind='grey', seed=3),
+    dict(name='keys-island', box=(228, 1413, 350, 1535), extra=[(268, 1396, 350, 1414)], kind='grey', seed=3),   # extra: the top rim, clear of the small island to its west
     # Port Gellhorn: white disc with a smudged brown rectangle
     dict(name='port-gellhorn-disc', box=(200, 418, 290, 505), kind='grey', seed=5, tint=None),
 ]
@@ -172,6 +185,16 @@ def run(which):
             if wat[min(y, wat.shape[0] - 1), min(x, wat.shape[1] - 1)]: cv2.circle(nodes, (x, y), 5, 255, -1)   # water only: over land they are invisible
     res = cv2.inpaint(res, nodes, 3, cv2.INPAINT_TELEA)
     mask |= nodes
+    # profile subtraction leaves a faint pale ghost of each line over open water; water is smooth, so a thin Telea pass removes it
+    # (never over land: there the subtraction already kept the detail)
+    bgr = res.astype(int)
+    owat = cv2.erode(((bgr[:, :, 0] - bgr[:, :, 2] > 60) & (bgr[:, :, 0] > 140)).astype(np.uint8), K(9)) > 0
+    strips = np.zeros(img.shape[:2], np.uint8)
+    for x in xs: strips[:, max(0, x - 3):x + 4] = 255
+    for y in ys: strips[max(0, y - 3):y + 4, :] = 255
+    strips[~owat] = 0
+    res = cv2.inpaint(res, strips, 3, cv2.INPAINT_TELEA)
+    mask |= strips
     # 2. glyph clusters (auto + boxes), after the grid is gone so lines do not count as specks
     sp, sboxes = water_specks(res)
     tm = sp.copy()
@@ -183,6 +206,7 @@ def run(which):
     if which == 'full':
         for b in FULL_BLOBS:
             bm = grey_blob(res, b['box'])
+            for eb in b.get('extra', []): bm = cv2.bitwise_or(bm, grey_blob(res, eb))
             res = paint_land(res, bm, seed=b['seed'], rim=(150, 205, 215))
             mask |= bm
             print(' blob', b['name'], int((bm > 0).sum()), 'px')
