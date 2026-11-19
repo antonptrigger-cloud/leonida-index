@@ -3,7 +3,8 @@
 import dynamic from "next/dynamic";
 import Link from "next/link";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
-import { PIN_TYPES, REGIONS, SOURCE_LABELS, TILES, typeSingular, type PinType } from "@/lib/map/config";
+import { BASES, BASE_IDS, DEFAULT_BASE, isBaseId, type BaseId } from "@/lib/map/bases";
+import { PIN_TYPES, REGIONS, SOURCE_LABELS, typeSingular, type PinType } from "@/lib/map/config";
 import { NO_FILTERS, regionSlug as slug, type InitialFilters } from "@/lib/map/filters";
 import type { LeaderboardEntry, PublicPin } from "@/lib/map/types";
 import { glyphSvg } from "./glyphs";
@@ -61,11 +62,12 @@ export function CommunityMap({
   const [showSpoilers, setShowSpoilers] = useState(initialFilters.spoilers);
   const [officialOnly, setOfficialOnly] = useState(initialFilters.official);
   const [region, setRegion] = useState<string | null>(initialFilters.region);
+  const [baseId, setBaseId] = useState<BaseId>(initialFilters.base ?? DEFAULT_BASE);
   const deepPin = initialPins.find((p) => p.id === initialFilters.pin) ?? null;
   const [selectedId, setSelectedId] = useState<string | null>(deepPin?.id ?? null);
   const [submitting, setSubmitting] = useState(false);
   const [draft, setDraft] = useState<{ x: number; y: number } | null>(null);
-  const [flyTarget, setFlyTarget] = useState<{ x: number; y: number; key: number } | null>(deepPin ? { x: deepPin.x, y: deepPin.y, key: 1 } : null);
+  const [flyTarget, setFlyTarget] = useState<{ id?: string; x: number; y: number; key: number } | null>(deepPin ? { id: deepPin.id, x: deepPin.x, y: deepPin.y, key: 1 } : null);
   const [leaders, setLeaders] = useState<LeaderboardEntry[] | null>(null);
   const [filtersOpen, setFiltersOpen] = useState(false);
   const [listOpen, setListOpen] = useState(false);
@@ -119,10 +121,11 @@ export function CommunityMap({
     set("region", region ? slug(region) : null);
     set("spoilers", showSpoilers ? "1" : null);
     set("pin", selectedId);
+    set("base", baseId === DEFAULT_BASE ? null : baseId);
     const qs = params.toString();
     const url = `${window.location.pathname}${qs ? `?${qs}` : ""}${window.location.hash}`;
     if (url !== `${window.location.pathname}${window.location.search}${window.location.hash}`) window.history.replaceState(null, "", url);
-  }, [query, enabled, officialOnly, region, showSpoilers, selectedId]);
+  }, [query, enabled, officialOnly, region, showSpoilers, selectedId, baseId]);
 
   const select = useCallback(
     (id: string) => {
@@ -134,7 +137,7 @@ export function CommunityMap({
 
   function focus(p: PublicPin) {
     setSelectedId(p.id);
-    setFlyTarget((prev) => ({ x: p.x, y: p.y, key: (prev?.key ?? 0) + 1 }));
+    setFlyTarget((prev) => ({ id: p.id, x: p.x, y: p.y, key: (prev?.key ?? 0) + 1 }));
   }
 
   function toggleType(t: PinType) {
@@ -173,9 +176,10 @@ export function CommunityMap({
   const panelMode: "submit" | "details" | "list" | null = submitting ? "submit" : selected ? "details" : listOpen || q ? "list" : null;
 
   return (
-    <div className="lvg-fullmap fixed inset-x-0 bottom-0 z-30" style={{ top: "var(--lvg-header-h, 49px)", background: TILES.background }}>
+    <div className="lvg-fullmap fixed inset-x-0 bottom-0 z-30" style={{ top: "var(--lvg-header-h, 49px)", background: BASES[baseId].tiles.background }}>
       <div className="absolute inset-0" data-testid="map">
         <LeafletMap
+          baseId={baseId}
           pins={mapPins}
           selectedId={selectedId}
           onSelect={select}
@@ -264,6 +268,22 @@ export function CommunityMap({
             <label className="vc-chip cursor-pointer" style={{ ["--chip" as string]: "#ff8c42" }}>
               <input type="checkbox" checked={showSpoilers} onChange={(e) => setShowSpoilers(e.target.checked)} className="accent-pink" />
               Show spoilers
+            </label>
+            <label className="vc-chip" title="Switch the base map. Pin data is the same either way.">
+              <span className="sr-only">Base map</span>
+              <select
+                value={baseId}
+                onChange={(e) => isBaseId(e.target.value) && setBaseId(e.target.value)}
+                aria-label="Base map"
+                className="max-w-[9.5rem] cursor-pointer bg-transparent text-inherit outline-none"
+                data-testid="base-select"
+              >
+                {BASE_IDS.map((id) => (
+                  <option key={id} value={id} className="bg-card">
+                    {BASES[id].label}
+                  </option>
+                ))}
+              </select>
             </label>
             <label className="vc-chip">
               <span className="sr-only">Region</span>

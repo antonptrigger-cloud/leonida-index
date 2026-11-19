@@ -23,6 +23,10 @@ export default function Page() {
         We changed it: filtered, re-typed and repositioned onto our own base map, so those positions are approximate. We do not use
         their map tiles or photos. Community pins are marked by players and reviewed by moderators.
       </p>
+      <p className="mt-3 max-w-xl text-ink-2">
+        The base map is our own AI-generated illustration, cleaned and upscaled with open tools (Real-ESRGAN, BSD-3-Clause; LaMa, Apache-2.0).
+        It is not Rockstar’s map and not the in-game geography. Region names on it are drawn by the site.
+      </p>
     </div>
   );
 }

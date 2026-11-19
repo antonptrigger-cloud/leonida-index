@@ -1,3 +1,4 @@
+import { isBaseId, type BaseId } from "./bases";
 import { PIN_TYPES, REGIONS, type PinType } from "./config";
 
 /** Filter state that lives in the URL (/map?types=shop,landmark&official=1&region=vice-city&pin=seed-ocean-beach). */
@@ -8,9 +9,11 @@ export interface InitialFilters {
   region: string | null;
   spoilers: boolean;
   pin: string | null;
+  /** null = the default base (art). `?base=legacy` shows the old placeholder map. */
+  base: BaseId | null;
 }
 
-export const NO_FILTERS: InitialFilters = { q: "", types: null, official: false, region: null, spoilers: false, pin: null };
+export const NO_FILTERS: InitialFilters = { q: "", types: null, official: false, region: null, spoilers: false, pin: null, base: null };
 
 export const regionSlug = (name: string) => name.toLowerCase().replace(/\s+/g, "-");
 const regionFromSlug = (v: string | null) => REGIONS.find((r) => regionSlug(r) === v) ?? null;
@@ -28,5 +31,6 @@ export function parseFilters(sp: Record<string, string | string[] | undefined>):
     region: regionFromSlug(one("region")),
     spoilers: one("spoilers") === "1",
     pin: (one("pin") ?? "").slice(0, 64).replace(/[^A-Za-z0-9_-]/g, "") || null,
+    base: isBaseId(one("base")) ? (one("base") as BaseId) : null,
   };
 }

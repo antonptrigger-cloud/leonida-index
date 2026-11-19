@@ -835,6 +835,15 @@ a.vc-card:hover {
 .lvg-region--tall {
   translate: -50% calc(22px + 22px * var(--lvg-s, 0.5));
 }
+/* Custom-art base: no label is baked into the image (they were removed), so the chip IS the label, centred on its anchor. */
+.lvg-region.lvg-region--label {
+  translate: -50% -50%;
+}
+.lvg-region--label .lvg-region__chip {
+  font-size: 1.05rem;
+  letter-spacing: 0.14em;
+  padding: 0.2rem 0.7rem 0.15rem;
+}
 .lvg-region__chip {
   display: inline-flex;
   align-items: center;

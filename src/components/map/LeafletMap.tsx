@@ -2,31 +2,65 @@
 
 import "leaflet/dist/leaflet.css";
 import L from "leaflet";
-import { useEffect, useMemo, useState } from "react";
+import { createContext, useContext, useEffect, useMemo, useState } from "react";
 import { MapContainer, Marker, TileLayer, Tooltip, useMap, useMapEvents } from "react-leaflet";
-import { BASE_MAP, TILES } from "@/lib/map/config";
+import { BASES, DEFAULT_BASE, type BaseId, type BaseMap } from "@/lib/map/bases";
+import type { TileManifest } from "@/lib/map/config";
 import { markerHtml } from "./glyphs";
-import { fromSource, onBaseMap, toSource } from "@/lib/map/geo";
+import { onBaseMap } from "@/lib/map/geo";
 import type { PublicPin } from "@/lib/map/types";
 
 /**
  * Deep-zoom map. The Leaflet coordinate space is the base image's source pixels
  * (lat = y from the top, lng = x from the left). At zoom = maxNativeZoom one source
  * pixel is one screen pixel, matching the tile pyramid from scripts/map-tiles.mjs.
- * Pins are stored in COORD_SPACE and converted through the manifest calibration.
+ * Pins are stored in COORD_SPACE and converted per base (src/lib/map/bases.ts).
  */
-const f = 1 / 2 ** TILES.maxNativeZoom;
-const CRS = L.Util.extend({}, L.CRS.Simple, { transformation: new L.Transformation(f, 0, f, 0) }) as L.CRS;
-const BOUNDS = L.latLngBounds([0, 0], [TILES.height, TILES.width]);
-const MAX_BOUNDS = BOUNDS.pad(0.08);
+/** Everything that depends on which base map is showing. One instance per base, shared through context. */
+interface Geo {
+  base: BaseMap;
+  tiles: TileManifest;
+  crs: L.CRS;
+  bounds: L.LatLngBounds;
+  maxBounds: L.LatLngBounds;
+  /** A stored pin (legacy pin space; its id selects a fixed art position when there is one) -> Leaflet position. */
+  toLatLng: (p: { id?: string; x: number; y: number }) => L.LatLngTuple;
+  /** Leaflet position -> stored pin coordinates (what a new submission saves). */
+  fromLatLng: (ll: L.LatLng) => { x: number; y: number };
+}
 
-export const toLatLng = (x: number, y: number): L.LatLngTuple => {
-  const { sx, sy } = toSource(x, y);
-  return [sy, sx];
-};
-const fromLatLng = (ll: L.LatLng) => {
-  const p = fromSource(ll.lng, ll.lat);
-  return { x: Math.round(p.x * 10) / 10, y: Math.round(p.y * 10) / 10 };
+const geoCache = new Map<BaseId, Geo>();
+function geoFor(id: BaseId): Geo {
+  let g = geoCache.get(id);
+  if (!g) {
+    const base = BASES[id];
+    const tiles = base.tiles;
+    const f = 1 / 2 ** tiles.maxNativeZoom;
+    const bounds = L.latLngBounds([0, 0], [tiles.height, tiles.width]);
+    g = {
+      base,
+      tiles,
+      crs: L.Util.extend({}, L.CRS.Simple, { transformation: new L.Transformation(f, 0, f, 0) }) as L.CRS,
+      bounds,
+      maxBounds: bounds.pad(0.08),
+      toLatLng: (p) => {
+        const { sx, sy } = base.pinToSource(p);
+        return [sy, sx];
+      },
+      fromLatLng: (ll) => {
+        const p = base.sourceToPin(ll.lng, ll.lat);
+        return { x: Math.round(p.x * 10) / 10, y: Math.round(p.y * 10) / 10 };
+      },
+    };
+    geoCache.set(id, g);
+  }
+  return g;
+}
+const GeoContext = createContext<Geo | null>(null);
+const useGeo = () => {
+  const g = useContext(GeoContext);
+  if (!g) throw new Error("Geo context missing");
+  return g;
 };
 
 const iconCache = new Map<string, L.DivIcon>();
@@ -53,12 +87,12 @@ function pinIcon(type: PublicPin["type"], selected: boolean, approximate: boolea
  * Region pins are label chips, not dots. They sit below the label that is baked into the base image
  * (offset scales with zoom through --lvg-s, see ZoomState) so the two never overlap.
  */
-function regionIcon(name: string, selected: boolean, approximate: boolean, tall: boolean): L.DivIcon {
-  const key = `region-${name}-${selected}-${approximate}-${tall}`;
+function regionIcon(name: string, selected: boolean, approximate: boolean, tall: boolean, offset: boolean): L.DivIcon {
+  const key = `region-${name}-${selected}-${approximate}-${tall}-${offset}`;
   let icon = iconCache.get(key);
   if (!icon) {
     icon = L.divIcon({
-      className: `lvg-region${selected ? " lvg-region--selected" : ""}${approximate ? " lvg-region--approx" : ""}${tall ? " lvg-region--tall" : ""}`,
+      className: `lvg-region${offset ? "" : " lvg-region--label"}${selected ? " lvg-region--selected" : ""}${approximate ? " lvg-region--approx" : ""}${tall ? " lvg-region--tall" : ""}`,
       html: `<span class="lvg-region__chip"><i aria-hidden="true"></i>${escapeHtml(name)}</span>`,
       // No fixed size: the container is exactly the chip, offset with CSS `translate` (see globals.css).
       iconSize: null as unknown as L.PointExpression,
@@ -97,34 +131,36 @@ const draftIcon = L.divIcon({
  * level past "whole map". You can always zoom out to the whole map (minZoom = fit zoom), and the
  * "Whole map" button goes straight there.
  */
-function startZoom(map: L.Map) {
-  const fitZ = map.getBoundsZoom(BOUNDS, false);
-  const coverZ = map.getBoundsZoom(BOUNDS, true);
-  return { fitZ, start: Math.min(coverZ, fitZ + 1, TILES.maxZoom) };
+function startZoom(map: L.Map, geo: Geo) {
+  const fitZ = map.getBoundsZoom(geo.bounds, false);
+  const coverZ = map.getBoundsZoom(geo.bounds, true);
+  return { fitZ, start: Math.min(coverZ, fitZ + 1, geo.tiles.maxZoom) };
 }
 
 function FitToView() {
   const map = useMap();
+  const geo = useGeo();
   useEffect(() => {
     let first = true;
     const fit = () => {
       map.invalidateSize();
-      const { fitZ, start } = startZoom(map);
-      map.setMinZoom(Math.min(fitZ, TILES.maxZoom));
-      if (first) map.setView(BOUNDS.getCenter(), start, { animate: false });
-      else if (map.getZoom() < fitZ) map.fitBounds(BOUNDS, { animate: false });
+      const { fitZ, start } = startZoom(map, geo);
+      map.setMinZoom(Math.min(fitZ, geo.tiles.maxZoom));
+      if (first) map.setView(geo.bounds.getCenter(), start, { animate: false });
+      else if (map.getZoom() < fitZ) map.fitBounds(geo.bounds, { animate: false });
       first = false;
     };
     fit();
     const ro = new ResizeObserver(() => fit());
     ro.observe(map.getContainer());
     return () => ro.disconnect();
-  }, [map]);
+  }, [map, geo]);
   return null;
 }
 
 function WholeMapButton() {
   const map = useMap();
+  const geo = useGeo();
   useEffect(() => {
     const Ctl = L.Control.extend({
       onAdd() {
@@ -137,7 +173,7 @@ function WholeMapButton() {
         L.DomEvent.disableClickPropagation(a);
         L.DomEvent.on(a, "click", (e) => {
           L.DomEvent.preventDefault(e);
-          map.flyToBounds(BOUNDS, { duration: 0.5 });
+          map.flyToBounds(geo.bounds, { duration: 0.5 });
         });
         const wrap = L.DomUtil.create("div", "leaflet-bar leaflet-control");
         wrap.appendChild(a);
@@ -149,15 +185,17 @@ function WholeMapButton() {
     return () => {
       ctl.remove();
     };
-  }, [map]);
+  }, [map, geo]);
   return null;
 }
 
 function ClickToDrop({ enabled, onDrop }: { enabled: boolean; onDrop: (p: { x: number; y: number }) => void }) {
+  const geo = useGeo();
   const map = useMapEvents({
     click(e) {
       if (!enabled) return;
-      const p = fromLatLng(e.latlng);
+      // Stored coordinates are always pin space, whichever base is showing.
+      const p = geo.fromLatLng(e.latlng);
       if (!onBaseMap(p.x, p.y)) return;
       onDrop(p);
     },
@@ -172,10 +210,11 @@ function ClickToDrop({ enabled, onDrop }: { enabled: boolean; onDrop: (p: { x: n
 
 /** Calibration helper (?coords=1): shows pin coordinates and source pixels under the cursor. */
 function CoordsReadout() {
+  const geo = useGeo();
   const [pos, setPos] = useState<{ x: number; y: number; sx: number; sy: number; z: number } | null>(null);
   const map = useMapEvents({
     mousemove(e) {
-      const p = fromLatLng(e.latlng);
+      const p = geo.fromLatLng(e.latlng);
       setPos({ ...p, sx: Math.round(e.latlng.lng), sy: Math.round(e.latlng.lat), z: map.getZoom() });
     },
     zoomend() {
@@ -189,11 +228,13 @@ function CoordsReadout() {
   );
 }
 
-function FlyTo({ target }: { target: { x: number; y: number; key: number } | null }) {
+function FlyTo({ target }: { target: { id?: string; x: number; y: number; key: number } | null }) {
   const map = useMap();
+  const geo = useGeo();
   useEffect(() => {
     if (!target) return;
-    map.flyTo(toLatLng(target.x, target.y), Math.max(map.getZoom(), TILES.maxNativeZoom - 0.5), { duration: 0.6 });
+    map.flyTo(geo.toLatLng(target), Math.max(map.getZoom(), geo.tiles.maxNativeZoom - 0.5), { duration: 0.6 });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [target, map]);
   return null;
 }
@@ -201,12 +242,13 @@ function FlyTo({ target }: { target: { x: number; y: number; key: number } | nul
 /** Current zoom, rounded to the 0.25 snap, plus the "whole map" zoom. Also drives --lvg-s (see regionIcon). */
 function useZoomState() {
   const map = useMap();
+  const geo = useGeo();
   const read = () => ({ zoom: Math.round(map.getZoom() * 4) / 4, fit: map.getMinZoom() });
   const [state, setState] = useState(read);
   useMapEvents({
     zoom() {
       // 1 at native resolution (1 source px = 1 screen px), 2 when overzoomed once, and so on.
-      map.getContainer().style.setProperty("--lvg-s", String(2 ** (map.getZoom() - TILES.maxNativeZoom)));
+      map.getContainer().style.setProperty("--lvg-s", String(2 ** (map.getZoom() - geo.tiles.maxNativeZoom)));
     },
     zoomend() {
       setState(read());
@@ -216,7 +258,7 @@ function useZoomState() {
     },
   });
   useEffect(() => {
-    map.getContainer().style.setProperty("--lvg-s", String(2 ** (map.getZoom() - TILES.maxNativeZoom)));
+    map.getContainer().style.setProperty("--lvg-s", String(2 ** (map.getZoom() - geo.tiles.maxNativeZoom)));
     // eslint-disable-next-line react-hooks/set-state-in-effect
     setState(read());
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -229,7 +271,7 @@ function useZoomState() {
  * available zoom range (on a wide desktop window the whole map is already near native size, so the
  * range is under one level).
  */
-const placesFrom = (fit: number) => Math.min(0.75, 0.4 * (TILES.maxZoom - fit));
+const placesFrom = (fit: number, maxZoom: number) => Math.min(0.75, 0.4 * (maxZoom - fit));
 /** Region label chips fade out once the baked-in labels are large enough to stand on their own. */
 const REGIONS_UNTIL = 2.5;
 /** Pins closer than this (screen px) merge into a cluster. */
@@ -242,12 +284,12 @@ interface Cluster {
 }
 
 /** Greedy grid-free clustering in screen space at a given zoom. Cheap enough for thousands of pins. */
-function clusterPins(map: L.Map, pins: PublicPin[], zoom: number, keepSingle: Set<string>): Cluster[] {
+function clusterPins(map: L.Map, geo: Geo, pins: PublicPin[], zoom: number, keepSingle: Set<string>): Cluster[] {
   const out: Cluster[] = [];
   const cell = CLUSTER_PX;
   const grid = new Map<string, Cluster[]>();
   for (const p of pins) {
-    const pt = map.project(toLatLng(p.x, p.y), zoom);
+    const pt = map.project(geo.toLatLng(p), zoom);
     if (keepSingle.has(p.id)) {
       out.push({ pins: [p], x: pt.x, y: pt.y });
       continue;
@@ -296,8 +338,9 @@ function PinLayer({
   fit: number;
 }) {
   const map = useMap();
+  const geo = useGeo();
   const rel = zoom - fit;
-  const placesVisible = showAllPlaces || rel >= placesFrom(fit);
+  const placesVisible = showAllPlaces || rel >= placesFrom(fit, geo.tiles.maxZoom);
   const regionsVisible = rel <= REGIONS_UNTIL;
 
   const regions = useMemo(() => pins.filter((p) => p.type === "region"), [pins]);
@@ -307,9 +350,9 @@ function PinLayer({
     if (!placesVisible) return [];
     const keep = new Set<string>(selectedId ? [selectedId] : []);
     // At full zoom everything is spread out enough; never hide pins behind a cluster there.
-    if (zoom >= TILES.maxZoom - 0.01) return places.map((p) => ({ pins: [p], x: 0, y: 0 }));
-    return clusterPins(map, places, zoom, keep);
-  }, [map, places, zoom, placesVisible, selectedId]);
+    if (zoom >= geo.tiles.maxZoom - 0.01) return places.map((p) => ({ pins: [p], x: 0, y: 0 }));
+    return clusterPins(map, geo, places, zoom, keep);
+  }, [map, geo, places, zoom, placesVisible, selectedId]);
 
   return (
     <>
@@ -317,8 +360,8 @@ function PinLayer({
         ? regions.map((p) => (
             <Marker
               key={p.id}
-              position={toLatLng(p.x, p.y)}
-              icon={regionIcon(p.name, p.id === selectedId, p.approximate, p.name === "Mount Kalaga")}
+              position={geo.toLatLng(p)}
+              icon={regionIcon(p.name, p.id === selectedId, p.approximate, geo.base.bakedLabels && p.name === "Mount Kalaga", geo.base.bakedLabels)}
               eventHandlers={{ click: () => onSelect(p.id) }}
               keyboard={true}
               title={`${p.name} (region)`}
@@ -332,7 +375,7 @@ function PinLayer({
           return (
             <Marker
               key={p.id}
-              position={toLatLng(p.x, p.y)}
+              position={geo.toLatLng(p)}
               icon={pinIcon(p.type, p.id === selectedId, p.approximate, p.source)}
               eventHandlers={{ click: () => onSelect(p.id) }}
               keyboard={true}
@@ -354,8 +397,8 @@ function PinLayer({
             icon={clusterIcon(c.pins.length)}
             eventHandlers={{
               click: () => {
-                const b = L.latLngBounds(c.pins.map((p) => toLatLng(p.x, p.y)));
-                map.flyToBounds(b, { maxZoom: Math.min(TILES.maxZoom, zoom + 1.5), padding: [70, 70], duration: 0.5 });
+                const b = L.latLngBounds(c.pins.map((p) => geo.toLatLng(p)));
+                map.flyToBounds(b, { maxZoom: Math.min(geo.tiles.maxZoom, zoom + 1.5), padding: [70, 70], duration: 0.5 });
               },
             }}
             keyboard={true}
@@ -371,12 +414,13 @@ function PinLayer({
 /** Overview hint: place pins are tucked away until you zoom in. */
 function ZoomHint({ hiddenCount, show }: { hiddenCount: number; show: boolean }) {
   const map = useMap();
+  const geo = useGeo();
   if (!show || hiddenCount === 0) return null;
   return (
     <div className="pointer-events-none absolute inset-x-0 bottom-[7.5rem] z-[900] flex justify-center sm:bottom-10x">
       <button
         type="button"
-        onClick={() => map.setZoom(map.getMinZoom() + Math.min(1.25, (TILES.maxZoom - map.getMinZoom()) * 0.6))}
+        onClick={() => map.setZoom(map.getMinZoom() + Math.min(1.25, (geo.tiles.maxZoom - map.getMinZoom()) * 0.6))}
         className="vc-chip vc-chip--on pointer-events-auto"
         style={{ ["--chip" as string]: "#00d4ff" }}
         data-testid="zoom-hint"
@@ -389,11 +433,12 @@ function ZoomHint({ hiddenCount, show }: { hiddenCount: number; show: boolean })
 
 function PinsAndHint(props: { pins: PublicPin[]; selectedId: string | null; onSelect: (id: string) => void; showAllPlaces: boolean }) {
   const { zoom, fit } = useZoomState();
+  const geo = useGeo();
   const placeCount = props.pins.filter((p) => p.type !== "region").length;
   return (
     <>
       <PinLayer {...props} zoom={zoom} fit={fit} />
-      <ZoomHint hiddenCount={placeCount} show={!props.showAllPlaces && zoom - fit < placesFrom(fit)} />
+      <ZoomHint hiddenCount={placeCount} show={!props.showAllPlaces && zoom - fit < placesFrom(fit, geo.tiles.maxZoom)} />
     </>
   );
 }
@@ -408,6 +453,7 @@ function AttributionPrefix() {
 }
 
 export default function LeafletMap({
+  baseId = DEFAULT_BASE,
   pins,
   selectedId,
   onSelect,
@@ -418,31 +464,37 @@ export default function LeafletMap({
   showCoords,
   showAllPlaces,
 }: {
+  /** Which base map to draw. Changing it remounts the map (tiles, bounds and pin projection all change). */
+  baseId?: BaseId;
   pins: PublicPin[];
   selectedId: string | null;
   onSelect: (id: string) => void;
   dropMode: boolean;
   draft: { x: number; y: number } | null;
   onDraftChange: (p: { x: number; y: number }) => void;
-  flyTarget: { x: number; y: number; key: number } | null;
+  flyTarget: { id?: string; x: number; y: number; key: number } | null;
   showCoords: boolean;
   /** Skip the zoom-dependent hiding of place pins (an active search or filter, or a deep link). */
   showAllPlaces: boolean;
 }) {
+  const geo = geoFor(baseId);
   const draftHandlers = useMemo(
     () => ({
       dragend(e: L.LeafletEvent) {
-        onDraftChange(fromLatLng((e.target as L.Marker).getLatLng()));
+        onDraftChange(geo.fromLatLng((e.target as L.Marker).getLatLng()));
       },
     }),
-    [onDraftChange],
+    [onDraftChange, geo],
   );
 
+  const TILES = geo.tiles;
   return (
+    <GeoContext.Provider value={geo}>
     <MapContainer
-      crs={CRS}
-      bounds={BOUNDS}
-      maxBounds={MAX_BOUNDS}
+      key={baseId}
+      crs={geo.crs}
+      bounds={geo.bounds}
+      maxBounds={geo.maxBounds}
       maxBoundsViscosity={0.9}
       minZoom={0}
       maxZoom={TILES.maxZoom}
@@ -462,11 +514,11 @@ export default function LeafletMap({
         maxNativeZoom={TILES.maxNativeZoom}
         minZoom={-4}
         maxZoom={TILES.maxZoom}
-        bounds={BOUNDS}
+        bounds={geo.bounds}
         noWrap
         keepBuffer={4}
         updateWhenZooming={false}
-        attribution={BASE_MAP.attribution}
+        attribution={geo.base.attribution}
         className="lvg-tiles"
       />
       <ZoomControlBottomRight />
@@ -475,12 +527,13 @@ export default function LeafletMap({
       <PinsAndHint pins={pins} selectedId={selectedId} onSelect={onSelect} showAllPlaces={showAllPlaces} />
       <AttributionPrefix />
       {draft ? (
-        <Marker position={toLatLng(draft.x, draft.y)} icon={draftIcon} draggable eventHandlers={draftHandlers} zIndexOffset={2000} />
+        <Marker position={geo.toLatLng(draft)} icon={draftIcon} draggable eventHandlers={draftHandlers} zIndexOffset={2000} />
       ) : null}
       <ClickToDrop enabled={dropMode} onDrop={onDraftChange} />
       <FlyTo target={flyTarget} />
       {showCoords ? <CoordsReadout /> : null}
     </MapContainer>
+    </GeoContext.Provider>
   );
 }
 
