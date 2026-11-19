@@ -1370,7 +1370,7 @@ export const MISSIONS: Mission[] = [
     teaser: "Jason and Lucia take a six-pack to Cal, then go fishing and grill the catch.",
     intro: [
       "Recalibration is the 19th story mission. VGC says Jason and Lucia cheer Cal up after the recent events of the game with a beer run, a boat trip out fishing and a fish grill back at the dock. Neither walkthrough describes any combat.",
-      "The thing to know before you start is the save advice. VGC and PowerPyx both advise a separate save before the Chapter 1 finale, and they place the point of no return differently (see the notes). What you lose stays behind the blur.",
+      "The thing to know before you start is the save advice. VGC and PowerPyx both advise a separate save before the Chapter 1 finale, and both say the point of no return is the start of Tourist Trap, the mission that follows (see the notes). What you lose stays behind the blur.",
     ],
     facts: [
       { label: "Chapter", value: "Chapter 1: Just Like Paradise, mission 19 (PC Gamer, Push Square, Press Start, GamesRadar+, VGC)", status: "confirmed" },
@@ -1396,10 +1396,10 @@ export const MISSIONS: Mission[] = [
       { text: "Learn the fishing here. VGC and PowerPyx describe the same controls, with the right stick to attract fish and the left stick against the fish's pull." },
       { text: "Flip the fish early. VGC says to flip them before they burn, and PowerPyx says to flip until both sides look well done." },
       { text: "PowerPyx says you will lose all the pocket cash you bring in, and recommends putting at least $5,000 into the Family Savings account first (Reported). Our money guide explains the accounts.", reported: true },
-      { text: "Keep a separate manual save. VGC says not to start Tourist Trap until you have finished exploring. PowerPyx recommends keeping a permanent manual save and saving in a different slot afterwards. Story missions can't be replayed (PowerPyx and GamesRadar+).", reported: true },
+      { text: "Keep a separate manual save. VGC says not to start Tourist Trap until you have finished exploring. PowerPyx recommends keeping a permanent manual save before Tourist Trap and saving in a different slot afterwards. Story missions can't be replayed (PowerPyx and GamesRadar+).", reported: true },
     ],
     notes: [
-      "Save advice: VGC and PowerPyx both advise a separate save before the Chapter 1 finale, but they place the point of no return differently. VGC says it is the mission Tourist Trap, the first of three linked missions (Tourist Trap, Home Sweet Home and Discharge Time) that end Chapter 1, and that once you start it you can't free-roam as both characters for several hours (Reported, VGC). PowerPyx puts its warning at the end of Recalibration, saying this is the last chance to free-roam in Chapter 1 and that you won't be able to play as Jason for a long time (Reported, PowerPyx).",
+      "Save advice: VGC and PowerPyx agree that the point of no return is the start of Tourist Trap, the first of three linked missions (Tourist Trap, Home Sweet Home and Discharge Time) that end Chapter 1. Once you start it you are locked in with no free-roam until Chapter 2 (Confirmed: VGC's Tourist Trap and Chapter 1 warning pages, and PowerPyx's Tourist Trap page). PowerPyx's Recalibration page carries the same warning, worded as the last chance to free-roam in Chapter 1, and says you won't be able to play as Jason for a long time. VGC words the cost as not being able to roam as both characters for several hours (Reported, each). Tourist Trap starts immediately after Recalibration, so save before you start it.",
       "Order: PC Gamer, Push Square, Press Start, GamesRadar+ and VGC all list Recalibration 19th. PowerPyx calls it the 22nd main mission.",
     ],
     faq: [
@@ -1417,7 +1417,7 @@ export const MISSIONS: Mission[] = [
       },
       {
         question: "Is there a point of no return around Recalibration?",
-        answer: "VGC says the point of no return is the mission Tourist Trap, and PowerPyx puts its warning at the end of Recalibration. Both advise a separate save before the Chapter 1 finale (Reported, each).",
+        answer: "Yes, straight after it. VGC and PowerPyx both say the point of no return is the start of Tourist Trap, the next mission. Starting it locks you into the last missions of Chapter 1 with no free-roam until Chapter 2, so make a separate save first (Confirmed).",
       },
       {
         question: "Is there any combat in Recalibration?",
@@ -1434,7 +1434,155 @@ export const MISSIONS: Mission[] = [
       PUSHSQUARE,
       gr("gta-6-mission-list", "GamesRadar+: GTA 6 mission list", "Mission order and no mission replay"),
     ],
-    updated: "2026-11-19T16:13:15+10:00",
+    updated: "2026-11-19T17:14:40+10:00",
+  },
+  {
+    slug: "tourist-trap",
+    order: 20,
+    name: "Tourist Trap",
+    startLabel: "Take Up Mattia's Offer",
+    seoTitle: "GTA 6 Tourist Trap Mission Guide: Walkthrough & Tips",
+    seoDescription:
+      "GTA 6 Tourist Trap walkthrough: the Chapter 1 point of no return, what to save and bank first, the Visitor Center pickup, the shootout and the boat escape.",
+    teaser: "Jason and Lucia pick up a bag in Key Lento, and the Chapter 1 finale begins.",
+    intro: [
+      "Tourist Trap is the 20th story mission and the first of three linked missions that close out Chapter 1. VGC and PowerPyx both say that once you start it you are locked into the missions that follow, with no free-roam until Chapter 2.",
+      "It is a pickup job in Key Lento that turns into a long on-foot shootout and a boat escape, played as Jason and then Lucia. Neither walkthrough lists a cash reward, so the real preparation happens before you start: save in a separate slot, bank your money and finish any side jobs you still want. The story beats stay behind the blur.",
+    ],
+    facts: [
+      { label: "Chapter", value: "Chapter 1: Just Like Paradise, mission 20 (PC Gamer and VGC; Push Square lists it in the same place)", status: "confirmed" },
+      { label: "Playable", value: "Jason, then Lucia (VGC and PowerPyx)", status: "confirmed" },
+      { label: "Point of no return", value: "Starting it locks you into the last missions of Chapter 1, with no free-roam until Chapter 2 (VGC and PowerPyx)", status: "confirmed" },
+      { label: "Combat", value: "Yes, a long on-foot shootout (VGC and PowerPyx)", status: "confirmed" },
+      { label: "Quest giver", value: "Lucia and Mattia (PowerPyx)", status: "reported" },
+      { label: "Unlocks after", value: "Recalibration. PowerPyx says it starts automatically and is marked afterwards", status: "reported" },
+      { label: "Starts at", value: "The far south of Key Lento, where Lucia is on the beach (PowerPyx). VGC says you start by heading to the Visitor Center.", status: "reported" },
+      { label: "Cash reward", value: "None listed (PowerPyx)", status: "reported" },
+    ],
+    objectives: [
+      "Talk to Lucia on the beach in the far south of Key Lento to start the job (PowerPyx). Head to the Visitor Center. VGC says Jason and Lucia both equip a disguise first.",
+      "Go up the ramp and follow the long walkway to the lockers at the far end (PowerPyx), then take the bag from the locker (VGC and PowerPyx).",
+      "On the way out the police intercept you (VGC and PowerPyx). After the cutscene you are in an interrogation room under the Visitor Center (VGC).",
+      "Play as Jason: shoot the enemies coming at you and head for the bag (VGC). PowerPyx says Jason gets out of his handcuffs and approaches the bag.",
+      "Jason is badly hurt and you switch to Lucia (VGC and PowerPyx). Shoot the attacker and fight your way out of the Visitor Center. VGC says to pick up ammo and weapons from downed enemies and to use Zombix and any adrenaline shots you have.",
+      "Protect Jason and follow him to the dock (VGC and PowerPyx). VGC says the mission fails if he is killed. PowerPyx says killing the police here does not count against your criminal profile because it is part of the story.",
+      "At the dock, drag Jason to the boat while you hold the enemies off (VGC and PowerPyx). PowerPyx says to use the pistol in your other hand. When cars start driving at the dock, VGC says to shoot the flammable canisters so the cars explode, and that Focus Mode (L3 and R3 together) highlights anything flammable in red.",
+      "Take the boat out to open water (VGC and PowerPyx). PowerPyx says to follow the pink waypoint. The outlets describe the last step differently: VGC says to call Cal once you are out on the water, while PowerPyx says to drive the boat all the way to Cal's house.",
+    ],
+    spoiler:
+      "VGC says the police intercept you after you take the bag, and that the Visitor Center turns into a gunfight in which Jason is badly injured. PowerPyx says it was a trap and the police were waiting for whoever picked the bag up, and that a corrupt captain called Méndez arrives wanting the bag very badly. It says his men shoot the honest police and that Jason is shot going for the bag (Reported, each). PowerPyx also says Jason passes out on the boat and Cal takes him to hospital in Vice City for emergency surgery, and that you permanently lose Jason's home in Key Lento and never recover it for the rest of the game (Reported, PowerPyx).",
+    tips: [
+      { text: "Save before you talk to Lucia, in a slot you will not overwrite. PowerPyx recommends keeping a permanent manual save and saving in a different slot afterwards. VGC and PowerPyx both say starting this mission locks you in until Chapter 2.", reported: true },
+      { text: "Finish what you want first. PowerPyx says Kenton's treasure diving, Cal's fishing requests and the Kingfishers hideout icons pause during the finale and become available again later in the game (Reported).", reported: true },
+      { text: "Bank your cash. PowerPyx says you will lose all the pocket cash you bring into this mission, and recommends putting at least $5,000 into the Family Savings account first (Reported). Our money guide explains the accounts.", reported: true },
+      { text: "Loot as you go. VGC says to pick up ammo and weapons from enemies as you pass them and to use Zombix and any adrenaline shots (Reported).", reported: true },
+      { text: "Use the environment at the dock. VGC says the flammable canisters can be shot to explode the cars that drive at you, and Focus Mode shows anything flammable in red (Reported).", reported: true },
+      { text: "Story missions can't be replayed (PowerPyx, Push Square and GamesRadar+), so the save matters." },
+    ],
+    notes: [
+      "How it ends: the outlets differ on the last step. VGC says you call Cal once you are out on the open water. PowerPyx says you drive the boat all the way to Cal's house (Reported, each).",
+      "Point of no return: VGC and PowerPyx both say starting Tourist Trap locks you into the last missions of Chapter 1, with no free-roam until Chapter 2 (Confirmed). VGC words the cost as not being able to roam as both characters for several hours. PowerPyx says you will not be able to play as Jason for a long time.",
+      "Order: PC Gamer and VGC list Tourist Trap 20th, and Push Square lists it between Recalibration and Home Sweet Home. PowerPyx calls it the 23rd main mission.",
+    ],
+    faq: [
+      {
+        question: "Is Tourist Trap a point of no return?",
+        answer: "Yes. VGC and PowerPyx both say that once you start it you are locked into the last missions of Chapter 1, with no free-roam until Chapter 2, so make a separate save first (Confirmed).",
+      },
+      {
+        question: "Should I bank my cash before Tourist Trap?",
+        answer: "PowerPyx says you lose all the pocket cash you bring into the mission and recommends putting at least $5,000 into the Family Savings account first (Reported).",
+      },
+      {
+        question: "Who do I play as in Tourist Trap?",
+        answer: "You start as Jason and switch to Lucia partway through (VGC and PowerPyx, Confirmed).",
+      },
+      {
+        question: "Can I fail Tourist Trap?",
+        answer: "VGC says there is a fail state if Jason is killed during the escape (Reported).",
+      },
+      {
+        question: "How does Tourist Trap end?",
+        answer: "VGC says you take the boat to open water and call Cal. PowerPyx says you drive the boat all the way to Cal's house (Reported, each).",
+      },
+    ],
+    sources: [
+      PCGAMER,
+      vgc("gta-6-tourist-trap-mission-walkthrough", "VGC: GTA 6 Tourist Trap mission walkthrough (18 Nov 2026)", "Objective flow, point of no return, fail state, tips, mission order"),
+      vgc("gta-6-chapter-1-warning-read-this-before-finishing-chapter-1-of-gta-6", "VGC: GTA 6 Chapter 1 warning (18 Nov 2026)", "Tourist Trap is the point of no return"),
+      pp("gta-6-tourist-trap-take-up-mattias-offer-walkthrough", "Map label, quest giver, start point, point of no return, save and cash warning, objective flow"),
+      PP_INDEX,
+      PUSHSQUARE,
+      gr("gta-6-mission-list", "GamesRadar+: GTA 6 mission list", "No mission replay"),
+    ],
+    updated: "2026-11-19T17:14:40+10:00",
+  },
+  {
+    slug: "home-sweet-home",
+    order: 21,
+    name: "Home Sweet Home",
+    seoTitle: "GTA 6 Home Sweet Home Mission Guide: Walkthrough & Tips",
+    seoDescription:
+      "GTA 6 Home Sweet Home walkthrough: play as Lucia, win the close-quarters fight, then pick a route out of the area on foot, by car or by water.",
+    teaser: "Lucia heads into Jason's place in Key Lento on her own, then has to get away from the area.",
+    intro: [
+      "Home Sweet Home is the 21st story mission and the second of the three linked missions that close out Chapter 1. It starts straight after Tourist Trap, you play as Lucia, and there is no free-roam yet (VGC and PowerPyx).",
+      "It is short: a close-quarters fight at Jason's house in Key Lento, then an escape from the area in which you choose how to get out. The outlets describe the routes differently, and the details stay behind the blur.",
+    ],
+    facts: [
+      { label: "Chapter", value: "Chapter 1: Just Like Paradise, mission 21 (PC Gamer and VGC; Push Square lists it in the same place)", status: "confirmed" },
+      { label: "Playable", value: "Lucia (VGC and PowerPyx)", status: "confirmed" },
+      { label: "Unlocks after", value: "Starts automatically straight after Tourist Trap (VGC and PowerPyx)", status: "confirmed" },
+      { label: "Combat", value: "A short fight against two attackers, then an escape (VGC and PowerPyx)", status: "confirmed" },
+      { label: "Starts at", value: "Jason's house in Key Lento (PowerPyx). VGC has Lucia enter the house to recover Jason's stash.", status: "reported" },
+      { label: "Cash reward", value: "None listed (PowerPyx)", status: "reported" },
+    ],
+    objectives: [
+      "Enter Jason's house as Lucia and try to recover Jason's stash (VGC and PowerPyx). VGC says masked figures are inside and fight Lucia. PowerPyx says two robbers attack her, having wrecked the house and set it on fire.",
+      "Fight off both intruders (VGC and PowerPyx). VGC says to watch out for the flames around the house, because being set on fire drains your health very quickly. PowerPyx says there is not enough time to get to the cash afterwards.",
+      "Leave the house straight away (VGC and PowerPyx). The outlets differ on how Lucia gets out: VGC says to grab the photos by the door on your way out, just in time to be blown off the balcony, while PowerPyx says to run out the front door immediately before the house explodes.",
+      "Escape the area, with police everywhere (VGC and PowerPyx). VGC says cops are on their way when Lucia wakes up and that a police helicopter is overhead, which makes open roads very difficult. PowerPyx calls it a manhunt and says to stay crouched in the dark and avoid being seen.",
+      "Choose a route. VGC says you can call Andy and sneak through the neighbourhood to her car, cutting through trailers and buildings (you will need to break into most of them), or leave by water, where boats and jet skis are moored around Jason's and his neighbours' houses, though stealing a vehicle can alert the police further. PowerPyx says to head for the main road through the middle of Key Lento, where you can steal a car and drive out of the search area or carry on on foot.",
+      "Get close to the edge of the search area and a cutscene starts the final mission of Chapter 1 (PowerPyx). VGC says the cutscene differs depending on how you escaped.",
+    ],
+    spoiler:
+      "VGC says the way you escape changes the next cutscene. If you make your way to Andy, she takes Lucia to the hospital and gives her a unique jacket. If you leave by the water or in another car you get a slightly different cutscene, but VGC says every route ends at the hospital, ready for the final mission of Chapter 1, Discharge Time (Reported, VGC). PowerPyx says the house explodes and that you permanently lose Jason's home in Key Lento, never to recover it (Reported, PowerPyx).",
+    tips: [
+      { text: "Don't linger once the fight is over. VGC and PowerPyx both have you leave the house as soon as the attackers are down." },
+      { text: "Pick your route before you step out. VGC says police are everywhere and a helicopter makes open roads very difficult, and suggests sneaking through the neighbourhood or leaving by water. PowerPyx suggests heading for the main road to steal a car, or carrying on on foot, while avoiding police (Reported, each).", reported: true },
+      { text: "Stay low. PowerPyx says to stay crouched to move stealthily through the dark (Reported).", reported: true },
+      { text: "Stealing a boat or jet ski is loud. VGC says it can further alert the police. Our wanted guide explains how heat works (Reported).", reported: true },
+    ],
+    notes: [
+      "Routes: VGC and PowerPyx describe different ways out of the area. VGC describes sneaking through trailers and buildings to a contact's car, or leaving by water. PowerPyx describes crouching through the dark to the main road, then stealing a car or carrying on on foot. Both say several routes work (Reported, each).",
+      "Order: PC Gamer and VGC list Home Sweet Home 21st, and Push Square lists it between Tourist Trap and the final mission of the chapter. PowerPyx calls it the 24th main mission.",
+    ],
+    faq: [
+      {
+        question: "Who do I play as in Home Sweet Home?",
+        answer: "Lucia (VGC and PowerPyx, Confirmed).",
+      },
+      {
+        question: "How do I escape the area in Home Sweet Home?",
+        answer: "VGC says you can sneak through the neighbourhood or leave by water. PowerPyx says to head for the main road and either steal a car or carry on on foot. Both say to avoid being seen by the police (Reported, each).",
+      },
+      {
+        question: "Can I free-roam after Home Sweet Home?",
+        answer: "Not yet. VGC says it is the second of three linked missions that stop you roaming the open world, and PowerPyx says the next mission starts automatically (Confirmed).",
+      },
+      {
+        question: "Is there a reward for Home Sweet Home?",
+        answer: "No cash reward is listed (PowerPyx). VGC says the way you escape changes the next cutscene and that one route has an extra reward, which we keep behind the blur (Reported).",
+      },
+    ],
+    sources: [
+      PCGAMER,
+      vgc("gta-6-home-sweet-home-mission-walkthrough", "VGC: GTA 6 Home Sweet Home mission walkthrough (18 Nov 2026)", "Objective flow, escape routes, helicopter and police warnings, mission order"),
+      pp("gta-6-home-sweet-home-walkthrough", "Start point, objective flow, mission order"),
+      pp("gta-6-tourist-trap-take-up-mattias-offer-walkthrough", "Second check on mission order and the finale warnings"),
+      PUSHSQUARE,
+    ],
+    updated: "2026-11-19T17:14:40+10:00",
   },
 ];
 
