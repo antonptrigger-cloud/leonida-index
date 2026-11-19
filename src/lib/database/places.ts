@@ -757,9 +757,6 @@ const PORT_GELLHORN: RefPage = {
   related: [
     { href: "/map/port-gellhorn", label: "Port Gellhorn map" },
     { href: "/database/locations", label: "GTA 6 locations" },
-    { href: "/database/characters/billy", label: "Billy" },
-    { href: "/database/characters/pilot-pete", label: "Pilot Pete" },
-    { href: "/database/characters/moses", label: "Moses" },
   ],
   faq: [
     {

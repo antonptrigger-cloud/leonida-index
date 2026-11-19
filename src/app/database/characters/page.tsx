@@ -5,6 +5,8 @@ import { PageHeader } from "@/components/PageHeader";
 import { CharacterPlaceholder } from "@/components/characters/CharacterBits";
 import { CHARACTERS, CHARACTER_NOTE, GROUPS, LAST_VERIFIED_LABEL, characterPath } from "@/lib/characters/characters";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
+import { Spoiler } from "@/components/guides/Spoiler";
+import { NAME_IS_SPOILER } from "@/lib/spoiler-characters";
 import { CAST_PATH } from "@/lib/characters/cast";
 import { REFERENCE_PAGES } from "@/lib/database/reference";
 
@@ -33,23 +35,34 @@ export default function CharactersIndex() {
             <span className="mt-2x block text-sm text-ink-2">What is confirmed, what is only reported and what Rockstar has not said about the GTA 6 cast.</span>
           </Link>
           {GROUPS.map((g) => {
-            const list = CHARACTERS.filter((c) => c.group === g.id);
+            const all = CHARACTERS.filter((c) => c.group === g.id);
+            // Characters whose name is a Chapter 2+ mission title sit behind a reveal, not in the open list.
+            const list = all.filter((c) => !(c.slug in NAME_IS_SPOILER));
+            const later = all.filter((c) => c.slug in NAME_IS_SPOILER);
+            const card = (c: (typeof CHARACTERS)[number]) => (
+              <li key={c.slug}>
+                <Link href={characterPath(c.slug)} className="vc-card group block h-full p-4x">
+                  <CharacterPlaceholder c={c} />
+                  <span className="vc-display mt-4x block text-3xl leading-none text-ink group-hover:text-pink">{c.name}</span>
+                  <span className="mt-1x block text-xs font-bold uppercase tracking-[0.18em] text-pink-2">{c.role}</span>
+                  <span className="mt-3x block text-sm text-ink-2">{c.summary}</span>
+                </Link>
+              </li>
+            );
             return (
               <section key={g.id} aria-labelledby={`g-${g.id}`} className="mt-16x">
                 <h2 id={`g-${g.id}`} className="vc-display text-3xl text-ink">{g.title}</h2>
                 <p className="mt-1x text-sm text-muted">{g.blurb}</p>
                 <ul className="mt-6x grid gap-6x sm:grid-cols-2">
-                  {list.map((c) => (
-                    <li key={c.slug}>
-                      <Link href={characterPath(c.slug)} className="vc-card group block h-full p-4x">
-                        <CharacterPlaceholder c={c} />
-                        <span className="vc-display mt-4x block text-3xl leading-none text-ink group-hover:text-pink">{c.name}</span>
-                        <span className="mt-1x block text-xs font-bold uppercase tracking-[0.18em] text-pink-2">{c.role}</span>
-                        <span className="mt-3x block text-sm text-ink-2">{c.summary}</span>
-                      </Link>
-                    </li>
-                  ))}
+                  {list.map(card)}
                 </ul>
+                {later.length ? (
+                  <div className="mt-6x">
+                    <Spoiler label="later-story contacts">
+                      <ul className="grid gap-6x sm:grid-cols-2">{later.map(card)}</ul>
+                    </Spoiler>
+                  </div>
+                ) : null}
               </section>
             );
           })}

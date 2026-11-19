@@ -146,7 +146,7 @@ const BASE_SOURCES: Record<LegacyCharSourceId, CharSource> = {
     id: "gamespot-money",
     label: "GameSpot: Best Ways To Make Money Fast In GTA 6 (18 Nov 2026)",
     url: "https://www.gamespot.com/articles/best-ways-to-make-money-fast-in-gta-6/",
-    used: "Describes Kenton, Moses, Randy, Dunk and Tyrone and what each offers",
+    used: "Describes the fences and contacts (Kenton, Randy, Tyrone and others) and what each offers",
     primary: false,
   },
   "pp-fences": {
@@ -722,7 +722,7 @@ const BASE_CHARACTERS: Character[] = [
     summary:
       "Randy is a Vice City fence who buys high-end cars, according to launch-eve guides.",
     background: [
-      "GameSpot says Randy deals in much higher-end cars than Moses and that you meet him further into the story. GameSpot places him in western Vice City, while PowerPyx's fence list puts him in Balsero. Neither gives an exact address, so we mark his location Reported.",
+      "GameSpot says Randy deals in much higher-end cars than the Port Gellhorn mechanic and that you meet him further into the story. GameSpot places him in western Vice City, while PowerPyx's fence list puts him in Balsero. Neither gives an exact address, so we mark his location Reported.",
       "GameSpot says Randy gives the player a list of more than a dozen cars to find around the map. The payout is large and gets bigger if the cars are delivered in decent condition. PowerPyx says he accepts certain high-end cars that carry advanced trackers, and that he is still available after the story.",
     ],
     facts: [
@@ -734,7 +734,7 @@ const BASE_CHARACTERS: Character[] = [
       { label: "Voice cast", value: "Not listed in the sources", status: "tbc" },
     ],
     relationships: [
-      { name: "Moses", slug: "moses", note: "The car fence who handles cheaper vehicles (GameSpot)." },
+      { name: "A Port Gellhorn mechanic", slug: "moses", note: "The car fence who handles cheaper vehicles (GameSpot)." },
       { name: "Tyrone", slug: "tyrone", note: "Another Vice City fence in PowerPyx's list, though he buys narcotics, jewelry and marked bills rather than cars." },
     ],
     spoilerTitle: "Missions and story",
@@ -756,7 +756,7 @@ const BASE_CHARACTERS: Character[] = [
       },
       {
         question: "What kind of cars does Randy buy?",
-        answer: "GameSpot says he deals in much higher-end cars than Moses, and PowerPyx says he accepts certain high-end cars with advanced trackers. Both are Reported.",
+        answer: "GameSpot says he deals in much higher-end cars than the Port Gellhorn mechanic does, and PowerPyx says he accepts certain high-end cars with advanced trackers. Both are Reported.",
       },
     ],
   },
@@ -828,7 +828,7 @@ const BASE_CHARACTERS: Character[] = [
       "Tyrone is a fence in La Perle, Vice City, who also hands out a run of side missions, according to launch-eve guides.",
     background: [
       "PowerPyx places Tyrone in La Perle, in Vice City, and says he is still available after the story. In its fence list he pays High for narcotics and Medium for jewelry and marked bills.",
-      "GameSpot lists Tyrone with Dunk and Donnie as dealers who pay almost instantly when you drop off goods from gang hideouts. PowerPyx also credits him with a questline of side missions. The mission names are in the blurred section below.",
+      "GameSpot lists Tyrone with Donnie and a Port Gellhorn dealer as dealers who pay almost instantly when you drop off goods from gang hideouts. PowerPyx also credits him with a questline of side missions. The mission names are in the blurred section below.",
     ],
     facts: [
       { label: "Role", value: "Fence who also gives side missions (PowerPyx)", status: "reported" },
@@ -839,7 +839,7 @@ const BASE_CHARACTERS: Character[] = [
       { label: "Voice cast", value: "Not listed in the sources", status: "tbc" },
     ],
     relationships: [
-      { name: "Dunk", slug: "dunk", note: "Another dealer GameSpot lists with Tyrone as paying almost instantly." },
+      { name: "A Port Gellhorn dealer", slug: "dunk", note: "Another dealer GameSpot lists with Tyrone as paying almost instantly." },
       { name: "Randy", slug: "randy", note: "Another Vice City fence in PowerPyx's list, though Randy buys cars." },
     ],
     spoilerTitle: "Missions and story",
