@@ -10,6 +10,7 @@ import { Related } from "@/components/Related";
 import { Spoiler } from "@/components/guides/Spoiler";
 import { SpoilerWarning } from "@/components/guides/MissionBits";
 import { CharSources, CharacterPlaceholder, ConfirmTag } from "@/components/characters/CharacterBits";
+import { cardAllowed, introChapter } from "@/lib/spoiler-characters";
 import { CHARACTERS, LAST_VERIFIED, LAST_VERIFIED_LABEL, REPORTED_NOTE, SOURCES, characterBySlug, characterPath } from "@/lib/characters/characters";
 
 export const dynamicParams = false;
@@ -35,9 +36,12 @@ export default async function CharacterPage({ params }: { params: Promise<{ slug
   const { slug } = await params;
   const c = characterBySlug(slug);
   if (!c) notFound();
-  const i = CHARACTERS.indexOf(c);
-  const prev = CHARACTERS[(i - 1 + CHARACTERS.length) % CHARACTERS.length];
-  const next = CHARACTERS[(i + 1) % CHARACTERS.length];
+  // Previous/next skip profiles this page should not name yet (a Chapter 1 profile never points at a Chapter 2+ one).
+  const pageChapter = introChapter(c.slug);
+  const walk = CHARACTERS.filter((x) => x.slug === c.slug || cardAllowed(x.slug, pageChapter, c.slug));
+  const i = walk.indexOf(c);
+  const prev = walk[(i - 1 + walk.length) % walk.length];
+  const next = walk[(i + 1) % walk.length];
   const sources = c.sourceIds.map((id) => SOURCES[id]);
   const path = characterPath(c.slug);
   const reported = c.tier === "reported";

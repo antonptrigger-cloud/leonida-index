@@ -135,7 +135,7 @@ export default function MoneyGuide() {
             <H2 id="hideouts">Throughout the game: gang hideouts</H2>
             <div className="mt-4x max-w-2xl space-y-4x text-ink-2">
               <p>
-                GameSpot says yellow icons across the map mark rival gang hideouts, each labelled with the gang, its security level and the possible score. Hideouts have a dozen or two enemies, plus goods, cash and sometimes vehicles or weapons you can sell. It says dealers such as Tyrone and Dunk pay almost instantly<R />. PC Gamer agrees that a stronghold pays a lot, usually in narcotics, but warns of a big gunfight or a long stealth run<R />.
+                GameSpot says yellow icons across the map mark rival gang hideouts, each labelled with the gang, its security level and the possible score. Hideouts have a dozen or two enemies, plus goods, cash and sometimes vehicles or weapons you can sell. It says the dealers there pay almost instantly<R />. PC Gamer agrees that a stronghold pays a lot, usually in narcotics, but warns of a big gunfight or a long stealth run<R />.
               </p>
             </div>
           </section>
