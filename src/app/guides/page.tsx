@@ -8,7 +8,7 @@ import { HubGrid } from "@/components/hub/HubGrid";
 import { JumpNav } from "@/components/hub/JumpNav";
 import "@/components/hub/hub.css";
 import { PageBackdrop } from "@/components/PageBackdrop";
-import { MISSIONS, missionPath } from "@/lib/guides/missions";
+import { MISSIONS, missionChapter, missionPath } from "@/lib/guides/missions";
 import { STORY_CHAPTERS, STORY_TOTAL } from "@/lib/guides/story";
 import { HUB_SECTIONS, START_FEATURE, START_SIDE, hubGuides, type Accent, type HubGuide } from "@/lib/guides/hub";
 
@@ -44,7 +44,7 @@ export default function Guides() {
   const lockedChapters = STORY_CHAPTERS.slice(1);
   // Hidden-title missions are matched by position in Chapter 1, never by name.
   const guideFor = (title: string | null, index: number) =>
-    title ? MISSIONS.find((x) => !x.hidden && norm(x.name) === norm(title)) : MISSIONS.find((x) => x.hidden && x.order === index + 1);
+    title ? MISSIONS.find((x) => !x.hidden && norm(x.name) === norm(title)) : MISSIONS.find((x) => x.hidden && missionChapter(x) === 1 && x.order === index + 1);
   const live = chapter1.missions.filter((t, i) => guideFor(t.title, i)).length;
 
   const nav = [
