@@ -69,6 +69,9 @@ export const UPDATES_1100_AT = "2026-11-19T11:07:00+10:00";
 /** 19 Nov 12:00 AEST batch (tracker refresh, readings 11:46-12:01 AEST). */
 export const UPDATES_1200_AT = "2026-11-19T12:04:00+10:00";
 
+/** 19 Nov 13:00 AEST batch (tracker readings 12:48-13:00 AEST, Heat result, launch streams past tense). */
+export const UPDATES_1300_AT = "2026-11-19T13:05:00+10:00";
+
 /** Age rating quick-answer page: boards re-read 11:46-11:48 AEST 19 Nov 2026. Also used for `updated` until the first fact change; bump `updated` on every edit. */
 export const AGE_RATING_PUBLISHED = "2026-11-19T11:48:00+10:00";
 
@@ -172,13 +175,13 @@ export const NEWS: NewsItem[] = [
     slug: "gta-6-festival-set-times-heat-night",
     title: "GTA 6 Festival Set Times and Heat Night",
     description:
-      "Rockstar's GTA VI: The Festival set times for 21 Nov in Miami, in Brisbane time, plus the Heat's Vice City night. Tickets, charities, no livestream yet.",
+      "GTA VI: The Festival set times for 21 Nov in Miami, in Brisbane time, plus the result of the Heat's Vice City night. Tickets, charities, no livestream yet.",
     crumb: "Festival set times",
     teaser: "Travis Scott closes Rockstar's Miami launch festival. Every set in Miami and Brisbane time, plus the Heat's Vice City night.",
     tag: "Launch events",
     keywords: ["GTA 6 festival", "GTA VI The Festival set times", "Travis Scott GTA 6", "Mana Wynwood", "A Night in Vice City", "Miami Heat GTA 6"],
     published: FESTIVAL_PUBLISHED,
-    updated: UPDATES_1100_AT,
+    updated: UPDATES_1300_AT,
     citations: [
       "https://x.com/RockstarGames/status/2123068976045453338",
       "https://x.com/RockstarGames/status/2123069155775541350",
@@ -188,6 +191,7 @@ export const NEWS: NewsItem[] = [
       "https://www.complex.com/music/a/tracewilliamcowen/gta-6-festival-set-times-charities",
       "https://www.espn.com/nba/story/_/id/50085674/miami-heat-night-vice-city-game",
       "https://www.nba.com/heat/game/0022600260-bucks-vs-heat-miami-fl-11-18-2026",
+      "https://www.espn.com/nba/game/_/gameId/401910009",
       "https://www.nba.com/news/heat-unveil-vice-city-court",
     ],
     faq: [
@@ -201,7 +205,7 @@ export const NEWS: NewsItem[] = [
       },
       {
         question: "Is the GTA 6 festival being livestreamed?",
-        answer: "We have not found a livestream or broadcast announced by Rockstar or on the festival and DICE pages, as of 11:07 AEST on 19 November.",
+        answer: "We have not found a livestream or broadcast announced by Rockstar or on the festival and DICE pages, as of 13:00 AEST on 19 November.",
       },
     ],
   },
@@ -240,7 +244,7 @@ export const NEWS: NewsItem[] = [
     live: true,
     keywords: ["GTA 6 server status", "is GTA 6 down", "GTA 6 known issues", "GTA 6 PS5 update", "GTA 6 patch", "01.002.001"],
     published: NEWS_PUBLISHED,
-    updated: UPDATES_1200_AT,
+    updated: UPDATES_1300_AT,
     citations: [
       "https://x.com/PS_Support_US/status/2122863683881619685",
       "https://www.pushsquare.com/news/2026/11/gta-6-requires-new-ps5-firmware-update-to-play",
@@ -265,6 +269,7 @@ export const NEWS: NewsItem[] = [
       "https://www.gamesradar.com/games/grand-theft-auto/ps5-users-report-playstation-network-errors-as-gta-6-fever-hits-with-some-struggling-to-redeem-codes/",
       "https://downdetector.co.uk/status/gta-vi/",
       "https://allestoerungen.de/stoerung/gta-vi/",
+      "https://downdetector.com/status/gta-vi/",
       "https://www.bbc.com/news/live/c60rkg21dl22t",
       "https://www.standard.co.uk/news/tech/travis-scott-sony-miami-currys-grand-theft-auto-b1305482.html",
       "https://www.3djuegos.com/ps4/noticias/playstation-network-psn-se-ha-caido-espana-para-algunos-jugadores-estreno-gta-6-ha-saturado-servidores-ps5-momentos",
@@ -272,7 +277,7 @@ export const NEWS: NewsItem[] = [
     faq: [
       {
         question: "Is GTA 6 down?",
-        answer: "At about 12:00 AEST on 19 Nov, two hours after the UK unlock, PlayStation's status feed listed no active issues for the US, Canada, Mexico, Brazil, the UK, Ireland, France, Germany, Italy, Spain, Australia or New Zealand, and Rockstar, PSN and Xbox feeds relayed by GTATracker showed up. Downdetector user reports showed \"possible problems\" in the UK, Germany and Australia (where game launch was the most reported issue) and no current problems in New Zealand. User reports are not confirmed outages, and we could not see what the UK and German reports were about.",
+        answer: "At 12:48-13:00 AEST on 19 Nov, three hours after the UK unlock and two hours before the US East Coast unlock, PlayStation's status feed listed no active issues for the US, Canada, Mexico, Brazil, the UK, Ireland, France, Germany, Italy, Spain, Australia or New Zealand, and Rockstar, PSN and Xbox feeds relayed by GTATracker showed up. Downdetector user reports showed \"possible problems\" for GTA VI in the UK only, and no current problems in Australia, Germany, New Zealand or the US. User reports are not confirmed outages, and we could not see what the UK reports were about.",
       },
       {
         question: "Was PSN down before GTA 6 launched?",
@@ -380,18 +385,22 @@ export const NEWS: NewsItem[] = [
     slug: "gta-6-launch-streams-schedule",
     title: "GTA 6 Launch Streams: Who Goes Live",
     description:
-      "Kai Cenat, IShowSpeed and YouTube's 24-hour stream start before the US unlock. Start times in ET and Brisbane time, plus what is unconfirmed.",
+      "Kai Cenat and IShowSpeed went live hours before their posted times. YouTube's 24-hour GTA 6 stream starts 15:00 AEST. Times in ET and Brisbane.",
     crumb: "Launch streams",
-    teaser: "Kai Cenat starts 8 PM ET, IShowSpeed 9 PM, YouTube at midnight ET. Times in ET and Brisbane.",
+    teaser: "Kai Cenat and IShowSpeed are already live. YouTube's 24-hour stream starts midnight ET, 15:00 AEST.",
     tag: "Streamers",
     keywords: ["GTA 6 streams", "Kai Cenat GTA 6", "IShowSpeed GTA 6", "GTA 6 YouTube stream", "launch schedule"],
     published: STREAMERS_PUBLISHED,
-    updated: STREAMERS_PUBLISHED,
+    updated: UPDATES_1300_AT,
     citations: [
       "https://x.com/KaiCenat/status/2122427634743214114",
       "https://x.com/ishowspeedsui/status/2122463228987129932",
       "https://www.sportskeeda.com/us/streamers/news-kai-cenat-s-gta-6-marathon-livestream-date-time-livestream-link",
       "https://www.techtimes.com/articles/330968/20261117/ishowspeed-gta-6-stream-starts-3-hours-before-us-unlock-plans-10-12-hour-days-no-marathon.htm",
+      "https://www.twitch.tv/kaicenat",
+      "https://www.twitch.tv/ishowspeed",
+      "https://tekno.kompas.com/read/2026/11/19/09050067/windah-basudara-jadi-streamer-gta-6-paling-banyak-ditonton-lampaui-ishowspeed",
+      "https://blog.youtube/news-and-events/youtube-rockstar-games-gta-vi-launch/",
     ],
   },
   {
