@@ -1,11 +1,12 @@
 import type { Metadata } from "next";
-import { LAST_VERIFIED, MISSIONS, missionPath } from "@/lib/guides/missions";
+import { FAQ_UPDATED, LAST_VERIFIED, MISSIONS, missionPath } from "@/lib/guides/missions";
 import { HUB_VERIFIED } from "@/lib/guides/story";
 import { MONEY_VERIFIED } from "@/lib/guides/money";
 import { CHEATS_VERIFIED } from "@/lib/guides/cheats";
 import { TROPHIES_VERIFIED } from "@/lib/guides/trophies";
 import { COLLECT_VERIFIED } from "@/lib/guides/collectibles";
 import { SF_VERIFIED } from "@/lib/guides/strangers";
+import { BASICS_UPDATED } from "@/lib/guides/basics";
 import { NEWS, newsPath } from "@/lib/news/articles";
 import { CHARACTERS, LAST_VERIFIED as CHARACTERS_VERIFIED, characterPath } from "@/lib/characters/characters";
 import { DB_VERIFIED, REFERENCE_PAGES } from "@/lib/database/reference";
@@ -146,6 +147,7 @@ export const ROUTES: Record<string, RouteSeo> = {
     kind: "article",
     changeFrequency: "weekly",
     priority: 0.8,
+    updated: BASICS_UPDATED,
   },
   "/guides/wanted": {
     title: "GTA 6 Wanted System Explained: How to Lose the Cops",
@@ -160,6 +162,7 @@ export const ROUTES: Record<string, RouteSeo> = {
     ],
     changeFrequency: "weekly",
     priority: 0.8,
+    updated: BASICS_UPDATED,
   },
   "/guides/stealing-cars": {
     title: "How to Steal Cars in GTA 6",
@@ -173,6 +176,7 @@ export const ROUTES: Record<string, RouteSeo> = {
     ],
     changeFrequency: "weekly",
     priority: 0.7,
+    updated: BASICS_UPDATED,
   },
   "/guides/activities": {
     title: "GTA 6 Activities: Every Side Activity in Leonida",
@@ -181,6 +185,7 @@ export const ROUTES: Record<string, RouteSeo> = {
     kind: "article",
     changeFrequency: "weekly",
     priority: 0.7,
+    updated: BASICS_UPDATED,
   },
   "/guides/missions": {
     title: "GTA 6 Walkthrough: All Missions in Order",
@@ -251,7 +256,7 @@ export const ROUTES: Record<string, RouteSeo> = {
         kind: "article",
         changeFrequency: "weekly",
         priority: 0.75,
-        updated: LAST_VERIFIED,
+        updated: FAQ_UPDATED,
         published: LAST_VERIFIED,
       },
     ]),
