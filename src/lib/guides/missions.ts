@@ -1584,6 +1584,80 @@ export const MISSIONS: Mission[] = [
     ],
     updated: "2026-11-19T17:14:40+10:00",
   },
+  {
+    slug: "discharge-time",
+    order: 22,
+    name: "Discharge Time",
+    seoTitle: "GTA 6 Discharge Time Mission Guide: Walkthrough & Tips",
+    seoDescription:
+      "GTA 6 Discharge Time walkthrough: the Chapter 1 finale. Find your partner, survive the shootout, then win the final chase with tips for every phase.",
+    teaser: "The last mission of Chapter 1: a long shootout followed by a final chase.",
+    intro: [
+      "Discharge Time is the 22nd story mission and the last one in Chapter 1. It starts straight after Home Sweet Home, and VGC and PowerPyx both say there is no free-roam until the chapter is done.",
+      "It is the action-heavy finale: a long shootout followed by a final chase, mostly played as Jason. VGC warns that it is very easy to die because of how many enemies there are, and recommends using focus mode as much as you can. The story and the details of each phase stay behind the blur.",
+    ],
+    facts: [
+      { label: "Chapter", value: "Chapter 1: Just Like Paradise, mission 22, the last of the chapter (PC Gamer and VGC; Push Square lists it in the same place)", status: "confirmed" },
+      { label: "Playable", value: "Lucia at the start, then Jason for the main shooting sections (VGC and PowerPyx)", status: "confirmed" },
+      { label: "Unlocks after", value: "Starts automatically straight after Home Sweet Home (VGC and PowerPyx)", status: "confirmed" },
+      { label: "Combat", value: "Heavy: a long shootout, then a final chase (VGC and PowerPyx)", status: "confirmed" },
+      { label: "Ends", value: "Finishing it ends Chapter 1 (VGC and PowerPyx)", status: "confirmed" },
+      { label: "Cash reward", value: "None listed (PowerPyx)", status: "reported" },
+    ],
+    objectives: [
+      "At the hospital, Lucia notices that the men who are after them have already tracked down where Jason is being kept (VGC). Head up to the second floor and find Jason in the ICU (VGC). PowerPyx says to go left from the start and up the stairs, ask the receptionist where he is if you need to, follow the pink line on the floor through the door on the left, and look for room 203.",
+      "Go to his room and wake him up, because it is time to escape (VGC). PowerPyx says Lucia puts Jason in a wheelchair to take him out of the hospital.",
+      "Play as Jason in the wheelchair and shoot the enemies bursting from every door (VGC). PowerPyx says Lucia wheels you around while you shoot the attackers. VGC says it is very easy to die here and recommends focus mode as much as possible.",
+      "Control switches back to Lucia and you defend Jason from the hordes of enemies (VGC).",
+      "At the ambulance bay Lucia leaves Jason to find a way out (VGC and PowerPyx). PowerPyx says an enemy comes in with a shotgun that you can grab and use, and that the force of each shot pushes the wheelchair back. Jason is then knocked out of the wheelchair and has to crawl to a gun (VGC and PowerPyx). PowerPyx says an enemy shoots nearby gas canisters and that is what knocks him to the ground.",
+      "Lucia returns in the ambulance (VGC). PowerPyx says she smashes an enemy with it.",
+      "Sit in the back of the ambulance as Jason and shoot the vehicles chasing you (VGC and PowerPyx). VGC calls them enemy cars and says you can shoot the driver, the person shooting at you, or the engine and wheels, and that disabling the wheels can make cars ricochet onto other cars and clear the road. PowerPyx calls them pursuing police vehicles.",
+      "After a while the mission ends, and so does Chapter 1 (VGC). PowerPyx says a cutscene plays and you wake up the next day in a motel.",
+    ],
+    spoiler:
+      "VGC says Jason is being kept in the hospital's ICU and that the men after the couple have already tracked him down (Reported, VGC). PowerPyx says Vice City Hospital is where the mission starts, that the dirty cops and masked men are there for Jason and Lucia, and that the people who destroyed the house sent reinforcements (Reported, PowerPyx). On the vehicles chasing the ambulance, VGC says enemies and PowerPyx says police (Reported, each). PowerPyx says the pair flee west to Kelly County, wake up the next day in a motel, and that this marks the start of Chapter 2 (Reported, PowerPyx).",
+    tips: [
+      { text: "Use focus mode as much as you can. VGC says the main shooting section throws a very large number of enemies at you and that it is very easy to die (Reported).", reported: true },
+      { text: "If you pick up a shotgun mid-mission, PowerPyx says the force of each shot pushes you backwards (Reported).", reported: true },
+      { text: "In the final chase, VGC says you can shoot the driver, the person shooting at you, or the engine and wheels. Disabling wheels can make cars ricochet onto other cars, which clears the road quickly (Reported).", reported: true },
+      { text: "Make any manual save before Tourist Trap, not here. VGC and PowerPyx both say the last three missions of Chapter 1 lock you in from Tourist Trap onwards. Push Square says you can make manual saves at the start of each chapter (Reported).", reported: true },
+      { text: "Story missions cannot be replayed (Push Square and GamesRadar+), so this is your one run at the finale." },
+    ],
+    notes: [
+      "Order: PC Gamer and VGC list Discharge Time 22nd, the last mission of Chapter 1, and Push Square lists it last in the chapter. PowerPyx calls it the 25th main mission.",
+    ],
+    faq: [
+      {
+        question: "Who do I play as in Discharge Time?",
+        answer: "You start as Lucia and do most of the shooting as Jason (VGC and PowerPyx, Confirmed).",
+      },
+      {
+        question: "How do I survive the main shootout in Discharge Time?",
+        answer: "VGC says there are a lot of enemies and it is very easy to die, and recommends using focus mode as much as you can (Reported).",
+      },
+      {
+        question: "How do I stop the cars chasing me in the final chase?",
+        answer: "VGC says you can shoot the driver, the person shooting at you, or the engine and wheels. Disabling wheels can make cars ricochet onto other cars (Reported).",
+      },
+      {
+        question: "Is Discharge Time the last mission of Chapter 1?",
+        answer: "Yes. It is mission 22 of 22 (PC Gamer, VGC and Push Square), and finishing it ends Chapter 1 (VGC and PowerPyx, Confirmed).",
+      },
+      {
+        question: "Is there a reward for Discharge Time?",
+        answer: "No cash reward is listed (PowerPyx, Reported).",
+      },
+    ],
+    sources: [
+      PCGAMER,
+      vgc("gta-6-discharge-time-mission-walkthrough", "VGC: GTA 6 Discharge Time mission walkthrough (18 Nov 2026)", "Objective flow, focus mode and chase tips, mission order"),
+      pp("gta-6-discharge-time-walkthrough", "Start point, objective flow, reward, mission order"),
+      pp("gta-6-tourist-trap-take-up-mattias-offer-walkthrough", "Lock-in warning for the last three Chapter 1 missions"),
+      PUSHSQUARE,
+      gr("gta-6-mission-list", "GamesRadar+: GTA 6 mission list", "No mission replay"),
+    ],
+    updated: "2026-11-19T18:08:35+10:00",
+  },
 ];
 
 export const missionPath = (slug: string) => `/guides/missions/${slug}`;
