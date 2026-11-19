@@ -12,7 +12,8 @@ export default function Page() {
   return (
     <NewsLayout slug={SLUG} kicker="News · Explainer" title="What is confirmed" source="Official">
       <Lede>
-        GTA 6 is out in New Zealand and unlocks everywhere else over the next day. This is the short list of facts that Rockstar,
+        GTA 6 is out on PS5 and Xbox Series X|S. The rolling midnight launch started in New Zealand and reached the US and Canada at midnight Eastern
+        on 19 November (15:00 in Brisbane), <Ext href="https://www.vice.com/en/article/gta-6-us-canada-launch-ps5-download-size-game-sharing/">VICE reports</Ext>. This is the short list of facts that Rockstar,
         Take-Two or the platform holders have stated on the record. Anything that rests on leaks or insiders stays out of the main list.
       </Lede>
 
@@ -21,7 +22,7 @@ export default function Page() {
         <li>
           <Lead>Release date:</Lead> 19 November 2026 (
           <Ext href="https://taketwointeractivesoftwareinc.gcs-web.com/news-releases/news-release-details/rockstar-games-announces-pre-orders-grand-theft-auto-vi/">Take-Two, 24 Jun</Ext>
-          ). It unlocks at midnight local time, so the exact hour depends on where you are. See the{" "}
+          ). It unlocked at midnight local time, so the exact hour depended on where you are. See the{" "}
           <Link href={newsPath("gta-6-release-countdown")} className={L}>release time by region</Link>.
         </li>
         <li>
@@ -30,7 +31,7 @@ export default function Page() {
         </li>
         <li>
           <Lead>PS4 and Xbox One:</Lead> not playable natively. Sony says the game is PS5 only (
-          <Ext href="https://www.playstation.com/en-us/games/grand-theft-auto-vi/">PlayStation Store</Ext>). Xbox One can stream it through Xbox Cloud Gaming from 1 AM ET on
+          <Ext href="https://www.playstation.com/en-us/games/grand-theft-auto-vi/">PlayStation Store</Ext>). Xbox One can stream it through Xbox Cloud Gaming, which Xbox said would start at 1 AM ET on
           19 November (<Ext href="https://news.xbox.com/en-us/2026/11/10/grand-theft-auto-6-comes-to-xbox-cloud-gaming-november-19/">Xbox Wire</Ext>).
         </li>
         <li>
@@ -116,6 +117,7 @@ export default function Page() {
       </p>
 
       <Sources>
+        <Source href="https://www.vice.com/en/article/gta-6-us-canada-launch-ps5-download-size-game-sharing/" label="VICE: GTA 6 is now out in the US and Canada, 19 Nov 2026" kind="News outlet" />
         <Source href="https://taketwointeractivesoftwareinc.gcs-web.com/news-releases/news-release-details/rockstar-games-announces-pre-orders-grand-theft-auto-vi/" label="Take-Two press release, 24 Jun 2026" kind="Official" />
         <Source href="https://www.rockstargames.com/VI" label="Rockstar Games: Grand Theft Auto VI" kind="Official" />
         <Source href="https://www.rockstargames.com/VI/pre-load-now" label="Rockstar Games: Pre-Load Now, 10 Nov 2026" kind="Official" />
