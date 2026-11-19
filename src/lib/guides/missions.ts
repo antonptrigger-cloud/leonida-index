@@ -958,6 +958,165 @@ export const MISSIONS: Mission[] = [
     ],
     updated: "2026-11-19T13:12:51+10:00",
   },
+  {
+    slug: "down-to-earth",
+    order: 14,
+    name: "Down to Earth",
+    seoTitle: "GTA 6 Down to Earth Mission Guide: Walkthrough",
+    seoDescription:
+      "GTA 6 Down to Earth walkthrough: where it starts, seaplane landing tips, whether you must kill anyone, rewards and what you can't redo. Spoilers hidden.",
+    teaser: "A job for Brian that takes Jason and Lucia out on the water and up into the air.",
+    intro: [
+      "Down to Earth is the 14th story mission. Jason is sent to Brian's marina, and Lucia joins him for the job that follows, which VGC and PowerPyx both say involves flying a plane.",
+      "The main thing that can go wrong is the landing. VGC warns that hitting the water too hard fails the mission, so the tips below are worth a read before you take off. The objectives and story notes stay behind the blur.",
+    ],
+    facts: [
+      { label: "Chapter", value: "Chapter 1: Just Like Paradise, mission 14 (PC Gamer, Push Square, Press Start, GamesRadar+, VGC, PowerPyx)", status: "confirmed" },
+      { label: "Playable", value: "Jason, with Lucia along for the job (VGC and PowerPyx)", status: "confirmed" },
+      { label: "Quest giver", value: "Brian (VGC and PowerPyx)", status: "confirmed" },
+      { label: "Unlocks after", value: "Clean Up After Donnie and Buck Me (PowerPyx's requirement)", status: "reported" },
+      { label: "Starts at", value: "Brian's office at the marina in Key Lento, Mariana County (PowerPyx)", status: "reported" },
+      { label: "Cash reward", value: "None listed (PowerPyx)", status: "reported" },
+    ],
+    objectives: [
+      "Go to Brian as Jason and follow him down to the marina (VGC and PowerPyx). PowerPyx puts Brian's office at the marina in Key Lento and says Cal is waiting at one of the boats.",
+      "Pressure-wash Brian's boat until all the grime is gone (VGC and PowerPyx). VGC says the washer works like any other weapon. PowerPyx says Lucia arrives partway through and wants to see what you do at your \"job\".",
+      "Take the seaplane with Lucia and fly to Bobcat Bay, then land on the water near the boat there (VGC and PowerPyx). PowerPyx puts the marker in the far north-west of Mariana County.",
+      "Collect the package. VGC says to pick up the cocaine. PowerPyx says the smugglers throw it into the water, Lucia steers the plane and you fish it out with the stick.",
+      "The handover turns into a gunfight with the smugglers. VGC and PowerPyx both say you can kill or incapacitate them. PowerPyx says shooting arms and legs keeps them alive and builds Professional reputation, while killing builds Violent reputation, and that the mission doesn't care either way.",
+      "Fly on to the drop-off points and land on the water at each one (VGC and PowerPyx). PowerPyx counts three drops, with Lucia handing the packages over automatically, and says the coastguard gets suspicious after the second so Lucia throws the third from the air. VGC says one stage has you flying alongside a boat.",
+      "Land back at Brian's dock (VGC and PowerPyx).",
+      "A cutscene moves the story to Jason's house, where Lucia's parole officer is about to arrive (VGC and PowerPyx). PowerPyx says she has 30 missed calls from him.",
+      "Hide the drugs in the washing machine. VGC says it is in the shed, and PowerPyx says it is below the house.",
+      "Join Lucia out front while she talks to the parole officer (VGC and PowerPyx). PowerPyx says she comes up with an excuse and he leaves, which ends the mission after a short scene.",
+    ],
+    spoiler:
+      "Brian has Jason move drug packages by seaplane, and Lucia comes along (VGC and PowerPyx). The mission finishes back at the house, where Lucia's parole officer is about to arrive and Jason has to hide the drugs first (VGC and PowerPyx). PowerPyx says Lucia then shows Jason how to meditate on the terrace, which unlocks the first of 18 Meditation Spots (Reported).",
+    tips: [
+      { text: "Land gently. VGC says that if you hit the water too hard the plane explodes and the mission fails, and it recommends using L2 as much as possible as you get close to the water.", reported: true },
+      { text: "A short landing is fine. VGC says that once you are on the water you can drive the plane like a boat for a short distance without taking off again.", reported: true },
+      { text: "You don't have to kill anyone to finish. VGC and PowerPyx both say you can incapacitate rather than kill. PowerPyx says it only changes which reputation you build, not the mission." },
+      { text: "PowerPyx says this mission unlocks the first of the game's 18 Meditation Spots, which count towards the collectibles. See our collectibles guide.", reported: true },
+      { text: "Keep a manual save. PowerPyx, Push Square and GamesRadar+ all say story missions can't be replayed." },
+    ],
+    notes: [
+      "Order: PC Gamer, Push Square, Press Start, GamesRadar+ and VGC all list Down to Earth 14th, after Clean Up After Donnie and before Clear Skies. PowerPyx's walkthrough page also calls it the 14th main mission, and says it opens once both Clean Up After Donnie and Buck Me are done.",
+      "Where VGC and PowerPyx describe the same step differently, such as the exact location of an objective, we name both and attribute them.",
+    ],
+    faq: [
+      {
+        question: "Why does my seaplane keep exploding when I land?",
+        answer: "VGC says that hitting the water too hard destroys the plane and fails the mission, and suggests using L2 as much as possible on the approach (Reported).",
+      },
+      {
+        question: "Do I have to kill anyone in Down to Earth?",
+        answer: "No. VGC and PowerPyx both say you can kill or incapacitate the people you fight. PowerPyx says that only changes your reputation, not the mission (Confirmed).",
+      },
+      {
+        question: "Does Down to Earth pay anything?",
+        answer: "PowerPyx lists no cash reward and VGC doesn't list one either (Reported). PowerPyx says the mission does unlock the first Meditation Spot.",
+      },
+      {
+        question: "Do I have to finish Buck Me and Clean Up After Donnie first?",
+        answer: "PowerPyx says Down to Earth requires both of them to be finished (Reported). PC Gamer, Push Square, Press Start, GamesRadar+ and VGC all list it straight after the two (Confirmed for the list order).",
+      },
+      {
+        question: "Can I replay Down to Earth?",
+        answer: "No. PowerPyx, Push Square and GamesRadar+ all say story missions can't be replayed, so keep a manual save if you want a way back (Confirmed).",
+      },
+    ],
+    sources: [
+      PCGAMER,
+      PRESSSTART,
+      vgc("gta-6-down-to-earth-mission-walkthrough", "VGC: GTA 6 Down To Earth mission walkthrough (18 Nov 2026)", "Objective flow, seaplane landing tips and fail state, mission order"),
+      pp("gta-6-down-to-earth-walkthrough", "Quest giver, start point, requirement, reward, reputation and meditation spot"),
+      PP_INDEX,
+      PUSHSQUARE,
+      gr("gta-6-mission-list", "GamesRadar+: GTA 6 mission list", "Mission order and no mission replay"),
+    ],
+    updated: "2026-11-19T14:11:22+10:00",
+  },
+  {
+    slug: "clear-skies",
+    order: 15,
+    name: "Clear Skies",
+    startLabel: "Join Donnie On A Job",
+    seoTitle: "GTA 6 Clear Skies Mission Guide: Walkthrough",
+    seoDescription:
+      "GTA 6 Clear Skies (Join Donnie On A Job) walkthrough: how it starts, flying and landing tips, fail states and what you can't redo. Story spoilers hidden.",
+    teaser: "Jason joins Donnie on a flight for a job out in the swamps.",
+    intro: [
+      "Clear Skies is the 15th story mission. Jason joins Donnie on a job that starts in the air and is followed by a long fight on the ground, so it is worth going in with a full loadout and a spare save.",
+      "PowerPyx says the mission is marked on your map as \"Join Donnie On A Job\" rather than Clear Skies. The objectives and story notes stay behind the blur.",
+    ],
+    facts: [
+      { label: "Chapter", value: "Chapter 1: Just Like Paradise, mission 15 (PC Gamer, Push Square, Press Start, GamesRadar+, VGC)", status: "confirmed" },
+      { label: "Playable", value: "Jason (VGC and PowerPyx)", status: "confirmed" },
+      { label: "Quest giver", value: "Brian, by phone call, then Donnie in person (PowerPyx)", status: "reported" },
+      { label: "Unlocks after", value: "Down to Earth, with a call from Brian (PowerPyx)", status: "reported" },
+      { label: "Starts at", value: "The seaplane in Southwind, Mariana County. PowerPyx says it is set for the afternoon and offers a wait prompt at other times.", status: "reported" },
+      { label: "Cash reward", value: "None listed (PowerPyx)", status: "reported" },
+    ],
+    objectives: [
+      "Go to the seaplane in Southwind and talk to Donnie, who sends you to Brian at the bar up the street (VGC and PowerPyx). PowerPyx calls it the Tiki bar.",
+      "Get back to the plane and taxi it into the water (VGC and PowerPyx). VGC says the river. PowerPyx says to drive off the side of the road and adds that taking off from the road is possible but riskier.",
+      "Fly to the intercept point, where Pilot Pete's plane appears (VGC and PowerPyx). PowerPyx marks it in the south-east, out over the ocean.",
+      "Escort Pete's plane to the landing strip (VGC and PowerPyx). VGC says he flies close to the ground. PowerPyx says to fly directly above his plane to hide its radar signature, and puts the airstrip in the swamps.",
+      "Fly on to the next airstrip and land (VGC and PowerPyx). VGC says destroying the plane here fails the mission. PowerPyx puts the airstrip in the north-west of the swamps.",
+      "Follow Donnie on foot to a drug deal with The Final Chapter (VGC and PowerPyx). The deal goes wrong, Donnie is taken and the bikers open fire. Fight from cover. VGC warns they try to flank your cover, so thin them out quickly. PowerPyx says some motorbikes parked here can be scanned with the WAiNK app.",
+      "Find Donnie. VGC says to head left, bash through a door and work through the buildings on the strip, and that he is held in a hangar. PowerPyx says he is in the next building up the airstrip, tied to a chair, and that you untie him once the enemies inside are dead.",
+      "Escort Donnie outside and keep him alive while more enemies arrive (VGC and PowerPyx). VGC says if he is killed the mission fails. PowerPyx says you respawn at the checkpoint.",
+      "Hold off the Final Chapter while Donnie climbs into the plane and takes off (VGC and PowerPyx).",
+      "Grab a bike and ride after Donnie (VGC and PowerPyx). VGC says to take down the bikers who chase you and that you meet Donnie at a riverbank. PowerPyx says enemies keep spawning and can be ignored, and marks the meeting point east of Watson Bay, where you board the plane to trigger a cutscene.",
+      "You end up back at Jason's house. VGC says you speak to Lucia and help her build a coffee table, with a short QTE, and that this ends the mission. PowerPyx treats that home scene as the start of a separate mission, Building a Life.",
+    ],
+    spoiler:
+      "A drug deal between Donnie and The Final Chapter goes wrong and the bikers take Donnie (VGC and PowerPyx). Jason fights through the airstrip to free him, then holds the gang off while Donnie escapes by plane (VGC and PowerPyx). The mission then returns to Jason's house. VGC counts that as the end of Clear Skies, while PowerPyx counts it as the start of Building a Life.",
+    tips: [
+      { text: "Land slowly at the second airstrip. VGC says destroying the plane on landing fails the mission.", reported: true },
+      { text: "While you escort the other plane, PowerPyx says to fly directly above it to hide its radar signature.", reported: true },
+      { text: "Expect a long fight on foot in the second half of the mission. VGC and PowerPyx both describe waves of enemies, so stock up on ammo and health before you start." },
+      { text: "Late in the mission PowerPyx says enemies keep spawning and you can ignore them and keep moving.", reported: true },
+      { text: "Keep a manual save. PowerPyx, Push Square and GamesRadar+ all say story missions can't be replayed." },
+    ],
+    notes: [
+      "Order: PC Gamer, Push Square, Press Start, GamesRadar+ and VGC all list Clear Skies 15th, between Down to Earth and Day Release, so that is the order used here. PowerPyx's walkthrough page calls it the 18th main mission, and its full list puts Day Release before it.",
+      "Building a Life: PowerPyx lists Building a Life as its own mission straight after Clear Skies. PC Gamer, Push Square, Press Start and GamesRadar+ don't list a mission by that name, and VGC describes the same scene as the end of Clear Skies. We follow the outlet lists and haven't added a separate entry.",
+      "Where VGC and PowerPyx describe the same step differently, such as the meeting point or the layout of the second airstrip, we name both and attribute them.",
+    ],
+    faq: [
+      {
+        question: "What is Clear Skies called on the map?",
+        answer: "PowerPyx says its starting label on the map is \"Join Donnie On A Job\", and that the name changes to Clear Skies after you start it (Reported).",
+      },
+      {
+        question: "Why did my Clear Skies attempt fail?",
+        answer: "VGC says destroying the plane while landing at the second airstrip fails the mission, so land slowly (Reported). VGC and PowerPyx also both warn about a later section where an ally has to survive (Confirmed).",
+      },
+      {
+        question: "Can I take off from the road?",
+        answer: "PowerPyx says you can, but that it is riskier than taxiing into the water first (Reported).",
+      },
+      {
+        question: "Is Building a Life a separate mission?",
+        answer: "PowerPyx lists it as its own mission after Clear Skies. PC Gamer, Push Square, Press Start and GamesRadar+ list no mission by that name, and VGC treats the scene as part of Clear Skies. We have not added a separate guide.",
+      },
+      {
+        question: "Can I replay Clear Skies?",
+        answer: "No. PowerPyx, Push Square and GamesRadar+ all say story missions can't be replayed, so keep a manual save if you want a way back (Confirmed).",
+      },
+    ],
+    sources: [
+      PCGAMER,
+      PRESSSTART,
+      vgc("gta-6-clear-skies-mission-walkthrough", "VGC: GTA 6 Clear Skies mission walkthrough (18 Nov 2026)", "Objective flow, fail states, flanking warning, mission order"),
+      pp("gta-6-clear-skies-join-donnie-on-a-job-walkthrough", "Map label, quest giver, start point, requirement, reward, locations, objective flow"),
+      PP_INDEX,
+      PUSHSQUARE,
+      gr("gta-6-mission-list", "GamesRadar+: GTA 6 mission list", "Mission order and no mission replay"),
+    ],
+    updated: "2026-11-19T14:11:22+10:00",
+  },
 ];
 
 export const missionPath = (slug: string) => `/guides/missions/${slug}`;
