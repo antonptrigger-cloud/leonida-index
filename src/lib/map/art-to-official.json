@@ -1,0 +1,286 @@
+{
+ "sourceSize": [
+  5379,
+  7503
+ ],
+ "artSize": [
+  7200,
+  9888
+ ],
+ "matrix": [
+  [
+   0.7330941538122528,
+   -0.016273512656609385
+  ],
+  [
+   -0.03000861044874448,
+   0.670082261508349
+  ],
+  [
+   324.7525694790513,
+   467.7091047911149
+  ]
+ ],
+ "controlPoints": [
+  {
+   "name": "Vice City = Vice City",
+   "kind": "named",
+   "art": [
+    5280.0,
+    4980.0
+   ],
+   "official": [
+    3750,
+    3912
+   ],
+   "used": true
+  },
+  {
+   "name": "Port Gellhorn = Port Gellhorn",
+   "kind": "named",
+   "art": [
+    1470.0,
+    2700.0
+   ],
+   "official": [
+    1556,
+    2625
+   ],
+   "used": true
+  },
+  {
+   "name": "Grassrivers = Grassrivers",
+   "kind": "named",
+   "art": [
+    3426.0,
+    7482.0
+   ],
+   "official": [
+    2405,
+    5039
+   ],
+   "used": true
+  },
+  {
+   "name": "Ambrosia = Ambrosia",
+   "kind": "named",
+   "art": [
+    3840.0,
+    3288.0
+   ],
+   "official": [
+    3039,
+    2622
+   ],
+   "used": true
+  },
+  {
+   "name": "Mount Kalaga = Mount Kalaga National Park",
+   "kind": "named",
+   "art": [
+    3120.0,
+    1980.0
+   ],
+   "official": [
+    2650,
+    1593
+   ],
+   "used": true
+  },
+  {
+   "name": "Leonida Keys = Key Lento",
+   "kind": "named",
+   "art": [
+    2520.0,
+    8940.0
+   ],
+   "official": [
+    3086,
+    6379
+   ],
+   "used": false
+  },
+  {
+   "name": "Ocean Beach = Ocean Beach",
+   "kind": "named",
+   "art": [
+    6240.0,
+    5280.0
+   ],
+   "official": [
+    4777,
+    3928
+   ],
+   "used": true
+  },
+  {
+   "name": "Washington Beach = Washington Beach",
+   "kind": "named",
+   "art": [
+    6199.8,
+    4420.2
+   ],
+   "official": [
+    4796,
+    3314
+   ],
+   "used": true
+  },
+  {
+   "name": "Little Cuba = Little Cuba",
+   "kind": "named",
+   "art": [
+    4890.0,
+    5220.0
+   ],
+   "official": [
+    3611,
+    4011
+   ],
+   "used": true
+  },
+  {
+   "name": "VC Port = Port Vice City",
+   "kind": "named",
+   "art": [
+    5280.0,
+    5970.0
+   ],
+   "official": [
+    4452,
+    4196
+   ],
+   "used": true
+  },
+  {
+   "name": "Allied Crystal sugar refinery = Allied Crystal",
+   "kind": "named",
+   "art": [
+    3600.0,
+    3540.0
+   ],
+   "official": [
+    2970,
+    2750
+   ],
+   "used": true
+  },
+  {
+   "name": "Lake Leonida = Lake Leonida",
+   "kind": "named",
+   "art": [
+    4398.0,
+    2820.0
+   ],
+   "official": [
+    3295,
+    2280
+   ],
+   "used": true
+  },
+  {
+   "name": "Tisha-Wocka Flea Market = Tisha-Wocka Flea Market",
+   "kind": "named",
+   "art": [
+    5196.0,
+    5670.0
+   ],
+   "official": [
+    2997,
+    3760
+   ],
+   "used": false
+  },
+  {
+   "name": "Fishing in Gambit Bay = Gambit Bay",
+   "kind": "named",
+   "art": [
+    6510.0,
+    6060.0
+   ],
+   "official": [
+    3045,
+    6016
+   ],
+   "used": false
+  },
+  {
+   "name": "East beach strip",
+   "kind": "island",
+   "art": [
+    6114,
+    4632
+   ],
+   "official": [
+    4675.1,
+    3591.3
+   ],
+   "used": true
+  },
+  {
+   "name": "South-west island (Southwind)",
+   "kind": "island",
+   "art": [
+    1800,
+    8778
+   ],
+   "official": [
+    1439.7,
+    6526.8
+   ],
+   "used": true
+  },
+  {
+   "name": "Draper Island",
+   "kind": "island",
+   "art": [
+    1452,
+    2760
+   ],
+   "official": [
+    1219.8,
+    2159.6
+   ],
+   "used": true
+  },
+  {
+   "name": "West islet",
+   "kind": "island",
+   "art": [
+    966,
+    5412
+   ],
+   "official": [
+    859.8,
+    4087.2
+   ],
+   "used": true
+  },
+  {
+   "name": "North-west island",
+   "kind": "island",
+   "art": [
+    1878,
+    2208
+   ],
+   "official": [
+    1507.7,
+    1763.7
+   ],
+   "used": true
+  }
+ ],
+ "accuracy": {
+  "controlPoints": 19,
+  "used": 16,
+  "trimmed": [
+   "Fishing in Gambit Bay = Gambit Bay (2016 px off)",
+   "Tisha-Wocka Flea Market = Tisha-Wocka Flea Market (1020 px off)",
+   "Leonida Keys = Key Lento (792 px off)"
+  ],
+  "fitRmsPx": 247.1,
+  "fitRmsPctWidth": 4.59,
+  "looRmsPx": 314.7,
+  "looRmsPctWidth": 5.85
+ }
+}

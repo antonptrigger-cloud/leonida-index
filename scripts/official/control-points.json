@@ -1,0 +1,109 @@
+{
+  "_doc": "Control points for the official base. named: stored seed pin id -> the printed place on the poster it stands for (positions in official-places.json). islands: the same island on the custom art and on the poster (art_px = custom-art composite px, official = official px), matched by land-mask component centroids. fixed: where each seed pin is drawn on the official base: a printed place, or a printed place plus an offset in official px (for pins the poster does not print; offsets are marked approximate).",
+  "named": {
+    "seed-vice-city": "Vice City",
+    "seed-port-gellhorn": "Port Gellhorn",
+    "seed-grassrivers": "Grassrivers",
+    "seed-ambrosia": "Ambrosia",
+    "seed-mount-kalaga": "Mount Kalaga National Park",
+    "seed-leonida-keys": "Key Lento",
+    "seed-ocean-beach": "Ocean Beach",
+    "seed-washington-beach": "Washington Beach",
+    "seed-little-cuba": "Little Cuba",
+    "seed-vc-port": "Port Vice City",
+    "seed-allied-crystal": "Allied Crystal",
+    "seed-lake-leonida": "Lake Leonida",
+    "seed-tisha-wocka": "Tisha-Wocka Flea Market",
+    "seed-gambit-bay": "Gambit Bay"
+  },
+  "islands": [
+    {
+      "name": "East beach strip",
+      "art_px": [
+        6114,
+        4632
+      ],
+      "official": [
+        4675.1,
+        3591.3
+      ]
+    },
+    {
+      "name": "South-west island (Southwind)",
+      "art_px": [
+        1800,
+        8778
+      ],
+      "official": [
+        1439.7,
+        6526.8
+      ]
+    },
+    {
+      "name": "Draper Island",
+      "art_px": [
+        1452,
+        2760
+      ],
+      "official": [
+        1219.8,
+        2159.6
+      ]
+    },
+    {
+      "name": "West islet",
+      "art_px": [
+        966,
+        5412
+      ],
+      "official": [
+        859.8,
+        4087.2
+      ]
+    },
+    {
+      "name": "North-west island",
+      "art_px": [
+        1878,
+        2208
+      ],
+      "official": [
+        1507.7,
+        1763.7
+      ]
+    }
+  ],
+  "fixed": {
+    "seed-vice-city": "Vice City",
+    "seed-port-gellhorn": "Port Gellhorn",
+    "seed-grassrivers": "Grassrivers",
+    "seed-ambrosia": "Ambrosia",
+    "seed-mount-kalaga": "Mount Kalaga National Park",
+    "seed-leonida-keys": "Key Lento",
+    "seed-ocean-beach": "Ocean Beach",
+    "seed-washington-beach": "Washington Beach",
+    "seed-little-cuba": "Little Cuba",
+    "seed-vc-port": "Port Vice City",
+    "seed-allied-crystal": "Allied Crystal",
+    "seed-lake-leonida": "Lake Leonida",
+    "seed-tisha-wocka": "Tisha-Wocka Flea Market",
+    "seed-gambit-bay": "Gambit Bay",
+    "seed-electric-fang-tattoo": {
+      "place": "Stockyard",
+      "dx": -70,
+      "dy": -60
+    },
+    "seed-stock-305": {
+      "place": "Stockyard",
+      "dx": 60,
+      "dy": 70
+    },
+    "seed-ptt-youngins": "Southside",
+    "seed-paradise-garage": "Watson Bay",
+    "seed-shore-court-garage": {
+      "place": "Ocean Beach",
+      "dx": -40,
+      "dy": 70
+    }
+  }
+}
