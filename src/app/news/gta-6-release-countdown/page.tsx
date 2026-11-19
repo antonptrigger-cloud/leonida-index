@@ -25,8 +25,10 @@ export default function Page() {
   return (
     <NewsLayout slug={SLUG} kicker="News · Countdown" title="Release time by region" source="Official + reported">
       <Lede>
-        GTA 6 releases on 19 November 2026 for PS5 and Xbox Series X|S, unlocking at midnight local time. New Zealand
-        got it first, at 11:00 UTC on 18 November, and the Americas get it last, about 19 hours later.
+        GTA 6 is out. It released on 19 November 2026 for PS5 and Xbox Series X|S in a rolling launch at midnight local time. New Zealand
+        got it first, at 11:00 UTC on 18 November (21:00 in Brisbane), and the US and Canada unlocked at midnight Eastern, 05:00 UTC on
+        19 November (15:00 in Brisbane), with US West Coast players starting at 9 PM Pacific on 18 November, VICE reports. Mexico&rsquo;s
+        listed slot, 06:00 UTC (16:00 in Brisbane), is the last row in our table. The times below are kept as a record.
       </Lede>
 
       <H2>What is confirmed</H2>
@@ -40,8 +42,8 @@ export default function Page() {
           NZDT in New Zealand (<Ext href="https://blog.playstation.com/2026/11/10/pre-load-grand-theft-auto-vi-on-ps5-starting-today/">PlayStation Blog, 10 Nov</Ext>).
         </li>
         <li>
-          <Lead>Preloading is not early access.</Lead> Preloading puts the files on your console but does not open the game early.
-          You still wait for your own unlock time (<Ext href="https://www.vice.com/en/article/gta-6-midnight-release-times-file-size-preload/">VICE</Ext>).
+          <Lead>Preloading was not early access.</Lead> Preloading put the files on your console but did not open the game early.
+          You still had to wait for your own unlock time (<Ext href="https://www.vice.com/en/article/gta-6-midnight-release-times-file-size-preload/">VICE</Ext>).
         </li>
         <li>
           <Lead>Xbox Cloud Gaming.</Lead> Streaming on Xbox One and Series X|S starts at 1 AM ET on 19 November (06:00 UTC), with
@@ -67,24 +69,25 @@ export default function Page() {
           <Lead>Country or time zone?</Lead> Digital Foundry first read Rockstar&rsquo;s &ldquo;midnight local time&rdquo; wording as tied to
           time zones, which would put the US West Coast three hours after Eastern. Sony&rsquo;s &ldquo;by country&rdquo; wording reads differently,
           and on 18 November VICE reported that US digital stores unlock at midnight Eastern for the whole continental US, which is 9 PM
-          Pacific on 18 November. We have not seen Rockstar spell it out, so trust the countdown on your own store page (
+          Pacific on 18 November. After the unlock, VICE reported the game unlocked in California at 9 PM PT on 18 November. We have not seen Rockstar spell it out (
           <Ext href="https://www.digitalfoundry.net/news/2026/11/rockstar-officially-confirms-gta-6-regional-release-times-and-theyre-not-what-we-thought">Digital Foundry</Ext>,{" "}
-          <Ext href="https://www.vice.com/en/article/gta-6-new-zealand-worldwide-release-times/">VICE</Ext>).
+          <Ext href="https://www.vice.com/en/article/gta-6-new-zealand-worldwide-release-times/">VICE, 18 Nov</Ext>,{" "}
+          <Ext href="https://www.vice.com/en/article/gta-6-us-canada-launch-ps5-download-size-game-sharing/">VICE, 19 Nov</Ext>).
         </li>
         <li>
           <Lead>Queensland.</Lead> Brisbane does not use daylight saving. Store listings put Australia at 13:00 UTC (midnight AEDT in Sydney
           and Melbourne), which is 23:00 in Brisbane on 18 November. Strict local midnight in Brisbane would be 14:00 UTC (00:00 on 19
-          November). We have not seen Rockstar settle which applies.
+          November). We have not seen Rockstar settle which applies, but Australian store listings gave 23:00 AEST (13:00 UTC), including for Brisbane.
         </li>
       </Bullets>
 
       <H2>Spoiler watch</H2>
       <p>
-        New Zealand unlocked while most of the world was still on 18 November, so spoilers can surface from 11:00 UTC onward. Mute keywords,
+        New Zealand unlocked while most of the world was still on 18 November, so spoilers have been surfacing since 11:00 UTC that day. Mute keywords,
         hide Leonida tags and stay out of comment sections if you want your first hours in Vice City clean. This page has no story spoilers.
       </p>
 
-      <H2>While you wait</H2>
+      <H2>More on GTA 6</H2>
       <p>
         Browse the <Link href="/map" className="text-pink underline underline-offset-2">Leonida map</Link>, read the{" "}
         <Link href={newsPath("gta-6-confirmed-so-far")} className="text-pink underline underline-offset-2">confirmed facts</Link>, check the{" "}
@@ -96,10 +99,11 @@ export default function Page() {
         <Source href="https://www.rockstargames.com/VI" label="Rockstar Games: Grand Theft Auto VI" kind="Official" />
         <Source href="https://blog.playstation.com/2026/11/10/pre-load-grand-theft-auto-vi-on-ps5-starting-today/" label="PlayStation Blog, 10 Nov 2026" kind="Official, platform holder" />
         <Source href="https://news.xbox.com/en-us/2026/11/10/grand-theft-auto-6-comes-to-xbox-cloud-gaming-november-19/" label="Xbox Wire, 10 Nov 2026" kind="Official, platform holder" />
-        <Source href="https://kotaku.com/gta-6-pre-load-times-install-size-and-global-release-times-confirmed-2000752787" label="Kotaku, 3 Nov 2026" kind="Reputable outlet" />
-        <Source href="https://www.digitalfoundry.net/news/2026/11/rockstar-officially-confirms-gta-6-regional-release-times-and-theyre-not-what-we-thought" label="Digital Foundry, 10 Nov 2026" kind="Reputable outlet" />
-        <Source href="https://www.vice.com/en/article/gta-6-midnight-release-times-file-size-preload/" label="VICE, 3 Nov 2026" kind="Reputable outlet" />
-        <Source href="https://www.vice.com/en/article/gta-6-new-zealand-worldwide-release-times/" label="VICE, 18 Nov 2026" kind="Reputable outlet" />
+        <Source href="https://kotaku.com/gta-6-pre-load-times-install-size-and-global-release-times-confirmed-2000752787" label="Kotaku, 3 Nov 2026" kind="News outlet" />
+        <Source href="https://www.digitalfoundry.net/news/2026/11/rockstar-officially-confirms-gta-6-regional-release-times-and-theyre-not-what-we-thought" label="Digital Foundry, 10 Nov 2026" kind="News outlet" />
+        <Source href="https://www.vice.com/en/article/gta-6-midnight-release-times-file-size-preload/" label="VICE, 3 Nov 2026" kind="News outlet" />
+        <Source href="https://www.vice.com/en/article/gta-6-new-zealand-worldwide-release-times/" label="VICE, 18 Nov 2026" kind="News outlet" />
+        <Source href="https://www.vice.com/en/article/gta-6-us-canada-launch-ps5-download-size-game-sharing/" label="VICE: GTA 6 is now out in the US and Canada, 19 Nov 2026" kind="News outlet" />
       </Sources>
     </NewsLayout>
   );
