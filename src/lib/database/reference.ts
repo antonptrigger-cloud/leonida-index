@@ -10,11 +10,15 @@
  * no song lyrics are used.
  */
 import type { FaqItem } from "@/lib/seo/jsonld";
+import { PLACE_PAGES } from "@/lib/database/places";
 
 export const DB_VERIFIED = "2026-11-18";
 export const DB_VERIFIED_LABEL = "18 Nov 2026";
+/** The database hub and the gangs and locations pages (batch 4) were updated on launch day. */
+export const DB_UPDATED = "2026-11-19";
+export const DB_UPDATED_LABEL = "19 Nov 2026";
 
-export type RefStatus = "confirmed" | "reported";
+export type RefStatus = "confirmed" | "reported" | "tbc";
 
 export interface RefTable {
   caption: string;
@@ -32,6 +36,8 @@ export interface RefSection {
   list?: string[];
   /** Paragraphs after the table or list. */
   after?: string[];
+  /** Internal links shown as a list (for example map pages). */
+  links?: { href: string; label: string; note?: string }[];
 }
 
 export interface RefSource {
@@ -43,6 +49,12 @@ export interface RefSource {
 
 export interface RefPage {
   path: string;
+  /** ISO date of the last edit. Defaults to DB_VERIFIED. */
+  updated?: string;
+  /** Detail page under an index page. Shown in the sidebar under its parent, not as a database card. */
+  child?: { parentPath: string; parentLabel: string };
+  /** Hand-picked internal links for the sidebar. */
+  related?: { href: string; label: string }[];
   /** Short crumb and card title. */
   crumb: string;
   /** Page <title> (the brand suffix is added by metaFor). */
@@ -702,5 +714,5 @@ const RADIO: RefPage = {
   ],
 };
 
-export const REFERENCE_PAGES: RefPage[] = [VEHICLES, WEAPONS, RADIO];
+export const REFERENCE_PAGES: RefPage[] = [VEHICLES, WEAPONS, RADIO, ...PLACE_PAGES];
 export const REFERENCE_BY_PATH: Record<string, RefPage> = Object.fromEntries(REFERENCE_PAGES.map((p) => [p.path, p]));

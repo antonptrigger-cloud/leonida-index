@@ -19,7 +19,9 @@
  * This file must not import from src/lib/seo (site.ts imports it to build ROUTES).
  */
 
-export type CharSourceId =
+import { BATCH4_CHARACTERS, BATCH4_SOURCES } from "@/lib/characters/batch4";
+
+type LegacyCharSourceId =
   | "rockstar-profiles"
   | "rockstar-home"
   | "wikipedia-extended-look"
@@ -37,6 +39,8 @@ export type CharSourceId =
   | "verge-perez"
   | "polygon-perez"
   | "vice-perez";
+
+export type CharSourceId = LegacyCharSourceId | keyof typeof BATCH4_SOURCES;
 
 export interface CharSource {
   id: CharSourceId;
@@ -62,7 +66,7 @@ export interface Relation {
   note: string;
 }
 
-export type CharGroup = "leads" | "vice-city" | "keys" | "contacts";
+export type CharGroup = "leads" | "vice-city" | "keys" | "contacts" | "side-quests";
 
 export interface Character {
   slug: string;
@@ -101,6 +105,14 @@ export interface Character {
   /** Open questions, each shown with a "To be confirmed" tag. */
   tbc: string[];
   sourceIds: CharSourceId[];
+  /** ISO date of this profile's last edit, when it differs from LAST_VERIFIED (batch 4 onwards). */
+  updated?: string;
+  /** Source line for the page header, when "GameSpot and PowerPyx (not Rockstar)" is not right. */
+  sourceLine?: string;
+  /** Replaces REPORTED_NOTE on reported profiles. */
+  reportedNote?: string;
+  /** Map pages that cover this character. Only routes that exist under /map. */
+  mapLinks?: { href: string; label: string; status: "confirmed" | "reported" | "tbc"; note?: string }[];
   /** Optional real Q&A, rendered visibly by <Faq> (which also emits FAQPage JSON-LD). Never invent questions. */
   faq?: { question: string; answer: string }[];
 }
@@ -108,7 +120,7 @@ export interface Character {
 export const LAST_VERIFIED = "2026-11-18";
 export const LAST_VERIFIED_LABEL = "18 Nov 2026";
 
-export const SOURCES: Record<CharSourceId, CharSource> = {
+const BASE_SOURCES: Record<LegacyCharSourceId, CharSource> = {
   "rockstar-profiles": {
     id: "rockstar-profiles",
     label: "Rockstar Games: Only in Leonida",
@@ -234,6 +246,7 @@ export const GROUPS: { id: CharGroup; title: string; blurb: string }[] = [
   { id: "leads", title: "The leads", blurb: "The two characters you play." },
   { id: "keys", title: "The Keys", blurb: "Jason's world: boats, bars and small-time smuggling." },
   { id: "vice-city", title: "Vice City", blurb: "Music, clubs and big scores." },
+  { id: "side-quests", title: "Side-quest characters", blurb: "People who hand out Strangers & Freaks side quests. Rockstar has not profiled them, so everything is Reported by launch-day guides." },
   { id: "contacts", title: "Contacts and fences", blurb: "The people who buy stolen goods and hand out side work. Reported by launch-eve guides, not profiled by Rockstar." },
 ];
 
@@ -243,7 +256,7 @@ export const CHARACTER_NOTE =
 export const REPORTED_NOTE =
   "Rockstar has not published a profile for this character. Everything below comes from launch-eve guides by GameSpot and PowerPyx and is marked Reported. Story and mission details are blurred.";
 
-export const CHARACTERS: Character[] = [
+const BASE_CHARACTERS: Character[] = [
   {
     slug: "jason-duval",
     name: "Jason Duval",
@@ -853,6 +866,13 @@ export const CHARACTERS: Character[] = [
     ],
   },
 ];
+
+export const SOURCES: Record<CharSourceId, CharSource> = {
+  ...BASE_SOURCES,
+  ...(BATCH4_SOURCES as Record<keyof typeof BATCH4_SOURCES, CharSource>),
+};
+
+export const CHARACTERS: Character[] = [...BASE_CHARACTERS, ...BATCH4_CHARACTERS];
 
 export const characterPath = (slug: string) => `/database/characters/${slug}`;
 export const characterBySlug = (slug: string) => CHARACTERS.find((c) => c.slug === slug);

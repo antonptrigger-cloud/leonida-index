@@ -10,9 +10,16 @@ import { Related } from "@/components/Related";
 import { Spoiler } from "@/components/guides/Spoiler";
 import { SpoilerWarning } from "@/components/guides/MissionBits";
 import { CharSources, CharacterPlaceholder, ConfirmTag } from "@/components/characters/CharacterBits";
-import { CHARACTERS, LAST_VERIFIED_LABEL, REPORTED_NOTE, SOURCES, characterBySlug, characterPath } from "@/lib/characters/characters";
+import { CHARACTERS, LAST_VERIFIED, LAST_VERIFIED_LABEL, REPORTED_NOTE, SOURCES, characterBySlug, characterPath } from "@/lib/characters/characters";
 
 export const dynamicParams = false;
+
+const MONTHS = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+/** "2026-11-19" becomes "19 Nov 2026". */
+function dateLabel(iso: string): string {
+  const [y, m, d] = iso.split("-").map(Number);
+  return `${d} ${MONTHS[m - 1]} ${y}`;
+}
 
 export function generateStaticParams() {
   return CHARACTERS.map((c) => ({ slug: c.slug }));
@@ -34,6 +41,9 @@ export default async function CharacterPage({ params }: { params: Promise<{ slug
   const sources = c.sourceIds.map((id) => SOURCES[id]);
   const path = characterPath(c.slug);
   const reported = c.tier === "reported";
+  const verified = c.updated
+    ? { iso: c.updated, label: dateLabel(c.updated), note: "launch day" }
+    : { iso: LAST_VERIFIED, label: LAST_VERIFIED_LABEL, note: reported ? "launch eve" : "pre-launch" };
 
   return (
     <article>
@@ -42,14 +52,14 @@ export default async function CharacterPage({ params }: { params: Promise<{ slug
       <PageHeader
         kicker={`Character · ${c.role}`}
         title={c.name}
-        verified={`${LAST_VERIFIED_LABEL} (${reported ? "launch eve" : "pre-launch"})`}
-        source={reported ? "GameSpot and PowerPyx (not Rockstar)" : "Rockstar Games, Only in Leonida"}
+        verified={`${verified.label} (${verified.note})`}
+        source={reported ? (c.sourceLine ?? "GameSpot and PowerPyx (not Rockstar)") : "Rockstar Games, Only in Leonida"}
       />
 
       {c.spoiler ? (
         <SpoilerWarning>
           {reported
-            ? "Mission names, rewards and story events from launch-eve guides stay blurred until you reveal them."
+            ? "Mission names, rewards and story events from launch guides stay blurred until you reveal them."
             : "Rockstar's own profile text is visible. Story and footage details from secondary reports stay blurred until you reveal them."}
         </SpoilerWarning>
       ) : null}
@@ -59,7 +69,7 @@ export default async function CharacterPage({ params }: { params: Promise<{ slug
           <p className="max-w-2xl text-xl leading-snug text-ink">{c.summary}</p>
           {reported ? (
             <p className="vc-bar mt-6x max-w-2xl text-sm text-ink-2">
-              <ConfirmTag status="reported" /> <span className="ml-2x">{REPORTED_NOTE}</span>
+              <ConfirmTag status="reported" /> <span className="ml-2x">{c.reportedNote ?? REPORTED_NOTE}</span>
             </p>
           ) : null}
           {c.quote ? (
@@ -135,6 +145,20 @@ export default async function CharacterPage({ params }: { params: Promise<{ slug
 
         <aside className="flex flex-col gap-6x lg:col-span-5">
           <CharacterPlaceholder c={c} size="hero" />
+          {c.mapLinks?.length ? (
+            <div className="vc-card p-6x">
+              <h2 className="vc-kicker">On the map</h2>
+              <ul className="mt-4x flex flex-col gap-3x text-sm">
+                {c.mapLinks.map((m) => (
+                  <li key={m.href}>
+                    <Link href={m.href} className="font-semibold text-blue hover:text-pink">{m.label}</Link>{" "}
+                    <ConfirmTag status={m.status} />
+                    {m.note ? <span className="mt-1x block text-ink-2">{m.note}</span> : null}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ) : null}
           <div className="vc-card p-6x">
             <h2 className="vc-kicker">Key facts</h2>
             <dl className="mt-4x flex flex-col divide-y divide-pink/15 text-sm">
@@ -149,7 +173,7 @@ export default async function CharacterPage({ params }: { params: Promise<{ slug
               ))}
             </dl>
             <p className="mt-4x text-xs text-muted">
-              <span className="text-turq">Confirmed</span>: Rockstar or the person involved says so. <span className="text-blue">Reported</span>: credible outlets say so, with no official statement. <span className="text-orange">To be confirmed</span>: not stated yet.
+              <span className="text-turq">Confirmed</span>: Rockstar or the person involved says so, or two main outlets agree. <span className="text-blue">Reported</span>: credible outlets say so, with no official statement. <span className="text-orange">To be confirmed</span>: not stated yet.
             </p>
           </div>
         </aside>
@@ -157,7 +181,7 @@ export default async function CharacterPage({ params }: { params: Promise<{ slug
 
       <Faq items={c.faq} />
 
-      <CharSources sources={sources} />
+      <CharSources sources={sources} verified={verified} />
 
       <nav aria-label="More characters" className="mt-16x grid gap-4x border-t border-pink/20 pt-6x sm:grid-cols-2">
         <Link href={characterPath(prev.slug)} className="vc-card block p-4x">

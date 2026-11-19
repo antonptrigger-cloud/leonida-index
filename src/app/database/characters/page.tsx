@@ -65,7 +65,7 @@ export default function CharactersIndex() {
           <div className="vc-card p-6x">
             <h2 className="vc-kicker">More in the database</h2>
             <ul className="mt-4x flex flex-col gap-2x text-sm">
-              {REFERENCE_PAGES.map((p) => (
+              {REFERENCE_PAGES.filter((p) => !p.child).map((p) => (
                 <li key={p.path}><Link href={p.path} className="text-blue hover:text-pink">{p.cardTitle}</Link></li>
               ))}
               <li><Link href="/database" className="text-blue hover:text-pink">Database home</Link></li>

@@ -8,13 +8,13 @@ const ACCENT: Record<Character["accent"], string> = {
   turq: "0,229,204",
 };
 
-/** Confirmed (Rockstar or the person says so), Reported (credible outlets, no official statement) or To be confirmed (nothing solid yet). */
+/** Confirmed (Rockstar or the person says so, or two main outlets agree), Reported (credible outlets, no official statement) or To be confirmed (nothing solid yet). */
 export function ConfirmTag({ status }: { status: "confirmed" | "tbc" | "reported" }) {
   if (status === "confirmed") {
     return (
       <span
         className="whitespace-nowrap text-[0.65rem] font-bold uppercase tracking-[0.18em] text-turq"
-        title="Stated by Rockstar, or by the person involved, in a first-party source."
+        title="Stated by Rockstar or the person involved, or given the same way by two main outlets."
       >
         Confirmed
       </span>
@@ -68,12 +68,12 @@ export function CharacterPlaceholder({ c, size = "card" }: { c: Pick<Character, 
   );
 }
 
-export function CharSources({ sources }: { sources: CharSource[] }) {
+export function CharSources({ sources, verified }: { sources: CharSource[]; verified?: { iso: string; label: string; note: string } }) {
   return (
     <section aria-labelledby="sources" className="mt-16x">
       <h2 id="sources" className="vc-display text-3xl text-ink">Sources</h2>
       <p className="mt-2x text-sm text-muted">
-        Last verified: <time dateTime={LAST_VERIFIED}>{LAST_VERIFIED_LABEL}</time> (launch eve). Wording on this page is our own. Rockstar&apos;s pages are the primary source. Anything from elsewhere is marked Reported or To be confirmed, and plot details stay in the blurred section.
+        Last verified: <time dateTime={verified?.iso ?? LAST_VERIFIED}>{verified?.label ?? LAST_VERIFIED_LABEL}</time> ({verified?.note ?? "launch eve"}). Wording on this page is our own. Rockstar&apos;s pages are the primary source. Anything from elsewhere is marked Reported or To be confirmed, and plot details stay in the blurred section.
       </p>
       <ol className="mt-4x flex flex-col gap-3x text-sm">
         {sources.map((s) => (
