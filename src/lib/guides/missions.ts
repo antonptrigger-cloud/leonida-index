@@ -2316,6 +2316,158 @@ export const MISSIONS: Mission[] = [
     sourceLabel: "PowerPyx, PC Gamer, Push Square",
     updated: "2026-11-20T06:15:00+10:00",
   },
+  {
+    slug: "chapter-2-mission-9",
+    hidden: true,
+    chapter: 2,
+    chapterOrder: 9,
+    order: 31,
+    name: "Chapter 2, Mission 9",
+    seoTitle: "GTA 6 Chapter 2 Mission 9 Walkthrough & Tips",
+    seoDescription:
+      "GTA 6 Chapter 2 Mission 9 walkthrough: every step in order, what the mission unlocks for switching characters, and tips before you move on.",
+    teaser: "The ninth mission of Chapter 2, straight after Chapter 2, Mission 8.",
+    intro: [
+      "This is the ninth mission of Chapter 2 and the 31st story mission overall (PC Gamer and Push Square list it in that order). PowerPyx lists four objectives, says it needs no phone call to start, and says it is where free character switching opens up and four new jobs appear on the map.",
+      "Our mission list keeps Chapter 2 names behind a blur, so this page uses a neutral title. The mission's name, the people, the places, the plan and the names of the jobs all stay behind the blur.",
+    ],
+    facts: [
+      { label: "Chapter", value: "Chapter 2, mission 9, and 31st overall (PC Gamer and Push Square). PowerPyx numbers it 40th because it counts differently.", status: "confirmed" },
+      { label: "Unlocks after", value: "Chapter 2, Mission 8 (PC Gamer and Push Square put it next in order, and PowerPyx's requirement line is the same mission)", status: "confirmed" },
+      { label: "Starts", value: "PowerPyx says there is no call to wait for: it starts straight after the previous mission, with both leads together", status: "reported" },
+      { label: "Objectives", value: "Four (PowerPyx)", status: "reported" },
+      { label: "Cost", value: "A $2 purchase is part of it (PowerPyx)", status: "reported" },
+      { label: "Free character switching", value: "PowerPyx says it unlocks at the end of this mission. Other outlets give a looser unlock point, so see our switching guide.", status: "reported" },
+      { label: "Partner menu", value: "Hold right on the D-pad to open it. PowerPyx says you can give your partner commands from it when they are with you.", status: "reported" },
+      { label: "New jobs", value: "Four jobs are marked on the map together and can be done in any order (PowerPyx). Their names are in the blur.", status: "reported" },
+    ],
+    objectives: [
+      "Go to the motel kitchen with Lucia. PowerPyx says the mission starts straight after Breakfast Run, with Jason and Lucia spawning outside the Starlet Motel in Kelly County. The kitchen is straight ahead, in the southern corner of the property. On the way you run into Wyman, who recommends checking out the Mud Club for dirt races (Reported, PowerPyx).",
+      "Buy Lucia a coffee. She sits down at the table, so use the coffee machine and pay $2. A cutscene starts in which the couple go over a plan for what to do next. PowerPyx says it doesn't matter which job you pick, because you have to do all of them anyway, and they are all marked on the map together straight after the scene (Reported, PowerPyx).",
+      "Go to your car (Reported, PowerPyx).",
+      "Hold right on the D-pad to interact with your partner. PowerPyx says this unlocks free switching between Jason and Lucia. You can give commands if your partner is with you, or switch characters (Reported, PowerPyx).",
+    ],
+    spoiler:
+      "The mission is called Coffee Break in our mission list, Push Square's list and PC Gamer, whose one-line summary is that Jason and Lucia make plans (Confirmed). PowerPyx's quest description is that, after their string of stick-ups, Jason and Lucia decide to keep rolling together and hit something bigger, so they can move to Vice City and stay with Jason's high school friend, Dre'Quan (Reported, PowerPyx). PowerPyx lists the four jobs it opens as Thrillbillies (Check Out the Mud Club), Hit Every Pawn, Hit Kingpin Bowling and Impounded Vehicle (Reported, PowerPyx). Push Square also lists Thrillbillies as Chapter 2's 11th mission.",
+    tips: [
+      { text: "Don't stress the choice of job in the scene. PowerPyx says all the jobs end up on your map anyway (Reported).", reported: true },
+      { text: "Open the partner menu a few times before you head off, because it is how you switch from here on. This is our own suggestion.", reported: false, link: { href: "/guides/switch-characters", label: "How to switch characters" } },
+      { text: "Pick the closest job first. PowerPyx says there is no set order, and starting with the nearest one on the map is our own suggestion.", reported: false, link: { href: "/map", label: "Interactive map" } },
+      { text: "Make a manual save before you start, so you can retry if the mission goes wrong. This is our own suggestion.", reported: false, link: { href: "/guides/saving", label: "How to save" } },
+    ],
+    notes: [
+      "Order: PC Gamer and Push Square both list this mission ninth in Chapter 2, straight after the eighth. PowerPyx calls it the 40th main mission using its own count, so treat the overall number as Reported.",
+      "PowerPyx is the only full walkthrough for this mission so far, so the objectives, the start condition and the unlocks are labelled Reported. PC Gamer and Push Square confirm the name and the order.",
+      "Where free switching unlocks is disputed across outlets. Our switching guide shows the other versions. The objective list hasn't been checked against the on-screen prompts.",
+    ],
+    faq: [
+      {
+        question: "Which mission number is Chapter 2 Mission 9?",
+        answer: "It is the ninth mission of Chapter 2 and the 31st overall (Confirmed, PC Gamer and Push Square). PowerPyx numbers it 40th because it counts differently (Reported).",
+      },
+      {
+        question: "How do you start Chapter 2 Mission 9?",
+        answer: "You don't need to do anything. PowerPyx says it starts straight after Chapter 2 Mission 8 ends (Reported).",
+      },
+      {
+        question: "When can you switch characters freely in GTA 6?",
+        answer: "PowerPyx says free switching unlocks at the end of this mission, when you hold right on the D-pad to talk to your partner (Reported). Other outlets give a looser unlock point, so see our switching guide.",
+      },
+      {
+        question: "Does the job you pick after the cutscene matter?",
+        answer: "No. PowerPyx says all the suggested jobs are marked on the map together, and you have to do all of them (Reported).",
+      },
+      {
+        question: "What does this mission unlock?",
+        answer: "PowerPyx says free character switching, the partner menu and four new jobs you can play in any order (Reported).",
+      },
+    ],
+    sources: [
+      pp("gta-6-coffee-break-walkthrough", "Objectives, start condition, unlocks and the follow-up jobs"),
+      PCGAMER,
+      PUSHSQUARE,
+    ],
+    sourceLabel: "PowerPyx, PC Gamer, Push Square",
+    updated: "2026-11-20T07:08:00+10:00",
+  },
+  {
+    slug: "chapter-2-mission-10",
+    hidden: true,
+    chapter: 2,
+    chapterOrder: 10,
+    order: 32,
+    name: "Chapter 2, Mission 10",
+    seoTitle: "GTA 6 Chapter 2 Mission 10 Walkthrough & Tips",
+    seoDescription:
+      "GTA 6 Chapter 2 Mission 10 walkthrough: every step in order, how to get through the fight and the chase, the payout, and tips to stay alive.",
+    teaser: "The tenth mission of Chapter 2, straight after Chapter 2, Mission 9.",
+    intro: [
+      "This is the tenth mission of Chapter 2 and the 32nd story mission overall (PC Gamer and Push Square list it in that order). Either lead can start it. PowerPyx lists five objectives, including a shootout and a chase, says the overall outcome is always the same, and gives a $10,000 payout.",
+      "Our mission list keeps Chapter 2 names behind a blur, so this page uses a neutral title. The mission's name, the people, the venue, the mid-mission steps and the code all stay behind the blur.",
+    ],
+    facts: [
+      { label: "Chapter", value: "Chapter 2, mission 10, and 32nd overall (PC Gamer and Push Square). PowerPyx numbers it 42nd because it counts differently.", status: "confirmed" },
+      { label: "Unlocks after", value: "Chapter 2, Mission 9 (PC Gamer and Push Square put it next in order, and PowerPyx's requirement line is the same mission)", status: "confirmed" },
+      { label: "Starts", value: "PowerPyx says to finish the previous mission, clean up any other pending main missions, and wait for a phone call. It is a group call, so it doesn't matter which lead you are playing.", status: "reported" },
+      { label: "Playable as", value: "Either lead. PowerPyx says that if you arrive at the start alone, the game calls your partner in automatically.", status: "reported" },
+      { label: "Objectives", value: "Five (PowerPyx)", status: "reported" },
+      { label: "Combat and chase", value: "PowerPyx says you have to shoot your way out, then escape a chase that it calls easy either way", status: "reported" },
+      { label: "Code", value: "PowerPyx gives a code you will need during the mission. It is in the blur.", status: "reported" },
+      { label: "Payout", value: "$10,000, sent through the BuckMe app the next day (PowerPyx)", status: "reported" },
+    ],
+    objectives: [
+      "Take the call and drive to the marker. PowerPyx says Vicki phones over a group call at some point after the previous mission, and wants help to rob her boss at the Delights strip club in Port Gellhorn, where she works (Reported, PowerPyx).",
+      "Find a way backstage. It's ladies' night, so the bouncer only lets Lucia in. Jason has to climb over the fence behind the club when the two bouncers walk away, then go through the open door to the dressing room of the male strippers. The lead stripper, Mario, is inspired by Jason and wants him to join the dance routine on stage (Reported, PowerPyx).",
+      "Make the choice. PowerPyx says you can pick Don't Help or Help, which change the next objectives significantly, but the overall outcome is always the same. Choosing not to help is quicker but skips some scenes. See the story notes below for both routes (Reported, PowerPyx).",
+      "Watch the show. Whichever you chose, you briefly play as Lucia again and walk from the bar to the stage (Reported, PowerPyx).",
+      "Rob the Delights safe. The safe code is 2008. Once you rob the safe, all of the club's security is alerted (Reported, PowerPyx).",
+      "Leave Delights by shooting your way out. PowerPyx says that on either route you get spotted by the club's security (Reported, PowerPyx).",
+      "Escape the bikers by driving away from the club. PowerPyx says the chase is easy to escape either way, though the bikers chase more aggressively if you didn't dance (Reported, PowerPyx).",
+      "Meet Vicki and hand over the bag of cash. If you danced, you appear at a clothing store after escaping, buy Jason new clothes, then drive to Vicki yourself. If you didn't, you appear at the docks and go straight to the cutscene. Either way Vicki sends you $10,000 the next day through BuckMe (Reported, PowerPyx).",
+    ],
+    spoiler:
+      "The mission is called Afternoon Delight in our mission list, Push Square's list and PC Gamer, whose one-line summary is that Jason and Lucia visit a strip club (Confirmed). PowerPyx shows the map label Rob Vicki's Boss, and says Vicki wants to rob her boss and split the cash (Reported, PowerPyx). Don't Help: the dancers quit and the club owner, Frankie, goes on stage, but the ladies don't want to see him. Jason walks on stage and shoots at the ceiling, which starts the robbery and alerts all the security. You then run backstage to the safe, and shoot your way out. Help: Jason strip-dances with Mario and Lucky on stage while Lucia goes to the safe room quietly. A security guard catches her, Jason has to save her, and you shoot your way out. Then you get an extra objective to buy Jason new clothes (Reported, PowerPyx).",
+    tips: [
+      { text: "Heal and reload before you take the call. The mission has a shootout and a chase, so topping up first is our own suggestion.", reported: false },
+      { text: "Get off the main road for the chase. PowerPyx says it is easy to escape, and the road advice is our own suggestion.", reported: false, link: { href: "/guides/wanted", label: "Wanted level guide" } },
+      { text: "The $10,000 arrives the next day through BuckMe (PowerPyx), so check your balance before you plan big purchases (Reported).", reported: true, link: { href: "/guides/money", label: "Money guide" } },
+      { text: "Make a manual save before you start, so you can retry if the mission goes wrong. This is our own suggestion.", reported: false, link: { href: "/guides/saving", label: "How to save" } },
+    ],
+    notes: [
+      "Order: PC Gamer and Push Square both list this mission tenth in Chapter 2, straight after the ninth. PowerPyx calls it the 42nd main mission using its own count, so treat the overall number as Reported.",
+      "PowerPyx is the only full walkthrough for this mission so far, so the start condition, the steps, the code and the payout are labelled Reported. PC Gamer and Push Square confirm the name and the order.",
+      "The objective list hasn't been checked against the on-screen prompts.",
+    ],
+    faq: [
+      {
+        question: "Which mission number is Chapter 2 Mission 10?",
+        answer: "It is the tenth mission of Chapter 2 and the 32nd overall (Confirmed, PC Gamer and Push Square). PowerPyx numbers it 42nd because it counts differently (Reported).",
+      },
+      {
+        question: "How do you start Chapter 2 Mission 10?",
+        answer: "PowerPyx says to finish Chapter 2 Mission 9, clean up any other pending main missions and wait for a group phone call (Reported).",
+      },
+      {
+        question: "How much does Chapter 2 Mission 10 pay?",
+        answer: "PowerPyx says $10,000, sent through the BuckMe app the next day (Reported).",
+      },
+      {
+        question: "Which character do you need for Chapter 2 Mission 10?",
+        answer: "Either can start it. PowerPyx says your partner is called in automatically if you arrive alone (Reported).",
+      },
+      {
+        question: "Is there a code to remember in Chapter 2 Mission 10?",
+        answer: "PowerPyx gives one. It is in the blurred objectives on this page, so it stays hidden until you reveal it (Reported).",
+      },
+    ],
+    sources: [
+      pp("gta-6-afternoon-delight-rob-vickis-boss-walkthrough", "Start condition, objectives, code, routes and payout"),
+      PCGAMER,
+      PUSHSQUARE,
+    ],
+    sourceLabel: "PowerPyx, PC Gamer, Push Square",
+    updated: "2026-11-20T07:08:00+10:00",
+  },
 ];
 
 /** Chapter a mission belongs to (Chapter 1 unless stated). */

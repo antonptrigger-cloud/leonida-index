@@ -316,7 +316,10 @@ export function relatedFor(path: string, limit = 6): RelatedItem[] {
 
   const sharesChar = (a: Item, b: Item) => [...a.tags].some((t) => t.startsWith("char:") && b.tags.has(t));
   // A character is only "related" when it is actually named (or, from a map page, located there).
-  const eligible = (i: Item) => i.section !== "character" || self.section === "map" || self.section === "character" || sharesChar(self, i);
+  // Hidden Chapter 2 mission pages never link to character cards: a card's summary can name Chapter 2 places or people.
+  const selfHidden = MISSIONS.some((m) => m.hidden && missionPath(m.slug) === path);
+  const eligible = (i: Item) =>
+    i.section !== "character" || (!selfHidden && (self.section === "map" || self.section === "character" || sharesChar(self, i)));
 
   const ranked = items
     .filter((i) => i.href !== path && !i.hub && eligible(i))
