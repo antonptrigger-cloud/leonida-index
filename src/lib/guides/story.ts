@@ -171,7 +171,7 @@ export const PCGAMER_TOTAL = 91;
 export const chapterStart = (n: number) =>
   STORY_CHAPTERS.filter((c) => c.number < n).reduce((sum, c) => sum + c.missions.length, 0) + 1;
 
-export const HUB_VERIFIED = "2026-11-20T07:08:00+10:00";
+export const HUB_VERIFIED = "2026-11-20T08:16:52+10:00";
 export const HUB_VERIFIED_LABEL = "20 Nov 2026";
 
 export const HUB_FAQ: { question: string; answer: string }[] = [
@@ -224,6 +224,6 @@ export const HUB_SOURCES = [
   {
     label: "PowerPyx: GTA 6 full walkthrough (all missions)",
     url: "https://www.powerpyx.com/gta-6-full-walkthrough-all-missions/",
-    used: "Optional labels on the Chapter 2 Billy missions, the unlock order of early missions and the Chapter 4 and 5 endings",
+    used: "Optional labels on two Chapter 2 missions, the unlock order of early missions and the Chapter 4 and 5 endings",
   },
 ];
