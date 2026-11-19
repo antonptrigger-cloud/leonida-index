@@ -83,9 +83,19 @@ groups = {}
 for g in gtadb:
     m = re.search(r" in ([^,]+(?:, [A-Za-z ]+)?), from community", g["description"])
     groups.setdefault(m.group(1).split(", ")[-1] if m else None, []).append(g)
+# A GTADB pin whose NAME is printed on the poster (same name, same place) sits at the printed label instead of the district estimate.
+by_name = {n.lower(): v for n, v in places.items()}
+exact = {}
+for g in gtadb:
+    if g["name"].lower() in by_name:
+        exact[g["id"]] = [by_name[g["name"].lower()]["x"], by_name[g["name"].lower()]["y"]]
+print("GTADB pins placed at the same name printed on the poster:", ", ".join(f"{g['name']}" for g in gtadb if g["id"] in exact) or "none")
 review = []
 for district, gs in groups.items():
     tp = {g["id"]: np.array(W(art_pos[g["id"]])) for g in gs}
+    gs_all = gs
+    gs = [g for g in gs if g["id"] not in exact]
+    if not gs: continue
     if district in places and places[district]["kind"] in ("district", "city", "region"):
         c = np.mean(list(tp.values()), axis=0); lab = np.array([places[district]["x"], places[district]["y"]], float)
         for g in gs:
@@ -96,6 +106,40 @@ for district, gs in groups.items():
         for g in gs:
             fixed[g["id"]] = [round(float(v), 1) for v in tp[g["id"]]]
             review.append((g["id"], g["name"], district or "(none)"))
+
+for gid, pos in exact.items(): fixed[gid] = pos
+# ---- land snap: a pin that would sit in open water moves to the nearest land (pins that are water places by nature are exempt) ------
+import os
+MASTER = os.environ.get("OFFICIAL_MASTER", "/workspace/official-map/work/official_srgb_map.png")
+WATER_PLACES = set(cfg.get("waterPlaces", []))
+snapped = []
+if os.path.exists(MASTER):
+    import cv2
+    from PIL import Image
+    from scipy.ndimage import distance_transform_edt
+    Image.MAX_IMAGE_PIXELS = None
+    q = Image.open(MASTER).convert("RGB").resize((OFF_W // 4, OFF_H // 4), Image.BOX)
+    hsv = cv2.cvtColor(np.asarray(q), cv2.COLOR_RGB2HSV).astype(float)
+    h_, s_ = hsv[..., 0] * 2, hsv[..., 1] / 255
+    sea = ((h_ > 165) & (h_ < 215) & (s_ > 0.45)).astype(np.uint8)
+    sea = cv2.morphologyEx(sea, cv2.MORPH_CLOSE, np.ones((7, 7), np.uint8))   # printed names inside the sea are still sea
+    sea = cv2.morphologyEx(sea, cv2.MORPH_OPEN, np.ones((5, 5), np.uint8))    # specks of land colour in the sea are not land
+    land = ~sea.astype(bool)
+    land[:260, :300] = False; land[-300:, 900:] = False  # legend box, seal and title sit in the sea
+    land = cv2.erode(land.astype(np.uint8), np.ones((5, 5), np.uint8)).astype(bool)
+    dist, (iy, ix) = distance_transform_edt(~land, return_indices=True)
+    for pid in list(fixed):
+        if pid in WATER_PLACES: continue
+        x, y = fixed[pid]; gx_, gy_ = int(x // 4), int(y // 4)
+        gx_ = min(max(gx_, 0), land.shape[1] - 1); gy_ = min(max(gy_, 0), land.shape[0] - 1)
+        if land[gy_, gx_]: continue
+        if dist[gy_, gx_] * 4 > 500: continue   # nothing near: leave it, it shows up in the review list
+        nx, ny = ix[gy_, gx_] * 4 + 2, iy[gy_, gx_] * 4 + 2
+        snapped.append((pid, round(float(np.hypot(nx - x, ny - y)))))
+        fixed[pid] = [round(float(nx), 1), round(float(ny), 1)]
+    print("snapped to land:", ", ".join(f"{p} ({d}px)" for p, d in snapped) or "none")
+else:
+    print("official master not found: land snap skipped")
 (ROOT / "src/lib/map/official-pin-positions.json").write_text(json.dumps(fixed, separators=(",", ":")) + "\n")
 
 print("\nseed pins: transform position vs drawn position (px on the poster)")

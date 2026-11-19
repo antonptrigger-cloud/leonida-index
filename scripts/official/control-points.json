@@ -105,5 +105,11 @@
       "dx": -40,
       "dy": 70
     }
-  }
+  },
+  "waterPlaces": [
+    "seed-lake-leonida",
+    "seed-gambit-bay",
+    "seed-keys-scuba",
+    "seed-rusty-anchor"
+  ]
 }

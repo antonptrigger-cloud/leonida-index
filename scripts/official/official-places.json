@@ -565,6 +565,12 @@
    "kind": "island",
    "x": 2402,
    "y": 6850
+  },
+  {
+   "name": "Fleeca Field",
+   "kind": "place",
+   "x": 3472,
+   "y": 3652
   }
  ]
 }
