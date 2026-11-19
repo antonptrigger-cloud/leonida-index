@@ -3,6 +3,8 @@ import { PageSchema } from "@/lib/seo/jsonld";
 import { PageHeader } from "@/components/PageHeader";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { Related } from "@/components/Related";
+import { Faq } from "@/components/Faq";
+import { ACTIVITIES_FAQ } from "@/lib/guides/basics";
 export const metadata = metaFor("/guides/activities");
 export default function Page() {
   return (
@@ -16,6 +18,7 @@ export default function Page() {
         <li>Basketball, pool, mini golf, races, base jump</li>
         <li>Animals to study, pet, or scold</li>
       </ul>
+      <Faq items={ACTIVITIES_FAQ} />
       <Related path="/guides/activities" />
     </div>
   );

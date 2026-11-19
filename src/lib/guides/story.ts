@@ -158,7 +158,7 @@ export const STORY_CHAPTERS: StoryChapter[] = [
 ];
 
 export const STORY_TOTAL = STORY_CHAPTERS.reduce((n, c) => n + c.missions.length, 0);
-/** The total PC Gamer's list gives (it leaves out two optional Chapter 2 missions and differs in Chapter 3). */
+/** The total PC Gamer's list gives. Press Start and Push Square both list 93. */
 export const PCGAMER_TOTAL = 91;
 
 /** Overall position (1-based) of the first mission in a chapter. */
@@ -172,7 +172,7 @@ export const HUB_FAQ: { question: string; answer: string }[] = [
   {
     question: "How many missions are in GTA 6?",
     answer:
-      "Press Start counts 93 story missions across five chapters, reading from the in-game Story Recap. PC Gamer's list totals 91 because it leaves out two optional missions and differs slightly in one chapter. We use the 93 figure and mark where lists differ (Reported).",
+      "Press Start counts 93 story missions across five chapters, reading from the in-game Story Recap, and Push Square's list also totals 93. PC Gamer's list totals 91, so counts differ between outlets. We use 93 and mark where lists differ (Reported).",
   },
   {
     question: "How many chapters does GTA 6 have?",
@@ -204,6 +204,11 @@ export const HUB_SOURCES = [
     label: "Press Start: How many story missions are in GTA 6",
     url: "https://press-start.com.au/news/2026/11/18/heres-how-many-story-missions-are-in-grand-theft-auto-6/",
     used: "Full list in Story Recap order and the 93-mission count",
+  },
+  {
+    label: "Push Square: GTA 6 chapters and story missions",
+    url: "https://www.pushsquare.com/guides/gta-6-chapters-and-story-missions",
+    used: "Second source for the 93-mission total and the chapter-by-chapter counts",
   },
   {
     label: "VGC: Grand Theft Auto 6 complete walkthrough hub",

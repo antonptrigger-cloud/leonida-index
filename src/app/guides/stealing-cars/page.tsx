@@ -3,6 +3,8 @@ import { PageSchema } from "@/lib/seo/jsonld";
 import { PageHeader } from "@/components/PageHeader";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { Related } from "@/components/Related";
+import { Faq } from "@/components/Faq";
+import { STEALING_CARS_FAQ } from "@/lib/guides/basics";
 export const metadata = metaFor("/guides/stealing-cars");
 export default function Page() {
   return (
@@ -14,6 +16,7 @@ export default function Page() {
         <p>Older cars can be broken into and hot-wired.</p>
         <p>Newer cars need tools such as a key cloner. Plan thefts by the age of the vehicle, not just the model name.</p>
       </div>
+      <Faq items={STEALING_CARS_FAQ} />
       <Related path="/guides/stealing-cars" />
     </div>
   );
