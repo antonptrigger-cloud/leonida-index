@@ -65,7 +65,7 @@ export default function CollectiblesGuide() {
       />
 
       <div className="grid gap-10x lg:grid-cols-12">
-        <div className="lg:col-span-8">
+        <div className="min-w-0 lg:col-span-8">
           <div className="max-w-2xl space-y-4x text-lg text-ink-2">
             <p>
               Leonida is packed with things to pick up, scan and tick off, and the numbers can feel overwhelming in launch week. The good news is that you don&apos;t need all of them. Only a few categories feed the trophies, and the game keeps a running tally for you.
