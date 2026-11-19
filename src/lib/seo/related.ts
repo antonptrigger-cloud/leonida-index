@@ -292,6 +292,8 @@ export const NEWS_GUIDES: Record<string, string[]> = {
   "/news/gta-6-sales-17-million-sensor-tower": ["/guides/beginner", "/guides/missions"],
   "/news/gta-6-age-rating": ["/guides/beginner", "/tools/edition-compare"],
   "/news/gta-6-gta-plus-story-perks": ["/guides/money", "/tools/edition-compare"],
+  "/news/gta-6-nbn-australia-traffic-record": ["/guides/beginner", "/tools/edition-compare"],
+  "/news/gta-6-game-awards-nominations": ["/database/characters/cast", "/guides/beginner"],
 };
 
 /** Fewest related links a content page may end up with (also enforced by `npm run seo:audit`). */
