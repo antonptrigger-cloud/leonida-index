@@ -21,6 +21,7 @@ export type SourceId =
   | "aprasi"
   | "gamesgg"
   | "pushsquare"
+  | "vgc"
   | "gamesradar"
   | "pcgamerAch";
 
@@ -62,6 +63,8 @@ export interface Mission {
   /** Optional real Q&A, rendered visibly by <Faq> (which also emits FAQPage JSON-LD). Never invent questions. */
   faq?: { question: string; answer: string }[];
   sources: MissionSource[];
+  /** ISO 8601 date or timestamp of this page's last edit. Falls back to FAQ_UPDATED. Drives sitemap lastmod and dateModified. */
+  updated?: string;
 }
 
 export const LAST_VERIFIED = "2026-11-18";
@@ -143,6 +146,13 @@ const GAMESGG_ISLAND: MissionSource = {
   used: "Second source for the $400 reward and Kenton buying later treasure (secondary source)",
 };
 
+const vgc = (path: string, label: string, used: string): MissionSource => ({
+  id: "vgc",
+  label,
+  url: `https://www.videogameschronicle.com/guide/${path}/`,
+  used,
+});
+
 const PP_FACTS = "Quest giver, start point, reward, objective flow";
 
 export const MISSIONS: Mission[] = [
@@ -216,7 +226,8 @@ export const MISSIONS: Mission[] = [
       { label: "Playable", value: "Jason", status: "confirmed" },
       { label: "Quest giver", value: "Cal", status: "reported" },
       { label: "Starts", value: "Straight after the Prologue, in Mariana County", status: "reported" },
-      { label: "Reward", value: "Jason's house in Key Lento", status: "reported" },
+      { label: "Ends at", value: "Jason's house, which you can enter and use from here on (VGC and PowerPyx)", status: "confirmed" },
+      { label: "Listed reward", value: "Jason's house in Key Lento (PowerPyx's reward line)", status: "reported" },
     ],
     objectives: [
       "Chase Donnie's plane by boat and slow down beside each dropped package so Cal can haul it in.",
@@ -240,7 +251,7 @@ export const MISSIONS: Mission[] = [
       },
       {
         question: "What do you get for finishing Gone Fishing?",
-        answer: "PowerPyx lists Jason's house in Key Lento as the reward (Reported).",
+        answer: "PowerPyx lists Jason's house in Key Lento as the reward. VGC doesn't call it a reward, but its walkthrough has you drive back to Jason's house and go inside at the end, and its house guide says the house projects open once you control Jason after this mission. So getting access to the house is Confirmed by two outlets, while the \"reward\" wording itself is PowerPyx's (Reported).",
       },
       {
         question: "Can I play Gone Fishing quietly?",
@@ -251,7 +262,17 @@ export const MISSIONS: Mission[] = [
         answer: "One optional cash pickup in a trailer on the way out, according to PowerPyx. You can skip it and still finish the mission (Reported).",
       },
     ],
-    sources: [PCGAMER, PRESSSTART, pp("gta-6-gone-fishing-walkthrough", PP_FACTS), PP_INDEX, PUSHSQUARE, ROCKSTAR],
+    sources: [
+      PCGAMER,
+      PRESSSTART,
+      pp("gta-6-gone-fishing-walkthrough", PP_FACTS),
+      vgc("gta-6-gone-fishing-mission-walkthrough", "VGC: GTA 6 Gone Fishing mission walkthrough", "Second outlet for ending at Jason's house and entering it"),
+      vgc("gta-6-jasons-house-how-to-fix-all-projects-around-jasons-house", "VGC: GTA 6 Jason's House, how to fix all projects", "House projects open after Gone Fishing"),
+      PP_INDEX,
+      PUSHSQUARE,
+      ROCKSTAR,
+    ],
+    updated: "2026-11-19T12:16:13+10:00",
   },
   {
     slug: "gear-up",
@@ -426,7 +447,8 @@ export const MISSIONS: Mission[] = [
       { label: "Playable", value: "Jason, with Cal", status: "confirmed" },
       { label: "Quest giver", value: "Cal", status: "reported" },
       { label: "Starts at", value: "Cal, on the beach in north Key Lento", status: "reported" },
-      { label: "Reward", value: "Police scanner app and $150", status: "reported" },
+      { label: "Reward: scanner", value: "A police scanner on Jason's phone (VGC and PowerPyx)", status: "confirmed" },
+      { label: "Reward: cash", value: "$150 (PowerPyx only)", status: "reported" },
     ],
     objectives: [
       "Meet Cal and drive north-west to Hamlet.",
@@ -442,11 +464,11 @@ export const MISSIONS: Mission[] = [
       { text: "Ducking behind the wheel reportedly makes you harder to spot without changing outfits.", reported: true },
       { text: "Cal sets up a police scanner on Jason's phone here. It reportedly keeps working passively after the mission.", reported: true },
     ],
-    notes: ["The scanner and the $150 come from a single walkthrough. We will confirm both after launch."],
+    notes: ["The scanner is confirmed by VGC and PowerPyx. The $150 still comes from PowerPyx alone (VGC only says you collect cash from the car), so we label it Reported."],
     faq: [
       {
         question: "What do you get for Unwanted Attention?",
-        answer: "PowerPyx lists a police radio scanner on Jason's phone and $150. Both come from that one walkthrough, so we are treating them as unconfirmed for now (Reported).",
+        answer: "A police scanner on Jason's phone: VGC and PowerPyx both say you get it on the way to Hamlet (Confirmed). PowerPyx also lists $150 in cash from the car. VGC mentions collecting cash but gives no amount, so the $150 is Reported.",
       },
       {
         question: "How do I stop the police recognising me after a chase?",
@@ -461,7 +483,15 @@ export const MISSIONS: Mission[] = [
         answer: "PowerPyx says ducking behind the wheel while driving makes you harder to recognise, so you don't have to change clothes (Reported).",
       },
     ],
-    sources: [PCGAMER, PRESSSTART, pp("gta-6-unwanted-attention-go-see-cal-walkthrough", PP_FACTS), PP_INDEX, ROCKSTAR],
+    sources: [
+      PCGAMER,
+      PRESSSTART,
+      pp("gta-6-unwanted-attention-go-see-cal-walkthrough", PP_FACTS),
+      vgc("gta-6-unwanted-attention-mission-walkthrough", "VGC: GTA 6 Unwanted Attention mission walkthrough", "Second outlet for the police scanner; collecting cash at the end with no amount given"),
+      PP_INDEX,
+      ROCKSTAR,
+    ],
+    updated: "2026-11-19T12:16:13+10:00",
   },
   {
     slug: "pipework",
@@ -673,6 +703,91 @@ export const MISSIONS: Mission[] = [
       },
     ],
     sources: [PCGAMER, PRESSSTART, pp("gta-6-feng-shui-meet-cal-walkthrough", PP_FACTS), PP_INDEX, PUSHSQUARE],
+  },
+  {
+    slug: "coming-home",
+    order: 11,
+    name: "Coming Home",
+    seoTitle: "GTA 6 Coming Home Mission Guide: Walkthrough & Tips",
+    seoDescription:
+      "GTA 6 Coming Home walkthrough: the optional errands and house repairs to finish first, how the mission plays out and what you can't redo. Spoilers hidden.",
+    teaser: "Optional prep that shapes Jason and Lucia's relationship, then the mission itself.",
+    intro: [
+      "Coming Home is the 11th story mission, and it comes with a block of optional prep that you can only do beforehand. VGC and PowerPyx both say that prep affects how your relationship with Lucia starts out, so it is worth finishing before you trigger the main marker.",
+      "The mission itself is hands-on rather than a set-piece job. The specifics stay behind the blur on this page.",
+    ],
+    facts: [
+      { label: "Chapter", value: "Chapter 1: Just Like Paradise, mission 11 (PC Gamer, Push Square, VGC, PowerPyx)", status: "confirmed" },
+      { label: "Playable", value: "Jason", status: "confirmed" },
+      { label: "Optional prep", value: "Five errands and four repairs at Jason's house before the main part", status: "confirmed" },
+      { label: "Unlocks after", value: "Feng Shui (PowerPyx's requirement)", status: "reported" },
+      { label: "Quest giver", value: "Lucia", status: "reported" },
+      { label: "Starts at", value: "Hamlet, Vice-Dale County", status: "reported" },
+      { label: "Cash reward", value: "None listed", status: "reported" },
+    ],
+    objectives: [
+      "Before the main marker, you can run five optional errands: buy Lucia a necklace, pick up groceries, collect her clothes from Andy at the bar where he works, buy flowers and get Jason a haircut. VGC and PowerPyx both list all five, and both say they can be skipped but help the relationship.",
+      "Use your own car for the clothes run. Both walkthroughs say the clothes should sit in the trunk until you reach the prison.",
+      "Finish the four house repairs: the front steps (you need these to get inside anyway), the leaky roof via the ladder by the door, the bedroom wall plus a coat of paint, and the railing near the workout gear on the back deck. VGC's house guide and PowerPyx agree on all four. VGC says the colour of the paint makes no difference.",
+      "PowerPyx says the mission marker is live at the prison in Hamlet (Hamlet Correctional) from the start, but you have to pass time until Lucia calls to say she is out. Sleeping at Jason's house is the quickest way, and it can take a second night. PowerPyx's map label for the mission is \"Lucia's Release\".",
+      "Drive to the prison and speak to the guard at reception. A short flashback plays and then you meet Lucia (VGC and PowerPyx).",
+      "Walk to the car with Lucia and drive to the Rusty Anchor bar (VGC and PowerPyx). PowerPyx marks it in the north of Key Lento.",
+      "Order drinks at the bar. PowerPyx says it is two Pindayho beers for $6, with the second left on the counter for you to pick up. Take them outside to Lucia and talk.",
+      "After that scene the game cuts to Jason in the bathroom. Go back to Lucia, and when you are told to hang out with your friends, try a few of the marked interactions until the game moves you on (VGC and PowerPyx).",
+      "Donnie offers Jason a line of cocaine. Both walkthroughs say you can accept or refuse, and PowerPyx says it changes nothing beyond an extra cutscene. They disagree on where Donnie is when he asks (VGC: the bathroom, PowerPyx: the other bar), so follow the prompts in your game.",
+      "Lucia asks Jason to dance. VGC says you can accept or decline, and that accepting gives the relationship an early boost. PowerPyx treats the dance as part of the main path.",
+      "Optional, VGC only: Rhonda's pet lizard runs out of the bar. Focus mode finds it in a bush across the street.",
+      "Mattia arrives. Talk to him and play pool (VGC and PowerPyx). PowerPyx says your score doesn't matter, because the game is interrupted either way.",
+      "Some servicemen start trouble (PowerPyx calls them the Aviators). Take it outside and deal with D-Man in a short melee fight (VGC and PowerPyx). PowerPyx's advice is to watch for an opponent winding up and hold block at that moment.",
+      "Police turn up. Run with Lucia and follow her until the final cutscene (VGC and PowerPyx).",
+    ],
+    spoiler:
+      "Lucia is released from prison, and the mission is the night out that celebrates it. PowerPyx says the flashback at the prison shows the couple's break-up (Reported). Mattia is the partner of a woman Lucia knew inside (VGC and PowerPyx agree on this; PowerPyx names her Kat), and VGC says Lucia thinks he may have work for the pair. PowerPyx says the night ends back at Jason's house, where the repairs are shown off if you did them, and that Donnie calls about a job the next morning. Lucia then lives at Jason's house (PowerPyx, Reported).",
+    tips: [
+      { text: "Do the optional prep before you trigger the main marker. VGC and PowerPyx both say it improves your relationship with Lucia." },
+      { text: "VGC says the four house repairs close during this mission and that skipping them leaves your starting relationship meter noticeably lower, so finish them first.", reported: true },
+      { text: "PowerPyx says finishing all five errands starts the relationship at 3 out of 4 on the rating in the Jason & Lucia menu.", reported: true },
+      { text: "PowerPyx lists the necklace at $425 and says it matters again in Chapter 2, so it is worth buying.", reported: true },
+      { text: "PowerPyx suggests turning on all HUD and progress notifications under Settings > UI so you see the heart pop-ups when the relationship changes.", reported: true },
+      { text: "Keep a manual save. PowerPyx and Push Square say story missions can't be replayed, and Push Square suggests saving at the start of each chapter (Options > Game > Save Game)." },
+    ],
+    notes: [
+      "PowerPyx says Chapter 1 missions can appear in a slightly different order and plays Clean Up After Donnie before Buck Me. PC Gamer, Push Square and Press Start list Buck Me next.",
+      "VGC writes the bar owner's name as Andi. PowerPyx and Push Square write Andy, and so do we.",
+      "Where VGC and PowerPyx disagree on small details, such as where a character is during one scene, we leave the detail out or attribute it to one outlet.",
+    ],
+    faq: [
+      {
+        question: "Do I have to do the optional errands before Coming Home?",
+        answer: "No. VGC and PowerPyx both say they can be skipped, but both say they help your relationship with Lucia (Confirmed).",
+      },
+      {
+        question: "Can I still repair Jason's house later?",
+        answer: "VGC says no. The repair jobs close during this mission, and skipping them leaves your starting relationship lower (Reported).",
+      },
+      {
+        question: "Can I replay Coming Home?",
+        answer: "No. PowerPyx and Push Square both say story missions can't be replayed, so keep a manual save if you want a way back (Confirmed).",
+      },
+      {
+        question: "Is there a cash reward for Coming Home?",
+        answer: "PowerPyx lists none (Reported).",
+      },
+      {
+        question: "Which missions come before and after Coming Home?",
+        answer: "It is mission 11 of Chapter 1, straight after Feng Shui on PC Gamer's, Push Square's and Press Start's lists. Those lists put Buck Me next, while PowerPyx plays Clean Up After Donnie first (Confirmed for the list order).",
+      },
+    ],
+    sources: [
+      PCGAMER,
+      PRESSSTART,
+      vgc("gta-6-coming-home-mission-walkthrough", "VGC: GTA 6 Coming Home mission walkthrough (18 Nov 2026)", "Errands, objective flow, Rusty Anchor, Mattia, the fight, the repairs link"),
+      vgc("gta-6-jasons-house-how-to-fix-all-projects-around-jasons-house", "VGC: GTA 6 Jason's House, how to fix all projects", "The four house repairs, paint colour, repairs closing, effect on the relationship meter"),
+      pp("gta-6-coming-home-lucias-release-walkthrough", "Start point, quest giver, objectives, drink price, relationship rating, necklace price"),
+      PP_INDEX,
+      PUSHSQUARE,
+    ],
+    updated: "2026-11-19T12:16:13+10:00",
   },
 ];
 

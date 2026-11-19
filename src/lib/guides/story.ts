@@ -5,7 +5,13 @@
  * - Chapter 1 (22 missions, same order): PC Gamer, Press Start (in-game Story Recap), VGC (to #18).
  * - Chapters 2-5 follow Press Start's list, which reads the in-game Story Recap and totals 93.
  *   PC Gamer's list totals 91 and differs in Chapters 2 and 3 (see the notes below).
- * - Three titles are hidden on purpose because the name alone is a major spoiler.
+ * - Three titles are hidden on purpose because the name alone is a major spoiler. They are Ch1 #18, Ch4 #25 and Ch5 #7.
+ *   Re-checked 19 Nov 2026: Push Square and Press Start name all three identically, PowerPyx names the same three,
+ *   and PC Gamer redacts the same three. Nothing to change in the list, so they stay hidden. Push Square, Press Start and
+ *   PowerPyx all end Ch4 and Ch5 on those hidden titles.
+ * - Push Square (22/13/26/25/7 = 93) and Press Start agree with this list on every title and position. The only
+ *   differences are typos: Push Square writes "Girls' Trap" (PC Gamer and Press Start: "Girls' Trip") and Press Start
+ *   writes "Kitter Litter Labs". We keep the spelling that PC Gamer and Press Start use.
  * - Mission names are facts; no descriptions are copied from any outlet.
  *
  * This file must not import from src/lib/seo (site.ts imports guides data to build ROUTES).
@@ -76,7 +82,7 @@ export const STORY_CHAPTERS: StoryChapter[] = [
       m("Twist Wrist, Smash, Grab", true),
       m("Checking Out"),
     ],
-    note: "Press Start's Story Recap list has 13 missions here. PC Gamer's list has 11 and leaves out Thrillbillies and Twist Wrist, Smash, Grab. PowerPyx labels both as optional Billy side quests, so counts differ between sites depending on whether they are included.",
+    note: "Press Start's Story Recap list and Push Square's list both have 13 missions here. PC Gamer's list has 11 and leaves out Thrillbillies and Twist Wrist, Smash, Grab. PowerPyx labels both as optional Billy side quests, and Push Square also lists them in its Billy side-mission questline, so counts differ between sites depending on whether they are included.",
   },
   {
     number: 3,
@@ -109,7 +115,7 @@ export const STORY_CHAPTERS: StoryChapter[] = [
       m("Hidden Charges"),
       m("The Cartel Heist"),
     ],
-    note: "This chapter has 26 missions in both Press Start's and PC Gamer's lists, but they don't match exactly. PC Gamer lists Caught Slipping and not Kitty Litter Labs. Press Start lists Kitty Litter Labs and not Caught Slipping. We follow Press Start (the in-game recap) and will update this once more players confirm it.",
+    note: "This chapter has 26 missions in the Press Start, Push Square and PC Gamer lists, but PC Gamer's doesn't match the other two. Press Start and Push Square list Kitty Litter Labs (9) and Car Service (10). PC Gamer lists Caught Slipping and Car Services instead, and has no Kitty Litter Labs. PowerPyx lists Caught Slipping as a main mission and Kitty Litter Labs only as part of a Tyrone side questline, so this is not settled. We follow Press Start and Push Square and will update this as more players confirm what their Story Recap shows.",
   },
   {
     number: 4,
@@ -165,7 +171,7 @@ export const PCGAMER_TOTAL = 91;
 export const chapterStart = (n: number) =>
   STORY_CHAPTERS.filter((c) => c.number < n).reduce((sum, c) => sum + c.missions.length, 0) + 1;
 
-export const HUB_VERIFIED = "2026-11-19";
+export const HUB_VERIFIED = "2026-11-19T12:16:13+10:00";
 export const HUB_VERIFIED_LABEL = "19 Nov 2026";
 
 export const HUB_FAQ: { question: string; answer: string }[] = [
@@ -208,7 +214,7 @@ export const HUB_SOURCES = [
   {
     label: "Push Square: GTA 6 chapters and story missions",
     url: "https://www.pushsquare.com/guides/gta-6-chapters-and-story-missions",
-    used: "Second source for the 93-mission total and the chapter-by-chapter counts",
+    used: "Second source for the 93-mission total, the chapter-by-chapter counts and every title in Chapters 2 to 5",
   },
   {
     label: "VGC: Grand Theft Auto 6 complete walkthrough hub",
@@ -218,6 +224,6 @@ export const HUB_SOURCES = [
   {
     label: "PowerPyx: GTA 6 full walkthrough (all missions)",
     url: "https://www.powerpyx.com/gta-6-full-walkthrough-all-missions/",
-    used: "Optional labels on the Chapter 2 Billy missions and the unlock order of early missions",
+    used: "Optional labels on the Chapter 2 Billy missions, the unlock order of early missions and the Chapter 4 and 5 endings",
   },
 ];
