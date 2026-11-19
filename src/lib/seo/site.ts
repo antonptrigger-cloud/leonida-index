@@ -477,7 +477,7 @@ export const ROUTES: Record<string, RouteSeo> = {
     crumb: "Sources",
     changeFrequency: "monthly",
     priority: 0.3,
-    updated: "2026-11-19",
+    updated: "2026-11-20",
   },
   "/about": {
     title: "About",

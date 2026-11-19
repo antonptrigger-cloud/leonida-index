@@ -177,9 +177,9 @@ export default function MapSizeGuide() {
             <H2 id="check">How to get a feel for it yourself</H2>
             <ol className="mt-4x flex max-w-2xl list-decimal flex-col gap-3x pl-6x text-ink-2 marker:font-bold marker:text-pink">
               <li>Open the in-game map and zoom all the way out to see Leonida from the Keys in the south to the far north.</li>
-              <li>Don&apos;t expect a scale bar to do the work. We haven&apos;t found an official scale from Rockstar, and the printable Leonida map on the Rockstar site wasn&apos;t listed on its downloads page when we checked on 19 Nov, so we aren&apos;t relying on it. We&apos;ll update this page if an official map with a scale turns up.</li>
+              <li>Rockstar has now released a printable map of Leonida: the <a href="https://www.rockstargames.com/VI/downloads" className="text-orange hover:text-pink" target="_blank" rel="noopener">Leonida Map &amp; Cover Art Poster</a> on its downloads page, listed as the official game map (checked 20 Nov). Its legend includes a scale bar, but we haven&apos;t used it to work out an area, and we still haven&apos;t found an area figure in km² or miles from Rockstar. This page will be updated if one turns up.</li>
+              <li>To see the official map with places pinned on it, use our <A href="/map">interactive map</A>, which now uses Rockstar&apos;s poster as its base. Map © Rockstar Games.</li>
               <li>To compare with GTA V, time a highway drive from the southern tip to the northern edge in a fast car, and set it against Kotaku&apos;s 10 min 53 s.</li>
-              <li>To plan your own trips, use our <A href="/map">interactive map</A> of Leonida.</li>
             </ol>
           </section>
 
