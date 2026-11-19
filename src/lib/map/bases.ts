@@ -42,11 +42,11 @@ const legacy: BaseMap = {
   id: "legacy",
   label: "Old placeholder map",
   tiles: legacyManifest as TileManifest,
-  attribution: `Illustrative placeholder map (not the in-game geography) until Rockstar’s official map · ${GTADB_CREDIT}`,
+  attribution: `Illustrative placeholder map (not the in-game geography) · ${GTADB_CREDIT}`,
   note: {
     chip: "Placeholder map",
     title: "Old placeholder map",
-    body: "This is the original placeholder illustration, not the in-game geography. Pin positions are approximate. It will be replaced by Rockstar’s official map once that is published.",
+    body: "This is the original placeholder illustration, not the in-game geography. Pin positions are approximate. Rockstar’s official map is now the default base.",
   },
   bakedLabels: true,
   pinToSource({ x, y }) {

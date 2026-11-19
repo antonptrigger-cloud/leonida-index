@@ -30,7 +30,7 @@ Stored pins never change (pin space 1168x784 in Supabase). Pin space was a place
 * **Seed pins whose place the poster prints** are drawn exactly at the printed label (`official-pin-positions.json`), not through
   the transform. Vendor seeds the poster only names by district (Electric Fang, Stock 305, PTT YOUNGIN$, Paradise Garage) sit in
   that district. Seed pins in open water are moved to the nearest land (not the ones that are water places by nature: Lake
-  Leonida, Gambit Bay, scuba, the pier bar). The 42 older GTADB pins sit at their district's printed label (clamped spread);
+  Leonida, Gambit Bay, scuba, the pier bar). The GTADB-sourced pins sit at their district's printed label (clamped spread);
   two whose name is printed on the poster (Sahara Arena, Fleeca Field) sit at that printed name.
 * Clicks on the map are converted back to pin space with the inverse of the same chain, so a submission lands in the same place on
   every base.
@@ -42,7 +42,7 @@ Rebuild: `python3 scripts/official/build_official_transform.py && python3 script
 `src/lib/map/official-labels.json` has 95 names printed on the poster: five county titles (Lummox, Leonard, Kelly, Vice-Dale,
 Mariana), eight sub-county names (East / South West Lummox, North / South Leonard, North / South Kelly, West / South Vice-Dale),
 cities, districts, islands, places and water names, each with the centre of its printed label. Names and positions come from the
-poster alone (read with OCR, then checked by eye): nothing from GTADB, leaks or the community. Each entry's `sourceQuote` says so.
+poster alone (read with OCR, then checked by eye): nothing from GTADB, leaks or the community. Each entry's `source`/`sourceQuote` says so.
 
 The poster prints its own text, so our label is drawn **only while the printed name is too small to read** (printed letter height
 x zoom < 11 px) and the label zoom tier for its kind allows it (counties, then cities and water, then islands and districts, then
