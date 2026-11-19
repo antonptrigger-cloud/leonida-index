@@ -8,6 +8,7 @@ import { COLLECT_VERIFIED } from "@/lib/guides/collectibles";
 import { SF_VERIFIED } from "@/lib/guides/strangers";
 import { BASICS_UPDATED } from "@/lib/guides/basics";
 import { MAPSIZE_PUBLISHED, MAPSIZE_VERIFIED } from "@/lib/guides/map-size";
+import { FASTTRAVEL_PUBLISHED, FASTTRAVEL_VERIFIED } from "@/lib/guides/fast-travel";
 import { GARAGES_PUBLISHED, GARAGES_VERIFIED } from "@/lib/guides/garages";
 import { SAVING_PUBLISHED, SAVING_STEPS, SAVING_VERIFIED } from "@/lib/guides/saving";
 import { SWITCH_PUBLISHED, SWITCH_STEPS, SWITCH_VERIFIED } from "@/lib/guides/switching";
@@ -137,7 +138,7 @@ export const ROUTES: Record<string, RouteSeo> = {
     kind: "collection",
     changeFrequency: "daily",
     priority: 0.85,
-    updated: GARAGES_VERIFIED, // the hub gained the garages card
+    updated: FASTTRAVEL_VERIFIED, // the hub gained the fast travel card
   },
   "/guides/beginner": {
     title: "GTA 6 Beginner Guide: Tips for Your First Hours",
@@ -254,6 +255,16 @@ export const ROUTES: Record<string, RouteSeo> = {
     priority: 0.8,
     updated: MAPSIZE_VERIFIED,
     published: MAPSIZE_PUBLISHED,
+  },
+  "/guides/fast-travel": {
+    title: "GTA 6 Fast Travel: RydeMe, Taxis and Skipping Rides",
+    description: "How to fast travel in GTA 6: unlock and book RydeMe, skip the ride for about $100, call a taxi, use buses and trains, and know when to just drive.",
+    crumb: "Fast travel",
+    kind: "article",
+    changeFrequency: "weekly",
+    priority: 0.8,
+    updated: FASTTRAVEL_VERIFIED,
+    published: FASTTRAVEL_PUBLISHED,
   },
   "/guides/garages": {
     title: "GTA 6 Garages: All Locations, Prices and How to Buy",

@@ -21,6 +21,9 @@ export default function Page() {
         </p>
         <p>The story is a couple under pressure across the state of Leonida, not just Vice City.</p>
         <p>Spend time off the mission marker. Activities, animals, and random encounters are part of the design.</p>
+        <p>
+          There is no free fast travel, so getting around the map is a skill of its own. See <Link href="/guides/fast-travel" className="text-orange hover:text-pink">how fast travel works</Link>.
+        </p>
       </div>
       <Faq items={BEGINNER_FAQ} />
       <Related path="/guides/beginner" />

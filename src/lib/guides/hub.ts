@@ -39,6 +39,7 @@ const HUB_META: Record<string, HubMeta> = {
   "/guides/collectibles": { title: "Collectibles", blurb: "Card sets, WAiNK scans and which ones the 100% needs.", tag: "Collectibles", accent: "orange", section: "money" },
   "/guides/wanted": { title: "Wanted system", blurb: "Six stars, witnesses, hollow stars and how to lose the cops.", tag: "Systems", accent: "turq", section: "systems" },
   "/guides/stealing-cars": { title: "Stealing cars", blurb: "Hot-wire the old ones, clone keys for the new ones.", tag: "Systems", accent: "turq", section: "systems" },
+  "/guides/fast-travel": { title: "Fast travel", blurb: "RydeMe, taxis and public transport, what skipping a ride costs, and where outlets differ.", tag: "Systems", accent: "turq", section: "systems" },
   "/guides/garages": { title: "Garages", blurb: "Every garage, its price and area, and how slots work. Both outlets' figures shown.", tag: "Systems", accent: "turq", section: "systems" },
   "/guides/activities": { title: "Activities", blurb: "Diving, jet skis, fishing, hoops, mini golf and the rest.", tag: "Activities", accent: "turq", section: "systems" },
   "/guides/map-size": { title: "Map size", blurb: "Rockstar's size comparisons, one outlet's 175 km² measurement and timed crossings.", tag: "Map", accent: "turq", section: "systems" },
