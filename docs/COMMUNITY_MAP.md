@@ -98,8 +98,9 @@ Public endpoints: `GET /api/map/pins`, `POST /api/map/submissions`, `POST /api/m
 
 ## 6. The base map: deep-zoom tiles, and swapping in a new map
 
-> The default base is now the custom art (`src/lib/map/bases.ts`, `docs/CUSTOM_MAP_ART.md`); the steps below describe the legacy base's
-> pyramid and calibration, and `?base=legacy` still shows it.
+> The default base is now Rockstar's official map poster (`src/lib/map/bases.ts`, `docs/OFFICIAL_MAP.md`); the custom art
+> (`?base=art`, `docs/CUSTOM_MAP_ART.md`) and the legacy placeholder (`?base=legacy`) stay selectable. The steps below describe the
+> legacy base's pyramid and calibration.
 
 `/map` is a deep-zoom tiled map (Leaflet `CRS.Simple` plus a tile layer), not one stretched image. It fills the
 window below the header, starts filled edge to edge, and zooms smoothly (wheel, pinch, + / -). The "whole map"
