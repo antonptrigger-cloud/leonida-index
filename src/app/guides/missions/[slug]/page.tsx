@@ -147,7 +147,7 @@ export default async function MissionPage({ params }: { params: Promise<{ slug: 
 
       <Faq items={m.faq} />
 
-      <SourcesList sources={m.sources} verified={m.updated ? { iso: m.updated, label: dateLabel(m.updated) } : undefined} />
+      <SourcesList blurLinks={Boolean(m.hidden)} sources={m.sources} verified={m.updated ? { iso: m.updated, label: dateLabel(m.updated) } : undefined} />
 
       <nav aria-label="More missions" className="mt-16x grid gap-4x border-t border-pink/20 pt-6x sm:grid-cols-2">
         {prev ? (

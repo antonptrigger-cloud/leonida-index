@@ -16,8 +16,8 @@
 
 export const SWITCH_PUBLISHED = "2026-11-19";
 /** Last edit, ISO 8601 with offset (Brisbane). Drives sitemap lastmod and dateModified. */
-export const SWITCH_VERIFIED = "2026-11-19T19:30:00+10:00";
-export const SWITCH_VERIFIED_LABEL = "19 Nov 2026";
+export const SWITCH_VERIFIED = "2026-11-20T07:08:00+10:00";
+export const SWITCH_VERIFIED_LABEL = "20 Nov 2026";
 
 export const SWITCH_STEPS: { name: string; text: string }[] = [
   { name: "Reach the unlock", text: "Free switching opens partway through Chapter 2. Before that the other character is not available in the open world." },

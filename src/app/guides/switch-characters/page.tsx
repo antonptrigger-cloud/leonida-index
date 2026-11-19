@@ -78,7 +78,7 @@ export default function SwitchCharactersGuide() {
               <Spoiler label="the unlock point and the story reason">
                 <div className="space-y-3x text-ink-2">
                   <p>
-                    PowerPyx says you unlock the switch in Chapter 2, after the main mission <strong className="text-ink">Coffee Break</strong><R />. It is the only outlet we found that names the mission.
+                    PowerPyx says you unlock the switch in Chapter 2, after the main mission <strong className="text-ink">Coffee Break</strong><R />. It is the only outlet we found that names the mission. See our <Link href="/guides/missions/chapter-2-mission-9" className="text-pink underline underline-offset-2">Chapter 2, Mission 9 guide</Link>.
                   </p>
                   <p>
                     VGC explains the delay through the story: Lucia starts the game in jail and is on parole after the mission Day Release, so you can&apos;t roam the open world as her yet. It says the first time you roam freely as her is after Chapter 1 ends<R />.
