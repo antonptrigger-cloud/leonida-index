@@ -1,11 +1,12 @@
 import type { Metadata } from "next";
-import { LAST_VERIFIED, MISSIONS, missionPath } from "@/lib/guides/missions";
+import { FAQ_UPDATED, LAST_VERIFIED, MISSIONS, missionPath } from "@/lib/guides/missions";
 import { HUB_VERIFIED } from "@/lib/guides/story";
 import { MONEY_VERIFIED } from "@/lib/guides/money";
 import { CHEATS_VERIFIED } from "@/lib/guides/cheats";
 import { TROPHIES_VERIFIED } from "@/lib/guides/trophies";
 import { COLLECT_VERIFIED } from "@/lib/guides/collectibles";
 import { SF_VERIFIED } from "@/lib/guides/strangers";
+import { BASICS_UPDATED } from "@/lib/guides/basics";
 import { NEWS, newsPath } from "@/lib/news/articles";
 import { CHARACTERS, LAST_VERIFIED as CHARACTERS_VERIFIED, characterPath } from "@/lib/characters/characters";
 import { DB_UPDATED, DB_VERIFIED, REFERENCE_PAGES } from "@/lib/database/reference";
@@ -43,8 +44,6 @@ export interface RouteSeo {
   /** Short label for breadcrumbs. */
   crumb: string;
   kind?: "page" | "article" | "news" | "howto" | "collection" | "profile";
-  /** For kind = "profile": "Thing" for a group or duo, otherwise "Person". */
-  profileType?: "Person" | "Thing";
   /** HowTo steps, when kind = "howto". */
   steps?: { name: string; text: string }[];
   changeFrequency?: ChangeFreq;
@@ -60,9 +59,6 @@ export interface RouteSeo {
   /** Sources relied on, emitted as JSON-LD citation (news). */
   citations?: string[];
 }
-
-/** Character profiles that describe a duo, not one person. */
-const GROUP_PROFILES = new Set(["real-dimez"]);
 
 const region = (name: string, title: string, description: string): RouteSeo => ({
   title,
@@ -124,7 +120,7 @@ export const ROUTES: Record<string, RouteSeo> = {
   ),
   "/map/leaderboard": {
     title: "GTA 6 Map Leaderboard: Top Community Mappers",
-    description: "The players who have marked the most approved locations on the community GTA 6 map, and who found each spot first.",
+    description: "The players who have marked the most approved locations on the community GTA 6 map, and who found each spot first. Updated as new pins are approved.",
     crumb: "Leaderboard",
     changeFrequency: "daily",
     priority: 0.4,
@@ -146,6 +142,7 @@ export const ROUTES: Record<string, RouteSeo> = {
     kind: "article",
     changeFrequency: "weekly",
     priority: 0.8,
+    updated: BASICS_UPDATED,
   },
   "/guides/wanted": {
     title: "GTA 6 Wanted System Explained: How to Lose the Cops",
@@ -160,6 +157,7 @@ export const ROUTES: Record<string, RouteSeo> = {
     ],
     changeFrequency: "weekly",
     priority: 0.8,
+    updated: BASICS_UPDATED,
   },
   "/guides/stealing-cars": {
     title: "How to Steal Cars in GTA 6",
@@ -173,6 +171,7 @@ export const ROUTES: Record<string, RouteSeo> = {
     ],
     changeFrequency: "weekly",
     priority: 0.7,
+    updated: BASICS_UPDATED,
   },
   "/guides/activities": {
     title: "GTA 6 Activities: Every Side Activity in Leonida",
@@ -181,6 +180,7 @@ export const ROUTES: Record<string, RouteSeo> = {
     kind: "article",
     changeFrequency: "weekly",
     priority: 0.7,
+    updated: BASICS_UPDATED,
   },
   "/guides/missions": {
     title: "GTA 6 Walkthrough: All Missions in Order",
@@ -251,7 +251,7 @@ export const ROUTES: Record<string, RouteSeo> = {
         kind: "article",
         changeFrequency: "weekly",
         priority: 0.75,
-        updated: LAST_VERIFIED,
+        updated: FAQ_UPDATED,
         published: LAST_VERIFIED,
       },
     ]),
@@ -309,6 +309,7 @@ export const ROUTES: Record<string, RouteSeo> = {
     kind: "article",
     changeFrequency: "weekly",
     priority: 0.65,
+    updated: "2026-11-18",
   },
   "/database": {
     title: "GTA 6 Database: Characters, Vehicles, Weapons, Radio",
@@ -351,7 +352,6 @@ export const ROUTES: Record<string, RouteSeo> = {
         description: c.seoDescription,
         crumb: c.name,
         kind: "profile",
-        profileType: GROUP_PROFILES.has(c.slug) ? "Thing" : "Person",
         changeFrequency: "weekly",
         priority: 0.6,
         updated: c.updated ?? CHARACTERS_VERIFIED,
@@ -376,6 +376,7 @@ export const ROUTES: Record<string, RouteSeo> = {
     crumb: "Sources",
     changeFrequency: "monthly",
     priority: 0.3,
+    updated: "2026-11-19",
   },
   "/about": {
     title: "About",
@@ -383,11 +384,31 @@ export const ROUTES: Record<string, RouteSeo> = {
     crumb: "About",
     changeFrequency: "monthly",
     priority: 0.3,
+    updated: "2026-11-18",
   },
 };
 
+/**
+ * ISO date a route's content last changed, for sitemap `lastmod` and JSON-LD `dateModified`.
+ * Uses `updated`, then `published`. Returns undefined when neither is set: we omit lastmod rather than guess.
+ */
+export function lastModifiedOf(r: RouteSeo): string | undefined {
+  return r.updated ?? r.published;
+}
+
+/** Sections that get a generated share image (see src/app/og). */
+const OG_SECTIONS = ["/guides", "/news"];
+
+/** Path of the generated 1200x630 share image for a route, or undefined to use the site-wide one. */
+export function ogImagePath(path: string): string | undefined {
+  const r = ROUTES[path];
+  if (!r || r.noindex) return undefined;
+  if (!OG_SECTIONS.some((s) => path === s || path.startsWith(`${s}/`))) return undefined;
+  return `/og${path}.png`;
+}
+
 /** Longest "title | brand" we allow before dropping the brand suffix. */
-export const MAX_BRANDED_TITLE = 62;
+export const MAX_BRANDED_TITLE = 60;
 
 export function absoluteUrl(path: string): string {
   return path === "/" ? SITE.url : `${SITE.url}${path}`;
@@ -416,6 +437,8 @@ export function metaFor(path: string): Metadata {
   const branded = `${r.title} | ${SITE.name}`;
   const bare = r.absoluteTitle || branded.length > MAX_BRANDED_TITLE;
   const ogTitle = bare ? r.title : branded;
+  const og = ogImagePath(path);
+  const image = og ? { url: og, width: OG_IMAGE.width, height: OG_IMAGE.height, alt: r.title, type: OG_IMAGE.type } : OG_IMAGE;
   return {
     title: bare ? { absolute: r.title } : r.title,
     description: r.description,
@@ -428,11 +451,11 @@ export function metaFor(path: string): Metadata {
       description: r.description,
       siteName: SITE.name,
       locale: SITE.locale,
-      images: [OG_IMAGE],
+      images: [image],
       ...((r.kind === "news" || r.kind === "article" || r.kind === "howto") && r.published
         ? { publishedTime: r.published, modifiedTime: r.updated ?? r.published }
         : {}),
     },
-    twitter: { card: "summary_large_image", title: ogTitle, description: r.description, images: [OG_IMAGE.url] },
+    twitter: { card: "summary_large_image", title: ogTitle, description: r.description, images: [{ url: image.url, alt: image.alt }] },
   };
 }

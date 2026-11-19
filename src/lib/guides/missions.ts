@@ -1,7 +1,7 @@
 /**
  * GTA 6 Chapter 1 mission guides.
  *
- * Drafted by Leonida Guides, QC'd against the cited sources on 18 Nov 2026 (pre-launch).
+ * Drafted by Leonida Guides, QC'd against the cited sources on 18 Nov 2026 (pre-launch); mission 1-10 FAQs and sources re-checked 19 Nov 2026.
  * Rules for this file:
  * - Mission names and one-line premises are backed by at least two outlets.
  * - Quest givers, rewards, objectives and tips that come from a single walkthrough are
@@ -19,7 +19,10 @@ export type SourceId =
   | "powerpyx"
   | "rockstar"
   | "aprasi"
-  | "gamesgg";
+  | "gamesgg"
+  | "pushsquare"
+  | "gamesradar"
+  | "pcgamerAch";
 
 export interface MissionSource {
   id: SourceId;
@@ -63,6 +66,8 @@ export interface Mission {
 
 export const LAST_VERIFIED = "2026-11-18";
 export const LAST_VERIFIED_LABEL = "18 Nov 2026";
+/** Date the mission 1-10 pages last changed (FAQs, sources, Island Dreams reward label). Drives sitemap lastmod and dateModified. */
+export const FAQ_UPDATED = "2026-11-19";
 
 /** Number of missions in Chapter 1 (see src/lib/guides/story.ts for the full list). */
 export const CHAPTER_1_TOTAL = 22;
@@ -112,6 +117,25 @@ const APRASI: MissionSource = {
   used: "Early-hours tip (unverified)",
 };
 
+const PUSHSQUARE: MissionSource = {
+  id: "pushsquare",
+  label: "Push Square: GTA 6 chapters and story missions",
+  url: "https://www.pushsquare.com/guides/gta-6-chapters-and-story-missions",
+  used: "Second check on mission order, no mission replay, and that Kenton has a side questline",
+};
+const GAMESRADAR_TROPHIES: MissionSource = {
+  id: "gamesradar",
+  label: "GamesRadar+: the complete GTA 6 trophy and achievement list",
+  url: "https://www.gamesradar.com/games/grand-theft-auto/gta-6-trophy-achievement-list/",
+  used: "Confirms there is a trophy for finishing Kenton's final mission",
+};
+const PCGAMER_ACHIEVEMENTS: MissionSource = {
+  id: "pcgamerAch",
+  label: "PC Gamer: GTA 6 achievement list",
+  url: "https://www.pcgamer.com/games/grand-theft-auto/gta-6-achievements-list/",
+  used: "Second check that there is a trophy for finishing Kenton's final mission",
+};
+
 const GAMESGG_ISLAND: MissionSource = {
   id: "gamesgg",
   label: "GAMES.GG: How to complete Island Dreams",
@@ -155,7 +179,25 @@ export const MISSIONS: Mission[] = [
     notes: [
       "Rockstar describes Lucia as fresh out of prison and looking for a way to change her odds. The Prologue is set before that.",
     ],
-    sources: [PCGAMER, PRESSSTART, pp("gta-6-prologue-walkthrough", PP_FACTS), PP_INDEX, ROCKSTAR],
+    faq: [
+      {
+        question: "Who do you play in the Prologue?",
+        answer: "Lucia. PowerPyx lists her as the playable character, and PC Gamer's list describes the mission as Lucia meeting her counselor. The game then hands you Jason for Gone Fishing (Reported).",
+      },
+      {
+        question: "Is the Prologue part of Chapter 1?",
+        answer: "Yes on PC Gamer's and Push Square's lists, where it is mission 1 of Chapter 1. PowerPyx gives it its own Prologue heading, so some mission counts differ by one (Confirmed).",
+      },
+      {
+        question: "Is there a reward for the Prologue?",
+        answer: "No. PowerPyx lists no reward for it (Reported).",
+      },
+      {
+        question: "Does it matter how well I play the Prologue?",
+        answer: "Not for one sequence, which PowerPyx says is scripted to end the same way however you play it. Treat the Prologue as a chance to get used to the controls (Reported).",
+      },
+    ],
+    sources: [PCGAMER, PRESSSTART, pp("gta-6-prologue-walkthrough", PP_FACTS), PP_INDEX, PUSHSQUARE, ROCKSTAR],
   },
   {
     slug: "gone-fishing",
@@ -191,7 +233,25 @@ export const MISSIONS: Mission[] = [
       { text: "GTA 6 tracks how you deal with enemies. Wounding rather than killing reportedly keeps your reputation from sliding toward 'psychopath'.", reported: true },
       { text: "Zombix is the healing item. You can carry up to five and restock at convenience stores.", reported: true },
     ],
-    sources: [PCGAMER, PRESSSTART, pp("gta-6-gone-fishing-walkthrough", PP_FACTS), PP_INDEX, ROCKSTAR],
+    faq: [
+      {
+        question: "Which chapter is Gone Fishing in?",
+        answer: "Chapter 1, Just Like Paradise. It is mission 2 on PC Gamer's and Push Square's lists, and PowerPyx also calls it the second main mission (Confirmed).",
+      },
+      {
+        question: "What do you get for finishing Gone Fishing?",
+        answer: "PowerPyx lists Jason's house in Key Lento as the reward (Reported).",
+      },
+      {
+        question: "Can I play Gone Fishing quietly?",
+        answer: "Mostly. PowerPyx says you can clear most of the camp with crouched takedowns from behind, because enemies only hear you when you get very close (Reported).",
+      },
+      {
+        question: "Is anything in Gone Fishing missable?",
+        answer: "One optional cash pickup in a trailer on the way out, according to PowerPyx. You can skip it and still finish the mission (Reported).",
+      },
+    ],
+    sources: [PCGAMER, PRESSSTART, pp("gta-6-gone-fishing-walkthrough", PP_FACTS), PP_INDEX, PUSHSQUARE, ROCKSTAR],
   },
   {
     slug: "gear-up",
@@ -224,6 +284,24 @@ export const MISSIONS: Mission[] = [
       { text: "Early on you can probably only afford the shotgun.", reported: true },
       { text: "Unverified: one early guide says longarms are kept in your vehicle rather than carried, so keep your car close." },
     ],
+    faq: [
+      {
+        question: "What is Gear Up called on the map?",
+        answer: "Pick Up Another Gun. PowerPyx gives that as the map label for the mission (Reported).",
+      },
+      {
+        question: "What do you get from Gear Up?",
+        answer: "A longarm of your choice, a shotgun or a tactical rifle, bought at the Ammu-Nation near Jason's house. PowerPyx says you can probably only afford the shotgun at this point (Reported).",
+      },
+      {
+        question: "When does Gear Up unlock?",
+        answer: "According to PowerPyx it opens once Gone Fishing is done, at the same time as Just a Scratch, Lab Fees and Unwanted Attention, so you can play them in any order (Reported).",
+      },
+      {
+        question: "Can I fail Gear Up?",
+        answer: "Not in a way that matters. PowerPyx says the mission can end in more than one way and none of them has a lasting impact (Reported).",
+      },
+    ],
     sources: [PCGAMER, PRESSSTART, pp("gta-6-gear-up-pick-up-another-gun-walkthrough", PP_FACTS), PP_INDEX, APRASI],
   },
   {
@@ -255,7 +333,25 @@ export const MISSIONS: Mission[] = [
       { text: "If you wreck the Ganado beforehand, saving and reloading reportedly puts it back outside Jason's house.", reported: true },
       { text: "Hold off on big upgrades. PowerPyx says this car gets replaced later and the upgrades go with it. You can't register a new personal vehicle until Chapter 2.", reported: true },
     ],
-    sources: [PCGAMER, PRESSSTART, pp("gta-6-just-a-scratch-fix-your-car-walkthrough", PP_FACTS), PP_INDEX],
+    faq: [
+      {
+        question: "What does Just a Scratch give you?",
+        answer: "A free full engine repair and a respray in any colour you like, according to PowerPyx (Reported).",
+      },
+      {
+        question: "Does Just a Scratch come before or after Lab Fees?",
+        answer: "PC Gamer and Push Square both list Just a Scratch as mission 4 and Lab Fees as mission 5, while PowerPyx lists Lab Fees first. PowerPyx says both open once Gone Fishing is done, so either order works (Confirmed for the PC Gamer and Push Square order).",
+      },
+      {
+        question: "Should I buy car upgrades here?",
+        answer: "Not big ones. PowerPyx says Jason drives the same car for the rest of Chapter 1, but it is eventually replaced and the upgrades are lost (Reported).",
+      },
+      {
+        question: "What if I wreck the Ganado before this mission?",
+        answer: "PowerPyx says to make a manual save and reload it. The car should then be back outside Jason's house (Reported).",
+      },
+    ],
+    sources: [PCGAMER, PRESSSTART, pp("gta-6-just-a-scratch-fix-your-car-walkthrough", PP_FACTS), PP_INDEX, PUSHSQUARE],
   },
   {
     slug: "lab-fees",
@@ -291,6 +387,24 @@ export const MISSIONS: Mission[] = [
     ],
     notes: [
       "The $600 figure comes from a single walkthrough. We will confirm it in-game after launch.",
+    ],
+    faq: [
+      {
+        question: "How much does Lab Fees pay?",
+        answer: "PowerPyx lists $600. Because Jason has no bank account yet, it says the cash turns up later in the mailbox outside his house. The figure comes from one walkthrough and we haven't checked it in-game (Reported).",
+      },
+      {
+        question: "Why is Jason collecting Brian's rent?",
+        answer: "Rockstar's character profile says Brian lets Jason live rent-free as long as he helps with local shakedowns, and PowerPyx names this mission Collect Brian's Rent (Rockstar for the first part, PowerPyx for the second).",
+      },
+      {
+        question: "Can I start Lab Fees straight after Gone Fishing?",
+        answer: "Yes, according to PowerPyx. It opens at the same time as Gear Up, Just a Scratch and Unwanted Attention, so the order is up to you (Reported).",
+      },
+      {
+        question: "What is a fence in GTA 6?",
+        answer: "A buyer for stolen goods. PowerPyx lists narcotics, jewelry and marked bills as things you can sell to fences, says Brian is one, and says fences show as green icons on the world map. More unlock as the story goes on (Reported).",
+      },
     ],
     sources: [PCGAMER, PRESSSTART, pp("gta-6-lab-fees-collect-brians-rent-walkthrough", PP_FACTS), PP_INDEX, ROCKSTAR],
   },
@@ -329,6 +443,24 @@ export const MISSIONS: Mission[] = [
       { text: "Cal sets up a police scanner on Jason's phone here. It reportedly keeps working passively after the mission.", reported: true },
     ],
     notes: ["The scanner and the $150 come from a single walkthrough. We will confirm both after launch."],
+    faq: [
+      {
+        question: "What do you get for Unwanted Attention?",
+        answer: "PowerPyx lists a police radio scanner on Jason's phone and $150. Both come from that one walkthrough, so we are treating them as unconfirmed for now (Reported).",
+      },
+      {
+        question: "How do I stop the police recognising me after a chase?",
+        answer: "PowerPyx says police remember your clothes and your vehicle. A respray, a different vehicle, or a change of hat, glasses or outfit all lower your recognition (Reported).",
+      },
+      {
+        question: "Does the police scanner keep working after the mission?",
+        answer: "PowerPyx says it runs passively, so you can hear police chatter during crimes and chases from then on (Reported).",
+      },
+      {
+        question: "Can I hide from the police without changing outfits?",
+        answer: "PowerPyx says ducking behind the wheel while driving makes you harder to recognise, so you don't have to change clothes (Reported).",
+      },
+    ],
     sources: [PCGAMER, PRESSSTART, pp("gta-6-unwanted-attention-go-see-cal-walkthrough", PP_FACTS), PP_INDEX, ROCKSTAR],
   },
   {
@@ -360,6 +492,20 @@ export const MISSIONS: Mission[] = [
       "Mandy has other ideas about how the visit should go. Whatever you say, the scene ends the same way, with Jason turning her down.",
     tips: [
       { text: "When Mandy throws the cigar box into the street, pick it up on your way out. It's the only reward.", reported: true },
+    ],
+    faq: [
+      {
+        question: "What is the reward for Pipework?",
+        answer: "A Macizo cigar, and only if you pick it up from the street as you leave. PowerPyx lists nothing else (Reported).",
+      },
+      {
+        question: "When does Pipework unlock?",
+        answer: "PowerPyx says you need to have finished Gear Up, Lab Fees, Just a Scratch and Unwanted Attention first (Reported).",
+      },
+      {
+        question: "Do my dialogue choices in Pipework change anything?",
+        answer: "No. PowerPyx says you can interrupt the conversation or let it run, and the outcome is the same either way (Reported).",
+      },
     ],
     sources: [PCGAMER, PRESSSTART, pp("gta-6-pipework-collect-mandys-rent-walkthrough", PP_FACTS), PP_INDEX],
   },
@@ -396,6 +542,24 @@ export const MISSIONS: Mission[] = [
       { text: "You can shoot from the car during the chase, and the slow-motion aim reportedly makes the bikers much easier to hit.", reported: true },
       { text: "The route takes you over stunt jumps. Completed jumps stay marked on the map under the exploration filter.", reported: true },
     ],
+    faq: [
+      {
+        question: "How do I start Hey Arnold!?",
+        answer: "After Pipework, wait a few minutes. PowerPyx says Brian then phones and marks the mission, which starts at the pool bar in south Key Lento (Reported).",
+      },
+      {
+        question: "Can I shoot from the car during the chase?",
+        answer: "Yes. PowerPyx says you can fire from the car, and that slowing time makes the bikers easier to hit (Reported).",
+      },
+      {
+        question: "Do the stunt jumps in this mission count?",
+        answer: "PowerPyx says you hit some stunt jumps automatically along the chase route, and that completed jumps stay marked on the map under the Exploration filter (Reported).",
+      },
+      {
+        question: "Is there a reward for Hey Arnold!?",
+        answer: "No. PowerPyx lists none (Reported).",
+      },
+    ],
     sources: [PCGAMER, PRESSSTART, pp("gta-6-hey-arnold-meet-brian-walkthrough", PP_FACTS), PP_INDEX],
   },
   {
@@ -416,7 +580,7 @@ export const MISSIONS: Mission[] = [
       { label: "Playable", value: "Jason", status: "confirmed" },
       { label: "Quest giver", value: "Kenton Rees", status: "reported" },
       { label: "Starts at", value: "Kenton's Island Dreams shop on the beach, Key Lento", status: "reported" },
-      { label: "Reward", value: "$400", status: "confirmed" },
+      { label: "Reward", value: "$400", status: "reported" },
     ],
     objectives: [
       "Talk to Kenton at his shop.",
@@ -435,7 +599,25 @@ export const MISSIONS: Mission[] = [
       "Kenton has his own side questline later, with its own trophy (PowerPyx).",
       "Kenton keeps the doubloons you recover, and the $400 is separate. He also offers to buy treasure Jason finds at other wrecks in the Keys (GAMES.GG). GameSpot says full dive spots can add up to tens of thousands of dollars over time; PC Gamer calls diving mildly lucrative but very time-consuming. See our money guide.",
     ],
-    sources: [PCGAMER, PRESSSTART, pp("gta-6-island-dreams-work-for-kenton-walkthrough", PP_FACTS), PP_INDEX, GAMESGG_ISLAND],
+    faq: [
+      {
+        question: "How much does Island Dreams pay?",
+        answer: "PowerPyx lists $400, and GAMES.GG gives the same figure. GAMES.GG is a secondary source, so we treat the amount as Reported.",
+      },
+      {
+        question: "Do I need to worry about running out of oxygen?",
+        answer: "No. PowerPyx says there is more than enough oxygen to take your time searching (Reported).",
+      },
+      {
+        question: "Does diving in this mission count toward the 100% checklist?",
+        answer: "Studying fish by swimming near them adds them to your animal database, and PowerPyx says progress made during the story already counts toward the 100% checklist (Reported).",
+      },
+      {
+        question: "Does Kenton have more work for Jason later?",
+        answer: "Yes. Push Square lists a Kenton side questline, and GamesRadar+ and PC Gamer both list a trophy for finishing his final mission (Confirmed).",
+      },
+    ],
+    sources: [PCGAMER, PRESSSTART, pp("gta-6-island-dreams-work-for-kenton-walkthrough", PP_FACTS), PP_INDEX, GAMESGG_ISLAND, PUSHSQUARE, GAMESRADAR_TROPHIES, PCGAMER_ACHIEVEMENTS],
   },
   {
     slug: "feng-shui",
@@ -472,7 +654,25 @@ export const MISSIONS: Mission[] = [
     notes: [
       "PowerPyx's header lists Cal as the quest giver, but its walkthrough mentions a text from a different character before the marker appears. We will check this after launch.",
     ],
-    sources: [PCGAMER, PRESSSTART, pp("gta-6-feng-shui-meet-cal-walkthrough", PP_FACTS), PP_INDEX],
+    faq: [
+      {
+        question: "Is there a reward for Feng Shui?",
+        answer: "No. PowerPyx lists none (Reported).",
+      },
+      {
+        question: "Can I win the console games in Feng Shui?",
+        answer: "No. PowerPyx says neither game can be won, so there is no point spending time on them (Reported).",
+      },
+      {
+        question: "How does Feng Shui start?",
+        answer: "PowerPyx says a text message arrives shortly after Island Dreams, a marker then appears at Jason's house, and the mission begins when you walk in. Its header and its walkthrough name different senders for the text, so we aren't sure who sends it (Reported).",
+      },
+      {
+        question: "Can I replay Feng Shui later?",
+        answer: "No. PowerPyx and Push Square both say story missions can't be replayed, so make a manual save if you want a way back to this point (Confirmed).",
+      },
+    ],
+    sources: [PCGAMER, PRESSSTART, pp("gta-6-feng-shui-meet-cal-walkthrough", PP_FACTS), PP_INDEX, PUSHSQUARE],
   },
 ];
 

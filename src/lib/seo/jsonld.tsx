@@ -1,4 +1,4 @@
-import { ROUTES, SITE, absoluteUrl, crumbsFor } from "./site";
+import { ROUTES, SITE, absoluteUrl, crumbsFor, ogImagePath } from "./site";
 
 type Json = Record<string, unknown>;
 
@@ -86,7 +86,7 @@ export function pageGraph(path: string, opts: { breadcrumbs?: boolean } = {}): J
   const out: Json[] = [];
   const crumb = opts.breadcrumbs === false ? null : breadcrumbSchema(path);
   if (crumb) out.push(crumb);
-  const image = `${SITE.url}/opengraph-image`;
+  const image = `${SITE.url}${ogImagePath(path) ?? "/opengraph-image"}`;
   const common = {
     "@context": "https://schema.org",
     url,

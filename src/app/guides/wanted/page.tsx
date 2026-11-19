@@ -3,6 +3,8 @@ import { PageSchema } from "@/lib/seo/jsonld";
 import { PageHeader } from "@/components/PageHeader";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { Related } from "@/components/Related";
+import { Faq } from "@/components/Faq";
+import { WANTED_FAQ } from "@/lib/guides/basics";
 export const metadata = metaFor("/guides/wanted");
 export default function Page() {
   return (
@@ -16,6 +18,7 @@ export default function Page() {
         <p>You can tell the other protagonist to run while you take the heat. They text when it is clear.</p>
         <p>City streets at three stars and up are tight. Fast cars matter more in Vice City than in the Keys or swamp.</p>
       </div>
+      <Faq items={WANTED_FAQ} />
       <Related path="/guides/wanted" />
     </div>
   );

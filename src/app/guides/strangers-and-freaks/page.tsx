@@ -70,7 +70,7 @@ export default function StrangersGuide() {
         kicker="Guide · Which side missions count"
         title="GTA 6 Strangers & Freaks"
         verified={SF_VERIFIED_LABEL}
-        source="PowerPyx, IndiaTimes, Push Square"
+        source="PowerPyx, IndiaTimes (not a main outlet), Push Square"
       />
 
       <SpoilerWarning>
@@ -84,7 +84,7 @@ export default function StrangersGuide() {
               Strangers &amp; Freaks is GTA&apos;s name for its oddball side missions, and in GTA 6 it&apos;s also a silver trophy. The rule sounds simple: finish eight stranger questlines. The catch is that plenty of side characters with their own storylines don&apos;t add to the counter.
             </p>
             <p>
-              <strong className="text-orange">This list is incomplete.</strong> Only three of the eight qualifying strands are confirmed by two outlets so far, and we&apos;d rather show that than guess the rest.
+              <strong className="text-orange">This list is incomplete.</strong> Only three of the eight qualifying strands are matched by two outlets so far (one of them not a main outlet), and we&apos;d rather show that than guess the rest.
             </p>
           </div>
 
@@ -95,10 +95,10 @@ export default function StrangersGuide() {
                 <strong className="text-ink">Strangers &amp; Freaks</strong> (Silver): complete 8 mission strands for strangers across Leonida<C />
               </li>
               <li className="vc-bar text-ink-2">
-                <strong className="text-ink">Counts:</strong> Kirk, Kyle and Yago. PowerPyx and IndiaTimes agree<R />
+                <strong className="text-ink">Counts:</strong> Kirk, Kyle and Yago. PowerPyx and IndiaTimes (not a main outlet) agree<R />
               </li>
               <li className="vc-bar text-ink-2">
-                <strong className="text-ink">Doesn&apos;t count:</strong> Andy, Billy and Tyrone. PowerPyx and IndiaTimes agree, and each has its own trophy instead<R />
+                <strong className="text-ink">Doesn&apos;t count:</strong> Andy, Billy and Tyrone. PowerPyx and IndiaTimes (not a main outlet) agree, and each has its own trophy instead<R />
               </li>
               <li className="vc-bar text-ink-2">
                 <strong className="text-ink">Still unknown:</strong> five more strands are needed. PowerPyx names one we&apos;re holding until a second main outlet confirms it, so the full list isn&apos;t known yet.
@@ -119,7 +119,7 @@ export default function StrangersGuide() {
                 <strong className="text-ink">Be patient between steps.</strong> PowerPyx says the next errand can take weeks of in-game time to arrive by phone. Keep playing other content and the next marker will appear<R />.
               </li>
               <li>
-                <strong className="text-ink">Don&apos;t rush to finish before the credits.</strong> PowerPyx and IndiaTimes both say the trophy-related questlines stay available in free roam after the story<R />.
+                <strong className="text-ink">Don&apos;t rush to finish before the credits.</strong> PowerPyx and IndiaTimes (not a main outlet) both say the trophy-related questlines stay available in free roam after the story<R />.
               </li>
               <li>
                 <strong className="text-ink">Do the time-sensitive errand promptly.</strong> PowerPyx and Push Square both flag one of Yago&apos;s races as time-sensitive<R />.
@@ -130,7 +130,7 @@ export default function StrangersGuide() {
           <section aria-labelledby="by" className="mt-16x">
             <H2 id="by">Questlines by chapter</H2>
             <p className="mt-2x max-w-2xl text-sm text-muted">
-              Behind the blur because it names side missions and chapters. Counting status is matched by PowerPyx and IndiaTimes. Chapters and notes are PowerPyx only.
+              Behind the blur because it names side missions and chapters. Counting status is matched by PowerPyx and IndiaTimes (not a main outlet). Chapters and notes are PowerPyx only.
             </p>
             <div className="mt-4x flex flex-col gap-6x">
               <Spoiler label="questlines that count">

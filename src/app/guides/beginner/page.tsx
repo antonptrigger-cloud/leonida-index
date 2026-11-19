@@ -3,6 +3,8 @@ import { PageSchema } from "@/lib/seo/jsonld";
 import { PageHeader } from "@/components/PageHeader";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { Related } from "@/components/Related";
+import { Faq } from "@/components/Faq";
+import { BEGINNER_FAQ } from "@/lib/guides/basics";
 export const metadata = metaFor("/guides/beginner");
 export default function Page() {
   return (
@@ -15,6 +17,7 @@ export default function Page() {
         <p>The story is a couple under pressure across the state of Leonida, not just Vice City.</p>
         <p>Spend time off the mission marker. Activities, animals, and random encounters are part of the design.</p>
       </div>
+      <Faq items={BEGINNER_FAQ} />
       <Related path="/guides/beginner" />
     </div>
   );
