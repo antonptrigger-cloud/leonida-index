@@ -6,9 +6,9 @@
   "minNativeZoom": 0,
   "maxNativeZoom": 6,
   "maxZoom": 7,
-  "urlTemplate": "/map/art/{z}/{x}/{y}.webp?v=674b8445d5",
+  "urlTemplate": "/map/art/{z}/{x}/{y}.webp?v=61d3963ceb",
   "preview": {
-    "url": "/map/art-preview.webp?v=674b8445d5",
+    "url": "/map/art-preview.webp?v=61d3963ceb",
     "width": 1165,
     "height": 1600
   },
@@ -19,5 +19,5 @@
     "c": 1,
     "d": 0
   },
-  "generatedAt": "2026-11-19T04:52:36.006Z"
+  "generatedAt": "2026-11-19T09:11:49.060Z"
 }
