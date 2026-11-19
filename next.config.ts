@@ -7,6 +7,8 @@ const nextConfig: NextConfig = {
     return [
       { source: "/map/tiles/:path*", headers: immutable },
       { source: "/map/base-preview.webp", headers: immutable },
+      { source: "/map/art/:path*", headers: immutable },
+      { source: "/map/art-preview.webp", headers: immutable },
     ];
   },
   async redirects() {

@@ -10,7 +10,7 @@ Some pins on `/map` come from the community landmark research published by **GTA
   Credit is given in the map attribution, on every imported pin (`source: "gtadb"`, shown as "Community research (GTADB.org)"),
   on `/sources`, and here.
 - **What we used:** landmark names, a coarse category and relative position inside a district. Nothing else.
-- **What we did not use:** GTADB's / Yanis' map tiles, photos or any other image assets. Our base map is our own image.
+- **What we did not use:** GTADB's / Yanis' map tiles, photos or any other image assets. Our base map is our own image (the custom art, see `docs/CUSTOM_MAP_ART.md`).
 - **Changes made (as CC BY 4.0 requires us to say):** filtered to a small named subset (no unconfirmed, closed or generic entries),
   mapped onto our own pin types, repositioned onto our base image, and each entry given a short generated description.
 - **Positions are approximate.** GTADB coordinates live in the pixel space of their own map. A fit between six shared reference
@@ -27,3 +27,9 @@ GTADB.net and gtadb.org are separate projects; this site is not affiliated with 
 Pins with `source: "official"` are places Rockstar names itself (rockstargames.com/VI pages and galleries, trailers, Newswire).
 Each pin's description ends with the page it came from. Rockstar's artwork is not used. Our map is an illustration; positions are
 guesses and marked approximate until the official map is swapped in.
+
+## Base map art
+
+The default map image is the site owner's own AI-generated artwork, cleaned (LaMa inpainting, Apache-2.0) and upscaled
+(Real-ESRGAN, BSD-3-Clause) locally. It is an illustration, not Rockstar's map and not the in-game geography. Details:
+`docs/CUSTOM_MAP_ART.md`.

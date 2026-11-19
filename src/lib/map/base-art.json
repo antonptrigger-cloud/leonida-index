@@ -1,0 +1,23 @@
+{
+  "source": "composite.png",
+  "width": 7200,
+  "height": 9888,
+  "tileSize": 256,
+  "minNativeZoom": 0,
+  "maxNativeZoom": 6,
+  "maxZoom": 7,
+  "urlTemplate": "/map/art/{z}/{x}/{y}.webp?v=674b8445d5",
+  "preview": {
+    "url": "/map/art-preview.webp?v=674b8445d5",
+    "width": 1165,
+    "height": 1600
+  },
+  "background": "#30669e",
+  "calibration": {
+    "a": 1,
+    "b": 0,
+    "c": 1,
+    "d": 0
+  },
+  "generatedAt": "2026-11-19T04:52:36.006Z"
+}
