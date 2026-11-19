@@ -7,7 +7,8 @@ import { BASES, BASE_IDS, DEFAULT_BASE, isBaseId, type BaseId } from "@/lib/map/
 import { PIN_TYPES, REGIONS, SOURCE_LABELS, typeSingular, type PinType } from "@/lib/map/config";
 import { NO_FILTERS, regionSlug as slug, type InitialFilters } from "@/lib/map/filters";
 import type { LeaderboardEntry, PublicPin } from "@/lib/map/types";
-import { glyphSvg } from "./glyphs";
+import { CATEGORIES, CATEGORY_GROUPS, CATEGORY_IDS, categorySearchText, type PinCategory } from "@/lib/map/categories";
+import { categoryGlyphSvg, glyphSvg } from "./glyphs";
 import { PinDetails } from "./PinDetails";
 import { SubmitForm } from "./SubmitForm";
 
@@ -62,6 +63,7 @@ export function CommunityMap({
   const [showSpoilers, setShowSpoilers] = useState(initialFilters.spoilers);
   const [officialOnly, setOfficialOnly] = useState(initialFilters.official);
   const [region, setRegion] = useState<string | null>(initialFilters.region);
+  const [cats, setCats] = useState<Set<PinCategory>>(new Set(initialFilters.cats));
   const [baseId, setBaseId] = useState<BaseId>(initialFilters.base ?? DEFAULT_BASE);
   const deepPin = initialPins.find((p) => p.id === initialFilters.pin) ?? null;
   const [selectedId, setSelectedId] = useState<string | null>(deepPin?.id ?? null);
@@ -89,10 +91,10 @@ export function CommunityMap({
 
   const q = query.trim().toLowerCase();
   const matchesQuery = useCallback(
-    (p: PublicPin) => !q || [p.name, p.description, p.region ?? "", p.occupant ?? "", p.gamerTag].some((v) => v.toLowerCase().includes(q)),
+    (p: PublicPin) => !q || [p.name, p.description, p.region ?? "", p.occupant ?? "", p.gamerTag, categorySearchText(p.category)].some((v) => v.toLowerCase().includes(q)),
     [q],
   );
-  /** Everything except the type chips, so each chip's count reflects what it would add. */
+  /** Everything except the type and category chips, so each chip's count reflects what it would add. */
   const base = useMemo(
     () =>
       pins.filter(
@@ -105,9 +107,14 @@ export function CommunityMap({
     for (const p of base) c[p.type] = (c[p.type] ?? 0) + 1;
     return c;
   }, [base]);
-  const visible = useMemo(() => base.filter((p) => enabled.has(p.type)), [base, enabled]);
-  const filtering = !!q || officialOnly || !!region || enabled.size < TYPE_KEYS.length;
-  const activeFilterCount = (officialOnly ? 1 : 0) + (region ? 1 : 0) + (enabled.size < TYPE_KEYS.length ? 1 : 0) + (showSpoilers ? 1 : 0);
+  const catCounts = useMemo(() => {
+    const c: Partial<Record<PinCategory, number>> = {};
+    for (const p of base) if (p.category && enabled.has(p.type)) c[p.category] = (c[p.category] ?? 0) + 1;
+    return c;
+  }, [base, enabled]);
+  const visible = useMemo(() => base.filter((p) => enabled.has(p.type) && (cats.size === 0 || (!!p.category && cats.has(p.category)))), [base, enabled, cats]);
+  const filtering = !!q || officialOnly || !!region || enabled.size < TYPE_KEYS.length || cats.size > 0;
+  const activeFilterCount = cats.size + (officialOnly ? 1 : 0) + (region ? 1 : 0) + (enabled.size < TYPE_KEYS.length ? 1 : 0) + (showSpoilers ? 1 : 0);
 
   const selected = pins.find((p) => p.id === selectedId) ?? null;
 
@@ -117,6 +124,7 @@ export function CommunityMap({
     const set = (k: string, v: string | null) => (v ? params.set(k, v) : params.delete(k));
     set("q", query.trim() || null);
     set("types", enabled.size < TYPE_KEYS.length ? TYPE_KEYS.filter((t) => enabled.has(t)).join(",") : null);
+    set("cats", cats.size ? CATEGORY_IDS.filter((c) => cats.has(c)).join(",") : null);
     set("official", officialOnly ? "1" : null);
     set("region", region ? slug(region) : null);
     set("spoilers", showSpoilers ? "1" : null);
@@ -125,7 +133,7 @@ export function CommunityMap({
     const qs = params.toString();
     const url = `${window.location.pathname}${qs ? `?${qs}` : ""}${window.location.hash}`;
     if (url !== `${window.location.pathname}${window.location.search}${window.location.hash}`) window.history.replaceState(null, "", url);
-  }, [query, enabled, officialOnly, region, showSpoilers, selectedId, baseId]);
+  }, [query, enabled, cats, officialOnly, region, showSpoilers, selectedId, baseId]);
 
   const select = useCallback(
     (id: string) => {
@@ -145,6 +153,15 @@ export function CommunityMap({
       const next = new Set(prev);
       if (next.has(t)) next.delete(t);
       else next.add(t);
+      return next;
+    });
+  }
+
+  function toggleCat(c: PinCategory) {
+    setCats((prev) => {
+      const next = new Set(prev);
+      if (next.has(c)) next.delete(c);
+      else next.add(c);
       return next;
     });
   }
@@ -305,6 +322,7 @@ export function CommunityMap({
               <button
                 onClick={() => {
                   setEnabled(new Set(TYPE_KEYS));
+                  setCats(new Set());
                   setOfficialOnly(false);
                   setRegion(null);
                   setShowSpoilers(false);
@@ -341,6 +359,30 @@ export function CommunityMap({
               );
             })}
           </div>
+          <details className="pl-1x" open={cats.size > 0 || undefined} data-testid="category-filters">
+            <summary className="cursor-pointer select-none text-xs uppercase tracking-[0.18em] text-muted hover:text-pink-2">
+              Vendors &amp; services{cats.size ? ` (${cats.size})` : ""}
+            </summary>
+            <div className="mt-2x flex max-h-[11rem] flex-col gap-2x overflow-y-auto pr-1x" role="group" aria-label="Filter by vendor category">
+              {CATEGORY_GROUPS.map((g) => {
+                const ids = CATEGORY_IDS.filter((c) => CATEGORIES[c].group === g.id && ((catCounts[c] ?? 0) > 0 || cats.has(c)));
+                if (!ids.length) return null;
+                return (
+                  <div key={g.id} className="flex flex-wrap items-center gap-x-2x gap-y-1x">
+                    <span className="w-full text-[0.62rem] uppercase tracking-[0.2em] text-faint">{g.label}</span>
+                    {ids.map((c) => (
+                      <button key={c} onClick={() => toggleCat(c)} aria-pressed={cats.has(c)} data-cat={c} className={`vc-chip ${cats.has(c) ? "vc-chip--on" : ""}`} style={{ ["--chip" as string]: "#00e5cc" }}>
+                        <span className="inline-flex h-3.5 w-3.5 items-center justify-center" dangerouslySetInnerHTML={{ __html: categoryGlyphSvg(c, "#00e5cc", 14) }} />
+                        {CATEGORIES[c].short}
+                        <span className="text-muted">{catCounts[c] ?? 0}</span>
+                      </button>
+                    ))}
+                  </div>
+                );
+              })}
+              {Object.keys(catCounts).length === 0 && cats.size === 0 ? <p className="text-xs text-muted">No categorised places match the current filters.</p> : null}
+            </div>
+          </details>
         </div>
         {!online ? (
           <p className="border-l-2 border-orange bg-orange/10 px-3x py-1x text-xs text-orange" data-testid="offline-notice">
@@ -436,10 +478,11 @@ export function CommunityMap({
                       <span
                         className="inline-flex h-4 w-4 shrink-0 items-center justify-center"
                         aria-hidden
-                        dangerouslySetInnerHTML={{ __html: glyphSvg(p.type, PIN_TYPES[p.type].color, 15) }}
+                        dangerouslySetInnerHTML={{ __html: p.category ? categoryGlyphSvg(p.category, PIN_TYPES[p.type].color, 15) : glyphSvg(p.type, PIN_TYPES[p.type].color, 15) }}
                       />
                       <span className="truncate">{p.name}</span>
-                      <span className="sr-only">{`, ${typeSingular(p.type)}`}</span>
+                      {p.category ? <span className="shrink-0 text-[10px] text-muted" data-testid="result-category">{CATEGORIES[p.category].short}</span> : null}
+                      <span className="sr-only">{`, ${p.category ? CATEGORIES[p.category].short : typeSingular(p.type)}`}</span>
                       <span className="ml-auto flex shrink-0 items-center gap-2x text-[10px] text-faint">
                         {p.source === "official" ? <span className="text-turq" title="Named by Rockstar">✓ official</span> : null}
                         {p.source === "gtadb" ? <span title={SOURCE_LABELS.gtadb}>GTADB</span> : null}
