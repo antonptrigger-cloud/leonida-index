@@ -32,7 +32,7 @@ export default function Page() {
     <NewsLayout slug={SLUG} kicker="News · Launch events" title="GTA 6 Festival set times and Heat night" source="Rockstar Games on X, festival pages, ESPN, NBA.com">
       <Lede>
         Rockstar has posted the set times for Grand Theft Auto VI: The Festival, its launch concert with PlayStation at Mana Wynwood in Miami on Saturday 21 November, with Travis Scott&rsquo;s Cactus Jack set closing the night.
-        In Brisbane that is Sunday 22 November, from 07:00 to 17:00 AEST. Earlier, on Thursday 19 Nov Brisbane time, the Miami Heat turn a home game against the Bucks into &ldquo;A Night in Vice City&rdquo;.
+        In Brisbane that is Sunday 22 November, from 07:00 to 17:00 AEST. The warm-up act has already happened: the Miami Heat turned their home game against the Bucks into &ldquo;A Night in Vice City&rdquo;, scheduled to tip off at 10:00 AEST on Thursday 19 Nov.
       </Lede>
 
       <H2>The festival: key facts</H2>
@@ -54,7 +54,7 @@ export default function Page() {
           <Ext href="https://gtavi-thefestival.miami">DICE event page</Ext>).
         </li>
         <li>
-          <Lead>Livestream:</Lead> we found no livestream or broadcast announced in Rockstar&rsquo;s posts or on the festival and DICE pages, as of 08:13 AEST on 19 Nov.
+          <Lead>Livestream:</Lead> we found no livestream or broadcast announced in Rockstar&rsquo;s posts or on the festival and DICE pages, as of 11:07 AEST on 19 Nov (we re-read Rockstar&rsquo;s festival page then and it still mentions none).
         </li>
       </Bullets>
 
@@ -72,15 +72,15 @@ export default function Page() {
       <Bullets>
         <li>
           <Lead>When:</Lead> The Heat&rsquo;s home game against the Milwaukee Bucks was scheduled for 7pm ET on Wednesday 18 Nov, on ESPN in the US, per the <Ext href="https://www.nba.com/heat/game/0022600260-bucks-vs-heat-miami-fl-11-18-2026">NBA.com game page</Ext> and ESPN. Rockstar&rsquo;s post that day said to tune in at 7PM ET (
-          <Ext href="https://x.com/RockstarGames/status/2123098923434713278">@RockstarGames</Ext>). That is 10:00 AEST on Thursday 19 Nov, by our conversion. Rockstar links to the{" "}
+          <Ext href="https://x.com/RockstarGames/status/2123098923434713278">@RockstarGames</Ext>). That is 10:00 AEST on Thursday 19 Nov, by our conversion, and NBA.com&rsquo;s game page showed the game under way when we checked at about 11:07 AEST. We have not used the score. Rockstar linked to the{" "}
           <Ext href="https://www.nba.com/schedule/heat">NBA&rsquo;s Heat schedule</Ext> for how to watch in your area.
         </li>
         <li>
-          <Lead>What changes:</Lead> ESPN reports a pink, white and blue court with &ldquo;Vice City&rdquo; at centre court, &ldquo;I heart Vice City&rdquo; on a baseline and a &ldquo;VI&rdquo; logo near each dunker spot, plus &ldquo;Welcome to Vice City&rdquo; on the arena roof, GTA VI-inspired cars on the West Plaza and music from the game in the arena (
+          <Lead>What changed:</Lead> ESPN reported a pink, white and blue court with &ldquo;Vice City&rdquo; at centre court, &ldquo;I heart Vice City&rdquo; on a baseline and a &ldquo;VI&rdquo; logo near each dunker spot, plus &ldquo;Welcome to Vice City&rdquo; on the arena roof, GTA VI-inspired cars on the West Plaza and music from the game in the arena (
           <Ext href="https://www.espn.com/nba/story/_/id/50085674/miami-heat-night-vice-city-game">ESPN</Ext>).
         </li>
         <li>
-          <Lead>The kit:</Lead> ESPN describes a black jersey with pink and white accents, &ldquo;Vice City&rdquo; across the chest, Travis Scott&rsquo;s flipped Nike Swoosh and a &ldquo;VI&rdquo; nod, made with Cactus Jack. ESPN says on-court and Swingman versions were to go on sale in limited quantities on game day.
+          <Lead>The kit:</Lead> ESPN described a black jersey with pink and white accents, &ldquo;Vice City&rdquo; across the chest, Travis Scott&rsquo;s flipped Nike Swoosh and a &ldquo;VI&rdquo; nod, made with Cactus Jack. ESPN said on-court and Swingman versions were to go on sale in limited quantities on game day.
         </li>
         <li>
           <Lead>Also:</Lead> NBA.com notes Heat center Bam Adebayo is the cover athlete for the NBA 2K27 Vice City Edition (<Ext href="https://www.nba.com/news/heat-unveil-vice-city-court">NBA.com</Ext>).

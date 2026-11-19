@@ -63,6 +63,9 @@ export const UPDATES_0900_AT = "2026-11-19T09:08:00+10:00";
 /** Sales estimate piece. PLACEHOLDER, Web Bot: set to the moment it goes live. */
 export const SALES_PUBLISHED = "2026-11-19T09:08:00+10:00";
 
+/** 19 Nov 11:00 AEST batch (tracker refresh after the UK unlock, refresh queue batch A). PLACEHOLDER, Web Bot: set to the moment these edits go live. */
+export const UPDATES_1100_AT = "2026-11-19T11:07:00+10:00";
+
 export const newsPath = (slug: string) => `/news/${slug}`;
 
 export const NEWS: NewsItem[] = [
@@ -126,7 +129,7 @@ export const NEWS: NewsItem[] = [
     tag: "Launch events",
     keywords: ["GTA 6 festival", "GTA VI The Festival set times", "Travis Scott GTA 6", "Mana Wynwood", "A Night in Vice City", "Miami Heat GTA 6"],
     published: FESTIVAL_PUBLISHED,
-    updated: FESTIVAL_PUBLISHED,
+    updated: UPDATES_1100_AT,
     citations: [
       "https://x.com/RockstarGames/status/2123068976045453338",
       "https://x.com/RockstarGames/status/2123069155775541350",
@@ -149,7 +152,7 @@ export const NEWS: NewsItem[] = [
       },
       {
         question: "Is the GTA 6 festival being livestreamed?",
-        answer: "We have not found a livestream or broadcast announced by Rockstar or on the festival and DICE pages, as of 08:13 AEST on 19 November.",
+        answer: "We have not found a livestream or broadcast announced by Rockstar or on the festival and DICE pages, as of 11:07 AEST on 19 November.",
       },
     ],
   },
@@ -188,7 +191,7 @@ export const NEWS: NewsItem[] = [
     live: true,
     keywords: ["GTA 6 server status", "is GTA 6 down", "GTA 6 known issues", "GTA 6 PS5 update", "GTA 6 patch", "01.002.001"],
     published: NEWS_PUBLISHED,
-    updated: UPDATES_0900_AT,
+    updated: UPDATES_1100_AT,
     citations: [
       "https://x.com/PS_Support_US/status/2122863683881619685",
       "https://www.pushsquare.com/news/2026/11/gta-6-requires-new-ps5-firmware-update-to-play",
@@ -213,11 +216,12 @@ export const NEWS: NewsItem[] = [
       "https://www.gamesradar.com/games/grand-theft-auto/ps5-users-report-playstation-network-errors-as-gta-6-fever-hits-with-some-struggling-to-redeem-codes/",
       "https://downdetector.co.uk/status/gta-vi/",
       "https://allestoerungen.de/stoerung/gta-vi/",
+      "https://www.bbc.com/news/live/c60rkg21dl22t",
     ],
     faq: [
       {
         question: "Is GTA 6 down?",
-        answer: "At 08:59-09:03 AEST on 19 Nov, PlayStation's status feed listed no active issues for the US, UK, Europe, Australia or New Zealand, and Rockstar, PSN and Xbox feeds relayed by GTATracker showed up. Downdetector user reports showed \"possible problems\" in Germany just after its 09:00 AEST unlock and \"problems\" in the UK, which had not yet unlocked, while Australia was back to no current problems. User reports are not confirmed outages, and we could not see what the UK and German reports were about.",
+        answer: "At 10:58-11:04 AEST on 19 Nov, about an hour after the UK unlock, PlayStation's status feed listed no active issues for the US, Canada, Brazil, the UK, Ireland, Germany, France, Australia or New Zealand, and Rockstar, PSN and Xbox feeds relayed by GTATracker showed up. Downdetector user reports showed \"possible problems\" in the UK and Germany and no current problems in Australia and New Zealand. User reports are not confirmed outages, and we could not see what the UK and German reports were about.",
       },
       {
         question: "Was PSN down before GTA 6 launched?",
@@ -270,13 +274,13 @@ export const NEWS: NewsItem[] = [
     slug: "gta-6-preload-editions-pricing",
     title: "GTA 6 Preload, Editions & Price",
     description:
-      "How to preload GTA 6 on PS5 and Xbox, how much space you need (212GB PS5, about 225GB Xbox), and what Standard ($79.99) and Ultimate ($99.99) include.",
+      "Buying GTA 6 now it is out: how much space you need (212GB PS5, about 225GB Xbox), how to install, and what Standard ($79.99) and Ultimate ($99.99) include.",
     crumb: "Preload and editions",
-    teaser: "212GB, how to preload on PS5 and Xbox, and what Standard and Ultimate include.",
+    teaser: "GTA 6 is out. 212GB, how to install on PS5 and Xbox, and what Standard and Ultimate include.",
     tag: "Guide",
     keywords: ["GTA 6 preload", "GTA 6 file size", "GTA 6 editions", "GTA 6 Ultimate Edition", "GTA 6 price"],
     published: NEWS_PUBLISHED,
-    updated: UPDATES_AT,
+    updated: UPDATES_1100_AT,
     citations: [
       "https://www.rockstargames.com/VI/pre-load-now",
       "https://www.xbox.com/en-US/games/store/grand-theft-auto-vi/9P3H4968GRSM",
@@ -291,13 +295,13 @@ export const NEWS: NewsItem[] = [
     slug: "n3on-new-zealand-gta-6-stream",
     title: "N3ON's New Zealand GTA 6 Stream",
     description:
-      "N3ON said he would fly to New Zealand to play GTA 6 at the local unlock. What outlets report, tracker viewer numbers, and an unverified ban rumour.",
+      "N3ON travelled to New Zealand to play GTA 6 at the first unlock, outlets report. What they say, tracker viewer numbers, and an unverified ban rumour.",
     crumb: "N3ON's New Zealand stream",
-    teaser: "N3ON said he would fly to New Zealand for the first unlock. What outlets report, plus tracker numbers.",
+    teaser: "N3ON travelled to New Zealand for the first unlock, outlets report. What they say, plus tracker numbers.",
     tag: "Streamers",
     keywords: ["N3ON GTA 6", "N3ON New Zealand", "GTA 6 stream", "Kick", "StreamStats"],
     published: STREAMERS_PUBLISHED,
-    updated: STREAMERS_PUBLISHED,
+    updated: UPDATES_1100_AT,
     citations: [
       "https://sports.ndtv.com/us/us-streamers/n3on-announces-gta-6-livestream-from-new-zealand-at-6-am-est-flies-across-the-world-for-early-gta-6-access-12343208",
       "https://www.moneycontrol.com/technology/gta-6-launched-in-new-zealand-american-gamer-and-streamer-n3on-travelled-there-to-play-it-hours-before-rest-of-the-world-article-14083594.html",
