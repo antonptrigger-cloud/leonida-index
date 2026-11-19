@@ -1,6 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useState } from "react";
+import { CATEGORIES } from "@/lib/map/categories";
 import { LIMITS, PIN_TYPES, typeSingular } from "@/lib/map/config";
 import type { Comment, PublicPin } from "@/lib/map/types";
 import { getLikedComments, getMyVote, getSavedGamerTag, getVoterId, saveGamerTag, setLikedComment, setMyVote } from "./local";
@@ -113,6 +114,7 @@ export function PinDetails({
         <div>
           <p className="mb-2x text-[0.65rem] font-bold uppercase tracking-[0.32em]" style={{ color: type.color }}>
             {typeSingular(pin.type)}
+            {pin.category ? <span className="text-ink-2" data-testid="pin-category"> · {CATEGORIES[pin.category].label}</span> : null}
             {pin.region && pin.type !== "region" ? <span className="text-muted"> · {pin.region}</span> : null}
           </p>
           <h2 className="vc-heading pr-6x text-[3rem]">{pin.name}</h2>

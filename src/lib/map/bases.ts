@@ -22,6 +22,8 @@ export interface BaseMap {
   label: string;
   tiles: TileManifest;
   attribution: string;
+  /** Small chip on the map that explains the base is a stand-in (see BaseNote in LeafletMap.tsx). */
+  note: { chip: string; title: string; body: string };
   /** True when the image has place names painted into it (region chips are then offset below them). */
   bakedLabels: boolean;
   /** Optional box (source pixels) around the land and region labels. Narrow screens start framed on it instead of the whole image. */
@@ -38,6 +40,11 @@ const legacy: BaseMap = {
   label: "Old placeholder map",
   tiles: legacyManifest as TileManifest,
   attribution: `Illustrative placeholder map (not the in-game geography) until Rockstar’s official map · ${GTADB_CREDIT}`,
+  note: {
+    chip: "Placeholder map",
+    title: "Old placeholder map",
+    body: "This is the original placeholder illustration, not the in-game geography. Pin positions are approximate. It will be replaced by Rockstar’s official map once that is published.",
+  },
   bakedLabels: true,
   pinToSource({ x, y }) {
     const { a, b, c, d } = legacyManifest.calibration;
@@ -49,12 +56,24 @@ const legacy: BaseMap = {
   },
 };
 
+/**
+ * Soft zoom cap for the art base. Its real detail ends around z4 (z5 inside Vice City); z6 shows one source pixel per screen pixel
+ * and anything above is the same pixels enlarged. We allow half a level past z6 (enough for the z6+ pin names to fit), not the
+ * generic extra full level, so nobody zooms into mush. The tile pyramid itself is unchanged.
+ */
+export const ART_MAX_ZOOM = 6.5;
+
 const positions = artPositions as unknown as Record<string, [number, number]>;
 const art: BaseMap = {
   id: "art",
   label: "Custom art",
-  tiles: artManifest as TileManifest,
+  tiles: { ...(artManifest as TileManifest), maxZoom: Math.min((artManifest as TileManifest).maxZoom, ART_MAX_ZOOM) },
   attribution: `Illustrative AI-made map art, not the in-game geography · ${GTADB_CREDIT}`,
+  note: {
+    chip: "Illustrative base map",
+    title: "Illustrative base map",
+    body: "This map picture is a stand-in illustration, not the in-game geography, so streets, coastlines and distances are only loosely right and fine detail is soft. Pins and labels are placed by district and marked approximate. It will be replaced by Rockstar’s official map when that is published.",
+  },
   bakedLabels: false,
   // Land mask extent (x 64..1084, y 76..1541 of the 1200x1648 art) plus room for the region chips, x6 composite scale.
   startBox: { x0: 20 * 6, y0: 40 * 6, x1: 1140 * 6, y1: 1580 * 6 },

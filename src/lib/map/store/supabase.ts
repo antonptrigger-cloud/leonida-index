@@ -1,4 +1,5 @@
 import { createClient, type SupabaseClient } from "@supabase/supabase-js";
+import { isCategory } from "../categories";
 import type { Comment, Leaderboard, Pin, PinStatus, VoteResult } from "../types";
 import type { MapStore, StoreResult } from "./types";
 
@@ -22,6 +23,8 @@ interface PinRow {
   is_seed: boolean;
   /** Missing until supabase/migrations/20261118000400_pin_types_and_source.sql is applied. */
   source?: "official" | "community" | "gtadb" | null;
+  /** Missing until supabase/migrations/20261119000500_pin_categories.sql is applied. */
+  category?: string | null;
   approximate: boolean;
   spoiler: boolean;
   up_count: number;
@@ -45,9 +48,13 @@ interface CommentRow {
 const BASE_COLUMNS =
   "id,status,type,name,description,region,occupant,x,y,gamer_tag,is_seed,approximate,spoiler,up_count,down_count,needs_review,review_reason,merged_into,created_at,reviewed_at";
 
-/** `source` only exists after the 20261118000400 migration; select it only when the column is there. */
-const WITH_SOURCE_COLUMNS = `${BASE_COLUMNS},source`;
-const isMissingSourceColumn = (message: string | undefined) => /\bsource\b/i.test(message ?? "") && /column|schema cache|does not exist/i.test(message ?? "");
+/**
+ * Columns added by later migrations. Each is selected only while it exists: `source` after 20261118000400, `category` after
+ * 20261119000500. A "column does not exist" error drops that column from the select and the query is retried.
+ */
+const OPTIONAL_COLUMNS = ["source", "category"] as const;
+const isMissingColumn = (message: string | undefined, col: string) =>
+  new RegExp(`\\b${col}\\b`, "i").test(message ?? "") && /column|schema cache|does not exist/i.test(message ?? "");
 
 function toPin(r: PinRow): Pin {
   return {
@@ -64,6 +71,7 @@ function toPin(r: PinRow): Pin {
     isSeed: r.is_seed,
     source: r.source === "official" || r.source === "community" || r.source === "gtadb" ? r.source : r.is_seed ? "official" : "community",
     approximate: r.approximate,
+    category: isCategory(r.category) ? r.category : null,
     spoiler: r.spoiler,
     upCount: r.up_count,
     downCount: r.down_count,
@@ -89,6 +97,7 @@ const PATCH_COLUMNS: Partial<Record<keyof Pin, keyof PinRow>> = {
   x: "x",
   y: "y",
   approximate: "approximate",
+  category: "category",
   spoiler: "spoiler",
   needsReview: "needs_review",
   reviewReason: "review_reason",
@@ -113,20 +122,19 @@ export function createSupabaseStore(url: string, serviceRoleKey: string): MapSto
     auth: { persistSession: false, autoRefreshToken: false },
   });
 
-  // null = not probed yet; false = the column is missing (migration not applied), so stop asking for it.
-  let hasSource: boolean | null = null;
-  const columns = () => (hasSource === false ? BASE_COLUMNS : WITH_SOURCE_COLUMNS);
-  /** Runs a pins query, retrying once without `source` when the migration hasn't been applied yet. */
+  // Optional columns known to be missing (migration not applied yet).
+  const missing = new Set<string>();
+  const columns = () => [BASE_COLUMNS, ...OPTIONAL_COLUMNS.filter((c) => !missing.has(c))].join(",");
+  /** Runs a pins query, dropping optional columns that the database doesn't have yet and retrying. */
   async function withColumns<T>(run: (cols: string) => PromiseLike<{ data: T | null; error: { message: string } | null }>): Promise<T | null> {
-    let res = await run(columns());
-    if (res.error && hasSource !== false && isMissingSourceColumn(res.error.message)) {
-      hasSource = false;
-      res = await run(BASE_COLUMNS);
-    } else if (!res.error && hasSource === null) {
-      hasSource = true;
+    for (let attempt = 0; attempt <= OPTIONAL_COLUMNS.length; attempt++) {
+      const res = await run(columns());
+      if (!res.error) return res.data;
+      const gone = OPTIONAL_COLUMNS.find((c) => !missing.has(c) && isMissingColumn(res.error!.message, c));
+      if (!gone) throw new Error(res.error.message);
+      missing.add(gone);
     }
-    if (res.error) throw new Error(res.error.message);
-    return res.data;
+    throw new Error("Supabase: could not find a usable column set for pins");
   }
 
   return {
@@ -143,7 +151,7 @@ export function createSupabaseStore(url: string, serviceRoleKey: string): MapSto
     },
 
     async createSubmission(input, ipHash, windowMinutes) {
-      const { data, error } = await sb.rpc("submit_location", {
+      const args = {
         p_type: input.type,
         p_name: input.name,
         p_description: input.description,
@@ -155,16 +163,22 @@ export function createSupabaseStore(url: string, serviceRoleKey: string): MapSto
         p_spoiler: input.spoiler,
         p_ip_hash: ipHash,
         p_window_minutes: windowMinutes,
-      });
-      if (error) return rpcError(error.message);
-      return { ok: true, value: toPin(data as PinRow) };
+      };
+      // The category parameter exists only after the 20261119000500 migration. Without it the submission is still saved (no category).
+      let res = input.category && !missing.has("category") ? await sb.rpc("submit_location", { ...args, p_category: input.category }) : await sb.rpc("submit_location", args);
+      if (res.error && input.category && /p_category|function|schema cache/i.test(res.error.message)) {
+        missing.add("category");
+        res = await sb.rpc("submit_location", args);
+      }
+      if (res.error) return rpcError(res.error.message);
+      return { ok: true, value: toPin(res.data as PinRow) };
     },
 
     async updatePin(id, patch) {
       const row: Record<string, unknown> = {};
       for (const [k, v] of Object.entries(patch)) {
         const col = PATCH_COLUMNS[k as keyof Pin];
-        if (col) row[col] = v;
+        if (col && !(missing.has(col) && (OPTIONAL_COLUMNS as readonly string[]).includes(col))) row[col] = v;
       }
       const data = await withColumns((cols) => sb.from("pins").update(row).eq("id", id).select(cols).maybeSingle());
       return data ? toPin(data as unknown as PinRow) : null;

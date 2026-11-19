@@ -1,5 +1,6 @@
 import gtadbData from "./gtadb-pins.json";
 import seedData from "./seed-pins.json";
+import type { PinCategory } from "./categories";
 import { SEED_AUTHOR, type PinSource, type PinType } from "./config";
 import type { Pin } from "./types";
 
@@ -14,6 +15,7 @@ interface SeedRow {
   description: string;
   /** Defaults to "official": every seed pin is a place Rockstar itself has named. */
   source?: PinSource;
+  category?: PinCategory;
 }
 
 const SEED_CREATED_AT = "2026-11-18T00:00:00.000Z";
@@ -33,6 +35,7 @@ export const SEED_PINS: Pin[] = [...(seedData as SeedRow[]), ...(gtadbData as Se
   isSeed: true,
   source: s.source ?? "official",
   approximate: s.approximate,
+  category: s.category ?? null,
   spoiler: false,
   upCount: 0,
   downCount: 0,

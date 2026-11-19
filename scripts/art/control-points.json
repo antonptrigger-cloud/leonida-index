@@ -300,6 +300,26 @@
     }
   ],
   "pinOverrides": {
+    "seed-paradise-garage": [
+      460.0,
+      1170.0
+    ],
+    "seed-ptt-youngins": [
+      738.3,
+      1120.0
+    ],
+    "seed-stock-305": [
+      841.7,
+      783.3
+    ],
+    "seed-electric-fang-tattoo": [
+      821.7,
+      773.3
+    ],
+    "seed-washington-beach": [
+      1033.3,
+      736.7
+    ],
     "seed-lake-leonida": [
       733,
       470
