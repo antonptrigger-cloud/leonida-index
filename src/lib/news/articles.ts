@@ -60,7 +60,7 @@ export const FESTIVAL_PUBLISHED = "2026-11-19T08:13:00+10:00";
 /** 19 Nov 09:00 AEST batch (tracker refresh). Set to the time of the edit. */
 export const UPDATES_0900_AT = "2026-11-19T09:08:00+10:00";
 
-/** Sales estimate piece. PLACEHOLDER, Web Bot: set to the moment it goes live. */
+/** Sales estimate piece. Set to the time of the edit. */
 export const SALES_PUBLISHED = "2026-11-19T09:08:00+10:00";
 
 /** 19 Nov 11:00 AEST batch (tracker refresh after the UK unlock, refresh queue batch A). Set to the time of the edit. */
@@ -81,12 +81,54 @@ export const UPDATES_1500_AT = "2026-11-19T15:20:30+10:00";
 /** 19 Nov 16:00 AEST batch (tracker readings 15:54-16:02 AEST, refresh queue batch B). Set to the time of the edit. */
 export const UPDATES_1600_AT = "2026-11-19T16:08:22+10:00";
 
+/** 19 Nov 17:00 AEST batch (tracker readings 17:00-17:05 AEST, GTA+ perks piece). Set to the time of the edit. */
+export const UPDATES_1700_AT = "2026-11-19T17:10:14+10:00";
+
+/** GTA+ story-mode perks piece. Set to the time of the edit. */
+export const GTA_PLUS_PUBLISHED = "2026-11-19T17:10:14+10:00";
+
 /** Age rating quick-answer page: boards re-read 11:46-11:48 AEST 19 Nov 2026. Also used for `updated` until the first fact change; bump `updated` on every edit. */
 export const AGE_RATING_PUBLISHED = "2026-11-19T11:48:00+10:00";
 
 export const newsPath = (slug: string) => `/news/${slug}`;
 
 export const NEWS: NewsItem[] = [
+  {
+    slug: "gta-6-gta-plus-story-perks",
+    title: "GTA 6 GTA+ Perks: What You Get",
+    description:
+      "GTA+ adds a free Elegy, a Crosstown garage, transit perks and 10% shop discounts to GTA 6 story mode, only while subscribed. Price, free month, opt-out.",
+    crumb: "GTA+ perks",
+    teaser: "A free Elegy and garage, transit perks and 10% discounts, but only while you pay $7.99 a month. What you get, and the backlash.",
+    tag: "Explainer",
+    category: "launch",
+    keywords: ["GTA 6 GTA+", "GTA+ benefits GTA 6", "GTA 6 subscription", "GTA 6 Elegy", "GTA Plus story mode", "GTA 6 GTA+ price", "turn off GTA+ boosts"],
+    published: GTA_PLUS_PUBLISHED,
+    updated: GTA_PLUS_PUBLISHED,
+    citations: [
+      "https://www.ign.com/articles/gta-6-how-microtransactions-and-gta-benefits-work",
+      "https://www.gamespot.com/articles/gta-6-gta-subscription-includes-a-free-supercar-discounts-and-more/",
+      "https://www.polygon.com/gta-6-plus-membership-benefits-exclusive-car-garage/",
+    ],
+    faq: [
+      {
+        question: "What does GTA+ give you in GTA 6?",
+        answer: "A free '90 Annis Venturas BLVD Elegy and a single-car Crosstown garage with a weapon locker and stolen-item fencing, transit perks (Scooter Bros Premium, RydeMe premium, free scooter, bike and Seashark rentals, free public transport), 10% off at select shops and 10% more when selling eligible owned vehicles, per IGN, GameSpot and Polygon.",
+      },
+      {
+        question: "Do you keep GTA+ perks if you cancel?",
+        answer: "No. GameSpot says the perks are only available while you are subscribed, and Polygon says cancelling means losing the car and garage along with the other perks.",
+      },
+      {
+        question: "How much is GTA+?",
+        answer: "Polygon puts it at $7.99 a month in the US (GameSpot rounds to $8), and IGN gives $7.99 or £6.99. IGN, GameSpot and Polygon all say pre-orders came with a free month, which IGN says must be redeemed before 31 March 2027 and then renews automatically unless cancelled.",
+      },
+      {
+        question: "Can you turn GTA+ boosts off in GTA 6?",
+        answer: "Yes. Polygon says to open the pause menu, go to the Account tab, find GTA Plus Boosts and switch it off. IGN also says the benefits can be switched off in the settings menu.",
+      },
+    ],
+  },
   {
     slug: "gta-6-age-rating",
     title: "GTA 6 Age Rating: ESRB, ACB, USK & More",
@@ -254,7 +296,7 @@ export const NEWS: NewsItem[] = [
     live: true,
     keywords: ["GTA 6 server status", "is GTA 6 down", "GTA 6 known issues", "GTA 6 PS5 update", "GTA 6 patch", "01.002.001"],
     published: NEWS_PUBLISHED,
-    updated: UPDATES_1600_AT,
+    updated: UPDATES_1700_AT,
     citations: [
       "https://x.com/PS_Support_US/status/2122863683881619685",
       "https://www.pushsquare.com/news/2026/11/gta-6-requires-new-ps5-firmware-update-to-play",
@@ -287,11 +329,12 @@ export const NEWS: NewsItem[] = [
       "https://www.bbc.com/news/live/c60rkg21dl22t",
       "https://www.standard.co.uk/news/tech/travis-scott-sony-miami-currys-grand-theft-auto-b1305482.html",
       "https://www.3djuegos.com/ps4/noticias/playstation-network-psn-se-ha-caido-espana-para-algunos-jugadores-estreno-gta-6-ha-saturado-servidores-ps5-momentos",
+      "https://sea.mashable.com/games/56995/is-playstation-down-some-gamers-report-problems-with-playstation-servers-amid-gta-6-launch",
     ],
     faq: [
       {
         question: "Is GTA 6 down?",
-        answer: "At 16:00-16:02 AEST on 19 Nov, an hour after the US and Canada unlocked at 15:00 AEST, PlayStation's status feed listed no active issues for the US, Canada, Mexico, Brazil, the UK, Ireland, France, Germany, Italy, Spain, Australia, New Zealand or Japan, and Microsoft's Xbox status feed showed no incidents. Rockstar's services showed up on GTATracker's relay of its page. GTATracker's relay of Sony's feed briefly showed Gaming and Social as degraded at 15:55 AEST and up again at 16:00 AEST; Sony's own feed did not show it when we read it, so that is unconfirmed. Downdetector user reports headlined \"problems\" for PlayStation Network in the US and Australia and for Xbox network in the US (mostly server connection, downloads and game launch), which the platforms' own feeds did not reflect, so that severity is disputed. For GTA VI itself, Downdetector showed no current problems in the US and New Zealand, and \"possible problems\" in the UK, Germany and Australia. User reports are not confirmed outages.",
+        answer: "At 17:00-17:05 AEST on 19 Nov, two hours after the US and Canada unlocked at 15:00 AEST, PlayStation's status feed listed no active issues for the US, Canada, Mexico, Brazil, the UK, Ireland, France, Germany, Italy, Spain, Australia, New Zealand or Japan, and Microsoft's Xbox status feed showed no incidents. Rockstar's services showed up on GTATracker's relay of its page. Shortly after the US unlock, Mashable reports Sony's status page flagged a Gaming and Social issue at 12:33 a.m. ET (15:33 AEST); it had cleared by our 16:00 AEST reading. Downdetector user reports still headlined \"problems\" for PlayStation Network and Xbox network in the US and \"possible problems\" for PSN in Australia (mostly server connection, downloads and game launch), which the platforms' own feeds did not reflect, so that severity is disputed. For GTA VI itself, Downdetector showed no current problems in the US, Australia and New Zealand, and \"possible problems\" in the UK and Germany. User reports are not confirmed outages.",
       },
       {
         question: "Was PSN down before GTA 6 launched?",
