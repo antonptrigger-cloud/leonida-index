@@ -4,6 +4,8 @@ import { HUB_VERIFIED } from "@/lib/guides/story";
 import { MONEY_VERIFIED } from "@/lib/guides/money";
 import { CHEATS_VERIFIED } from "@/lib/guides/cheats";
 import { TROPHIES_VERIFIED } from "@/lib/guides/trophies";
+import { COLLECT_VERIFIED } from "@/lib/guides/collectibles";
+import { SF_VERIFIED } from "@/lib/guides/strangers";
 import { NEWS, newsPath } from "@/lib/news/articles";
 import { CHARACTERS, LAST_VERIFIED as CHARACTERS_VERIFIED, characterPath } from "@/lib/characters/characters";
 import { DB_VERIFIED, REFERENCE_PAGES } from "@/lib/database/reference";
@@ -130,7 +132,7 @@ export const ROUTES: Record<string, RouteSeo> = {
   "/map/admin": { title: "Map moderation", description: "Moderator sign-in.", crumb: "Moderation", noindex: true },
   "/guides": {
     title: "GTA 6 Guides & Tips",
-    description: "GTA 6 guides and tips: every mission in order, money, cheats and trophies, beginner advice, the wanted system, stealing cars and activities around Leonida.",
+    description: "GTA 6 guides and tips: every mission in order, money, cheats, trophies, collectibles, side missions, beginner advice and activities around Leonida.",
     crumb: "Guides",
     kind: "collection",
     changeFrequency: "daily",
@@ -218,6 +220,26 @@ export const ROUTES: Record<string, RouteSeo> = {
     priority: 0.85,
     updated: TROPHIES_VERIFIED,
     published: TROPHIES_VERIFIED,
+  },
+  "/guides/collectibles": {
+    title: "GTA 6 Collectibles: Card Sets, WAiNK Scans & What Counts",
+    description: "GTA 6 collectibles explained: all 18 card sets, WAiNK scan totals, which ones the trophies and 100% need, and how to track your progress.",
+    crumb: "Collectibles",
+    kind: "article",
+    changeFrequency: "weekly",
+    priority: 0.8,
+    updated: COLLECT_VERIFIED,
+    published: COLLECT_VERIFIED,
+  },
+  "/guides/strangers-and-freaks": {
+    title: "GTA 6 Strangers & Freaks: Which Side Missions Count",
+    description: "GTA 6's Strangers & Freaks trophy needs 8 questlines, but not every side character counts. Here's what's confirmed so far and how to track it.",
+    crumb: "Strangers & Freaks",
+    kind: "article",
+    changeFrequency: "daily",
+    priority: 0.8,
+    updated: SF_VERIFIED,
+    published: SF_VERIFIED,
   },
   ...Object.fromEntries(
     MISSIONS.map((m): [string, RouteSeo] => [

@@ -9,6 +9,8 @@ const GUIDES = [
   { href: "/guides/money", title: "Money guide: fastest ways to earn cash" },
   { href: "/guides/cheats", title: "Cheats: how to unlock them and the codes so far" },
   { href: "/guides/trophies", title: "Trophy list and platinum roadmap" },
+  { href: "/guides/collectibles", title: "Collectibles: card sets, WAiNK scans and what counts" },
+  { href: "/guides/strangers-and-freaks", title: "Strangers & Freaks: which side missions count" },
   { href: "/guides/beginner", title: "Beginner" },
   { href: "/guides/wanted", title: "Wanted system" },
   { href: "/guides/stealing-cars", title: "Stealing cars" },
