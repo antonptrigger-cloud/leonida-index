@@ -12,8 +12,9 @@ export default function Page() {
   return (
     <NewsLayout slug={SLUG} kicker="News · Guide" title="Preload and editions" source="Official">
       <Lede>
-        Preload has been open since 10 November. If you pre-ordered and have not started yet, clear 212GB now. This guide covers how to
-        preload on PS5 and Xbox, then what Standard and Ultimate include.
+        GTA 6 is out on PS5 and Xbox Series X|S, unlocking at midnight local time on 19 November. If you are buying now, or pre-ordered and never
+        started the download, you still need up to 212GB free before it will install. This guide covers how to get it installed on PS5 and Xbox, then what Standard and Ultimate include.
+        Digital purchases made before your store&rsquo;s cut-off still include the Vintage Vice City Pack (details below). The preload steps are kept for reference.
       </Lede>
       <Callout title="Correction note">
         <p>
@@ -22,11 +23,11 @@ export default function Page() {
         </p>
       </Callout>
 
-      <H2>Preload basics</H2>
+      <H2>Install basics</H2>
       <Bullets>
         <li>
-          <Lead>Who can preload:</Lead> anyone with a digital pre-order, or a redeemed code from a boxed copy (
-          <Ext href="https://www.rockstargames.com/VI/pre-load-now">Rockstar</Ext>).
+          <Lead>Who could preload:</Lead> anyone with a digital pre-order, or a redeemed code from a boxed copy (
+          <Ext href="https://www.rockstargames.com/VI/pre-load-now">Rockstar</Ext>). If you buy now, the preload window no longer matters: you install the full game from your store.
         </li>
         <li>
           <Lead>Space:</Lead> up to 212GB, depending on device (
@@ -35,22 +36,23 @@ export default function Page() {
           <Ext href="https://www.xbox.com/en-US/games/store/grand-theft-auto-vi/9P3H4968GRSM">Xbox Store</Ext>, <Link href={newsPath("gta-6-file-size-time-to-beat")} className={L}>file size guide</Link>).
         </li>
         <li>
-          <Lead>It does not unlock early.</Lead> The game stays locked until midnight local time on 19 November. Check your region in the{" "}
+          <Lead>It did not unlock early.</Lead> The game stayed locked until midnight local time on 19 November, so if your region has not reached midnight yet it will not start. Check your region in the{" "}
           <Link href={newsPath("gta-6-release-countdown")} className={L}>release time by region</Link>.
         </li>
         <li>
-          <Lead>Patches:</Lead> reports say two small pre-launch updates have appeared (about 1GB, then about 600MB on PS5) with no patch notes. See the{" "}
+          <Lead>Patches:</Lead> reports say two small updates appeared before launch (about 1GB, then about 600MB on PS5) with no patch notes. See the{" "}
           <Link href={newsPath("gta-6-ps5-update-patches-servers")} className={L}>PS5 update and patch checklist</Link>.
         </li>
       </Bullets>
 
-      <H2>How to preload</H2>
+      <H2>How the preload worked</H2>
+      <p>Preload is over, but the same store pages and steps below still get you the download if you are installing now.</p>
       <H3>PlayStation 5 and PS5 Pro</H3>
       <Steps>
         <li>Pre-order GTA VI on PlayStation Store, or redeem your boxed code.</li>
         <li>Open the GTA VI page and choose pre-load. Preload opened at midnight local time on 10 November.</li>
         <li>Optional: in Game Library, select the pre-order and switch on Auto-Download.</li>
-        <li>Before launch, highlight the game, press Options, then Check for Update.</li>
+        <li>Once the game is unlocked, highlight it, press Options, then Check for Update.</li>
       </Steps>
       <H3>Xbox Series X|S</H3>
       <Steps>

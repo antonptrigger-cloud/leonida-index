@@ -9,7 +9,7 @@ export default function Page() {
   return (
     <NewsLayout slug={SLUG} kicker="News · Streamers" title="N3ON's New Zealand GTA 6 stream" source="NDTV, Moneycontrol, StreamStats">
       <Lede>
-        Streamer N3ON said he would fly to New Zealand to play GTA 6 at the local unlock. Outlets report that he travelled there and went live around the unlock, and Kick&rsquo;s public
+        Streamer N3ON flew to New Zealand to play GTA 6 at the first unlock, outlets report, and went live around the unlock. Kick&rsquo;s public
         channel data showed his stream live with about 74,800 viewers at 23:10 AEST on 18 Nov.
       </Lede>
 
@@ -26,7 +26,7 @@ export default function Page() {
       <Bullets>
         <li>
           <Lead>Stream:</Lead> a Kick stream titled &ldquo;PLAYING GTA 6 EARLY&rdquo; started at 10:31 UTC (20:31 AEST), about half an hour before the 11:00 UTC unlock. Kick&rsquo;s public channel data showed it
-          live with 74,817 viewers at 23:10 AEST, and StreamStats showed 75,431 live viewers and an average of 63,887 at about 22:52 AEST. The stream was still live, so these figures will keep changing (
+          live with 74,817 viewers at 23:10 AEST, and StreamStats showed 75,431 live viewers and an average of 63,887 at about 22:52 AEST. The stream was still live at the time, so these are readings from that moment, not final totals (
           <Ext href="https://streamstats.io/channels/n3on?platform=kick">StreamStats</Ext>, a third-party tracker; <Ext href="https://kick.com/n3on">Kick</Ext>).
         </li>
         <li>
