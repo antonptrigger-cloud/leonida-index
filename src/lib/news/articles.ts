@@ -66,6 +66,9 @@ export const SALES_PUBLISHED = "2026-11-19T09:08:00+10:00";
 /** 19 Nov 11:00 AEST batch (tracker refresh after the UK unlock, refresh queue batch A). PLACEHOLDER, Web Bot: set to the moment these edits go live. */
 export const UPDATES_1100_AT = "2026-11-19T11:07:00+10:00";
 
+/** 19 Nov 12:00 AEST batch (tracker refresh, readings 11:46-12:01 AEST). */
+export const UPDATES_1200_AT = "2026-11-19T12:04:00+10:00";
+
 /** Age rating quick-answer page: boards re-read 11:46-11:48 AEST 19 Nov 2026. Also used for `updated` until the first fact change; bump `updated` on every edit. */
 export const AGE_RATING_PUBLISHED = "2026-11-19T11:48:00+10:00";
 
@@ -237,7 +240,7 @@ export const NEWS: NewsItem[] = [
     live: true,
     keywords: ["GTA 6 server status", "is GTA 6 down", "GTA 6 known issues", "GTA 6 PS5 update", "GTA 6 patch", "01.002.001"],
     published: NEWS_PUBLISHED,
-    updated: UPDATES_1100_AT,
+    updated: UPDATES_1200_AT,
     citations: [
       "https://x.com/PS_Support_US/status/2122863683881619685",
       "https://www.pushsquare.com/news/2026/11/gta-6-requires-new-ps5-firmware-update-to-play",
@@ -263,11 +266,13 @@ export const NEWS: NewsItem[] = [
       "https://downdetector.co.uk/status/gta-vi/",
       "https://allestoerungen.de/stoerung/gta-vi/",
       "https://www.bbc.com/news/live/c60rkg21dl22t",
+      "https://www.standard.co.uk/news/tech/travis-scott-sony-miami-currys-grand-theft-auto-b1305482.html",
+      "https://www.3djuegos.com/ps4/noticias/playstation-network-psn-se-ha-caido-espana-para-algunos-jugadores-estreno-gta-6-ha-saturado-servidores-ps5-momentos",
     ],
     faq: [
       {
         question: "Is GTA 6 down?",
-        answer: "At 10:58-11:04 AEST on 19 Nov, about an hour after the UK unlock, PlayStation's status feed listed no active issues for the US, Canada, Brazil, the UK, Ireland, Germany, France, Australia or New Zealand, and Rockstar, PSN and Xbox feeds relayed by GTATracker showed up. Downdetector user reports showed \"possible problems\" in the UK and Germany and no current problems in Australia and New Zealand. User reports are not confirmed outages, and we could not see what the UK and German reports were about.",
+        answer: "At about 12:00 AEST on 19 Nov, two hours after the UK unlock, PlayStation's status feed listed no active issues for the US, Canada, Mexico, Brazil, the UK, Ireland, France, Germany, Italy, Spain, Australia or New Zealand, and Rockstar, PSN and Xbox feeds relayed by GTATracker showed up. Downdetector user reports showed \"possible problems\" in the UK, Germany and Australia (where game launch was the most reported issue) and no current problems in New Zealand. User reports are not confirmed outages, and we could not see what the UK and German reports were about.",
       },
       {
         question: "Was PSN down before GTA 6 launched?",
