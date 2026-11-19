@@ -1,33 +1,15 @@
 import { Fragment } from "react";
 import Link from "next/link";
 import "./news-hub.css";
+import { HubGrid } from "@/components/hub/HubGrid";
 import { categoryMeta, clock, shortDate, updatedLabel, type Accent, type IndexEntry, type NewsCategory } from "@/lib/news/hub";
 
 /*
- * Building blocks for the /news index ("newsroom wire" look): ticker, jump bar, lead card, top-story list,
- * live-tracker cards, archive with CSS-only topic filter. Self-contained (own `nh-` classes, no client JS) so it can
- * be unified with the /guides hub components later. All server components.
+ * Building blocks for the /news index ("newsroom wire" look): ticker, lead card, top-story list, live-tracker
+ * cards, archive with CSS-only topic filter. Section titles, the jump bar and the card grid come from the shared
+ * src/components/hub/ set (so /guides and /news match); everything here is news-specific (`nh-` classes, no client JS).
+ * The page wrapper needs both `gh-hub` (shared accent vars, section rhythm) and `nh-hub`.
  */
-
-/** Numbered section heading, same pattern as the homepage and /guides hub ("01 / kicker / big title"). */
-export function NewsSectionTitle({ id, num, kicker, title, children }: { id: string; num: string; kicker: string; title: string; children?: React.ReactNode }) {
-  return (
-    <div className="mb-8x flex flex-col gap-4x md:mb-10x md:flex-row md:items-end md:justify-between">
-      <div className="vc-section-title">
-        <span data-num aria-hidden>
-          {num}
-        </span>
-        <div>
-          <p className="vc-kicker">{kicker}</p>
-          <h2 id={id} className="vc-heading mt-2x text-[clamp(2.6rem,6.5vw,4.75rem)]">
-            {title}
-          </h2>
-        </div>
-      </div>
-      {children ? <p className="max-w-[36ch] text-sm leading-relaxed text-muted md:text-right">{children}</p> : null}
-    </div>
-  );
-}
 
 /** Scrolling headline strip. Purely decorative (aria-hidden, not focusable): every headline is also a real link below. */
 export function Ticker({ items }: { items: { label: string; text: string }[] }) {
@@ -53,22 +35,6 @@ export function Ticker({ items }: { items: { label: string; text: string }[] }) 
         </div>
       </div>
     </div>
-  );
-}
-
-export function NewsJump({ items }: { items: { id: string; num: string; label: string; accent: Accent }[] }) {
-  return (
-    <nav className="nh-jump" aria-label="Jump to a section">
-      <ul>
-        {items.map((n) => (
-          <li key={n.id}>
-            <a href={`#${n.id}`} className="nh-jump__chip" data-accent={n.accent}>
-              <span aria-hidden>{n.num}</span> {n.label}
-            </a>
-          </li>
-        ))}
-      </ul>
-    </nav>
   );
 }
 
@@ -150,7 +116,7 @@ export function TopList({ items, startAt = 2 }: { items: IndexEntry[]; startAt?:
 /** Live/evergreen tracker cards with an "Updated HH:MM AEST" badge. `now` decides "today" vs a dated label. */
 export function LiveStrip({ items, now }: { items: IndexEntry[]; now: Date }) {
   return (
-    <ul className="nh-live">
+    <HubGrid count={items.length}>
       {items.map((n) => {
         const c = categoryMeta(n.category);
         return (
@@ -178,7 +144,7 @@ export function LiveStrip({ items, now }: { items: IndexEntry[]; now: Date }) {
           </li>
         );
       })}
-    </ul>
+    </HubGrid>
   );
 }
 
@@ -227,7 +193,7 @@ export function Archive({
                     <time className="nh-row__date" dateTime={n.published}>
                       {shortDate(n.published)}
                     </time>
-                    <Pill category={n.category} label={n.tag} />
+                    <Pill category={n.category} />
                     <span className="nh-row__text">
                       <span className="nh-row__title">{n.title}</span>
                       <span className="nh-row__teaser">{n.teaser}</span>

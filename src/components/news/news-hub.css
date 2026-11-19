@@ -3,23 +3,13 @@
  * Same language as the homepage and /guides hub (numbered sections, cut corners, neon hairlines, Bebas display type)
  * with its own motifs: a headline ticker, a colour-bar test card on the lead story, LIVE tracker cards and a dense
  * dated archive. CSS only. Self-contained: all classes are `nh-` prefixed.
- * Hex values mirror the tokens in globals.css (pink #ff2d78, orange #ff8c42, turq #00e5cc, blue #00d4ff, cobalt #1e90ff).
+ * Extra category accents (cobalt, violet, cream) are defined here; the four base accents live in hub.css.
  */
-.nh-hub [data-accent="pink"] { --ac: #ff2d78; --ac-rgb: 255, 45, 120; }
-.nh-hub [data-accent="orange"] { --ac: #ff8c42; --ac-rgb: 255, 140, 66; }
-.nh-hub [data-accent="turq"] { --ac: #00e5cc; --ac-rgb: 0, 229, 204; }
-.nh-hub [data-accent="blue"] { --ac: #00d4ff; --ac-rgb: 0, 212, 255; }
 .nh-hub [data-accent="cobalt"] { --ac: #4aa8ff; --ac-rgb: 74, 168, 255; }
 .nh-hub [data-accent="violet"] { --ac: #b78bff; --ac-rgb: 183, 139, 255; }
 .nh-hub [data-accent="cream"] { --ac: #f6e7cf; --ac-rgb: 246, 231, 207; }
 
-@media (prefers-reduced-motion: no-preference) {
-  html:has(.nh-hub) { scroll-behavior: smooth; }
-}
-
-.nh-hub > section { margin-top: 6rem; }
-.nh-hub > .nh-jump + section { margin-top: 3.5rem; }
-.nh-anchor { scroll-margin-top: 5rem; }
+/* Pink/orange/turq/blue accent vars, section rhythm, smooth scroll and the jump bar come from components/hub/hub.css (.gh-hub). */
 .nh-hub a:focus-visible,
 .nh-hub input:focus-visible + label {
   outline: 2px solid #00e5cc;
@@ -28,6 +18,7 @@
 
 /* ---------- Hero extras ---------- */
 .nh-onair {
+  margin-bottom: 1rem;
   display: inline-flex;
   align-items: center;
   gap: 0.6rem;
@@ -111,40 +102,6 @@
 }
 @keyframes nh-scroll { to { transform: translateX(-50%); } }
 @keyframes nh-pulse { 50% { opacity: 0.25; transform: scale(0.8); } }
-
-/* ---------- Jump bar ---------- */
-.nh-jump {
-  position: sticky;
-  top: 0.5rem;
-  z-index: 30;
-  margin-top: 2rem;
-  border: 1px solid rgba(255, 45, 120, 0.3);
-  background: rgba(10, 10, 11, 0.86);
-  backdrop-filter: blur(10px);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.45);
-}
-.nh-jump ul { display: flex; gap: 0.5rem; padding: 0.5rem; margin: 0; list-style: none; overflow-x: auto; scrollbar-width: none; }
-.nh-jump ul::-webkit-scrollbar { display: none; }
-.nh-jump li { flex: none; }
-.nh-jump__chip {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.55rem;
-  padding: 0.55rem 0.95rem;
-  border: 1px solid rgba(var(--ac-rgb), 0.55);
-  font-size: 0.72rem;
-  font-weight: 800;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: #f5f3f7;
-  white-space: nowrap;
-  transition: background 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
-}
-.nh-jump__chip span { font-family: var(--font-display-face), Impact, sans-serif; font-size: 1.05rem; letter-spacing: 0.04em; color: var(--ac); }
-.nh-jump__chip:hover,
-.nh-jump__chip:focus-visible { background: var(--ac); color: #0a0a0b; box-shadow: 0 0 18px rgba(var(--ac-rgb), 0.5); }
-.nh-jump__chip:hover span,
-.nh-jump__chip:focus-visible span { color: #0a0a0b; }
 
 /* ---------- Shared bits ---------- */
 .nh-pill {
@@ -321,8 +278,6 @@
 .nh-top__row:hover .nh-top__arrow { transform: translateX(6px); color: #ff8c42; }
 
 /* ---------- 02 Live trackers ---------- */
-.nh-live { display: grid; gap: 1.5rem; margin: 0; padding: 0; list-style: none; grid-template-columns: repeat(auto-fit, minmax(min(100%, 19rem), 1fr)); }
-.nh-live > li { display: flex; }
 .nh-live__card { display: block; width: 100%; transition: transform 0.35s var(--ease-out), filter 0.35s ease; }
 .nh-live__card:hover,
 .nh-live__card:focus-visible {
@@ -330,6 +285,7 @@
   filter: drop-shadow(0 16px 22px rgba(var(--ac-rgb), 0.22)) drop-shadow(0 0 12px rgba(var(--ac-rgb), 0.3));
 }
 .nh-live__body { min-height: 15rem; }
+.nh-live__card { height: 100%; }
 .nh-live__strip {
   display: flex;
   align-items: center;

@@ -3,8 +3,11 @@ import { metaFor, absoluteUrl } from "@/lib/seo/site";
 import { JsonLd, PageSchema } from "@/lib/seo/jsonld";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { PageBackdrop } from "@/components/PageBackdrop";
-import { Archive, LeadCard, LiveStrip, NewsJump, NewsSectionTitle, Ticker, TopList } from "@/components/news/NewsHub";
-import { buildNewsIndex, clock, shortDate, type Accent } from "@/lib/news/hub";
+import { SectionTitle } from "@/components/hub/SectionTitle";
+import { JumpNav } from "@/components/hub/JumpNav";
+import { Archive, LeadCard, LiveStrip, Ticker, TopList } from "@/components/news/NewsHub";
+import { buildNewsIndex, clock, shortDate } from "@/lib/news/hub";
+import type { HubAccent as Accent } from "@/components/hub/TapeCard";
 
 export const metadata = metaFor("/news");
 
@@ -35,7 +38,7 @@ export default function Page() {
   };
 
   return (
-    <div className="nh-hub pb-16x">
+    <div className="gh-hub nh-hub pb-16x">
       <PageSchema path="/news" breadcrumbs={false} />
       <JsonLd data={itemList} />
       <div>
@@ -44,10 +47,10 @@ export default function Page() {
         {/* ---------- Hero ---------- */}
         <section className="relative isolate pb-6x pt-6x md:pt-10x" aria-labelledby="news-title">
           <PageBackdrop id="skyline" dim="strong" fadeTop />
-          <p className="nh-onair mb-5x">
+          <p className="nh-onair mb-4x">
             <i aria-hidden /> Launch week · Live coverage
           </p>
-          <p className="vc-kicker mb-4x block">News</p>
+          <p className="vc-kicker mb-4x">News</p>
           <h1 id="news-title" className="vc-heading text-[clamp(3.5rem,11vw,7.5rem)]">
             Launch news
           </h1>
@@ -75,15 +78,15 @@ export default function Page() {
           <Ticker items={ticker} />
         </section>
 
-        <NewsJump items={nav} />
+        <JumpNav items={nav} />
       </div>
 
       {/* ---------- 01 Latest ---------- */}
       {lead ? (
-        <section id="latest" className="nh-anchor" aria-labelledby="latest-title">
-          <NewsSectionTitle id="latest-title" num="01" kicker="Latest" title="Fresh off the wire">
+        <section id="latest" className="gh-anchor" aria-labelledby="latest-title">
+          <SectionTitle id="latest-title" num="01" kicker="Latest" title="Fresh off the wire">
             The newest report first, then the stories most worth your time today.
-          </NewsSectionTitle>
+          </SectionTitle>
           <div className="grid gap-10x md:grid-cols-12 md:gap-gutter">
             <div className="md:col-span-7">
               <LeadCard item={lead} />
@@ -100,20 +103,20 @@ export default function Page() {
 
       {/* ---------- 02 Live trackers ---------- */}
       {live.length ? (
-        <section id="trackers" className="nh-anchor" aria-labelledby="trackers-title">
-          <NewsSectionTitle id="trackers-title" num="02" kicker="Live trackers" title="Always updating">
+        <section id="trackers" className="gh-anchor" aria-labelledby="trackers-title">
+          <SectionTitle id="trackers-title" num="02" kicker="Live trackers" title="Always updating">
             Pages we keep refreshing through launch week. The badge shows when each one last changed.
-          </NewsSectionTitle>
+          </SectionTitle>
           <LiveStrip items={live} now={now} />
         </section>
       ) : null}
 
       {/* ---------- 03 Archive ---------- */}
       {groups.length ? (
-        <section id="archive" className="nh-anchor" aria-labelledby="archive-title">
-          <NewsSectionTitle id="archive-title" num="03" kicker="Archive" title="Everything else">
+        <section id="archive" className="gh-anchor" aria-labelledby="archive-title">
+          <SectionTitle id="archive-title" num="03" kicker="Archive" title="Everything else">
             Explainers, guides and earlier launch coverage, newest first. Filter by topic.
-          </NewsSectionTitle>
+          </SectionTitle>
           <Archive groups={groups} counts={idx.archiveCounts} total={idx.archiveTotal} />
         </section>
       ) : null}
@@ -124,7 +127,7 @@ export default function Page() {
         <div className="relative grid items-center gap-6x md:grid-cols-12">
           <div className="md:col-span-8">
             <p className="vc-kicker">How we report</p>
-            <p className="vc-display mt-3x text-[clamp(2.4rem,6vw,4.5rem)] leading-[0.88] text-ink">
+            <p className="vc-display mt-3x text-[clamp(2.2rem,5vw,4rem)] leading-[0.88] text-ink">
               Official facts first. <span className="text-pink">Reports labelled.</span>
               <br />
               <span className="vc-outline">No story spoilers.</span>
