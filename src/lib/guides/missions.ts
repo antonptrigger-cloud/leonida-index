@@ -3288,9 +3288,192 @@ export const MISSIONS: Mission[] = [
     sourceLabel: "PowerPyx, PC Gamer, Push Square",
     updated: "2026-11-20T13:15:47+10:00",
   },
+  {
+    slug: "chapter-3-mission-10",
+    hidden: true,
+    chapter: 3,
+    chapterOrder: 10,
+    order: 45,
+    name: "Chapter 3, Mission 10",
+    seoTitle: "GTA 6 Chapter 3 Mission 10 Walkthrough & Tips",
+    seoDescription:
+      "GTA 6 Chapter 3 Mission 10 walkthrough: how to start it, optional gear, losing the police, every objective in order and what the mission pays.",
+    teaser: "The tenth mission of Chapter 3, a short job with optional gear near the start and a cash payout.",
+    intro: [
+      "This is the tenth mission of Chapter 3 and the 45th overall in Push Square's list. Push Square and PC Gamer both list it in Chapter 3 under almost the same name, but their numbering differs by one (10th in Push Square, 9th in PC Gamer), so the number is Reported. PowerPyx lists four objectives, says one lead can start it, and lists $3,000, a vehicle drop-off and some cleared wanted areas as the reward. It starts with a text message about a day after an earlier Chapter 3 mission, and PowerPyx says there is optional gear to pick up near the start.",
+      "Our mission list keeps Chapter 2 and later names behind a blur, so this page uses a neutral title. The mission's name, the premise, the people, the places and the step-by-step all stay behind the blur.",
+    ],
+    facts: [
+      { label: "Chapter", value: "Chapter 3, in both Push Square's and PC Gamer's lists", status: "confirmed" },
+      { label: "Number", value: "45th overall and 10th in the chapter (Push Square and Press Start). PC Gamer numbers it 9th in the chapter. PowerPyx calls it the 54th main mission using its own count.", status: "reported" },
+      { label: "Unlocks after", value: "PowerPyx's requirement line names Chapter 3, Mission 3. Push Square and PC Gamer list other missions between the two.", status: "reported" },
+      { label: "Starts", value: "PowerPyx says a text message from a blocked number arrives around a day after the requirement. Where it sends you is in the blur.", status: "reported" },
+      { label: "Playable as", value: "One lead only (PowerPyx). Which one is in the blur.", status: "reported" },
+      { label: "Objectives", value: "Four (PowerPyx)", status: "reported" },
+      { label: "Reward", value: "$3,000 (PowerPyx). PowerPyx also lists a vehicle drop-off and some cleared wanted areas, covered in the blur.", status: "reported" },
+      { label: "Vehicle buyer", value: "The sources disagree on which mission opens it. The three outlets' versions are in the blur.", status: "reported" },
+    ],
+    objectives: [
+      "Get the text and go to the marker. About a day after Meet the Heders (Chapter 3, Mission 3), Raul messages Lucia from a blocked number asking her to steal another car. Go to the marked place in Salton, in southern Vice City. When you arrive, your contact says they left items in the trunk of a nearby car, notably Flash Grenades and a silenced Klose K17 pistol. You can use them or not (Reported, PowerPyx).",
+      "Search the chop shop for the Schafter V12. An easy way in is to climb the white van on the north side and walk along the metal roofing around the edge of the area. The gang members start shooting once they notice you, or if you shoot one and the others notice. From the roofing you can see two of them loading items into the van in the middle and a guard on the left and right by the gates (Reported, PowerPyx).",
+      "Mind the dog. There is typically a dog by one of the gate guards. PowerPyx says to avoid shooting dogs unless they are actively attacking you, because it gives a very negative criminal bonus. If you start shooting the gang, more of them are likely to pull up at one of the gates and run in (Reported, PowerPyx).",
+      "Steal the Schafter V12. It is in the centre of the covered areas, beside the small room (Reported, PowerPyx).",
+      "Escape the area. Get in the car and leave quickly before the police show up. If they spot you, you need to lose them before you can progress (Reported, PowerPyx).",
+      "Deliver the car to Leonida Auto World. It is in the very north-west corner of the city. When you enter the parking lot the game cuts to a scene that completes the mission (Reported, PowerPyx).",
+    ],
+    spoiler:
+      "The mission is called Car Service in our mission list and Push Square's list. PC Gamer calls it Car Services, numbers it 9th in Chapter 3 because its list has no entry between Mission 8 and this one, and summarises it as Lucia doing another grand theft auto (Confirmed for the name and chapter). PowerPyx shows the map label Steal The Car for Raul and describes it as Raul having another test before he will meet Jason and Lucia, asking Lucia to take a car from a gang front chop shop in Salton and deliver it to auto dealer Randy Kozlov in Balsero, who says he is a high-end vehicle fence and will work for them. PowerPyx says only Lucia can start it, lists Chapter 3, Mission 3 (Meet the Heders) as the requirement, and gives its own count as the 54th main mission (Reported). The wanted areas PowerPyx says are cleared are in Port Gellhorn and Key Lento (Reported). When the vehicle buyer opens, as reported: PowerPyx says Randy is unlocked as a vehicle drop-off at the end of this mission and takes vehicles with Standard Trackers or items from his request list. PC Gamer's fence-locations table lists Randy (high-end vehicles, Balsero) as unlocking in Steal The Zorrusso for Randy, a later Chapter 3 mission. GameSpot says Randy is met further in the story, deals in much higher-end cars, gives you the ability to clone keys and gives you a list of over a dozen cars to steal, without naming a mission. We can't settle which is right. Check your map's buyer list after the mission (Reported).",
+    tips: [
+      { text: "Pick up the free gear. PowerPyx says some items are left in a car trunk near the start, and that a silenced weapon helps you stay in stealth longer if you don't have one yet (Reported).", reported: true },
+      { text: "Look for a way in from above. PowerPyx calls climbing onto the roofing around the edge an easy way in (Reported). Details are in the blur.", reported: true },
+      { text: "Watch the animals. PowerPyx warns that shooting a dog that isn't attacking you gives a very negative criminal bonus (Reported).", reported: true },
+      { text: "Expect backup if it gets loud. PowerPyx says more gang members are likely to arrive if you start shooting (Reported).", reported: true },
+      { text: "Lose the police before you move on. PowerPyx says that if they spot you, you need to lose them before you can progress (Reported). Our wanted system guide has ways to shake them.", reported: true, link: { href: "/guides/wanted", label: "Wanted system" } },
+      { text: "Make a manual save before you start. PowerPyx says GTA VI has no mission replay and suggests a manual save at the start and end of each chapter (Reported).", reported: true, link: { href: "/guides/saving", label: "How to save" } },
+    ],
+    notes: [
+      "Order: Push Square and PC Gamer both list this in Chapter 3, but PC Gamer's list has one fewer entry before it, so it numbers this 9th and Push Square 10th. The overall number follows Push Square and Press Start. PowerPyx calls it the 54th main mission using its own count.",
+      "Mission 9 in Push Square's list is covered as a side job and isn't part of this chain, so Next from Mission 8 comes straight here.",
+      "PowerPyx is the only full walkthrough for this mission so far, so the start, the steps, the $3,000, the vehicle drop-off and the cleared wanted areas are labelled Reported. Push Square and PC Gamer confirm the name and chapter. No source gives a playtime.",
+      "PowerPyx's objective list has four entries and the walkthrough text folds some together. It hasn't been checked against the on-screen prompts.",
+    ],
+    faq: [
+      {
+        question: "Which mission number is Chapter 3 Mission 10?",
+        answer: "Push Square lists it 10th in Chapter 3 and 45th overall, while PC Gamer numbers it 9th in the chapter because its list has one fewer entry before it (Reported). PowerPyx calls it the 54th main mission using its own count.",
+      },
+      {
+        question: "How do I start Chapter 3 Mission 10?",
+        answer: "PowerPyx says a text message from a blocked number arrives around a day after Chapter 3 Mission 3, and you then go to a marked place. Where is in the blurred section (Reported).",
+      },
+      {
+        question: "Do I have to fight in Chapter 3 Mission 10?",
+        answer: "PowerPyx says the gang opens fire once they notice you or see you shoot one of them, and that optional gear left near the start helps you stay in stealth longer (Reported).",
+      },
+      {
+        question: "Why can't I progress after taking the car?",
+        answer: "PowerPyx says that if the police spot you, you need to lose them before you can progress (Reported).",
+      },
+      {
+        question: "How much does Chapter 3 Mission 10 pay?",
+        answer: "PowerPyx lists $3,000 (Reported).",
+      },
+      {
+        question: "Does Chapter 3 Mission 10 open a vehicle buyer?",
+        answer: "Outlets disagree. PowerPyx says it does, PC Gamer's fence table ties the buyer to a later Chapter 3 mission, and GameSpot only says you meet the buyer further in the story. The detail is in the blurred section (Reported).",
+      },
+    ],
+    sources: [
+      pp("gta-6-car-service-steal-the-car-for-raul-walkthrough", "Requirement, playable lead, start, optional gear, objectives, steps and the reward"),
+      pp("gta-6-full-walkthrough-all-missions", "The no-replay note"),
+      PCGAMER,
+      {
+        id: "pcgamer",
+        label: "PC Gamer: GTA 6 fence locations",
+        url: "https://www.pcgamer.com/games/grand-theft-auto/gta-6-fence-locations/",
+        used: "Which mission PC Gamer says opens the vehicle buyer",
+      },
+      {
+        id: "gamespot",
+        label: "GameSpot: Best ways to make money fast in GTA 6",
+        url: "https://www.gamespot.com/articles/best-ways-to-make-money-fast-in-gta-6/",
+        used: "When GameSpot says the vehicle buyer is met and what he offers",
+      },
+      PUSHSQUARE,
+    ],
+    sourceLabel: "PowerPyx, PC Gamer, GameSpot, Push Square",
+    updated: "2026-11-20T14:12:41+10:00",
+  },
+  {
+    slug: "chapter-3-mission-11",
+    hidden: true,
+    chapter: 3,
+    chapterOrder: 11,
+    order: 46,
+    name: "Chapter 3, Mission 11",
+    seoTitle: "GTA 6 Chapter 3 Mission 11 Walkthrough & Tips",
+    seoDescription:
+      "GTA 6 Chapter 3 Mission 11 walkthrough: how to start it, every objective in order, how to get past the one blocker without a fight, and what it pays.",
+    teaser: "The eleventh mission of Chapter 3, a long string of short steps with no reward.",
+    intro: [
+      "This is the eleventh mission of Chapter 3 and the 46th overall in Push Square's list. Push Square and PC Gamer both list it in Chapter 3 under the same name, but their numbering differs by one (11th in Push Square, 10th in PC Gamer), so the number is Reported. PowerPyx lists fourteen objectives, says either lead can start it, and lists no reward. It is a long run of short steps rather than a combat job: PowerPyx's walkthrough has one melee knockout and mentions no gunfights, and control passes between the two leads at points.",
+      "Our mission list keeps Chapter 2 and later names behind a blur, so this page uses a neutral title. The mission's name, the premise, the people, the places and the step-by-step all stay behind the blur.",
+    ],
+    facts: [
+      { label: "Chapter", value: "Chapter 3, in both Push Square's and PC Gamer's lists", status: "confirmed" },
+      { label: "Number", value: "46th overall and 11th in the chapter (Push Square and Press Start). PC Gamer numbers it 10th in the chapter. PowerPyx calls it the 56th main mission using its own count.", status: "reported" },
+      { label: "Unlocks after", value: "Chapter 3, Mission 10 (PowerPyx's requirement line; Push Square and PC Gamer list it next)", status: "confirmed" },
+      { label: "Starts", value: "PowerPyx says you are invited to meet a contact at a set place after the previous mission. Who and where are in the blur.", status: "reported" },
+      { label: "Playable as", value: "Either lead can start it (PowerPyx), and control switches between them. Details are in the blur.", status: "reported" },
+      { label: "Objectives", value: "Fourteen (PowerPyx)", status: "reported" },
+      { label: "Reward", value: "None (PowerPyx)", status: "reported" },
+    ],
+    objectives: [
+      "Go backstage. You are taken into the club automatically, then need to go backstage to meet Dre'Quan. It is down the hallway to the right of the stairs you have used in previous missions (Reported, PowerPyx).",
+      "Find the Dimez. After the backstage scene you leave as Lucia. Walk to the front door and speak to the host, who says they were kicked outside (Reported, PowerPyx).",
+      "Go to the Dimez in the parking lot. Bae-Luxe and Roxy are arguing there (Reported, PowerPyx).",
+      "Follow Roxy. After Roxy drives off, jump in the nearby car with everyone else and follow her (Reported, PowerPyx).",
+      "Go to Peewees. After a while a train stops you, and Dre'Quan wants to stop at a nearby restaurant instead of going after her (Reported, PowerPyx).",
+      "Order from the clerk. Inside Peewees, go to the clerk and order food for the group (Reported, PowerPyx).",
+      "Get in Bae-Luxe's car. After Dre'Quan and Bae-Luxe finish talking, they decide to find Roxy. Head back outside to Bae-Luxe's car (Reported, PowerPyx).",
+      "Go to the house party. PowerPyx puts it south, near VCIA (Reported, PowerPyx).",
+      "Find Roxy. They send Lucia in by herself. Go round to the back door. The woman standing against the door you need, Jacki, won't move out of the way (Reported, PowerPyx).",
+      "Lure Jacki away from the door. Go to the kitchen on the opposite side of the house, where her dog is pawing at a door. Interact with the door to let the dog out into the yard (Reported, PowerPyx).",
+      "Go to Roxy. Go back to the other door and enter. Roxy is talking to someone (Reported, PowerPyx).",
+      "Deal with Kamal. After he stands up, melee him to knock him out, which helps convince Roxy to leave (Reported, PowerPyx).",
+      "Cut the power. You switch to Jason outside, where Dre'Quan says to cut the power to the house. Open the green power box on the corner of the sidewalk, look at its left side and use the on-screen prompt to turn the power off (Reported, PowerPyx).",
+      "Follow Roxy. You switch back to Lucia. Follow Roxy out of the house to finish the mission (Reported, PowerPyx).",
+    ],
+    spoiler:
+      "The mission is called Top Billing in our mission list, Push Square's list and PC Gamer, whose one-line summary is that Jason, Lucia and Dre'Quan see a concert (Confirmed for the name and chapter). PowerPyx shows the map label Watch the Real Dimez and describes Dre'Quan inviting Jason and Lucia to see his artists Roxy and Bae-Luxe, the Real Dimez, headline at the Jack of Hearts, where the rival rapper DWNPLY hijacks the set. Roxy runs off in anger to a house party, where the group finds her and they reconcile. PowerPyx says either Lucia or Jason can start it, lists Chapter 3, Mission 10 (Car Service) as the requirement and the Jack of Hearts in Crosstown as the start, and gives its own count as the 56th main mission (Reported). Spelling: PowerPyx writes the name Kamal in its step text and Kaamal in its objective list. We use Kamal, the spelling it uses most (Reported).",
+    tips: [
+      { text: "Talk before you wander. PowerPyx says the first person you need to speak to is at the front door, so you don't need to search the whole building (Reported).", reported: true },
+      { text: "Look for a non-violent fix. PowerPyx says one blocker is solved with something elsewhere in the same building, not a fight (Reported). Details are in the blur.", reported: true },
+      { text: "Melee is enough. PowerPyx's walkthrough handles its one confrontation with a melee knockout and mentions no weapons (Reported).", reported: true },
+      { text: "Watch for the character switch. PowerPyx says control changes to the other lead for one objective and then back (Reported). If you're unsure what to do after the switch, check the objective on screen.", reported: true },
+      { text: "Make a manual save before you start. PowerPyx says GTA VI has no mission replay and suggests a manual save at the start and end of each chapter (Reported).", reported: true, link: { href: "/guides/saving", label: "How to save" } },
+    ],
+    notes: [
+      "Order: Push Square and PC Gamer both list this straight after Chapter 3 Mission 10, but PC Gamer's list has one fewer entry before them, so it numbers this 10th and Push Square 11th. The overall number follows Push Square and Press Start. PowerPyx calls it the 56th main mission using its own count.",
+      "PowerPyx is the only full walkthrough for this mission so far, so the start, the steps and the no-reward line are labelled Reported. Push Square and PC Gamer confirm the name and chapter. No source gives a playtime.",
+      "PowerPyx's objective list has fourteen entries. It hasn't been checked against the on-screen prompts.",
+    ],
+    faq: [
+      {
+        question: "Which mission number is Chapter 3 Mission 11?",
+        answer: "Push Square lists it 11th in Chapter 3 and 46th overall, while PC Gamer numbers it 10th in the chapter because its list has one fewer entry before it (Reported). PowerPyx calls it the 56th main mission using its own count.",
+      },
+      {
+        question: "How do I start Chapter 3 Mission 11?",
+        answer: "PowerPyx says you are invited to meet a contact after finishing Chapter 3 Mission 10. Where is in the blurred section (Reported).",
+      },
+      {
+        question: "Does Chapter 3 Mission 11 have any combat?",
+        answer: "PowerPyx's walkthrough has one melee knockout and mentions no gunfights (Reported).",
+      },
+      {
+        question: "I'm stuck behind someone who won't move. What do I do?",
+        answer: "PowerPyx says you need to distract them with something in another room. The exact step is in the blurred section (Reported).",
+      },
+      {
+        question: "Does Chapter 3 Mission 11 pay anything?",
+        answer: "PowerPyx lists no reward for it (Reported).",
+      },
+    ],
+    sources: [
+      pp("gta-6-top-billing-watch-the-real-dimez-walkthrough", "Requirement, playable lead, start, objectives, steps and the no-reward line"),
+      pp("gta-6-full-walkthrough-all-missions", "The no-replay note"),
+      PCGAMER,
+      PUSHSQUARE,
+    ],
+    sourceLabel: "PowerPyx, PC Gamer, Push Square",
+    updated: "2026-11-20T14:12:41+10:00",
+  },
 ];
 
 /** Chapter a mission belongs to (Chapter 1 unless stated). */
+/** Push Square entries that sit in a chapter's numbering but are covered as standalone side jobs, so no "coming soon" note. */
+export const NON_CHAIN_ENTRIES: Record<number, number[]> = { 3: [9] };
 export const missionChapter = (m: Mission) => m.chapter ?? 1;
 /** Position of a mission inside its chapter. */
 export const missionChapterOrder = (m: Mission) => m.chapterOrder ?? m.order;

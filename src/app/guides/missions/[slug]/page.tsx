@@ -9,7 +9,7 @@ import { Faq } from "@/components/Faq";
 import { Related } from "@/components/Related";
 import { Spoiler } from "@/components/guides/Spoiler";
 import { SourcesList, SpoilerWarning, StatusTag } from "@/components/guides/MissionBits";
-import { LAST_VERIFIED_LABEL, MISSIONS, ORDER_NOTE, missionBySlug, missionChapter, missionChapterOrder, missionPath } from "@/lib/guides/missions";
+import { LAST_VERIFIED_LABEL, MISSIONS, NON_CHAIN_ENTRIES, ORDER_NOTE, missionBySlug, missionChapter, missionChapterOrder, missionPath } from "@/lib/guides/missions";
 import { STORY_CHAPTERS } from "@/lib/guides/story";
 
 export const dynamicParams = false;
@@ -43,7 +43,9 @@ export default async function MissionPage({ params }: { params: Promise<{ slug: 
   // Neutral "coming soon" notes where the chapter has a mission we haven't written yet, instead of a dead link.
   const chapterGap = (a: (typeof MISSIONS)[number] | undefined, b: (typeof MISSIONS)[number] | undefined) =>
     a && b && missionChapter(a) === missionChapter(b) && missionChapterOrder(b) - missionChapterOrder(a) > 1
-      ? Array.from({ length: missionChapterOrder(b) - missionChapterOrder(a) - 1 }, (_, k) => missionChapterOrder(a) + k + 1)
+      ? Array.from({ length: missionChapterOrder(b) - missionChapterOrder(a) - 1 }, (_, k) => missionChapterOrder(a) + k + 1).filter(
+          (n) => !(NON_CHAIN_ENTRIES[missionChapter(a)] ?? []).includes(n),
+        )
       : [];
   const gapNumbers = [...chapterGap(prev, m), ...chapterGap(m, next)];
   const notes = [...(m.notes ?? []), ...(ORDER_SENSITIVE.has(m.slug) ? [ORDER_NOTE] : [])];
