@@ -97,7 +97,7 @@ export const UPDATES_1900_AT = "2026-11-19T19:08:00+10:00";
 export const UPDATES_0500_AT = "2026-11-20T05:03:00+10:00";
 
 /** Army reenlistment GTA pass piece. Set to the time the PR was opened; adjust at merge. */
-export const ARMY_PASS_PUBLISHED = "2026-11-20T10:06:30+10:00";
+export const ARMY_PASS_PUBLISHED = "2026-11-20T12:03:06+10:00";
 
 /** No-prostitutes explainer (Rockstar statement via Shacknews). Set to the edit time; Web Bot adjusts if it goes live later. */
 export const NO_PROSTITUTES_PUBLISHED = "2026-11-20T08:12:59+10:00";
