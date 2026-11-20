@@ -303,6 +303,7 @@ export const NEWS_GUIDES: Record<string, string[]> = {
   "/news/gta-6-army-reenlistment-four-day-pass": ["/database/characters/jason-duval", "/guides/beginner", "/guides/missions"],
   "/news/gta-6-the-album-tracklist": ["/database/radio-stations", "/guides/beginner", "/guides/activities"],
   "/news/gta-6-first-person-glitch": ["/guides/first-person", "/guides/saving", "/guides/beginner"],
+  "/news/gta-6-twitch-kick-drops-free-codes": ["/tools/edition-compare", "/guides/beginner", "/guides/activities"],
 };
 
 /** Fewest related links a content page may end up with (also enforced by `npm run seo:audit`). */

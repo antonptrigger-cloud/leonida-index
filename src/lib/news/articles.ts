@@ -99,6 +99,12 @@ export const UPDATES_1900_AT = "2026-11-19T19:08:00+10:00";
 /** 20 Nov 05:00 AEST batch (viewership update with Streams Charts day-one recap). Set to the edit time. */
 export const UPDATES_0500_AT = "2026-11-20T05:03:00+10:00";
 
+/** 20 Nov 22:00 AEST streamer batch (viewership update with IGN, Polygon and Twitch's own post). Set to the edit time. */
+export const UPDATES_2200S_AT = "2026-11-20T22:21:49+10:00";
+
+/** Twitch and Kick drops / free codes piece. Set to the draft time; Web Bot adjusts if it goes live later. */
+export const DROPS_PUBLISHED = "2026-11-20T22:21:49+10:00";
+
 /** First-person glitch piece. Set to the draft time; Web Bot adjusts if it goes live later. */
 export const FIRSTPERSON_GLITCH_PUBLISHED = "2026-11-20T19:10:00+10:00";
 
@@ -129,6 +135,40 @@ export const AGE_RATING_PUBLISHED = "2026-11-19T11:48:00+10:00";
 export const newsPath = (slug: string) => `/news/${slug}`;
 
 export const NEWS: NewsItem[] = [
+  {
+    slug: "gta-6-twitch-kick-drops-free-codes",
+    title: "GTA 6 Free Codes: Twitch and Kick Drops",
+    description:
+      "Twitch and Kick are giving viewers GTA 6 Ultimate Edition codes. How each Drops campaign works, what you can earn, and the dates, limits and fine print.",
+    crumb: "Twitch and Kick GTA 6 drops",
+    teaser: "Watch GTA 6 streams on Twitch or Kick for badges, emotes and a chance at a free Ultimate Edition code. How each campaign works and the limits.",
+    tag: "Streamers",
+    category: "streamers",
+    keywords: ["GTA 6 Twitch drops", "GTA 6 free code", "GTA 6 Kick Sunset Reward Case", "GTA 6 Ultimate Edition free", "Twitch Golden Iguana badge", "GTA 6 Twitch badges"],
+    published: DROPS_PUBLISHED,
+    updated: DROPS_PUBLISHED,
+    citations: [
+      "https://blog.twitch.tv/en/2026/11/17/the-wait-is-over-gtavi-is-live/",
+      "https://www.gamespot.com/articles/gta-6-twitch-drops/",
+      "https://help.kick.com/en/articles/18357299-sunset-reward-case-claim-a-free-copy-of-gta-vi-on-kick",
+      "https://about.kick.com/news-and-press/13-sunset-reward-case",
+      "https://www.dexerto.com/gta/kick-and-twitch-are-giving-away-thousands-of-gta-6-codes-to-viewers-before-launch-3428151/",
+    ],
+    faq: [
+      {
+        question: "How do I get a free GTA 6 code from Twitch?",
+        answer: "Twitch says it is surprise-dropping GTA 6 Ultimate Edition codes to viewers daily from launch through 30 November. If you earn one, Twitch sends a notification and you claim it in your Drops and Rewards inventory by 7 December, 11:59 PM PST. Codes are limited by platform and region and are not guaranteed.",
+      },
+      {
+        question: "How do I get a free GTA 6 code from Kick?",
+        answer: "Log in to Kick, watch 180 minutes of any live content to unlock a Sunset Reward Case, then open it for a chance at an Ultimate Edition code. You can unlock a new case each day. Winning is not guaranteed, Xbox codes are global, and PS5 codes must match your PSN account country.",
+      },
+      {
+        question: "Are the Twitch GTA 6 drops in-game items?",
+        answer: "No. GameSpot notes they are Twitch-exclusive rewards, not items in GTA 6. Twitch's rewards are chat badges and emotes, and Twitch says the campaign is not affiliated with Rockstar Games.",
+      },
+    ],
+  },
   {
     slug: "gta-6-first-person-glitch",
     title: "GTA 6 First-Person Glitch: How It Works",
@@ -706,13 +746,13 @@ export const NEWS: NewsItem[] = [
     slug: "gta-6-streaming-viewership-peak",
     title: "GTA 6 Streams Peak at 7.9M Viewers",
     description:
-      "Streams Charts says GTA 6 launch streams peaked at 7.91 million viewers, with 125 million hours watched on day one. Platform peaks, records and caveats.",
+      "Streams Charts says GTA 6 launch streams peaked at 7.91 million viewers; IGN reports a peak above 7.25 million. Platform peaks, records and caveats.",
     crumb: "Streaming viewership",
     teaser: "Streams Charts puts the day-one peak at 7.91 million viewers and 125 million hours watched. Platform peaks, top streamers and caveats.",
     tag: "Streamers",
-    keywords: ["GTA 6 viewers", "GTA 6 Twitch record", "GTA 6 Kick", "GTA 6 YouTube", "streaming record", "GTA 6 Streams Charts", "most watched game launch"],
+    keywords: ["GTA 6 viewers", "GTA 6 Streamlabs", "GTA 6 Twitch record", "GTA 6 Kick", "GTA 6 YouTube", "streaming record", "GTA 6 Streams Charts", "most watched game launch"],
     published: STREAMERS_PUBLISHED,
-    updated: UPDATES_0500_AT,
+    updated: UPDATES_2200S_AT,
     citations: [
       "https://streamscharts.com/news/gta-6-day1-recap",
       "https://x.com/StreamsCharts/status/2123408702220992617",
@@ -721,6 +761,10 @@ export const NEWS: NewsItem[] = [
       "https://www.bbc.com/news/live/c60rkg21dl22t",
       "https://nextcounts.com/games/grand-theft-auto-vi",
       "https://luciastream.com/press/",
+      "https://www.ign.com/articles/gta-6-is-the-most-popular-game-ever-across-twitch-and-kick-and-its-only-been-out-for-a-day",
+      "https://www.polygon.com/gta-6-streaming-record-twitch-viewers-reviews/",
+      "https://www.pushsquare.com/news/2026/11/gta-6-obliterates-all-time-streaming-record-before-its-even-fully-released",
+      "https://x.com/Twitch/status/2123230452013994219",
     ],
     faq: [
       {
@@ -730,6 +774,10 @@ export const NEWS: NewsItem[] = [
       {
         question: "Did GTA 6 break the Twitch record?",
         answer: "Streams Charts says GTA 6 is now the most popular game ever on Twitch and Kick, with a Twitch peak of 3.31 million per Variety. Twitch told Variety that GTA 6 streams beat Valorant's 2020 record of 1.7 million concurrent viewers within six hours of the New Zealand unlock.",
+      },
+      {
+        question: "Do the trackers agree on GTA 6's launch viewership?",
+        answer: "No. IGN, citing Streamlabs and Streams Charts reports, says GTA 6 passed 118 million hours watched and reports a peak of more than 7.25 million viewers. Streams Charts' own recap says 7.91 million and 125.47 million hours, and IGN notes it paints a far more impressive picture. Trackers count platforms and multistreams differently, and none of these are official platform figures.",
       },
     ],
   },
