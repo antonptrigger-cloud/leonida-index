@@ -99,6 +99,9 @@ export const UPDATES_1900_AT = "2026-11-19T19:08:00+10:00";
 /** 20 Nov 05:00 AEST batch (viewership update with Streams Charts day-one recap). Set to the edit time. */
 export const UPDATES_0500_AT = "2026-11-20T05:03:00+10:00";
 
+/** GTA VI: The Album piece. Set to the edit time; Web Bot adjusts if it goes live later. */
+export const ALBUM_PUBLISHED = "2026-11-20T17:09:48+10:00";
+
 /** Army reenlistment GTA pass piece. Set to the time the PR was opened; adjust at merge. */
 export const ARMY_PASS_PUBLISHED = "2026-11-20T12:03:06+10:00";
 
@@ -123,6 +126,41 @@ export const AGE_RATING_PUBLISHED = "2026-11-19T11:48:00+10:00";
 export const newsPath = (slug: string) => `/news/${slug}`;
 
 export const NEWS: NewsItem[] = [
+  {
+    slug: "gta-6-the-album-tracklist",
+    title: "GTA 6 Album: Full 34-Track List",
+    description:
+      "Grand Theft Auto VI: The Album from Rockstar and Atlantic Records is out with 34 tracks. The full tracklist, release timing, vinyl editions and score date.",
+    crumb: "GTA 6: The Album tracklist",
+    teaser: "Rockstar and Atlantic's 34-track soundtrack is on streaming. The full tracklist, when it landed, vinyl and CD exclusives, and the Justice score date.",
+    tag: "Music",
+    category: "launch",
+    keywords: ["GTA 6 album", "Grand Theft Auto VI: The Album", "GTA 6 soundtrack tracklist", "GTA 6 Atlantic Records", "GTA 6 album vinyl", "GTA 6 Justice score"],
+    published: ALBUM_PUBLISHED,
+    updated: ALBUM_PUBLISHED,
+    citations: [
+      "https://www.take2games.com/ir/news/rockstar-games-announces-grand-theft-auto-vi-now-available",
+      "https://www.rockstargames.com/VI/music",
+      "https://music.apple.com/us/album/grand-theft-auto-vi-the-album/6812476961",
+      "https://www.billboard.com/music/music-news/grand-theft-auto-vi-the-album-1236385865/",
+      "https://www.complex.com/music/a/shawn-setaro/grand-theft-auto-vi-the-album-released",
+      "https://www.digitalmusicnews.com/2026/11/19/grand-theft-auto-vi-the-album/",
+    ],
+    faq: [
+      {
+        question: "How many songs are on GTA 6: The Album?",
+        answer: "34. Take-Two's launch press release and Rockstar's music page both say the official soundtrack has 34 original tracks, and the Apple Music listing runs 1 hour 37 minutes.",
+      },
+      {
+        question: "When did the GTA 6 album come out?",
+        answer: "Take-Two's 19 November release said it would arrive on streaming services at midnight. Apple Music lists 20 November, and Billboard and Complex report it hit streaming on Friday 20 November.",
+      },
+      {
+        question: "Is the Justice score on the album?",
+        answer: "No. Grand Theft Auto VI: Original Score by Justice is a separate album that Rockstar says arrives on 11 December, with 30 tracks plus digital bonus tracks. Justice do have two songs on The Album itself.",
+      },
+    ],
+  },
   {
     slug: "gta-6-army-reenlistment-four-day-pass",
     title: "43 Soldiers Took Army's GTA 6 Reenlistment Pass",
