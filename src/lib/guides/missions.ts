@@ -2003,7 +2003,7 @@ export const MISSIONS: Mission[] = [
     tips: [
       { text: "Scan before you steal. The scanning app shows trackers, and PowerPyx says the buyer of stolen cars refuses any car with a tracker, and PC Gamer says the app also tells you whether a car is suitable for sale to him.", reported: true },
       { text: "Know the tracker types. PowerPyx says cheap cars usually have no tracker, mid-range cars a standard one and supercars an advanced one (Reported). On what a standard tracker does, the outlets differ: PowerPyx says it alerts the police to where you stole the car, while PC Gamer says it only stops you modifying the car at a mod shop until you register it (Reported, conflict). Both say an advanced tracker brings the police if you drive too slowly.", reported: true, link: { href: "/guides/stealing-cars", label: "Stealing cars guide" } },
-      { text: "The slim jim doesn't start every car. PC Gamer says it won't start a keyless car, and that keyless cars need a key cloner you get later in the story. Some cars only need to be unlocked before you can hotwire them (Reported).", reported: true },
+      { text: "The slim jim doesn't start every car. PC Gamer says it won't start a keyless car, and that keyless cars need a separate tool you get later in the story. Some cars only need to be unlocked before you can hotwire them (Reported).", reported: true },
       { text: "Check the trunk. PC Gamer says the slim jim also lets you pop a car's trunk without setting off an alarm (Reported).", reported: true },
       { text: "Mind your garage space. PowerPyx says registering a new personal car later needs a free slot, so you have to buy more garages or sell a car (Reported).", reported: true, link: { href: "/guides/garages", label: "Garages guide" } },
       { text: "Selling untracked cars is early money. PowerPyx calls it the fastest way to make money so far, with a short closed period of 1 to 2 minutes after each sale (Reported).", reported: true, link: { href: "/guides/money", label: "Money guide" } },
@@ -2029,7 +2029,7 @@ export const MISSIONS: Mission[] = [
       },
       {
         question: "Does the slim jim work on every car?",
-        answer: "No. PC Gamer says it won't start a keyless car, which needs a key cloner you get later in the story (Reported).",
+        answer: "No. PC Gamer says it won't start a keyless car, which needs a separate tool you get later in the story (Reported).",
       },
       {
         question: "What does a car tracker do?",

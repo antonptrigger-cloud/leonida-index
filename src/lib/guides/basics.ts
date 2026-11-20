@@ -57,7 +57,7 @@ export const STEALING_CARS_FAQ: Qa[] = [
   {
     question: "Can I keep a car I steal as my personal vehicle?",
     answer:
-      "Not early on. PowerPyx says you can steal vehicles off the street in Chapter 1 but can't register them as your personal vehicle yet, and that registering new personal vehicles unlocks automatically in Chapter 2 (Reported).",
+      "Not early on. PowerPyx says you can steal vehicles off the street in Chapter 1 but can't register them as your personal vehicle yet, and that registering new personal vehicles unlocks automatically later in the story (Reported).",
   },
   {
     question: "Will the police recognise the car I stole?",
