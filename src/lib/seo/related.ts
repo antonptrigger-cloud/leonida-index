@@ -300,6 +300,7 @@ export const NEWS_GUIDES: Record<string, string[]> = {
   "/news/gta-6-internet-traffic-record-de-cix": ["/guides/beginner", "/tools/edition-compare"],
   "/news/gta-6-game-awards-nominations": ["/database/characters/cast", "/guides/beginner"],
   "/news/gta-6-no-prostitutes-rockstar": ["/guides/relationship", "/guides/wanted", "/guides/stealing-cars"],
+  "/news/gta-6-army-reenlistment-four-day-pass": ["/database/characters/jason-duval", "/guides/beginner", "/guides/missions"],
 };
 
 /** Fewest related links a content page may end up with (also enforced by `npm run seo:audit`). */
