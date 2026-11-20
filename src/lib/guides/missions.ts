@@ -4034,6 +4034,179 @@ export const MISSIONS: Mission[] = [
     sourceLabel: "PowerPyx, PC Gamer, GameSpot, Push Square",
     updated: "2026-11-20T17:16:35+10:00",
   },
+  {
+    slug: "chapter-3-mission-18",
+    hidden: true,
+    chapter: 3,
+    chapterOrder: 18,
+    order: 53,
+    name: "Chapter 3, Mission 18",
+    seoTitle: "GTA 6 Chapter 3 Mission 18 Walkthrough & Tips",
+    seoDescription:
+      "GTA 6 Chapter 3 Mission 18 walkthrough: how it starts, every objective in order, staying unseen on foot, getting clear afterwards, and what it pays.",
+    teaser: "The eighteenth mission of Chapter 3, with seven objectives, a stretch on foot where you avoid being seen, and no cash reward.",
+    intro: [
+      "This is the eighteenth mission of Chapter 3 and the 53rd overall in Push Square's list. Push Square, PC Gamer and GameSpot all list it 18th in Chapter 3 under the same name (Confirmed), but the overall number is Reported. PowerPyx lists seven objectives, says either lead can start it, says it starts by itself when the previous mission ends, and lists no reward. The objectives cover a slow drive, a stretch on foot and a drive away. PowerPyx's advice for the on-foot part is to stay right behind your partner so the guards don't spot you.",
+      "Our mission list keeps Chapter 2 and later names behind a blur, so this page uses a neutral title. The mission's name, the premise, the people, the places and the step-by-step all stay behind the blur.",
+    ],
+    facts: [
+      { label: "Chapter", value: "Chapter 3, and the 18th mission of the chapter in Push Square's, PC Gamer's and GameSpot's lists, under the same name", status: "confirmed" },
+      { label: "Number", value: "53rd overall (Push Square). PowerPyx calls it the 64th main mission using its own count.", status: "reported" },
+      { label: "Unlocks after", value: "Chapter 3, Mission 17 (PowerPyx's requirement line; Push Square, PC Gamer and GameSpot list it next)", status: "confirmed" },
+      { label: "Starts", value: "PowerPyx says it starts automatically as soon as the previous mission ends and moves you to a new place, so there is no marker to find. Where is in the blur.", status: "reported" },
+      { label: "Playable as", value: "Either lead can start it (PowerPyx)", status: "reported" },
+      { label: "Objectives", value: "Seven (PowerPyx)", status: "reported" },
+      { label: "Reward", value: "None (PowerPyx)", status: "reported" },
+    ],
+    objectives: [
+      "Scope out the house. In the neighbourhood, drive south to the marked house and drive slowly past it, as Jason directs you to (Reported, PowerPyx).",
+      "Park the vehicle. After passing the house, park nearby (Reported, PowerPyx).",
+      "Find Nicole. Sneak over to the house, following behind Jason, who directs where you can go. Follow him to the back, where PowerPyx says to wait for the guard who walks out of the back door, then follow and enter the house while he stands guard. PowerPyx's wording doesn't make clear which of them is standing guard (Reported, PowerPyx).",
+      "Reach the room. Walk across the hallway to the bedrooms and enter the one in the northeast corner with the closed door (Reported, PowerPyx).",
+      "Pick up Nicole. After the scene she is knocked out and you can pick her up off the ground (Reported, PowerPyx).",
+      "Escape with Nicole. Follow Jason around the back door and down the side of the house to the front. PowerPyx says that if you stay right behind him you won't be spotted by any guards. Go to your car and open the trunk to place her inside (Reported, PowerPyx).",
+      "Escape the area. Quickly leave the general area to get away from the guards (Reported, PowerPyx).",
+      "Take Nicole to the planning room. Drive to the planning room in Stockyard, which completes the mission (Reported, PowerPyx).",
+      "PowerPyx's objective wording is: Find Nicole, Park the vehicle, Find Nicole, Pick up Nicole, Escape with Nicole, Escape the area, Take Nicole to the planning room (Reported, PowerPyx).",
+    ],
+    spoiler:
+      "The mission is called Security Expert in our mission list, Push Square's list, PC Gamer's list and GameSpot's list, and all four number it 18th in Chapter 3. PC Gamer's one-line summary is that Jason and Lucia meet Nicole (Confirmed for the name and chapter). PowerPyx describes Jason and Lucia taking Nicole from under the noses of her La Polilla Negra protection detail and bringing her to Raul. Raul reveals he knows she has been stealing from Polilla Negra and that they were planning to kill her after her current assignment, and Nicole agrees to join Raul's crew (Reported). PowerPyx lists Chapter 3, Mission 17 (Sinfrontera National Bank) as the requirement, says the mission starts automatically after it and moves you to Waning Sands in Leonard County to find the missing security officer, and gives its own count as the 64th main mission (Reported). Order: PowerPyx's index lists it straight after Sinfrontera National Bank and marks it as the second of its Cartel Heist setup missions, which matches Push Square, PC Gamer and GameSpot (Reported). What it sets up: PowerPyx says Nicole agrees to join Raul's crew at the end of the mission (Reported).",
+    tips: [
+      { text: "Stay right behind your partner on foot. PowerPyx says this is how you avoid being spotted by the guards, both going in and coming out (Reported).", reported: true },
+      { text: "Leave the area quickly once you are driving. PowerPyx says to quickly leave the general area to get away from the guards (Reported).", reported: true },
+      { text: "Don't expect a gap to save. PowerPyx says this mission starts automatically as soon as the previous one ends. PowerPyx and Push Square say story missions can't be replayed, and PowerPyx suggests a manual save at the start and end of each chapter (Reported).", reported: true, link: { href: "/guides/saving", label: "How to save" } },
+      { text: "For a refresher on swapping between the two leads, see our switching characters guide.", reported: false, link: { href: "/guides/switch-characters", label: "Switching characters" } },
+    ],
+    notes: [
+      "Order: Push Square, PC Gamer and GameSpot all list this 18th in Chapter 3, and PowerPyx's index lists it straight after the mission our hub lists 17th. The overall number follows Push Square. PowerPyx calls it the 64th main mission using its own count.",
+      "PowerPyx is the only full walkthrough for this mission so far, so the start, the steps, the automatic start and the lack of a reward are labelled Reported. Push Square, PC Gamer and GameSpot confirm the name and chapter. PowerPyx doesn't say which lead you play, so we don't either. No source gives a playtime.",
+      "PowerPyx's objective list has seven entries and lists one of them twice. It hasn't been checked against the on-screen prompts.",
+    ],
+    faq: [
+      {
+        question: "Which mission number is Chapter 3 Mission 18?",
+        answer: "Push Square, PC Gamer and GameSpot all list it 18th in Chapter 3 under the same name (Confirmed). Push Square makes it the 53rd overall and PowerPyx the 64th using its own count (Reported).",
+      },
+      {
+        question: "How do I start Chapter 3 Mission 18?",
+        answer: "PowerPyx says it starts by itself as soon as the previous story mission ends, so there is no marker to find (Reported).",
+      },
+      {
+        question: "Is there any combat in Chapter 3 Mission 18?",
+        answer: "Not in PowerPyx's walkthrough, whose seven objectives cover a slow drive, a stretch on foot where you avoid being seen, and a drive away (Reported).",
+      },
+      {
+        question: "How do I avoid getting spotted?",
+        answer: "PowerPyx says that if you stay right behind your partner on foot, the guards won't spot you (Reported).",
+      },
+      {
+        question: "How much does Chapter 3 Mission 18 pay?",
+        answer: "PowerPyx lists no reward for it (Reported).",
+      },
+    ],
+    sources: [
+      pp("gta-6-security-expert-walkthrough", "Requirement, automatic start, playable leads, start, objectives, steps and reward"),
+      pp("gta-6-full-walkthrough-all-missions", "Where PowerPyx's own list places the mission, its heist-setup grouping and the no-replay note"),
+      PCGAMER,
+      {
+        id: "gamespot",
+        label: "GameSpot: How long to beat GTA 6, full missions list",
+        url: "https://www.gamespot.com/articles/how-long-to-beat-gta-6/",
+        used: "Mission name and Chapter 3 order. No playtime used.",
+      },
+      PUSHSQUARE,
+    ],
+    sourceLabel: "PowerPyx, PC Gamer, GameSpot, Push Square",
+    updated: "2026-11-20T18:09:23+10:00",
+  },
+  {
+    slug: "chapter-3-mission-19",
+    hidden: true,
+    chapter: 3,
+    chapterOrder: 19,
+    order: 54,
+    name: "Chapter 3, Mission 19",
+    seoTitle: "GTA 6 Chapter 3 Mission 19 Walkthrough & Tips",
+    seoDescription:
+      "GTA 6 Chapter 3 Mission 19 walkthrough: when it unlocks, every objective in order, a way to skip an optional cost, losing pursuers, and what it pays.",
+    teaser: "The nineteenth mission of Chapter 3, with thirteen objectives, an optional cost you can skip, a chase at the end and no cash reward.",
+    intro: [
+      "This is the nineteenth mission of Chapter 3 and the 54th overall in Push Square's list. Push Square, PC Gamer and GameSpot all list it 19th in Chapter 3 under the same name (Confirmed), but the overall number is Reported. PowerPyx lists thirteen objectives, says only one of the two leads can start it, and lists no reward. PowerPyx says an item you need can be bought, but describes a way to get it without paying. It ends with a chase, and PowerPyx says you lose your pursuers by getting outside the red area on the map.",
+      "Our mission list keeps Chapter 2 and later names behind a blur, so this page uses a neutral title. The mission's name, the premise, the people, the places and the step-by-step all stay behind the blur.",
+    ],
+    facts: [
+      { label: "Chapter", value: "Chapter 3, and the 19th mission of the chapter in Push Square's, PC Gamer's and GameSpot's lists, under the same name", status: "confirmed" },
+      { label: "Number", value: "54th overall (Push Square). PowerPyx calls it the 61st main mission using its own count.", status: "reported" },
+      { label: "Order", value: "PowerPyx's own list places it before Chapter 3 Missions 17 and 18, which Push Square, PC Gamer and GameSpot place before it. Details are in the blur.", status: "reported" },
+      { label: "Unlocks after", value: "PowerPyx's requirement line names Chapter 3, Mission 15. Push Square, PC Gamer and GameSpot list Missions 16 to 18 between the two.", status: "reported" },
+      { label: "Starts", value: "PowerPyx says a contact messages you about a day after the requirement mission, asking to meet at a set place. Where is in the blur.", status: "reported" },
+      { label: "Playable as", value: "One lead only. Which one is in the blur (PowerPyx).", status: "reported" },
+      { label: "Objectives", value: "Thirteen, one of which PowerPyx lists only as \"Objective 2\" (PowerPyx)", status: "reported" },
+      { label: "Reward", value: "None (PowerPyx)", status: "reported" },
+    ],
+    objectives: [
+      "Go to the store. After Dre'Quan comes out, head to the Eris Store along the water in Downtown (Reported, PowerPyx).",
+      "Find a pair of DWNPLY sneakers. Enter the store with Dre'Quan, go upstairs and to the right of where Dre'Quan stops to talk to the DJ, where a man is holding a bag. He offers to sell them to you for $1,580, which you can accept (Reported, PowerPyx).",
+      "Or get them for free. PowerPyx says that if you haggle he declines and walks away. Walking into him may make him drop the bag. If it doesn't, keep following him. In the outdoor area there are basketballs on a stand to the right, and throwing one at him makes him drop the bag, which you can then pick up (Reported, PowerPyx).",
+      "Return to Dre'Quan. Go back inside and speak to him just inside the door (Reported, PowerPyx).",
+      "Follow Dre'Quan to the VIP lounge. The bouncer stops you at the door. PowerPyx says to look at him and select the Show Shoes option, which has him let you up for free (Reported, PowerPyx).",
+      "Approach DWNPLY. Head upstairs to where he is sitting with a group to the left of the bar, then hand him the shoes (Reported, PowerPyx).",
+      "Take DWNPLY's keys. While he is signing the shoes, hold the prompt to take his keys. He interrupts to ask who it is for. After you respond, PowerPyx says to continue holding to go for the keys (Reported, PowerPyx).",
+      "Escape with Dre'Quan. After Jason grabs the keys, run downstairs to Dre'Quan and follow him to the parking lot (Reported, PowerPyx).",
+      "Search the parking lot for DWNPLY's car. Trigger the car horn and follow the noise to the east side of the lot, where the car is parked in one of the lit-up VIP spots. Get in and wait for Dre'Quan (Reported, PowerPyx).",
+      "Drive to the Speedshop. Drive the car to the Stockyard Speedshop to drop it off. As soon as you leave the parking lot a gang member jumps on the hood, and PowerPyx says to swerve back and forth to knock them off (Reported, PowerPyx).",
+      "Escape with DWNPLY's car. Depending on how quickly you leave the area, gang members may chase you. PowerPyx says you need to lose them by getting out of the red area on the map before you continue to the shop, which completes the mission (Reported, PowerPyx).",
+      "PowerPyx's objective wording is: Go to the Eris store, Objective 2, Find a pair of DWNPLY sneakers, Return to Dre'Quan, Follow Dre'Quan to the VIP lounge, Approach DWNPLY, Hand DWNPLY the shoes, Take DWNPLY's keys, Escape with Dre'Quan, Search the parking lot for DWNPLY's car, Steal DWNPLY's car, Drive to the Speedshop, Escape with DWNPLY's car (Reported, PowerPyx).",
+    ],
+    spoiler:
+      "The mission is called Ride or Die in our mission list, Push Square's list, PC Gamer's list and GameSpot's list, and all four number it 19th in Chapter 3. PC Gamer's one-line summary is that Jason helps out Dre'Quan (Confirmed for the name and chapter). PowerPyx shows the map label Meet Dre'Quan and describes Dre'Quan having a plan to get revenge on DWNPLY and get the Dimez back on top. Jason helps him steal DWNPLY's car from the Eris Flagship store by posing as a fan. The two drive away while escaping DWNPLY's personal bodyguard, Bush, and a gang called Cash City, who DWNPLY pays for protection (Reported). PowerPyx lists Chapter 3, Mission 15 (Credit Check) as the requirement and says Jason is the only lead who can start it, going alone. Around a day after the requirement, Dre'Quan messages Jason to meet at the Jack of Hearts in Crosstown, Vice City, and PowerPyx says you can sit on the ledge outside the club to wait for him. PowerPyx gives its own count as the 61st main mission (Reported). Order: PowerPyx's index lists it straight after the mission our hub lists 16th, then a Raul's Next Job entry, and only then Sinfrontera National Bank (63rd) and Security Expert (64th). Push Square, PC Gamer and GameSpot list it after both of those, so our hub follows them (Reported).",
+    tips: [
+      { text: "You don't have to pay for the item. PowerPyx says it can be bought, but that it is possible to get it for free, and the steps are in the blurred section (Reported).", reported: true },
+      { text: "Get moving straight away at the end. PowerPyx says whether you are chased depends on how quickly you leave the area, and that you lose pursuers by getting out of the red area on the map (Reported).", reported: true, link: { href: "/guides/wanted", label: "Wanted system" } },
+      { text: "Make a manual save before you start. PowerPyx and Push Square say story missions can't be replayed, and PowerPyx suggests a manual save at the start and end of each chapter (Reported).", reported: true, link: { href: "/guides/saving", label: "How to save" } },
+    ],
+    notes: [
+      "Order: Push Square, PC Gamer and GameSpot all list this 19th in Chapter 3. PowerPyx's index places it earlier in the chapter, before the missions our hub lists 17th and 18th, so it may sit in a different place in PowerPyx's order. The overall number follows Push Square. PowerPyx calls it the 61st main mission using its own count.",
+      "PowerPyx is the only full walkthrough for this mission so far, so the start, the steps, the price, the free method and the lack of a reward are labelled Reported. Push Square, PC Gamer and GameSpot confirm the name and chapter. No source gives a playtime.",
+      "PowerPyx's objective list has thirteen entries, one of which it labels only \"Objective 2\". It hasn't been checked against the on-screen prompts.",
+    ],
+    faq: [
+      {
+        question: "Which mission number is Chapter 3 Mission 19?",
+        answer: "Push Square, PC Gamer and GameSpot all list it 19th in Chapter 3 under the same name (Confirmed). Push Square makes it the 54th overall and PowerPyx the 61st using its own count (Reported).",
+      },
+      {
+        question: "When does Chapter 3 Mission 19 unlock?",
+        answer: "PowerPyx says it needs Chapter 3 Mission 15 done and then starts about a day later with a message from a contact. Its own list places it before Missions 17 and 18. The start point is in the blurred section (Reported).",
+      },
+      {
+        question: "Do I have to spend money in Chapter 3 Mission 19?",
+        answer: "PowerPyx says an item you need can be bought, but that it is possible to get it for free (Reported).",
+      },
+      {
+        question: "How do I lose the people chasing me?",
+        answer: "PowerPyx says to get out of the red area on the map, then carry on to the drop-off (Reported).",
+      },
+      {
+        question: "How much does Chapter 3 Mission 19 pay?",
+        answer: "PowerPyx lists no reward for it (Reported).",
+      },
+    ],
+    sources: [
+      pp("gta-6-ride-or-die-meet-drequan-walkthrough", "Requirement, playable lead, start, objectives, steps, price, free method and reward"),
+      pp("gta-6-full-walkthrough-all-missions", "Where PowerPyx's own list places the mission and the no-replay note"),
+      PCGAMER,
+      {
+        id: "gamespot",
+        label: "GameSpot: How long to beat GTA 6, full missions list",
+        url: "https://www.gamespot.com/articles/how-long-to-beat-gta-6/",
+        used: "Mission name and Chapter 3 order. No playtime used.",
+      },
+      PUSHSQUARE,
+    ],
+    sourceLabel: "PowerPyx, PC Gamer, GameSpot, Push Square",
+    updated: "2026-11-20T18:09:23+10:00",
+  },
 ];
 
 /** Chapter a mission belongs to (Chapter 1 unless stated). */
