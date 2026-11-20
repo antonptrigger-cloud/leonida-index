@@ -12,6 +12,10 @@ const SC_RECAP = "https://streamscharts.com/news/gta-6-day1-recap";
 const SC_X_PEAK = "https://x.com/StreamsCharts/status/2123408702220992617";
 const SC_X_HOURS = "https://x.com/StreamsCharts/status/2123452504167833655";
 const VARIETY = "https://variety.com/2026/gaming/news/gta-6-launch-livestream-internet-traffic-records-1236953145/";
+const IGN = "https://www.ign.com/articles/gta-6-is-the-most-popular-game-ever-across-twitch-and-kick-and-its-only-been-out-for-a-day";
+const POLYGON = "https://www.polygon.com/gta-6-streaming-record-twitch-viewers-reviews/";
+const PUSH_SQUARE = "https://www.pushsquare.com/news/2026/11/gta-6-obliterates-all-time-streaming-record-before-its-even-fully-released";
+const TWITCH_X = "https://x.com/Twitch/status/2123230452013994219";
 
 // Streams Charts day-one recap (published 19 Nov 2026) and Streams Charts X posts, read 04:58-05:05 AEST, 20 Nov 2026.
 // Platform peaks are Streams Charts' preliminary figures as reported by Variety (19 Nov, 7:09 a.m. PT = 01:09 AEST 20 Nov).
@@ -33,6 +37,32 @@ const PEAKS: string[][] = [
   ["Kick alone", "1,462,371", "NextCounts", "16:35 UTC, 18 Nov (02:35 AEST, 19 Nov)"],
 ];
 
+// Read 22:10-22:14 AEST, 20 Nov 2026. IGN (Virginia Glaze) updated 18:51 UTC 19 Nov (04:51 AEST 20 Nov); Polygon (Sam Hill) 12:52 PM ET 18 Nov (03:52 AEST 19 Nov);
+// Push Square (Robert Ramsey) page shows "Wed, 7pm" with no time zone; Twitch's X post 01:42 UTC 19 Nov (11:42 AEST).
+// IGN does not label each figure by tracker: it credits Streamlabs and Streams Charts reports, then says Streams Charts "paints a far more impressive picture".
+const OUTLETS: React.ReactNode[][] = [
+  [
+    <Ext key="ign" href={IGN}>IGN</Ext>,
+    "Most popular game ever on Twitch and Kick within 26 hours. More than 118 million hours watched as of 19 Nov. Peak of more than 7.25 million viewers, 4.03 million average, 1.28 million hours of broadcast time",
+    "Updated 04:51 AEST, 20 Nov",
+  ],
+  [
+    <Ext key="poly" href={POLYGON}>Polygon</Ext>,
+    "Twitch peak of 3.29 million, ahead of League of Legends (3.11 million) and Fortnite (3.04 million). Combined 7,886,402 at the time of writing. Closest launches: Valorant 1.74 million, Hogwarts Legacy 1.36 million, Path of Exile 2 1.35 million, Cyberpunk 2077 1.32 million",
+    "Published 03:52 AEST, 19 Nov",
+  ],
+  [
+    <Ext key="ps" href={PUSH_SQUARE}>Push Square</Ext>,
+    "Early Streams Charts reading of 7.2 million combined (Twitch 3.1 million, YouTube 2.7 million, Kick 1.4 million), already past Valorant's 1.7 million",
+    "Wednesday 18 Nov, evening (page gives no time zone)",
+  ],
+  [
+    <Ext key="tw" href={TWITCH_X}>@Twitch on X</Ext>,
+    "\u201cGTAVI is twitch\u2019s biggest game launch ever and it\u2019s not even out in the US lol\u201d",
+    "11:42 AEST, 19 Nov",
+  ],
+];
+
 const NOW: string[][] = [
   ["NextCounts", "3,444,936", "Twitch 1,225,405 (123,748 channels), Kick 1,160,356, YouTube 1,059,175", "06:00 UTC (16:00 AEST)"],
   ["luciastream", "2,452,709 (8,118 channels)", "Kick 1,011,623, Twitch 998,682, YouTube 442,404", "06:02 UTC (16:02 AEST)"],
@@ -40,7 +70,7 @@ const NOW: string[][] = [
 
 export default function Page() {
   return (
-    <NewsLayout slug={SLUG} kicker="News · Streamers" title="GTA 6 streams peak at 7.9M viewers" source="Streams Charts, Variety, NextCounts, luciastream, BBC">
+    <NewsLayout slug={SLUG} kicker="News · Streamers" title="GTA 6 streams peak at 7.9M viewers" source="Streams Charts, IGN, Polygon, Variety, NextCounts, luciastream, BBC">
       <Lede>
         Analytics firm Streams Charts says GTA 6 peaked at 7.91 million concurrent viewers across livestreaming platforms in its first 24 hours, with 125.47 million hours watched. It calls
         that more than 4.5 times the previous record holder, Valorant&rsquo;s 1.74 million (<Ext href={SC_RECAP}>Streams Charts</Ext>). Other trackers recorded lower combined peaks,
@@ -68,6 +98,23 @@ export default function Page() {
           <Lead>Top streamers, day one:</Lead> by hours watched, Streams Charts ranks IShowSpeed first (4.47 million across YouTube and Twitch), then TheBurntPeanut (3.89 million) and
           alanzoka (3.11 million, all on Twitch). By peak, combining multistreams, IlloJuan led at 562K, and Windah Basudara&rsquo;s first GTA 6 broadcast hit 392.5K, his channel&rsquo;s
           biggest stream (<Ext href={SC_RECAP}>Streams Charts</Ext>).
+        </li>
+      </Bullets>
+
+      <H2>What IGN, Polygon and Twitch say</H2>
+      <DataTable head={["Source", "What it reports", "When"]} rows={OUTLETS} minWidth="34rem" />
+      <Bullets>
+        <li>
+          <Lead>A second tracker:</Lead> IGN credits Streamlabs and Streams Charts reports and says Streamlabs found GTA 6&rsquo;s hours watched were 9.7 times Just Chatting&rsquo;s 12.2 million, Twitch&rsquo;s next biggest category (<Ext href={IGN}>IGN</Ext>).
+          IGN does not label each of its other figures by tracker, but it contrasts them with Streams Charts, which it says paints &ldquo;a far more impressive picture&rdquo;: more than 125 million hours watched, with
+          Twitch on 52 million. So IGN&rsquo;s 7.25 million peak sits below Streams Charts&rsquo; 7.91 million, and its 118 million hours below Streams Charts&rsquo; 125.47 million.
+        </li>
+        <li>
+          <Lead>Different top-streamer lists:</Lead> IGN names alanzoka, Rubius and HoneyMad (it spells them &ldquo;Rubios&rdquo; and &ldquo;Honeymad&rdquo;) among the top Twitch streamers for GTA 6, with IShowSpeed and Gameplayrj in the top five on YouTube Gaming. It repeats Streams Charts&rsquo; ranking that has IShowSpeed
+          first on hours watched (4.47 million) and IlloJuan on the biggest single peak (562K) (<Ext href={IGN}>IGN</Ext>). Streamlabs and Streams Charts rank by different measures, so the lists need not match.
+        </li>
+        <li>
+          <Lead>Moving numbers:</Lead> Polygon&rsquo;s and Push Square&rsquo;s peaks are earlier readings, taken while the rollout was still under way. They were later overtaken by Streams Charts&rsquo; 3.31 million Twitch and 7.91 million combined peaks above.
         </li>
       </Bullets>
 
@@ -114,7 +161,7 @@ export default function Page() {
         <p>
           These are third-party trackers, not platform statements. By luciastream&rsquo;s own explanation, its total adds up the viewers each platform reports for every live GTA stream,
           so someone watching two streams counts twice. Streams Charts, NextCounts and luciastream each count differently, so their peaks will not match. Twitch confirmed to Variety
-          that the Valorant record fell, but we have not seen Twitch, Kick or YouTube publish their own GTA 6 peak figure, so the 7.91 million is Streams Charts&rsquo; number, not an official one.
+          that the Valorant record fell, but we have not seen Twitch, Kick or YouTube publish their own GTA 6 peak figure, so the 7.91 million is Streams Charts&rsquo; number, not an official one. IGN&rsquo;s lower peak, which it sets against Streams Charts&rsquo; higher count, shows the trackers disagree. Twitch&rsquo;s own post says only that this is its biggest game launch ever, without a number.
         </p>
       </Callout>
 
@@ -123,6 +170,10 @@ export default function Page() {
         <Source href={SC_X_PEAK} label="@StreamsCharts: worldwide rollout complete, global peak 7.9M, 13:31 UTC 19 Nov" kind="Analytics firm, X post" />
         <Source href={SC_X_HOURS} label="@StreamsCharts: 125.4M hours watched in first 24 hours, platform breakdown, 16:25 UTC 19 Nov" kind="Analytics firm, X post" />
         <Source href={VARIETY} label="Variety (Jennifer Maas): GTA 6 launch breaks internet usage records; livestreams hit nearly 8 million, 19 Nov 2026" kind="Reputable outlet" />
+        <Source href={IGN} label="IGN (Virginia Glaze): GTA 6 Is the Most Popular Game Ever Across Twitch and Kick, updated 19 Nov 2026 (read 22:12 AEST, 20 Nov)" kind="News outlet" />
+        <Source href={POLYGON} label="Polygon (Sam Hill): GTA 6 Is Already Breaking Twitch Records, 18 Nov 2026 (read 22:12 AEST, 20 Nov)" kind="News outlet" />
+        <Source href={PUSH_SQUARE} label="Push Square (Robert Ramsey): GTA 6 Obliterates All-Time Streaming Record, 18 Nov 2026 (read 22:12 AEST, 20 Nov)" kind="News outlet" />
+        <Source href={TWITCH_X} label="@Twitch on X: biggest game launch ever, 01:42 UTC 19 Nov" kind="Official, X post" />
         <Source href="https://www.bbc.com/news/live/c60rkg21dl22t" label="BBC News live page" kind="News" />
         <Source href="https://nextcounts.com/games/grand-theft-auto-vi" label="NextCounts: GTA VI live viewers (page updated 06:00 UTC, 19 Nov; read 16:01 AEST)" kind="Third-party tracker" />
         <Source href="https://luciastream.com/press/" label="luciastream: GTA streaming data (public JSON read 16:02 AEST, 19 Nov)" kind="Third-party tracker" />
