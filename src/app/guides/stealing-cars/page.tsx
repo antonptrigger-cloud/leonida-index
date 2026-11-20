@@ -15,7 +15,7 @@ export default function Page() {
       <PageHeader backdrop="boat" kicker="Guide" title="Stealing cars" source="Showcase" />
       <div className="max-w-xl space-y-4 text-ink-2">
         <p>Older cars can be broken into and hot-wired.</p>
-        <p>Newer cars need tools such as a key cloner. Plan thefts by the age of the vehicle, not just the model name.</p>
+        <p>Newer cars need more than a simple break-in. Plan thefts by the age of the vehicle, not just the model name.</p>
         <p>
           Looking for a particular car or jet? Our{" "}
           <Link href="/guides/secret-vehicles" className="text-orange hover:text-pink">secret vehicles guide</Link> lists where main outlets say to find them, and the{" "}

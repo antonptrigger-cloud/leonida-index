@@ -173,13 +173,13 @@ export const ROUTES: Record<string, RouteSeo> = {
   },
   "/guides/stealing-cars": {
     title: "How to Steal Cars in GTA 6",
-    description: "How car theft works in GTA 6: hot-wiring older cars, using a key cloner on newer ones and planning thefts around a vehicle's age.",
+    description: "How car theft works in GTA 6: hot-wiring older cars, what newer cars need beyond a simple break-in, and how to plan thefts around a vehicle's age.",
     crumb: "Stealing cars",
     kind: "howto",
     steps: [
       { name: "Check the car's age", text: "Plan the theft by the age of the vehicle, not just the model name." },
       { name: "Hot-wire older cars", text: "Older cars can be broken into and hot-wired." },
-      { name: "Use tools on newer cars", text: "Newer cars need tools such as a key cloner." },
+      { name: "Use tools on newer cars", text: "Newer cars need more than a simple break-in." },
     ],
     changeFrequency: "weekly",
     priority: 0.7,

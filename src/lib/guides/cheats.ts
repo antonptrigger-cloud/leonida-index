@@ -39,7 +39,7 @@ export const CODES: CheatCode[] = [
   { name: "Spawn MTL Pumper", effect: "Spawns the vehicle where you stand.", unlock: "Discover the MTL Pumper in the Progress menu", code: "LURDLRRU", seen: "GameSpot, GamesRadar+" },
   { name: "Spawn HVY Bulldozer", effect: "Spawns a bulldozer.", unlock: "Discover the HVY Bulldozer in the Progress menu", code: "LURDLRRD", seen: "PC Gamer, GameSpot, GamesRadar+" },
   { name: "Cycle Weather", effect: "Changes the weather.", unlock: "Sources disagree: GameSpot says finish the story, GamesRadar+ says reveal the whole map", code: "DRUDRUR", seen: "PC Gamer, GameSpot, GamesRadar+" },
-  { name: "Cataclysm filter", effect: "Fills the world with murky smoke.", unlock: "Discover Martha's Vamos in the Progress menu", code: "DDURRULLRR", seen: "GameSpot, GamesRadar+" },
+  { name: "Cataclysm filter", effect: "Fills the world with murky smoke.", unlock: "Discover a particular item in the Progress menu", code: "DDURRULLRR", seen: "GameSpot, GamesRadar+" },
   { name: "Dollhouse filter", effect: "A vivid, narrow-aspect-ratio filter.", unlock: "Spend 8 hours with your partner", code: "DDURRULLDR", seen: "PC Gamer, GameSpot, GamesRadar+" },
   { name: "Faded Glory filter", effect: "A color CRT TV look.", unlock: "Rob 50 stores with your partner", code: "DDURRULLLR", seen: "GameSpot, GamesRadar+" },
 ];
@@ -57,7 +57,7 @@ export const OTHER_CHALLENGES: ChallengeGroup[] = [
       ["Drunk", "Spend $2,500 on alcohol"],
       ["No Fall Damage", "Survive a freefall from 40 feet 20 times"],
       ["Parachute", "Complete 50 skydives or base jumps from 300 feet or higher"],
-      ["Repair Vehicle", "Take 1st place in 10 races across Gellhorn Raceway, Thrillbilly Mud Club and Boone Speedway"],
+      ["Repair Vehicle", "Take 1st place in 10 races across three different race venues"],
       ["Unlimited Nitrous", "Complete 50 stunt jumps"],
     ],
   },
