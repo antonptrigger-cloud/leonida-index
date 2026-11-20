@@ -171,7 +171,7 @@ export const PCGAMER_TOTAL = 91;
 export const chapterStart = (n: number) =>
   STORY_CHAPTERS.filter((c) => c.number < n).reduce((sum, c) => sum + c.missions.length, 0) + 1;
 
-export const HUB_VERIFIED = "2026-11-20T20:18:43+10:00";
+export const HUB_VERIFIED = "2026-11-20T21:17:56+10:00";
 export const HUB_VERIFIED_LABEL = "20 Nov 2026";
 
 export const HUB_FAQ: { question: string; answer: string }[] = [

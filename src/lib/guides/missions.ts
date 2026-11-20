@@ -4561,6 +4561,176 @@ export const MISSIONS: Mission[] = [
     sourceLabel: "PowerPyx, PC Gamer, GameSpot, Push Square",
     updated: "2026-11-20T20:18:43+10:00",
   },
+  {
+    slug: "chapter-3-mission-24",
+    hidden: true,
+    chapter: 3,
+    chapterOrder: 24,
+    order: 59,
+    name: "Chapter 3, Mission 24",
+    seoTitle: "GTA 6 Chapter 3 Mission 24 Walkthrough & Tips",
+    seoDescription:
+      "GTA 6 Chapter 3 Mission 24 walkthrough: when it unlocks, all nine objectives, an optional pickup that pays cash, and tips for each part of the mission.",
+    teaser: "The twenty-fourth mission of Chapter 3, with nine objectives and an optional pickup near the start that decides whether you get paid.",
+    intro: [
+      "This is the twenty-fourth mission of Chapter 3 and the 59th overall in Push Square's list. Push Square, PC Gamer and GameSpot all list it 24th in Chapter 3 under the same name (Confirmed), but the overall number is Reported. PowerPyx lists nine objectives and says either lead can start it. It is mostly action, with a character switch partway through.",
+      "There is one thing to know before you go in. Early on you can grab an optional item, and PowerPyx says the cash reward and a Professional bonus depend on it, so it is easy to walk past it and lose the money.",
+      "Our mission list keeps Chapter 2 and later names behind a blur, so this page uses a neutral title. The mission's name, the premise, the people, the places, what you collect and the step-by-step all stay behind the blur.",
+    ],
+    facts: [
+      { label: "Chapter", value: "Chapter 3, and the 24th mission of the chapter in Push Square's, PC Gamer's and GameSpot's lists, under the same name", status: "confirmed" },
+      { label: "Number", value: "59th overall (Push Square). PowerPyx calls it the 72nd main mission using its own count.", status: "reported" },
+      { label: "Unlocks after", value: "PowerPyx's requirement is in the blur", status: "reported" },
+      { label: "Starts", value: "A contact calls you to a set place once the requirement is done. Where is in the blur (PowerPyx).", status: "reported" },
+      { label: "Playable as", value: "Either lead can start it (PowerPyx)", status: "reported" },
+      { label: "Objectives", value: "Nine (PowerPyx)", status: "reported" },
+      { label: "Reward", value: "$3,500 and a Professional bonus, only if you grab the optional pickup (PowerPyx)", status: "reported" },
+    ],
+    objectives: [
+      "Go to Venture Apartments. Boobie sends you to pick up drugs he is owed. Drive to the marked building in Rockridge (Reported, PowerPyx).",
+      "Park away from Venture Apartments. Lucia suggests leaving the car outside the red area on the map. PowerPyx says you can park out front, but the car will be impounded during the mission. Then walk to the front entrance (Reported, PowerPyx).",
+      "Ask for Raymond in the lobby. Inside, turn right and talk to the man standing in front of the elevator. Upstairs, go down the hallway and knock on the red door with the slot in the middle (Reported, PowerPyx).",
+      "Escape Venture Apartments. The police pour in and you have to fight your way out with only your pistols, so pick up any longarms they drop. Before you leave the first room, pick up the red bag near the end of the table. It holds Boobie's bricks, and PowerPyx ties it to the Professional bonus and the payment at the end. Go back down the hallway toward the elevators, watching the side doors and the larger room just before them. Take either the stairs at the end of the hallway or the elevator, and if the elevator stops, mash the prompted button to open the doors. The third floor has no lights, so expect enemies around corners and behind cover, and a police weapon you've picked up should have a light on it. Go on to the stairs and through the second floor, where Raymond comes out at the end of the hallway and sends you into the apartment on his left (Reported, PowerPyx).",
+      "Help Lucia. Lucia climbs out of the window. Interact with her to help her drop down (Reported, PowerPyx).",
+      "Get in a car. You switch to Lucia. Run to the parking lot to the south and get into one of the cars (Reported, PowerPyx).",
+      "Pick up Jason. Drive back near the window to collect him (Reported, PowerPyx).",
+      "Lose the cops. A helicopter is over you straight away, so it takes longer to get away. Get far away from the building and watch for roadblocks (Reported, PowerPyx).",
+      "Go to the Jack of Hearts. Boobie is waiting in his car out front. Stay out of the police search area on the way. PowerPyx says you can swap to a different vehicle if you want. Arriving ends the mission (Reported, PowerPyx).",
+      "PowerPyx's objective wording is: Go to Venture Apartments, Park away from Venture Apartments, Ask for Raymond in the lobby, Escape Venture Apartments, Help Lucia, Get in a car, Pick up Jason, Lose the cops, Go to the Jack of Hearts (Reported, PowerPyx).",
+    ],
+    spoiler:
+      "The mission is called Bricked Up in our mission list, Push Square's list, PC Gamer's list and GameSpot's list, and all four number it 24th in Chapter 3. PC Gamer's one-line summary is that Jason and Lucia do some work for Boobie (Confirmed for the name and chapter). PowerPyx shows the map label Return to the Apartment. In its quest description, Jason and Lucia find Boobie asleep in their apartment, and he tells them that as long as they live there they work for him. He sends them to pick up bricks of cocaine he is owed by a gang called San4San in Rockridge. They get caught up in a police raid led by Captain Mendez and his team of dirty cops, and after they escape they agree they need to leave Boobie's apartment (Reported). The requirement, per PowerPyx, is Chapter 3 Hidden Charges and all other remaining Chapter 3 main missions. Boobie then tells you to meet him at the Bayside apartment in Vice City, and either Lucia or Jason can start it (Reported). The optional item is the red bag of Boobie's bricks near the end of the table in the first room, and PowerPyx says it gives the Professional bonus and the payment at the end (Reported). Order: PowerPyx calls this its 72nd main mission, after Hidden Charges (71st), and says it needs Hidden Charges plus the other remaining main missions in the chapter first. Push Square, PC Gamer and GameSpot all list Bricked Up 24th and Hidden Charges 25th, so our hub follows them. In play, PowerPyx's requirement means Hidden Charges comes first (Reported).",
+    tips: [
+      { text: "Grab the optional pickup before you leave the first room. PowerPyx says the cash reward and the Professional bonus depend on it (Reported).", reported: true },
+      { text: "Park where the game suggests rather than right at the marker. PowerPyx says parking out front gets your car impounded during the mission (Reported).", reported: true },
+      { text: "Pick up weapons the enemies drop. PowerPyx says you start the fight with only your sidearms (Reported).", reported: true, link: { href: "/database/weapons", label: "Weapons database" } },
+      { text: "Allow extra time for the end of the mission. PowerPyx says getting away cleanly takes longer than usual, and advises putting distance between you and the area and avoiding roadblocks (Reported).", reported: true, link: { href: "/guides/wanted", label: "Wanted system" } },
+      { text: "Make a manual save before you start. PowerPyx and Push Square say story missions can't be replayed, and PowerPyx suggests a manual save at the start and end of each chapter (Confirmed).", reported: false, link: { href: "/guides/saving", label: "How to save" } },
+    ],
+    notes: [
+      "Order: Push Square, PC Gamer and GameSpot all list this 24th in Chapter 3. The overall number follows Push Square. PowerPyx calls it the 72nd main mission using its own count and gives it a different position, which is explained in the blur.",
+      "PowerPyx is the only full walkthrough for this mission so far, so the start, steps, objectives, reward, the optional pickup and the advice are labelled Reported. Push Square, PC Gamer and GameSpot confirm the name and chapter. No source gives a playtime.",
+      "PowerPyx's objective list has nine entries. It hasn't been checked against the on-screen prompts.",
+    ],
+    faq: [
+      {
+        question: "Which mission number is Chapter 3 Mission 24?",
+        answer: "Push Square, PC Gamer and GameSpot all list it 24th in Chapter 3 under the same name (Confirmed). Push Square makes it the 59th overall and PowerPyx the 72nd using its own count (Reported).",
+      },
+      {
+        question: "When does Chapter 3 Mission 24 unlock?",
+        answer: "PowerPyx gives a requirement that is listed in the blurred section (Reported).",
+      },
+      {
+        question: "What does Chapter 3 Mission 24 reward?",
+        answer: "According to PowerPyx, $3,500 and a Professional bonus, but only if you collect an optional item early in the mission (Reported).",
+      },
+      {
+        question: "Why was my car impounded?",
+        answer: "PowerPyx says that happens if you park right at the marker instead of outside the red area the game shows on the map (Reported).",
+      },
+    ],
+    sources: [
+      pp("gta-6-bricked-up-return-to-the-apartment-walkthrough", "Requirement, playable leads, start, objectives, steps, optional pickup, reward and advice"),
+      pp("gta-6-full-walkthrough-all-missions", "Where PowerPyx's own list places the mission, its order and the no-replay note"),
+      PCGAMER,
+      {
+        id: "gamespot",
+        label: "GameSpot: How long to beat GTA 6, full missions list",
+        url: "https://www.gamespot.com/articles/how-long-to-beat-gta-6/",
+        used: "Mission name and Chapter 3 order. No playtime used.",
+      },
+      PUSHSQUARE,
+    ],
+    sourceLabel: "PowerPyx, PC Gamer, GameSpot, Push Square",
+    updated: "2026-11-20T21:17:56+10:00",
+  },
+  {
+    slug: "chapter-3-mission-25",
+    hidden: true,
+    chapter: 3,
+    chapterOrder: 25,
+    order: 60,
+    name: "Chapter 3, Mission 25",
+    seoTitle: "GTA 6 Chapter 3 Mission 25 Walkthrough & Tips",
+    seoDescription:
+      "GTA 6 Chapter 3 Mission 25 walkthrough: when it unlocks, each objective, why the number of objectives can vary, the faster two-character method and the reward.",
+    teaser: "The twenty-fifth mission of Chapter 3, a planning job with up to three objectives, no cash and a reward that carries into a later mission.",
+    intro: [
+      "This is the twenty-fifth mission of Chapter 3 and the 60th overall in Push Square's list. Push Square, PC Gamer and GameSpot all list it 25th in Chapter 3 under the same name (Confirmed), but the overall number is Reported. PowerPyx lists six objectives, says either lead can start it, and says it is a planning job rather than a big set piece. After a short drive you have up to three objectives to complete in any order.",
+      "PowerPyx says how many of them you get depends on how you did earlier in the chapter, and that splitting the work between both leads is the quicker way to do it and also raises their relationship. There is no cash at the end. What you get instead is more time in a later story mission, so it is worth doing all of them if you can.",
+      "Our mission list keeps Chapter 2 and later names behind a blur, so this page uses a neutral title. The mission's name, the premise, the people, the places, the targets and the step-by-step all stay behind the blur.",
+    ],
+    facts: [
+      { label: "Chapter", value: "Chapter 3, and the 25th mission of the chapter in Push Square's, PC Gamer's and GameSpot's lists, under the same name", status: "confirmed" },
+      { label: "Number", value: "60th overall (Push Square). PowerPyx calls it the 71st main mission using its own count.", status: "reported" },
+      { label: "Unlocks after", value: "PowerPyx's requirement is in the blur", status: "reported" },
+      { label: "Starts", value: "The quest giver calls you to a set place once the requirement is done. Where is in the blur (PowerPyx).", status: "reported" },
+      { label: "Playable as", value: "Either lead can start it, and you can use one or both (PowerPyx)", status: "reported" },
+      { label: "Objectives", value: "Six in PowerPyx's list, and up to three of them can be done in any order (PowerPyx)", status: "reported" },
+      { label: "Reward", value: "More time in a later story mission, depending on how many objectives you complete, and a relationship boost if you use both leads. No cash is listed (PowerPyx).", status: "reported" },
+    ],
+    objectives: [
+      "Get in the van. After talking with Karim and Raul, get in the van that is being loaded with explosives outside (Reported, PowerPyx).",
+      "Drive to the garage. Head to the marker downtown (Reported, PowerPyx).",
+      "Park in the garage. Park the van inside the marked garage in the alley. PowerPyx says you can plant with one character or both, and that using both is faster because nobody has to run back to the van each time, and it raises their relationship. Depending on how well you did in Company Property you have up to three charges, and if you lost cargo there you have fewer, which affects the time you have in the heist (Reported, PowerPyx).",
+      "Plant at the East Cell Tower. You can plant in any order, but PowerPyx says this tower is directly above the van, so start here. Go round to the front of the building to the west, the one with the helipad on the map, and take the elevator inside to the roof. Climb the stairs to the helipad, cross the walkway to the rooftop with the tower, climb up and interact with the tower (Reported, PowerPyx).",
+      "Plant at the South Cell Tower. Switch to the other character, who should be near this tower. Go up past the pool to an elevator, ride it to the roof, climb the ladder and interact with the tower (Reported, PowerPyx).",
+      "Plant at the West Cell Tower, if you have a third charge. You choose who plants it, and PowerPyx says switching puts you back at the van, which is a little quicker. Take the bag and enter the building on the north side through its door. It is a construction area and the workers report you for trespassing straight away, so be quick. The elevator is inside on the left. On the roof, go round the far side of the grey tower, climb the ladder and interact with the box (Reported, PowerPyx).",
+      "Get away. Leave the area. If you don't have a parachute, PowerPyx says there should be one in a box on the rooftop. Jump off, glide away and run outside the police search area. The mission ends when the police stop searching (Reported, PowerPyx).",
+      "PowerPyx's objective wording is: Get in the van, Drive to the garage, Park in the garage, Plant the charge at one of the cell towers (twice), Plant the charge at the cell tower (Reported, PowerPyx).",
+    ],
+    spoiler:
+      "The mission is called Hidden Charges in our mission list, Push Square's list, PC Gamer's list and GameSpot's list, and all four number it 25th in Chapter 3. PC Gamer's one-line summary is that Jason and Lucia do some prep work (Confirmed for the name and chapter). PowerPyx shows the map labels Meet at the Planning Room and Prepping the Explosives. In its quest description, Karim sends Jason and Lucia to plant explosives on critical cell towers in Vice City, to create a distraction for the Sinfrontera heist and knock out the bank's emergency communications. They also explain their situation with Tomas and the hard drive to Raul, who says he'll help them after the bank job (Reported). PowerPyx's requirement is Chapter 3 Company Property and Cooties. Prepping the Explosives appears on the map after Company Property, and Karim contacts you to meet at the planning room in Stockyard, Vice City, once you've done most other main missions including Cooties. Either Lucia or Jason can start it (Reported). The extra time is added to The Cartel Heist, depending on how many charges you plant (Reported). The number of charges depends on how well you did in Company Property: losing cargo there means fewer here (Reported). Order: PowerPyx calls this its 71st main mission, one before Bricked Up (72nd), and Bricked Up needs this one done first. Push Square, PC Gamer and GameSpot list Bricked Up 24th and this mission 25th, so our hub follows them. In play, PowerPyx's order means you'll likely do this one first (Reported).",
+    tips: [
+      { text: "Use both leads if you can. PowerPyx says it is faster than doing everything with one character, and it raises their relationship (Reported).", reported: true, link: { href: "/guides/switch-characters", label: "Switching characters" } },
+      { text: "Start with the closest objective. PowerPyx says the first one is right where you park (Reported).", reported: true },
+      { text: "Move quickly at the last objective. PowerPyx says you can be reported as soon as you are seen there (Reported).", reported: true },
+      { text: "Don't stop early at the end. PowerPyx says the mission only ends once the police stop searching for you (Reported).", reported: true, link: { href: "/guides/wanted", label: "Wanted system" } },
+      { text: "Make a manual save before you start. PowerPyx and Push Square say story missions can't be replayed, and PowerPyx suggests a manual save at the start and end of each chapter (Confirmed).", reported: false, link: { href: "/guides/saving", label: "How to save" } },
+    ],
+    notes: [
+      "Order: Push Square, PC Gamer and GameSpot all list this 25th in Chapter 3. The overall number follows Push Square. PowerPyx calls it the 71st main mission using its own count and gives it a different position, which is explained in the blur.",
+      "PowerPyx is the only full walkthrough for this mission so far, so the start, steps, objectives, reward, the objective count and the advice are labelled Reported. Push Square, PC Gamer and GameSpot confirm the name and chapter. No source gives a playtime.",
+      "PowerPyx's objective list has six entries. It hasn't been checked against the on-screen prompts.",
+    ],
+    faq: [
+      {
+        question: "Which mission number is Chapter 3 Mission 25?",
+        answer: "Push Square, PC Gamer and GameSpot all list it 25th in Chapter 3 under the same name (Confirmed). Push Square makes it the 60th overall and PowerPyx the 71st using its own count (Reported).",
+      },
+      {
+        question: "When does Chapter 3 Mission 25 unlock?",
+        answer: "PowerPyx says it first shows on the map after an earlier Chapter 3 mission, and the quest giver then calls you once you've done most other main missions. The details are in the blurred section (Reported).",
+      },
+      {
+        question: "Why do I have fewer than three objectives?",
+        answer: "PowerPyx says the number depends on how well you did earlier in the chapter. The details are in the blurred section (Reported).",
+      },
+      {
+        question: "What does Chapter 3 Mission 25 reward?",
+        answer: "According to PowerPyx, no cash, but more time in a later story mission for each objective you complete (Reported).",
+      },
+      {
+        question: "Should I use one character or both?",
+        answer: "PowerPyx recommends using both, because it is faster and raises their relationship (Reported).",
+      },
+    ],
+    sources: [
+      pp("gta-6-hidden-charges-walkthrough", "Requirement, playable leads, start, objectives, steps, objective count, reward and advice"),
+      pp("gta-6-full-walkthrough-all-missions", "Where PowerPyx's own list places the mission, its order and the no-replay note"),
+      PCGAMER,
+      {
+        id: "gamespot",
+        label: "GameSpot: How long to beat GTA 6, full missions list",
+        url: "https://www.gamespot.com/articles/how-long-to-beat-gta-6/",
+        used: "Mission name and Chapter 3 order. No playtime used.",
+      },
+      PUSHSQUARE,
+    ],
+    sourceLabel: "PowerPyx, PC Gamer, GameSpot, Push Square",
+    updated: "2026-11-20T21:17:56+10:00",
+  },
 ];
 
 /** Chapter a mission belongs to (Chapter 1 unless stated). */
