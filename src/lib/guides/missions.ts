@@ -2779,6 +2779,171 @@ export const MISSIONS: Mission[] = [
     sourceLabel: "PowerPyx, PC Gamer, Push Square",
     updated: "2026-11-20T09:17:06+10:00",
   },
+  {
+    slug: "chapter-3-mission-2",
+    hidden: true,
+    chapter: 3,
+    chapterOrder: 2,
+    order: 37,
+    name: "Chapter 3, Mission 2",
+    seoTitle: "GTA 6 Chapter 3 Mission 2 Walkthrough & Tips",
+    seoDescription:
+      "GTA 6 Chapter 3 Mission 2 walkthrough: how to start it, every step in order, what the one choice changes, and how to earn the bonus along the way.",
+    teaser: "The second mission of Chapter 3, straight after Chapter 3, Mission 1.",
+    intro: [
+      "This is the second mission of Chapter 3 and the 37th overall in Push Square's list. Push Square and PC Gamer both list it second in Chapter 3 (Confirmed), but the overall number is Reported. PowerPyx lists six objectives, says Chapter 3, Mission 1 has to be finished first, and says there is one choice that has no later effect and a bonus for how you handle one moment.",
+      "Our mission list keeps Chapter 2 and later names behind a blur, so this page uses a neutral title. The mission's name, the premise, the start point, the people, the choice and the step-by-step all stay behind the blur.",
+    ],
+    facts: [
+      { label: "Chapter", value: "Chapter 3, and the second mission of the chapter in both Push Square's and PC Gamer's lists", status: "confirmed" },
+      { label: "Number", value: "37th overall (Push Square and Press Start). PowerPyx calls it the 45th main mission using its own count.", status: "reported" },
+      { label: "Unlocks after", value: "Chapter 3, Mission 1 (the lists put it next in order, and PowerPyx's requirement line is the same mission)", status: "confirmed" },
+      { label: "Starts", value: "PowerPyx says you start it by going to a set place. Where is in the blur.", status: "reported" },
+      { label: "Playable as", value: "One lead only (PowerPyx). Which one is in the blur.", status: "reported" },
+      { label: "Objectives", value: "Six (PowerPyx)", status: "reported" },
+      { label: "Choice", value: "One, and PowerPyx says it does not affect anything later", status: "reported" },
+      { label: "Bonus", value: "PowerPyx says resolving the key moment without violence earns a bonus", status: "reported" },
+      { label: "Payout", value: "PowerPyx's own page gives conflicting answers on whether there is any cash. Both are shown in the blur.", status: "reported" },
+    ],
+    objectives: [
+      "Start it at the club. Go back to the Jack of Hearts in Crosstown and up the same stairs as last time, but take the door at the top into the studio. Dre'Quan is in the recording booth, so wait for him to finish. He asks which hook you prefer and any answer is fine. Then follow him upstairs to Boobie, who explains the job (Reported, PowerPyx).",
+      "Drive to the pick-up location. Get into Dre'Quan's car and drive to a nearby apartment block. Follow him to a room on the second floor, where he talks with Tyrone. You can interrupt if you would rather not wait (Reported, PowerPyx).",
+      "Choose which product to take. Tyrone offers Cut or Pure. See the options in the story notes (Reported, PowerPyx).",
+      "Walk back. Dre'Quan takes a different route back to the car to avoid some people. In the large park you get a tutorial on throwing a football back to some kids (Reported, PowerPyx).",
+      "Drive to the deal location. It is a short way south, near the club. Follow Dre'Quan on foot to the group standing by the cars, wait until prompted and hand over the bag. The buyer takes a long time testing, and you can ask him to hurry (Reported, PowerPyx).",
+      "Take the money. Once the testing is done, take the backpack back. PowerPyx says resolving the situation non-violently gives a Professional bonus when you collect the money (Reported, PowerPyx).",
+      "Deal with the confrontation. On the way back a man insists the bag is his. PowerPyx says he eventually attacks however you answer, so knock him out with melee and get in the car (Reported, PowerPyx).",
+      "Take Dre'Quan to Southside. Drive him to a shop in Southside. About halfway there a cutscene ends the mission (Reported, PowerPyx).",
+    ],
+    spoiler:
+      "The mission is called Dealer's Choice in our mission list, Push Square's list and PC Gamer, whose one-line summary is that Jason does a drug deal (Confirmed). PowerPyx shows the map label Go See Dre'Quan and says only Jason can start it (Reported). PowerPyx's quest description: Boobie says Jason owes him a favour for letting him and Lucia stay in his apartment, so sends him on a drug deal. Dre'Quan comes as backup while Jason picks up product from the local dealer, Tyrone, then sells it in Crosstown (Reported, PowerPyx). The choice: Pure is accepted and the buyer pays without trouble. Cut is noticed by the buyer, who can be offered it at half price, and PowerPyx says they then hand the product back along with the money. PowerPyx says the choice has no later effect (Reported, PowerPyx). The payout is a sourcing conflict inside PowerPyx's own page: its summary box lists $1,500 for selling the Pure product, while its walkthrough text says you do not gain any money either way. We have found no second main outlet to settle it, so we show both and give no payout as fact (Reported, PowerPyx).",
+    tips: [
+      { text: "Stay calm at the key moment. PowerPyx says resolving it without violence earns the bonus (Reported).", reported: true },
+      { text: "Don't stress the choice. PowerPyx says it has no effect on anything later (Reported).", reported: true },
+      { text: "Expect a fight near the end. PowerPyx says it can't be talked down, so being ready for it is our own suggestion.", reported: false },
+      { text: "You can skip some waiting. PowerPyx notes two places where you can cut a conversation short or ask someone to hurry (Reported).", reported: true },
+      { text: "Make a manual save before you start, so you can retry if the mission goes wrong. This is our own suggestion.", reported: false, link: { href: "/guides/saving", label: "How to save" } },
+    ],
+    notes: [
+      "Order: Push Square and PC Gamer both list this second in Chapter 3. The overall number follows Push Square and Press Start. PowerPyx calls it the 45th main mission using its own count, so treat the overall number as Reported.",
+      "PowerPyx is the only full walkthrough for this mission so far, so the start condition, the steps, the choice, the bonus and the payout are labelled Reported. Push Square and PC Gamer confirm the name and the order.",
+      "PowerPyx contradicts itself on the payout (see the blurred story notes). We give no payout as fact. The objective list hasn't been checked against the on-screen prompts.",
+    ],
+    faq: [
+      {
+        question: "Which mission number is Chapter 3 Mission 2?",
+        answer: "It is the second mission of Chapter 3 in Push Square's and PC Gamer's lists (Confirmed). Push Square makes it the 37th overall and PowerPyx the 45th using its own count (Reported).",
+      },
+      {
+        question: "How do you start Chapter 3 Mission 2?",
+        answer: "Finish Chapter 3 Mission 1, then go to the set place PowerPyx gives. That place is in the blurred section of this page (Reported).",
+      },
+      {
+        question: "Does the choice in Chapter 3 Mission 2 matter?",
+        answer: "PowerPyx says it doesn't affect anything later (Reported).",
+      },
+      {
+        question: "How do you get the bonus in Chapter 3 Mission 2?",
+        answer: "PowerPyx says resolving the key moment without violence earns it (Reported).",
+      },
+      {
+        question: "Is there a cash reward in Chapter 3 Mission 2?",
+        answer: "PowerPyx's own page disagrees with itself, so we can't say. Both versions are in the blurred section (Reported).",
+      },
+    ],
+    sources: [
+      pp("gta-6-dealers-choice-go-see-drequan-walkthrough", "Start, requirement, playable lead, objectives, steps, choice, bonus and the conflicting payout"),
+      PCGAMER,
+      PUSHSQUARE,
+    ],
+    sourceLabel: "PowerPyx, PC Gamer, Push Square",
+    updated: "2026-11-20T10:07:58+10:00",
+  },
+  {
+    slug: "chapter-3-mission-3",
+    hidden: true,
+    chapter: 3,
+    chapterOrder: 3,
+    order: 38,
+    name: "Chapter 3, Mission 3",
+    seoTitle: "GTA 6 Chapter 3 Mission 3 Walkthrough & Tips",
+    seoDescription:
+      "GTA 6 Chapter 3 Mission 3 walkthrough: why it may not appear straight away, every step in order, tips for the chase, and the new tool you unlock.",
+    teaser: "The third mission of Chapter 3, after Chapter 3, Mission 2.",
+    intro: [
+      "This is the third mission of Chapter 3 and the 38th overall in Push Square's list. Push Square and PC Gamer both list it third in Chapter 3 (Confirmed), but the overall number is Reported. It may not appear the moment Chapter 3, Mission 2 ends: PowerPyx says some in-game time has to pass first. PowerPyx lists eleven objectives and a new tool as the reward.",
+      "Our mission list keeps Chapter 2 and later names behind a blur, so this page uses a neutral title. The mission's name, the premise, the start trigger, the people, the places and the step-by-step all stay behind the blur.",
+    ],
+    facts: [
+      { label: "Chapter", value: "Chapter 3, and the third mission of the chapter in both Push Square's and PC Gamer's lists", status: "confirmed" },
+      { label: "Number", value: "38th overall (Push Square and Press Start). PowerPyx calls it the 52nd main mission using its own count.", status: "reported" },
+      { label: "Unlocks after", value: "Chapter 3, Mission 2 (the lists put it next in order, and PowerPyx's requirement line is the same mission)", status: "confirmed" },
+      { label: "Starts", value: "PowerPyx says some in-game time has to pass after the previous mission, and then a trigger at a set place starts it. The details are in the blur.", status: "reported" },
+      { label: "Playable as", value: "Either lead can start it (PowerPyx)", status: "reported" },
+      { label: "Objectives", value: "Eleven (PowerPyx)", status: "reported" },
+      { label: "Reward", value: "A new tool that both leads keep and that opens a type of locked container around the map. Its name and details are in the blur (PowerPyx).", status: "reported" },
+      { label: "Relationship bonus", value: "PowerPyx says one early choice gives a relationship bonus", status: "reported" },
+      { label: "Optional extra", value: "PowerPyx says you can find some cash and an item along the way", status: "reported" },
+    ],
+    objectives: [
+      "Go to the restaurant. Once Lucia is ready, drive to the restaurant on the eastern side of the city and ride the lift up (Reported, PowerPyx).",
+      "Meet Brian at the bar. While Brian and Lori talk to Lucia you can pick up drinks from the bar and hand one to Lucia, then follow them to the table (Reported, PowerPyx).",
+      "Order for Lucia. When the waiter comes, order the Surf and Turf, as Lucia requested, for a relationship bonus (Reported, PowerPyx).",
+      "Talk at the railing. After the women leave, walk to the railing with Brian. You can accept or decline his offer of a cigar. When prompted, switch to Lucia (Reported, PowerPyx).",
+      "Go to the van. As Lucia, drive across the bridge and into the car park on the right to find the white van (Reported, PowerPyx).",
+      "Open the van's rear doors. This automatically puts Lucia in a disguise and behind the wheel (Reported, PowerPyx).",
+      "Go to the dockyard. Drive a short way south to the entrance. After a few seconds you are let in, and you can park the van nearby (Reported, PowerPyx).",
+      "Search for the SCOOP containers. PowerPyx says to look for the yellow containers with SCOOP on the side, and that the one you want is on top of the stack in the middle. If you cut through the other containers, PowerPyx says the first one holds a Magacizo Cigar and $600 (PowerPyx's spelling) (Reported, PowerPyx).",
+      "Break into the container. Interact with the door to use the new cut-off tool, and hold the button to keep the filling bar lined up with the marked section on the outside, which cuts the lock faster (Reported, PowerPyx).",
+      "Steal the car from the container. A scene shows the container, with the car in it, being taken away by gang members. Jump on a nearby bike and chase the trailer. Gang members shoot at you from the back, and you jump onto the back when you are close (Reported, PowerPyx).",
+      "Break the car out of the container. Get into the car and hold the prompt until it breaks free and reverses out (Reported, PowerPyx).",
+      "Lose the cops. PowerPyx says the car is very fast, so staying on the highway should shake them quickly, and warns not to crash it (Reported, PowerPyx).",
+      "Drive to the lockup. Take the car to the lockup in the north-west corner of the city. You can drive around any remaining wanted area. Drive inside to finish (Reported, PowerPyx).",
+    ],
+    spoiler:
+      "The mission is called Meet the Heders in our mission list, Push Square's list and PC Gamer, whose one-line summary is that Jason and Lucia have a double date (Confirmed). PowerPyx's subtitle is Meet Brian & Lori. To start it, PowerPyx says you must first finish Dealer's Choice, then have Cal visit the Bayside apartment to look at the hard drive. That tends to happen about a day after you first arrive at the apartment, or straight away if time has already passed while you did other things. Brian then contacts you a day or two later in game, and you start the mission by interacting with the bag of clothes in the apartment's bedroom (Reported, PowerPyx). PowerPyx's quest description: Jason and Lucia have dinner with Brian and Lori at a rooftop bar, where Brian agrees to put them in touch with his old contact, Raul, who might get them work and decrypt the hard drive. Raul wants a car stolen from Port VC first, and Lucia does the job (Reported, PowerPyx). The reward is the Cut-off Tool. PowerPyx's reward line says it opens orange SCOOP containers around the world, while in the mission itself it describes the target containers as yellow, so its two colours differ (Reported, PowerPyx).",
+    tips: [
+      { text: "If it hasn't appeared, let in-game time pass. PowerPyx says the start depends on in-game days going by, and that doing other jobs moves the clock on (Reported).", reported: true },
+      { text: "Take the small social options. PowerPyx says one of them gives a relationship bonus (Reported).", reported: true, link: { href: "/guides/relationship", label: "Relationship levels" } },
+      { text: "You only need one target in the search section. PowerPyx says the rest are optional (Reported). Details are in the blur.", reported: true },
+      { text: "Avoid crashing during the escape. PowerPyx warns against wrecking the vehicle (Reported). Our wanted guide has general advice on shaking the police.", reported: true, link: { href: "/guides/wanted", label: "Wanted guide" } },
+      { text: "Make a manual save before you start, so you can retry if the mission goes wrong. This is our own suggestion.", reported: false, link: { href: "/guides/saving", label: "How to save" } },
+    ],
+    notes: [
+      "Order: Push Square and PC Gamer both list this third in Chapter 3. The overall number follows Push Square and Press Start. PowerPyx calls it the 52nd main mission using its own count, and its page for this mission names Chapter 3, Mission 2 as the requirement, so treat the overall number as Reported.",
+      "PowerPyx is the only full walkthrough for this mission so far, so the start trigger, the steps, the reward and the optional extra are labelled Reported. Push Square and PC Gamer confirm the name and the order.",
+      "PowerPyx's button prompts are shown as icons, which we can't read as text, so we leave the button names out. The objective list hasn't been checked against the on-screen prompts.",
+    ],
+    faq: [
+      {
+        question: "Which mission number is Chapter 3 Mission 3?",
+        answer: "It is the third mission of Chapter 3 in Push Square's and PC Gamer's lists (Confirmed). Push Square makes it the 38th overall and PowerPyx the 52nd using its own count (Reported).",
+      },
+      {
+        question: "Why can't I start Chapter 3 Mission 3?",
+        answer: "PowerPyx says some in-game time has to pass after Chapter 3 Mission 2 before it appears. The exact trigger is in the blurred section (Reported).",
+      },
+      {
+        question: "Which character do you need for Chapter 3 Mission 3?",
+        answer: "PowerPyx says either lead can start it (Reported).",
+      },
+      {
+        question: "What do you unlock in Chapter 3 Mission 3?",
+        answer: "PowerPyx says a new tool that both leads keep, which opens a type of locked container around the map (Reported).",
+      },
+      {
+        question: "Is there anything optional to find in Chapter 3 Mission 3?",
+        answer: "PowerPyx says some cash and an item can be found along the way, and that one early choice gives a relationship bonus (Reported).",
+      },
+    ],
+    sources: [
+      pp("gta-6-meet-the-heders-walkthrough", "Start trigger, requirement, objectives, steps, relationship bonus, optional extra and reward"),
+      PCGAMER,
+      PUSHSQUARE,
+    ],
+    sourceLabel: "PowerPyx, PC Gamer, Push Square",
+    updated: "2026-11-20T10:07:58+10:00",
+  },
 ];
 
 /** Chapter a mission belongs to (Chapter 1 unless stated). */
