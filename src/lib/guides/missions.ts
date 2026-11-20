@@ -2468,6 +2468,163 @@ export const MISSIONS: Mission[] = [
     sourceLabel: "PowerPyx, PC Gamer, Push Square",
     updated: "2026-11-20T07:08:00+10:00",
   },
+  {
+    slug: "chapter-2-mission-11",
+    hidden: true,
+    chapter: 2,
+    chapterOrder: 11,
+    order: 33,
+    name: "Chapter 2, Mission 11",
+    seoTitle: "GTA 6 Chapter 2 Mission 11 Walkthrough & Tips",
+    seoDescription:
+      "GTA 6 Chapter 2 Mission 11 walkthrough: how it starts, every step in order, what you need to finish, how the payout works, and tips to do well.",
+    teaser: "The eleventh mission of Chapter 2 in our hub order, after Chapter 2, Mission 10.",
+    intro: [
+      "This is the eleventh mission of Chapter 2 and the 33rd overall in Push Square's list, which counts it as a story mission (Reported). PC Gamer's Chapter 2 list leaves it out and PowerPyx files it as an optional side mission, so outlets disagree on whether it counts. Either lead can start it. PowerPyx lists five objectives and says how well you finish decides the payout.",
+      "Our mission list keeps Chapter 2 names behind a blur, so this page uses a neutral title. The mission's name, the people, the venue and the step-by-step all stay behind the blur.",
+    ],
+    facts: [
+      { label: "Chapter", value: "Chapter 2, mission 11, and 33rd overall in Push Square's list (our hub also follows Press Start's Story Recap). PC Gamer's list leaves it out, and PowerPyx calls it an optional side mission.", status: "reported" },
+      { label: "Starts", value: "PowerPyx says it is marked on your map automatically during Chapter 2, Mission 9, together with several other optional jobs. No phone call is needed.", status: "reported" },
+      { label: "Playable as", value: "Either lead (PowerPyx)", status: "reported" },
+      { label: "Objectives", value: "Five (PowerPyx)", status: "reported" },
+      { label: "Spending", value: "PowerPyx says you buy items and rent a vehicle during the mission. It gives no prices.", status: "reported" },
+      { label: "Payout", value: "Depends on how you finish: up to $2,500 for first place and $625 for third, with lower places paying less (PowerPyx)", status: "reported" },
+      { label: "Strangers & Freaks trophy", value: "PowerPyx says this questline does not count towards it", status: "reported" },
+    ],
+    objectives: [
+      "Drive to the Mud Club marker. Either lead can go (Reported, PowerPyx).",
+      "Buy outfits. At the entrance, go into the souvenir shop (the merch stall) and buy clothes for both Jason and Lucia (Reported, PowerPyx).",
+      "Leave the shop. A cutscene introduces Billy and his dirt-bike crew, Ricardo (Ricky), Brittney and Wyman (Reported, PowerPyx).",
+      "Rent a bike at Roostere's Rentals. Billy wants you to join a race. You can rent a Manchez or a Sanchez. PowerPyx says the Sanchez costs more but is faster, and recommends it, since a better placing earns the money back (Reported, PowerPyx).",
+      "Go to the race organiser. The start is marked on the map (Reported, PowerPyx).",
+      "Beat a member of Billy's crew. PowerPyx says you do not have to win to complete the quest, but that to impress Billy you can't come in last. It also says not to ram other riders, so you don't get thrown off. After the race Billy says he will be in touch with more jobs (Reported, PowerPyx).",
+    ],
+    spoiler:
+      "The mission is called Thrillbillies in our mission list and in Push Square's 93-mission list, where it is Chapter 2 #11 (Reported, one main outlet plus Press Start's Story Recap). PowerPyx shows the map label Check Out the Mud Club. You hear about it from Wyman at the motel during Chapter 2, Mission 9, and it takes place at Thrillbilly Mud Club in Kelly County, where you meet Billy and his dirt-bike crew. It is the first of Billy's five jobs (PowerPyx, and Push Square's Billy side-mission list). PowerPyx objective wording: Buy a new outfit at the merch stall, Leave the store, Rent a vehicle at Roostere's Rentals, Go to the race organizer, Beat a member of Billy's crew (Reported, PowerPyx).",
+    tips: [
+      { text: "Pay for the better ride. PowerPyx says the dearer of the two options is faster and recommended, and that a better finish earns the money back (Reported).", reported: true },
+      { text: "Keep it clean. PowerPyx says ramming other riders can throw you off the bike, so give them room (Reported). Taking the corners wide is our own suggestion.", reported: true },
+      { text: "Aim for a good finish rather than a win. PowerPyx says you don't have to win to complete it, but to impress your contact you can't come in last (Reported).", reported: true },
+      { text: "Bring spare cash. You pay for items and a rental before it starts (PowerPyx, Reported). Our money guide covers early earning.", reported: true, link: { href: "/guides/money", label: "Money guide" } },
+      { text: "There is no rush. PowerPyx doesn't mark this questline as missable, and its Strangers & Freaks page says side quests that aren't marked missable stay available after the story (Reported).", reported: true },
+      { text: "Make a manual save before you start, so you can retry if the mission goes wrong. This is our own suggestion.", reported: false, link: { href: "/guides/saving", label: "How to save" } },
+    ],
+    notes: [
+      "Order: Push Square and Press Start list this as the eleventh mission of Chapter 2, so our hub does too. PC Gamer's Chapter 2 has only 11 missions and leaves this one out. PowerPyx labels it an optional side mission. Push Square also lists it as the first job of a side-mission questline. Treat the position as Reported.",
+      "PowerPyx is the only full walkthrough for this mission so far, so the start condition, the steps, the placing rule and the payout are labelled Reported. Only Push Square (with Press Start's count) backs the name and position.",
+      "PowerPyx says you race 13 other racers and that you must place at least 13th, which doesn't add up, so we give no number for the placing rule. The objective wording says to beat a member of the crew. We show both and don't reconcile them.",
+      "The objective list hasn't been checked against the on-screen prompts.",
+    ],
+    faq: [
+      {
+        question: "Which mission number is Chapter 2 Mission 11?",
+        answer: "It is the eleventh mission of Chapter 2 and the 33rd overall in Push Square's list (Reported). PC Gamer's list leaves it out and PowerPyx calls it an optional side mission.",
+      },
+      {
+        question: "How do you start Chapter 2 Mission 11?",
+        answer: "PowerPyx says it is marked on your map automatically during Chapter 2 Mission 9, together with several other optional jobs (Reported).",
+      },
+      {
+        question: "Do you have to win in Chapter 2 Mission 11?",
+        answer: "No. PowerPyx says you don't have to win to complete it, but that to impress your contact you can't come in last (Reported).",
+      },
+      {
+        question: "How much does Chapter 2 Mission 11 pay?",
+        answer: "It depends on how you finish. PowerPyx gives up to $2,500 for first place and $625 for third, with lower places paying less (Reported).",
+      },
+      {
+        question: "Which character do you need for Chapter 2 Mission 11?",
+        answer: "Either lead can start it (PowerPyx, Reported).",
+      },
+    ],
+    sources: [
+      pp("gta-6-thrillbillies-check-out-the-mud-club-walkthrough", "Start condition, objectives, steps, rental choice, placing rule, payout and questline"),
+      pp("gta-6-all-strangers-freaks-side-missions", "Whether the questline counts towards the trophy, and the missable rule"),
+      PCGAMER,
+      PUSHSQUARE,
+    ],
+    sourceLabel: "PowerPyx, PC Gamer, Push Square",
+    updated: "2026-11-20T08:16:52+10:00",
+  },
+  {
+    slug: "chapter-2-mission-12",
+    hidden: true,
+    chapter: 2,
+    chapterOrder: 12,
+    order: 34,
+    name: "Chapter 2, Mission 12",
+    seoTitle: "GTA 6 Chapter 2 Mission 12 Walkthrough & Tips",
+    seoDescription:
+      "GTA 6 Chapter 2 Mission 12 walkthrough: how to unlock it, every step in order, the payout, the vehicle you can keep, and tips to finish smoothly.",
+    teaser: "The twelfth mission of Chapter 2, after Chapter 2, Mission 11.",
+    intro: [
+      "This is the twelfth mission of Chapter 2 and the 34th overall in Push Square's list, which counts it as a story mission (Reported). PC Gamer's Chapter 2 list leaves it out and PowerPyx files it as an optional side mission. It comes from the same contact as Chapter 2, Mission 11 and either lead can start it. PowerPyx lists six objectives and a $2,000 payout, and says there is a vehicle from it that you can keep.",
+      "Our mission list keeps Chapter 2 names behind a blur, so this page uses a neutral title. The mission's name, the people, the premise, the start point and the step-by-step all stay behind the blur.",
+    ],
+    facts: [
+      { label: "Chapter", value: "Chapter 2, mission 12, and 34th overall in Push Square's list (our hub also follows Press Start's Story Recap). PC Gamer's list leaves it out, and PowerPyx calls it an optional side mission.", status: "reported" },
+      { label: "Unlocks after", value: "Chapter 2, Mission 11, plus a wait of a few in-game hours (PowerPyx)", status: "reported" },
+      { label: "Starts", value: "PowerPyx says a phone message marks the start on your map, and you then go there to begin", status: "reported" },
+      { label: "Playable as", value: "Either lead (PowerPyx)", status: "reported" },
+      { label: "Objectives", value: "Six (PowerPyx)", status: "reported" },
+      { label: "Payout", value: "$2,000 (PowerPyx)", status: "reported" },
+      { label: "Vehicle", value: "PowerPyx says the vehicle you use can be kept if you store and register it afterwards", status: "reported" },
+      { label: "Strangers & Freaks trophy", value: "PowerPyx says this questline does not count towards it", status: "reported" },
+    ],
+    objectives: [
+      "Meet Billy at the bench in Port Gellhorn, the start marked after his phone message. He brings you a Highwayman Sanchez dirt bike and wants you to join his crew in robbing an armored truck (Reported, PowerPyx).",
+      "Get on the dirt bike and follow Billy. A cutscene eventually shows the armored truck (Reported, PowerPyx).",
+      "Chase the truck with Billy's crew. PowerPyx says the truck crashes into a tree by itself, so there is no need to shoot it. Focus on driving and don't get thrown off the bike (Reported, PowerPyx).",
+      "Go to the crash site. Walk to the back doors of the truck, plant a bomb and set it off (Reported, PowerPyx).",
+      "Handle the security guard. He leaves the truck and walks off to the side. PowerPyx says you can knock him out or leave him alone, and describes no difference between the two (Reported, PowerPyx).",
+      "Take the one bag behind the truck, get on your bike and follow Billy. He leads you up a mountain to the rest of the crew, and a cutscene ends the mission (Reported, PowerPyx).",
+    ],
+    spoiler:
+      "The mission is called Twist Wrist, Smash, Grab in our mission list and in Push Square's 93-mission list, where it is Chapter 2 #12 (Reported, one main outlet plus Press Start's Story Recap). PowerPyx shows the map label Join Billy on a Job. Billy, the dirt racer from Chapter 2, Mission 11, is planning a job and needs one more rider for his crew's armored-truck robbery. It starts at a bench in Port Gellhorn, and it is the second of Billy's five jobs (PowerPyx, and Push Square's Billy side-mission list). PowerPyx says the Highwayman Sanchez is very good for off-road stunt jumps, and suggests keeping it in a garage (if you have one, for example in Port Gellhorn) and registering it as a vehicle at Moses (Reported, PowerPyx). PowerPyx objective wording: Get on the dirt bike, Follow Billy, Stop the armored van, Go to the crash site / Plant a bomb on the rear doors, Handle the security guard, Follow Billy (Reported, PowerPyx).",
+    tips: [
+      { text: "Keep the vehicle. PowerPyx says the one you use is very good for off-road stunt jumps and suggests storing it in a garage and registering it as your own (Reported).", reported: true, link: { href: "/guides/garages", label: "Garages guide" } },
+      { text: "You don't need to shoot anything during the chase part (PowerPyx, Reported). Focus on staying upright and close to the group.", reported: true, link: { href: "/guides/stealing-cars", label: "How to steal and keep cars" } },
+      { text: "Don't wait by the marker. PowerPyx says the phone message takes a few in-game hours to arrive after Chapter 2, Mission 11, so carry on with other jobs. That advice is our own suggestion, based on PowerPyx's timing note.", reported: false },
+      { text: "There is no rush. PowerPyx doesn't mark this questline as missable, and its Strangers & Freaks page says side quests that aren't marked missable stay available after the story (Reported).", reported: true },
+      { text: "Make a manual save before you start, so you can retry if the mission goes wrong. This is our own suggestion.", reported: false, link: { href: "/guides/saving", label: "How to save" } },
+    ],
+    notes: [
+      "Order: Push Square and Press Start list this as the twelfth mission of Chapter 2, so our hub does too. PC Gamer's Chapter 2 has only 11 missions and leaves it out. PowerPyx labels it an optional side mission. Push Square also lists it as the second job of a side-mission questline. Treat the position as Reported.",
+      "PowerPyx is the only full walkthrough for this mission so far, so the start condition, the steps, the payout and the vehicle tip are labelled Reported. Only Push Square (with Press Start's count) backs the name and position.",
+      "PowerPyx's page shows its button prompts as icons, which we can't read as text, so we leave them out. The objective list hasn't been checked against the on-screen prompts.",
+    ],
+    faq: [
+      {
+        question: "Which mission number is Chapter 2 Mission 12?",
+        answer: "It is the twelfth mission of Chapter 2 and the 34th overall in Push Square's list (Reported). PC Gamer's list leaves it out and PowerPyx calls it an optional side mission.",
+      },
+      {
+        question: "How do you unlock Chapter 2 Mission 12?",
+        answer: "Finish Chapter 2 Mission 11 and wait a few in-game hours for a phone message, which marks the start on your map (PowerPyx, Reported).",
+      },
+      {
+        question: "How much does Chapter 2 Mission 12 pay?",
+        answer: "$2,000 (PowerPyx, Reported).",
+      },
+      {
+        question: "Can you keep the vehicle from Chapter 2 Mission 12?",
+        answer: "PowerPyx says yes: store it in a garage and register it as your own (Reported).",
+      },
+      {
+        question: "Which character do you need for Chapter 2 Mission 12?",
+        answer: "Either lead can start it (PowerPyx, Reported).",
+      },
+    ],
+    sources: [
+      pp("gta-6-twist-wrist-smash-grab-join-billy-on-a-job-walkthrough", "Start condition, objectives, steps, guard choice, payout, vehicle tip and questline"),
+      pp("gta-6-all-strangers-freaks-side-missions", "Whether the questline counts towards the trophy, and the missable rule"),
+      PCGAMER,
+      PUSHSQUARE,
+    ],
+    sourceLabel: "PowerPyx, PC Gamer, Push Square",
+    updated: "2026-11-20T08:16:52+10:00",
+  },
 ];
 
 /** Chapter a mission belongs to (Chapter 1 unless stated). */
