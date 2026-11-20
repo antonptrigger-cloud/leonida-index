@@ -12,6 +12,7 @@ import { FASTTRAVEL_PUBLISHED, FASTTRAVEL_VERIFIED } from "@/lib/guides/fast-tra
 import { CLOTHES_PUBLISHED, CLOTHES_VERIFIED } from "@/lib/guides/change-clothes";
 import { FIRSTPERSON_PUBLISHED, FIRSTPERSON_VERIFIED } from "@/lib/guides/first-person";
 import { BIGFOOT_PUBLISHED, BIGFOOT_VERIFIED } from "@/lib/guides/bigfoot";
+import { SIDEJOBS_PUBLISHED, SIDEJOBS_VERIFIED } from "@/lib/guides/sidejobs";
 import { DIFFICULTY_PUBLISHED, DIFFICULTY_VERIFIED } from "@/lib/guides/difficulty";
 import { RELATIONSHIP_PUBLISHED, RELATIONSHIP_VERIFIED } from "@/lib/guides/relationship";
 import { GARAGES_PUBLISHED, GARAGES_VERIFIED } from "@/lib/guides/garages";
@@ -143,7 +144,7 @@ export const ROUTES: Record<string, RouteSeo> = {
     kind: "collection",
     changeFrequency: "daily",
     priority: 0.85,
-    updated: BIGFOOT_VERIFIED, // the hub gained the bigfoot card
+    updated: SIDEJOBS_VERIFIED, // the hub gained the Chapter 3 side job card
   },
   "/guides/beginner": {
     title: "GTA 6 Beginner Guide: Tips for Your First Hours",
@@ -332,6 +333,16 @@ export const ROUTES: Record<string, RouteSeo> = {
     priority: 0.8,
     updated: BIGFOOT_VERIFIED,
     published: BIGFOOT_PUBLISHED,
+  },
+  "/guides/chapter-3-side-job-locations": {
+    title: "GTA 6 Chapter 3 Side Job Locations and Pay",
+    description: "GTA 6 Chapter 3 side job locations and pay: how the search areas work, how to clear each site, what each pays, and whether it counts as a mission.",
+    crumb: "Chapter 3 Side Job Locations",
+    kind: "article",
+    changeFrequency: "weekly",
+    priority: 0.7,
+    updated: SIDEJOBS_VERIFIED,
+    published: SIDEJOBS_PUBLISHED,
   },
   "/guides/difficulty": {
     title: "GTA 6 Difficulty Settings: Is There an Easy Mode?",

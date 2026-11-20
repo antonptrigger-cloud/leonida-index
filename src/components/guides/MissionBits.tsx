@@ -39,11 +39,13 @@ export function SourcesList({
   sources,
   verified = { iso: LAST_VERIFIED, label: `${LAST_VERIFIED_LABEL} (pre-launch)` },
   blurLinks = false,
+  blurLabel = "source links (the web addresses name the mission)",
 }: {
   sources: (MissionSource | PlainSource)[];
   verified?: { iso: string; label: string };
   /** Hidden-mission pages: some source URLs contain the mission name, so the link list sits behind a blur. */
   blurLinks?: boolean;
+  blurLabel?: string;
 }) {
   const list = (
       <ol className="mt-4x flex flex-col gap-3x text-sm">
@@ -65,7 +67,7 @@ export function SourcesList({
       </p>
       {blurLinks ? (
         <div className="mt-4x">
-          <Spoiler label="source links (the web addresses name the mission)">{list}</Spoiler>
+          <Spoiler label={blurLabel}>{list}</Spoiler>
         </div>
       ) : (
         list

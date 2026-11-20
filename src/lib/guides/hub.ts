@@ -48,6 +48,7 @@ const HUB_META: Record<string, HubMeta> = {
   "/guides/activities": { title: "Activities", blurb: "Diving, jet skis, fishing, hoops, mini golf and the rest.", tag: "Activities", accent: "turq", section: "systems" },
   "/guides/map-size": { title: "Map size", blurb: "Rockstar's size comparisons, one outlet's 175 km² measurement and timed crossings.", tag: "Map", accent: "turq", section: "systems" },
   "/guides/bigfoot-skunk-ape": { title: "Bigfoot & Skunk Ape", blurb: "Where Bigfoot shows up, how to start Kirk's three-part quest and where the tree effigies are. Outlets differ on the spot.", tag: "Side missions", accent: "turq", section: "systems" },
+  "/guides/chapter-3-side-job-locations": { title: "Chapter 3 side job locations", blurb: "Where the sites are, how to clear them and what each pays. Outlets disagree on whether it's a story mission.", tag: "Side missions", accent: "turq", section: "systems" },
   "/guides/strangers-and-freaks": { title: "Strangers & Freaks", blurb: "Which side-mission questlines count, and when they open.", tag: "Side missions", accent: "turq", section: "systems" },
 };
 

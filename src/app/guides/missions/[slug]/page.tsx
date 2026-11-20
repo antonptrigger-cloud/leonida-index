@@ -40,6 +40,12 @@ export default async function MissionPage({ params }: { params: Promise<{ slug: 
   const path = missionPath(m.slug);
   const chapterNumber = missionChapter(m);
   const chapterTotal = STORY_CHAPTERS.find((c) => c.number === chapterNumber)?.missions.length ?? 0;
+  // Neutral "coming soon" notes where the chapter has a mission we haven't written yet, instead of a dead link.
+  const chapterGap = (a: (typeof MISSIONS)[number] | undefined, b: (typeof MISSIONS)[number] | undefined) =>
+    a && b && missionChapter(a) === missionChapter(b) && missionChapterOrder(b) - missionChapterOrder(a) > 1
+      ? Array.from({ length: missionChapterOrder(b) - missionChapterOrder(a) - 1 }, (_, k) => missionChapterOrder(a) + k + 1)
+      : [];
+  const gapNumbers = [...chapterGap(prev, m), ...chapterGap(m, next)];
   const notes = [...(m.notes ?? []), ...(ORDER_SENSITIVE.has(m.slug) ? [ORDER_NOTE] : [])];
 
   return (
@@ -149,7 +155,13 @@ export default async function MissionPage({ params }: { params: Promise<{ slug: 
 
       <SourcesList blurLinks={Boolean(m.hidden)} sources={m.sources} verified={m.updated ? { iso: m.updated, label: dateLabel(m.updated) } : undefined} />
 
-      <nav aria-label="More missions" className="mt-16x grid gap-4x border-t border-pink/20 pt-6x sm:grid-cols-2">
+      {gapNumbers.length ? (
+        <p className="mt-16x text-sm text-muted">
+          {gapNumbers.map((n) => `Chapter ${chapterNumber}, Mission ${n} guide coming soon.`).join(" ")}
+        </p>
+      ) : null}
+
+      <nav aria-label="More missions" className={`${gapNumbers.length ? "mt-4x" : "mt-16x"} grid gap-4x border-t border-pink/20 pt-6x sm:grid-cols-2`}>
         {prev ? (
           <Link href={missionPath(prev.slug)} className="vc-card block p-4x">
             <span className="text-xs uppercase tracking-[0.2em] text-muted">← Previous</span>

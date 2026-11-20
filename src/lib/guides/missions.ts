@@ -3201,6 +3201,93 @@ export const MISSIONS: Mission[] = [
     sourceLabel: "PowerPyx, PC Gamer, Push Square",
     updated: "2026-11-20T12:07:48+10:00",
   },
+  {
+    slug: "chapter-3-mission-8",
+    hidden: true,
+    chapter: 3,
+    chapterOrder: 8,
+    order: 43,
+    name: "Chapter 3, Mission 8",
+    seoTitle: "GTA 6 Chapter 3 Mission 8 Walkthrough & Tips",
+    seoDescription:
+      "GTA 6 Chapter 3 Mission 8 walkthrough: how to start it, both ways to find your lead, every step in order, tips for the tricky moments and what it unlocks.",
+    teaser: "The eighth mission of Chapter 3, with two ways to find your lead and no cash reward.",
+    intro: [
+      "This is the eighth mission of Chapter 3 and the 43rd overall in Push Square's list. Push Square and PC Gamer both list it eighth in Chapter 3 (Confirmed), but the overall number is Reported. PowerPyx lists six objectives, says one lead can start it, and lists no cash reward. There are two ways to find your lead: one costs a small amount of cash and the other costs a little searching.",
+      "Our mission list keeps Chapter 2 and later names behind a blur, so this page uses a neutral title. The mission's name, the premise, the people, the places and the step-by-step all stay behind the blur.",
+    ],
+    facts: [
+      { label: "Chapter", value: "Chapter 3, and the eighth mission of the chapter in both Push Square's and PC Gamer's lists", status: "confirmed" },
+      { label: "Number", value: "43rd overall (Push Square and Press Start). PowerPyx calls it the 48th main mission using its own count.", status: "reported" },
+      { label: "Unlocks after", value: "PowerPyx's requirement line names the first part of Chapter 3, Mission 4. Push Square and PC Gamer list it after Mission 7.", status: "reported" },
+      { label: "Starts", value: "PowerPyx says you go back to a contact at a set place in the city and talk to them. Who and where are in the blur.", status: "reported" },
+      { label: "Playable as", value: "One lead only (PowerPyx). Which one is in the blur.", status: "reported" },
+      { label: "Objectives", value: "Six (PowerPyx)", status: "reported" },
+      { label: "Finding your lead", value: "Two ways, per PowerPyx: pay $20 if you have cash on you, or search instead. Both lead to the same place.", status: "reported" },
+      { label: "Reward", value: "PowerPyx lists no cash. It lists the quest giver unlocking as a place to sell goods.", status: "reported" },
+      { label: "What opens next", value: "PowerPyx says a Chapter 3 side job opens straight after this mission. Our side job guide covers it, and outlets disagree on whether it is a numbered mission.", status: "reported" },
+    ],
+    objectives: [
+      "Get the job. As Jason, head back and talk to Tyrone at the apartment complex in La Perle (Reported, PowerPyx).",
+      "Go to Charles' apartment. Tyrone wants Charles found, and Charles has an apartment in Rockridge (Reported, PowerPyx).",
+      "Find out where Charles is. Either bribe the man standing by the doorway $20 for information, if you have cash on you, or break into the empty apartment and inspect the Aline's Thrift Store receipt in the bedroom. That prompts Jason to ask Tyrone, who gives an address (Reported, PowerPyx).",
+      "Go to the camp in La Perle. Whichever way you got the information, head to the homeless camp on the north-western edge of La Perle. When you reach the building, break open the door on the lower floor to get in (Reported, PowerPyx).",
+      "Chase after Charles. He runs when he spots you, so chase him up the stairs on the far side to the upper levels. If vagrants attack on the way up, you can knock them out in melee and don't need to shoot (Reported, PowerPyx).",
+      "Approach Charles. He stops at the wall on the top level. Follow him over (Reported, PowerPyx).",
+      "Search Charles' body. After Charles jumps off, take the stairs back down to ground level and search him. You get a bag of Kitty Litter, which completes the mission (Reported, PowerPyx).",
+    ],
+    spoiler:
+      "The mission is called Here, Kitty Kitty in our mission list, Push Square's list and PC Gamer, with the map label Speak with Tyrone on PowerPyx. PC Gamer's one-line summary is that Jason looks for Charles (Confirmed for the name and position). PowerPyx's description is that Jason tracks down Charles but finds him strung out on Kitty Litter, and that Jason is the only one who can start it. It lists the first part of Chapter 3, Mission 4 (Dubious Provenance) as the requirement and the start as Tyrone's apartment complex in La Perle (Reported). Push Square and PC Gamer put a mission named Tyrone at Chapter 3 #7 before this one, and PowerPyx's lab-locations page says you meet Tyrone in a main mission called Tyrone before this one. We haven't found a main-outlet walkthrough of that mission yet (Reported). What comes next: PowerPyx's lab-locations page says the first lab you are prompted to destroy comes straight after this mission. Push Square lists Kitty Litter Labs at Chapter 3 #9, while PC Gamer has Car Services at #9 with no labs entry and PowerPyx files the labs as a side questline. We cover them as a side job, not a numbered mission (Reported).",
+    tips: [
+      { text: "Carry a little cash. PowerPyx says one way to find your lead is a $20 payment, which only works if you have the money on you. The other way is free but takes a little longer (Reported).", reported: true },
+      { text: "Pay attention to the route. PowerPyx says your target heads for the far side of the building, so don't lose time on the nearer way (Reported). Details are in the blur.", reported: true },
+      { text: "You don't need guns. PowerPyx says anyone who attacks you on the way can be knocked out in melee, so there's no need to start a shootout (Reported). Keeping quiet to avoid extra attention is our own suggestion.", reported: true },
+      { text: "Keep going until the mission says it's done. PowerPyx says there's one more thing to do after the main action (Reported). Details are in the blur.", reported: true },
+      { text: "Know what comes next. PowerPyx says a side job opens straight after this mission (Reported). Our guide covers where its sites are and what each pays, and it's kept out of the numbered mission chain.", reported: true, link: { href: "/guides/chapter-3-side-job-locations", label: "Chapter 3 side job locations and pay" } },
+      { text: "Make a manual save before you start. PowerPyx says GTA VI has no mission replay and suggests a manual save at the start and end of each chapter (Reported).", reported: true, link: { href: "/guides/saving", label: "How to save" } },
+    ],
+    notes: [
+      "Order: Push Square and PC Gamer both list this eighth in Chapter 3. The overall number follows Push Square and Press Start. PowerPyx calls it the 48th main mission using its own count, so treat the overall number as Reported.",
+      "PowerPyx's requirement line is earlier in Chapter 3 than the missions listed before this one by Push Square and PC Gamer, so the order you meet them in may vary. We haven't tested it.",
+      "PowerPyx is the only full walkthrough for this mission so far, so the start, both routes, the steps and the reward are labelled Reported. Push Square and PC Gamer confirm the name and the order. No source gives a playtime.",
+      "PowerPyx's objective list has six entries and the walkthrough text folds some together. It hasn't been checked against the on-screen prompts.",
+    ],
+    faq: [
+      {
+        question: "Which mission number is Chapter 3 Mission 8?",
+        answer: "It is the eighth mission of Chapter 3 in Push Square's and PC Gamer's lists (Confirmed). Push Square makes it the 43rd overall and PowerPyx the 48th using its own count (Reported).",
+      },
+      {
+        question: "How do I start Chapter 3 Mission 8?",
+        answer: "PowerPyx says you go back and speak to a contact at a set place in the city, and that it needs the first part of Chapter 3 Mission 4 done. Who and where are in the blurred section (Reported).",
+      },
+      {
+        question: "Do I have to pay to find the lead in Chapter 3 Mission 8?",
+        answer: "No. PowerPyx says you can pay $20 for the information or search an empty apartment for a clue instead. Both lead to the same place (Reported).",
+      },
+      {
+        question: "Should I shoot the people who attack me in Chapter 3 Mission 8?",
+        answer: "You don't have to. PowerPyx says melee is enough to knock them out (Reported).",
+      },
+      {
+        question: "Does Chapter 3 Mission 8 give a cash reward?",
+        answer: "PowerPyx lists no cash reward. It lists the quest giver unlocking as a place to sell goods instead (Reported).",
+      },
+      {
+        question: "The action is over but Chapter 3 Mission 8 hasn't ended. What now?",
+        answer: "PowerPyx says there's one more step on the ground afterwards, which completes the mission. It's in the blurred section (Reported).",
+      },
+    ],
+    sources: [
+      pp("gta-6-here-kitty-kitty-speak-with-tyrone-walkthrough", "Requirement, playable lead, start, both routes to the lead, objectives, steps and the reward"),
+      pp("gta-6-all-kitty-litter-lab-locations", "That the first lab you are prompted to destroy comes straight after this mission"),
+      pp("gta-6-full-walkthrough-all-missions", "The no-replay note and that PowerPyx files the labs as a side questline"),
+      PCGAMER,
+      PUSHSQUARE,
+    ],
+    sourceLabel: "PowerPyx, PC Gamer, Push Square",
+    updated: "2026-11-20T13:15:47+10:00",
+  },
 ];
 
 /** Chapter a mission belongs to (Chapter 1 unless stated). */
