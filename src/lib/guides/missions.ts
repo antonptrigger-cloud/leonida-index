@@ -3847,6 +3847,193 @@ export const MISSIONS: Mission[] = [
     sourceLabel: "PowerPyx, PC Gamer, GameSpot, Push Square",
     updated: "2026-11-20T16:13:00+10:00",
   },
+  {
+    slug: "chapter-3-mission-16",
+    hidden: true,
+    chapter: 3,
+    chapterOrder: 16,
+    order: 51,
+    name: "Chapter 3, Mission 16",
+    seoTitle: "GTA 6 Chapter 3 Mission 16 Walkthrough & Tips",
+    seoDescription:
+      "GTA 6 Chapter 3 Mission 16 walkthrough: how to start it, each objective in order, keeping a tracked car quiet, the condition bonus, and what it unlocks.",
+    teaser: "The sixteenth mission of Chapter 3, a car job with a position-reporting tracker, a $21,250 payout and a condition bonus.",
+    intro: [
+      "This is the sixteenth mission of Chapter 3 and the 51st overall in Push Square's list. Push Square, PC Gamer and GameSpot all list it 16th in Chapter 3 (Confirmed), but the overall number is Reported. PowerPyx lists five objectives, says either lead can start it, and lists $21,250 plus a $10,000 bonus for delivering the car in good condition. You break into a parked car with a new method and drive it to a buyer. PowerPyx, PC Gamer and GameSpot all say the car's tracker reports your position to the police if you drive too slowly (Confirmed).",
+      "Our mission list keeps Chapter 2 and later names behind a blur, so this page uses a neutral title. The mission's name, the premise, the people, the places, the new tool and the step-by-step all stay behind the blur.",
+    ],
+    facts: [
+      { label: "Chapter", value: "Chapter 3, and the 16th mission of the chapter in Push Square's, PC Gamer's and GameSpot's lists", status: "confirmed" },
+      { label: "Number", value: "51st overall (Push Square). PowerPyx calls it the 60th main mission using its own count.", status: "reported" },
+      { label: "Numbering note", value: "PC Gamer and GameSpot number the chapter differently earlier on, but the differences cancel out, so all three lists give 16th here. Details are in the blur.", status: "reported" },
+      { label: "Unlocks after", value: "PowerPyx's requirement line names Chapter 3, Mission 14. Push Square, PC Gamer and GameSpot list Mission 15 before it.", status: "reported" },
+      { label: "Starts", value: "PowerPyx says a contact messages you after an earlier mission about a car at a set place. Where is in the blur.", status: "reported" },
+      { label: "Playable as", value: "Either lead can start it (PowerPyx)", status: "reported" },
+      { label: "Objectives", value: "Five (PowerPyx)", status: "reported" },
+      { label: "Reward", value: "$21,250, plus a $10,000 bonus for delivering the car in good condition (PowerPyx). PowerPyx also lists a new tool, a new buyer and an optional questline, covered in the blur.", status: "reported" },
+    ],
+    objectives: [
+      "Get into the car park. Go to Hathaway Apartments in Ocean Beach. PowerPyx says the car park is walled in and you can climb over the wall to enter. Once inside you call Randy (Reported, PowerPyx).",
+      "Install the key cloner. Randy tells you about the Key Cloner and that the car has an advanced tracker. PowerPyx says to open your phone and choose the bottom option to install it, which installs it for both Jason and Lucia (Reported, PowerPyx).",
+      "Find the Zorrusso. PowerPyx says it is on the ground level, on the east side of the car park (Reported, PowerPyx).",
+      "Clone the key. Interact with the door, then again to use the Key Cloner. PowerPyx compares it to the slim jim: when the indicator turns pink, hold the stick in that direction to fill the bar. PC Gamer also describes using the control stick to find the sweet spot, so the stick-based minigame is Confirmed (PowerPyx, PC Gamer).",
+      "Drive it to Randy. PowerPyx says a red icon above the minimap shows the advanced tracker, a bar around it fills if you drive too slowly, and a full bar pings your location to the police. PowerPyx also says the tracker is disabled, shown by the icon turning grey, once you are near Randy's showroom, then you drive round the lot and through the garage door. The slow-driving tracker is Confirmed (PowerPyx, PC Gamer, GameSpot); the showroom detail is Reported (PowerPyx).",
+      "Follow Randy. Randy comments on the car's condition. PowerPyx says very good condition earns a bonus and otherwise he makes fun of you. You then follow him to a nearby board, where he explains a list of specific high-end cars he is looking for and will pay a lot for (Reported, PowerPyx).",
+      "PowerPyx's objective wording is: Install the key cloner, Search the area for the Zorruso, Steal the Zorrusso, Drive the Zorrusso to Randy, Follow Randy. PowerPyx spells the car two ways in its own list (Reported, PowerPyx).",
+    ],
+    spoiler:
+      "The mission is called Steal the Zorrusso for Randy in our mission list and Push Square's list. PC Gamer spells it Steal the Zorruso for Randy, GameSpot spells it Steal the Zorusso for Randy, and all three number it 16th in Chapter 3. PC Gamer's one-line summary is that Jason and Lucia steal a high-end car (Confirmed for the name and chapter, with the spelling differing). PowerPyx calls it Clonin' Keys, Makin' Gs on its page title and lists Steal the Zorrusso for Randy as the map label. PowerPyx describes Randy asking Jason and Lucia to steal a high-end car parked at an apartment building in Ocean Beach. He gives them a key cloner to break into high-end cars and shows them a list of the specialty cars he wants most (Reported). PowerPyx lists Chapter 3, Mission 14 (Crosstown Traffic) as the requirement, Hathaway Apartments in Ocean Beach (Vice Beach) as the start, and gives its own count as the 60th main mission. Its index lists it straight after Credit Check (Reported). Order: PC Gamer and GameSpot list Caught Slipping before Crosstown Traffic, but their lists also lack the Kitty Litter Labs entry Push Square has earlier in the chapter, so those two differences cancel out and all of them number this mission 16th. What it unlocks: PowerPyx says this mission gives you the Key Cloner, which lets you steal high-end cars. PC Gamer says you get the key cloner in Chapter 3 during this mission, and that it unlocks and starts keyless cars. GameSpot says Randy gives you the tool, without naming the mission, and that you don't have to hotwire the car after the cloning minigame. The mission is Confirmed as the source of the Key Cloner (PowerPyx, PC Gamer). PC Gamer also says the Waink It app on your phone can identify keyless cars when you scan them (Reported). The buyer: PowerPyx says you can now sell Key Cloner cars to Randy, and PC Gamer's fence-locations table lists Randy (high-end vehicles, Balsero) as unlocking in this mission, so high-end car sales to Randy opening here is Confirmed (PowerPyx, PC Gamer). Fence-tier conflict: PowerPyx's Car Service walkthrough (Chapter 3, Mission 10) says Randy is unlocked as a vehicle drop-off at the end of that mission, for vehicles with Standard Trackers or items from his request list. PC Gamer's table names this mission for Randy instead. We can't settle which tier opens when, so check the buyer list on your map after each mission (Reported). The optional questline: PowerPyx says the board opens an optional questline for a set of specific high-end cars Randy pays a lot for. Their locations start out unknown, and you can find them yourself or ask Randy for tips, and he gives them one at a time. PowerPyx says delivering them is not needed to progress the story (Reported).",
+    tips: [
+      { text: "Keep moving in a tracked car. PowerPyx says the tracker only pings you if you aren't driving fast enough. PC Gamer says the same about advanced trackers, and GameSpot says a red tracker pings your location after roughly five seconds below a certain speed (Confirmed).", reported: false },
+      { text: "Mind the condition. PowerPyx says delivering the car in very good condition earns a $10,000 bonus (Reported).", reported: true },
+      { text: "Don't leave a red-tracker car near a mission start. GameSpot says the ping goes out as soon as you leave the car, turning the area into a crime zone that blocks missions there until your heat clears. GameSpot also says Pay 'n' Spray won't take these cars and you can't store them in your garages (Reported).", reported: true },
+      { text: "Make a manual save before you start. PowerPyx and Push Square say story missions can't be replayed, and PowerPyx suggests a manual save at the start and end of each chapter, which helps if you want another go at the bonus (Reported).", reported: true, link: { href: "/guides/saving", label: "How to save" } },
+      { text: "For more on breaking into and keeping cars, see our stealing cars guide, and our garages guide for where to keep what you take.", reported: false, link: { href: "/guides/stealing-cars", label: "Stealing cars" } },
+      { text: "For shaking the police if the tracker pings you, see our wanted system guide.", reported: false, link: { href: "/guides/wanted", label: "Wanted system" } },
+    ],
+    notes: [
+      "Order: Push Square, PC Gamer and GameSpot all list this 16th in Chapter 3, but PC Gamer and GameSpot reach that number differently: they lack one entry earlier in the chapter and add another mission just before Mission 14, and the two differences cancel out. Our hub follows Push Square. The overall number follows Push Square. PowerPyx calls it the 60th main mission using its own count, and its index places it straight after the mission our hub lists 15th.",
+      "PowerPyx is the only full walkthrough for this mission so far, so the start, the steps, the $21,250 and the $10,000 bonus are labelled Reported. Push Square, PC Gamer and GameSpot confirm the name and chapter, and PowerPyx with PC Gamer and GameSpot confirm the tracker behaviour. No source gives a playtime.",
+      "PowerPyx's objective list has five entries. It hasn't been checked against the on-screen prompts. The car's name is spelled three different ways by the main outlets, so we use the spelling from our hub.",
+    ],
+    faq: [
+      {
+        question: "Which mission number is Chapter 3 Mission 16?",
+        answer: "Push Square, PC Gamer and GameSpot all list it 16th in Chapter 3 (Confirmed). Push Square makes it the 51st overall and PowerPyx the 60th using its own count (Reported).",
+      },
+      {
+        question: "How do I start Chapter 3 Mission 16?",
+        answer: "PowerPyx says it needs Chapter 3 Mission 14 done, after which a contact messages you, and either lead can start it. Where is in the blurred section (Reported).",
+      },
+      {
+        question: "Why do the police keep finding me during the drive?",
+        answer: "The car reports your position if you drive too slowly. PowerPyx, PC Gamer and GameSpot all say keeping your speed up stops that (Confirmed).",
+      },
+      {
+        question: "Does damage matter in Chapter 3 Mission 16?",
+        answer: "PowerPyx says a car delivered in very good condition earns a $10,000 bonus (Reported).",
+      },
+      {
+        question: "How much does Chapter 3 Mission 16 pay?",
+        answer: "PowerPyx lists $21,250 plus the $10,000 condition bonus, along with a new tool, a new buyer and an optional questline covered in the blurred section (Reported).",
+      },
+    ],
+    sources: [
+      pp("gta-6-clonin-keys-makin-gs-steal-the-zorrusso-for-randy-walkthrough", "Requirement, playable leads, start, objectives, steps, tracker, reward, unlocks and the optional questline"),
+      pp("gta-6-car-service-steal-the-car-for-raul-walkthrough", "Where PowerPyx says the vehicle buyer first opens"),
+      pp("gta-6-full-walkthrough-all-missions", "Where PowerPyx's own list places the mission, and the no-replay note"),
+      {
+        id: "pcgamer",
+        label: "PC Gamer: GTA 6 car-theft guide (18 Nov 2026)",
+        url: "https://www.pcgamer.com/games/grand-theft-auto/gta-6-clone-keys/",
+        used: "Which mission gives the new tool, the stick minigame and how advanced trackers behave",
+      },
+      {
+        id: "pcgamer",
+        label: "PC Gamer: GTA 6 fence locations",
+        url: "https://www.pcgamer.com/games/grand-theft-auto/gta-6-fence-locations/",
+        used: "Which mission PC Gamer says opens the high-end vehicle buyer",
+      },
+      {
+        id: "gamespot",
+        label: "GameSpot: How to steal cars and remove trackers in GTA 6",
+        url: "https://www.gamespot.com/articles/how-to-steal-cars-and-remove-trackers-in-gta-6/",
+        used: "Who gives the new tool, red tracker behaviour, Pay 'n' Spray and garage limits, crime zones near mission starts",
+      },
+      PCGAMER,
+      {
+        id: "gamespot",
+        label: "GameSpot: How long to beat GTA 6, full missions list",
+        url: "https://www.gamespot.com/articles/how-long-to-beat-gta-6/",
+        used: "Mission name and Chapter 3 order. No playtime used.",
+      },
+      PUSHSQUARE,
+    ],
+    sourceLabel: "PowerPyx, PC Gamer, GameSpot, Push Square",
+    updated: "2026-11-20T17:16:35+10:00",
+  },
+  {
+    slug: "chapter-3-mission-17",
+    hidden: true,
+    chapter: 3,
+    chapterOrder: 17,
+    order: 52,
+    name: "Chapter 3, Mission 17",
+    seoTitle: "GTA 6 Chapter 3 Mission 17 Walkthrough & Tips",
+    seoDescription:
+      "GTA 6 Chapter 3 Mission 17 walkthrough: how to start it, each objective in order, what to look for when the game asks you to scout, and what it pays.",
+    teaser: "The seventeenth mission of Chapter 3, an on-foot mission with four objectives and no cash reward.",
+    intro: [
+      "This is the seventeenth mission of Chapter 3 and the 52nd overall in Push Square's list. Push Square, PC Gamer and GameSpot all list it 17th in Chapter 3 under the same name (Confirmed), but the overall number is Reported, and PowerPyx's own list places it later. PowerPyx lists four objectives, says either lead can start it, and lists no reward. Its steps cover walking in, waiting, inspecting a set of things the game highlights, and a meeting. They don't mention any shooting or driving.",
+      "Our mission list keeps Chapter 2 and later names behind a blur, so this page uses a neutral title. The mission's name, the premise, the people, the places, what you inspect and the step-by-step all stay behind the blur.",
+    ],
+    facts: [
+      { label: "Chapter", value: "Chapter 3, and the 17th mission of the chapter in Push Square's, PC Gamer's and GameSpot's lists, under the same name", status: "confirmed" },
+      { label: "Number", value: "52nd overall (Push Square). PowerPyx calls it the 63rd main mission using its own count.", status: "reported" },
+      { label: "Order", value: "PowerPyx's list places it later in the chapter than the other lists do. Details are in the blur.", status: "reported" },
+      { label: "Unlocks after", value: "PowerPyx's requirement line names Chapter 3, Mission 15. Push Square, PC Gamer and GameSpot list Mission 16 between the two.", status: "reported" },
+      { label: "Starts", value: "PowerPyx says a contact messages you to meet at a set place. Where is in the blur.", status: "reported" },
+      { label: "Playable as", value: "Either lead can start it, and PowerPyx says you are in control of one of them inside (PowerPyx)", status: "reported" },
+      { label: "Objectives", value: "Four (PowerPyx)", status: "reported" },
+      { label: "Reward", value: "None (PowerPyx)", status: "reported" },
+    ],
+    objectives: [
+      "Enter the building. Once you arrive, go to the top of the main steps and through the front door (Reported, PowerPyx).",
+      "Follow Jason. You play Lucia here. Follow Jason to the nearby table and interact with it to lean and wait there (Reported, PowerPyx).",
+      "Check for security features. Switch on the Focus highlight and hold the inspect prompt on each highlighted feature. PowerPyx lists four, in this order: the security cameras above the counter, the man in the pink suit standing behind Jason, the two security guards standing by the elevator, and the security panel between the two elevators (Reported, PowerPyx).",
+      "Join Raul. After inspecting every spot, Raul calls you upstairs. Go to where he is with Andrea and interact with the chair to sit down, which completes the mission (Reported, PowerPyx).",
+      "PowerPyx's objective wording is: Enter the bank, Follow Jason, Check for security features, Join Raul (Reported, PowerPyx).",
+    ],
+    spoiler:
+      "The mission is called Sinfrontera National Bank in our mission list, Push Square's list, PC Gamer's list and GameSpot's list, and all four number it 17th in Chapter 3. PC Gamer's one-line summary is that Jason and Lucia prep a heist (Confirmed for the name and chapter). PowerPyx shows the map label Scope Out the Bank and describes Raul revealing his grand plan, a heist of Sinfrontera National Bank, where the Colombian cartel La Polilla Negra launders its money (PowerPyx spells it Columbian). Jason and Lucia case the bank and meet Raul and Andrea, who task them with finding Nicole Park, a security expert for the bank (Reported). PowerPyx lists Chapter 3, Mission 15 (Credit Check) as the requirement, Sinfrontera National Bank in Tequesta as the start, and gives its own count as the 63rd main mission (Reported). Order: PowerPyx's index lists Ride Or Die and a Raul's Next Job entry before this mission, and marks it as the first of its group of Cartel Heist setup missions. Push Square, PC Gamer and GameSpot list Ride or Die after this mission and after the one that follows it, and none of them has a Raul's Next Job entry, so our hub follows them (Reported). What it sets up: PowerPyx says the meeting hands Jason and Lucia their next lead, finding the bank's security expert. PC Gamer's one-line summary of the following mission on its list is that Jason and Lucia meet Nicole (Reported).",
+    tips: [
+      { text: "Turn on the highlight view early. PowerPyx's method is to switch on Focus first, so the things you need stand out, and then hold the inspect prompt on each (Reported).", reported: true },
+      { text: "Inspect everything it highlights. PowerPyx says the next objective only follows once every spot has been inspected (Reported).", reported: true },
+      { text: "Make a manual save before you start. PowerPyx and Push Square say story missions can't be replayed, and PowerPyx suggests a manual save at the start and end of each chapter (Reported).", reported: true, link: { href: "/guides/saving", label: "How to save" } },
+      { text: "For a refresher on swapping between the two leads, see our switching characters guide.", reported: false, link: { href: "/guides/switch-characters", label: "Switching characters" } },
+    ],
+    notes: [
+      "Order: Push Square, PC Gamer and GameSpot all list this 17th in Chapter 3, but for PC Gamer and GameSpot the numbering differs earlier in the chapter in ways that cancel out. Our hub follows Push Square. PowerPyx's index places it later in the chapter than the other lists do, so it may appear on your map in a different order. The overall number follows Push Square. PowerPyx calls it the 63rd main mission using its own count.",
+      "PowerPyx is the only full walkthrough for this mission so far, so the start, the steps, the four things to inspect and the lack of a reward are labelled Reported. Push Square, PC Gamer and GameSpot confirm the name and chapter. No source gives a playtime.",
+      "PowerPyx's objective list has four entries. It hasn't been checked against the on-screen prompts.",
+    ],
+    faq: [
+      {
+        question: "Which mission number is Chapter 3 Mission 17?",
+        answer: "Push Square, PC Gamer and GameSpot all list it 17th in Chapter 3 under the same name (Confirmed). Push Square makes it the 52nd overall and PowerPyx the 63rd using its own count (Reported).",
+      },
+      {
+        question: "How do I start Chapter 3 Mission 17?",
+        answer: "PowerPyx says it needs Chapter 3 Mission 15 done, after which a contact messages you, and either lead can start it. Where is in the blurred section (Reported).",
+      },
+      {
+        question: "Is there any combat in Chapter 3 Mission 17?",
+        answer: "Not in PowerPyx's walkthrough, whose four objectives cover walking in, waiting, inspecting and a meeting (Reported).",
+      },
+      {
+        question: "Why won't the next objective appear?",
+        answer: "PowerPyx says you hold the inspect prompt on each highlighted feature, and the next objective only follows once all of them have been inspected. The list is in the blurred section (Reported).",
+      },
+      {
+        question: "How much does Chapter 3 Mission 17 pay?",
+        answer: "PowerPyx lists no reward for it (Reported).",
+      },
+    ],
+    sources: [
+      pp("gta-6-sinfrontera-national-bank-scope-out-the-bank-walkthrough", "Requirement, playable leads, start, objectives, steps and reward"),
+      pp("gta-6-full-walkthrough-all-missions", "Where PowerPyx's own list places the mission, its heist-setup grouping and the no-replay note"),
+      PCGAMER,
+      {
+        id: "gamespot",
+        label: "GameSpot: How long to beat GTA 6, full missions list",
+        url: "https://www.gamespot.com/articles/how-long-to-beat-gta-6/",
+        used: "Mission name and Chapter 3 order. No playtime used.",
+      },
+      PUSHSQUARE,
+    ],
+    sourceLabel: "PowerPyx, PC Gamer, GameSpot, Push Square",
+    updated: "2026-11-20T17:16:35+10:00",
+  },
 ];
 
 /** Chapter a mission belongs to (Chapter 1 unless stated). */
