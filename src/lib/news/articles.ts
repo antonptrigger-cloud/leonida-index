@@ -66,6 +66,9 @@ export const SALES_PUBLISHED = "2026-11-19T09:08:00+10:00";
 /** 20 Nov 02:00 AEST run: sales piece updated with Sensor Tower's revised 19.05M estimate. Set to the time of the edit. */
 export const SALES_UPDATED_0200_AT = "2026-11-20T02:00:00+10:00";
 
+/** 20 Nov 11:00 AEST run: sales piece updated with Sensor Tower's 24.58M / $2.36B estimate (GameSpot, Deadline). Set to the PR-open time. */
+export const SALES_UPDATED_1100_AT = "2026-11-20T11:08:52+10:00";
+
 /** 19 Nov 11:00 AEST batch (tracker refresh after the UK unlock, refresh queue batch A). Set to the time of the edit. */
 export const UPDATES_1100_AT = "2026-11-19T11:07:00+10:00";
 
@@ -357,16 +360,17 @@ export const NEWS: NewsItem[] = [
   },
   {
     slug: "gta-6-sales-17-million-sensor-tower",
-    title: "GTA 6 Sales: 19M Copies Estimated",
+    title: "GTA 6 Sales: 24.6M Copies Estimated",
     description:
-      "Sensor Tower now estimates GTA 6 at 19.05 million copies and $1.84B, GameSpot reports, with PS5 at 75%. Not an official figure from Rockstar or Take-Two.",
+      "Sensor Tower now estimates GTA 6 at 24.58M units and $2.36B, GameSpot reports, 75% on PS5. GameSpot says Take-Two will share official data soon.",
     crumb: "Sales estimate",
-    teaser: "Sensor Tower's revised estimate puts GTA 6 at 19.05 million copies and $1.84B, up from 17M. Rockstar and Take-Two have not published a figure.",
+    teaser: "Sensor Tower's latest estimate puts GTA 6 at 24.58 million copies and $2.36B on day one. GameSpot reports Take-Two will share official figures soon.",
     tag: "Sales",
-    keywords: ["GTA 6 sales", "GTA 6 19 million", "GTA 6 copies sold", "GTA 6 Sensor Tower", "GTA 6 pre-orders", "Take-Two shares GTA 6", "GTA 6 record"],
+    keywords: ["GTA 6 sales", "GTA 6 24 million", "GTA 6 19 million", "GTA 6 copies sold", "GTA 6 Sensor Tower", "GTA 6 pre-orders", "Take-Two shares GTA 6", "GTA 6 record"],
     published: SALES_PUBLISHED,
-    updated: SALES_UPDATED_0200_AT,
+    updated: SALES_UPDATED_1100_AT,
     citations: [
+      "https://deadline.com/2026/11/gta-6-sales-launch-day-surge-videogame-1237229514/",
       "https://www.gamespot.com/articles/gta-6-has-sold-almost-8-million-copies-so-far-and-ps5-is-dominating-the-split-of-course/",
       "https://gamingbolt.com/grand-theft-auto-6-nears-20-million-units-sold-and-2-billion-revenue-per-analyst-firm",
       "https://www.investing.com/news/stock-market-news/gamers-get-ready-to-enter-vice-city-as-grand-theft-auto-vi-begins-globalrollout-5035485",
@@ -378,11 +382,11 @@ export const NEWS: NewsItem[] = [
     faq: [
       {
         question: "How many copies has GTA 6 sold?",
-        answer: "There is no official figure yet. Sensor Tower's latest estimate, reported by GameSpot on 19 Nov (US time), is 19.05 million units and about $1.84 billion in gross revenue: 14.23 million on PS5 and 4.82 million on Xbox Series X|S. Its earlier estimate, reported by Reuters and CNBC, was over 17 million copies for more than $1.65 billion.",
+        answer: "There is no official figure yet. Sensor Tower's latest estimate, reported by GameSpot at 4:19 p.m. PST on 19 Nov (10:19 AEST, 20 Nov), is 24.58 million units via pre-purchases and launch-day sales, about $2.36 billion in gross revenue: 18.44 million on PS5 and 6.15 million on Xbox Series X|S. Deadline gives 24.59 million units and cites Sensor Tower for the $2.36 billion. The previous estimate was 19.05 million units and about $1.84 billion. Before that, Reuters and CNBC reported over 17 million copies for more than $1.65 billion.",
       },
       {
         question: "Has Rockstar or Take-Two announced GTA 6 sales?",
-        answer: "Not in anything we found as of 01:57 AEST on 20 Nov. Take-Two's last official word, on 9 Nov, was that pre-orders were continuing to reach unprecedented levels.",
+        answer: "Not in anything we found as of 11:05 AEST on 20 Nov. GameSpot reports that Take-Two CEO Strauss Zelnick said on TBPN on 19 Nov (US time) that the company will share official GTA 6 sales data soon. Take-Two's last official written word, on 9 Nov, was that pre-orders were continuing to reach unprecedented levels.",
       },
     ],
   },
