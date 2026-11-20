@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { metaFor } from "@/lib/seo/site";
 import { PageSchema } from "@/lib/seo/jsonld";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
@@ -56,8 +57,13 @@ export default function Page() {
           </p>
         </section>
         <section>
-          <h2 className="mb-2 text-sm uppercase tracking-widest text-turq">Pins</h2>
-          <p className="text-muted">0 in-game verified. Map layer ships after 19 Nov.</p>
+          <h2 className="mb-2 text-sm uppercase tracking-widest text-turq">Explore Vice City</h2>
+          <ul className="list-disc space-y-1 pl-5">
+            <li><Link href="/database/locations/vice-city" className="underline">Vice City: districts, beaches and transport</Link></li>
+            <li><Link href="/map" className="underline">Interactive map</Link>: search every named place and filter by region</li>
+            <li><Link href="/database/locations" className="underline">GTA 6 locations</Link>: regions, counties and named places</li>
+            <li><Link href="/guides/missions" className="underline">Mission walkthrough</Link>: every story mission in order</li>
+          </ul>
         </section>
       </div>
     </div>
