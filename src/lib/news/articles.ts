@@ -67,7 +67,7 @@ export const SALES_PUBLISHED = "2026-11-19T09:08:00+10:00";
 export const SALES_UPDATED_0200_AT = "2026-11-20T02:00:00+10:00";
 
 /** 20 Nov 11:00 AEST run: sales piece updated with Sensor Tower's 24.58M / $2.36B estimate (GameSpot, Deadline). Set to the PR-open time. */
-export const SALES_UPDATED_1100_AT = "2026-11-20T11:08:52+10:00";
+export const SALES_UPDATED_1100_AT = "2026-11-20T12:04:48+10:00";
 
 /** 19 Nov 11:00 AEST batch (tracker refresh after the UK unlock, refresh queue batch A). Set to the time of the edit. */
 export const UPDATES_1100_AT = "2026-11-19T11:07:00+10:00";
