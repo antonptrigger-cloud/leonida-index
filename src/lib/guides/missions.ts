@@ -3117,6 +3117,90 @@ export const MISSIONS: Mission[] = [
     sourceLabel: "PowerPyx, PC Gamer, Push Square",
     updated: "2026-11-20T11:12:50+10:00",
   },
+  {
+    slug: "chapter-3-mission-6",
+    hidden: true,
+    chapter: 3,
+    chapterOrder: 6,
+    order: 41,
+    name: "Chapter 3, Mission 6",
+    seoTitle: "GTA 6 Chapter 3 Mission 6 Walkthrough & Tips",
+    seoDescription:
+      "GTA 6 Chapter 3 Mission 6 walkthrough: how to make it appear, every step in order, tips for the tricky moments, and when the payout arrives.",
+    teaser: "The sixth mission of Chapter 3, which can take a while to appear and pays out late.",
+    intro: [
+      "This is the sixth mission of Chapter 3 and the 41st overall in Push Square's list. Push Square and PC Gamer both list it sixth in Chapter 3 (Confirmed), but the overall number is Reported. PowerPyx says the call that unlocks it can take many in-game days, lists eleven objectives, and says the cash reward arrives long after the mission ends.",
+      "Our mission list keeps Chapter 2 and later names behind a blur, so this page uses a neutral title. The mission's name, the premise, the people, the places and the step-by-step all stay behind the blur.",
+    ],
+    facts: [
+      { label: "Chapter", value: "Chapter 3, and the sixth mission of the chapter in both Push Square's and PC Gamer's lists", status: "confirmed" },
+      { label: "Number", value: "41st overall (Push Square and Press Start). PowerPyx calls it the 73rd main mission using its own count.", status: "reported" },
+      { label: "Order", value: "PowerPyx's own order places it later in Chapter 3 than Push Square and PC Gamer do. We follow Push Square and PC Gamer.", status: "reported" },
+      { label: "Unlocks after", value: "Chapter 3, Mission 5 (PowerPyx's requirement line; Push Square and PC Gamer list it next)", status: "confirmed" },
+      { label: "Starts", value: "PowerPyx says you get a call some time after the previous mission, which can take many in-game days. After that you go to a set place. Where is in the blur.", status: "reported" },
+      { label: "Playable as", value: "One lead only (PowerPyx). Which one is in the blur.", status: "reported" },
+      { label: "Objectives", value: "Eleven (PowerPyx)", status: "reported" },
+      { label: "Reward", value: "PowerPyx lists $2,000, paid many in-game days after the mission ends", status: "reported" },
+      { label: "Choices", value: "PowerPyx's walkthrough lists no decisions and no optional objectives", status: "reported" },
+    ],
+    objectives: [
+      "Go to the house. After you inspect the note on the door at Mia's office in Hamlet, Mia wants Lucia to meet her at the house again. Drive over there from the office (Reported, PowerPyx).",
+      "Find Mia. Head inside the house to look for her, then head back outside when you have looked around (Reported, PowerPyx).",
+      "Follow the car. After Mia is taken away, get in Mia's car quickly, because your own car has been moved, and follow the other car. Keep behind it but don't get too close. The arrow above the car fills yellow if they start to spot you, so stay far enough back that it stays white (Reported, PowerPyx).",
+      "Search the building. The car pulls into a back alley that is blocked by a van. Get out and go on foot through the door on the south side of the alley, where the objective area is (Reported, PowerPyx).",
+      "Get in the car. After Mia manages to talk down the gang members, get in the driver's seat of the car the others jump into (Reported, PowerPyx).",
+      "Drive to the properties. Mia directs you to some properties to show the gang leader. Drive them to the first, the second and the final location, and be careful with the car (Reported, PowerPyx).",
+      "Follow Mia. Follow her into the last house as she shows it off. You need to wait while she goes through all of the rooms and then out into the backyard (Reported, PowerPyx).",
+      "Protect Mia and find Viper. After the house is shown, Viper comes back with other gang members and a gun fight starts. Deal with the M7 members in the back yard first, then the rest at the front. PowerPyx says you don't have your normal weapons here, only the pistol you start with, so watch for weapons you can pick up from defeated enemies (Reported, PowerPyx).",
+      "Get back to Mia. After the enemies outside are dealt with, quickly go back into the house, where Viper has taken Mia hostage. While they are talking, you can quickly pull out your pistol and shoot Viper. A scene then completes the mission (Reported, PowerPyx).",
+    ],
+    spoiler:
+      "The mission is called South Leonida Real Estate in our mission list, Push Square's list and PC Gamer, whose one-line summary is that Lucia has a run-in with M7 (Confirmed). PowerPyx shows the map label Meet Mia, says only Lucia can start it, lists Chapter 3, Mission 5 (Mami Knows Best) as the requirement, and starts it in Hamlet, Mariana County (Reported, PowerPyx). PowerPyx's quest description: Mia has been kidnapped by M7, and while trying to save her, Lucia is captured too. About to be executed, Mia offers to help find Terro, an M7 boss, a new headquarters in a better location for their criminal activities. Terro finds a house he likes, but Viper, his lieutenant, attempts to take over the gang. Lucia helps Terro defeat Viper. Mia and Lucia are freed by M7 and paid a generous commission (Reported, PowerPyx). The $2,000 reward comes from Mia. PowerPyx says it takes a very long time to be sent to you, but that you receive it eventually, after many in-game days (Reported, PowerPyx). PowerPyx's own order places this mission just before the final mission of Chapter 3, while Push Square and PC Gamer list it sixth (Reported).",
+    tips: [
+      { text: "Be patient if it doesn't appear. PowerPyx says the call that unlocks it can take many in-game days but should appear during Chapter 3 (Reported). Carrying on with other missions and activities in the meantime is our own suggestion.", reported: true },
+      { text: "Keep your distance during the first following section. PowerPyx says a marker fills yellow if you are being spotted, so drop back until it is white again (Reported).", reported: true },
+      { text: "Take it easy with the car when you have passengers. PowerPyx advises being careful with the car (Reported).", reported: true },
+      { text: "You may be short of weapons. PowerPyx says you don't have your normal weapons at one point and start with only a pistol, so pick up what enemies drop (Reported).", reported: true },
+      { text: "Be ready for a quick pistol draw at the very end (Reported, PowerPyx). Details are in the blur.", reported: true },
+      { text: "Don't panic about the payout. PowerPyx says the money takes a very long time to arrive but does come (Reported).", reported: true },
+      { text: "Make a manual save before you start. PowerPyx says GTA VI has no mission replay and suggests a manual save at the start and end of each chapter (Reported).", reported: true, link: { href: "/guides/saving", label: "How to save" } },
+    ],
+    notes: [
+      "Order: Push Square and PC Gamer both list this sixth in Chapter 3. The overall number follows Push Square and Press Start. PowerPyx calls it the 73rd main mission using its own count and its walkthrough index lists it near the end of the chapter, so treat the overall number as Reported.",
+      "PowerPyx is the only full walkthrough for this mission so far, so the start condition, the steps, the reward and its timing are labelled Reported. Push Square and PC Gamer confirm the name and the order. No source gives a playtime.",
+      "PowerPyx's objective list has eleven entries and the walkthrough text folds some together. It hasn't been checked against the on-screen prompts.",
+    ],
+    faq: [
+      {
+        question: "Which mission number is Chapter 3 Mission 6?",
+        answer: "It is the sixth mission of Chapter 3 in Push Square's and PC Gamer's lists (Confirmed). Push Square makes it the 41st overall and PowerPyx the 73rd using its own count (Reported).",
+      },
+      {
+        question: "Why can't I start Chapter 3 Mission 6?",
+        answer: "PowerPyx says it needs Chapter 3 Mission 5 done, then a call that can take many in-game days. Where to go after the call is in the blurred section (Reported).",
+      },
+      {
+        question: "I finished Chapter 3 Mission 6 but got no money. Is that a bug?",
+        answer: "PowerPyx says the payout arrives many in-game days later, so keep playing and it should come through (Reported).",
+      },
+      {
+        question: "Can I use my own weapons in Chapter 3 Mission 6?",
+        answer: "PowerPyx says you don't have your normal weapons at one point and start with only a pistol, so you pick up weapons from enemies (Reported).",
+      },
+      {
+        question: "Are there any choices in Chapter 3 Mission 6?",
+        answer: "PowerPyx's walkthrough lists no decisions or optional objectives (Reported).",
+      },
+    ],
+    sources: [
+      pp("gta-6-south-leonida-real-estate-meet-mia-walkthrough", "Requirement, playable lead, start, timing, objectives, steps and the delayed reward"),
+      pp("gta-6-full-walkthrough-all-missions", "PowerPyx's own mission order and the no-replay note"),
+      PCGAMER,
+      PUSHSQUARE,
+    ],
+    sourceLabel: "PowerPyx, PC Gamer, Push Square",
+    updated: "2026-11-20T12:07:48+10:00",
+  },
 ];
 
 /** Chapter a mission belongs to (Chapter 1 unless stated). */
