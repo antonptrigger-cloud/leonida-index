@@ -41,12 +41,22 @@ export default async function MissionPage({ params }: { params: Promise<{ slug: 
   const chapterNumber = missionChapter(m);
   const chapterTotal = STORY_CHAPTERS.find((c) => c.number === chapterNumber)?.missions.length ?? 0;
   // Neutral "coming soon" notes where the chapter has a mission we haven't written yet, instead of a dead link.
-  const chapterGap = (a: (typeof MISSIONS)[number] | undefined, b: (typeof MISSIONS)[number] | undefined) =>
-    a && b && missionChapter(a) === missionChapter(b) && missionChapterOrder(b) - missionChapterOrder(a) > 1
-      ? Array.from({ length: missionChapterOrder(b) - missionChapterOrder(a) - 1 }, (_, k) => missionChapterOrder(a) + k + 1).filter(
-          (n) => !(NON_CHAIN_ENTRIES[missionChapter(a)] ?? []).includes(n),
-        )
-      : [];
+  const chapterGap = (a: (typeof MISSIONS)[number] | undefined, b: (typeof MISSIONS)[number] | undefined): { chapter: number; n: number }[] => {
+    if (!a || !b) return [];
+    const ca = missionChapter(a);
+    const cb = missionChapter(b);
+    const skip = NON_CHAIN_ENTRIES[ca] ?? [];
+    if (ca === cb) {
+      return Array.from({ length: Math.max(0, missionChapterOrder(b) - missionChapterOrder(a) - 1) }, (_, k) => missionChapterOrder(a) + k + 1)
+        .filter((n) => !skip.includes(n))
+        .map((n) => ({ chapter: ca, n }));
+    }
+    // Neighbours in different chapters: the earlier chapter may still have unwritten missions after `a`.
+    const total = STORY_CHAPTERS.find((c) => c.number === ca)?.missions.length ?? 0;
+    return Array.from({ length: Math.max(0, total - missionChapterOrder(a)) }, (_, k) => missionChapterOrder(a) + k + 1)
+      .filter((n) => !skip.includes(n))
+      .map((n) => ({ chapter: ca, n }));
+  };
   const gapNumbers = [...chapterGap(prev, m), ...chapterGap(m, next)];
   const notes = [...(m.notes ?? []), ...(ORDER_SENSITIVE.has(m.slug) ? [ORDER_NOTE] : [])];
 
@@ -159,7 +169,7 @@ export default async function MissionPage({ params }: { params: Promise<{ slug: 
 
       {gapNumbers.length ? (
         <p className="mt-16x text-sm text-muted">
-          {gapNumbers.map((n) => `Chapter ${chapterNumber}, Mission ${n} guide coming soon.`).join(" ")}
+          {gapNumbers.map((g) => `Chapter ${g.chapter}, Mission ${g.n} guide coming soon.`).join(" ")}
         </p>
       ) : null}
 

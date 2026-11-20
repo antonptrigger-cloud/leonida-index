@@ -24,7 +24,8 @@ export type SourceId =
   | "vgc"
   | "gamesradar"
   | "pcgamerAch"
-  | "gamespot";
+  | "gamespot"
+  | "truetrophies";
 
 export interface MissionSource {
   id: SourceId;
@@ -4730,6 +4731,178 @@ export const MISSIONS: Mission[] = [
     ],
     sourceLabel: "PowerPyx, PC Gamer, GameSpot, Push Square",
     updated: "2026-11-20T21:17:56+10:00",
+  },
+  {
+    slug: "chapter-4-mission-1",
+    hidden: true,
+    chapter: 4,
+    chapterOrder: 1,
+    order: 62,
+    name: "Chapter 4, Mission 1",
+    seoTitle: "GTA 6 Chapter 4 Mission 1 Walkthrough & Tips",
+    seoDescription:
+      "GTA 6 Chapter 4 Mission 1 walkthrough: when it unlocks, every objective in order, what you get for finishing and tips to keep the story moving.",
+    teaser: "The first mission of Chapter 4, a quiet one with nine objectives and a new base for the chapter as the reward.",
+    intro: [
+      "This is the first mission of Chapter 4 and the 62nd overall in Push Square's list. Push Square, PC Gamer, GameSpot, GamesRadar+ and VGC all list it first in Chapter 4 under the same name (Confirmed). The overall number follows Push Square's count (Reported). PowerPyx lists nine objectives and says either lead can start it.",
+      "PowerPyx says you can start it straight after the last Chapter 3 mission or leave it for later. The reward is a new base for the chapter, with no cash listed. PowerPyx also says the next mission starts straight away once this one ends.",
+      "Our mission list keeps Chapter 2 and later names behind a blur, so this page uses a neutral title. The mission's name, the premise, the people, the places and the step-by-step all stay behind the blur.",
+    ],
+    facts: [
+      { label: "Chapter", value: "Chapter 4, and the first mission of the chapter in Push Square's, PC Gamer's, GameSpot's, GamesRadar+'s and VGC's lists, under the same name", status: "confirmed" },
+      { label: "Number", value: "62nd overall (Push Square). PowerPyx calls it the 75th main mission using its own count.", status: "reported" },
+      { label: "Unlocks after", value: "Finishing Chapter 3. PowerPyx names the last Chapter 3 mission as the requirement, and GamesRadar+ says chapters unlock in sequence once the previous chapter is complete.", status: "confirmed" },
+      { label: "Starts", value: "PowerPyx says you can go straight back to start it or wait until you next return to a set place. Where is in the blur.", status: "reported" },
+      { label: "Playable as", value: "Either lead can start it (PowerPyx)", status: "reported" },
+      { label: "Objectives", value: "Nine (PowerPyx)", status: "reported" },
+      { label: "Reward", value: "A new base for the chapter. No cash is listed (PowerPyx).", status: "reported" },
+    ],
+    objectives: [
+      "Drive to the Y Hotel. After the pair clean out the apartment, head to the Y Hotel on the Vice Beach side of the city (Reported, PowerPyx).",
+      "Enter the hotel. The concierge takes your car when you arrive, and you can head inside (Reported, PowerPyx).",
+      "Meet with Valentina. In the hotel, head to the right side of the room where Valentina is sitting (Reported, PowerPyx).",
+      "Follow Valentina. Follow her over to the elevator (Reported, PowerPyx).",
+      "Take the elevator to the 7th floor (Reported, PowerPyx).",
+      "Go to room 701. On the 7th floor, head left to the far end of the hallway (Reported, PowerPyx).",
+      "Explore your new suite with Lucia. Head inside and have a look around. Lucia goes through and opens the rooms for you to look in (Reported, PowerPyx).",
+      "Check out the wardrobe. When she opens the door to the bedroom, interact with the wardrobe. PowerPyx says you have some new outfits starting in this chapter (Reported, PowerPyx).",
+      "Join Lucia on the balcony. Keep following Lucia around as she checks out the other rooms. When she goes out onto the balcony she mentions the champagne. Go inside, grab two glasses off the counter and bring one out to her, and the mission completes (Reported, PowerPyx).",
+      "PowerPyx's objective wording is: Drive to the Y Hotel, Enter the hotel, Meet with Valentina, Follow Valentina, Take the elevator to the 7th floor, Go to room 701, Explore your new suite with Lucia, Check out the wardrobe, Join Lucia on the balcony (Reported, PowerPyx).",
+    ],
+    spoiler:
+      "The mission is called Ocean Beach in our mission list, Push Square's list, PC Gamer's list, GameSpot's list, GamesRadar+'s list and VGC's list, and all five number it first in Chapter 4. PC Gamer's one-line summary is that Jason and Lucia set up shop (Confirmed for the name and chapter). In PowerPyx's quest description, Jason and Lucia move into a suite at the Y Hotel, organised by Valentina as part of her money laundering efforts. They meet the concierge, Santino, and Valentina tells them she will set them up with a meeting with the Vice City lawyer Abraham Gonzalez, to help them get new lives (Reported). PowerPyx's requirement is the last mission of Chapter 3. After finishing it you have the option of returning to the Bayside apartment straight away to start this mission, and if you don't, it starts the next time you return to that apartment. Either Lucia or Jason can start it (Reported). The reward PowerPyx lists is Room 701 at the Y Hotel, and it says the wardrobe in the suite has new outfits starting in this chapter (Reported). PowerPyx gives its own count as the 75th main mission (Reported). The next mission starts as soon as this one ends, when you switch to controlling Lucia (Reported).",
+    tips: [
+      { text: "You don't have to start it right away. PowerPyx says you can leave it and it starts the next time you go back to where the last mission left you (Reported).", reported: true },
+      { text: "Don't leave early. PowerPyx has you follow your partner through the rest of the place before the last step appears (Reported).", reported: true, link: { href: "/guides/switch-characters", label: "Switching characters" } },
+      { text: "Make a manual save before you start. PowerPyx, Push Square and GamesRadar+ say story missions can't be replayed, and PowerPyx suggests a manual save at the start and end of each chapter (Confirmed).", reported: false, link: { href: "/guides/saving", label: "How to save" } },
+    ],
+    notes: [
+      "Order: Push Square, PC Gamer, GameSpot, GamesRadar+ and VGC all agree this is first in Chapter 4, so there is no order conflict. The overall number follows Push Square's count, which depends on how each outlet counts earlier chapters.",
+      "PowerPyx is the only full walkthrough for this mission so far, so the start, steps, objectives, reward and advice are labelled Reported. The five lists confirm the name and chapter. No source gives a playtime.",
+      "PowerPyx's objective list has nine entries. It hasn't been checked against the on-screen prompts.",
+    ],
+    faq: [
+      {
+        question: "Which mission is Chapter 4 Mission 1?",
+        answer: "It is the first mission of Chapter 4 and the 62nd overall in Push Square's count. Push Square, PC Gamer, GameSpot, GamesRadar+ and VGC all list it first in the chapter under the same name (Confirmed).",
+      },
+      {
+        question: "When does Chapter 4 Mission 1 unlock?",
+        answer: "PowerPyx says it unlocks once you finish the last Chapter 3 mission, and that you can start it straight away or later. GamesRadar+ says chapters unlock in sequence once the previous chapter is complete (Confirmed).",
+      },
+      {
+        question: "Who can start Chapter 4 Mission 1?",
+        answer: "PowerPyx says either main character can start it (Reported).",
+      },
+      {
+        question: "What does Chapter 4 Mission 1 reward?",
+        answer: "According to PowerPyx, a new base for the chapter. No cash is listed (Reported).",
+      },
+      {
+        question: "How many objectives does Chapter 4 Mission 1 have?",
+        answer: "PowerPyx lists nine (Reported).",
+      },
+    ],
+    sources: [
+      pp("gta-6-ocean-beach-walkthrough", "Requirement, start options, playable leads, quest description, reward, objectives, route, wardrobe and ending"),
+      pp("gta-6-full-walkthrough-all-missions", "Where PowerPyx's own list places the mission, its count and the no-replay note"),
+      PCGAMER,
+      {
+        id: "gamespot",
+        label: "GameSpot: How long to beat GTA 6, full missions list",
+        url: "https://www.gamespot.com/articles/how-long-to-beat-gta-6/",
+        used: "Mission name and Chapter 4 order. No playtime used.",
+      },
+      gr("gta-6-mission-list", "GamesRadar+: GTA 6 mission list", "Mission name and Chapter 4 order, chapters unlock in sequence, Story Recap, and no mission replay"),
+      vgc("gta-6-chapters-and-mission-list-how-many-chapters-in-gta-6-spoiler-free", "VGC: GTA 6 chapters and mission list (spoiler-free)", "Mission name and Chapter 4 order. No playtime used."),
+      PUSHSQUARE,
+    ],
+    sourceLabel: "PowerPyx, PC Gamer, GameSpot, Push Square, GamesRadar+, VGC",
+    updated: "2026-11-20T22:12:33+10:00",
+  },
+  {
+    slug: "chapter-4-mission-2",
+    hidden: true,
+    chapter: 4,
+    chapterOrder: 2,
+    order: 63,
+    name: "Chapter 4, Mission 2",
+    seoTitle: "GTA 6 Chapter 4 Mission 2 Walkthrough & Tips",
+    seoDescription:
+      "GTA 6 Chapter 4 Mission 2 walkthrough: how it starts, every objective in order, what the reward is and tips for finishing it without missing a prompt.",
+    teaser: "The second mission of Chapter 4, a short story mission with six objectives that starts by itself and pays out an account upgrade and a story trophy.",
+    intro: [
+      "This is the second mission of Chapter 4 and the 63rd overall in Push Square's list. Push Square, PC Gamer, GameSpot, GamesRadar+ and VGC all list it second in Chapter 4 under the same name (Confirmed). The overall number follows Push Square's count (Reported). PowerPyx lists six objectives and says either lead can start it.",
+      "PowerPyx says it starts by itself as soon as Chapter 4 Mission 1 ends, so there is no marker to find. The objectives are short and you follow the on-screen prompts. The reward matters more than the mission itself: PowerPyx lists an account upgrade and a story trophy, with no cash.",
+      "Our mission list keeps Chapter 2 and later names behind a blur, so this page uses a neutral title. The mission's name, the premise, who you play, the setting, the people and the step-by-step all stay behind the blur.",
+    ],
+    facts: [
+      { label: "Chapter", value: "Chapter 4, and the second mission of the chapter in Push Square's, PC Gamer's, GameSpot's, GamesRadar+'s and VGC's lists, under the same name", status: "confirmed" },
+      { label: "Number", value: "63rd overall (Push Square). PowerPyx calls it the 76th main mission using its own count.", status: "reported" },
+      { label: "Unlocks after", value: "Chapter 4, Mission 1 (PowerPyx)", status: "reported" },
+      { label: "Starts", value: "Automatically as soon as the previous mission ends (PowerPyx)", status: "reported" },
+      { label: "Playable as", value: "Either lead can start it, but the game switches you to a set character. Who is in the blur (PowerPyx).", status: "reported" },
+      { label: "Objectives", value: "Six (PowerPyx)", status: "reported" },
+      { label: "Reward", value: "An account upgrade and a story trophy. No cash is listed (PowerPyx).", status: "reported" },
+    ],
+    objectives: [
+      "Pick up your phone. In this mission you are playing a flashback in Lucia's house. Go over and pick up the phone on the table (Reported, PowerPyx).",
+      "Check on Tomás. Head to the room at the end of the hallway (Reported, PowerPyx).",
+      "Pick up Tomás. Interact with Tomás in the crib to pick him up (Reported, PowerPyx).",
+      "Comfort Tomás. Go back out to the living room and interact with the items there to try to comfort him (Reported, PowerPyx).",
+      "Turn up the radio. When prompted, go over and interact with the radio on the counter (Reported, PowerPyx).",
+      "Dance with Tomás. You dance with him in the living room using the on-screen prompts. After this there are some more scenes, and then the mission completes (Reported, PowerPyx).",
+      "PowerPyx's objective wording is: Pick up your phone, Check on Tomás, Pick up Tomás, Comfort Tomás, Turn up the radio, Dance with Tomás (Reported, PowerPyx).",
+    ],
+    spoiler:
+      "The mission is called Another Life in our mission list, Push Square's list, PC Gamer's list, GameSpot's list, GamesRadar+'s list and VGC's list, and all five number it second in Chapter 4. PC Gamer's one-line summary is that Lucia thinks about her past (Confirmed for the name and chapter). In PowerPyx's quest description, Lucia recalls the last morning she spent with Tomás and the hours that led up to her arrest (Reported). PowerPyx's requirement is Chapter 4 Mission 1. It says this mission starts immediately after, when you switch to controlling Lucia, and lists the start as Washington Beach in Vice Beach, with Lucia as quest giver. Either Lucia or Jason can start it (Reported). PowerPyx gives its own count as the 76th main mission (Reported). Reward: PowerPyx lists a BuckMe Black account with a $2,000,000 account limit, and a story trophy. GamesRadar+ says BuckMe balance limits rise as you progress through the story, with an in-game notification in Chapter 4 when a mission is completed that allows an upgrade, but it doesn't name the tier or the amount, so the Black tier and the $2,000,000 figure rest on PowerPyx alone (Reported). Trophy timing: PowerPyx lists the trophy as this mission's reward. TrueTrophies, which we use for corroboration only, describes a trophy as Complete Chapter 3. We haven't confirmed which moment it unlocks, and the trophy's name isn't given here (Reported). Order: PowerPyx's order places one more mission after this one that Push Square, PC Gamer, GameSpot, GamesRadar+ and VGC don't list. All five go straight from this mission to Chapter 4 Mission 3, so our hub follows them (Reported).",
+    tips: [
+      { text: "There's no marker to find. PowerPyx says this mission begins as soon as Chapter 4 Mission 1 ends (Reported).", reported: true },
+      { text: "Follow the prompts. PowerPyx says one of the steps only appears when you are prompted, and that the last action uses on-screen prompts (Reported).", reported: true },
+      { text: "Keep an eye on your account limit afterwards. GamesRadar+ says limits rise as you progress through the story, and that once you hit your limit, incoming payments stay pending until there is space (Reported).", reported: true, link: { href: "/guides/money", label: "Money guide" } },
+      { text: "Make a manual save after it ends. PowerPyx, Push Square and GamesRadar+ say story missions can't be replayed, and PowerPyx suggests a manual save at the start and end of each chapter (Confirmed).", reported: false, link: { href: "/guides/saving", label: "How to save" } },
+    ],
+    notes: [
+      "Order: Push Square, PC Gamer, GameSpot, GamesRadar+ and VGC all agree this is second in Chapter 4. PowerPyx's order has one more mission after it that the lists don't include, which is explained in the blur. The overall number follows Push Square's count.",
+      "PowerPyx is the only full walkthrough for this mission so far, so the start, steps, objectives, reward and trophy are labelled Reported. The five lists confirm the name and chapter. No source gives a playtime.",
+      "PowerPyx's objective list has six entries. It hasn't been checked against the on-screen prompts.",
+    ],
+    faq: [
+      {
+        question: "How do I start Chapter 4 Mission 2?",
+        answer: "PowerPyx says it starts by itself as soon as Chapter 4 Mission 1 ends (Reported).",
+      },
+      {
+        question: "What does Chapter 4 Mission 2 reward?",
+        answer: "According to PowerPyx, an account upgrade and a story trophy. No cash is listed (Reported).",
+      },
+      {
+        question: "How many objectives does Chapter 4 Mission 2 have?",
+        answer: "PowerPyx lists six (Reported).",
+      },
+      {
+        question: "Does a trophy unlock in Chapter 4 Mission 2?",
+        answer: "PowerPyx lists a story trophy as this mission's reward. Which one is in the blurred section (Reported).",
+      },
+    ],
+    sources: [
+      pp("gta-6-another-life-walkthrough", "Requirement, start, playable leads, quest description, reward, objectives and steps"),
+      pp("gta-6-full-walkthrough-all-missions", "Where PowerPyx's own list places the mission, its count, the next mission and the no-replay note"),
+      PCGAMER,
+      {
+        id: "gamespot",
+        label: "GameSpot: How long to beat GTA 6, full missions list",
+        url: "https://www.gamespot.com/articles/how-long-to-beat-gta-6/",
+        used: "Mission name and Chapter 4 order. No playtime used.",
+      },
+      gr("gta-6-mission-list", "GamesRadar+: GTA 6 mission list", "Mission name and Chapter 4 order, chapters unlock in sequence, Story Recap, and no mission replay"),
+      vgc("gta-6-chapters-and-mission-list-how-many-chapters-in-gta-6-spoiler-free", "VGC: GTA 6 chapters and mission list (spoiler-free)", "Mission name and Chapter 4 order. No playtime used."),
+      gr("gta-6-money-buckme-bank-account-manage", "GamesRadar+: GTA 6 money management", "Account limits rise through the story, a Chapter 4 upgrade notification, and pending payments at the limit. It doesn't name the tier or the amount."),
+      { id: "truetrophies", label: "TrueTrophies: Grand Theft Auto VI trophies", url: "https://www.truetrophies.com/game/Grand-Theft-Auto-VI/trophies", used: "Corroboration only: the description of a Chapter 3 completion trophy" },
+      PUSHSQUARE,
+    ],
+    sourceLabel: "PowerPyx, PC Gamer, GameSpot, Push Square, GamesRadar+, VGC",
+    updated: "2026-11-20T22:12:33+10:00",
   },
 ];
 
