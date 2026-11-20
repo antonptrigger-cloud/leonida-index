@@ -12,6 +12,7 @@ import { FASTTRAVEL_PUBLISHED, FASTTRAVEL_VERIFIED } from "@/lib/guides/fast-tra
 import { CLOTHES_PUBLISHED, CLOTHES_VERIFIED } from "@/lib/guides/change-clothes";
 import { FIRSTPERSON_PUBLISHED, FIRSTPERSON_VERIFIED } from "@/lib/guides/first-person";
 import { BIGFOOT_PUBLISHED, BIGFOOT_VERIFIED } from "@/lib/guides/bigfoot";
+import { SECRETVEH_PUBLISHED, SECRETVEH_VERIFIED } from "@/lib/guides/secret-vehicles";
 import { SIDEJOBS_PUBLISHED, SIDEJOBS_VERIFIED } from "@/lib/guides/sidejobs";
 import { DIFFICULTY_PUBLISHED, DIFFICULTY_VERIFIED } from "@/lib/guides/difficulty";
 import { RELATIONSHIP_PUBLISHED, RELATIONSHIP_VERIFIED } from "@/lib/guides/relationship";
@@ -333,6 +334,16 @@ export const ROUTES: Record<string, RouteSeo> = {
     priority: 0.8,
     updated: BIGFOOT_VERIFIED,
     published: BIGFOOT_PUBLISHED,
+  },
+  "/guides/secret-vehicles": {
+    title: "GTA 6 Secret Vehicles: Where to Find Rare Cars and Jets",
+    description: "Where to find GTA 6's rare and special vehicles: the Lazer jet, free planes, Ultimate Edition rides and sports cars, each labelled Confirmed or Reported.",
+    crumb: "Secret Vehicles",
+    kind: "article",
+    changeFrequency: "weekly",
+    priority: 0.8,
+    updated: SECRETVEH_VERIFIED,
+    published: SECRETVEH_PUBLISHED,
   },
   "/guides/chapter-3-side-job-locations": {
     title: "GTA 6 Chapter 3 Side Job Locations and Pay",

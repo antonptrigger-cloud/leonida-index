@@ -165,6 +165,9 @@ export default function CheatsGuide() {
                 <strong className="text-ink">Want it easier before the credits?</strong> Cheats only unlock after the story, so see our <A href="/guides/difficulty">difficulty settings guide</A> for the settings that can ease things in the meantime.
               </li>
               <li className="vc-bar text-ink-2">
+                <strong className="text-ink">Want a jet before the credits?</strong> Cheat-spawned vehicles only come after the story. Our <A href="/guides/secret-vehicles">secret vehicles guide</A> shows where main outlets say the Lazer, free planes and other rare vehicles sit in the open world.
+              </li>
+              <li className="vc-bar text-ink-2">
                 <strong className="text-ink">Cash cheat vs earning it.</strong> The $250,000 cheat is a one-off, so see our <A href="/guides/money">money guide</A> for ways to earn properly.
               </li>
             </ul>
@@ -195,6 +198,7 @@ export default function CheatsGuide() {
               <li><A href="/guides/money">Money guide</A></li>
               <li><A href="/guides/missions">All missions in order</A></li>
               <li><A href="/guides/wanted">Wanted system</A></li>
+              <li><A href="/guides/secret-vehicles">Secret vehicles</A></li>
               <li><A href="/news">GTA 6 news</A></li>
             </ul>
           </div>
