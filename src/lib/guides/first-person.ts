@@ -18,8 +18,8 @@
 
 export const FIRSTPERSON_PUBLISHED = "2026-11-19";
 /** Last edit, ISO 8601 with offset (Brisbane). Drives sitemap lastmod and dateModified. */
-export const FIRSTPERSON_VERIFIED = "2026-11-19T22:14:00+10:00";
-export const FIRSTPERSON_VERIFIED_LABEL = "19 Nov 2026";
+export const FIRSTPERSON_VERIFIED = "2026-11-20T19:10:00+10:00";
+export const FIRSTPERSON_VERIFIED_LABEL = "20 Nov 2026";
 
 export const FIRSTPERSON_FAQ: { question: string; answer: string }[] = [
   {

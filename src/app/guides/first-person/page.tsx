@@ -69,6 +69,9 @@ export default function FirstPersonGuide() {
               <p>
                 Push Square says a few moments in the story briefly switch perspective for a closer feel, but it isn&apos;t a toggle and you can&apos;t trigger it<R />. GamesRadar+ says it checked and found no cheat that turns first person on. See our <A href="/guides/cheats">cheats and codes guide</A> for the codes that do exist<R />.
               </p>
+              <p>
+                That is the official position. Separately, PC Gamer tested an unofficial glitch that forces a first-person camera, and we cover it in <A href="/news/gta-6-first-person-glitch">our first-person glitch report</A><R />.
+              </p>
             </div>
           </section>
 

@@ -99,6 +99,9 @@ export const UPDATES_1900_AT = "2026-11-19T19:08:00+10:00";
 /** 20 Nov 05:00 AEST batch (viewership update with Streams Charts day-one recap). Set to the edit time. */
 export const UPDATES_0500_AT = "2026-11-20T05:03:00+10:00";
 
+/** First-person glitch piece. Set to the draft time; Web Bot adjusts if it goes live later. */
+export const FIRSTPERSON_GLITCH_PUBLISHED = "2026-11-20T19:10:00+10:00";
+
 /** GTA VI: The Album piece. Set to the edit time; Web Bot adjusts if it goes live later. */
 export const ALBUM_PUBLISHED = "2026-11-20T17:09:48+10:00";
 
@@ -126,6 +129,39 @@ export const AGE_RATING_PUBLISHED = "2026-11-19T11:48:00+10:00";
 export const newsPath = (slug: string) => `/news/${slug}`;
 
 export const NEWS: NewsItem[] = [
+  {
+    slug: "gta-6-first-person-glitch",
+    title: "GTA 6 First-Person Glitch: How It Works",
+    description:
+      "GTA 6 has no first-person mode, but a controller-setting glitch forces one on PS5 and Xbox. PC Gamer tested it. The steps, how to get out, and what is unknown.",
+    crumb: "GTA 6 first-person glitch",
+    teaser: "A controller-setting trick locks GTA 6 into first person for walking, driving and shooting. PC Gamer tested it. The steps, the catch, and how to get back to third person.",
+    tag: "Glitches",
+    category: "launch",
+    keywords: ["GTA 6 first person glitch", "GTA 6 first person mode", "how to play GTA 6 in first person", "GTA 6 first person PS5", "GTA 6 first person Xbox", "GTA 6 glitch"],
+    published: FIRSTPERSON_GLITCH_PUBLISHED,
+    updated: FIRSTPERSON_GLITCH_PUBLISHED,
+    citations: [
+      "https://www.pcgamer.com/games/grand-theft-auto/gta-6-is-playable-in-first-person-heres-how-to-activate-it/",
+      "https://kotaku.com/live-updates-on-gta-6-the-biggest-launch-in-gaming-history-2000758030",
+      "https://www.purexbox.com/news/2026/11/gta-6-first-person-glitch-discovered-and-it-works-on-xbox-and-ps5",
+      "https://www.dexerto.com/gta/gta-6-glitch-lets-players-access-first-person-mode-3430025/",
+    ],
+    faq: [
+      {
+        question: "Does GTA 6 have a first-person mode?",
+        answer: "Not officially. GTA 6 launched without a dedicated first-person mode, but PC Gamer tested a glitch that forces a first-person camera, and Kotaku passed on the same claim.",
+      },
+      {
+        question: "How do you get first person in GTA 6 with the glitch?",
+        answer: "Per PC Gamer: change the touch pad/select button to Camera 2 / 2 in the controller settings, get into a car, bring up your phone with the D-pad, press Circle or B, then quickly hit that button. Pure Xbox says it can take a few tries.",
+      },
+      {
+        question: "How do you turn the GTA 6 first-person glitch off?",
+        answer: "There is no toggle. PC Gamer says to reload a save, even one you made in first person. Kotaku's live blog says the view lasts until you exit the game, and Pure Xbox says being arrested or entering a hair salon sent the camera back to third person.",
+      },
+    ],
+  },
   {
     slug: "gta-6-the-album-tracklist",
     title: "GTA 6 Album: Full 34-Track List",
