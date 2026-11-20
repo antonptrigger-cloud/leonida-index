@@ -2625,6 +2625,160 @@ export const MISSIONS: Mission[] = [
     sourceLabel: "PowerPyx, PC Gamer, Push Square",
     updated: "2026-11-20T08:16:52+10:00",
   },
+  {
+    slug: "chapter-2-mission-13",
+    hidden: true,
+    chapter: 2,
+    chapterOrder: 13,
+    order: 35,
+    name: "Chapter 2, Mission 13",
+    seoTitle: "GTA 6 Chapter 2 Mission 13 Walkthrough & Tips",
+    seoDescription:
+      "GTA 6 Chapter 2 Mission 13 walkthrough: how to unlock it, what to do before you start, every step in order, a known bug and its fix, plus quick tips.",
+    teaser: "The thirteenth and last mission of Chapter 2, after Chapter 2, Mission 12.",
+    intro: [
+      "This is the thirteenth and last mission of Chapter 2 and the 35th overall in Push Square's list. Push Square and PC Gamer both put it last in the chapter (Confirmed), but the number 13 and the overall position are Reported. Either lead can start it. PowerPyx lists five objectives and no cash reward, and says starting it is a point of no return, so save first.",
+      "Our mission list keeps Chapter 2 names behind a blur, so this page uses a neutral title. The mission's name, the unlock requirements, the start point, the people and the step-by-step all stay behind the blur.",
+    ],
+    facts: [
+      { label: "Chapter", value: "Chapter 2, and the last mission of the chapter in both Push Square's and PC Gamer's lists", status: "confirmed" },
+      { label: "Number", value: "13th of Chapter 2 and 35th overall (Push Square and Press Start). PC Gamer's shorter Chapter 2 list puts it 11th. PowerPyx calls it the 43rd main mission using its own count.", status: "reported" },
+      { label: "Unlocks after", value: "PowerPyx says you need to finish every other available Chapter 2 main mission and meet a money target. The details are in the blur.", status: "reported" },
+      { label: "Starts", value: "PowerPyx says your partner phones, the start is then marked on your map, and you go there and interact to begin", status: "reported" },
+      { label: "Playable as", value: "Either lead (PowerPyx)", status: "reported" },
+      { label: "Objectives", value: "Five (PowerPyx)", status: "reported" },
+      { label: "Point of no return", value: "PowerPyx says starting it ends Chapter 2. Make a separate manual save first.", status: "reported" },
+      { label: "Known bug", value: "PowerPyx reports a bug if you die in the chase section. The fix is to restart the mission.", status: "reported" },
+      { label: "Payout", value: "None (PowerPyx)", status: "reported" },
+    ],
+    objectives: [
+      "Regroup with Lucia. After interacting with the bathroom door, pick up the shotgun from the bed. Corrupt cops have found you. Defeat them and head to the cafeteria on the side of the motel, where Lucia is (Reported, PowerPyx).",
+      "Defend yourself. You switch to Lucia automatically. Keep shooting the enemies (Reported, PowerPyx).",
+      "Follow Jason. Jason heads for the road. A biker drives towards Lucia: shoot him and she takes the bike, and you play as her. Jason takes a car off the street. Follow him, staying close, since he has a pink dot on the minimap, and try not to crash because you can be thrown off the bike (Reported, PowerPyx).",
+      "Jump to the car. After following Jason for a while a prompt appears. Drive close to the car and hold the button shown (Reported, PowerPyx).",
+      "Escape with Jason. Jason drives on his own and you can shoot the police cars as Lucia. PowerPyx says to hit them in the tyres. A cutscene follows and you drive into Vice City, which is the start of Chapter 3 (Reported, PowerPyx).",
+    ],
+    spoiler:
+      "The mission is called Checking Out in our mission list, Push Square's list and PC Gamer, where it is the last mission of Chapter 2 (Confirmed). PowerPyx shows the map label Move to Vice City. To unlock it, PowerPyx says you need to finish every other available Chapter 2 main mission and hold at least $15,000 (the Prepare for Vice City goal). Your partner then phones about an article Cal sent, the Starlet Motel in Kelly County is marked, and you return to your room and interact with the bathroom door. PowerPyx's point of no return: starting it ends Chapter 2 and permanently removes the Starlet Motel as your home (Reported, PowerPyx). The next mission starts straight after it with no break (Reported, PowerPyx's page for that mission). PowerPyx lists a story trophy among the rewards of that next mission. Its name is the same as Chapter 3's title, so we do not name it.",
+    tips: [
+      { text: "Make a manual save in a separate slot before you start, and keep it. PowerPyx calls this a point of no return. The advice to keep a separate slot is our own suggestion.", reported: false, link: { href: "/guides/saving", label: "How to save" } },
+      { text: "Side quests that aren't marked missable stay available after the story, according to PowerPyx's Strangers & Freaks page (Reported). Checking anything marked missable before you start is our own suggestion.", reported: true },
+      { text: "Top up health and ammo before you start. This is our own suggestion.", reported: false },
+      { text: "Take the middle chase section slowly. PowerPyx warns that crashing can throw you off, and that dying in that section can trigger the bug above (Reported). Going slowly is our own advice.", reported: true },
+      { text: "Check the unlock requirement in the blur and plan your money. This is our own suggestion.", reported: false, link: { href: "/guides/money", label: "Money guide" } },
+      { text: "Read our switching guide before Chapter 3. This is our own suggestion.", reported: false, link: { href: "/guides/switch-characters", label: "Switching characters" } },
+    ],
+    notes: [
+      "Order: Push Square and Press Start list this thirteenth in Chapter 2, so our hub does too. PC Gamer's Chapter 2 has 11 missions and lists it last. PowerPyx numbers it 43rd using its own count, so treat the overall number as Reported.",
+      "PowerPyx is the only full walkthrough for this mission so far, so the unlock requirements, the point of no return, the steps, the bug and the reward are labelled Reported. Push Square and PC Gamer confirm the name and that it is last in the chapter.",
+      "PowerPyx's button prompts are shown as icons, which we can't read as text, so we leave the button names out. The objective list hasn't been checked against the on-screen prompts.",
+    ],
+    faq: [
+      {
+        question: "Which mission number is Chapter 2 Mission 13?",
+        answer: "It is the last mission of Chapter 2 in Push Square's and PC Gamer's lists (Confirmed). Push Square numbers it 13th in the chapter and 35th overall, PC Gamer 11th in its shorter list, and PowerPyx 43rd overall (Reported).",
+      },
+      {
+        question: "How do you unlock Chapter 2 Mission 13?",
+        answer: "PowerPyx says to finish every other available Chapter 2 main mission and meet a money target. The amount and the start point are in the blurred section of this page (Reported).",
+      },
+      {
+        question: "Is Chapter 2 Mission 13 a point of no return?",
+        answer: "Yes, according to PowerPyx: starting it ends Chapter 2. Make a separate manual save first (Reported).",
+      },
+      {
+        question: "How much does Chapter 2 Mission 13 pay?",
+        answer: "Nothing. PowerPyx lists no reward (Reported).",
+      },
+      {
+        question: "What if the bug appears in Chapter 2 Mission 13?",
+        answer: "PowerPyx says that if you die in the chase section, your partner can vanish as an objective and a police search area can stay on you. Restart the mission and try not to die there (Reported).",
+      },
+    ],
+    sources: [
+      pp("gta-6-checking-out-move-to-vice-city-walkthrough", "Requirements, start, point of no return, objectives, steps, bug and fix, and reward"),
+      pp("gta-6-welcome-to-vice-city-walkthrough", "That the next mission starts straight after this one, and its listed rewards"),
+      pp("gta-6-all-strangers-freaks-side-missions", "The missable rule for side quests"),
+      PCGAMER,
+      PUSHSQUARE,
+    ],
+    sourceLabel: "PowerPyx, PC Gamer, Push Square",
+    updated: "2026-11-20T09:17:06+10:00",
+  },
+  {
+    slug: "chapter-3-mission-1",
+    hidden: true,
+    chapter: 3,
+    chapterOrder: 1,
+    order: 36,
+    name: "Chapter 3, Mission 1",
+    seoTitle: "GTA 6 Chapter 3 Mission 1 Walkthrough & Tips",
+    seoDescription:
+      "GTA 6 Chapter 3 Mission 1 walkthrough: how it starts, every step in order, the optional extra you can skip, and what you unlock when it ends.",
+    teaser: "The first mission of Chapter 3, straight after Chapter 2, Mission 13.",
+    intro: [
+      "This is the first mission of Chapter 3 and the 36th overall in Push Square's list. Push Square and PC Gamer both list it first in Chapter 3 (Confirmed), but the overall number is Reported. It starts automatically straight after Chapter 2, Mission 13, so there is no marker to find. PowerPyx lists eight objectives, describes no combat, and says one part is optional.",
+      "Our mission list keeps Chapter 2 and later names behind a blur, so this page uses a neutral title. The mission's name, the premise, the places, the people and the step-by-step all stay behind the blur.",
+    ],
+    facts: [
+      { label: "Chapter", value: "Chapter 3, and the first mission of the chapter in both Push Square's and PC Gamer's lists", status: "confirmed" },
+      { label: "Number", value: "36th overall (Push Square and Press Start). PC Gamer's shorter list would make it 34th. PowerPyx calls it the 44th main mission using its own count.", status: "reported" },
+      { label: "Starts", value: "Automatically, straight after Chapter 2, Mission 13, while you are already driving (PowerPyx)", status: "reported" },
+      { label: "Objectives", value: "Eight (PowerPyx)", status: "reported" },
+      { label: "Combat", value: "PowerPyx's walkthrough describes none", status: "reported" },
+      { label: "Optional part", value: "One part can be accepted or declined, and PowerPyx describes no penalty either way", status: "reported" },
+      { label: "Rewards", value: "PowerPyx lists a new home for the chapter, a new way to keep cars (by text after the mission) and a story trophy. The details are in the blur.", status: "reported" },
+    ],
+    objectives: [
+      "Go to the Jack of Hearts. After a short drive into the city, Jason phones Dre'Quan, who asks you to meet him at the club (Reported, PowerPyx).",
+      "Enter the Jack of Hearts. As you approach, the car stops out front by itself. Walk up to the bouncer at the door (Reported, PowerPyx).",
+      "Go to the back of the Jack of Hearts. Go around the building to the other entrance, where Dre'Quan comes out to meet you, and follow him through the club until he stops at the stairs (Reported, PowerPyx).",
+      "Throw money to the dancers. Dre'Quan offers you money to throw at the dancers, and you can accept or decline. If you accept, focus on a dancer and throw the money until it runs out (Reported, PowerPyx; the prompts are button icons).",
+      "Return to Dre'Quan when you're ready. Go back to him at the stairs and follow him upstairs to meet Boobie (Reported, PowerPyx).",
+      "Go to the apartment. When the talking is done, go back to your vehicle and drive to the apartment nearby (Reported, PowerPyx).",
+      "Park at the apartment. Park in the spot in the covered area. PowerPyx says your owned cars are parked here during this chapter (Reported, PowerPyx).",
+      "Go to the apartment. This first time you have to walk around the front of the building (the door opposite the parking spots works later). Go up to the second floor, where the apartment is the first door in front of you, and enter to finish (Reported, PowerPyx).",
+    ],
+    spoiler:
+      "The mission is called Welcome to Vice City in our mission list, Push Square's list and PC Gamer, whose one-line summary is that Jason and Lucia meet Dre'Quan (Confirmed). PowerPyx's quest description is that Jason and Lucia meet Jason's friend Dre'Quan at Jack of Hearts, the strip club in Crosstown, Vice City, where he runs a record label. Dre'Quan introduces them to his boss, Boobie Ike, who says they can stay in his apartment nearby (Reported, PowerPyx). PowerPyx's rewards: Bayside Apartments, apartment 201, as the Chapter 3 home; Pay 'n' Sprays that buy and register cars with standard trackers, announced by Moses over text after the mission; and a story trophy named after Chapter 3's title, which we do not name here (Reported, PowerPyx).",
+    tips: [
+      { text: "Don't look for a marker. PowerPyx says it begins on its own straight after the previous mission (Reported).", reported: true },
+      { text: "The optional part really is optional. PowerPyx says you can accept or decline it and describes no penalty either way (Reported).", reported: true },
+      { text: "Remember where you park. PowerPyx says your owned cars are kept at the new home during this chapter, so leaving your favourite there is our own suggestion.", reported: false },
+      { text: "Make a manual save once you're in. A fresh chapter is a good point for one. This is our own suggestion.", reported: false, link: { href: "/guides/saving", label: "How to save" } },
+      { text: "Check how car registration and storage work before you go shopping for cars. This is our own suggestion.", reported: false, link: { href: "/guides/garages", label: "Garages guide" } },
+    ],
+    notes: [
+      "Order: Push Square and PC Gamer both list this first in Chapter 3. The overall number follows Push Square and Press Start, because PC Gamer's shorter Chapter 2 would make it 34th and PowerPyx numbers it 44th using its own count. Treat the overall number as Reported.",
+      "PowerPyx is the only full walkthrough for this mission so far, so the start condition, the steps, the optional part and the rewards are labelled Reported. Push Square and PC Gamer confirm the name and its place at the start of Chapter 3.",
+      "The objective list hasn't been checked against the on-screen prompts.",
+    ],
+    faq: [
+      {
+        question: "Which mission number is Chapter 3 Mission 1?",
+        answer: "It is the first mission of Chapter 3 in Push Square's and PC Gamer's lists (Confirmed). Push Square makes it the 36th mission overall and PowerPyx the 44th using its own count (Reported).",
+      },
+      {
+        question: "How do you start Chapter 3 Mission 1?",
+        answer: "You don't need to. PowerPyx says it starts automatically straight after Chapter 2 Mission 13 (Reported).",
+      },
+      {
+        question: "Is there any combat in Chapter 3 Mission 1?",
+        answer: "PowerPyx's walkthrough describes none (Reported).",
+      },
+      {
+        question: "Can you skip the optional part of Chapter 3 Mission 1?",
+        answer: "Yes. PowerPyx says you can accept or decline it (Reported).",
+      },
+    ],
+    sources: [
+      pp("gta-6-welcome-to-vice-city-walkthrough", "Start, quest description, objectives, steps, the optional choice, the parking note and rewards"),
+      PCGAMER,
+      PUSHSQUARE,
+    ],
+    sourceLabel: "PowerPyx, PC Gamer, Push Square",
+    updated: "2026-11-20T09:17:06+10:00",
+  },
 ];
 
 /** Chapter a mission belongs to (Chapter 1 unless stated). */
