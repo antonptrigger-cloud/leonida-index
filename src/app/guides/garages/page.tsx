@@ -217,7 +217,7 @@ export default function GaragesGuide() {
                 <strong className="text-ink">Check what&apos;s stored.</strong> GameSpot says your personal vehicles show in the Scooter Bros app, and that the mechanic&apos;s shop or any Pay &lsquo;n&rsquo; Spray shows the cars you have stored<R />.
               </B>
               <B>
-                Still collecting cars to fill them? See <A href="/guides/stealing-cars">how stealing cars works</A>.
+                Still collecting cars to fill them? See <A href="/guides/stealing-cars">how stealing cars works</A> and <A href="/guides/secret-vehicles">where to find rare cars and jets</A>.
               </B>
             </Bullets>
           </section>
@@ -245,6 +245,7 @@ export default function GaragesGuide() {
             <ul className="mt-4x flex flex-col gap-2x text-sm">
               <li><A href="/database/vehicles">Vehicles database</A></li>
               <li><A href="/guides/stealing-cars">Stealing cars</A></li>
+              <li><A href="/guides/secret-vehicles">Secret vehicles</A></li>
               <li><A href="/guides/money">Money guide</A></li>
               <li><A href="/guides/trophies">Trophies and platinum</A></li>
               <li><A href="/map">Interactive map</A></li>

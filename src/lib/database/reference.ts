@@ -90,6 +90,11 @@ export const RADIO_PATH = "/database/radio-stations";
 
 const VEHICLES: RefPage = {
   path: VEHICLES_PATH,
+  related: [
+    { href: "/guides/secret-vehicles", label: "Secret vehicles: where to find them" },
+    { href: "/guides/garages", label: "Garages and parking" },
+    { href: "/guides/stealing-cars", label: "Stealing cars" },
+  ],
   crumb: "Vehicles",
   seoTitle: "GTA 6 Vehicles: Classes, Totals and Named Cars",
   seoDescription:
@@ -216,7 +221,7 @@ const VEHICLES: RefPage = {
         rows: [
           ["Single-passenger plane", "Wild Hog Point, west of Port Gellhorn on the western side of Kelly County", "A fleet is parked in the open. GameSpot says taking one does not seem to get you reported if you stay low and out of restricted airspace. You can't keep these, and they run out of fuel."],
           ["Large passenger plane", "Vice City International Airport, in the southwest of Vice-Dale County", "Crossing the restricted gate gives you a three-star wanted level. Some of the planes are locked, so you may need to try a few."],
-          ["Jet", "Mike Zero Air Station, in the far southwest corner of the map, west of Key Lento", "Guarded like a fortress. GameSpot's way in is by boat to the western side. Jets are sometimes about to take off, and you are shot down if you are caught."],
+          ["Jet", "Mile Zero Air Station, in the far southwest corner of the map, west of Key Lento", "Guarded like a fortress. GameSpot's way in is by boat to the western side. Jets are sometimes about to take off, and you are shot down if you are caught."],
           ["Small helicopter", "Rooftop helipads, for example the Maven Residences in downtown Vice City and the Crimson Palms in north Washington Beach", "GameSpot could not guarantee a spawn for these."],
           ["Large helicopter", "Lake Tallaloko community, East Lummox County", "A gated community with three armed guards around the helipad."],
         ],
