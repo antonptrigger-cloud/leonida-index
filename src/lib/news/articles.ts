@@ -96,6 +96,9 @@ export const UPDATES_1900_AT = "2026-11-19T19:08:00+10:00";
 /** 20 Nov 05:00 AEST batch (viewership update with Streams Charts day-one recap). Set to the edit time. */
 export const UPDATES_0500_AT = "2026-11-20T05:03:00+10:00";
 
+/** Army reenlistment GTA pass piece. Set to the time the PR was opened; adjust at merge. */
+export const ARMY_PASS_PUBLISHED = "2026-11-20T12:03:06+10:00";
+
 /** No-prostitutes explainer (Rockstar statement via Shacknews). Set to the edit time; Web Bot adjusts if it goes live later. */
 export const NO_PROSTITUTES_PUBLISHED = "2026-11-20T08:12:59+10:00";
 
@@ -117,6 +120,40 @@ export const AGE_RATING_PUBLISHED = "2026-11-19T11:48:00+10:00";
 export const newsPath = (slug: string) => `/news/${slug}`;
 
 export const NEWS: NewsItem[] = [
+  {
+    slug: "gta-6-army-reenlistment-four-day-pass",
+    title: "43 Soldiers Took Army's GTA 6 Reenlistment Pass",
+    description:
+      "The Army says 43 of 130 eligible Fort Stewart soldiers took a four-day GTA 6 launch pass for reenlisting two to six more years. How the deal worked.",
+    crumb: "Army GTA 6 reenlistment pass",
+    teaser: "A four-day pass for GTA 6's launch in exchange for two to six more years of service. The Army's numbers, the memo, and the career counselor behind it.",
+    tag: "Viral",
+    category: "launch",
+    keywords: ["GTA 6 Army reenlistment", "GTA 6 four-day pass", "Fort Stewart GTA 6", "soldiers reenlist GTA 6", "9th Brigade Engineer Battalion", "GTA 6 viral news"],
+    published: ARMY_PASS_PUBLISHED,
+    updated: ARMY_PASS_PUBLISHED,
+    citations: [
+      "https://www.rockstargames.com/VI/only-in-leonida",
+      "https://www.axios.com/2026/11/19/gta-6-deal-perks-bonus-army",
+      "https://taskandpurpose.com/culture/army-reenlistment-gta-vi/",
+      "https://taskandpurpose.com/news/army-reenlistment-gta/",
+      "https://www.polygon.com/gta-6-us-army-soldiers-reenlist-four-day-weekend/",
+    ],
+    faq: [
+      {
+        question: "How many soldiers reenlisted for the GTA 6 pass?",
+        answer: "43 of the 130 eligible soldiers in the 9th Brigade Engineer Battalion at Fort Stewart, Georgia chose the four-day GTA 6 pass when they reenlisted, a 3rd Infantry Division spokesperson told Axios.",
+      },
+      {
+        question: "What did soldiers have to do to get the GTA 6 pass?",
+        answer: "Reenlist for two to six more years between 1 August and 14 November 2026. The pass came on top of the Army's standard reenlistment incentives, timed to GTA 6's 19 November release.",
+      },
+      {
+        question: "Who came up with the GTA 6 reenlistment idea?",
+        answer: "Staff Sgt. Brittany Wolfer, the battalion's career counselor, pitched it to her command after a senior Army career counselor floated the idea on TikTok, according to Task & Purpose.",
+      },
+    ],
+  },
   {
     slug: "gta-6-no-prostitutes-rockstar",
     title: "GTA 6 Has No Hireable Prostitutes",
