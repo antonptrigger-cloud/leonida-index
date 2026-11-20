@@ -189,6 +189,15 @@ export default function MissionsIndex() {
                   <p className="mb-4x vc-display text-2xl text-pink">{c.name}</p>
                   <ChapterList chapterNumber={c.number} />
                   {c.note ? <p className="mt-4x max-w-2xl text-sm text-muted">{c.note}</p> : null}
+                  {c.number === 3 ? (
+                    <p className="mt-3x max-w-2xl text-sm text-muted">
+                      Entry 9 in Push Square&apos;s list is covered as a side job:{" "}
+                      <Link href="/guides/chapter-3-side-job-locations" className="text-orange hover:text-pink">
+                        Chapter 3 side job locations and pay
+                      </Link>
+                      .
+                    </p>
+                  ) : null}
                 </Spoiler>
               </div>
             </section>
@@ -205,6 +214,10 @@ export default function MissionsIndex() {
               </li>
               <li className="vc-bar text-ink-2">
                 <strong className="text-ink">The list isn&apos;t strict.</strong> {ORDER_NOTE}
+              </li>
+              <li className="vc-bar text-ink-2">
+                <strong className="text-ink">Some entries are side jobs.</strong> Outlets disagree on whether one Chapter 3 entry is a story mission, so we cover it separately in our{" "}
+                <Link href="/guides/chapter-3-side-job-locations" className="text-orange hover:text-pink">Chapter 3 side job locations and pay guide</Link>.
               </li>
               <li className="vc-bar text-ink-2">
                 <strong className="text-ink">Find mission starts on the map.</strong> Story markers and activities are pinned on our{" "}
