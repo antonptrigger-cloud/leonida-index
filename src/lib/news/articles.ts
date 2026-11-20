@@ -100,7 +100,7 @@ export const UPDATES_1900_AT = "2026-11-19T19:08:00+10:00";
 export const UPDATES_0500_AT = "2026-11-20T05:03:00+10:00";
 
 /** First-person glitch piece. Set to the draft time; Web Bot adjusts if it goes live later. */
-export const FIRSTPERSON_GLITCH_PUBLISHED = "2026-11-20T19:08:24+10:00";
+export const FIRSTPERSON_GLITCH_PUBLISHED = "2026-11-20T19:10:00+10:00";
 
 /** GTA VI: The Album piece. Set to the edit time; Web Bot adjusts if it goes live later. */
 export const ALBUM_PUBLISHED = "2026-11-20T17:09:48+10:00";
