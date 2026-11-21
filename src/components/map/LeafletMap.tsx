@@ -3,7 +3,7 @@
 import "leaflet/dist/leaflet.css";
 import L from "leaflet";
 import { createContext, useContext, useEffect, useId, useMemo, useRef, useState } from "react";
-import { MapContainer, Marker, TileLayer, Tooltip, useMap, useMapEvents } from "react-leaflet";
+import { MapContainer, Marker, Popup, TileLayer, Tooltip, useMap, useMapEvents } from "react-leaflet";
 import { BASES, DEFAULT_BASE, type BaseId, type BaseMap } from "@/lib/map/bases";
 import type { TileManifest } from "@/lib/map/config";
 import { markerHtml } from "./glyphs";
@@ -11,6 +11,7 @@ import { onBaseMap } from "@/lib/map/geo";
 import { CATEGORIES } from "@/lib/map/categories";
 import { LABEL_PRIORITY, labelsFor, type LabelKind, type MapLabel } from "@/lib/map/labels";
 import { Occupancy, textWidth, type Rect } from "@/lib/map/label-layout";
+import type { SearchMarker } from "@/lib/map/search";
 import type { PublicPin } from "@/lib/map/types";
 
 /**
@@ -157,6 +158,38 @@ const draftIcon = L.divIcon({
   iconSize: [26, 26],
   iconAnchor: [13, 26],
 });
+
+/** Client-only highlight for a searched region/district that has no pin yet. Not saved. */
+const searchTempIcon = L.divIcon({
+  className: "lvg-pin lvg-pin--search lvg-pin--selected",
+  html: `<span></span>`,
+  iconSize: [28, 28],
+  iconAnchor: [14, 28],
+  popupAnchor: [0, -24],
+});
+
+function SearchMarkerLayer({ marker }: { marker: SearchMarker }) {
+  const geo = useGeo();
+  return (
+    <Marker
+      position={geo.toLatLng(marker)}
+      icon={searchTempIcon}
+      zIndexOffset={2500}
+      keyboard
+      title={`${marker.name} (temporary)`}
+      eventHandlers={{
+        add: (e) => {
+          (e.target as L.Marker).openPopup();
+        },
+      }}
+    >
+      <Popup autoPan={false} className="lvg-search-popup">
+        <strong className="lvg-search-popup__name">{marker.name}</strong>
+        <p className="lvg-search-popup__meta">{marker.kindLabel} · temporary marker, not saved</p>
+      </Popup>
+    </Marker>
+  );
+}
 
 /** Fits the whole map on load and keeps min zoom at "whole map visible" when the window resizes. */
 /**
@@ -723,6 +756,7 @@ export default function LeafletMap({
   draft,
   onDraftChange,
   flyTarget,
+  searchMarker = null,
   showCoords,
   showAllPlaces,
 }: {
@@ -735,6 +769,8 @@ export default function LeafletMap({
   draft: { x: number; y: number } | null;
   onDraftChange: (p: { x: number; y: number }) => void;
   flyTarget: { id?: string; x: number; y: number; key: number } | null;
+  /** Temporary highlighted marker for a searched label with no pin. Client-side only. */
+  searchMarker?: SearchMarker | null;
   showCoords: boolean;
   /** Skip the zoom-dependent hiding of place pins (an active search or filter, or a deep link). */
   showAllPlaces: boolean;
@@ -795,6 +831,7 @@ export default function LeafletMap({
       ) : null}
       <ClickToDrop enabled={dropMode} onDrop={onDraftChange} />
       <FlyTo target={flyTarget} />
+      {searchMarker ? <SearchMarkerLayer marker={searchMarker} /> : null}
       {showCoords ? <CoordsReadout /> : null}
     </MapContainer>
     </GeoContext.Provider>
