@@ -3,9 +3,17 @@ import Link from "next/link";
 import { PageBackdrop } from "@/components/PageBackdrop";
 import { Palm } from "@/components/Palm";
 import { Scenery, SKIES, type SceneId } from "@/components/Scenery";
+import { MissionSearch } from "@/components/guides/MissionSearch";
+import { HomeLocationSearch } from "@/components/home/HomeLocationSearch";
+import { buildMissionSearchIndex } from "@/lib/guides/mission-search";
 import { TILES } from "@/lib/map/config";
+import { SEED_PINS } from "@/lib/map/seed";
+import { toPublicPin } from "@/lib/map/types";
 import { metaFor } from "@/lib/seo/site";
 import { PageSchema } from "@/lib/seo/jsonld";
+
+const MISSION_SEARCH_ITEMS = buildMissionSearchIndex();
+const HOME_PINS = SEED_PINS.filter((p) => !p.spoiler).map(toPublicPin);
 
 export const metadata = metaFor("/");
 
@@ -182,6 +190,37 @@ export default function Home() {
           </div>
         </div>
       </div>
+
+      {/* ---------- Quick search: missions and locations (no map bundle) ---------- */}
+      <section aria-labelledby="home-find">
+        <h2 id="home-find" className="sr-only">Find a mission or location</h2>
+        <div className="grid gap-10x md:grid-cols-2 md:gap-gutter">
+          <div>
+            <h3 className="vc-display text-3xl text-ink">Find a mission</h3>
+            <p className="mt-2x max-w-2xl text-sm text-muted">
+              Search by name, or by chapter and number, such as &ldquo;ch3 m22&rdquo;. Matching names appear in the results.
+            </p>
+            <div className="mt-6x">
+              <MissionSearch items={MISSION_SEARCH_ITEMS} />
+            </div>
+            <p className="mt-4x text-sm">
+              <Link href="/guides/missions" className="text-orange hover:text-pink">All missions in order</Link>
+            </p>
+          </div>
+          <div>
+            <h3 className="vc-display text-3xl text-ink">Find a location</h3>
+            <p className="mt-2x max-w-2xl text-sm text-muted">
+              Search pins, regions and districts. Pick a result to open it on the map.
+            </p>
+            <div className="mt-6x">
+              <HomeLocationSearch pins={HOME_PINS} />
+            </div>
+            <p className="mt-4x text-sm">
+              <Link href="/map" className="text-orange hover:text-pink">Open the map</Link>
+            </p>
+          </div>
+        </div>
+      </section>
 
       {/* ---------- Field guide: one feature + a magazine index ---------- */}
       <section>

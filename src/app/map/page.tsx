@@ -22,7 +22,7 @@ const REGION_LINKS = [
 
 export default async function MapIndex({ searchParams }: { searchParams: Promise<Record<string, string | string[] | undefined>> }) {
   const [{ pins, online }, sp] = await Promise.all([getLivePins(), searchParams]);
-  // /map?q=… (WebSite SearchAction) plus shareable filters: types, official, region, spoilers, pin.
+  // /map?q=… (WebSite SearchAction) plus shareable filters: types, official, region, spoilers, pin, place.
   const filters = parseFilters(sp);
   // Spoiler-safe: the crawlable list only names non-spoiler, approved pins (getLivePins never returns pending ones).
   const listed = pins.filter((p) => !p.spoiler);

@@ -19,6 +19,8 @@ export const LABEL_KIND_LABEL: Record<LabelKind, string> = {
 
 /** Temporary, client-only marker dropped when a searched label has no pin yet. */
 export interface SearchMarker {
+  /** Label id, used in /map?place=<id>. */
+  id: string;
   name: string;
   kindLabel: string;
   x: number;
@@ -105,4 +107,27 @@ export function searchLocations(q: string, pins: PublicPin[], baseId: BaseId): {
 
   scored.sort((a, b) => a.score - b.score || a.hit.name.localeCompare(b.hit.name));
   return { hits: scored.slice(0, SEARCH_RESULT_LIMIT).map((s) => s.hit), total: scored.length };
+}
+
+/** Resolve /map?place= to a label by id, name, or hyphenated name. */
+export function findLabelByPlace(place: string, baseId: BaseId): MapLabel | undefined {
+  const raw = place.trim().toLowerCase();
+  if (!raw) return undefined;
+  const labels = searchableLabels(baseId);
+  return (
+    labels.find((l) => l.id.toLowerCase() === raw) ??
+    labels.find((l) => l.name.toLowerCase() === raw) ??
+    labels.find((l) => l.name.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "") === raw)
+  );
+}
+
+/** Deep-link from a home (or other) search hit to /map, flying to the pin or a temporary label marker. */
+export function mapSearchHref(hit: SearchHit): string {
+  if (hit.kind === "pin") return `/map?pin=${encodeURIComponent(hit.pin.id)}`;
+  const id = hit.id.startsWith("label:") ? hit.id.slice("label:".length) : hit.id;
+  return `/map?place=${encodeURIComponent(id)}`;
+}
+
+export function markerFromLabel(label: MapLabel): SearchMarker {
+  return { id: label.id, name: label.name, kindLabel: LABEL_KIND_LABEL[label.kind], x: label.x, y: label.y };
 }
