@@ -8,7 +8,9 @@ import { PIN_TYPES, REGIONS, SOURCE_LABELS, typeSingular, type PinType } from "@
 import { NO_FILTERS, regionSlug as slug, type InitialFilters } from "@/lib/map/filters";
 import type { LeaderboardEntry, PublicPin } from "@/lib/map/types";
 import { CATEGORIES, CATEGORY_GROUPS, CATEGORY_IDS, categorySearchText, type PinCategory } from "@/lib/map/categories";
+import { LABEL_KIND_LABEL, searchLocations, type SearchHit, type SearchMarker } from "@/lib/map/search";
 import { categoryGlyphSvg, glyphSvg } from "./glyphs";
+import { MapSearch } from "./MapSearch";
 import { PinDetails } from "./PinDetails";
 import { SubmitForm } from "./SubmitForm";
 
@@ -70,6 +72,7 @@ export function CommunityMap({
   const [submitting, setSubmitting] = useState(false);
   const [draft, setDraft] = useState<{ x: number; y: number } | null>(null);
   const [flyTarget, setFlyTarget] = useState<{ id?: string; x: number; y: number; key: number } | null>(deepPin ? { id: deepPin.id, x: deepPin.x, y: deepPin.y, key: 1 } : null);
+  const [searchMarker, setSearchMarker] = useState<SearchMarker | null>(null);
   const [leaders, setLeaders] = useState<LeaderboardEntry[] | null>(null);
   const [filtersOpen, setFiltersOpen] = useState(false);
   const [listOpen, setListOpen] = useState(false);
@@ -113,6 +116,8 @@ export function CommunityMap({
     return c;
   }, [base, enabled]);
   const visible = useMemo(() => base.filter((p) => enabled.has(p.type) && (cats.size === 0 || (!!p.category && cats.has(p.category)))), [base, enabled, cats]);
+  const searchablePins = useMemo(() => pins.filter((p) => showSpoilers || !p.spoiler), [pins, showSpoilers]);
+  const { hits: searchHits, total: searchTotal } = useMemo(() => searchLocations(query, searchablePins, baseId), [query, searchablePins, baseId]);
   const filtering = !!q || officialOnly || !!region || enabled.size < TYPE_KEYS.length || cats.size > 0;
   const activeFilterCount = cats.size + (officialOnly ? 1 : 0) + (region ? 1 : 0) + (enabled.size < TYPE_KEYS.length ? 1 : 0) + (showSpoilers ? 1 : 0);
 
@@ -138,14 +143,28 @@ export function CommunityMap({
   const select = useCallback(
     (id: string) => {
       if (submitting) return;
+      setSearchMarker(null);
       setSelectedId(id);
     },
     [submitting],
   );
 
   function focus(p: PublicPin) {
+    setSearchMarker(null);
     setSelectedId(p.id);
     setFlyTarget((prev) => ({ id: p.id, x: p.x, y: p.y, key: (prev?.key ?? 0) + 1 }));
+  }
+
+  function pickSearch(hit: SearchHit) {
+    setQuery(hit.name);
+    if (hit.kind === "pin") {
+      focus(hit.pin);
+      return;
+    }
+    setSelectedId(null);
+    setListOpen(false);
+    setSearchMarker({ name: hit.name, kindLabel: LABEL_KIND_LABEL[hit.labelKind], x: hit.x, y: hit.y });
+    setFlyTarget((prev) => ({ x: hit.x, y: hit.y, key: (prev?.key ?? 0) + 1 }));
   }
 
   function toggleType(t: PinType) {
@@ -168,6 +187,7 @@ export function CommunityMap({
 
   function startSubmit() {
     setSelectedId(null);
+    setSearchMarker(null);
     setDraft(null);
     setListOpen(false);
     setSubmitting(true);
@@ -185,12 +205,8 @@ export function CommunityMap({
   const mapPins = useMemo(() => (selected && !visible.includes(selected) ? [...visible, selected] : visible), [visible, selected]);
   const listRef = useRef<HTMLUListElement>(null);
   const searchRef = useRef<HTMLInputElement>(null);
-  const focusResult = (index: number) => {
-    const items = listRef.current?.querySelectorAll<HTMLButtonElement>("button[data-result]");
-    items?.[Math.max(0, Math.min(index, items.length - 1))]?.focus();
-  };
 
-  const panelMode: "submit" | "details" | "list" | null = submitting ? "submit" : selected ? "details" : listOpen || q ? "list" : null;
+  const panelMode: "submit" | "details" | "list" | null = submitting ? "submit" : selected ? "details" : listOpen ? "list" : null;
 
   return (
     <div data-map-host className="lvg-fullmap fixed inset-x-0 bottom-0 z-30" style={{ top: "var(--lvg-header-h, 49px)", background: BASES[baseId].tiles.background }}>
@@ -204,8 +220,9 @@ export function CommunityMap({
           draft={draft}
           onDraftChange={setDraft}
           flyTarget={flyTarget}
+          searchMarker={searchMarker}
           showCoords={showCoords}
-          showAllPlaces={filtering || !!selected}
+          showAllPlaces={filtering || !!selected || !!searchMarker}
         />
       </div>
 
@@ -228,54 +245,41 @@ export function CommunityMap({
             {submitting ? "Cancel submission" : "Submit a location"}
           </button>
         </div>
-        <div className="flex items-center gap-2x">
-          <label className="group flex min-w-0 flex-1 items-center gap-2x border-b border-pink/35 pb-1x focus-within:border-blue">
-            <svg viewBox="0 0 20 20" className="h-4 w-4 shrink-0 text-pink-2" aria-hidden>
-              <circle cx="8.5" cy="8.5" r="5.5" fill="none" stroke="currentColor" strokeWidth="2" />
-              <path d="M13 13l4.5 4.5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
-            </svg>
-            <input
-              ref={searchRef}
-              type="search"
-              value={query}
-              onChange={(e) => setQuery(e.target.value)}
-              onKeyDown={(e) => {
-                if (e.key === "ArrowDown" || (e.key === "Enter" && visible.length)) {
-                  e.preventDefault();
+        <MapSearch
+          query={query}
+          onQueryChange={(next) => {
+            setQuery(next);
+            setSearchMarker((m) => (m && next.trim().toLowerCase() === m.name.toLowerCase() ? m : null));
+          }}
+          hits={searchHits}
+          total={searchTotal}
+          onPick={pickSearch}
+          inputRef={searchRef}
+          trailing={
+            <>
+              <button
+                onClick={() => setFiltersOpen((v) => !v)}
+                aria-expanded={filtersOpen}
+                aria-controls="map-filters"
+                className="vc-chip shrink-0 sm:hidden"
+              >
+                Filters{activeFilterCount ? ` (${activeFilterCount})` : ""}
+              </button>
+              <button
+                onClick={() => {
                   setSelectedId(null);
-                  setListOpen(true);
-                  // Wait for the list to render, then move focus into it.
-                  requestAnimationFrame(() => focusResult(0));
-                } else if (e.key === "Escape") {
-                  setQuery("");
-                }
-              }}
-              placeholder="Search places, regions, gamer tags…"
-              aria-label="Search pins"
-              className="min-w-0 flex-1 bg-transparent py-1x text-sm text-ink outline-none placeholder:text-faint"
-            />
-          </label>
-          <button
-            onClick={() => setFiltersOpen((v) => !v)}
-            aria-expanded={filtersOpen}
-            aria-controls="map-filters"
-            className="vc-chip shrink-0 sm:hidden"
-          >
-            Filters{activeFilterCount ? ` (${activeFilterCount})` : ""}
-          </button>
-          <button
-            onClick={() => {
-              setSelectedId(null);
-              setSubmitting(false);
-              setListOpen((v) => !v || !!selected);
-            }}
-            aria-expanded={panelMode === "list"}
-            className="vc-chip shrink-0"
-            style={{ ["--chip" as string]: "#00d4ff" }}
-          >
-            Pins ({visible.length})
-          </button>
-        </div>
+                  setSubmitting(false);
+                  setListOpen((v) => !v || !!selected);
+                }}
+                aria-expanded={panelMode === "list"}
+                className="vc-chip shrink-0"
+                style={{ ["--chip" as string]: "#00d4ff" }}
+              >
+                Pins ({visible.length})
+              </button>
+            </>
+          }
+        />
         <div id="map-filters" className={`${filtersOpen ? "flex" : "hidden"} flex-col gap-3x sm:flex`}>
           <div className="flex flex-wrap items-center gap-x-3x gap-y-2x pl-1x">
             <label className="vc-chip cursor-pointer" style={{ ["--chip" as string]: "#00e5cc" }} title="Only places Rockstar has named itself">
@@ -327,6 +331,7 @@ export function CommunityMap({
                   setRegion(null);
                   setShowSpoilers(false);
                   setQuery("");
+                  setSearchMarker(null);
                 }}
                 className="text-xs text-muted underline-offset-2 hover:text-pink-2 hover:underline"
               >

@@ -961,6 +961,109 @@ a.vc-card:hover {
   pointer-events: none;
 }
 
+/* Temporary search marker (a region/district with no pin yet). Highlighted, not saved. */
+.lvg-pin--search span {
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: #00e5cc;
+  border-radius: 50% 50% 50% 0;
+  transform: rotate(-45deg);
+  border: 2px solid #0a0a0b;
+  box-shadow: 0 0 0 2px #00e5cc, 0 0 16px rgba(0, 229, 204, 0.85);
+}
+.lvg-pin--search::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 28px;
+  height: 28px;
+  border: 2px solid rgba(0, 229, 204, 0.7);
+  border-radius: 9999px;
+  transform: translate(-50%, -70%);
+  animation: lvg-search-pulse 1.6s ease-out infinite;
+  pointer-events: none;
+}
+@keyframes lvg-search-pulse {
+  0% { transform: translate(-50%, -70%) scale(0.85); opacity: 0.8; }
+  100% { transform: translate(-50%, -70%) scale(1.85); opacity: 0; }
+}
+
+/* Location search combobox (under the map search field). */
+.lvg-search input[type="search"]::-webkit-search-cancel-button,
+.lvg-search input[type="search"]::-webkit-search-decoration {
+  -webkit-appearance: none;
+  appearance: none;
+}
+.lvg-search__list {
+  margin: 0;
+  padding: 0.25rem 0;
+  list-style: none;
+  background: #0c0a0f;
+  border: 1px solid rgba(255, 45, 120, 0.45);
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.55), 0 0 18px rgba(255, 45, 120, 0.18);
+}
+.lvg-search__option {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.45rem 0.7rem;
+  text-align: left;
+  color: #f5f3f7;
+  background: transparent;
+  border: 0;
+  border-left: 2px solid transparent;
+  cursor: pointer;
+  font-size: 0.875rem;
+}
+.lvg-search__option--active,
+.lvg-search__option:hover,
+.lvg-search__option:focus-visible {
+  background: rgba(255, 45, 120, 0.14);
+  border-left-color: #ff2d78;
+  outline: none;
+}
+.lvg-search__mark {
+  background: transparent;
+  color: #00e5cc;
+  font-weight: 700;
+  padding: 0;
+}
+.lvg-search__empty,
+.lvg-search__more {
+  padding: 0.65rem 0.75rem;
+  font-size: 0.75rem;
+  line-height: 1.4;
+  color: #9a96a0;
+}
+.lvg-map .lvg-search-popup .leaflet-popup-content-wrapper,
+.lvg-map .leaflet-popup.lvg-search-popup .leaflet-popup-content-wrapper {
+  background: rgba(12, 10, 15, 0.96);
+  color: #f5f3f7;
+  border: 1px solid rgba(0, 229, 204, 0.55);
+  border-radius: 2px;
+  box-shadow: 0 0 16px rgba(0, 229, 204, 0.28);
+}
+.lvg-map .leaflet-popup.lvg-search-popup .leaflet-popup-tip {
+  background: rgba(12, 10, 15, 0.96);
+  border: 1px solid rgba(0, 229, 204, 0.55);
+}
+.lvg-map .lvg-search-popup__name,
+.lvg-map .leaflet-popup-content .lvg-search-popup__name {
+  display: block;
+  font-size: 0.95rem;
+  font-weight: 700;
+  margin: 0 0 0.2rem;
+}
+.lvg-map .lvg-search-popup__meta,
+.lvg-map .leaflet-popup-content .lvg-search-popup__meta {
+  margin: 0;
+  font-size: 0.75rem;
+  color: #9a96a0;
+}
+
 /* Full-window map page: no page scroll behind the fixed map. */
 html:has(.lvg-fullmap),
 body:has(.lvg-fullmap) {
