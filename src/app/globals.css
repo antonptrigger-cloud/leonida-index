@@ -667,6 +667,41 @@ a.vc-card:hover {
   color: #ff8c42;
 }
 
+/* Missions hub search. */
+.vc-mission-search__field {
+  position: relative;
+  max-width: 42rem;
+}
+.vc-mission-search__input {
+  width: 100%;
+  padding: 0.85rem 1rem;
+  border: 1px solid rgba(255, 45, 120, 0.35);
+  background: #131218;
+  color: #f5f3f7;
+  font: inherit;
+  font-size: 1rem;
+  line-height: 1.4;
+}
+.vc-mission-search__field:has(.vc-mission-search__clear) .vc-mission-search__input {
+  padding-right: 6.5rem;
+}
+.vc-mission-search__input::placeholder {
+  color: #8a8597;
+}
+.vc-mission-search__clear {
+  position: absolute;
+  right: 0.5rem;
+  top: 50%;
+  translate: 0 -50%;
+}
+.vc-mission-search__option--active,
+.vc-mission-search li:has(.vc-mission-search__option--active) .vc-index-row {
+  padding-left: 1rem;
+}
+.vc-mission-search__option--active::before {
+  width: 100%;
+}
+
 .vc-palm {
   position: absolute;
   bottom: 0;
