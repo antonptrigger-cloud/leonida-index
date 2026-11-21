@@ -35,6 +35,10 @@ export function Footer() {
         </div>
         <nav className="flex flex-wrap gap-x-6x gap-y-2x sm:col-span-5 sm:justify-end" aria-label="Footer">
           {[
+            ["/guides/missions", "Walkthrough"],
+            ["/guides", "Guides"],
+            ["/news", "News"],
+            ["/database", "Database"],
             ["/map", "Map"],
             ["/map/leaderboard", "Leaderboard"],
             ["/sources", "Sources"],

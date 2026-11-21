@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { metaFor } from "@/lib/seo/site";
 import { PageSchema } from "@/lib/seo/jsonld";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
@@ -17,16 +18,13 @@ export default function Page() {
           <p>Tropical archipelago. Dive bars like The Rusty Anchor, boats, underwater.</p>
         </section>
         <section>
-          <h2 className="mb-2 text-sm uppercase tracking-widest text-turq">Known landmarks</h2>
-          <p className="text-muted">Add named places here as they are confirmed.</p>
-        </section>
-        <section>
-          <h2 className="mb-2 text-sm uppercase tracking-widest text-turq">Activities shown</h2>
-          <p className="text-muted">Fill from in-game after 19 Nov.</p>
-        </section>
-        <section>
-          <h2 className="mb-2 text-sm uppercase tracking-widest text-turq">Pins</h2>
-          <p className="text-muted">0 verified. Shell on purpose.</p>
+          <h2 className="mb-2 text-sm uppercase tracking-widest text-turq">Explore Leonida Keys</h2>
+          <ul className="list-disc space-y-1 pl-5">
+            <li><Link href="/database/locations/key-lento" className="underline">Key Lento: where it is and what is nearby</Link></li>
+            <li><Link href="/map" className="underline">Interactive map</Link>: search every named place and filter by region</li>
+            <li><Link href="/database/locations" className="underline">GTA 6 locations</Link>: regions, counties and named places</li>
+            <li><Link href="/guides/missions" className="underline">Mission walkthrough</Link>: every story mission in order</li>
+          </ul>
         </section>
       </div>
     </div>

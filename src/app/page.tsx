@@ -6,6 +6,7 @@ import { Scenery, SKIES, type SceneId } from "@/components/Scenery";
 import { TILES } from "@/lib/map/config";
 import { metaFor } from "@/lib/seo/site";
 import { PageSchema } from "@/lib/seo/jsonld";
+import { NEWS, newsPath } from "@/lib/news/articles";
 
 export const metadata = metaFor("/");
 
@@ -16,6 +17,25 @@ const GUIDE = [
   { href: "/guides/beginner", title: "Beginner guide", body: "Your first hours and the character swap" },
   { href: "/tools/edition-compare", title: "Editions", body: "Standard vs Ultimate, side by side" },
 ];
+
+/** Evergreen guides linked straight from the home page so crawlers and readers reach them in one click. */
+const POPULAR_GUIDES = [
+  { href: "/guides/missions", title: "Walkthrough: all missions in order", body: "Every story mission, chapter by chapter" },
+  { href: "/guides/money", title: "Money guide", body: "Fastest ways to earn cash" },
+  { href: "/guides/relationship", title: "Relationship guide", body: "Raise Jason and Lucia’s level" },
+  { href: "/guides/cheats", title: "Cheats", body: "How to unlock them and the codes so far" },
+  { href: "/guides/trophies", title: "Trophy list", body: "Platinum roadmap" },
+  { href: "/guides/collectibles", title: "Collectibles", body: "Card sets, WAiNK scans and what counts" },
+  { href: "/guides/secret-vehicles", title: "Secret vehicles", body: "Where to find rare cars and jets" },
+  { href: "/guides/map-size", title: "Map size", body: "How big Leonida is" },
+  { href: "/guides/fast-travel", title: "Fast travel", body: "RydeMe, taxis and skipping rides" },
+  { href: "/guides/difficulty", title: "Difficulty settings", body: "Is there an easy mode?" },
+];
+
+const LATEST_NEWS = [...NEWS]
+  .filter((n) => !n.archived)
+  .sort((a, b) => new Date(b.published).getTime() - new Date(a.published).getTime())
+  .slice(0, 6);
 
 type Destination = {
   slug: SceneId;
@@ -119,7 +139,7 @@ export default function Home() {
           </h1>
           <p className="mt-6x max-w-[36ch] text-[0.95rem] leading-relaxed text-muted">
             Map, guides, database and tools for Vice City and the state of Leonida.
-            Launch <span className="font-semibold text-ink">19 November 2026</span>.
+            Out now on PS5 and Xbox Series X|S since <span className="font-semibold text-ink">19 November 2026</span>.
           </p>
           <div className="mt-10x flex flex-wrap items-center gap-x-10x gap-y-6x pl-2x">
             <Link href="/map" className="vc-cta vc-cta--xl">
@@ -186,7 +206,7 @@ export default function Home() {
       {/* ---------- Field guide: one feature + a magazine index ---------- */}
       <section>
         <SectionTitle num="01" kicker="Start here" title="The field guide">
-          Everything we know before launch, checked against official sources.
+          Everything we know now the game is out, checked against named sources.
         </SectionTitle>
         <div className="grid gap-10x md:grid-cols-12 md:gap-gutter">
           <Link href="/map" className="vc-cut group block md:col-span-7" style={{ ["--cut" as string]: "28px" }}>
@@ -237,9 +257,64 @@ export default function Home() {
         </div>
       </section>
 
+      {/* ---------- Walkthrough, guides and news: plain links for readers and crawlers ---------- */}
+      <section>
+        <SectionTitle num="02" kicker="Out now" title="GTA 6 guides and news">
+          Walkthroughs, tips and the latest launch news, with the sources named.
+        </SectionTitle>
+        <div className="grid gap-10x md:grid-cols-2 md:gap-gutter">
+          <div>
+            <h3 className="vc-kicker mb-3x">Popular guides</h3>
+            <ul className="flex flex-col border-t border-pink/20">
+              {POPULAR_GUIDES.map((g, i) => (
+                <li key={g.href}>
+                  <Link href={g.href} className="vc-index-row">
+                    <span className="vc-index-row__num">{String(i + 1).padStart(2, "0")}</span>
+                    <span className="relative">
+                      <span className="vc-display block text-[1.4rem] leading-none text-ink">{g.title}</span>
+                      <span className="mt-1x block text-[0.8rem] text-muted">{g.body}</span>
+                    </span>
+                    <span className="vc-index-row__arrow relative text-xl" aria-hidden>
+                      →
+                    </span>
+                  </Link>
+                </li>
+              ))}
+            </ul>
+            <p className="mt-4x text-sm">
+              <Link href="/guides" className="text-orange underline">All GTA 6 guides</Link>
+              {" · "}
+              <Link href="/database" className="text-orange underline">Database</Link>
+            </p>
+          </div>
+          <div>
+            <h3 className="vc-kicker mb-3x">Latest news</h3>
+            <ul className="flex flex-col border-t border-pink/20">
+              {LATEST_NEWS.map((n, i) => (
+                <li key={n.slug}>
+                  <Link href={newsPath(n.slug)} className="vc-index-row">
+                    <span className="vc-index-row__num">{String(i + 1).padStart(2, "0")}</span>
+                    <span className="relative">
+                      <span className="vc-display block text-[1.4rem] leading-none text-ink">{n.crumb}</span>
+                      <span className="mt-1x block text-[0.8rem] text-muted">{n.teaser}</span>
+                    </span>
+                    <span className="vc-index-row__arrow relative text-xl" aria-hidden>
+                      →
+                    </span>
+                  </Link>
+                </li>
+              ))}
+            </ul>
+            <p className="mt-4x text-sm">
+              <Link href="/news" className="text-orange underline">All GTA 6 news</Link>
+            </p>
+          </div>
+        </div>
+      </section>
+
       {/* ---------- Destinations: travel-poster bento ---------- */}
       <section>
-        <SectionTitle num="02" kicker="Destinations" title="Six regions, one state">
+        <SectionTitle num="03" kicker="Destinations" title="Six regions, one state">
           Pick a postcard. Each region has a guide and its own layer on the map.
         </SectionTitle>
         <div className="grid auto-rows-[12.5rem] grid-cols-2 gap-4x md:grid-cols-6 md:auto-rows-[14rem] md:gap-6x">
