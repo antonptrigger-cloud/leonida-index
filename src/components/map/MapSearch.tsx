@@ -24,6 +24,7 @@ export function MapSearch({
   onPick,
   inputRef,
   trailing,
+  pinsHint = true,
 }: {
   query: string;
   onQueryChange: (q: string) => void;
@@ -33,6 +34,8 @@ export function MapSearch({
   inputRef: RefObject<HTMLInputElement | null>;
   /** Filters / Pins buttons, kept on the same row as the field so the list can sit below both. */
   trailing?: ReactNode;
+  /** When true (default), a truncated result list mentions the map Pins panel. */
+  pinsHint?: boolean;
 }) {
   const listId = useId();
   const wrapRef = useRef<HTMLDivElement>(null);
@@ -185,7 +188,7 @@ export function MapSearch({
               {total > hits.length ? (
                 <li role="presentation" className="lvg-search__more">
                   Showing {hits.length} of {total}. Keep typing to narrow it down
-                  {total > SEARCH_RESULT_LIMIT ? ", or open Pins for the full list" : ""}.
+                  {pinsHint && total > SEARCH_RESULT_LIMIT ? ", or open Pins for the full list" : ""}.
                 </li>
               ) : null}
             </>

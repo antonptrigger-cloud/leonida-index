@@ -8,7 +8,7 @@ import { PIN_TYPES, REGIONS, SOURCE_LABELS, typeSingular, type PinType } from "@
 import { NO_FILTERS, regionSlug as slug, type InitialFilters } from "@/lib/map/filters";
 import type { LeaderboardEntry, PublicPin } from "@/lib/map/types";
 import { CATEGORIES, CATEGORY_GROUPS, CATEGORY_IDS, categorySearchText, type PinCategory } from "@/lib/map/categories";
-import { LABEL_KIND_LABEL, searchLocations, type SearchHit, type SearchMarker } from "@/lib/map/search";
+import { LABEL_KIND_LABEL, findLabelByPlace, markerFromLabel, searchLocations, type SearchHit, type SearchMarker } from "@/lib/map/search";
 import { categoryGlyphSvg, glyphSvg } from "./glyphs";
 import { MapSearch } from "./MapSearch";
 import { PinDetails } from "./PinDetails";
@@ -68,11 +68,14 @@ export function CommunityMap({
   const [cats, setCats] = useState<Set<PinCategory>>(new Set(initialFilters.cats));
   const [baseId, setBaseId] = useState<BaseId>(initialFilters.base ?? DEFAULT_BASE);
   const deepPin = initialPins.find((p) => p.id === initialFilters.pin) ?? null;
+  const deepLabel = !deepPin && initialFilters.place ? findLabelByPlace(initialFilters.place, initialFilters.base ?? DEFAULT_BASE) : undefined;
   const [selectedId, setSelectedId] = useState<string | null>(deepPin?.id ?? null);
   const [submitting, setSubmitting] = useState(false);
   const [draft, setDraft] = useState<{ x: number; y: number } | null>(null);
-  const [flyTarget, setFlyTarget] = useState<{ id?: string; x: number; y: number; key: number } | null>(deepPin ? { id: deepPin.id, x: deepPin.x, y: deepPin.y, key: 1 } : null);
-  const [searchMarker, setSearchMarker] = useState<SearchMarker | null>(null);
+  const [flyTarget, setFlyTarget] = useState<{ id?: string; x: number; y: number; key: number } | null>(
+    deepPin ? { id: deepPin.id, x: deepPin.x, y: deepPin.y, key: 1 } : deepLabel ? { x: deepLabel.x, y: deepLabel.y, key: 1 } : null,
+  );
+  const [searchMarker, setSearchMarker] = useState<SearchMarker | null>(deepLabel ? markerFromLabel(deepLabel) : null);
   const [leaders, setLeaders] = useState<LeaderboardEntry[] | null>(null);
   const [filtersOpen, setFiltersOpen] = useState(false);
   const [listOpen, setListOpen] = useState(false);
@@ -134,11 +137,12 @@ export function CommunityMap({
     set("region", region ? slug(region) : null);
     set("spoilers", showSpoilers ? "1" : null);
     set("pin", selectedId);
+    set("place", selectedId ? null : (searchMarker?.id ?? null));
     set("base", baseId === DEFAULT_BASE ? null : baseId);
     const qs = params.toString();
     const url = `${window.location.pathname}${qs ? `?${qs}` : ""}${window.location.hash}`;
     if (url !== `${window.location.pathname}${window.location.search}${window.location.hash}`) window.history.replaceState(null, "", url);
-  }, [query, enabled, cats, officialOnly, region, showSpoilers, selectedId, baseId]);
+  }, [query, enabled, cats, officialOnly, region, showSpoilers, selectedId, searchMarker, baseId]);
 
   const select = useCallback(
     (id: string) => {
@@ -146,7 +150,7 @@ export function CommunityMap({
       setSearchMarker(null);
       setSelectedId(id);
     },
-    [submitting],
+    [submitting, setSearchMarker, setSelectedId],
   );
 
   function focus(p: PublicPin) {
@@ -163,7 +167,8 @@ export function CommunityMap({
     }
     setSelectedId(null);
     setListOpen(false);
-    setSearchMarker({ name: hit.name, kindLabel: LABEL_KIND_LABEL[hit.labelKind], x: hit.x, y: hit.y });
+    const id = hit.id.startsWith("label:") ? hit.id.slice("label:".length) : hit.id;
+    setSearchMarker({ id, name: hit.name, kindLabel: LABEL_KIND_LABEL[hit.labelKind], x: hit.x, y: hit.y });
     setFlyTarget((prev) => ({ x: hit.x, y: hit.y, key: (prev?.key ?? 0) + 1 }));
   }
 
