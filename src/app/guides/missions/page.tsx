@@ -5,9 +5,11 @@ import { PageHeader } from "@/components/PageHeader";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { Faq } from "@/components/Faq";
 import { Related } from "@/components/Related";
+import { MissionSearch } from "@/components/guides/MissionSearch";
 import { Spoiler } from "@/components/guides/Spoiler";
 import { SourcesList, SpoilerWarning } from "@/components/guides/MissionBits";
-import { MISSIONS, ORDER_NOTE, missionChapter, missionChapterOrder, missionPath, type Mission } from "@/lib/guides/missions";
+import { MISSIONS, ORDER_NOTE, missionChapter, missionPath } from "@/lib/guides/missions";
+import { buildMissionSearchIndex, guideForStoryMission } from "@/lib/guides/mission-search";
 import {
   HUB_FAQ,
   HUB_SOURCES,
@@ -17,26 +19,12 @@ import {
   PCGAMER_TOTAL,
   STORY_TOTAL,
   chapterStart,
-  type StoryMission,
 } from "@/lib/guides/story";
 
 export const metadata = metaFor("/guides/missions");
 
-const norm = (t: string) => t.toLowerCase().replace(/[^a-z0-9]/g, "");
-// Hidden-title missions are matched by chapter and position, never by name.
-const guideFor = (t: StoryMission, chapterNumber: number, index: number): Mission | undefined =>
-  t.title
-    ? MISSIONS.find((x) => !x.hidden && norm(x.name) === norm(t.title as string))
-    : MISSIONS.find((x) => x.hidden && missionChapter(x) === chapterNumber && missionChapterOrder(x) === index + 1);
-// Chapter 2+ guides sit behind the chapter blur, but their own names are neutral. The blurred list shows the real mission name
-// (from the Story Recap) and links to the neutral page.
-const chapterGuideFor = (t: StoryMission, chapterNumber: number, index: number): Mission | undefined =>
-  guideFor(t, chapterNumber, index) ??
-  (t.title && chapterNumber > 1
-    ? MISSIONS.find((x) => x.hidden && missionChapter(x) === chapterNumber && missionChapterOrder(x) === index + 1)
-    : undefined);
-
 const HIDDEN_LABEL = "Hidden (major spoiler)";
+const SEARCH_ITEMS = buildMissionSearchIndex();
 
 function ChapterList({ chapterNumber }: { chapterNumber: number }) {
   const chapter = STORY_CHAPTERS.find((c) => c.number === chapterNumber)!;
@@ -44,7 +32,7 @@ function ChapterList({ chapterNumber }: { chapterNumber: number }) {
   return (
     <ol className="flex flex-col border-t border-pink/20">
       {chapter.missions.map((mission, i) => {
-        const guide = chapterGuideFor(mission, chapterNumber, i);
+        const guide = guideForStoryMission(mission, chapterNumber, i);
         const num = (
           <span className="vc-index-row__num">{String(i + 1).padStart(2, "0")}</span>
         );
@@ -124,10 +112,20 @@ export default function MissionsIndex() {
             <h2 id="how" className="vc-display text-3xl text-ink">How to use this list</h2>
             <ol className="mt-4x flex max-w-2xl list-decimal flex-col gap-3x pl-6x text-ink-2 marker:font-bold marker:text-pink">
               <li>Check the title of the mission you just finished in your phone or pause menu.</li>
-              <li>Find it in the chapter lists below. The big number is its place inside the chapter, and the overall number is its place in the whole story.</li>
+              <li>Find it with the search bar, or in the chapter lists below. You can type a name, or a chapter and number such as &ldquo;ch3 m22&rdquo;. The big number is its place inside the chapter, and the overall number is its place in the whole story.</li>
               <li>To work out what is left, count the rest of your chapter, then add the totals of every later chapter from the table below.</li>
               <li>Linked titles open a full walkthrough. Rows that say &ldquo;Guide coming&rdquo; are filled in as each walkthrough is verified.</li>
             </ol>
+          </section>
+
+          <section aria-labelledby="find" className="mt-16x">
+            <h2 id="find" className="vc-display text-3xl text-ink">Find a mission</h2>
+            <p className="mt-2x max-w-2xl text-sm text-muted">
+              Search by mission name, or by chapter and number, such as &ldquo;chapter 3 mission 22&rdquo; or &ldquo;ch3 m22&rdquo;. Matching names appear in the results. The lists below stay blurred until you reveal them.
+            </p>
+            <div className="mt-6x">
+              <MissionSearch items={SEARCH_ITEMS} />
+            </div>
           </section>
 
           <section aria-labelledby="glance" className="mt-16x">
