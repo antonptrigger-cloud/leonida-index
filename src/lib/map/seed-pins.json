@@ -293,5 +293,29 @@
     "source": "official",
     "category": "safehouse",
     "description": "Garage in Watson Bay with a weapon locker and a secure place to deposit stolen goods to be fenced; the Mud Club monster off-roader can be stored here (Ultimate Edition). Pin position is approximate (placed on the south-west coast; direction from GTADB record L1495, CC BY 4.0). Source: rockstargames.com/VI, Ultimate Edition."
+  },
+  {
+    "id": "seed-delights-cabaret",
+    "type": "activity",
+    "name": "Delights Cabaret",
+    "region": "Port Gellhorn",
+    "x": 315.9,
+    "y": 378.5,
+    "approximate": true,
+    "source": "official",
+    "category": "bar-club",
+    "description": "Strip club in Port Gellhorn. PC Gamer, GamesRadar+, Polygon, GameSpot and PowerPyx all place it in the town; GamesRadar+ says central Port Gellhorn, GameSpot the heart of the Port Gellhorn highway strip. Pin position is approximate (placed in the central town near I-404 on Rockstar's official map; exact street not confirmed). Sources: pcgamer.com, gamesradar.com, polygon.com, gamespot.com, powerpyx.com."
+  },
+  {
+    "id": "seed-jack-of-hearts",
+    "type": "activity",
+    "name": "Jack of Hearts",
+    "region": "Vice City",
+    "x": 798.1,
+    "y": 368.7,
+    "approximate": true,
+    "source": "official",
+    "category": "bar-club",
+    "description": "Strip club in Crosstown, Vice City. PC Gamer places it directly north of NINE1NINE; GamesRadar+ says it is at the north end of Crosstown and opens in Chapter 3. Pin position is approximate (placed in northern Crosstown on Rockstar's official map; exact street not confirmed). Sources: pcgamer.com, gamesradar.com, powerpyx.com, gamespot.com."
   }
 ]
