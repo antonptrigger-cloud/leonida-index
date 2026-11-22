@@ -94,6 +94,8 @@ const TOPICS: { name: string; re: RegExp }[] = [
   { name: "online", re: /\b(online|multiplayer|co-?op)\b/i },
   { name: "pc", re: /\b(PC|Steam|Game Pass|cloud)\b/ },
   { name: "sales", re: /\b(sales?|sold|million|revenue|units)\b/i },
+  { name: "nightlife", re: /\b(strip clubs?|private dances?|NINE1NINE|Cabaret)\b/i },
+  { name: "weapons", re: /\b(weapons?|guns?|Ammu-Nation|loadouts?|sidearms?|longarms?)\b/i },
 ];
 
 const esc = (s: string) => s.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
@@ -131,7 +133,7 @@ function buildItems(): Item[] {
   }
 
   // Static guides and tools: from their registry copy.
-  const GUIDE_PATHS = ["/guides/beginner", "/guides/wanted", "/guides/stealing-cars", "/guides/activities", "/guides/money", "/guides/cheats", "/guides/trophies", "/guides/collectibles", "/guides/strangers-and-freaks", "/guides/bigfoot-skunk-ape", "/guides/secret-vehicles", "/guides/chapter-3-side-job-locations", "/guides/map-size", "/guides/fast-travel", "/guides/garages", "/guides/saving", "/guides/switch-characters", "/guides/change-clothes", "/guides/first-person", "/guides/relationship", "/guides/difficulty", "/tools/edition-compare"];
+  const GUIDE_PATHS = ["/guides/beginner", "/guides/wanted", "/guides/stealing-cars", "/guides/activities", "/guides/money", "/guides/cheats", "/guides/trophies", "/guides/collectibles", "/guides/strangers-and-freaks", "/guides/bigfoot-skunk-ape", "/guides/secret-vehicles", "/guides/chapter-3-side-job-locations", "/guides/map-size", "/guides/fast-travel", "/guides/garages", "/guides/saving", "/guides/switch-characters", "/guides/change-clothes", "/guides/first-person", "/guides/relationship", "/guides/difficulty", "/guides/strip-clubs", "/guides/weapons", "/tools/edition-compare"];
   for (const href of GUIDE_PATHS) {
     const r = ROUTES[href];
     if (!r) continue;
@@ -299,7 +301,7 @@ export const NEWS_GUIDES: Record<string, string[]> = {
   "/news/gta-6-nbn-australia-traffic-record": ["/guides/beginner", "/tools/edition-compare"],
   "/news/gta-6-internet-traffic-record-de-cix": ["/guides/beginner", "/tools/edition-compare"],
   "/news/gta-6-game-awards-nominations": ["/database/characters/cast", "/guides/beginner"],
-  "/news/gta-6-no-prostitutes-rockstar": ["/guides/relationship", "/guides/wanted", "/guides/stealing-cars"],
+  "/news/gta-6-no-prostitutes-rockstar": ["/guides/relationship", "/guides/strip-clubs", "/guides/wanted"],
   "/news/gta-6-army-reenlistment-four-day-pass": ["/database/characters/jason-duval", "/guides/beginner", "/guides/missions"],
   "/news/gta-6-the-album-tracklist": ["/database/radio-stations", "/guides/beginner", "/guides/activities"],
   "/news/gta-6-first-person-glitch": ["/guides/first-person", "/guides/saving", "/guides/beginner"],
