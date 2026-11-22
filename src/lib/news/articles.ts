@@ -38,7 +38,7 @@ export interface NewsItem {
   archived?: boolean;
 }
 
-export type NewsCategory = "launch" | "servers" | "reviews" | "sales" | "events" | "streamers" | "platforms";
+export type NewsCategory = "launch" | "servers" | "reviews" | "sales" | "events" | "streamers" | "platforms" | "music" | "glitches" | "traffic";
 
 export const NEWS_PUBLISHED = "2026-11-18T22:35:00+10:00";
 
@@ -137,7 +137,7 @@ export const NEWS: NewsItem[] = [
     crumb: "GTA 6 first-person glitch",
     teaser: "A controller-setting trick locks GTA 6 into first person for walking, driving and shooting. PC Gamer tested it. The steps, the catch, and how to get back to third person.",
     tag: "Glitches",
-    category: "launch",
+    category: "glitches",
     keywords: ["GTA 6 first person glitch", "GTA 6 first person mode", "how to play GTA 6 in first person", "GTA 6 first person PS5", "GTA 6 first person Xbox", "GTA 6 glitch"],
     published: FIRSTPERSON_GLITCH_PUBLISHED,
     updated: FIRSTPERSON_GLITCH_PUBLISHED,
@@ -170,7 +170,7 @@ export const NEWS: NewsItem[] = [
     crumb: "GTA 6: The Album tracklist",
     teaser: "Rockstar and Atlantic's 34-track soundtrack is on streaming. The full tracklist, when it landed, vinyl and CD exclusives, and the Justice score date.",
     tag: "Music",
-    category: "launch",
+    category: "music",
     keywords: ["GTA 6 album", "Grand Theft Auto VI: The Album", "GTA 6 soundtrack tracklist", "GTA 6 Atlantic Records", "GTA 6 album vinyl", "GTA 6 Justice score"],
     published: ALBUM_PUBLISHED,
     updated: ALBUM_PUBLISHED,
@@ -313,7 +313,7 @@ export const NEWS: NewsItem[] = [
     crumb: "NBN record",
     teaser: "36.54Tbps on launch night, beating a record set a week earlier. NBN Co's numbers, what the telcos saw, and download times by plan.",
     tag: "Launch night",
-    category: "launch",
+    category: "traffic",
     keywords: ["GTA 6 NBN record", "GTA 6 Australia download", "NBN traffic record", "GTA 6 download time NBN", "GTA 6 Telstra Optus TPG", "did GTA 6 break the internet"],
     published: NBN_RECORD_PUBLISHED,
     updated: NBN_RECORD_PUBLISHED,
@@ -345,7 +345,7 @@ export const NEWS: NewsItem[] = [
     crumb: "DE-CIX record",
     teaser: "33.03Tbps across DE-CIX's exchanges on launch eve, 0.02Tbps above its pre-download record. What it measured and what it doesn't.",
     tag: "Launch night",
-    category: "launch",
+    category: "traffic",
     keywords: ["GTA 6 internet record", "GTA 6 DE-CIX", "GTA 6 internet traffic", "did GTA 6 break the internet", "GTA 6 download traffic", "33 Tbps"],
     published: DECIX_RECORD_PUBLISHED,
     updated: DECIX_RECORD_PUBLISHED,

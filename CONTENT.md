@@ -1,34 +1,80 @@
-type | slug | title | status | source | notes
-page | / | Home | live | editorial |
-map | /map | Leonida community map | live | official + community |
-map | /map/leaderboard | Map leaderboard | live | community |
-map | /map/vice-city | Vice City | live | official |
-map | /map/leonida-keys | Leonida Keys | live | official |
-map | /map/grassrivers | Grassrivers | live | official |
-map | /map/port-gellhorn | Port Gellhorn | live | official |
-map | /map/ambrosia | Ambrosia | live | official |
-map | /map/mount-kalaga | Mount Kalaga | live | official |
-guide | /guides/beginner | Beginner | live | showcase |
-guide | /guides/wanted | Wanted | live | showcase |
-guide | /guides/stealing-cars | Stealing cars | live | showcase |
-guide | /guides/activities | Activities | live | showcase |
-tool | /tools/edition-compare | Editions | live | official |
-news | /news/release-date | Release date | live | official |
-meta | /sources | Sources | live | editorial |
-news | /news/gta-6-live-new-zealand-launch-report | Live in New Zealand | live | official + reported | 
-news | /news/gta-6-reviews-metacritic-99 | GTA 6 reviews | live | reported | Metacritic aggregate moves; recheck
-news | /news/gta-6-ps5-update-patches-servers | PS5 update, patches, servers | live | official + reported | Rockstar status page unverified
-news | /news/gta-6-release-countdown | Release time by region | live | official + reported | country vs time zone unconfirmed
-news | /news/gta-6-confirmed-so-far | What is confirmed | live | official |
-news | /news/gta-6-preload-editions-pricing | Preload and editions | live | official | US prices only
-news | /news/gta-6-festival-set-times-heat-night | Festival set times | live | official + reported | no livestream announced; charity list may be truncated
-news | /news/gta-6-sales-17-million-sensor-tower | Sales estimate | live | reported (Sensor Tower estimates) | no official sales figure yet (GameSpot reports Take-Two will share data soon); update when Take-Two publishes
-news | /news/gta-6-age-rating | Age rating | live | official ratings boards | PEGI and CERO: no entry found 19 Nov 11:46-11:47 AEST; recheck; ACB page read via fetch tool, not direct
-news | /news/gta-6-gta-plus-story-perks | GTA+ perks | live | reported (IGN, GameSpot, Polygon) | Chapter 3 timing differs between outlets (from vs after completing); Rockstar Newswire did not load for us, no official post cited
-news | /news/gta-6-nbn-australia-traffic-record | NBN record | live | reported (NBN Co via TechRadar, GadgetGuy, WhistleOut; telco figures via WhistleOut only) | no NBN Co press release seen; GadgetGuy dates preload from 12 Nov but preload opened 10 Nov, so we do not repeat that
-news | /news/gta-6-internet-traffic-record-de-cix | DE-CIX traffic record | live | primary (DE-CIX press release) + reported (Variety) | Record is DE-CIX exchanges only, not the whole internet; DE-CIX does not say what share was GTA 6; DE-CIX mentions 17M digital copies; not used as a sales figure
-news | /news/gta-6-army-reenlistment-four-day-pass | Army GTA 6 reenlistment pass | draft | Army statements via Axios + reported (Task & Purpose original, Polygon) | 43/130 from Army spokesperson; 20/130 was an August figure; no figure on how many would have reenlisted anyway
-news | /news/gta-6-the-album-tracklist | GTA 6: The Album tracklist | draft | official (Take-Two release, Rockstar music page) + store listing (Apple Music) + reported (Billboard, Complex, Digital Music News) | release moment disputed (19 vs 20 Nov); Billboard says 12 early singles, Rockstar lists 10; Atlantic site 403, no Atlantic release cited; exclusives via Digital Music News
-news | /news/gta-6-no-prostitutes-rockstar | No prostitutes in GTA 6 | live | Rockstar statement via Shacknews + reported (Polygon, PC Gamer) | Rockstar statement never says "prostitutes"; "removed" is Shacknews framing; Polygon leaves room for one to appear somewhere; Vice skipped (paraphrase)
-news | /news/gta-6-game-awards-nominations | Game Awards nominations | live | official (TGA) + reported (GameSpot, Polygon, Shacknews, VGC) | VGC gives Control Resonant/RE Requiem 8 noms, others 6; Perez-as-Lucia is outlet inference, not Rockstar; show start time not sourced
-news | /news/gta-6-first-person-glitch | GTA 6 first-person glitch | draft | reported (PC Gamer tested it; Kotaku live blog passed on the claim) + credited corroboration (Pure Xbox, Dexerto, not on main-outlet list) | unofficial glitch; menu name, button order and exit differ between outlets; arrest/hair-salon exits Pure Xbox only; no Rockstar statement; Rockstar-intent lines from Kotaku, Dexerto, PC Gamer and Pure Xbox not used
+# Content inventory (as of 22 Nov 2026, main @ 4992d60)
+
+Single list of live, indexable pages. The `/news` and `/guides` hubs are built from `src/lib/news/articles.ts` and `src/lib/seo/site.ts` (`HUB_META` in `src/lib/guides/hub.ts` only adds card copy). Mission walkthroughs are listed on `/guides/missions`, not row-by-row here.
+
+type | path | title | notes
+--- | --- | --- | ---
+page | / | Home | live
+map | /map | Leonida community map | live; region pages under `/map/<region>`
+map | /map/leaderboard | Map leaderboard | live
+map | /map/vice-city | Vice City | live
+map | /map/leonida-keys | Leonida Keys | live
+map | /map/grassrivers | Grassrivers | live
+map | /map/port-gellhorn | Port Gellhorn | live
+map | /map/ambrosia | Ambrosia | live
+map | /map/mount-kalaga | Mount Kalaga | live
+guide | /guides | Guides hub | live; sections: Start here, Story missions, Money & progression, Systems & activities
+guide | /guides/missions | All missions in order | live; individual walkthroughs at `/guides/missions/<slug>`
+guide | /guides/beginner | Beginner | live
+guide | /guides/saving | How to save | live
+guide | /guides/switch-characters | Switching characters | live
+guide | /guides/first-person | First-person view | live
+guide | /guides/relationship | Relationship levels | live
+guide | /guides/difficulty | Difficulty settings | live
+guide | /guides/money | Money guide | live
+guide | /guides/cheats | Cheats & codes | live
+guide | /guides/trophies | Trophies & platinum | live
+guide | /guides/collectibles | Collectibles | live
+guide | /guides/wanted | Wanted system | live
+guide | /guides/stealing-cars | Stealing cars | live
+guide | /guides/fast-travel | Fast travel | live
+guide | /guides/change-clothes | Change clothes | live
+guide | /guides/garages | Garages | live
+guide | /guides/activities | Activities | live
+guide | /guides/map-size | Map size | live
+guide | /guides/secret-vehicles | Secret vehicles | live
+guide | /guides/bigfoot-skunk-ape | Bigfoot & Skunk Ape | live
+guide | /guides/chapter-3-side-job-locations | Chapter 3 side job locations | live
+guide | /guides/strangers-and-freaks | Strangers & Freaks | live
+tool | /tools/edition-compare | Editions | live
+meta | /sources | Sources | live
+news | /news | News hub | live; categories: Launch, Servers & patches, Reviews, Sales, Events, Streamers, Platforms & PC, Music, Glitches, Traffic records
+news | /news/release-date | Release date, platforms & price | live; reference page (also in the archive)
+news | /news/gta-6-live-new-zealand-launch-report | Live in New Zealand | live
+news | /news/gta-6-reviews-metacritic-99 | GTA 6 reviews | live tracker
+news | /news/gta-6-ps5-update-patches-servers | Server status & known issues | live tracker
+news | /news/gta-6-release-countdown | Release time by region | live (not a tracker strip item unless `live: true`)
+news | /news/gta-6-confirmed-so-far | What is confirmed | live
+news | /news/gta-6-preload-editions-pricing | Preload and editions | live
+news | /news/gta-6-festival-set-times-heat-night | Festival set times | live
+news | /news/gta-6-sales-17-million-sensor-tower | Sales estimate | live
+news | /news/gta-6-age-rating | Age rating | live
+news | /news/gta-6-gta-plus-story-perks | GTA+ perks | live
+news | /news/gta-6-nbn-australia-traffic-record | NBN traffic record | live; News category: Traffic records
+news | /news/gta-6-internet-traffic-record-de-cix | DE-CIX traffic record | live; News category: Traffic records
+news | /news/gta-6-game-awards-nominations | Game Awards nominations | live
+news | /news/gta-6-no-prostitutes-rockstar | Rockstar statement on sex workers | live
+news | /news/gta-6-army-reenlistment-four-day-pass | Army reenlistment pass | live (in NEWS)
+news | /news/gta-6-the-album-tracklist | GTA 6: The Album | live; News category: Music
+news | /news/gta-6-first-person-glitch | First-person glitch | live; News category: Glitches
+news | /news/n3on-new-zealand-gta-6-stream | N3ON NZ stream | live
+news | /news/gta-6-streaming-viewership-peak | Stream viewership peak | live
+news | /news/gta-6-launch-streams-schedule | Launch streams schedule | live
+news | /news/streamers-new-zealand-trick-warnings | Streamers and the NZ trick | live
+news | /news/gta-6-performance-ps5-pro-xbox | Performance: PS5, PS5 Pro & Xbox | live
+news | /news/gta-6-pc-release-status | PC release status | live
+news | /news/gta-6-online-release-date | GTA 6 Online | live
+news | /news/gta-6-game-pass-ps-plus-cloud | Game Pass, PS Plus, cloud | live
+news | /news/gta-6-file-size-time-to-beat | File size and time to beat | live
+db | /database/* | Characters, locations, vehicles, weapons, radio, gangs | live; character work is a separate track
+page | /secrets | Secrets & Easter eggs | present but noindex until it has verified content (parallel track)
+page | /about | About | live
+
+## Reorg notes (22 Nov 2026)
+
+- No thin news or guide URLs were merged. Each news slug has a distinct search intent (for example `/news/release-date` is the reference card; `/news/gta-6-release-countdown` is regional unlock times). Merging them would need redirects and would risk SEO, so they stay separate.
+- The two launch-week traffic-record pieces stay as two URLs (NBN vs DE-CIX are different primary sources) and now share a **Traffic records** filter on `/news`.
+- The album and first-person-glitch pieces no longer sit in the catch-all Launch filter.
+- Unused default Next.js SVGs (`next.svg`, `vercel.svg`, `file.svg`, `globe.svg`, `window.svg`) were removed; nothing in the app referenced them.
+- Repo-hosted article assets were already WebP at modest sizes. There is no 10GB payload in the GitHub repo, Vercel project, or Supabase project (see the PR body for measured numbers). Map source JPEGs under `assets/map/` are kept: they are inputs for `map:tiles`, not leftover article photos.
+- Git history was not rewritten. Supabase Storage is empty; nothing was deleted there.

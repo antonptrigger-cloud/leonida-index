@@ -395,14 +395,20 @@
 .nh-archive:has(#nh-f-sales:checked) li[data-cat]:not([data-cat="sales"]),
 .nh-archive:has(#nh-f-events:checked) li[data-cat]:not([data-cat="events"]),
 .nh-archive:has(#nh-f-streamers:checked) li[data-cat]:not([data-cat="streamers"]),
-.nh-archive:has(#nh-f-platforms:checked) li[data-cat]:not([data-cat="platforms"]) { display: none; }
+.nh-archive:has(#nh-f-platforms:checked) li[data-cat]:not([data-cat="platforms"]),
+.nh-archive:has(#nh-f-music:checked) li[data-cat]:not([data-cat="music"]),
+.nh-archive:has(#nh-f-glitches:checked) li[data-cat]:not([data-cat="glitches"]),
+.nh-archive:has(#nh-f-traffic:checked) li[data-cat]:not([data-cat="traffic"]) { display: none; }
 .nh-archive:has(#nh-f-launch:checked) .nh-group:not(:has(li[data-cat="launch"])),
 .nh-archive:has(#nh-f-servers:checked) .nh-group:not(:has(li[data-cat="servers"])),
 .nh-archive:has(#nh-f-reviews:checked) .nh-group:not(:has(li[data-cat="reviews"])),
 .nh-archive:has(#nh-f-sales:checked) .nh-group:not(:has(li[data-cat="sales"])),
 .nh-archive:has(#nh-f-events:checked) .nh-group:not(:has(li[data-cat="events"])),
 .nh-archive:has(#nh-f-streamers:checked) .nh-group:not(:has(li[data-cat="streamers"])),
-.nh-archive:has(#nh-f-platforms:checked) .nh-group:not(:has(li[data-cat="platforms"])) { display: none; }
+.nh-archive:has(#nh-f-platforms:checked) .nh-group:not(:has(li[data-cat="platforms"])),
+.nh-archive:has(#nh-f-music:checked) .nh-group:not(:has(li[data-cat="music"])),
+.nh-archive:has(#nh-f-glitches:checked) .nh-group:not(:has(li[data-cat="glitches"])),
+.nh-archive:has(#nh-f-traffic:checked) .nh-group:not(:has(li[data-cat="traffic"])) { display: none; }
 
 /* ---------- Reduced motion + small screens ---------- */
 @media (prefers-reduced-motion: reduce) {
