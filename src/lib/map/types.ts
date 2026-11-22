@@ -22,6 +22,10 @@ export interface Pin {
   /** Vendor / service kind (gas, clothing, bar ...). null for most pins; needs the 20261119000500 migration to persist. */
   category: PinCategory | null;
   spoiler: boolean;
+  /** Optional official screenshot shown in the pin card. Seed-only; not stored in Supabase. */
+  image: string | null;
+  imageCredit: string | null;
+  imageAlt: string | null;
   upCount: number;
   downCount: number;
   needsReview: boolean;
@@ -48,6 +52,9 @@ export type PublicPin = Pick<
   | "approximate"
   | "category"
   | "spoiler"
+  | "image"
+  | "imageCredit"
+  | "imageAlt"
   | "upCount"
   | "downCount"
   | "createdAt"
@@ -121,6 +128,9 @@ export function toPublicPin(p: Pin): PublicPin {
     approximate: p.approximate,
     category: p.category,
     spoiler: p.spoiler,
+    image: p.image,
+    imageCredit: p.imageCredit,
+    imageAlt: p.imageAlt,
     upCount: p.upCount,
     downCount: p.downCount,
     createdAt: p.createdAt,

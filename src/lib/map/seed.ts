@@ -16,6 +16,10 @@ interface SeedRow {
   /** Defaults to "official": every seed pin is a place Rockstar itself has named. */
   source?: PinSource;
   category?: PinCategory;
+  spoiler?: boolean;
+  image?: string;
+  imageCredit?: string;
+  imageAlt?: string;
 }
 
 const SEED_CREATED_AT = "2026-11-18T00:00:00.000Z";
@@ -36,7 +40,10 @@ export const SEED_PINS: Pin[] = [...(seedData as SeedRow[]), ...(gtadbData as Se
   source: s.source ?? "official",
   approximate: s.approximate,
   category: s.category ?? null,
-  spoiler: false,
+  spoiler: s.spoiler ?? false,
+  image: s.image ?? null,
+  imageCredit: s.imageCredit ?? null,
+  imageAlt: s.imageAlt ?? null,
   upCount: 0,
   downCount: 0,
   needsReview: false,
