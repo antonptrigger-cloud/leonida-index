@@ -4,14 +4,32 @@ import { submissionIssues, validateEdit } from "./validation";
 import { getStore } from "./store";
 import { toPublicPin, type Pin, type PublicPin } from "./types";
 
+const SEED_BY_ID = new Map(SEED_PINS.map((s) => [s.id, s]));
+
+/**
+ * Public name, description, type and category for a seed pin come from the seed file.
+ * That lets us relabel imported pins (for example gtadb-L190) without writing to production
+ * Supabase. Votes, coordinates, status and the rest stay on the stored row.
+ * Seed pins with no category in the file keep any category already stored.
+ */
+export function applySeedLabels(pin: Pin): Pin {
+  const seed = SEED_BY_ID.get(pin.id);
+  if (!seed) return pin;
+  return {
+    ...pin,
+    name: seed.name,
+    description: seed.description,
+    type: seed.type,
+    category: seed.category ?? pin.category,
+  };
+}
+
 /** Live pins for the public map. Falls back to the seed pins when the database is offline or erroring. */
 export async function getLivePins(): Promise<{ pins: PublicPin[]; online: boolean }> {
   const store = getStore();
   if (!store) return { pins: SEED_PINS.map(toPublicPin), online: false };
   try {
-    const seedCategory = new Map(SEED_PINS.map((s) => [s.id, s.category]));
-    // Seed pins stored before the category migration have no category in the database; the seed file knows it.
-    const pins = (await store.listPins(["approved"])).map((p) => (p.category || !seedCategory.get(p.id) ? p : { ...p, category: seedCategory.get(p.id) ?? null }));
+    const pins = (await store.listPins(["approved"])).map(applySeedLabels);
     // Seed pins always show, even if the seed migration hasn't been run yet.
     const ids = new Set(pins.map((p) => p.id));
     const merged = [...pins, ...SEED_PINS.filter((s) => !ids.has(s.id))];
