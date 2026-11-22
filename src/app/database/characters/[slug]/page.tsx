@@ -46,7 +46,7 @@ export default async function CharacterPage({ params }: { params: Promise<{ slug
   const path = characterPath(c.slug);
   const reported = c.tier === "reported";
   const verified = c.updated
-    ? { iso: c.updated, label: dateLabel(c.updated), note: "launch day" }
+    ? { iso: c.updated, label: dateLabel(c.updated), note: c.updated >= "2026-11-19" ? "after launch" : "launch day" }
     : { iso: LAST_VERIFIED, label: LAST_VERIFIED_LABEL, note: reported ? "launch eve" : "pre-launch" };
 
   return (
@@ -57,7 +57,7 @@ export default async function CharacterPage({ params }: { params: Promise<{ slug
         kicker={`Character · ${c.role}`}
         title={c.name}
         verified={`${verified.label} (${verified.note})`}
-        source={reported ? (c.sourceLine ?? "GameSpot and PowerPyx (not Rockstar)") : "Rockstar Games, Only in Leonida"}
+        source={reported ? (c.sourceLine ?? "GameSpot and PowerPyx, plus official credits where used") : "Rockstar Games, Only in Leonida and official credits"}
       />
 
       {c.spoiler ? (
@@ -143,7 +143,7 @@ export default async function CharacterPage({ params }: { params: Promise<{ slug
                 <li key={t}>{t}</li>
               ))}
             </ul>
-            <p className="mt-3x text-xs text-muted">We recheck every profile against the finished game after launch on 19 November 2026.</p>
+            <p className="mt-3x text-xs text-muted">We rechecked these profiles against Rockstar&apos;s official credits on 22 November 2026. Story details stay blurred.</p>
           </section>
         </div>
 

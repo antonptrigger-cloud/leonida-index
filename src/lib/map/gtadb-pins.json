@@ -167,13 +167,17 @@
   {
     "id": "gtadb-L190",
     "type": "activity",
-    "name": "NINE1NINE",
+    "name": "NINE1NINE (strip club)",
     "region": "Vice City",
     "x": 834.5,
     "y": 333.7,
     "approximate": true,
     "source": "gtadb",
-    "description": "Leisure or event venue in Downtown, from community research. Position is approximate (placed by district, not by exact coordinates). Source: GTADB.org landmark data, record L190 (CC BY 4.0), map.gtadb.org."
+    "category": "bar-club",
+    "description": "Strip club in Downtown Vice City, next to The Vault. A private dance costs $300 (PC Gamer). GamesRadar+ places it in the north of Downtown, just south of the overpass. Pin position is approximate (placed in Downtown, not by exact street). Sources: pcgamer.com, gamesradar.com. Landmark record L190, GTADB.org (CC BY 4.0), map.gtadb.org.",
+    "image": "/map/pins/nightclub.webp",
+    "imageCredit": "© Rockstar Games",
+    "imageAlt": "Official GTA 6 screenshot of a Vice City club floor as cash rains down."
   },
   {
     "id": "gtadb-L192",

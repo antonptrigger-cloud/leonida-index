@@ -51,6 +51,8 @@ const HUB_META: Record<string, HubMeta> = {
   "/guides/bigfoot-skunk-ape": { title: "Bigfoot & Skunk Ape", blurb: "Where Bigfoot shows up, how to start Kirk's three-part quest and where the tree effigies are. Outlets differ on the spot.", tag: "Side missions", accent: "turq", section: "systems" },
   "/guides/chapter-3-side-job-locations": { title: "Chapter 3 side job locations", blurb: "Where the sites are, how to clear them and what each pays. Outlets disagree on whether it's a story mission.", tag: "Side missions", accent: "turq", section: "systems" },
   "/guides/strangers-and-freaks": { title: "Strangers & Freaks", blurb: "Which side-mission questlines count, and when they open.", tag: "Side missions", accent: "turq", section: "systems" },
+  "/guides/strip-clubs": { title: "Strip clubs", blurb: "Every club, the private-dance prices, and where the outlets disagree.", tag: "Nightlife", accent: "pink", section: "systems" },
+  "/guides/weapons": { title: "Weapons", blurb: "How to buy, save and recover guns, plus GameSpot's default loadout.", tag: "Weapons", accent: "orange", section: "systems" },
 };
 
 /** Display order inside each section. Anything not listed follows in registry order. */

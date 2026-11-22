@@ -1,4 +1,4 @@
-# Content inventory (as of 22 Nov 2026, main @ 4992d60)
+# Content inventory (as of 22 Nov 2026, main @ 16928f1)
 
 Single list of live, indexable pages. The `/news` and `/guides` hubs are built from `src/lib/news/articles.ts` and `src/lib/seo/site.ts` (`HUB_META` in `src/lib/guides/hub.ts` only adds card copy). Mission walkthroughs are listed on `/guides/missions`, not row-by-row here.
 
@@ -36,6 +36,8 @@ guide | /guides/secret-vehicles | Secret vehicles | live
 guide | /guides/bigfoot-skunk-ape | Bigfoot & Skunk Ape | live
 guide | /guides/chapter-3-side-job-locations | Chapter 3 side job locations | live
 guide | /guides/strangers-and-freaks | Strangers & Freaks | live
+guide | /guides/strip-clubs | Strip clubs | live; locations and prices (overlaps `/secrets/strip-clubs`)
+guide | /guides/weapons | Weapons | live; shops and saving
 tool | /tools/edition-compare | Editions | live
 meta | /sources | Sources | live
 news | /news | News hub | live; categories: Launch, Servers & patches, Reviews, Sales, Events, Streamers, Platforms & PC, Music, Glitches, Traffic records
@@ -67,7 +69,14 @@ news | /news/gta-6-online-release-date | GTA 6 Online | live
 news | /news/gta-6-game-pass-ps-plus-cloud | Game Pass, PS Plus, cloud | live
 news | /news/gta-6-file-size-time-to-beat | File size and time to beat | live
 db | /database/* | Characters, locations, vehicles, weapons, radio, gangs | live; character work is a separate track
-page | /secrets | Secrets & Easter eggs | present but noindex until it has verified content (parallel track)
+page | /secrets | Secrets & Easter eggs | live; hub plus the pages below
+page | /secrets/ufo | UFO encounter | live
+page | /secrets/skunk-ape | Skunk Ape | live
+page | /secrets/easter-eggs | Easter eggs | live
+page | /secrets/strip-clubs | Strip clubs | live (overlaps `/guides/strip-clubs`)
+page | /secrets/money | Money secrets | live
+page | /secrets/collectibles | Collectibles | live
+page | /secrets/hidden-locations | Hidden locations | live
 page | /about | About | live
 
 ## Reorg notes (22 Nov 2026)
@@ -78,3 +87,4 @@ page | /about | About | live
 - Unused default Next.js SVGs (`next.svg`, `vercel.svg`, `file.svg`, `globe.svg`, `window.svg`) were removed; nothing in the app referenced them.
 - Repo-hosted article assets were already WebP at modest sizes. There is no 10GB payload in the GitHub repo, Vercel project, or Supabase project (see the PR body for measured numbers). Map source JPEGs under `assets/map/` are kept: they are inputs for `map:tiles`, not leftover article photos.
 - Git history was not rewritten. Supabase Storage is empty; nothing was deleted there.
+- After merging today's approved map, secrets, character, polish and guide PRs, this inventory keeps the reorganised news categories and adds the new live `/guides/strip-clubs`, `/guides/weapons` and `/secrets/*` pages. `/secrets` is no longer an empty noindex placeholder.

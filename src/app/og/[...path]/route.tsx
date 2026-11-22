@@ -24,6 +24,11 @@ function labelFor(path: string): string {
     const item = newsBySlug(path.slice("/news/".length));
     return item ? `News · ${item.tag}` : "News";
   }
+  if (path === "/secrets" || path.startsWith("/secrets/")) return "GTA 6 secrets";
+  if (path === "/database" || path.startsWith("/database/")) return "GTA 6 database";
+  if (path === "/map" || path.startsWith("/map/")) return "GTA 6 map";
+  if (path === "/about" || path === "/sources") return "Leonida Vice Guide";
+  if (path.startsWith("/tools/")) return "GTA 6 tools";
   return "GTA 6 guide";
 }
 

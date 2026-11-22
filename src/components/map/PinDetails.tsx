@@ -5,6 +5,8 @@ import { CATEGORIES } from "@/lib/map/categories";
 import { LIMITS, PIN_TYPES, typeSingular } from "@/lib/map/config";
 import type { Comment, PublicPin } from "@/lib/map/types";
 import { getLikedComments, getMyVote, getSavedGamerTag, getVoterId, saveGamerTag, setLikedComment, setMyVote } from "./local";
+import { ShareButtons } from "@/components/ShareButtons";
+import { SITE } from "@/lib/seo/site";
 
 export function PinDetails({
   pin,
@@ -19,7 +21,6 @@ export function PinDetails({
 }) {
   const [myVote, setVote] = useState<-1 | 0 | 1>(0);
   const [busy, setBusy] = useState(false);
-  const [copied, setCopied] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [comments, setComments] = useState<Comment[] | null>(null);
   const [liked, setLiked] = useState<Set<string>>(new Set());
@@ -144,6 +145,17 @@ export function PinDetails({
         <p className="border-l-2 border-orange bg-orange/10 px-3x py-1x text-xs text-orange">Approximate position: confirm in game.</p>
       ) : null}
 
+      {pin.image ? (
+        <figure className="overflow-hidden border border-pink/20 bg-[#0c0a10]" data-testid="pin-image">
+          {/* Official Rockstar stills are already compressed; a plain img keeps the card light. */}
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src={pin.image} alt={pin.imageAlt ?? pin.name} className="max-h-56 w-full object-cover" />
+          {pin.imageCredit ? (
+            <figcaption className="px-3x py-1x text-[10px] text-muted">{pin.imageCredit}</figcaption>
+          ) : null}
+        </figure>
+      ) : null}
+
       <p className="whitespace-pre-line text-sm text-ink-2">{pin.description}</p>
 
       {pin.occupant ? (
@@ -153,19 +165,13 @@ export function PinDetails({
         </p>
       ) : null}
 
-      <button
-        type="button"
-        onClick={() => {
-          navigator.clipboard?.writeText(window.location.href).then(
-            () => setCopied(true),
-            () => setCopied(false),
-          );
-        }}
-        className="self-start text-xs text-muted underline-offset-2 hover:text-pink-2 hover:underline"
-        data-testid="copy-link"
-      >
-        {copied ? "Link copied" : "Copy link to this pin"}
-      </button>
+      <ShareButtons
+        title={pin.name}
+        url={`${SITE.url}/map?pin=${encodeURIComponent(pin.id)}`}
+        compact
+        copyTestId="copy-link"
+        copyLabel="Copy link to this pin"
+      />
 
       <p className="text-xs text-muted" data-testid="first-marked">
         First marked by <span className="font-medium text-ink">{pin.gamerTag}</span>

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { PageBackdrop } from "@/components/PageBackdrop";
+import { FollowCta } from "@/components/ShareButtons";
 
 export const metadata: Metadata = {
   title: "Page not found",
@@ -26,7 +27,16 @@ export default function NotFound() {
         <Link href="/guides" className="vc-btn-ghost">
           Guides
         </Link>
+        <Link href="/news" className="vc-btn-ghost">
+          News
+        </Link>
+        <Link href="/database" className="vc-btn-ghost">
+          Database
+        </Link>
       </div>
+      <p className="mt-10x">
+        <FollowCta />
+      </p>
     </div>
   );
 }

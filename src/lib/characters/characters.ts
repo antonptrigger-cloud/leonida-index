@@ -9,7 +9,9 @@
  * - Wording is our own. Quotes are single short lines, attributed to Rockstar.
  * - Anything that gives away footage or story beats lives in `spoiler`, which the page
  *   renders behind the reveal pattern used by the mission guides.
- * - No Rockstar images are used. Pages show a text/gradient placeholder card instead.
+ * - Official Rockstar stills from the Only in Leonida People pages are stored as
+ *   compressed webp and credited "© Rockstar Games". We do not use images with
+ *   Rockstar logos, and we do not use leaked material.
  *
  * Batch 2 (contacts and fences) adds characters Rockstar has not profiled. Those carry
  * `tier: "reported"`: every claim comes from launch-eve guides (GameSpot, PowerPyx) and is
@@ -24,6 +26,7 @@ import { BATCH4_CHARACTERS, BATCH4_SOURCES } from "@/lib/characters/batch4";
 type LegacyCharSourceId =
   | "rockstar-profiles"
   | "rockstar-home"
+  | "rockstar-credits"
   | "wikipedia-extended-look"
   | "gamespot-money"
   | "pp-fences"
@@ -115,10 +118,18 @@ export interface Character {
   mapLinks?: { href: string; label: string; status: "confirmed" | "reported" | "tbc"; note?: string }[];
   /** Optional real Q&A, rendered visibly by <Faq> (which also emits FAQPage JSON-LD). Never invent questions. */
   faq?: { question: string; answer: string }[];
+  /** Official Rockstar still from Only in Leonida, stored locally as compressed webp. */
+  portrait?: {
+    src: string;
+    width: number;
+    height: number;
+    alt: string;
+    credit: "© Rockstar Games";
+  };
 }
 
-export const LAST_VERIFIED = "2026-11-18";
-export const LAST_VERIFIED_LABEL = "18 Nov 2026";
+export const LAST_VERIFIED = "2026-11-22";
+export const LAST_VERIFIED_LABEL = "22 Nov 2026";
 
 const BASE_SOURCES: Record<LegacyCharSourceId, CharSource> = {
   "rockstar-profiles": {
@@ -133,6 +144,13 @@ const BASE_SOURCES: Record<LegacyCharSourceId, CharSource> = {
     label: "Rockstar Games: Grand Theft Auto VI",
     url: "https://www.rockstargames.com/VI",
     used: "Official game overview and the 19 November 2026 release date",
+    primary: true,
+  },
+  "rockstar-credits": {
+    id: "rockstar-credits",
+    label: "Rockstar Games: Grand Theft Auto VI credits",
+    url: "https://www.rockstargames.com/VI/credits",
+    used: "Official post-launch credits, checked 22 Nov 2026: performer names and credited character names",
     primary: true,
   },
   "wikipedia-extended-look": {
@@ -251,7 +269,7 @@ export const GROUPS: { id: CharGroup; title: string; blurb: string }[] = [
 ];
 
 export const CHARACTER_NOTE =
-  "Rockstar has only published eight short profiles. Everything marked Confirmed comes from those profiles, retold in our own words. The contacts and fences are not profiled by Rockstar, so everything about them is marked Reported and attributed to the guide it came from (GameSpot or PowerPyx). Anything we could not find at all is marked To be confirmed, and we will recheck every profile against the finished game after launch on 19 November 2026.";
+  "Rockstar has published eight short People profiles on Only in Leonida, and official credits since launch. Everything marked Confirmed comes from those Rockstar pages, retold in our own words. Official stills on the profile pages are credited © Rockstar Games. The contacts and fences still have no People profiles, so guide claims about them stay Reported and attributed to GameSpot or PowerPyx, while a name or performer listed in the official credits is marked Confirmed. Anything we could not find is marked To be confirmed.";
 
 export const REPORTED_NOTE =
   "Rockstar has not published a profile for this character. Everything below comes from launch-eve guides by GameSpot and PowerPyx and is marked Reported. Story and mission details are blurred.";
@@ -278,8 +296,9 @@ const BASE_CHARACTERS: Character[] = [
       { label: "Background", value: "Served in the Army; grew up around con artists and criminals", status: "confirmed" },
       { label: "Work", value: "Runs jobs for local drug runners in the Keys", status: "confirmed" },
       { label: "Home", value: "Lives rent-free in a property owned by Brian Heder", status: "confirmed" },
+      { label: "Location", value: "Leonida Keys", status: "confirmed" },
       { label: "Age and appearance", value: "Not given in Rockstar's text", status: "tbc" },
-      { label: "Voice cast", value: "Not listed on the pages we checked", status: "tbc" },
+      { label: "Performer", value: "Dylan Rourke, listed in Rockstar's official credits", status: "confirmed" },
     ],
     relationships: [
       { name: "Lucia Caminos", slug: "lucia-caminos", note: "Co-lead and partner. Rockstar treats their meeting as a turning point for him." },
@@ -292,10 +311,17 @@ const BASE_CHARACTERS: Character[] = [
     ],
     tbc: [
       "Age, height and other physical details.",
-      "Who voices him.",
-      "How his arc plays out in the finished game.",
+      "How his story plays out beyond what Rockstar's public profile says.",
     ],
-    sourceIds: ["rockstar-profiles", "rockstar-home", "wikipedia-extended-look"],
+    updated: "2026-11-22",
+    portrait: {
+      src: "/characters/jason-duval.webp",
+      width: 1600,
+      height: 900,
+      alt: "Jason Duval astride a green motorcycle under palm trees, an official Rockstar Games screenshot",
+      credit: "© Rockstar Games",
+    },
+    sourceIds: ["rockstar-profiles", "rockstar-home", "rockstar-credits", "wikipedia-extended-look"],
   },
   {
     slug: "lucia-caminos",
@@ -319,12 +345,8 @@ const BASE_CHARACTERS: Character[] = [
       { label: "Status", value: "Recently released, according to Rockstar's profile", status: "confirmed" },
       { label: "Family", value: "Her mother's dream of a better life dates from the family's time in Liberty City", status: "confirmed" },
       { label: "Crime and sentence length", value: "Not specified by Rockstar", status: "tbc" },
-      { label: "Parents' names, age and appearance", value: "Not given in Rockstar's text", status: "tbc" },
-      {
-        label: "Voice cast",
-        value: "The Game Awards lists Manni L. Perez as a Best Performance nominee for GTA VI but does not name a character. Reports link her to Lucia. Rockstar has not confirmed it.",
-        status: "reported",
-      },
+      { label: "Parents' names, age and appearance", value: "Not given in Rockstar's People profile", status: "tbc" },
+      { label: "Performer", value: "Manni L. Perez, listed in Rockstar's official credits", status: "confirmed" },
     ],
     relationships: [
       { name: "Jason Duval", slug: "jason-duval", note: "Co-lead and partner. Rockstar presents the partnership as a potential escape for her." },
@@ -335,9 +357,16 @@ const BASE_CHARACTERS: Character[] = [
     tbc: [
       "Where she was born. Rockstar only ties her family's earlier years to Liberty City.",
       "What she was convicted of and how long the sentence was.",
-      "Rockstar's own confirmation of who voices her.",
     ],
-    sourceIds: ["rockstar-profiles", "rockstar-home", "wikipedia-extended-look", "tga-best-performance", "polygon-perez"],
+    updated: "2026-11-22",
+    portrait: {
+      src: "/characters/lucia-caminos.webp",
+      width: 1600,
+      height: 900,
+      alt: "Lucia Caminos striking a punching bag in a gym, an official Rockstar Games screenshot",
+      credit: "© Rockstar Games",
+    },
+    sourceIds: ["rockstar-profiles", "rockstar-home", "rockstar-credits", "wikipedia-extended-look", "tga-best-performance", "polygon-perez"],
   },
   {
     slug: "cal-hampton",
@@ -360,8 +389,9 @@ const BASE_CHARACTERS: Character[] = [
       { label: "Affiliation", value: "Associate of Brian Heder", status: "confirmed" },
       { label: "Habits", value: "Stays home, monitors Coast Guard radio, keeps private browser tabs open", status: "confirmed" },
       { label: "Age and appearance", value: "Not given in Rockstar's text", status: "tbc" },
+      { label: "Location", value: "Leonida Keys", status: "confirmed" },
       { label: "Exact mission role", value: "Not stated by Rockstar", status: "tbc" },
-      { label: "Voice cast", value: "Not listed on the pages we checked", status: "tbc" },
+      { label: "Performer", value: "Bobby Moynihan, listed in Rockstar's official credits as Cal", status: "confirmed" },
     ],
     relationships: [
       { name: "Jason Duval", slug: "jason-duval", note: "Close friend. Jason is the more ambitious of the two." },
@@ -370,8 +400,16 @@ const BASE_CHARACTERS: Character[] = [
     spoiler: [
       "Wikipedia's summary of the Extended Look video closes with Cal telling Jason and Lucia to enjoy their time as young adults.",
     ],
-    tbc: ["What Cal does in the missions.", "Who voices him."],
-    sourceIds: ["rockstar-profiles", "wikipedia-extended-look"],
+    tbc: ["What Cal does in the missions."],
+    updated: "2026-11-22",
+    portrait: {
+      src: "/characters/cal-hampton.webp",
+      width: 1600,
+      height: 900,
+      alt: "Cal Hampton on a mini-golf course in a Hawaiian shirt and bucket hat, an official Rockstar Games screenshot",
+      credit: "© Rockstar Games",
+    },
+    sourceIds: ["rockstar-profiles", "rockstar-credits", "wikipedia-extended-look"],
   },
   {
     slug: "brian-heder",
@@ -395,22 +433,26 @@ const BASE_CHARACTERS: Character[] = [
       { label: "Family", value: "Third wife, Lori", status: "confirmed" },
       { label: "Link to Jason", value: "Lets him live rent-free in return for help with local shakedowns", status: "confirmed" },
       { label: "Age and appearance", value: "Rockstar only says he looks like a beach bum", status: "tbc" },
-      {
-        label: "Voice cast",
-        value: "Actor Stephen Root has said on camera that he is in the game but did not name his part. GameSpot and Polygon report that the part is Brian. Rockstar has not confirmed the role.",
-        status: "reported",
-      },
+      { label: "Performer", value: "Stephen Root, listed in Rockstar's official credits", status: "confirmed" },
     ],
     relationships: [
       { name: "Jason Duval", slug: "jason-duval", note: "Landlord, and the man Jason does favours for." },
       { name: "Cal Hampton", slug: "cal-hampton", note: "Another associate in his circle." },
-      { name: "Lori", slug: "lori", note: "His third wife. She is named in his profile and has a short profile of her own." },
+      { name: "Lori Heder", slug: "lori", note: "His third wife. Rockstar's People profile names her Lori; the official credits list Lori Heder." },
     ],
     spoiler: [
       "Wikipedia's summary of the Extended Look video has Brian handing Jason and Lucia a job over dinner and warning Jason against sinking deeper into crime.",
     ],
-    tbc: ["How central Brian is to the main story.", "Rockstar's own confirmation of who voices him."],
-    sourceIds: ["rockstar-profiles", "wikipedia-extended-look", "ap-root", "gamespot-root", "polygon-root"],
+    tbc: ["How central Brian is to the main story."],
+    updated: "2026-11-22",
+    portrait: {
+      src: "/characters/brian-heder.webp",
+      width: 1600,
+      height: 900,
+      alt: "Brian Heder leaning from a truck window in the Keys, an official Rockstar Games screenshot",
+      credit: "© Rockstar Games",
+    },
+    sourceIds: ["rockstar-profiles", "rockstar-credits", "wikipedia-extended-look", "ap-root", "gamespot-root", "polygon-root"],
   },
   {
     slug: "boobie-ike",
@@ -433,8 +475,9 @@ const BASE_CHARACTERS: Character[] = [
       { label: "Businesses", value: "Real estate, a strip club and a recording studio", status: "confirmed" },
       { label: "Label", value: "Only Raw Records, with Dre'Quan Priest", status: "confirmed" },
       { label: "The Jack of Hearts", value: "Rockstar's tagline for him refers to it; the page does not say what it is", status: "tbc" },
-      { label: "Full name or nickname", value: "Not stated", status: "tbc" },
-      { label: "Age, appearance and voice cast", value: "Not given in Rockstar's text", status: "tbc" },
+      { label: "Location", value: "Vice City", status: "confirmed" },
+      { label: "Full name or nickname", value: "Not stated beyond Boobie Ike", status: "tbc" },
+      { label: "Performer", value: "Mike Forbs, listed in Rockstar's official credits", status: "confirmed" },
     ],
     relationships: [
       { name: "Dre'Quan Priest", slug: "dre-quan-priest", note: "Business partner in Only Raw Records. Dre'Quan books acts into Boobie's club." },
@@ -444,11 +487,18 @@ const BASE_CHARACTERS: Character[] = [
       "Wikipedia's summary of the Extended Look video names Boobie as the client for Jason and Lucia's first drug pickup in Vice City.",
     ],
     tbc: [
-      "Whether the Jack of Hearts is his club, and how it fits into the game.",
+      "Whether the Jack of Hearts is the name of his club, and how it fits into the game. Rockstar's tagline uses the phrase; the People page does not spell it out.",
       "Whether he appears in trailer footage beyond what the Extended Look summary describes.",
-      "Who voices him.",
     ],
-    sourceIds: ["rockstar-profiles", "wikipedia-extended-look"],
+    updated: "2026-11-22",
+    portrait: {
+      src: "/characters/boobie-ike.webp",
+      width: 1600,
+      height: 900,
+      alt: "Boobie Ike seated in an office, counting a stack of cash, an official Rockstar Games screenshot",
+      credit: "© Rockstar Games",
+    },
+    sourceIds: ["rockstar-profiles", "rockstar-credits", "wikipedia-extended-look"],
   },
   {
     slug: "dre-quan-priest",
@@ -472,15 +522,24 @@ const BASE_CHARACTERS: Character[] = [
       { label: "Signed act", value: "Real Dimez", status: "confirmed" },
       { label: "Spelling", value: "Written Dre'Quan on Rockstar's own page", status: "confirmed" },
       { label: "Age and appearance", value: "Not given in Rockstar's text", status: "tbc" },
+      { label: "Location", value: "Vice City", status: "confirmed" },
       { label: "Link to the leads", value: "Not stated by Rockstar", status: "tbc" },
-      { label: "Voice cast", value: "Not listed on the pages we checked", status: "tbc" },
+      { label: "Performer", value: "Naiqui Macabroad, listed in Rockstar's official credits as Dre'Quan", status: "confirmed" },
     ],
     relationships: [
       { name: "Boobie Ike", slug: "boobie-ike", note: "Label partner, and for now the owner of the club where he books acts." },
       { name: "Real Dimez", slug: "real-dimez", note: "The act he has just signed." },
     ],
-    tbc: ["How he connects to Jason and Lucia.", "Who voices him."],
-    sourceIds: ["rockstar-profiles"],
+    tbc: ["How he connects to Jason and Lucia."],
+    updated: "2026-11-22",
+    portrait: {
+      src: "/characters/dre-quan-priest.webp",
+      width: 1600,
+      height: 900,
+      alt: "Dre'Quan Priest in a club with two other people, an official Rockstar Games screenshot",
+      credit: "© Rockstar Games",
+    },
+    sourceIds: ["rockstar-profiles", "rockstar-credits"],
   },
   {
     slug: "raul-bautista",
@@ -503,8 +562,8 @@ const BASE_CHARACTERS: Character[] = [
       { label: "Crew", value: "Leads his own crew and looks for new recruits", status: "confirmed" },
       { label: "Spelling", value: "Bautista, as spelled on Rockstar's own page", status: "confirmed" },
       { label: "Base of operations", value: "Not stated by Rockstar", status: "tbc" },
-      { label: "Crew members", value: "Not named", status: "tbc" },
-      { label: "Age, appearance and voice cast", value: "Not given in Rockstar's text", status: "tbc" },
+      { label: "Crew members", value: "Not named on the People page", status: "tbc" },
+      { label: "Performer", value: "Manny Perez, listed in Rockstar's official credits", status: "confirmed" },
     ],
     relationships: [
       { name: "Jason Duval and Lucia Caminos", slug: "jason-duval", note: "Rockstar's profile does not say how they connect to him." },
@@ -512,8 +571,16 @@ const BASE_CHARACTERS: Character[] = [
     spoiler: [
       "Wikipedia's summary of the Extended Look video has Jason and Lucia driving getaway for Raul after a robbery, and Raul bringing them into his crew because he is impressed by their skills.",
     ],
-    tbc: ["Where he is based.", "Who is in his crew.", "Who voices him."],
-    sourceIds: ["rockstar-profiles", "wikipedia-extended-look"],
+    tbc: ["Where he is based.", "Who is in his crew."],
+    updated: "2026-11-22",
+    portrait: {
+      src: "/characters/raul-bautista.webp",
+      width: 1600,
+      height: 900,
+      alt: "Raul Bautista on a phone in a dim room, an official Rockstar Games screenshot",
+      credit: "© Rockstar Games",
+    },
+    sourceIds: ["rockstar-profiles", "rockstar-credits", "wikipedia-extended-look"],
   },
   {
     slug: "real-dimez",
@@ -536,30 +603,83 @@ const BASE_CHARACTERS: Character[] = [
       { label: "Friendship", value: "Friends since high school", status: "confirmed" },
       { label: "Earlier hit", value: "A single with local rapper DWNPLY", status: "confirmed" },
       { label: "Label", value: "Only Raw Records (Boobie Ike and Dre'Quan Priest)", status: "confirmed" },
-      { label: "Who is who", value: "Rockstar gives no separate bios for Bae-Luxe and Roxy", status: "tbc" },
-      { label: "Stage names or real names", value: "Not stated", status: "tbc" },
-      { label: "Ages, appearance and voice cast", value: "Not given in Rockstar's text", status: "tbc" },
+      { label: "Location", value: "Vice City", status: "confirmed" },
+      { label: "Who is who", value: "Rockstar gives no separate bios for Bae-Luxe and Roxy on the People page", status: "tbc" },
+      { label: "Credited names", value: "Official credits list Bae-Luxe and Roxy Rashad", status: "confirmed" },
+      { label: "Performers", value: "Hood Brat as Bae-Luxe and Krissy Celess as Roxy Rashad, listed in Rockstar's official credits", status: "confirmed" },
     ],
     relationships: [
       { name: "Dre'Quan Priest", slug: "dre-quan-priest", note: "Signed them to the label." },
       { name: "Boobie Ike", slug: "boobie-ike", note: "Co-owner of Only Raw Records." },
-      { name: "DWNPLY", note: "Local rapper on their early hit. Named in the profile but without a profile of his own yet." },
+      { name: "DWNPLY", slug: "dwnply", note: "Local rapper named on their official profile for an early hit single." },
     ],
-    tbc: ["Which member is which in game footage.", "Whether the names are stage names.", "Who voices them."],
-    sourceIds: ["rockstar-profiles"],
+    tbc: ["Which member is which in game footage.", "Whether Bae-Luxe and Roxy Rashad are stage names."],
+    updated: "2026-11-22",
+    portrait: {
+      src: "/characters/real-dimez.webp",
+      width: 1600,
+      height: 900,
+      alt: "A member of Real Dimez in a recording studio, holding headphones, an official Rockstar Games screenshot",
+      credit: "© Rockstar Games",
+    },
+    sourceIds: ["rockstar-profiles", "rockstar-credits"],
+  },
+  {
+    slug: "dwnply",
+    name: "DWNPLY",
+    group: "vice-city",
+    role: "Local rapper",
+    initials: "DW",
+    accent: "orange",
+    seoTitle: "DWNPLY in GTA 6: Real Dimez's Early-Hit Rapper",
+    seoDescription:
+      "DWNPLY in GTA 6: the local rapper named on Rockstar's Real Dimez profile for an early hit, listed in the official credits as Denzel Curry.",
+    summary:
+      "DWNPLY is a Vice City rapper Rockstar names in the official Real Dimez profile as the partner on an early hit single.",
+    background: [
+      "Rockstar has not given DWNPLY a People profile of his own. He appears in the Real Dimez write-up: after years of viral tracks, an early hit single with the local rapper DWNPLY took Bae-Luxe and Roxy to new heights, and they later signed to Only Raw Records.",
+      "The official Grand Theft Auto VI credits, published by Rockstar after launch, list DWNPLY and name Denzel Curry in that part. The People page itself does not mention a performer.",
+    ],
+    facts: [
+      { label: "Role", value: "Local rapper, named on the official Real Dimez profile", status: "confirmed" },
+      { label: "Link to Real Dimez", value: "Featured on an early hit single with the duo", status: "confirmed" },
+      { label: "Affiliation", value: "Named alongside Only Raw Records' new signing, Real Dimez", status: "confirmed" },
+      { label: "Performer", value: "Denzel Curry, listed in Rockstar's official credits", status: "confirmed" },
+    ],
+    relationships: [
+      { name: "Real Dimez", slug: "real-dimez", note: "Rockstar names him as the local rapper on their early hit single." },
+      { name: "Dre'Quan Priest", slug: "dre-quan-priest", note: "Signed Real Dimez to Only Raw Records after that early hit." },
+      { name: "Boobie Ike", slug: "boobie-ike", note: "Co-owner of Only Raw Records, the label Real Dimez later joined." },
+    ],
+    tbc: [
+      "Whether Rockstar will add a full People profile.",
+      "Any further public details about his music beyond that early hit.",
+    ],
+    updated: "2026-11-22",
+    sourceIds: ["rockstar-profiles", "rockstar-credits"],
+    faq: [
+      {
+        question: "Who is DWNPLY in GTA 6?",
+        answer: "DWNPLY is a local rapper named in Rockstar's official Real Dimez profile as the featured artist on an early hit single. Rockstar has not given him a People page of his own.",
+      },
+      {
+        question: "Who plays DWNPLY in GTA 6?",
+        answer: "Rockstar's official credits list Denzel Curry as DWNPLY.",
+      },
+    ],
   },
   {
     slug: "lori",
-    name: "Lori",
+    name: "Lori Heder",
     group: "keys",
     role: "Brian Heder's third wife",
     initials: "L",
     accent: "orange",
-    seoTitle: "Lori in GTA 6: Brian Heder's Third Wife",
+    seoTitle: "Lori Heder in GTA 6: Brian's Third Wife",
     seoDescription:
-      "Who is Lori in GTA 6? What Rockstar says about Brian Heder's third wife, her link to Jason and the Keys, and what is still to be confirmed.",
+      "Who is Lori Heder in GTA 6? What Rockstar says about Brian's third wife, her link to Jason, and the official credits listing for Orlagh Cassidy.",
     summary:
-      "Lori is Brian Heder's third wife. Rockstar names her inside Brian's profile and has not given her a profile of her own.",
+      "Lori Heder is Brian Heder's third wife. Rockstar names her as Lori in Brian's People profile; the official credits add the surname Heder.",
     background: [
       "Rockstar mentions Lori twice, both times in Brian's entry. The first is a passing line: Brian still moves product through his boat yard together with his third wife, Lori. The profile does not say what part, if any, she plays in the business.",
       "The second is her sangria. Jason lives rent-free in one of Brian's properties and, as part of that deal, is expected to drop by for Lori's sangria now and then. That invitation is the only personal detail Rockstar gives about her.",
@@ -568,24 +688,24 @@ const BASE_CHARACTERS: Character[] = [
       { label: "Role", value: "Brian Heder's wife; Rockstar calls her his third", status: "confirmed" },
       { label: "Link to Jason", value: "Jason is expected to stop by for her sangria from time to time", status: "confirmed" },
       { label: "Where she lives or works", value: "Not stated. She is mentioned next to Brian's boat yard, which Rockstar places in the Keys", status: "tbc" },
-      { label: "Surname", value: "Rockstar gives only the name Lori", status: "tbc" },
-      { label: "Age, appearance and voice cast", value: "Not given in Rockstar's text", status: "tbc" },
+      { label: "Surname", value: "Heder, listed in Rockstar's official credits as Lori Heder", status: "confirmed" },
+      { label: "Location", value: "Mentioned next to Brian's boat yard in the Keys", status: "confirmed" },
+      { label: "Performer", value: "Orlagh Cassidy, listed in Rockstar's official credits", status: "confirmed" },
     ],
     relationships: [
       { name: "Brian Heder", slug: "brian-heder", note: "Her husband. She appears only in his profile." },
       { name: "Jason Duval", slug: "jason-duval", note: "Rockstar has him visiting for her sangria as part of his rent-free arrangement with Brian." },
     ],
     tbc: [
-      "Her surname.",
       "What she does at the boat yard, if anything.",
       "Whether she appears in any missions.",
-      "Who voices her.",
     ],
-    sourceIds: ["rockstar-profiles"],
+    updated: "2026-11-22",
+    sourceIds: ["rockstar-profiles", "rockstar-credits"],
     faq: [
       {
         question: "Who is Lori in GTA 6?",
-        answer: "Lori is Brian Heder's third wife. Rockstar names her in Brian's official profile and has not given her a profile of her own.",
+        answer: "Lori Heder is Brian Heder's third wife. Rockstar names her as Lori in Brian's official People profile and has not given her a profile of her own. The official credits list her as Lori Heder.",
       },
       {
         question: "How does Lori connect to Jason Duval?",
@@ -593,21 +713,21 @@ const BASE_CHARACTERS: Character[] = [
       },
       {
         question: "Does Lori have a surname or a voice actor?",
-        answer: "Neither is confirmed. Rockstar gives only her first name, and no performer for the role has been announced.",
+        answer: "Yes. Rockstar's official credits list her as Lori Heder and name Orlagh Cassidy in the part. The People profile itself used only the name Lori.",
       },
     ],
   },
   {
     slug: "kenton",
-    name: "Kenton",
+    name: "Kenton Rees",
     tier: "reported",
     group: "contacts",
     role: "Dive-shop owner and treasure contact",
     initials: "K",
     accent: "turq",
-    seoTitle: "Kenton in GTA 6: Key Lento Treasure Diver",
+    seoTitle: "Kenton Rees in GTA 6: Key Lento Treasure Diver",
     seoDescription:
-      "Kenton in GTA 6: the Key Lento dive-shop owner who hires Jason for treasure dives. What launch-eve guides report, with sources. Missions are blurred.",
+      "Kenton Rees in GTA 6: the Key Lento dive-shop owner who hires Jason for treasure dives. What guides report, plus the official credits. Missions are blurred.",
     summary:
       "Kenton owns a beachside scuba-boat shop in Key Lento and sends Jason out to dive for treasure, according to launch-eve guides.",
     background: [
@@ -619,9 +739,9 @@ const BASE_CHARACTERS: Character[] = [
       { label: "Where", value: "Key Lento (PowerPyx lists the area under Mariana County)", status: "reported" },
       { label: "Shop", value: "Island Dreams, by the beach (PowerPyx)", status: "reported" },
       { label: "Past", value: "Once ran with Brian Heder (GameSpot)", status: "reported" },
-      { label: "Full name", value: "Kenton Rees. PowerPyx gives the surname; GameSpot uses only Kenton", status: "reported" },
+      { label: "Full name", value: "Kenton Rees, listed in Rockstar's official credits", status: "confirmed" },
       { label: "Age and appearance", value: "Not given in the sources", status: "tbc" },
-      { label: "Voice cast", value: "Not listed in the sources", status: "tbc" },
+      { label: "Performer", value: "Machel Montano, listed in Rockstar's official credits", status: "confirmed" },
     ],
     relationships: [
       { name: "Jason Duval", slug: "jason-duval", note: "Works for Kenton on his treasure dives (GameSpot)." },
@@ -637,10 +757,9 @@ const BASE_CHARACTERS: Character[] = [
     spoilerLink: { href: "/guides/missions/island-dreams", label: "Read our Island Dreams mission guide" },
     tbc: [
       "His age, appearance and how long he ran with Brian.",
-      "Whether Rees is his final surname. Only PowerPyx gives it.",
-      "Who voices him.",
     ],
-    sourceIds: ["gamespot-money", "pp-island-dreams"],
+    updated: "2026-11-22",
+    sourceIds: ["rockstar-credits", "gamespot-money", "pp-island-dreams"],
     faq: [
       {
         question: "Who is Kenton in GTA 6?",
@@ -658,7 +777,7 @@ const BASE_CHARACTERS: Character[] = [
   },
   {
     slug: "moses",
-    name: "Moses",
+    name: "Moses \"Mo\" Watkins",
     tier: "reported",
     group: "contacts",
     role: "Mechanic and car fence",
@@ -678,8 +797,9 @@ const BASE_CHARACTERS: Character[] = [
       { label: "Where", value: "Port Gellhorn, Kelly County (PowerPyx; GameSpot says Port Gellhorn)", status: "reported" },
       { label: "Buys", value: "Cars only. Early on, only cars without a tracker (PowerPyx)", status: "reported" },
       { label: "Typical payout", value: "Often upwards of $10,000 per car (GameSpot)", status: "reported" },
-      { label: "Surname, age and appearance", value: "Not given in the sources", status: "tbc" },
-      { label: "Voice cast", value: "Not listed in the sources", status: "tbc" },
+      { label: "Full name", value: "Moses \"Mo\" Watkins, listed in Rockstar's official credits", status: "confirmed" },
+      { label: "Age and appearance", value: "Not given in the sources", status: "tbc" },
+      { label: "Performer", value: "Aaron Morton, listed in Rockstar's official credits", status: "confirmed" },
     ],
     relationships: [
       { name: "Randy", slug: "randy", note: "The second car fence, who deals in higher-end cars later in the story (GameSpot)." },
@@ -691,8 +811,9 @@ const BASE_CHARACTERS: Character[] = [
       "Moses leads Lucia to a yard behind his garage where three cars are parked. A phone app called Waink scans them for trackers. Lucia picks up the Slim Jim, a tool for opening locked cars without setting off the alarm, and uses it on a Montagne XL.",
       "Moses then registers a car as Lucia's personal vehicle once she has resprayed it. If she did not bring a suitable car, she steals an untracked one from the main road in the middle of Port Gellhorn. PowerPyx also lists a Scooter Bros app, for having a personal vehicle delivered, among the rewards.",
     ],
-    tbc: ["His surname, age and appearance.", "Whether his rules change later in the story.", "Who voices him."],
-    sourceIds: ["gamespot-money", "pp-moses", "pp-fences"],
+    tbc: ["His age and appearance.", "Whether his rules change later in the story."],
+    updated: "2026-11-22",
+    sourceIds: ["rockstar-credits", "gamespot-money", "pp-moses", "pp-fences"],
     faq: [
       {
         question: "Who is Moses in GTA 6?",
@@ -710,7 +831,7 @@ const BASE_CHARACTERS: Character[] = [
   },
   {
     slug: "randy",
-    name: "Randy",
+    name: "Randy Kozlov",
     tier: "reported",
     group: "contacts",
     role: "High-end car fence",
@@ -730,8 +851,9 @@ const BASE_CHARACTERS: Character[] = [
       { label: "Where", value: "Western Vice City (GameSpot); Balsero (PowerPyx)", status: "reported" },
       { label: "Buys", value: "Certain high-end cars with advanced trackers (PowerPyx)", status: "reported" },
       { label: "Extras", value: "A list of more than a dozen cars to find, with a bonus for good condition (GameSpot)", status: "reported" },
-      { label: "Surname, age and appearance", value: "Not given in the sources", status: "tbc" },
-      { label: "Voice cast", value: "Not listed in the sources", status: "tbc" },
+      { label: "Full name", value: "Randy Kozlov, listed in Rockstar's official credits", status: "confirmed" },
+      { label: "Age and appearance", value: "Not given in the sources", status: "tbc" },
+      { label: "Performer", value: "Serge Didenko, listed in Rockstar's official credits", status: "confirmed" },
     ],
     relationships: [
       { name: "A Port Gellhorn mechanic", slug: "moses", note: "The car fence who handles cheaper vehicles (GameSpot)." },
@@ -743,8 +865,9 @@ const BASE_CHARACTERS: Character[] = [
       "PowerPyx names his first job Clonin' Keys, Makin' GS (Steal the Zorrusso for Randy). It is a main mission about halfway through Chapter 3 and, by PowerPyx's estimate, around 40 hours into the game.",
       "At the start of that mission the Key Cloner installs itself in the phone settings. PowerPyx says it lets the player hack into high-end cars, which often carry advanced trackers that alert the police if you slow down. GameSpot likewise says Randy is the one who lets you clone keys to open more modern vehicles.",
     ],
-    tbc: ["His surname, age and appearance.", "His exact location in Vice City.", "Who voices him."],
-    sourceIds: ["gamespot-money", "pp-fences", "pp-key-cloner"],
+    tbc: ["His age and appearance.", "His exact location in Vice City."],
+    updated: "2026-11-22",
+    sourceIds: ["rockstar-credits", "gamespot-money", "pp-fences", "pp-key-cloner"],
     faq: [
       {
         question: "Who is Randy in GTA 6?",
@@ -782,8 +905,8 @@ const BASE_CHARACTERS: Character[] = [
       { label: "Where", value: "A trailer in Port Gellhorn, Kelly County (PowerPyx)", status: "reported" },
       { label: "Pays", value: "Narcotics Low, jewelry Low, marked bills Very Low (PowerPyx)", status: "reported" },
       { label: "Payment speed", value: "Almost instant for hideout goods (GameSpot)", status: "reported" },
-      { label: "Surname, age and appearance", value: "Not given in the sources", status: "tbc" },
-      { label: "Voice cast", value: "Not listed in the sources", status: "tbc" },
+      { label: "Age and appearance", value: "Not given in the sources", status: "tbc" },
+      { label: "Performer", value: "Brad Fleischer, listed in Rockstar's official credits as Dunk", status: "confirmed" },
     ],
     relationships: [
       { name: "Tyrone", slug: "tyrone", note: "Another dealer GameSpot lists with Dunk as paying almost instantly." },
@@ -796,8 +919,9 @@ const BASE_CHARACTERS: Character[] = [
       "In PowerPyx's walkthrough, Dunk's plan is to lean on a retired doctor, Dr. Bill, who used to deal with a gang called the Kolts. The deal at the Kolts' docks turns into a shootout. At a second meeting spot Bill is shot, and Dunk takes the pills from the main building. Lucia brings them back to Jason.",
       "The next day Dunk sends $1,700 through BuckMe and marks two robbery locations on the map.",
     ],
-    tbc: ["His surname, age and appearance.", "Why he is unavailable for part of the story.", "Who voices him."],
-    sourceIds: ["gamespot-money", "pp-fences", "pp-slam-dunk"],
+    tbc: ["His surname, age and appearance.", "Why he is unavailable for part of the story."],
+    updated: "2026-11-22",
+    sourceIds: ["rockstar-credits", "gamespot-money", "pp-fences", "pp-slam-dunk"],
     faq: [
       {
         question: "Who is Dunk in GTA 6?",
@@ -815,7 +939,7 @@ const BASE_CHARACTERS: Character[] = [
   },
   {
     slug: "tyrone",
-    name: "Tyrone",
+    name: "Tyrone Russo",
     tier: "reported",
     group: "contacts",
     role: "Fence and side-mission giver",
@@ -835,8 +959,9 @@ const BASE_CHARACTERS: Character[] = [
       { label: "Where", value: "La Perle, Vice City (PowerPyx)", status: "reported" },
       { label: "Pays", value: "Narcotics High, jewelry Medium, marked bills Medium (PowerPyx)", status: "reported" },
       { label: "Payment speed", value: "Almost instant for hideout goods (GameSpot)", status: "reported" },
-      { label: "Surname, age and appearance", value: "Not given in the sources", status: "tbc" },
-      { label: "Voice cast", value: "Not listed in the sources", status: "tbc" },
+      { label: "Full name", value: "Tyrone Russo, listed in Rockstar's official credits", status: "confirmed" },
+      { label: "Age and appearance", value: "Not given in the sources", status: "tbc" },
+      { label: "Performer", value: "Taylor Novak, listed in Rockstar's official credits", status: "confirmed" },
     ],
     relationships: [
       { name: "A Port Gellhorn dealer", slug: "dunk", note: "Another dealer GameSpot lists with Tyrone as paying almost instantly." },
@@ -848,8 +973,9 @@ const BASE_CHARACTERS: Character[] = [
       "PowerPyx lists Tyrone's questline as Here, Kitty Kitty, then Kitty Litter Labs, then Spin On This (Shut Down the Labs). The last one needs enough Kitty Litter Labs destroyed first, can only be started as Jason, pays $10,000 and begins near the town of Grayson in Lummox County.",
       "In that mission Jason works with Tyrone and a man called Dook to raid a motel with a synthetics lab hidden under it. Jason plants explosives on two vats and chases a man named Rocky through a pipe as the lab goes up. The chase ends outside with Rocky being shot.",
     ],
-    tbc: ["His surname, age and appearance.", "What the Kitty Litter operation is in the wider story.", "Who voices him."],
-    sourceIds: ["gamespot-money", "pp-fences", "pp-spin-on-this"],
+    tbc: ["His age and appearance.", "What the Kitty Litter operation is in the wider story."],
+    updated: "2026-11-22",
+    sourceIds: ["rockstar-credits", "gamespot-money", "pp-fences", "pp-spin-on-this"],
     faq: [
       {
         question: "Who is Tyrone in GTA 6?",
