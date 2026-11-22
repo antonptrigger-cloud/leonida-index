@@ -146,6 +146,23 @@ function buildItems(): Item[] {
     });
   }
 
+  // Secrets hub and entries. Same section as guides so they share related slots.
+  const SECRET_PATHS = ["/secrets", "/secrets/ufo", "/secrets/skunk-ape", "/secrets/easter-eggs", "/secrets/strip-clubs", "/secrets/money", "/secrets/collectibles", "/secrets/hidden-locations"];
+  for (const href of SECRET_PATHS) {
+    const r = ROUTES[href];
+    if (!r || r.noindex) continue;
+    items.push({
+      href,
+      title: r.crumb,
+      label: href === "/secrets" ? "Secrets hub" : "Secrets",
+      section: "guide",
+      blurb: r.description,
+      tags: tagsFromText(`${r.title} ${r.description}`),
+      date: r.updated ?? "2026-11-22",
+      hub: href === "/secrets",
+    });
+  }
+
   // News: title, description, teaser, tag and keywords.
   for (const n of NEWS) {
     items.push({
@@ -364,6 +381,8 @@ export function relatedFor(path: string, limit = 6): RelatedItem[] {
   const isMission = path.startsWith("/guides/missions/");
   // 0) Mission pages always link back to the full walkthrough.
   if (isMission) add(hub("/guides/missions"));
+  // 0c) Secret entries always link back to the secrets hub.
+  if (path.startsWith("/secrets/")) add(hub("/secrets"));
   // 0b) News links to the guides it points readers at.
   for (const g of NEWS_GUIDES[path] ?? []) add(hub(g));
   // 1) Own section: best two matches (falls back to latest, via the date tie-break).
