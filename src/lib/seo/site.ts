@@ -16,6 +16,8 @@ import { SECRETVEH_PUBLISHED, SECRETVEH_VERIFIED } from "@/lib/guides/secret-veh
 import { SIDEJOBS_PUBLISHED, SIDEJOBS_VERIFIED } from "@/lib/guides/sidejobs";
 import { DIFFICULTY_PUBLISHED, DIFFICULTY_VERIFIED } from "@/lib/guides/difficulty";
 import { RELATIONSHIP_PUBLISHED, RELATIONSHIP_VERIFIED } from "@/lib/guides/relationship";
+import { STRIP_PUBLISHED, STRIP_VERIFIED } from "@/lib/guides/strip-clubs";
+import { WEAPONS_PUBLISHED, WEAPONS_VERIFIED } from "@/lib/guides/weapons";
 import { GARAGES_PUBLISHED, GARAGES_VERIFIED } from "@/lib/guides/garages";
 import { SAVING_PUBLISHED, SAVING_STEPS, SAVING_VERIFIED } from "@/lib/guides/saving";
 import { SWITCH_PUBLISHED, SWITCH_STEPS, SWITCH_VERIFIED } from "@/lib/guides/switching";
@@ -152,7 +154,7 @@ export const ROUTES: Record<string, RouteSeo> = {
     kind: "collection",
     changeFrequency: "daily",
     priority: 0.85,
-    updated: SIDEJOBS_VERIFIED, // the hub gained the Chapter 3 side job card
+    updated: STRIP_VERIFIED, // hub gained strip clubs and weapons guides
   },
   "/guides/beginner": {
     title: "GTA 6 Beginner Guide: Tips for Your First Hours",
@@ -381,6 +383,40 @@ export const ROUTES: Record<string, RouteSeo> = {
     priority: 0.8,
     updated: RELATIONSHIP_VERIFIED,
     published: RELATIONSHIP_PUBLISHED,
+  },
+  "/guides/strip-clubs": {
+    title: "GTA 6 Strip Clubs: Locations & Prices",
+    description: "Every GTA 6 strip club: NINE1NINE, Delights Cabaret and Jack of Hearts. Locations, private dance prices, cash-only rules and where outlets disagree.",
+    crumb: "Strip clubs",
+    kind: "howto",
+    steps: [
+      { name: "Filter the map", text: "Open Activities, then Clubs. Polygon and PowerPyx say strip clubs are listed there alongside ordinary pubs." },
+      { name: "Start at NINE1NINE", text: "Downtown Vice City, next to The Vault. GamesRadar+ says it is about five miles from Key Lento." },
+      { name: "Bring cash", text: "Polygon says private dances and tips are cash only. Use a club ATM if you need to withdraw." },
+      { name: "Pay for a dance", text: "Greet a dancer or use the private-room desk. PC Gamer and Polygon report $300 at NINE1NINE." },
+      { name: "Check the other two", text: "Delights Cabaret in Port Gellhorn is the cheap option; Jack of Hearts in Crosstown opens in Chapter 3." },
+    ],
+    changeFrequency: "weekly",
+    priority: 0.8,
+    updated: STRIP_VERIFIED,
+    published: STRIP_PUBLISHED,
+  },
+  "/guides/weapons": {
+    title: "GTA 6 Weapons Guide: Shops & Saving",
+    description: "How to buy, save and recover guns in GTA 6. Ammu-Nation store types, loadouts, weapon lockers and the best default guns, with sources named.",
+    crumb: "Weapons",
+    kind: "howto",
+    steps: [
+      { name: "Buy at Ammu-Nation", text: "A purchase is the sure way to own a gun. GamesRadar+ says both characters get a copy." },
+      { name: "Stow longarms in your car", text: "GameSpot says to use the trunk of a personal vehicle, not a car you do not own." },
+      { name: "Use the weapons locker", text: "The tall green locker recovers owned guns. GameSpot and GamesRadar+ disagree on whether pawn shops have one." },
+      { name: "Check Variants", text: "If a gun is missing from your loadout, GameSpot says it is often in the Variants tab." },
+      { name: "Don't rely on looted guns", text: "GamesRadar+ says unowned loot cannot be modified and is lost if you are wasted or busted." },
+    ],
+    changeFrequency: "weekly",
+    priority: 0.8,
+    updated: WEAPONS_VERIFIED,
+    published: WEAPONS_PUBLISHED,
   },
   ...Object.fromEntries(
     MISSIONS.map((m): [string, RouteSeo] => [
