@@ -514,7 +514,7 @@ export const SECRET_ENTRIES: SecretEntry[] = [
       alt: "Official GTA 6 screenshot of a jet flying over the Vice City hillside sign at sunset. © Rockstar Games",
       credit: "Official screenshot (Vice City 01). © Rockstar Games",
     },
-    blurb: "A combat jet at a military base, free planes on the west coast, and a Fast and Furious car in a Vespucci garage.",
+    blurb: "A combat jet at a military base, free planes on the west coast, a Fast and Furious car in a Vespucci garage, and a laptop secret in Boobie Ike's apartment.",
     summary: [
       "Some of the best finds in Leonida are not marked as missions. The ones below are vehicles and spots that main outlets have actually placed, not rumour pins from fan maps.",
       "Each one is labelled Confirmed or Reported. The full list, including Ultimate Edition starter vehicles and parked sports cars, is in our secret vehicles guide.",
@@ -525,6 +525,7 @@ export const SECRET_ENTRIES: SecretEntry[] = [
       "GameSpot also reports single-passenger planes parked in the open at Wild Hog Point, west of Port Gellhorn on the west coast of Kelly County, between Borrachero Sound and Draper Bay. It says taking one does not seem to get you reported if you fly low and stay out of restricted airspace, but you cannot keep them and they run out of fuel (Reported, GameSpot).",
       "PowerPyx points to double-decker crop-duster planes at airstrips in the south near Key Lento, in Mariana County, and in the middle of Kelly County. It says they respawn, carry plenty of fuel and, unlike the jets, do not bring fighters after you (Reported, PowerPyx).",
       "For a pop-culture find, GamesRadar+ says Brian O'Conner's 1995 Mitsubishi Eclipse from The Fast and the Furious is in a garage on Vespucci Island, in the Rialto Islands, and you can take it (Reported, GamesRadar+). That one also appears on our Easter eggs page.",
+      "Once you have access to Boobie Ike's apartment in Chapter 3 (PowerPyx names it as the Chapter 3 home, at Bayside Apartments), there is a locked laptop inside. Clues around the apartment lead to the password; logging in reveals the location of a secret garage that holds a pink Porsche (Player-verified by our team). We have not placed a map pin for the garage yet, because the exact street has not been confirmed by a main outlet.",
     ],
     map: { href: "/map?place=olabel-vespucci-island", label: "Vespucci Island on the map" },
     moreMaps: [
@@ -552,6 +553,20 @@ export const SECRET_ENTRIES: SecretEntry[] = [
         question: "Where is the Fast and Furious car?",
         answer:
           "GamesRadar+ places Brian O'Conner's 1995 Mitsubishi Eclipse in a garage on Vespucci Island (Reported, GamesRadar+).",
+      },
+      {
+        question: "Is there a secret in Boobie Ike's apartment?",
+        answer:
+          "Yes. Once you can enter the apartment in Chapter 3, a locked laptop inside can be opened using clues found in the apartment. Logging in reveals the location of a secret garage with a pink Porsche (Player-verified by our team).",
+      },
+    ],
+    spoilers: [
+      {
+        label: "the laptop password, and what it unlocks",
+        paragraphs: [
+          "The laptop password is muffinsqueen15, entered without spaces (Player-verified by our team).",
+          "Once you are logged in, the messages on the laptop give you the location of a secret garage that holds a pink Porsche. We have not pinned the garage, because the exact street has not been confirmed by a main outlet.",
+        ],
       },
     ],
     sources: [
