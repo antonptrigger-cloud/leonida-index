@@ -5,6 +5,7 @@ import { Palm } from "@/components/Palm";
 import { Scenery, SKIES, type SceneId } from "@/components/Scenery";
 import { MissionSearch } from "@/components/guides/MissionSearch";
 import { HomeLocationSearch } from "@/components/home/HomeLocationSearch";
+import { WhatsNew } from "@/components/WhatsNew";
 import { buildMissionSearchIndex } from "@/lib/guides/mission-search";
 import { TILES } from "@/lib/map/config";
 import { SEED_PINS } from "@/lib/map/seed";
@@ -127,7 +128,7 @@ export default function Home() {
           </h1>
           <p className="mt-6x max-w-[36ch] text-[0.95rem] leading-relaxed text-muted">
             Map, guides, database and tools for Vice City and the state of Leonida.
-            Launch <span className="font-semibold text-ink">19 November 2026</span>.
+            Launched <span className="font-semibold text-ink">19 November 2026</span>.
           </p>
           <div className="mt-10x flex flex-wrap items-center gap-x-10x gap-y-6x pl-2x">
             <Link href="/map" className="vc-cta vc-cta--xl">
@@ -222,10 +223,12 @@ export default function Home() {
         </div>
       </section>
 
+      <WhatsNew />
+
       {/* ---------- Field guide: one feature + a magazine index ---------- */}
       <section>
         <SectionTitle num="01" kicker="Start here" title="The field guide">
-          Everything we know before launch, checked against official sources.
+          Guides, the map and what’s confirmed, checked against official sources.
         </SectionTitle>
         <div className="grid gap-10x md:grid-cols-12 md:gap-gutter">
           <Link href="/map" className="vc-cut group block md:col-span-7" style={{ ["--cut" as string]: "28px" }}>

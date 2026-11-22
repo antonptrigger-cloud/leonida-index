@@ -5,6 +5,8 @@ import { CATEGORIES } from "@/lib/map/categories";
 import { LIMITS, PIN_TYPES, typeSingular } from "@/lib/map/config";
 import type { Comment, PublicPin } from "@/lib/map/types";
 import { getLikedComments, getMyVote, getSavedGamerTag, getVoterId, saveGamerTag, setLikedComment, setMyVote } from "./local";
+import { ShareButtons } from "@/components/ShareButtons";
+import { SITE } from "@/lib/seo/site";
 
 export function PinDetails({
   pin,
@@ -19,7 +21,6 @@ export function PinDetails({
 }) {
   const [myVote, setVote] = useState<-1 | 0 | 1>(0);
   const [busy, setBusy] = useState(false);
-  const [copied, setCopied] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [comments, setComments] = useState<Comment[] | null>(null);
   const [liked, setLiked] = useState<Set<string>>(new Set());
@@ -153,19 +154,13 @@ export function PinDetails({
         </p>
       ) : null}
 
-      <button
-        type="button"
-        onClick={() => {
-          navigator.clipboard?.writeText(window.location.href).then(
-            () => setCopied(true),
-            () => setCopied(false),
-          );
-        }}
-        className="self-start text-xs text-muted underline-offset-2 hover:text-pink-2 hover:underline"
-        data-testid="copy-link"
-      >
-        {copied ? "Link copied" : "Copy link to this pin"}
-      </button>
+      <ShareButtons
+        title={pin.name}
+        url={`${SITE.url}/map?pin=${encodeURIComponent(pin.id)}`}
+        compact
+        copyTestId="copy-link"
+        copyLabel="Copy link to this pin"
+      />
 
       <p className="text-xs text-muted" data-testid="first-marked">
         First marked by <span className="font-medium text-ink">{pin.gamerTag}</span>
