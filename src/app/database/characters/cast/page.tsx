@@ -27,14 +27,14 @@ export default function CastPage() {
       <PageHeader
         kicker="Database · Cast"
         title="GTA 6 Cast"
-        verified={`${CAST_VERIFIED_LABEL} (launch eve)`}
-        source="Rockstar Games, The Game Awards, AP, GameSpot, Polygon"
+        verified={`${CAST_VERIFIED_LABEL} (after launch)`}
+        source="Rockstar Games official credits, plus The Game Awards, AP, GameSpot and Polygon"
       />
 
       <div className="grid gap-10x lg:grid-cols-12">
         <div className="lg:col-span-8">
           <p className="max-w-2xl text-lg text-ink-2">
-            Rockstar has not published a voice cast list for Grand Theft Auto VI. This page records what we can verify about who is in the game, line by line, and says how sure we are. Each line is tagged <ConfirmTag status="confirmed" />, <ConfirmTag status="reported" /> or <ConfirmTag status="tbc" />.
+            Rockstar published official Grand Theft Auto VI credits after launch. This page records the performers for the characters we have profiles for, line by line, and says how sure we are. Each line is tagged <ConfirmTag status="confirmed" />, <ConfirmTag status="reported" /> or <ConfirmTag status="tbc" />. We do not repeat the rest of the credits list, because it includes later-story names.
           </p>
 
           <section aria-labelledby="short" className="mt-16x">
@@ -93,19 +93,19 @@ export default function CastPage() {
             <h2 id="lucia" className="vc-display text-3xl text-ink">Lucia Caminos: Manni L. Perez</h2>
             <div className="mt-4x max-w-2xl space-y-4x text-lg text-ink-2">
               <p>
-                The Game Awards publishes its 2026 Best Performance nominees on its own site. Perez appears there next to <em>Grand Theft Auto VI</em>. The category is described as honouring voice-over acting, motion capture or performance capture, so the listing shows she is credited on the game. It does not say which character she plays or whether her work is voice, capture or both.
+                Rockstar&apos;s official credits, checked on 22 November 2026, list Manni L. Perez as Lucia Caminos. That is a first-party credit, so both her involvement and the Lucia role are <ConfirmTag status="confirmed" />. See <Link href={characterPath("lucia-caminos")} className="text-blue hover:text-pink">Lucia&apos;s profile</Link>.
               </p>
               <p>
-                Press coverage reads the nomination as pointing to Lucia. Polygon says it all but confirms it, while VICE points out that she has not technically been confirmed in the role. Rockstar has not announced it. We therefore call her involvement <ConfirmTag status="confirmed" /> and the Lucia link <ConfirmTag status="reported" />.
+                Before launch, The Game Awards listed Perez as a 2026 Best Performance nominee for <em>Grand Theft Auto VI</em> without naming a character. Press reports already linked that nomination to Lucia. The official credits close that gap.
               </p>
             </div>
           </section>
 
           <section aria-labelledby="jason" className="mt-16x">
-            <h2 id="jason" className="vc-display text-3xl text-ink">Jason Duval: not confirmed</h2>
+            <h2 id="jason" className="vc-display text-3xl text-ink">Jason Duval: Dylan Rourke</h2>
             <div className="mt-4x max-w-2xl space-y-4x text-lg text-ink-2">
               <p>
-                No source we trust names Jason&apos;s performer. Rockstar&apos;s profile describes the character and credits nobody, and no performer has claimed the role on a verified account. Guesses exist online, but a guess is not evidence, so we do not name anyone. We will update this section only when Rockstar, the end credits or the performer says it first-hand.
+                Rockstar&apos;s official credits list Dylan Rourke as Jason Duval. Rockstar had not named Jason&apos;s performer on the People pages, so this is the first official credit we have for the role. Both the involvement and the link to Jason are <ConfirmTag status="confirmed" />. See <Link href={characterPath("jason-duval")} className="text-blue hover:text-pink">Jason&apos;s profile</Link>.
               </p>
             </div>
           </section>
@@ -114,19 +114,19 @@ export default function CastPage() {
             <h2 id="brian" className="vc-display text-3xl text-ink">Brian Heder: Stephen Root</h2>
             <div className="mt-4x max-w-2xl space-y-4x text-lg text-ink-2">
               <p>
-                In a clip AP Entertainment posted on 13 September 2026, actor Stephen Root was asked about the speculation that he is in the game. He answered that fans are going to see him in it, and added that his character appeared in Rockstar&apos;s first rollout nearly a year earlier and that his recognisable voice gave the secret away. He did not say which character he plays.
+                In a clip AP Entertainment posted on 13 September 2026, Stephen Root said fans would see him in the game. He did not name the character in that clip. GameSpot and Polygon both reported that the part was Brian Heder.
               </p>
               <p>
-                GameSpot and Polygon both report that the part is Brian Heder, and GameSpot notes that Root did not say so in the clip. We call his involvement <ConfirmTag status="confirmed" /> because he said it himself, and the Brian link <ConfirmTag status="reported" /> because no first-party source names the role. See <Link href={characterPath("brian-heder")} className="text-blue hover:text-pink">Brian&apos;s profile</Link>.
+                Rockstar&apos;s official credits now list Stephen Root as Brian Heder, so the role itself is <ConfirmTag status="confirmed" />. See <Link href={characterPath("brian-heder")} className="text-blue hover:text-pink">Brian&apos;s profile</Link>.
               </p>
             </div>
           </section>
 
           <section aria-labelledby="credits" className="mt-16x">
-            <h2 id="credits" className="vc-display text-3xl text-ink">What about the end credits?</h2>
+            <h2 id="credits" className="vc-display text-3xl text-ink">The official credits</h2>
             <div className="mt-4x max-w-2xl space-y-4x text-lg text-ink-2">
               <p>
-                Rockstar lists 19 November 2026 as the release date. We have not played the finished game, and we found no verified public transcript of its credits. Credits are the strongest source for a full cast, so we will recheck this page against them. Until then every other role stays <ConfirmTag status="tbc" />.
+                Rockstar published official credits at <a href="https://www.rockstargames.com/VI/credits" target="_blank" rel="noopener noreferrer nofollow" className="text-blue hover:text-pink">rockstargames.com/VI/credits</a> after launch on 19 November 2026. We checked that page on 22 November 2026. This page lists the characters we already profile. Performers for the contacts and side-quest characters are on those profile pages. We do not copy the rest of the credits list here, because it includes later-story names.
               </p>
             </div>
           </section>
@@ -148,11 +148,13 @@ export default function CastPage() {
             <ul className="mt-4x flex flex-col gap-2x text-sm">
               <li><Link href={characterPath("lucia-caminos")} className="text-blue hover:text-pink">Lucia Caminos</Link></li>
               <li><Link href={characterPath("jason-duval")} className="text-blue hover:text-pink">Jason Duval</Link></li>
+              <li><Link href={characterPath("cal-hampton")} className="text-blue hover:text-pink">Cal Hampton</Link></li>
               <li><Link href={characterPath("brian-heder")} className="text-blue hover:text-pink">Brian Heder</Link></li>
+              <li><Link href={characterPath("dwnply")} className="text-blue hover:text-pink">DWNPLY</Link></li>
               <li><Link href="/database/characters" className="text-blue hover:text-pink">All characters</Link></li>
             </ul>
             <p className="mt-4x text-xs text-muted">
-              Last verified <time dateTime="2026-11-18">{CAST_VERIFIED_LABEL}</time>.
+              Last verified <time dateTime="2026-11-22">{CAST_VERIFIED_LABEL}</time>.
             </p>
           </div>
         </aside>
