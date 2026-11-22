@@ -144,6 +144,17 @@ export function PinDetails({
         <p className="border-l-2 border-orange bg-orange/10 px-3x py-1x text-xs text-orange">Approximate position: confirm in game.</p>
       ) : null}
 
+      {pin.image ? (
+        <figure className="overflow-hidden border border-pink/20 bg-[#0c0a10]" data-testid="pin-image">
+          {/* Official Rockstar stills are already compressed; a plain img keeps the card light. */}
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src={pin.image} alt={pin.imageAlt ?? pin.name} className="max-h-56 w-full object-cover" />
+          {pin.imageCredit ? (
+            <figcaption className="px-3x py-1x text-[10px] text-muted">{pin.imageCredit}</figcaption>
+          ) : null}
+        </figure>
+      ) : null}
+
       <p className="whitespace-pre-line text-sm text-ink-2">{pin.description}</p>
 
       {pin.occupant ? (

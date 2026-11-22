@@ -8,7 +8,10 @@
     "y": 354,
     "approximate": false,
     "source": "official",
-    "description": "The Miami-inspired heart of Leonida: art deco hotels, beaches, the port and the densest streets in the state. Rockstar calls it the sun and fun capital of America."
+    "description": "The Miami-inspired heart of Leonida: art deco hotels, beaches, the port and the densest streets in the state. Rockstar calls it the sun and fun capital of America.",
+    "image": "/map/pins/vice-city.webp",
+    "imageCredit": "© Rockstar Games",
+    "imageAlt": "Official GTA 6 screenshot of the Vice City sign as a plane flies over at sunset."
   },
   {
     "id": "seed-leonida-keys",
@@ -19,7 +22,10 @@
     "y": 693,
     "approximate": false,
     "source": "official",
-    "description": "Tropical archipelago off the south coast. Easy-going island life next to beautiful and dangerous waters: boats, beach bars and scuba diving."
+    "description": "Tropical archipelago off the south coast. Easy-going island life next to beautiful and dangerous waters: boats, beach bars and scuba diving.",
+    "image": "/map/pins/leonida-keys.webp",
+    "imageCredit": "© Rockstar Games",
+    "imageAlt": "Official GTA 6 screenshot of the Leonida Keys."
   },
   {
     "id": "seed-grassrivers",
@@ -30,7 +36,10 @@
     "y": 502,
     "approximate": false,
     "source": "official",
-    "description": "A primordial expanse of wetlands and mangroves. Gators, airboats, deadlier predators and weirder discoveries, according to Rockstar."
+    "description": "A primordial expanse of wetlands and mangroves. Gators, airboats, deadlier predators and weirder discoveries, according to Rockstar.",
+    "image": "/map/pins/grassrivers.webp",
+    "imageCredit": "© Rockstar Games",
+    "imageAlt": "Official GTA 6 screenshot of the Grassrivers wetlands."
   },
   {
     "id": "seed-port-gellhorn",
@@ -41,7 +50,10 @@
     "y": 348,
     "approximate": false,
     "source": "official",
-    "description": "A faded, once-popular vacation spot on the west coast: cheap motels, shut-down attractions and empty strip malls. Good dirt bike country."
+    "description": "A faded, once-popular vacation spot on the west coast: cheap motels, shut-down attractions and empty strip malls. Good dirt bike country.",
+    "image": "/map/pins/port-gellhorn.webp",
+    "imageCredit": "© Rockstar Games",
+    "imageAlt": "Official GTA 6 screenshot of Port Gellhorn."
   },
   {
     "id": "seed-ambrosia",
@@ -52,7 +64,10 @@
     "y": 342,
     "approximate": false,
     "source": "official",
-    "description": "Inland Leonida: industry and old-school values. Home of the Allied Crystal sugar refinery and a local biker gang."
+    "description": "Inland Leonida: industry and old-school values. Home of the Allied Crystal sugar refinery and a local biker gang.",
+    "image": "/map/pins/ambrosia.webp",
+    "imageCredit": "© Rockstar Games",
+    "imageAlt": "Official GTA 6 screenshot of Ambrosia."
   },
   {
     "id": "seed-mount-kalaga",
@@ -63,7 +78,10 @@
     "y": 86,
     "approximate": false,
     "source": "official",
-    "description": "Mount Kalaga National Park, a national landmark up against the northern border. Hunting, fishing and off-road trails."
+    "description": "Mount Kalaga National Park, a national landmark up against the northern border. Hunting, fishing and off-road trails.",
+    "image": "/map/pins/mount-kalaga.webp",
+    "imageCredit": "© Rockstar Games",
+    "imageAlt": "Official GTA 6 screenshot of Mount Kalaga National Park."
   },
   {
     "id": "seed-ocean-beach",
@@ -101,13 +119,16 @@
   {
     "id": "seed-vc-port",
     "type": "landmark",
-    "name": "VC Port",
+    "name": "Port Vice City",
     "region": "Vice City",
     "x": 844,
     "y": 462,
     "approximate": true,
     "source": "official",
-    "description": "The cruise ship capital of the world, per Rockstar. Docks on the Vice City waterfront. Pin position is approximate."
+    "description": "Port Vice City, printed on Rockstar's official Leonida Map & Cover Art Poster (Rockstar also calls it the cruise-ship capital of the world). The pin sits at the printed label.",
+    "image": "/map/pins/vice-city-marina.webp",
+    "imageCredit": "© Rockstar Games",
+    "imageAlt": "Official GTA 6 screenshot of a Vice City marina and skyline."
   },
   {
     "id": "seed-allied-crystal",
@@ -177,7 +198,10 @@
     "approximate": true,
     "source": "official",
     "description": "Mod shop in Lake Leonida specialising in off-road modifications and hand-painted automotive artistry; only open for business with the Ultimate Edition. Placed on the lake shore as a guess. Source: rockstargames.com/VI, Ultimate Edition.",
-    "category": "vehicles"
+    "category": "vehicles",
+    "image": "/map/pins/one-eyed-willie.webp",
+    "imageCredit": "© Rockstar Games",
+    "imageAlt": "Official GTA 6 screenshot of One-Eyed Willie's mod shop."
   },
   {
     "id": "seed-shore-court-garage",
@@ -189,7 +213,10 @@
     "approximate": true,
     "source": "official",
     "description": "Personal garage with a weapon locker, a stone's throw from the sands of Ocean Beach (Shore Drive). Pin position is approximate. Source: rockstargames.com/VI, Vintage Vice City Pack.",
-    "category": "safehouse"
+    "category": "safehouse",
+    "image": "/map/pins/safehouse.webp",
+    "imageCredit": "© Rockstar Games",
+    "imageAlt": "Official GTA 6 screenshot of safehouse vehicles from the Ultimate Edition."
   },
   {
     "id": "seed-ocean-view-hotel",
@@ -200,7 +227,10 @@
     "y": 342,
     "approximate": true,
     "source": "official",
-    "description": "Hotel seen in Rockstar's official Vintage Vice City Pack screenshots. Its exact location is not stated, so this pin is a guess near the beachfront. Source: rockstargames.com/VI, Vintage Vice City Pack gallery."
+    "description": "Hotel seen in Rockstar's official Vintage Vice City Pack screenshots. Its exact location is not stated, so this pin is a guess near the beachfront. Source: rockstargames.com/VI, Vintage Vice City Pack gallery.",
+    "image": "/map/pins/ocean-view-hotel.webp",
+    "imageCredit": "© Rockstar Games",
+    "imageAlt": "Official GTA 6 screenshot of Jason and Lucia outside the Ocean View Hotel."
   },
   {
     "id": "seed-gambit-bay",
@@ -233,7 +263,10 @@
     "y": 547,
     "approximate": true,
     "source": "official",
-    "description": "Airboats, gators and mangroves: the Grassrivers are Rockstar's wetland playground. Pin position is approximate. Source: rockstargames.com/VI, Grassrivers description and gallery."
+    "description": "Airboats, gators and mangroves: the Grassrivers are Rockstar's wetland playground. Pin position is approximate. Source: rockstargames.com/VI, Grassrivers description and gallery.",
+    "image": "/map/pins/grassrivers.webp",
+    "imageCredit": "© Rockstar Games",
+    "imageAlt": "Official GTA 6 screenshot of the Grassrivers wetlands."
   },
   {
     "id": "seed-kalaga-outdoors",
@@ -244,7 +277,10 @@
     "y": 148,
     "approximate": true,
     "source": "official",
-    "description": "Mount Kalaga National Park offers prime hunting, fishing and off-road trails. Pin position is approximate. Source: rockstargames.com/VI, Mount Kalaga description."
+    "description": "Mount Kalaga National Park offers prime hunting, fishing and off-road trails. Pin position is approximate. Source: rockstargames.com/VI, Mount Kalaga description.",
+    "image": "/map/pins/mount-kalaga.webp",
+    "imageCredit": "© Rockstar Games",
+    "imageAlt": "Official GTA 6 screenshot of Mount Kalaga National Park."
   },
   {
     "id": "seed-electric-fang-tattoo",
@@ -256,7 +292,10 @@
     "approximate": true,
     "source": "official",
     "category": "barber-tattoo",
-    "description": "Stockyard's most iconic ink bar, with over 50 signature tattoos for both Jason and Lucia, all designed by the artist collective FAILE. Only open for business with the Ultimate Edition. Pin position is approximate (placed in Stockyard; direction from GTADB record L1482, CC BY 4.0). Source: rockstargames.com/VI, Ultimate Edition."
+    "description": "Stockyard's most iconic ink bar, with over 50 signature tattoos for both Jason and Lucia, all designed by the artist collective FAILE. Only open for business with the Ultimate Edition. Pin position is approximate (placed in Stockyard; direction from GTADB record L1482, CC BY 4.0). Source: rockstargames.com/VI, Ultimate Edition.",
+    "image": "/map/pins/electric-fang.webp",
+    "imageCredit": "© Rockstar Games",
+    "imageAlt": "Official GTA 6 screenshot of Electric Fang Tattoo Parlor."
   },
   {
     "id": "seed-stock-305",
@@ -268,7 +307,10 @@
     "approximate": true,
     "source": "official",
     "category": "clothing",
-    "description": "Stockyard's premier destination for elevated streetwear: unique and exclusive looks for Jason and Lucia. Only open for business with the Ultimate Edition. Pin position is approximate (placed in Stockyard; direction from GTADB record L1488, CC BY 4.0). Source: rockstargames.com/VI, Ultimate Edition."
+    "description": "Stockyard's premier destination for elevated streetwear: unique and exclusive looks for Jason and Lucia. Only open for business with the Ultimate Edition. Pin position is approximate (placed in Stockyard; direction from GTADB record L1488, CC BY 4.0). Source: rockstargames.com/VI, Ultimate Edition.",
+    "image": "/map/pins/stock-305.webp",
+    "imageCredit": "© Rockstar Games",
+    "imageAlt": "Official GTA 6 screenshot of Stock 305."
   },
   {
     "id": "seed-ptt-youngins",
@@ -280,7 +322,10 @@
     "approximate": true,
     "source": "official",
     "category": "market",
-    "description": "The compound of one of Southside Vice City's loudest and most socially active gangs: raid it and escape safely to score special items and distinct contraband. Pin position is approximate (placed in Southside; direction from GTADB record L1491, CC BY 4.0). Source: rockstargames.com/VI, Ultimate Edition."
+    "description": "The compound of one of Southside Vice City's loudest and most socially active gangs: raid it and escape safely to score special items and distinct contraband. Pin position is approximate (placed in Southside; direction from GTADB record L1491, CC BY 4.0). Source: rockstargames.com/VI, Ultimate Edition.",
+    "image": "/map/pins/ptt-youngins.webp",
+    "imageCredit": "© Rockstar Games",
+    "imageAlt": "Official GTA 6 screenshot of the PTT YOUNGIN$ store."
   },
   {
     "id": "seed-paradise-garage",
@@ -292,7 +337,10 @@
     "approximate": true,
     "source": "official",
     "category": "safehouse",
-    "description": "Garage in Watson Bay with a weapon locker and a secure place to deposit stolen goods to be fenced; the Mud Club monster off-roader can be stored here (Ultimate Edition). Pin position is approximate (placed on the south-west coast; direction from GTADB record L1495, CC BY 4.0). Source: rockstargames.com/VI, Ultimate Edition."
+    "description": "Garage in Watson Bay with a weapon locker and a secure place to deposit stolen goods to be fenced; the Mud Club monster off-roader can be stored here (Ultimate Edition). Pin position is approximate (placed on the south-west coast; direction from GTADB record L1495, CC BY 4.0). Source: rockstargames.com/VI, Ultimate Edition.",
+    "image": "/map/pins/safehouse.webp",
+    "imageCredit": "© Rockstar Games",
+    "imageAlt": "Official GTA 6 screenshot of safehouse vehicles from the Ultimate Edition."
   },
   {
     "id": "seed-delights-cabaret",
@@ -304,7 +352,10 @@
     "approximate": true,
     "source": "official",
     "category": "bar-club",
-    "description": "Strip club in Port Gellhorn. PC Gamer, GamesRadar+, Polygon, GameSpot and PowerPyx all place it in the town; GamesRadar+ says central Port Gellhorn, GameSpot the heart of the Port Gellhorn highway strip. Pin position is approximate (placed in the central town near I-404 on Rockstar's official map; exact street not confirmed). Sources: pcgamer.com, gamesradar.com, polygon.com, gamespot.com, powerpyx.com."
+    "description": "Strip club in Port Gellhorn. PC Gamer, GamesRadar+, Polygon, GameSpot and PowerPyx all place it in the town; GamesRadar+ says central Port Gellhorn, GameSpot the heart of the Port Gellhorn highway strip. Pin position is approximate (placed in the central town near I-404 on Rockstar's official map; exact street not confirmed). Sources: pcgamer.com, gamesradar.com, polygon.com, gamespot.com, powerpyx.com.",
+    "image": "/map/pins/nightclub.webp",
+    "imageCredit": "© Rockstar Games",
+    "imageAlt": "Official GTA 6 screenshot of a Vice City club floor as cash rains down."
   },
   {
     "id": "seed-jack-of-hearts",
@@ -316,6 +367,704 @@
     "approximate": true,
     "source": "official",
     "category": "bar-club",
-    "description": "Strip club in Crosstown, Vice City. PC Gamer places it directly north of NINE1NINE; GamesRadar+ says it is at the north end of Crosstown and opens in Chapter 3. Pin position is approximate (placed in northern Crosstown on Rockstar's official map; exact street not confirmed). Sources: pcgamer.com, gamesradar.com, powerpyx.com, gamespot.com."
+    "description": "Strip club in Crosstown, Vice City. PC Gamer places it directly north of NINE1NINE; GamesRadar+ says it is at the north end of Crosstown and opens in Chapter 3. Pin position is approximate (placed in northern Crosstown on Rockstar's official map; exact street not confirmed). Sources: pcgamer.com, gamesradar.com, powerpyx.com, gamespot.com.",
+    "image": "/map/pins/nightclub.webp",
+    "imageCredit": "© Rockstar Games",
+    "imageAlt": "Official GTA 6 screenshot of a Vice City club floor as cash rains down."
+  },
+  {
+    "id": "seed-lummox-county",
+    "type": "landmark",
+    "name": "Lummox County",
+    "region": null,
+    "x": 577.74,
+    "y": 63.58,
+    "approximate": false,
+    "source": "official",
+    "description": "County printed on Rockstar's official Leonida Map & Cover Art Poster. The pin sits at the printed label."
+  },
+  {
+    "id": "seed-leonard-county",
+    "type": "landmark",
+    "name": "Leonard County",
+    "region": null,
+    "x": 802.62,
+    "y": 239.81,
+    "approximate": false,
+    "source": "official",
+    "description": "County printed on Rockstar's official Leonida Map & Cover Art Poster. The pin sits at the printed label."
+  },
+  {
+    "id": "seed-kelly-county",
+    "type": "landmark",
+    "name": "Kelly County",
+    "region": null,
+    "x": 436.15,
+    "y": 390.97,
+    "approximate": false,
+    "source": "official",
+    "description": "County printed on Rockstar's official Leonida Map & Cover Art Poster. The pin sits at the printed label."
+  },
+  {
+    "id": "seed-vice-dale-county",
+    "type": "landmark",
+    "name": "Vice-Dale County",
+    "region": null,
+    "x": 835.07,
+    "y": 456.38,
+    "approximate": false,
+    "source": "official",
+    "description": "County printed on Rockstar's official Leonida Map & Cover Art Poster. The pin sits at the printed label."
+  },
+  {
+    "id": "seed-mariana-county",
+    "type": "landmark",
+    "name": "Mariana County",
+    "region": null,
+    "x": 535.86,
+    "y": 553.66,
+    "approximate": false,
+    "source": "official",
+    "description": "County printed on Rockstar's official Leonida Map & Cover Art Poster. The pin sits at the printed label."
+  },
+  {
+    "id": "seed-key-lento",
+    "type": "region",
+    "name": "Key Lento",
+    "region": "Leonida Keys",
+    "x": 678.32,
+    "y": 711.95,
+    "approximate": false,
+    "source": "official",
+    "description": "The main island of the Leonida Keys, printed as its own area on Rockstar's official Leonida Map & Cover Art Poster. The pin sits at the printed label.",
+    "image": "/map/pins/leonida-keys.webp",
+    "imageCredit": "© Rockstar Games",
+    "imageAlt": "Official GTA 6 screenshot of the Leonida Keys."
+  },
+  {
+    "id": "seed-vice-beach",
+    "type": "landmark",
+    "name": "Vice Beach",
+    "region": "Vice City",
+    "x": 961.4,
+    "y": 354.16,
+    "approximate": false,
+    "source": "official",
+    "description": "Vice Beach, the beachfront neighbourhood printed on Rockstar's official Leonida Map & Cover Art Poster. The pin sits at the printed label."
+  },
+  {
+    "id": "seed-downtown",
+    "type": "landmark",
+    "name": "Downtown",
+    "region": "Vice City",
+    "x": 816.41,
+    "y": 422.61,
+    "approximate": false,
+    "source": "official",
+    "description": "Downtown Vice City, printed on Rockstar's official Leonida Map & Cover Art Poster. Home to high-rises, NINE1NINE and The Vault (see those pins). The pin sits at the printed label."
+  },
+  {
+    "id": "seed-salton",
+    "type": "landmark",
+    "name": "Salton",
+    "region": "Grassrivers",
+    "x": 718.29,
+    "y": 422.94,
+    "approximate": false,
+    "source": "official",
+    "description": "Neighbourhood or district printed on Rockstar's official Leonida Map & Cover Art Poster. The pin sits at the printed label."
+  },
+  {
+    "id": "seed-rockridge",
+    "type": "landmark",
+    "name": "Rockridge",
+    "region": "Vice City",
+    "x": 747.03,
+    "y": 403.17,
+    "approximate": false,
+    "source": "official",
+    "description": "Neighbourhood or district printed on Rockstar's official Leonida Map & Cover Art Poster. The pin sits at the printed label."
+  },
+  {
+    "id": "seed-bayside",
+    "type": "landmark",
+    "name": "Bayside",
+    "region": "Vice City",
+    "x": 839.67,
+    "y": 331.81,
+    "approximate": false,
+    "source": "official",
+    "description": "Neighbourhood or district printed on Rockstar's official Leonida Map & Cover Art Poster. The pin sits at the printed label.",
+    "image": "/map/pins/vice-city-marina.webp",
+    "imageCredit": "© Rockstar Games",
+    "imageAlt": "Official GTA 6 screenshot of a Vice City marina and skyline."
+  },
+  {
+    "id": "seed-la-perle",
+    "type": "landmark",
+    "name": "La Perle",
+    "region": "Vice City",
+    "x": 777.76,
+    "y": 360.36,
+    "approximate": false,
+    "source": "official",
+    "description": "Neighbourhood or district printed on Rockstar's official Leonida Map & Cover Art Poster. The pin sits at the printed label."
+  },
+  {
+    "id": "seed-crosstown",
+    "type": "landmark",
+    "name": "Crosstown",
+    "region": "Vice City",
+    "x": 809.21,
+    "y": 381.23,
+    "approximate": false,
+    "source": "official",
+    "description": "Crosstown, a Vice City neighbourhood printed on Rockstar's official Leonida Map & Cover Art Poster. GamesRadar+ places Jack of Hearts here; that club pin is nearby. The pin sits at the printed label."
+  },
+  {
+    "id": "seed-stockyard",
+    "type": "landmark",
+    "name": "Stockyard",
+    "region": "Vice City",
+    "x": 840.27,
+    "y": 315.2,
+    "approximate": false,
+    "source": "official",
+    "description": "Neighbourhood or district printed on Rockstar's official Leonida Map & Cover Art Poster. The pin sits at the printed label."
+  },
+  {
+    "id": "seed-southside",
+    "type": "landmark",
+    "name": "Southside",
+    "region": "Grassrivers",
+    "x": 724.94,
+    "y": 500.12,
+    "approximate": false,
+    "source": "official",
+    "description": "Neighbourhood or district printed on Rockstar's official Leonida Map & Cover Art Poster. The pin sits at the printed label."
+  },
+  {
+    "id": "seed-tequesta",
+    "type": "landmark",
+    "name": "Tequesta",
+    "region": "Vice City",
+    "x": 781.43,
+    "y": 466.36,
+    "approximate": false,
+    "source": "official",
+    "description": "Neighbourhood or district printed on Rockstar's official Leonida Map & Cover Art Poster. The pin sits at the printed label."
+  },
+  {
+    "id": "seed-tequesta-retreat",
+    "type": "landmark",
+    "name": "Tequesta Retreat",
+    "region": "Vice City",
+    "x": 842.97,
+    "y": 476.63,
+    "approximate": false,
+    "source": "official",
+    "description": "Neighbourhood or district printed on Rockstar's official Leonida Map & Cover Art Poster. The pin sits at the printed label."
+  },
+  {
+    "id": "seed-peacock-bay",
+    "type": "landmark",
+    "name": "Peacock Bay",
+    "region": "Vice City",
+    "x": 772.58,
+    "y": 508.55,
+    "approximate": false,
+    "source": "official",
+    "description": "Neighbourhood or district printed on Rockstar's official Leonida Map & Cover Art Poster. The pin sits at the printed label."
+  },
+  {
+    "id": "seed-waxman-island",
+    "type": "landmark",
+    "name": "Waxman Island",
+    "region": "Vice City",
+    "x": 889.37,
+    "y": 402.87,
+    "approximate": false,
+    "source": "official",
+    "description": "Neighbourhood or district printed on Rockstar's official Leonida Map & Cover Art Poster. The pin sits at the printed label."
+  },
+  {
+    "id": "seed-starfish-island",
+    "type": "landmark",
+    "name": "Starfish Island",
+    "region": "Vice City",
+    "x": 905.28,
+    "y": 379.28,
+    "approximate": false,
+    "source": "official",
+    "description": "Neighbourhood or district printed on Rockstar's official Leonida Map & Cover Art Poster. The pin sits at the printed label."
+  },
+  {
+    "id": "seed-casanova-island",
+    "type": "landmark",
+    "name": "Casanova Island",
+    "region": "Vice City",
+    "x": 915.14,
+    "y": 336.27,
+    "approximate": false,
+    "source": "official",
+    "description": "Neighbourhood or district printed on Rockstar's official Leonida Map & Cover Art Poster. The pin sits at the printed label."
+  },
+  {
+    "id": "seed-rialto-islands",
+    "type": "landmark",
+    "name": "Rialto Islands",
+    "region": "Vice City",
+    "x": 892.0,
+    "y": 330.55,
+    "approximate": false,
+    "source": "official",
+    "description": "Neighbourhood or district printed on Rockstar's official Leonida Map & Cover Art Poster. The pin sits at the printed label."
+  },
+  {
+    "id": "seed-vespucci-island",
+    "type": "landmark",
+    "name": "Vespucci Island",
+    "region": "Vice City",
+    "x": 885.47,
+    "y": 344.66,
+    "approximate": false,
+    "source": "official",
+    "description": "Neighbourhood or district printed on Rockstar's official Leonida Map & Cover Art Poster. The pin sits at the printed label."
+  },
+  {
+    "id": "seed-catalan-island",
+    "type": "landmark",
+    "name": "Catalan Island",
+    "region": "Vice City",
+    "x": 873.74,
+    "y": 339.87,
+    "approximate": false,
+    "source": "official",
+    "description": "Neighbourhood or district printed on Rockstar's official Leonida Map & Cover Art Poster. The pin sits at the printed label."
+  },
+  {
+    "id": "seed-gloriana-key",
+    "type": "landmark",
+    "name": "Gloriana Key",
+    "region": "Vice City",
+    "x": 913.16,
+    "y": 530.08,
+    "approximate": false,
+    "source": "official",
+    "description": "Neighbourhood or district printed on Rockstar's official Leonida Map & Cover Art Poster. The pin sits at the printed label."
+  },
+  {
+    "id": "seed-catalan-key",
+    "type": "landmark",
+    "name": "Catalan Key",
+    "region": "Vice City",
+    "x": 843.19,
+    "y": 535.0,
+    "approximate": false,
+    "source": "official",
+    "description": "Neighbourhood or district printed on Rockstar's official Leonida Map & Cover Art Poster. The pin sits at the printed label."
+  },
+  {
+    "id": "seed-dalton-island",
+    "type": "landmark",
+    "name": "Dalton Island",
+    "region": "Vice City",
+    "x": 982.67,
+    "y": 509.0,
+    "approximate": false,
+    "source": "official",
+    "description": "Neighbourhood or district printed on Rockstar's official Leonida Map & Cover Art Poster. The pin sits at the printed label."
+  },
+  {
+    "id": "seed-penmarch-isle",
+    "type": "landmark",
+    "name": "Penmarch Isle",
+    "region": "Vice City",
+    "x": 923.81,
+    "y": 310.61,
+    "approximate": false,
+    "source": "official",
+    "description": "Neighbourhood or district printed on Rockstar's official Leonida Map & Cover Art Poster. The pin sits at the printed label."
+  },
+  {
+    "id": "seed-waning-sands",
+    "type": "landmark",
+    "name": "Waning Sands",
+    "region": "Vice City",
+    "x": 850.82,
+    "y": 209.45,
+    "approximate": false,
+    "source": "official",
+    "description": "Neighbourhood or district printed on Rockstar's official Leonida Map & Cover Art Poster. The pin sits at the printed label."
+  },
+  {
+    "id": "seed-hamlet",
+    "type": "landmark",
+    "name": "Hamlet",
+    "region": "Grassrivers",
+    "x": 654.46,
+    "y": 518.55,
+    "approximate": false,
+    "source": "official",
+    "description": "Town printed on Rockstar's official Leonida Map & Cover Art Poster. The pin sits at the printed label."
+  },
+  {
+    "id": "seed-capri",
+    "type": "landmark",
+    "name": "Capri",
+    "region": "Port Gellhorn",
+    "x": 342.59,
+    "y": 473.26,
+    "approximate": false,
+    "source": "official",
+    "description": "Town printed on Rockstar's official Leonida Map & Cover Art Poster. The pin sits at the printed label."
+  },
+  {
+    "id": "seed-grayson",
+    "type": "landmark",
+    "name": "Grayson",
+    "region": "Mount Kalaga",
+    "x": 443.98,
+    "y": 145.01,
+    "approximate": false,
+    "source": "official",
+    "description": "Town printed on Rockstar's official Leonida Map & Cover Art Poster. The pin sits at the printed label."
+  },
+  {
+    "id": "seed-millport",
+    "type": "landmark",
+    "name": "Millport",
+    "region": "Mount Kalaga",
+    "x": 739.98,
+    "y": 130.31,
+    "approximate": false,
+    "source": "official",
+    "description": "Town printed on Rockstar's official Leonida Map & Cover Art Poster. The pin sits at the printed label."
+  },
+  {
+    "id": "seed-bonanza",
+    "type": "landmark",
+    "name": "Bonanza",
+    "region": "Mount Kalaga",
+    "x": 539.16,
+    "y": 62.71,
+    "approximate": false,
+    "source": "official",
+    "description": "Town printed on Rockstar's official Leonida Map & Cover Art Poster. The pin sits at the printed label."
+  },
+  {
+    "id": "seed-moreau",
+    "type": "landmark",
+    "name": "Moreau",
+    "region": "Mount Kalaga",
+    "x": 582.96,
+    "y": 47.57,
+    "approximate": false,
+    "source": "official",
+    "description": "Town printed on Rockstar's official Leonida Map & Cover Art Poster. The pin sits at the printed label."
+  },
+  {
+    "id": "seed-belville",
+    "type": "landmark",
+    "name": "Belville",
+    "region": "Vice City",
+    "x": 766.79,
+    "y": 256.9,
+    "approximate": false,
+    "source": "official",
+    "description": "Town printed on Rockstar's official Leonida Map & Cover Art Poster. The pin sits at the printed label."
+  },
+  {
+    "id": "seed-watson-bay",
+    "type": "landmark",
+    "name": "Watson Bay",
+    "region": "Grassrivers",
+    "x": 545.03,
+    "y": 533.47,
+    "approximate": false,
+    "source": "official",
+    "description": "Town printed on Rockstar's official Leonida Map & Cover Art Poster. The pin sits at the printed label."
+  },
+  {
+    "id": "seed-southwind",
+    "type": "landmark",
+    "name": "Southwind",
+    "region": "Leonida Keys",
+    "x": 485.08,
+    "y": 693.46,
+    "approximate": false,
+    "source": "official",
+    "description": "Town printed on Rockstar's official Leonida Map & Cover Art Poster. The pin sits at the printed label."
+  },
+  {
+    "id": "seed-pelican-valley",
+    "type": "landmark",
+    "name": "Pelican Valley",
+    "region": "Grassrivers",
+    "x": 610.61,
+    "y": 554.61,
+    "approximate": false,
+    "source": "official",
+    "description": "Neighbourhood or district printed on Rockstar's official Leonida Map & Cover Art Poster. The pin sits at the printed label."
+  },
+  {
+    "id": "seed-shoeless-keys",
+    "type": "landmark",
+    "name": "Shoeless Keys",
+    "region": "Leonida Keys",
+    "x": 717.06,
+    "y": 641.19,
+    "approximate": false,
+    "source": "official",
+    "description": "Neighbourhood or district printed on Rockstar's official Leonida Map & Cover Art Poster. The pin sits at the printed label."
+  },
+  {
+    "id": "seed-corsair-key",
+    "type": "landmark",
+    "name": "Corsair Key",
+    "region": "Leonida Keys",
+    "x": 793.87,
+    "y": 631.1,
+    "approximate": false,
+    "source": "official",
+    "description": "Neighbourhood or district printed on Rockstar's official Leonida Map & Cover Art Poster. The pin sits at the printed label."
+  },
+  {
+    "id": "seed-gellhorn",
+    "type": "landmark",
+    "name": "Gellhorn",
+    "region": "Port Gellhorn",
+    "x": 378.89,
+    "y": 423.96,
+    "approximate": false,
+    "source": "official",
+    "description": "Neighbourhood or district printed on Rockstar's official Leonida Map & Cover Art Poster. The pin sits at the printed label.",
+    "image": "/map/pins/port-gellhorn.webp",
+    "imageCredit": "© Rockstar Games",
+    "imageAlt": "Official GTA 6 screenshot of Port Gellhorn."
+  },
+  {
+    "id": "seed-emerald-springs",
+    "type": "landmark",
+    "name": "Emerald Springs",
+    "region": "Ambrosia",
+    "x": 480.28,
+    "y": 403.95,
+    "approximate": false,
+    "source": "official",
+    "description": "Neighbourhood or district printed on Rockstar's official Leonida Map & Cover Art Poster. The pin sits at the printed label."
+  },
+  {
+    "id": "seed-vice-city-international-airport",
+    "type": "landmark",
+    "name": "Vice City International Airport",
+    "region": "Grassrivers",
+    "x": 648.93,
+    "y": 437.09,
+    "approximate": false,
+    "source": "official",
+    "description": "Vice City's international airport, printed on Rockstar's official Leonida Map & Cover Art Poster. The pin sits at the printed label. Category is transport so it shows up in map search.",
+    "category": "transport"
+  },
+  {
+    "id": "seed-evergreen-mall",
+    "type": "landmark",
+    "name": "Evergreen Mall",
+    "region": "Vice City",
+    "x": 827.31,
+    "y": 226.07,
+    "approximate": false,
+    "source": "official",
+    "description": "Shopping mall printed on Rockstar's official Leonida Map & Cover Art Poster. The pin sits at the printed label.",
+    "category": "market"
+  },
+  {
+    "id": "seed-leonida-state-prison",
+    "type": "landmark",
+    "name": "Leonida State Prison",
+    "region": "Ambrosia",
+    "x": 437.2,
+    "y": 429.53,
+    "approximate": false,
+    "source": "official",
+    "description": "Leonida State Prison, printed on Rockstar's official Leonida Map & Cover Art Poster. The pin sits at the printed label."
+  },
+  {
+    "id": "seed-thrillbilly-mud-club",
+    "type": "activity",
+    "name": "Thrillbilly Mud Club",
+    "region": "Ambrosia",
+    "x": 522.19,
+    "y": 280.99,
+    "approximate": false,
+    "source": "official",
+    "description": "Mud-racing venue printed on Rockstar's official Leonida Map & Cover Art Poster. The pin sits at the printed label."
+  },
+  {
+    "id": "seed-ambrosia-raceway-park",
+    "type": "activity",
+    "name": "Ambrosia Raceway Park",
+    "region": "Mount Kalaga",
+    "x": 643.44,
+    "y": 151.27,
+    "approximate": false,
+    "source": "official",
+    "description": "Raceway in northern Leonida, printed on Rockstar's official Leonida Map & Cover Art Poster. The pin sits at the printed label."
+  },
+  {
+    "id": "seed-mile-zero-air-station",
+    "type": "landmark",
+    "name": "Mile Zero Air Station",
+    "region": "Leonida Keys",
+    "x": 386.83,
+    "y": 721.22,
+    "approximate": false,
+    "source": "official",
+    "description": "Air station printed on Rockstar's official Leonida Map & Cover Art Poster. The pin sits at the printed label.",
+    "category": "transport"
+  },
+  {
+    "id": "seed-wild-hog-point",
+    "type": "landmark",
+    "name": "Wild Hog Point",
+    "region": "Port Gellhorn",
+    "x": 226.32,
+    "y": 400.57,
+    "approximate": false,
+    "source": "official",
+    "description": "Coastal landmark printed on Rockstar's official Leonida Map & Cover Art Poster. The pin sits at the printed label."
+  },
+  {
+    "id": "seed-draper-island",
+    "type": "landmark",
+    "name": "Draper Island",
+    "region": "Port Gellhorn",
+    "x": 212.01,
+    "y": 326.09,
+    "approximate": false,
+    "source": "official",
+    "description": "Island or key printed on Rockstar's official Leonida Map & Cover Art Poster. The pin sits at the printed label."
+  },
+  {
+    "id": "seed-hyde-island",
+    "type": "landmark",
+    "name": "Hyde Island",
+    "region": "Mount Kalaga",
+    "x": 622.15,
+    "y": 32.74,
+    "approximate": false,
+    "source": "official",
+    "description": "Island or key printed on Rockstar's official Leonida Map & Cover Art Poster. The pin sits at the printed label."
+  },
+  {
+    "id": "seed-saint-attaway-islands",
+    "type": "landmark",
+    "name": "Saint Attaway Islands",
+    "region": "Mount Kalaga",
+    "x": 584.08,
+    "y": 29.79,
+    "approximate": false,
+    "source": "official",
+    "description": "Island or key printed on Rockstar's official Leonida Map & Cover Art Poster. The pin sits at the printed label."
+  },
+  {
+    "id": "seed-frampton-islands",
+    "type": "landmark",
+    "name": "Frampton Islands",
+    "region": "Mount Kalaga",
+    "x": 713.01,
+    "y": 59.81,
+    "approximate": false,
+    "source": "official",
+    "description": "Island or key printed on Rockstar's official Leonida Map & Cover Art Poster. The pin sits at the printed label."
+  },
+  {
+    "id": "seed-featherstone-islands",
+    "type": "landmark",
+    "name": "Featherstone Islands",
+    "region": "Mount Kalaga",
+    "x": 416.63,
+    "y": 75.11,
+    "approximate": false,
+    "source": "official",
+    "description": "Island or key printed on Rockstar's official Leonida Map & Cover Art Poster. The pin sits at the printed label."
+  },
+  {
+    "id": "seed-riquezas-keys",
+    "type": "landmark",
+    "name": "Riquezas Keys",
+    "region": "Leonida Keys",
+    "x": 313.73,
+    "y": 673.13,
+    "approximate": false,
+    "source": "official",
+    "description": "Island or key printed on Rockstar's official Leonida Map & Cover Art Poster. The pin sits at the printed label."
+  },
+  {
+    "id": "seed-goose-key",
+    "type": "landmark",
+    "name": "Goose Key",
+    "region": "Leonida Keys",
+    "x": 433.31,
+    "y": 664.82,
+    "approximate": false,
+    "source": "official",
+    "description": "Island or key printed on Rockstar's official Leonida Map & Cover Art Poster. The pin sits at the printed label."
+  },
+  {
+    "id": "seed-permit-keys",
+    "type": "landmark",
+    "name": "Permit Keys",
+    "region": "Leonida Keys",
+    "x": 564.13,
+    "y": 700.01,
+    "approximate": false,
+    "source": "official",
+    "description": "Island or key printed on Rockstar's official Leonida Map & Cover Art Poster. The pin sits at the printed label."
+  },
+  {
+    "id": "seed-maroon-key",
+    "type": "landmark",
+    "name": "Maroon Key",
+    "region": "Leonida Keys",
+    "x": 603.13,
+    "y": 722.58,
+    "approximate": false,
+    "source": "official",
+    "description": "Island or key printed on Rockstar's official Leonida Map & Cover Art Poster. The pin sits at the printed label."
+  },
+  {
+    "id": "seed-abismo-key",
+    "type": "landmark",
+    "name": "Abismo Key",
+    "region": "Leonida Keys",
+    "x": 560.23,
+    "y": 765.92,
+    "approximate": false,
+    "source": "official",
+    "description": "Island or key printed on Rockstar's official Leonida Map & Cover Art Poster. The pin sits at the printed label."
+  },
+  {
+    "id": "seed-the-vault",
+    "type": "landmark",
+    "name": "The Vault",
+    "region": "Vice City",
+    "x": 790.62,
+    "y": 413.35,
+    "approximate": true,
+    "source": "official",
+    "description": "Casino in Downtown Vice City, next to NINE1NINE, according to PC Gamer and GamesRadar+. Position is approximate (placed on Rockstar's official map in north Downtown, beside the NINE1NINE pin; Rockstar publishes no coordinates)."
+  },
+  {
+    "id": "seed-belville-ufo-house",
+    "type": "secret",
+    "name": "UFO house, Belville",
+    "region": "Vice City",
+    "x": 774.01,
+    "y": 262.98,
+    "approximate": true,
+    "source": "official",
+    "spoiler": true,
+    "description": "PC Gamer (20 November 2026) describes a bungalow in Belville that matches a long-running Rockstar UFO photograph. Position is approximate, in the Belville area printed on Rockstar's official map. This pin stays hidden until you turn on spoilers. Source: pcgamer.com."
   }
 ]

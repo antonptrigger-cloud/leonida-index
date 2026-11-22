@@ -174,7 +174,10 @@
     "approximate": true,
     "source": "gtadb",
     "category": "bar-club",
-    "description": "Strip club in Downtown Vice City, next to The Vault. A private dance costs $300 (PC Gamer). GamesRadar+ places it in the north of Downtown, just south of the overpass. Pin position is approximate (placed in Downtown, not by exact street). Sources: pcgamer.com, gamesradar.com. Landmark record L190, GTADB.org (CC BY 4.0), map.gtadb.org."
+    "description": "Strip club in Downtown Vice City, next to The Vault. A private dance costs $300 (PC Gamer). GamesRadar+ places it in the north of Downtown, just south of the overpass. Pin position is approximate (placed in Downtown, not by exact street). Sources: pcgamer.com, gamesradar.com. Landmark record L190, GTADB.org (CC BY 4.0), map.gtadb.org.",
+    "image": "/map/pins/nightclub.webp",
+    "imageCredit": "© Rockstar Games",
+    "imageAlt": "Official GTA 6 screenshot of a Vice City club floor as cash rains down."
   },
   {
     "id": "gtadb-L192",

@@ -21,6 +21,10 @@ export function applySeedLabels(pin: Pin): Pin {
     description: seed.description,
     type: seed.type,
     category: seed.category ?? pin.category,
+    spoiler: seed.spoiler,
+    image: seed.image,
+    imageCredit: seed.imageCredit,
+    imageAlt: seed.imageAlt,
   };
 }
 
