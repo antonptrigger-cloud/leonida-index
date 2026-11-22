@@ -1,24 +1,32 @@
 /**
  * Decorative, dimmed photo backdrop for page headers and the homepage hero.
  *
- * - Original AI-generated artwork (no game assets), stored as WebP in /public/backgrounds (full + "-sm" mobile).
- * - Absolutely positioned and full-bleed inside the nearest `relative isolate` parent, so it never
- *   shifts layout. The parent keeps its own content above it.
- * - A dark purple gradient darkens toward the bottom and fades into the page background so text
- *   and cards stay readable. Hidden from assistive tech (empty alt + aria-hidden).
+ * Official Rockstar Games screenshots from rockstargames.com/VI media, stored as
+ * pre-compressed WebP in /public/backgrounds (full + "-sm" mobile). Several page
+ * types reuse the same file to keep storage down. A subtle "© Rockstar Games"
+ * credit is drawn on official shots. No logos, no leaks.
+ *
+ * Absolutely positioned and full-bleed inside the nearest `relative isolate`
+ * parent, so it never shifts layout. A dark purple gradient darkens toward the
+ * bottom and fades into the page background so text and cards stay readable.
+ * Hidden from assistive tech (empty alt + aria-hidden).
  */
 
 export const BACKDROPS = {
-  /** Muscle car at a lookout over the city at dusk. Homepage hero. */
-  car: { file: "home-hero-car-lookout", w: 1592, h: 1071, pos: "50% 72%" },
-  /** Neon pier at night. Map header, Secrets. */
-  pier: { file: "map-neon-pier", w: 1086, h: 729, pos: "50% 46%" },
-  /** City skyline at sunset. News. */
-  skyline: { file: "news-city-skyline", w: 1086, h: 729, pos: "50% 62%" },
-  /** Speedboat and dock, purple dusk. Guides and mission guides. */
-  boat: { file: "guides-speedboat-dock", w: 1592, h: 1071, pos: "50% 66%" },
-  /** Beach sunset, the brightest image. About and 404. */
-  beach: { file: "about-beach-sunset", w: 1086, h: 729, pos: "50% 52%" },
+  /** Vice City marina and skyline. Homepage hero and database/character headers. */
+  car: { file: "official-marina", w: 1600, h: 900, pos: "50% 58%", official: true },
+  /** Vice City at dusk (Megamundo / ferris wheel). Map header, Secrets, news. */
+  pier: { file: "official-sunset", w: 1600, h: 900, pos: "50% 42%", official: true },
+  /** Same dusk skyline, slightly higher crop. News articles and hubs. */
+  skyline: { file: "official-sunset", w: 1600, h: 900, pos: "50% 38%", official: true },
+  /** Grassrivers swamp from the air. Guides and mission guides. */
+  boat: { file: "official-swamp", w: 1600, h: 900, pos: "50% 48%", official: true },
+  /** Leonida Keys, seaplane over the causeway. About, 404, tools, sources. */
+  beach: { file: "official-keys", w: 1600, h: 900, pos: "50% 40%", official: true },
+  /** Alias for pages that want the marina shot without the home "car" name. */
+  marina: { file: "official-marina", w: 1600, h: 900, pos: "50% 55%", official: true },
+  /** Alias for region and swamp-mood pages. */
+  swamp: { file: "official-swamp", w: 1600, h: 900, pos: "50% 45%", official: true },
 } as const;
 
 export type BackdropId = keyof typeof BACKDROPS;
@@ -64,7 +72,7 @@ export function PageBackdrop({
       className={`pointer-events-none absolute inset-y-0 -z-10 overflow-hidden ${contained ? "inset-x-0" : "left-1/2 w-screen -translate-x-1/2"}`}
       style={mask ? { WebkitMaskImage: mask, maskImage: mask } : undefined}
     >
-      {/* Plain <img>: decorative, pre-sized WebP variants chosen via srcset (no runtime optimizer cost). */}
+      {/* Pre-sized WebP + srcset: no runtime optimizer cost, same outcome as next/image for static public assets. */}
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
         src={`${base}.webp`}
@@ -93,6 +101,11 @@ export function PageBackdrop({
             : `linear-gradient(180deg, rgba(26,10,46,${d.top}) 0%, rgba(20,8,36,${d.mid}) 100%)`,
         }}
       />
+      {"official" in b && b.official ? (
+        <p className="absolute bottom-[14%] right-4 text-[0.6rem] font-semibold uppercase tracking-[0.16em] text-white/65 drop-shadow-[0_1px_2px_rgba(0,0,0,0.85)] sm:right-6">
+          © Rockstar Games
+        </p>
+      ) : null}
     </div>
   );
 }

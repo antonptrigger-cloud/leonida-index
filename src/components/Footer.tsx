@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { LogoMark } from "@/components/LogoMark";
 import { Palm } from "@/components/Palm";
+import { FollowCta } from "@/components/ShareButtons";
 
 export function Footer() {
   return (
@@ -32,10 +33,17 @@ export function Footer() {
             Fan site. Not affiliated with Rockstar Games or Take-Two Interactive.
             Grand Theft Auto is a trademark of Take-Two.
           </p>
+          <p className="mt-4x">
+            <FollowCta />
+          </p>
         </div>
         <nav className="flex flex-wrap gap-x-6x gap-y-2x sm:col-span-5 sm:justify-end" aria-label="Footer">
           {[
             ["/map", "Map"],
+            ["/guides", "Guides"],
+            ["/news", "News"],
+            ["/database", "Database"],
+            ["/secrets", "Secrets"],
             ["/map/leaderboard", "Leaderboard"],
             ["/sources", "Sources"],
             ["/about", "About"],

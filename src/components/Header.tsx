@@ -32,7 +32,7 @@ export function Header() {
         </nav>
         <span className="hidden items-center gap-2x border-l border-pink/30 pl-6x text-[0.65rem] font-bold uppercase tracking-[0.3em] text-turq lg:flex">
           <span className="inline-block h-1.5 w-1.5 rounded-full bg-turq shadow-[0_0_8px_#00e5cc]" />
-          Launch 19.11.26
+          Out now
         </span>
       </div>
       <div className="vc-neon-line" aria-hidden />
