@@ -1070,13 +1070,13 @@
   {
     "id": "seed-salton-chop-shop",
     "type": "shop",
-    "name": "Salton Chop Shop",
+    "name": "Slator Towing Inc (Chop Shop)",
     "region": "Salton",
-    "x": 735.73,
-    "y": 426.92,
+    "x": 750.75,
+    "y": 471.99,
     "approximate": true,
     "source": "community",
     "category": "vehicles",
-    "description": "Chop shop in Salton, the place you steal a Schafter V12 from during a job for Raul. Pin position is approximate (placed in the Salton area on Rockstar's official map; exact yard not confirmed by a main outlet). Player-verified by our team."
+    "description": "Slator Towing Inc, the illegal chop shop at the southern end of Salton, just north of the Salton Pay & Spray. It's where you search for the Schafter V12 for Raul, and it stays robbable afterwards. Player-verified by our team."
   }
 ]
