@@ -12,7 +12,7 @@ The `/news` page is built entirely from `NEWS` in `src/lib/news/articles.ts` (lo
 
 | Field | Default | Effect |
 | --- | --- | --- |
-| `category` | derived from `tag` (`TAG_CATEGORY` in `hub.ts`; unknown tags fall back to `launch`) | Topic chip and accent colour. One of `launch`, `servers`, `reviews`, `sales`, `events`, `streamers`, `platforms`. |
+| `category` | derived from `tag` (`TAG_CATEGORY` in `hub.ts`; unknown tags fall back to `launch`) | Topic chip and accent colour. One of `launch`, `servers`, `reviews`, `sales`, `events`, `streamers`, `platforms`, `music`, `glitches`, `traffic`. |
 | `live` | `false` | Show in the Live trackers strip (server tracker, reviews, release countdown) instead of the story lists. |
 | `pinned` | `false` | Keep among the top stories after it stops being the newest. |
 | `archived` | `false` | Send straight to the Archive, even if it is new (superseded or pre-launch pieces). |

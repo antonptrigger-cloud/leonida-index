@@ -94,6 +94,9 @@ const TOPICS: { name: string; re: RegExp }[] = [
   { name: "online", re: /\b(online|multiplayer|co-?op)\b/i },
   { name: "pc", re: /\b(PC|Steam|Game Pass|cloud)\b/ },
   { name: "sales", re: /\b(sales?|sold|million|revenue|units)\b/i },
+  { name: "traffic", re: /\b(traffic|NBN|DE-CIX|bandwidth)\b/i },
+  { name: "music", re: /\b(album|tracklist|soundtrack)\b/i },
+  { name: "glitches", re: /\b(glitch(?:es)?|first-person)\b/i },
   { name: "nightlife", re: /\b(strip clubs?|private dances?|NINE1NINE|Cabaret)\b/i },
   { name: "weapons", re: /\b(weapons?|guns?|Ammu-Nation|loadouts?|sidearms?|longarms?)\b/i },
 ];

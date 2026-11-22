@@ -16,6 +16,9 @@ export const CATEGORIES: { id: NewsCategory; label: string; accent: Accent }[] =
   { id: "events", label: "Events", accent: "blue" },
   { id: "streamers", label: "Streamers", accent: "violet" },
   { id: "platforms", label: "Platforms & PC", accent: "cobalt" },
+  { id: "music", label: "Music", accent: "pink" },
+  { id: "glitches", label: "Glitches", accent: "turq" },
+  { id: "traffic", label: "Traffic records", accent: "orange" },
 ];
 
 /** Default category from the article's `tag`. Unknown tags fall back to "launch". */
@@ -35,6 +38,11 @@ const TAG_CATEGORY: Record<string, NewsCategory> = {
   platforms: "platforms",
   performance: "platforms",
   guide: "platforms",
+  music: "music",
+  album: "music",
+  glitches: "glitches",
+  glitch: "glitches",
+  traffic: "traffic",
 };
 
 export const categoryOf = (n: NewsItem): NewsCategory => n.category ?? TAG_CATEGORY[n.tag.toLowerCase()] ?? "launch";
