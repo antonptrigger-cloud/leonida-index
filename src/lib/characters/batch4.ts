@@ -14,7 +14,7 @@
  */
 import type { Character, CharSource } from "@/lib/characters/characters";
 
-const UPDATED = "2026-11-19";
+const UPDATED = "2026-11-22";
 
 type Src = Omit<CharSource, "id"> & { id: string };
 
@@ -82,7 +82,7 @@ export const BATCH4_CHARACTERS: Character[] = [
   /* ---------------------------------------------------------------- Kyle */
   {
     slug: "kyle",
-    name: "Kyle",
+    name: "Kyle McKittrick",
     tier: "reported",
     updated: UPDATED,
     reportedNote: NOTE_PP_GS,
@@ -97,7 +97,7 @@ export const BATCH4_CHARACTERS: Character[] = [
     summary:
       "Kyle is a farmer who also flies a crop duster. PowerPyx and GameSpot both describe his farm and his three-part side quest, but Rockstar has not published a profile.",
     background: [
-      "GameSpot places Kyle's farm in East Kelly County and writes \"Kyle McKittrick's farm\". PowerPyx names only McKittrick Farm. We use his first name alone until a second outlet gives a surname.",
+      "GameSpot places Kyle's farm in East Kelly County and writes \"Kyle McKittrick's farm\". PowerPyx names only McKittrick Farm. Rockstar's official credits list him as Kyle McKittrick.",
       "Kyle advertises with flyers. PowerPyx says one hangs on a wall at a place in Kelly County, and that reading it marks his quest on the map. The flyer mentions a pilot job at his farm.",
       "PowerPyx lists three parts in his questline, which either Jason or Lucia can start. The follow-up quests arrive by phone message after long gaps, and PowerPyx says the questline counts toward the Strangers & Freaks trophy. GameSpot calls it \"one of the wilder ones in GTA 6\".",
     ],
@@ -106,8 +106,9 @@ export const BATCH4_CHARACTERS: Character[] = [
       { label: "Farm", value: "McKittrick Farm, in East Kelly County per GameSpot", status: "reported" },
       { label: "First flyer", value: "On a wall in Kelly County (PowerPyx)", status: "reported" },
       { label: "Questline", value: "Three parts; either lead can start it; counts toward Strangers & Freaks (PowerPyx)", status: "reported" },
-      { label: "Surname", value: "GameSpot writes McKittrick; PowerPyx names only the farm", status: "tbc" },
-      { label: "Age and voice actor", value: "Not given by any outlet we checked", status: "tbc" },
+      { label: "Surname", value: "McKittrick, listed in Rockstar's official credits", status: "confirmed" },
+      { label: "Age", value: "Not given by any outlet we checked", status: "tbc" },
+      { label: "Performer", value: "Jared Canfield, listed in Rockstar's official credits", status: "confirmed" },
     ],
     relationships: [
       { name: "Jason Duval and Lucia Caminos", slug: "jason-duval", note: "Either lead can take on Kyle's side quest, per PowerPyx." },
@@ -121,8 +122,8 @@ export const BATCH4_CHARACTERS: Character[] = [
       "Why he wants them: Kyle grows mutated strawberries and has a worrying cough from handling the chemicals. Eating one temporarily boosts your stats.",
       "Buddy? (Check on Kyle): this last mission ends the questline. GameSpot says you can then freely take \"Kyle's Mallard\", a single-passenger plane that stays marked on the map wherever you leave it.",
     ],
-    tbc: ["His surname and age.", "His voice actor.", "What happens in the last part beyond the plane GameSpot mentions."],
-    sourceIds: ["pp-kyle-farm", "pp-kyle-chem", "pp-sf-list", "gs-plane"],
+    tbc: ["His age.", "What happens in the last part beyond the plane GameSpot mentions."],
+    sourceIds: ["rockstar-credits", "pp-kyle-farm", "pp-kyle-chem", "pp-sf-list", "gs-plane"],
     faq: [
       { question: "Who is Kyle in GTA 6?", answer: "Kyle is a side-quest character who runs McKittrick Farm and flies a crop duster. PowerPyx and GameSpot both describe him; Rockstar has not published a profile." },
       { question: "How do you meet Kyle?", answer: "PowerPyx says you find one of his flyers on a wall in Kelly County. Reading it marks his quest on the map." },
@@ -159,7 +160,8 @@ export const BATCH4_CHARACTERS: Character[] = [
       { label: "Quest site", value: "Swamps of Mariana County, near Pelican River (PowerPyx)", status: "reported" },
       { label: "Questline", value: "Three parts; counts toward Strangers & Freaks; night only for parts one and three (PowerPyx)", status: "reported" },
       { label: "Map page", value: "None matches the swamp quest site", status: "tbc" },
-      { label: "Surname, age and voice actor", value: "Not given by any outlet we checked", status: "tbc" },
+      { label: "Surname and age", value: "Not given by any outlet we checked", status: "tbc" },
+      { label: "Performer", value: "Jim Burke, listed in Rockstar's official credits as Kirk", status: "confirmed" },
     ],
     relationships: [
       { name: "Jason Duval and Lucia Caminos", slug: "jason-duval", note: "Either lead can start Kirk's side quest. The third part is Lucia only, per PowerPyx." },
@@ -174,8 +176,8 @@ export const BATCH4_CHARACTERS: Character[] = [
       "The boar: a huge wild boar appears by the effigy and you run back to the truck. It rams you as you reach it, and Kirk rescues you.",
       "Later missions: \"Search for Tree Effigies\" and \"Help Kirk Find Mr. Mangrove (Advanced Skunk Apeonomics)\" follow. PowerPyx says the questline starts in Chapter 1 but cannot finish until Chapter 2.",
     ],
-    tbc: ["His surname, age and voice actor.", "What happens in his second and third parts.", "Whether Mr. Mangrove is real."],
-    sourceIds: ["pp-kirk", "pp-sf-list", "pp-world-map"],
+    tbc: ["His surname and age.", "What happens in his second and third parts.", "Whether Mr. Mangrove is real."],
+    sourceIds: ["rockstar-credits", "pp-kirk", "pp-sf-list", "pp-world-map"],
     faq: [
       { question: "Who is Kirk in GTA 6?", answer: "Kirk is a side-quest character who hunts a creature he calls the Skunk Ape, also known as Mr. Mangrove. PowerPyx describes him; Rockstar has not published a profile." },
       { question: "How do you start Kirk's quests?", answer: "PowerPyx says you read one of his skunk ape flyers, such as the one at Skeeter's bar in Hamlet, and then call him from your phone contacts." },
@@ -212,7 +214,8 @@ export const BATCH4_CHARACTERS: Character[] = [
       { label: "Questline", value: "Five parts; does not count toward Strangers & Freaks but has its own trophy (PowerPyx)", status: "reported" },
       { label: "Crew", value: "Ricardo (Ricky), Brittney and Wyman (PowerPyx)", status: "reported" },
       { label: "Wyman", value: "Tied to two Ultimate Edition bonuses (GameSpot)", status: "reported" },
-      { label: "Surname, age and voice actor", value: "Not given by any outlet we checked", status: "tbc" },
+      { label: "Surname and age", value: "Not given by any outlet we checked", status: "tbc" },
+      { label: "Performer", value: "Spenser Granese, listed in Rockstar's official credits as Billy", status: "confirmed" },
     ],
     relationships: [
       { name: "Jason Duval and Lucia Caminos", slug: "jason-duval", note: "Either lead can start the first part, per PowerPyx." },
@@ -227,9 +230,9 @@ export const BATCH4_CHARACTERS: Character[] = [
       "Twist Wrist, Smash, Grab (Join Billy on a Job): a few in-game hours later Billy texts you to a bench in Port Gellhorn and gives you a Highwayman Sanchez dirt bike. The crew chases an armored truck until it crashes into a tree, and you plant a charge on its rear doors. It pays $2,000.",
       "The rest: PowerPyx lists \"Mall Rats (Join Billy on a Job)\", \"The Impaler (Steal the Impaler)\" and \"Hometown Heroes (Join Billy on a Job)\", and tags the last one \"The Lone Rider\". What that tag means is To be confirmed.",
     ],
-    tbc: ["Billy's surname, age and voice actor.", "What the last three parts involve.", "How the crew connects to the gangs listed in our gangs page."],
+    tbc: ["Billy's surname and age.", "What the last three parts involve.", "How the crew connects to the gangs listed in our gangs page."],
     mapLinks: [{ href: "/map/port-gellhorn", label: "Port Gellhorn map", status: "reported", note: "The second part starts in Port Gellhorn, so this is the closest map page." }],
-    sourceIds: ["pp-billy1", "pp-billy2", "pp-coffee-break", "pp-sf-list", "gs-ue-bonuses"],
+    sourceIds: ["rockstar-credits", "pp-billy1", "pp-billy2", "pp-coffee-break", "pp-sf-list", "gs-ue-bonuses"],
     faq: [
       { question: "Who is Billy in GTA 6?", answer: "Billy leads a crew of dirt-bike racers. PowerPyx describes him. Rockstar has not published a profile." },
       { question: "Who rides with Billy?", answer: "PowerPyx lists Ricardo (Ricky), Brittney and Wyman as members of his crew." },
@@ -241,7 +244,7 @@ export const BATCH4_CHARACTERS: Character[] = [
   /* ---------------------------------------------------------------- Yago */
   {
     slug: "yago",
-    name: "Yago",
+    name: "Yago Jiménez",
     tier: "reported",
     updated: UPDATED,
     reportedNote: NOTE_PP,
@@ -266,7 +269,9 @@ export const BATCH4_CHARACTERS: Character[] = [
       { label: "Racing area", value: "Salton, listed under Vice City by PowerPyx", status: "reported" },
       { label: "Questline", value: "Four parts; counts toward Strangers & Freaks; parts one, two and four are Jason only (PowerPyx)", status: "reported" },
       { label: "Map region", value: "Vice City, because Rockstar names Little Cuba as part of it", status: "confirmed" },
-      { label: "Surname, age and voice actor", value: "Not given by any outlet we checked", status: "tbc" },
+      { label: "Full name", value: "Yago Jiménez, listed in Rockstar's official credits", status: "confirmed" },
+      { label: "Age", value: "Not given by any outlet we checked", status: "tbc" },
+      { label: "Performer", value: "Victor Almanzar, listed in Rockstar's official credits", status: "confirmed" },
     ],
     relationships: [
       { name: "Jason Duval", slug: "jason-duval", note: "Most of Yago's questline is Jason only, per PowerPyx." },
@@ -282,9 +287,9 @@ export const BATCH4_CHARACTERS: Character[] = [
       "Race Against Yago: this third mission is time-sensitive and can be missed.",
       "Brother to Brother (Back Up Yago): the last mission is Jason only. What happens in it is To be confirmed.",
     ],
-    tbc: ["Yago's surname, age and voice actor.", "The plot of the last two parts."],
+    tbc: ["Yago's age.", "The plot of the last two parts."],
     mapLinks: [{ href: "/map/vice-city", label: "Vice City map", status: "confirmed", note: "Confirmed for the region. Yago's restaurant itself is Reported." }],
-    sourceIds: ["pp-yago1", "pp-yago2", "pp-sf-list", "rockstar-regions"],
+    sourceIds: ["rockstar-credits", "pp-yago1", "pp-yago2", "pp-sf-list", "rockstar-regions"],
     faq: [
       { question: "Who is Yago in GTA 6?", answer: "Yago is a street racer whose questline starts in Vice City. PowerPyx says he has a restaurant in Little Cuba. Rockstar has not published a profile." },
       { question: "Can Lucia do Yago's quests?", answer: "Not most of them. PowerPyx marks the first, second and fourth parts as Jason only." },
@@ -321,7 +326,8 @@ export const BATCH4_CHARACTERS: Character[] = [
       { label: "Home", value: "Belville, listed under Leonard County (PowerPyx)", status: "reported" },
       { label: "Questline", value: "Five parts, all Lucia only; does not count toward Strangers & Freaks but has its own trophy (PowerPyx)", status: "reported" },
       { label: "Map page", value: "Belville has no matching map page", status: "tbc" },
-      { label: "Surname, age and voice actor", value: "Not given by any outlet we checked", status: "tbc" },
+      { label: "Surname and age", value: "Not given by any outlet we checked", status: "tbc" },
+      { label: "Performer", value: "Mallory Wu, listed in Rockstar's official credits as Andy", status: "confirmed" },
     ],
     relationships: [
       { name: "Lucia Caminos", slug: "lucia-caminos", note: "Andy's calls and texts go to Lucia only, per PowerPyx." },
@@ -338,12 +344,12 @@ export const BATCH4_CHARACTERS: Character[] = [
       "Delivery three: Lucia takes a package from Andy's garage to a house in Ambrosia. A man posing as the owner tries to steal it, and you can refuse. The real owner then opens the garage.",
       "The rest: the later parts are \"Pay the Cellerica Fee\", \"Peach!\", \"Read the Label\" and \"Puff Puff Pass\". All are Lucia only.",
     ],
-    tbc: ["Andy's surname, age and voice actor.", "What happens in the last four parts.", "How the group's name is spelled in the finished game."],
+    tbc: ["Andy's surname and age.", "What happens in the last four parts.", "How the group's name is spelled in the finished game."],
     mapLinks: [
       { href: "/map/vice-city", label: "Vice City map", status: "reported", note: "A place her side quest visits." },
       { href: "/map/ambrosia", label: "Ambrosia map", status: "reported", note: "A place her side quest visits." },
     ],
-    sourceIds: ["pp-andy", "pp-sf-list", "pp-world-map"],
+    sourceIds: ["rockstar-credits", "pp-andy", "pp-sf-list", "pp-world-map"],
     faq: [
       { question: "Who is Andy in GTA 6?", answer: "Andy is a side-quest character who appears only for Lucia. PowerPyx says she has joined a group it calls Cellerica. Rockstar has not published a profile." },
       { question: "Can Jason meet Andy?", answer: "No. PowerPyx says her calls and texts go to Lucia only, so you must play as Lucia to start her questline." },
@@ -379,7 +385,8 @@ export const BATCH4_CHARACTERS: Character[] = [
       { label: "First airfield", value: "Sundown Private Airfield, Leonard County (PowerPyx)", status: "reported" },
       { label: "Other places", value: "An airstrip south of Port Gellhorn and Wild Hog Airfield in Kelly County (PowerPyx)", status: "reported" },
       { label: "Questline", value: "Five parts, all Jason only; counts toward Strangers & Freaks (PowerPyx)", status: "reported" },
-      { label: "Real name, age and voice actor", value: "Not given by any outlet we checked", status: "tbc" },
+      { label: "Real name and age", value: "Not given by any outlet we checked", status: "tbc" },
+      { label: "Performer", value: "Carl Palmer, listed in Rockstar's official credits", status: "confirmed" },
     ],
     relationships: [
       { name: "Jason Duval", slug: "jason-duval", note: "Every part of Pete's questline is Jason only, per PowerPyx." },
@@ -395,9 +402,9 @@ export const BATCH4_CHARACTERS: Character[] = [
       "The rest: PowerPyx lists \"Pete's Deliveries\" at Southpoint Airfield and Avery Allen & Co., then a final \"Deliver Packages\", and says the follow-up delivery quests each pay $20,000.",
       "Earlier appearance: in the main mission \"Clear Skies\" in Chapter 1, Jason escorts a plane that PowerPyx calls Pilot Pete's plane. Whether it is the same Pete is To be confirmed.",
     ],
-    tbc: ["Pete's real name, age and voice actor.", "Where the packages come from.", "How his jobs connect to the gangs in the story."],
+    tbc: ["Pete's real name and age.", "Where the packages come from.", "How his jobs connect to the gangs in the story."],
     mapLinks: [{ href: "/map/port-gellhorn", label: "Port Gellhorn map", status: "reported", note: "The nearest map page, but the match is loose. Sundown has no map page." }],
-    sourceIds: ["pp-pete1", "pp-pete2", "pp-sf-list", "pp-clear-skies", "gs-plane"],
+    sourceIds: ["rockstar-credits", "pp-pete1", "pp-pete2", "pp-sf-list", "pp-clear-skies", "gs-plane"],
     faq: [
       { question: "Who is Pilot Pete in GTA 6?", answer: "Pilot Pete is a side-quest pilot who gives Jason delivery runs. PowerPyx describes him. Rockstar has not published a profile." },
       { question: "Can Lucia do Pilot Pete's side quest?", answer: "No. PowerPyx marks every part of his questline as Jason only." },
@@ -433,7 +440,8 @@ export const BATCH4_CHARACTERS: Character[] = [
       { label: "Trailer", value: "Key Lento, shown as a fence on the map (PowerPyx)", status: "reported" },
       { label: "Other places", value: "Southwind in Mariana County, plus swamps near Hamlet and Pelican Valley (PowerPyx)", status: "reported" },
       { label: "Rockstar profile", value: "None. Rockstar describes Brian's operation but does not name Donnie", status: "tbc" },
-      { label: "Surname, age and voice actor", value: "Not given by any outlet we checked", status: "tbc" },
+      { label: "Surname and age", value: "Not given by any outlet we checked", status: "tbc" },
+      { label: "Performer", value: "Brad Carter, listed in Rockstar's official credits as Donnie", status: "confirmed" },
     ],
     relationships: [
       { name: "Brian Heder", slug: "brian-heder", note: "Runs the smuggling operation Donnie flies for, per PowerPyx. Rockstar describes Brian as a drug runner with a boat yard in the Keys." },
@@ -449,9 +457,9 @@ export const BATCH4_CHARACTERS: Character[] = [
       "Don Gone (Head to Donnie's Trailer): PowerPyx says Donnie was fed to the pigs, and Brian orders Jason to make the trailer look as if Donnie packed up and left town.",
       "The clean-up: Jason packs Donnie's belongings, deals with three men called Aviators and destroys Donnie's car. Before he does, he can take a unique revolver variant called Donnie's H&L .38 from the trunk. The reward is missable.",
     ],
-    tbc: ["Donnie's surname, age and voice actor.", "Whether Rockstar will profile him."],
+    tbc: ["Donnie's surname and age.", "Whether Rockstar will add a People profile."],
     mapLinks: [{ href: "/map/leonida-keys", label: "Leonida Keys map", status: "reported", note: "Inferred from the Key Lento trailer." }],
-    sourceIds: ["pp-gone-fishing", "pp-donnies-drop", "pp-clear-skies", "pp-don-gone", "rockstar-profiles"],
+    sourceIds: ["rockstar-credits", "pp-gone-fishing", "pp-donnies-drop", "pp-clear-skies", "pp-don-gone", "rockstar-profiles"],
     faq: [
       { question: "Who is Donnie in GTA 6?", answer: "Donnie is a pilot who flies drug packages in Brian Heder's smuggling operation. PowerPyx describes him. Rockstar has not published a profile." },
       { question: "Where does Donnie live?", answer: "PowerPyx says his trailer is in Key Lento and is marked on the map as a fence." },
@@ -491,7 +499,8 @@ export const BATCH4_CHARACTERS: Character[] = [
       { label: "Hunting jobs", value: "15 Hunting Target Decks (Push Square)", status: "reported" },
       { label: "First quest", value: "Jason only; the questline has a trophy of its own (PowerPyx)", status: "reported" },
       { label: "Where", value: "Near Mount Kalaga, Lummox County (PowerPyx); Lummox County has no matching map page", status: "reported" },
-      { label: "Age, appearance and voice actor", value: "Not given by any outlet we checked", status: "tbc" },
+      { label: "Age and appearance", value: "Not given by any outlet we checked", status: "tbc" },
+      { label: "Performer", value: "Jariko Denman, listed in Rockstar's official credits", status: "confirmed" },
     ],
     relationships: [
       { name: "Jason Duval", slug: "jason-duval", note: "Old friend, per PowerPyx. Only Jason receives Bret's first text." },
@@ -515,7 +524,6 @@ export const BATCH4_CHARACTERS: Character[] = [
     ],
     tbc: [
       "Bret's age, appearance and army service details.",
-      "His voice actor.",
       "Whether Lummox County matches the Mount Kalaga map page exactly.",
       "Whether the two outlets' weapon names refer to one weapon.",
       "Whether his questline counts toward the main Strangers & Freaks total. PowerPyx lists it with its own trophy and does not say.",
@@ -523,7 +531,7 @@ export const BATCH4_CHARACTERS: Character[] = [
     mapLinks: [
       { href: "/map/mount-kalaga", label: "Mount Kalaga map", status: "reported", note: "Rockstar confirms the region. PowerPyx and Push Square tie Bret's jobs to it." },
     ],
-    sourceIds: ["ps-bret", "pp-bret", "pp-sf-list", "rockstar-regions", "rockstar-profiles"],
+    sourceIds: ["rockstar-credits", "ps-bret", "pp-bret", "pp-sf-list", "rockstar-regions", "rockstar-profiles"],
     faq: [
       { question: "Who is Bret Vogel in GTA 6?", answer: "Bret Vogel is the boss of Killtelligence, a hunting business. Push Square and PowerPyx both name him, and PowerPyx calls him an old friend of Jason. Rockstar has not published a profile." },
       { question: "Is Bret's full name confirmed?", answer: "Yes, by two main outlets. Push Square writes \"Bret Vogel\", and so does PowerPyx. Rockstar itself has not named him." },

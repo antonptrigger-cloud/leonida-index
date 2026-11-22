@@ -1,3 +1,4 @@
+import Image from "next/image";
 import type { Character, CharSource } from "@/lib/characters/characters";
 import { LAST_VERIFIED, LAST_VERIFIED_LABEL } from "@/lib/characters/characters";
 import { Spoiler } from "@/components/guides/Spoiler";
@@ -26,7 +27,7 @@ export function ConfirmTag({ status }: { status: "confirmed" | "tbc" | "reported
     return (
       <span
         className="whitespace-nowrap text-[0.65rem] font-bold uppercase tracking-[0.18em] text-blue"
-        title="Reported by the outlet named, not stated by Rockstar. We recheck after launch."
+        title="Reported by the outlet named, not stated by Rockstar."
       >
         Reported
       </span>
@@ -35,7 +36,7 @@ export function ConfirmTag({ status }: { status: "confirmed" | "tbc" | "reported
   return (
     <span
       className="whitespace-nowrap text-[0.65rem] font-bold uppercase tracking-[0.18em] text-orange"
-      title="Not stated by Rockstar yet, or only seen in secondary reporting. We recheck after launch."
+      title="Not stated by Rockstar, or only seen in secondary reporting."
     >
       To be confirmed
     </span>
@@ -43,11 +44,35 @@ export function ConfirmTag({ status }: { status: "confirmed" | "tbc" | "reported
 }
 
 /**
- * Text-and-gradient stand-in for a portrait. We do not use Rockstar's images:
- * the owner has not decided on image licensing yet.
+ * Official Rockstar still when we have one, credited "© Rockstar Games".
+ * Characters without an official still keep the text-and-gradient placeholder.
  */
-export function CharacterPlaceholder({ c, size = "card" }: { c: Pick<Character, "initials" | "accent" | "name">; size?: "card" | "hero" }) {
+export function CharacterPlaceholder({
+  c,
+  size = "card",
+}: {
+  c: Pick<Character, "initials" | "accent" | "name" | "portrait">;
+  size?: "card" | "hero";
+}) {
   const rgb = ACCENT[c.accent];
+  if (c.portrait) {
+    return (
+      <figure className="w-full">
+        <div className="relative isolate aspect-video w-full overflow-hidden border border-pink/25">
+          <Image
+            src={c.portrait.src}
+            alt={c.portrait.alt}
+            width={c.portrait.width}
+            height={c.portrait.height}
+            className="h-full w-full object-cover"
+            sizes={size === "hero" ? "(min-width: 1024px) 42vw, 100vw" : "(min-width: 640px) 45vw, 100vw"}
+            priority={size === "hero"}
+          />
+        </div>
+        <figcaption className="mt-2x text-[0.65rem] font-bold uppercase tracking-[0.18em] text-muted">{c.portrait.credit}</figcaption>
+      </figure>
+    );
+  }
   return (
     <div
       className={`relative isolate flex items-end overflow-hidden border border-pink/25 ${size === "hero" ? "aspect-[4/5] w-full" : "aspect-[4/3] w-full"}`}
@@ -65,7 +90,7 @@ export function CharacterPlaceholder({ c, size = "card" }: { c: Pick<Character, 
         {c.initials}
       </span>
       <span className="vc-neon-line absolute inset-x-0 bottom-0 h-px" aria-hidden />
-      <span className="relative m-4x text-[0.6rem] font-bold uppercase tracking-[0.28em] text-muted">Portrait coming soon</span>
+      <span className="relative m-4x text-[0.6rem] font-bold uppercase tracking-[0.28em] text-muted">No official still yet</span>
     </div>
   );
 }
