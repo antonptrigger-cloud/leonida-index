@@ -505,7 +505,7 @@ export const ROUTES: Record<string, RouteSeo> = {
   },
   "/secrets/hidden-locations": {
     title: "GTA 6 Hidden Locations and Secret Vehicles",
-    description: "Hidden GTA 6 locations worth the trip: the Lazer jet at Mile Zero, free planes on the west coast, and a Fast and Furious car on Vespucci Island.",
+    description: "Hidden GTA 6 locations worth the trip: the Mile Zero Lazer, west-coast planes, a Vespucci Fast and Furious car, and Boobie Ike's laptop secret.",
     crumb: "Hidden locations",
     kind: "article",
     changeFrequency: "weekly",

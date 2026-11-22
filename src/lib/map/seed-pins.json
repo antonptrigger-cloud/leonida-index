@@ -1066,5 +1066,17 @@
     "source": "official",
     "spoiler": true,
     "description": "PC Gamer (20 November 2026) describes a bungalow in Belville that matches a long-running Rockstar UFO photograph. Position is approximate, in the Belville area printed on Rockstar's official map. This pin stays hidden until you turn on spoilers. Source: pcgamer.com."
+  },
+  {
+    "id": "seed-salton-chop-shop",
+    "type": "shop",
+    "name": "Salton Chop Shop",
+    "region": "Salton",
+    "x": 735.73,
+    "y": 426.92,
+    "approximate": true,
+    "source": "community",
+    "category": "vehicles",
+    "description": "Chop shop in Salton, the place you steal a Schafter V12 from during a job for Raul. Pin position is approximate (placed in the Salton area on Rockstar's official map; exact yard not confirmed by a main outlet). Player-verified by our team."
   }
 ]
