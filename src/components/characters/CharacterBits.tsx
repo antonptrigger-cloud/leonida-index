@@ -3,6 +3,8 @@ import type { Character, CharSource } from "@/lib/characters/characters";
 import { LAST_VERIFIED, LAST_VERIFIED_LABEL } from "@/lib/characters/characters";
 import { Spoiler } from "@/components/guides/Spoiler";
 import { splitSources } from "@/lib/spoiler-sources";
+import { areaFor, areaSrcSet } from "@/lib/characters/areas";
+import "./characters.css";
 
 const ACCENT: Record<Character["accent"], string> = {
   pink: "255,45,120",
@@ -45,53 +47,74 @@ export function ConfirmTag({ status }: { status: "confirmed" | "tbc" | "reported
 
 /**
  * Official Rockstar still when we have one, credited "© Rockstar Games".
- * Characters without an official still keep the text-and-gradient placeholder.
+ * Characters without an official still get a duotone official screenshot of the area they are reported in,
+ * with their name on it, so the card never pretends to be a portrait (see src/lib/characters/areas.ts).
+ * On cards the credit is printed once under the grid, not on every card.
  */
 export function CharacterPlaceholder({
   c,
   size = "card",
 }: {
-  c: Pick<Character, "initials" | "accent" | "name" | "portrait">;
+  c: Pick<Character, "slug" | "initials" | "accent" | "name" | "portrait">;
   size?: "card" | "hero";
 }) {
   const rgb = ACCENT[c.accent];
+  const hero = size === "hero";
   if (c.portrait) {
+    const img = (
+      <div className="relative isolate aspect-video w-full overflow-hidden">
+        <Image
+          src={c.portrait.src}
+          alt={c.portrait.alt}
+          width={c.portrait.width}
+          height={c.portrait.height}
+          className="h-full w-full object-cover"
+          sizes={hero ? "(min-width: 1024px) 42vw, 100vw" : "(min-width: 1024px) 370px, (min-width: 640px) 50vw, 100vw"}
+          priority={hero}
+        />
+      </div>
+    );
+    if (!hero) return img;
     return (
       <figure className="w-full">
-        <div className="relative isolate aspect-video w-full overflow-hidden border border-pink/25">
-          <Image
-            src={c.portrait.src}
-            alt={c.portrait.alt}
-            width={c.portrait.width}
-            height={c.portrait.height}
-            className="h-full w-full object-cover"
-            sizes={size === "hero" ? "(min-width: 1024px) 42vw, 100vw" : "(min-width: 640px) 45vw, 100vw"}
-            priority={size === "hero"}
-          />
-        </div>
+        <div className="overflow-hidden rounded-md border border-white/10">{img}</div>
         <figcaption className="mt-2x text-[0.65rem] font-bold uppercase tracking-[0.18em] text-muted">{c.portrait.credit}</figcaption>
       </figure>
     );
   }
-  return (
-    <div
-      className={`relative isolate flex items-end overflow-hidden border border-pink/25 ${size === "hero" ? "aspect-[4/5] w-full" : "aspect-[4/3] w-full"}`}
-      style={{
-        background: `radial-gradient(120% 90% at 20% 0%, rgba(${rgb},0.38), transparent 60%), linear-gradient(160deg, #1d1030 0%, #0f0d13 70%)`,
-      }}
-      role="img"
-      aria-label={`${c.name}: portrait placeholder`}
-    >
-      <span
-        aria-hidden
-        className="vc-display pointer-events-none absolute -right-2 -top-4 select-none text-[9rem] leading-none sm:text-[11rem]"
-        style={{ color: `rgba(${rgb},0.16)` }}
-      >
-        {c.initials}
+  const a = areaFor(c.slug);
+  const art = (
+    <div className={`ch-duo relative isolate w-full overflow-hidden ${hero ? "aspect-[4/3]" : "aspect-video"}`} style={{ ["--duo" as string]: `rgb(${rgb})` }}>
+      {/* eslint-disable-next-line @next/next/no-img-element -- pre-sized static WebP set */}
+      <img
+        src={`${a.base}-md.webp`}
+        srcSet={areaSrcSet(a.base)}
+        sizes={hero ? "(min-width: 1024px) 42vw, 100vw" : "(min-width: 1024px) 370px, (min-width: 640px) 50vw, 100vw"}
+        width={800}
+        height={450}
+        alt={`No official still of ${c.name} yet. Official screenshot of ${a.scene} instead`}
+        loading={hero ? "eager" : "lazy"}
+        decoding="async"
+        className="ch-duo__img absolute inset-0 h-full w-full object-cover"
+        style={a.pos ? { objectPosition: a.pos } : undefined}
+      />
+      <span className="ch-duo__tint" aria-hidden />
+      <span className="absolute inset-x-0 bottom-0 flex flex-col gap-1 p-4x">
+        <span aria-hidden className={`vc-display leading-none text-white drop-shadow-[0_2px_8px_rgba(0,0,0,0.7)] ${hero ? "text-5xl" : "text-3xl"}`}>
+          {c.name}
+        </span>
+        <span className="text-[0.7rem] font-semibold uppercase tracking-[0.14em] text-white/80">
+          No official still yet{a.area ? ` · Area: ${a.area}` : ""}
+        </span>
       </span>
-      <span className="vc-neon-line absolute inset-x-0 bottom-0 h-px" aria-hidden />
-      <span className="relative m-4x text-[0.6rem] font-bold uppercase tracking-[0.28em] text-muted">No official still yet</span>
     </div>
+  );
+  if (!hero) return art;
+  return (
+    <figure className="w-full">
+      <div className="overflow-hidden rounded-md border border-white/10">{art}</div>
+      <figcaption className="mt-2x text-[0.65rem] font-bold uppercase tracking-[0.18em] text-muted">Area screenshot © Rockstar Games, not a portrait</figcaption>
+    </figure>
   );
 }
 
