@@ -5,8 +5,10 @@ import { CATEGORIES } from "@/lib/map/categories";
 import { LIMITS, PIN_TYPES, typeSingular } from "@/lib/map/config";
 import type { Comment, PublicPin } from "@/lib/map/types";
 import { getLikedComments, getMyVote, getSavedGamerTag, getVoterId, saveGamerTag, setLikedComment, setMyVote } from "./local";
+import Link from "next/link";
 import { ShareButtons } from "@/components/ShareButtons";
 import { SITE } from "@/lib/seo/site";
+import { relatedPagesForPin } from "@/lib/map/related-pages";
 
 export function PinDetails({
   pin,
@@ -108,6 +110,7 @@ export function PinDetails({
   }
 
   const type = PIN_TYPES[pin.type];
+  const related = relatedPagesForPin(pin.id);
 
   return (
     <div className="flex flex-col gap-4x" data-testid="pin-details">
@@ -143,6 +146,18 @@ export function PinDetails({
 
       {pin.approximate ? (
         <p className="border-l-2 border-orange bg-orange/10 px-3x py-1x text-xs text-orange">Approximate position: confirm in game.</p>
+      ) : null}
+
+            {related.length ? (
+        <ul className="flex flex-col gap-2x" data-testid="pin-related">
+          {related.map((l) => (
+            <li key={l.href}>
+              <Link href={l.href} className="text-sm font-semibold text-orange hover:text-pink">
+                {l.label} <span aria-hidden>→</span>
+              </Link>
+            </li>
+          ))}
+        </ul>
       ) : null}
 
       {pin.image ? (
