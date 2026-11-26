@@ -36,10 +36,10 @@ export function PageHeader({
 
   if (!bg) {
     return (
-      <div className="mb-10x">
-        {kicker ? <p className="vc-kicker mb-4x">{kicker}</p> : null}
-        <h1 className="vc-heading text-[clamp(3.5rem,10vw,6.5rem)]">{title}</h1>
-        <div className="mt-6x flex items-center gap-4x">
+      <div className="mb-6x sm:mb-10x">
+        {kicker ? <p className="vc-kicker mb-2x sm:mb-4x">{kicker}</p> : null}
+        <h1 className="vc-heading text-[clamp(2.15rem,9vw,3.4rem)] leading-[0.92] sm:text-[clamp(3.5rem,10vw,6.5rem)]">{title}</h1>
+        <div className="mt-3x flex items-center gap-4x sm:mt-6x">
           <span className="vc-neon-line w-16 shrink-0" aria-hidden />
           <p className="text-xs text-muted">
             Last verified: {verified} · Source: {source}
@@ -50,11 +50,11 @@ export function PageHeader({
     );
   }
   return (
-    <div className="relative isolate mb-10x pb-16x pt-10x">
+    <div className="relative isolate mb-6x pb-8x pt-5x sm:mb-10x sm:pb-16x sm:pt-10x">
       <PageBackdrop id={bg} dim={dim} fadeTop />
-      {kicker ? <p className="vc-kicker mb-4x">{kicker}</p> : null}
-      <h1 className="vc-heading text-[clamp(3.5rem,10vw,6.5rem)]">{title}</h1>
-      <div className="mt-6x flex flex-wrap items-center gap-4x">
+      {kicker ? <p className="vc-kicker mb-2x sm:mb-4x">{kicker}</p> : null}
+      <h1 className="vc-heading text-[clamp(2.15rem,9vw,3.4rem)] leading-[0.92] sm:text-[clamp(3.5rem,10vw,6.5rem)]">{title}</h1>
+      <div className="mt-3x flex flex-wrap items-center gap-4x sm:mt-6x">
         <span className="vc-neon-line w-16 shrink-0" aria-hidden />
         <p className="text-xs text-ink-2">
           Last verified: {verified} · Source: {source}

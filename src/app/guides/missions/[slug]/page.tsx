@@ -7,6 +7,7 @@ import { PageHeader } from "@/components/PageHeader";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { Faq } from "@/components/Faq";
 import { Related } from "@/components/Related";
+import { relatedFor } from "@/lib/seo/related";
 import { Spoiler } from "@/components/guides/Spoiler";
 import { SourcesList, SpoilerWarning, StatusTag } from "@/components/guides/MissionBits";
 import { LAST_VERIFIED_LABEL, MISSIONS, NON_CHAIN_ENTRIES, ORDER_NOTE, missionBySlug, missionChapter, missionChapterOrder, missionPath } from "@/lib/guides/missions";
@@ -29,6 +30,45 @@ const MONTHS = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "
 const dateLabel = (iso: string) => `${Number(iso.slice(8, 10))} ${MONTHS[Number(iso.slice(5, 7)) - 1]} ${iso.slice(0, 4)}`;
 
 const ORDER_SENSITIVE = new Set(["prologue", "lab-fees", "just-a-scratch"]);
+
+
+function MissionHop({
+  prev,
+  next,
+  path,
+}: {
+  prev?: (typeof MISSIONS)[number];
+  next?: (typeof MISSIONS)[number];
+  path: string;
+}) {
+  const skip = new Set([prev ? missionPath(prev.slug) : "", next ? missionPath(next.slug) : "", path]);
+  const related = relatedFor(path, 4).filter((r) => !skip.has(r.href)).slice(0, 2);
+  return (
+    <nav aria-label="Continue reading" className="mt-6x border-t border-pink/20 pt-4x">
+      <p className="vc-kicker">Keep going</p>
+      <ul className="mt-3x flex flex-col gap-2x text-sm">
+        <li>
+          {next ? (
+            <Link href={missionPath(next.slug)} className="font-semibold text-orange hover:text-pink">
+              Next: {next.hidden ? "Next mission" : next.name} <span aria-hidden>→</span>
+            </Link>
+          ) : (
+            <Link href="/guides/missions" className="font-semibold text-orange hover:text-pink">
+              All missions <span aria-hidden>→</span>
+            </Link>
+          )}
+        </li>
+        {related.map((r) => (
+          <li key={r.href}>
+            <Link href={r.href} className="text-ink-2 hover:text-pink">
+              {r.title}
+            </Link>
+          </li>
+        ))}
+      </ul>
+    </nav>
+  );
+}
 
 export default async function MissionPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
@@ -72,10 +112,10 @@ export default async function MissionPage({ params }: { params: Promise<{ slug: 
         source={m.sourceLabel ?? (m.sources.some((x) => x.id === "vgc") ? "PC Gamer, Press Start, VGC, PowerPyx" : "PC Gamer, Press Start, PowerPyx")}
       />
 
-      <SpoilerWarning />
-
       <div className="grid gap-10x lg:grid-cols-12">
         <div className="lg:col-span-7">
+          <SpoilerWarning />
+
           <div className="max-w-2xl space-y-4x text-lg text-ink-2">
             {m.intro.map((p) => (
               <p key={p}>{p}</p>
@@ -156,9 +196,17 @@ export default async function MissionPage({ params }: { params: Promise<{ slug: 
                 </div>
               ))}
             </dl>
+            {m.map ? (
+              <p className="mt-4x text-sm">
+                <Link href={m.map.href} className="font-semibold text-orange hover:text-pink">
+                  {m.map.label} <span aria-hidden>→</span>
+                </Link>
+              </p>
+            ) : null}
             <p className="mt-4x text-xs text-muted">
               <span className="text-turq">Confirmed</span>: two or more sources agree. <span className="text-orange">Reported</span>: one walkthrough says so.
             </p>
+            <MissionHop prev={prev} next={next} path={path} />
           </div>
         </aside>
       </div>

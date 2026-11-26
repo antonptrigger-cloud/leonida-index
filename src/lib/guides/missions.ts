@@ -55,6 +55,8 @@ export interface Mission {
   name: string;
   /** Map / phone label shown before the mission starts, when known. */
   startLabel?: string;
+  /** Visible (non-spoiler) place on our map, when a matching pin already exists. */
+  map?: { href: string; label: string };
   seoTitle: string;
   seoDescription: string;
   /** Non-spoiler premise in our own words, safe to show by default. */
@@ -230,6 +232,7 @@ export const MISSIONS: Mission[] = [
     slug: "gone-fishing",
     order: 2,
     name: "Gone Fishing",
+    map: { href: "/map?pin=seed-mariana-county", label: "Mariana County on the map" },
     seoTitle: "GTA 6 Gone Fishing Mission Guide: Walkthrough & Tips",
     seoDescription:
       "GTA 6 Gone Fishing guide: Jason's first mission, a smuggling pickup with Cal and Donnie. Objectives, stealth tips and the reported reward, spoilers hidden.",
@@ -296,6 +299,7 @@ export const MISSIONS: Mission[] = [
     order: 3,
     name: "Gear Up",
     startLabel: "Pick Up Another Gun",
+    map: { href: "/map?pin=seed-key-lento", label: "Key Lento on the map" },
     seoTitle: "GTA 6 Gear Up Mission Guide: Buying Your First Longarm",
     seoDescription:
       "GTA 6 Gear Up (Pick Up Another Gun) guide: where to go, which longarm you can afford and what to expect when you leave the store. Spoilers hidden.",
