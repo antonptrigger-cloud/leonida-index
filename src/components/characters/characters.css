@@ -1,0 +1,99 @@
+/* Duotone area art for characters with no official still (see CharacterPlaceholder). */
+.ch-duo {
+  background: #1a0d26;
+}
+.ch-duo__img {
+  filter: grayscale(1) contrast(1.1) brightness(1);
+}
+.ch-duo__tint {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(160deg, var(--duo, #ff2d78) 0%, #3b1a6b 55%, #0f0716 100%);
+  mix-blend-mode: color;
+  opacity: 0.8;
+}
+.ch-duo::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background: linear-gradient(180deg, rgba(10, 10, 11, 0) 45%, rgba(10, 10, 11, 0.8) 100%);
+}
+.ch-duo > span:last-child {
+  z-index: 1;
+}
+
+/* Character cards on /database/characters. */
+.ch-grid {
+  display: grid;
+  gap: 1.25rem;
+  grid-template-columns: minmax(0, 1fr);
+}
+@media (min-width: 640px) {
+  .ch-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+@media (min-width: 1024px) {
+  .ch-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+.ch-grid > li {
+  display: flex;
+}
+.ch-card {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 6px;
+  background: #121117;
+  transition: border-color 0.2s ease, transform 0.25s var(--ease-out), box-shadow 0.25s ease;
+}
+.ch-card:hover,
+.ch-card:focus-visible {
+  border-color: rgba(255, 45, 120, 0.55);
+  box-shadow: 0 10px 30px -12px rgba(255, 45, 120, 0.35);
+  transform: translateY(-2px);
+}
+.ch-card__body {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 0.35rem;
+  padding: 1rem 1.125rem 1.125rem;
+}
+.ch-card__name {
+  font-family: var(--font-display);
+  font-size: 1.75rem;
+  line-height: 1;
+  text-transform: uppercase;
+  color: var(--color-ink);
+}
+.ch-card__role {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-pink-2);
+}
+.ch-card__summary {
+  margin-top: 0.25rem;
+  font-size: 0.9375rem;
+  line-height: 1.55;
+  color: var(--color-ink-2);
+}
+.ch-credit {
+  margin-top: 0.75rem;
+  font-size: 0.6875rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-faint);
+}
+@media (prefers-reduced-motion: reduce) {
+  .ch-card:hover {
+    transform: none;
+  }
+}
