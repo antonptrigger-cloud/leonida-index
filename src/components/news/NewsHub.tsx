@@ -1,42 +1,14 @@
-import { Fragment } from "react";
 import Link from "next/link";
 import "./news-hub.css";
 import { HubGrid } from "@/components/hub/HubGrid";
-import { categoryMeta, clock, shortDate, updatedLabel, type Accent, type IndexEntry, type NewsCategory } from "@/lib/news/hub";
+import { categoryMeta, clock, shortDate, updatedLabel, type IndexEntry, type NewsCategory } from "@/lib/news/hub";
 
 /*
- * Building blocks for the /news index ("newsroom wire" look): ticker, lead card, top-story list, live-tracker
- * cards, archive with CSS-only topic filter. Section titles, the jump bar and the card grid come from the shared
+ * Building blocks for the /news index: lead card (official screenshot), top-story list, live-tracker
+ * cards and the dated archive. Search, topic chips and sort are in NewsBrowser. Section titles, the jump bar and the card grid come from the shared
  * src/components/hub/ set (so /guides and /news match); everything here is news-specific (`nh-` classes, no client JS).
  * The page wrapper needs both `gh-hub` (shared accent vars, section rhythm) and `nh-hub`.
  */
-
-/** Scrolling headline strip. Purely decorative (aria-hidden, not focusable): every headline is also a real link below. */
-export function Ticker({ items }: { items: { label: string; text: string }[] }) {
-  if (!items.length) return null;
-  const run = (hidden: boolean) => (
-    <ul className="nh-ticker__run" aria-hidden={hidden || undefined}>
-      {items.map((t, i) => (
-        <li key={`${t.text}-${i}`}>
-          <b>{t.label}</b> {t.text}
-        </li>
-      ))}
-    </ul>
-  );
-  return (
-    <div className="nh-ticker" aria-hidden>
-      <span className="nh-ticker__tag">
-        <i /> Latest
-      </span>
-      <div className="nh-ticker__track">
-        <div className="nh-ticker__belt">
-          {run(false)}
-          {run(true)}
-        </div>
-      </div>
-    </div>
-  );
-}
 
 function Pill({ category, label }: { category: NewsCategory; label?: string }) {
   const c = categoryMeta(category);
@@ -47,20 +19,43 @@ function Pill({ category, label }: { category: NewsCategory; label?: string }) {
   );
 }
 
-/** Big "Latest" card. The art panel is a CSS colour-bar test card showing the publish time. */
+/** Official screenshot per topic for the lead card (files in /public/backgrounds, with -md and -sm sizes). */
+const LEAD_ART: Record<NewsCategory, { file: string; alt: string }> = {
+  launch: { file: "official-marina", alt: "Vice City marina and skyline" },
+  servers: { file: "official-sunset", alt: "Vice City at dusk" },
+  reviews: { file: "official-keys", alt: "A seaplane over the Leonida Keys" },
+  sales: { file: "official-marina", alt: "Vice City marina and skyline" },
+  events: { file: "official-sunset", alt: "Vice City at dusk" },
+  streamers: { file: "official-sunset", alt: "Vice City at dusk" },
+  platforms: { file: "official-keys", alt: "A seaplane over the Leonida Keys" },
+  music: { file: "official-sunset", alt: "Vice City at dusk" },
+  glitches: { file: "official-swamp", alt: "The Grassrivers from the air" },
+  traffic: { file: "official-swamp", alt: "The Grassrivers from the air" },
+};
+
+/** Big "Latest" card: official screenshot on top, then the headline. */
 export function LeadCard({ item }: { item: IndexEntry }) {
   const c = categoryMeta(item.category);
+  const art = LEAD_ART[item.category] ?? LEAD_ART.launch;
+  const base = `/backgrounds/${art.file}`;
   return (
     <Link href={item.href} className="nh-lead" data-accent={c.accent}>
       <span className="nh-lead__body">
-        <span className="nh-lead__art" aria-hidden>
-          <span className="nh-bars" />
-          <span className="nh-lead__clock">
-            <em>Posted</em>
-            <strong>{clock(item.published)}</strong>
-            <small>AEST · {shortDate(item.published)}</small>
-          </span>
+        <span className="nh-lead__art">
+          {/* eslint-disable-next-line @next/next/no-img-element -- pre-sized static WebP set */}
+          <img
+            src={`${base}-md.webp`}
+            srcSet={`${base}-sm.webp 720w, ${base}-md.webp 1080w, ${base}.webp 1600w`}
+            sizes="(min-width: 1152px) 660px, (min-width: 768px) 58vw, 100vw"
+            width={1080}
+            height={608}
+            alt=""
+            loading="lazy"
+            decoding="async"
+            className="nh-lead__img"
+          />
           <span className="nh-lead__badge">Latest</span>
+          <span className="nh-lead__credit">© Rockstar Games</span>
         </span>
         <span className="nh-lead__copy">
           <span className="nh-lead__meta">
@@ -148,37 +143,10 @@ export function LiveStrip({ items, now }: { items: IndexEntry[]; now: Date }) {
   );
 }
 
-/**
- * Archive: dense dated rows grouped Today / This week / Earlier, with topic chips.
- * The filter is CSS only (radio inputs + :has in news-hub.css), so it works with no JavaScript.
- */
-export function Archive({
-  groups,
-  counts,
-  total,
-}: {
-  groups: { id: string; label: string; items: IndexEntry[] }[];
-  counts: { id: NewsCategory; label: string; accent: Accent; count: number }[];
-  total: number;
-}) {
+/** Archive: dense dated rows grouped Today / This week / Earlier. Search and topic filters live in NewsBrowser. */
+export function Archive({ groups }: { groups: { id: string; label: string; items: IndexEntry[] }[] }) {
   return (
     <div className="nh-archive">
-      <fieldset className="nh-filter">
-        <legend className="sr-only">Filter the archive by topic</legend>
-        <input type="radio" name="nh-topic" id="nh-f-all" className="nh-filter__input" defaultChecked />
-        <label htmlFor="nh-f-all" className="nh-chip" data-accent="pink">
-          All <span>{total}</span>
-        </label>
-        {counts.map((c) => (
-          <Fragment key={c.id}>
-            <input type="radio" name="nh-topic" id={`nh-f-${c.id}`} className="nh-filter__input" />
-            <label htmlFor={`nh-f-${c.id}`} className="nh-chip" data-accent={c.accent}>
-              {c.label} <span>{c.count}</span>
-            </label>
-          </Fragment>
-        ))}
-      </fieldset>
-
       {groups.map((g) => (
         <section key={g.id} className="nh-group" aria-labelledby={`nh-g-${g.id}`}>
           <h3 id={`nh-g-${g.id}`} className="nh-group__title">
