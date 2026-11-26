@@ -130,6 +130,7 @@ function buildItems(): Item[] {
       title: m.name,
       label: `Mission guide ${String(m.order).padStart(2, "0")}`,
       section: "guide",
+      blurb: "Step-by-step walkthrough. Story details stay blurred until you reveal them.",
       tags: tagsFromText(text),
       date: "2026-11-18",
     });
@@ -245,8 +246,8 @@ function buildItems(): Item[] {
 
   // Section hubs, pinned by rule (see relatedFor): all missions for mission pages, all guides for news.
   items.push(
-    { href: "/guides/missions", title: "All missions in order", label: "Walkthrough hub", section: "guide", hub: true, tags: new Set(), date: "" },
-    { href: "/guides", title: "All guides", label: "Guides hub", section: "guide", hub: true, tags: new Set(), date: "" },
+    { href: "/guides/missions", title: "All missions in order", label: "Walkthrough hub", section: "guide", blurb: "Every story mission in order, with walkthroughs as they go live.", hub: true, tags: new Set(), date: "" },
+    { href: "/guides", title: "All guides", label: "Guides hub", section: "guide", blurb: "Missions, money, trophies, the wanted system and more.", hub: true, tags: new Set(), date: "" },
   );
 
   // Map pages: linked to, never modified. Tagged with their own region.
@@ -260,6 +261,7 @@ function buildItems(): Item[] {
       title: r.crumb,
       label: MAP_LABEL[href] ?? "Map",
       section: "map",
+      blurb: r.description,
       tags,
       date: "2026-11-18",
     });
@@ -332,7 +334,7 @@ export const MIN_LINKS = 4;
 
 const SECTION_ORDER: Section[] = ["character", "map", "guide", "news"];
 
-/** Drop internal scoring fields. Missions carry no blurb (their teasers are light spoilers). */
+/** Drop internal scoring fields. Missions get a generic blurb, never their teasers (light spoilers). */
 const strip = ({ tags: _t, date: _d, hub: _h, ...rest }: Item): RelatedItem => {
   void _t; void _d; void _h;
   return rest;

@@ -47,6 +47,7 @@ export function PageBackdrop({
   fadeTop = false,
   contained = false,
   fadeBottom = true,
+  credit = true,
 }: {
   id: BackdropId;
   dim?: Dim;
@@ -58,6 +59,8 @@ export function PageBackdrop({
   contained?: boolean;
   /** Fade the bottom edge into the page background (off for thin strips). */
   fadeBottom?: boolean;
+  /** Draw the "© Rockstar Games" line. Turn off only when the page credits the image elsewhere in view. */
+  credit?: boolean;
 }) {
   const b = BACKDROPS[id];
   const d = DIM[dim];
@@ -106,7 +109,7 @@ export function PageBackdrop({
             : `linear-gradient(180deg, rgba(26,10,46,${d.top}) 0%, rgba(20,8,36,${d.mid}) 100%)`,
         }}
       />
-      {"official" in b && b.official ? (
+      {credit && "official" in b && b.official ? (
         <p className="absolute bottom-[14%] right-4 text-[0.6rem] font-semibold uppercase tracking-[0.16em] text-white/65 drop-shadow-[0_1px_2px_rgba(0,0,0,0.85)] sm:right-6">
           © Rockstar Games
         </p>

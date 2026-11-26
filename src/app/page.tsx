@@ -2,7 +2,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { PageBackdrop } from "@/components/PageBackdrop";
 import { Palm } from "@/components/Palm";
-import { Scenery, SKIES, type SceneId } from "@/components/Scenery";
+import { ShotImage } from "@/components/media/ShotImage";
+import { SHOT_CREDIT, type ShotId } from "@/lib/media/shots";
 import { MissionSearch } from "@/components/guides/MissionSearch";
 import { HomeLocationSearch } from "@/components/home/HomeLocationSearch";
 import { WhatsNew } from "@/components/WhatsNew";
@@ -12,6 +13,7 @@ import { SEED_PINS } from "@/lib/map/seed";
 import { toPublicPin } from "@/lib/map/types";
 import { metaFor } from "@/lib/seo/site";
 import { PageSchema } from "@/lib/seo/jsonld";
+import "@/components/cards/media-card.css";
 
 const MISSION_SEARCH_ITEMS = buildMissionSearchIndex();
 const HOME_PINS = SEED_PINS.filter((p) => !p.spoiler).map(toPublicPin);
@@ -27,15 +29,16 @@ const GUIDE = [
 ];
 
 type Destination = {
-  slug: SceneId;
+  slug: ShotId;
   name: string;
   tagline: string;
-  /** grid placement + shape treatment */
+  /** grid placement */
   cell: string;
-  shape?: string;
   nameSize: string;
-  offset?: boolean;
+  sizes: string;
 };
+
+const SMALL = "(min-width: 768px) 360px, 50vw";
 
 const DESTINATIONS: Destination[] = [
   {
@@ -43,52 +46,15 @@ const DESTINATIONS: Destination[] = [
     name: "Vice City",
     tagline: "Sun and fun capital. Art deco, beaches, the port.",
     cell: "col-span-2 row-span-2 md:col-span-4",
-    shape: "[clip-path:polygon(0_0,calc(100%-40px)_0,100%_40px,100%_100%,0_100%)]",
-    nameSize: "text-[clamp(4rem,10vw,7.5rem)]",
+    nameSize: "text-[clamp(3rem,7vw,5rem)]",
+    sizes: "(min-width: 768px) 740px, 100vw",
   },
-  {
-    slug: "leonida-keys",
-    name: "Leonida Keys",
-    tagline: "Islands, boats, beach bars and scuba.",
-    cell: "col-span-2 md:col-span-2",
-    shape: "rounded-tr-[3rem]",
-    nameSize: "text-[2.6rem]",
-  },
-  {
-    slug: "grassrivers",
-    name: "Grassrivers",
-    tagline: "Mangroves, airboats and gators.",
-    cell: "col-span-1 md:col-span-2",
-    nameSize: "text-[2.2rem] md:text-[2.6rem]",
-    offset: true,
-  },
-  {
-    slug: "port-gellhorn",
-    name: "Port Gellhorn",
-    tagline: "A faded resort on the west coast.",
-    cell: "col-span-1 md:col-span-2",
-    shape: "rounded-bl-[3rem]",
-    nameSize: "text-[2.2rem] md:text-[2.6rem]",
-  },
-  {
-    slug: "ambrosia",
-    name: "Ambrosia",
-    tagline: "Sugar refinery country. Bikers, old-school values.",
-    cell: "col-span-1 md:col-span-2",
-    offset: true,
-    nameSize: "text-[2.2rem] md:text-[2.6rem]",
-  },
-  {
-    slug: "mount-kalaga",
-    name: "Mount Kalaga",
-    tagline: "National park. Hunting, fishing, trails.",
-    cell: "col-span-1 md:col-span-2",
-    shape: "[clip-path:polygon(0_0,100%_0,100%_calc(100%-28px),calc(100%-28px)_100%,0_100%)]",
-    nameSize: "text-[2.2rem] md:text-[2.6rem]",
-  },
+  { slug: "leonida-keys", name: "Leonida Keys", tagline: "Islands, boats, beach bars and scuba.", cell: "col-span-2 md:col-span-2", nameSize: "text-[2rem] md:text-[2.25rem]", sizes: "(min-width: 768px) 360px, 100vw" },
+  { slug: "grassrivers", name: "Grassrivers", tagline: "Mangroves, airboats and gators.", cell: "col-span-1 md:col-span-2", nameSize: "text-[1.6rem] md:text-[2.25rem]", sizes: SMALL },
+  { slug: "port-gellhorn", name: "Port Gellhorn", tagline: "A faded resort on the west coast.", cell: "col-span-1 md:col-span-2", nameSize: "text-[1.6rem] md:text-[2.25rem]", sizes: SMALL },
+  { slug: "ambrosia", name: "Ambrosia", tagline: "Sugar refinery country. Bikers, old-school values.", cell: "col-span-1 md:col-span-2", nameSize: "text-[1.6rem] md:text-[2.25rem]", sizes: SMALL },
+  { slug: "mount-kalaga", name: "Mount Kalaga", tagline: "National park. Hunting, fishing, trails.", cell: "col-span-1 md:col-span-2", nameSize: "text-[1.6rem] md:text-[2.25rem]", sizes: SMALL },
 ];
-
-const TICKER = ["Interactive map", "Wanted system", "Six regions", "Characters", "Community pins", "Editions", "Secrets", "19.11.2026"];
 
 function SectionTitle({ num, kicker, title, children }: { num: string; kicker: string; title: string; children?: React.ReactNode }) {
   return (
@@ -111,9 +77,9 @@ export default function Home() {
   return (
     <div className="flex flex-col gap-24x pb-16x">
       <PageSchema path="/" />
-      {/* ---------- Hero: split, left-aligned headline, overlapping postcard ---------- */}
+      {/* ---------- Hero: split, left-aligned headline, official photo frame ---------- */}
       <section className="relative isolate -mt-10x grid items-center gap-10x pt-[3.5rem] md:grid-cols-12 md:gap-0 md:pt-[5rem]">
-        <PageBackdrop id="car" dim="strong" priority />
+        <PageBackdrop id="car" dim="strong" priority credit={false} />
         <div className="pointer-events-none absolute inset-0 overflow-hidden" aria-hidden>
           <Palm className="absolute -left-24 -top-6 h-[110%] w-auto text-pink opacity-[0.06]" />
         </div>
@@ -154,43 +120,17 @@ export default function Home() {
         </div>
 
         <div className="relative px-2x pb-6x md:col-span-5 md:-ml-10x md:px-0">
-          <div className="vc-postcard">
-            <div className="vc-postcard__scene">
-              <div className="vc-postcard__sea" />
-              <Palm className="absolute bottom-0 left-[-4%] h-[85%] w-auto text-[#0a0710]" />
-              <Palm flip className="absolute bottom-0 right-[-3%] h-[70%] w-auto text-[#0a0710]" />
-              <div className="vc-postcard__word">
-                <em>Greetings from</em>
-                <strong>Leonida</strong>
-              </div>
-            </div>
-            <div className="vc-stamp" aria-hidden>
-              Vice
-              <br />
-              City
-              <br />
-              ✦ 2026 ✦
-            </div>
-          </div>
-          <p className="mt-6x text-right text-[0.7rem] font-semibold uppercase tracking-[0.3em] text-faint">
-            Wish you were here
-          </p>
+          <Link href="/map/leonida-keys" className="hm-frame group block">
+            <span className="hm-frame__img">
+              <ShotImage id="leonida-keys" sizes="(min-width: 768px) 440px, 100vw" />
+            </span>
+            <span className="hm-frame__cap">
+              <strong>Leonida Keys</strong>
+              <span>Images {SHOT_CREDIT}</span>
+            </span>
+          </Link>
         </div>
       </section>
-
-      {/* ---------- Ticker ---------- */}
-      <div className="vc-full-bleed -my-16x overflow-hidden py-10x" aria-hidden>
-        <div className="vc-ticker">
-          <div className="vc-ticker__track vc-display text-[1.6rem] leading-none">
-            {[...TICKER, ...TICKER].map((t, i) => (
-              <span key={i} className="flex items-center gap-[2.5rem]">
-                {t}
-                <span className="text-[0.9rem]">✦</span>
-              </span>
-            ))}
-          </div>
-        </div>
-      </div>
 
       {/* ---------- Quick search: missions and locations (no map bundle) ---------- */}
       <section aria-labelledby="home-find">
@@ -282,26 +222,19 @@ export default function Home() {
       {/* ---------- Destinations: travel-poster bento ---------- */}
       <section>
         <SectionTitle num="02" kicker="Destinations" title="Six regions, one state">
-          Pick a postcard. Each region has a guide and its own layer on the map.
+          Pick a region. Each one has a guide and its own layer on the map.
         </SectionTitle>
-        <div className="grid auto-rows-[12.5rem] grid-cols-2 gap-4x md:grid-cols-6 md:auto-rows-[14rem] md:gap-6x">
+        <div className="grid auto-rows-[11rem] grid-cols-2 gap-3x md:auto-rows-[13rem] md:grid-cols-6 md:gap-4x">
           {DESTINATIONS.map((d, i) => (
-            <div key={d.slug} className={`${d.cell} ${d.offset ? "vc-offset" : ""}`}>
-              <Link
-                href={`/map/${d.slug}`}
-                className={`vc-poster h-full ${d.shape ?? ""}`}
-                style={{ ["--sky" as string]: SKIES[d.slug] }}
-              >
-                <span className="vc-poster__art">
-                  <Scenery id={d.slug} />
+            <div key={d.slug} className={d.cell}>
+              <Link href={`/map/${d.slug}`} className="hm-region group">
+                <span className="hm-region__img">
+                  <ShotImage id={d.slug} sizes={d.sizes} />
                 </span>
-                <span className="vc-poster__no">No. {String(i + 1).padStart(2, "0")}</span>
-                <span className={`vc-poster__name ${d.nameSize}`}>{d.name}</span>
-                <span className={`mt-1x block max-w-[30ch] text-[0.8rem] leading-snug text-white/90 ${i === 0 ? "md:text-sm" : ""}`}>
-                  {d.tagline}
-                </span>
+                <span className={`hm-region__name ${d.nameSize}`}>{d.name}</span>
+                <span className={`hm-region__tag ${i === 0 ? "md:text-[0.95rem]" : ""}`}>{d.tagline}</span>
                 {i === 0 ? (
-                  <span className="vc-poster__go">
+                  <span className="hm-region__go">
                     Explore Vice City <span aria-hidden>→</span>
                   </span>
                 ) : null}
@@ -309,6 +242,7 @@ export default function Home() {
             </div>
           ))}
         </div>
+        <p className="mc-credit">Screenshots {SHOT_CREDIT}</p>
       </section>
 
       {/* ---------- Community call to action ---------- */}

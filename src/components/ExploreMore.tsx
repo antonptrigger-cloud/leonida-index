@@ -1,6 +1,6 @@
 "use client";
 
-import Link from "next/link";
+import { MediaGrid } from "@/components/cards/MediaCard";
 import { usePathname } from "next/navigation";
 
 const FALLBACK: { href: string; label: string; title: string; blurb: string }[] = [
@@ -40,21 +40,11 @@ export function ExploreMore() {
   const items = FALLBACK.filter((i) => i.href !== path).slice(0, 4);
   if (!items.length) return null;
   return (
-    <section aria-labelledby="explore-more" className="mt-16x border-t border-pink/20 pt-8x">
-      <h2 id="explore-more" className="vc-display text-3xl text-ink">
+    <section aria-labelledby="explore-more" className="mt-16x border-t border-white/10 pt-10x">
+      <h2 id="explore-more" className="vc-display text-3xl text-ink md:text-4xl">
         Keep exploring
       </h2>
-      <ul className="mt-6x grid gap-4x sm:grid-cols-2 lg:grid-cols-4">
-        {items.map((r) => (
-          <li key={r.href}>
-            <Link href={r.href} className="vc-card group block h-full p-4x">
-              <span className="text-xs uppercase tracking-[0.2em] text-muted">{r.label}</span>
-              <span className="vc-display mt-1x block text-2xl leading-tight text-ink group-hover:text-pink">{r.title}</span>
-              <span className="mt-2x block text-sm text-ink-2">{r.blurb}</span>
-            </Link>
-          </li>
-        ))}
-      </ul>
+      <MediaGrid className="mt-6x" cols={4} items={items.map((r) => ({ href: r.href, title: r.title, kicker: r.label, blurb: r.blurb }))} />
     </section>
   );
 }

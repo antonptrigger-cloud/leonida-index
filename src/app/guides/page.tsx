@@ -3,8 +3,7 @@ import { metaFor, ROUTES, absoluteUrl } from "@/lib/seo/site";
 import { JsonLd, PageSchema } from "@/lib/seo/jsonld";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { SectionTitle } from "@/components/hub/SectionTitle";
-import { TapeCard } from "@/components/hub/TapeCard";
-import { HubGrid } from "@/components/hub/HubGrid";
+import { MediaCard, MediaGrid, MediaRow } from "@/components/cards/MediaCard";
 import { JumpNav } from "@/components/hub/JumpNav";
 import "@/components/hub/hub.css";
 import { PageBackdrop } from "@/components/PageBackdrop";
@@ -15,22 +14,6 @@ import { HUB_SECTIONS, START_FEATURE, START_SIDE, hubGuides, type Accent, type H
 export const metadata = metaFor("/guides");
 
 const norm = (t: string) => t.toLowerCase().replace(/[^a-z0-9]/g, "");
-
-function Cassette({ label, tracks }: { label: string; tracks: number }) {
-  return (
-    <span className="gh-cassette" aria-hidden>
-      <span className="gh-cassette__label">
-        <em>Side A · {tracks} tracks</em>
-        <strong>{label}</strong>
-      </span>
-      <span className="gh-cassette__deck">
-        <i />
-        <b />
-        <i />
-      </span>
-    </span>
-  );
-}
 
 export default function Guides() {
   const all = hubGuides();
@@ -77,14 +60,6 @@ export default function Guides() {
         {/* ---------- Hero ---------- */}
         <section className="relative isolate pb-10x pt-6x md:pt-10x" aria-labelledby="guides-title">
           <PageBackdrop id="boat" dim="strong" fadeTop />
-          <p className="gh-osd" aria-hidden>
-            <span>
-              <i /> Play
-            </span>
-            <span className="gh-osd__rec">
-              <i /> Rec
-            </span>
-          </p>
           <p className="vc-kicker mb-4x">Guides</p>
           <h1 id="guides-title" className="vc-heading text-[clamp(3.5rem,11vw,7.5rem)]">
             How to play Leonida
@@ -119,49 +94,30 @@ export default function Guides() {
         </SectionTitle>
         <div className="grid gap-10x md:grid-cols-12 md:gap-gutter">
           {feature ? (
-            <Link href={feature.href} className="gh-feature md:col-span-7" data-accent="pink">
-              <span className="gh-feature__body">
-                <span className="gh-feature__art">
-                  <Cassette label="All missions" tracks={STORY_TOTAL} />
-                  <span className="gh-feature__badge">Most read · {feature.tag}</span>
-                </span>
-                <span className="gh-feature__copy">
-                  <span className="vc-display block text-[clamp(2.75rem,6vw,4.25rem)] leading-[0.85] text-ink">{feature.title}</span>
-                  <span className="mt-2x block max-w-[46ch] text-sm leading-relaxed text-muted">{feature.blurb}</span>
-                  <span className="gh-progress mt-4x" aria-hidden>
-                    {STORY_CHAPTERS.map((c) => (
-                      <span key={c.number} data-live={c.number === 1} style={{ flexGrow: c.missions.length }} />
-                    ))}
-                  </span>
-                  <span className="mt-2x block text-xs text-faint">
-                    {STORY_TOTAL} missions · {STORY_CHAPTERS.length} chapters · {live} of {chapter1.missions.length} Chapter 1 walkthroughs live
-                  </span>
-                  <span className="gh-card__go mt-4x">
-                    Open the list <span aria-hidden>→</span>
-                  </span>
-                </span>
-              </span>
-            </Link>
+            <div className="gh-start-feature md:col-span-7">
+              <MediaCard
+                feature
+                headingLevel={3}
+                sizes="(min-width: 1152px) 660px, (min-width: 768px) 58vw, 100vw"
+                item={{
+                  href: feature.href,
+                  title: feature.title,
+                  kicker: `Most read · ${feature.tag}`,
+                  blurb: `${feature.blurb} ${STORY_TOTAL} missions across ${STORY_CHAPTERS.length} chapters, ${live} of ${chapter1.missions.length} Chapter 1 walkthroughs live.`,
+                }}
+              />
+            </div>
           ) : null}
 
-          <ol className="flex flex-col border-t border-pink/20 md:col-span-5">
-            {side.map((g, i) => (
+          <ol className="flex flex-col border-t border-white/10 md:col-span-5">
+            {side.map((g) => (
               <li key={g.href}>
-                <Link href={g.href} className="vc-index-row gh-row" data-accent={g.accent}>
-                  <span className="vc-index-row__num">{String(i + 2).padStart(2, "0")}</span>
-                  <span className="relative">
-                    <span className="gh-pill">{g.tag}</span>
-                    <span className="vc-display mt-1x block text-[1.75rem] leading-none text-ink">{g.title}</span>
-                    <span className="mt-1x block text-[0.8rem] text-muted">{g.blurb}</span>
-                  </span>
-                  <span className="vc-index-row__arrow relative text-xl" aria-hidden>
-                    →
-                  </span>
-                </Link>
+                <MediaRow item={{ href: g.href, title: g.title, kicker: g.tag, blurb: g.blurb }} />
               </li>
             ))}
           </ol>
         </div>
+        <p className="mc-credit">Screenshots © Rockstar Games</p>
       </section>
 
       {/* ---------- 02 Story missions ---------- */}
@@ -248,13 +204,7 @@ export default function Guides() {
           <SectionTitle id="progression-title" num="03" kicker={HUB_SECTIONS[1].kicker} title={HUB_SECTIONS[1].title}>
             {HUB_SECTIONS[1].blurb}
           </SectionTitle>
-          <HubGrid count={money.length}>
-            {money.map((g, i) => (
-              <li key={g.href}>
-                <TapeCard href={g.href} title={g.title} blurb={g.blurb} tag={g.tag} accent={g.accent} file={i + 1} tilt={i % 2 ? 1 : -1} />
-              </li>
-            ))}
-          </HubGrid>
+          <MediaGrid cols={money.length >= 4 ? 4 : 3} items={money.map((g) => ({ href: g.href, title: g.title, kicker: g.tag, blurb: g.blurb }))} />
         </section>
       ) : null}
 
@@ -264,13 +214,7 @@ export default function Guides() {
           <SectionTitle id="systems-title" num="04" kicker={HUB_SECTIONS[2].kicker} title={HUB_SECTIONS[2].title}>
             {HUB_SECTIONS[2].blurb}
           </SectionTitle>
-          <HubGrid count={systems.length} stagger>
-            {systems.map((g, i) => (
-              <li key={g.href}>
-                <TapeCard href={g.href} title={g.title} blurb={g.blurb} tag={g.tag} accent={g.accent} file={i + 1} tilt={i % 2 ? 1 : -1} />
-              </li>
-            ))}
-          </HubGrid>
+          <MediaGrid cols={3} items={systems.map((g) => ({ href: g.href, title: g.title, kicker: g.tag, blurb: g.blurb }))} />
         </section>
       ) : null}
 
