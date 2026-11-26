@@ -12,7 +12,7 @@ export default function Page() {
     <div>
       <PageSchema path="/guides/stealing-cars" breadcrumbs={false} />
       <Breadcrumbs path="/guides/stealing-cars" />
-      <PageHeader backdrop="boat" kicker="Guide" title="Stealing cars" source="Showcase" />
+      <PageHeader backdrop="boat" kicker="Guide" title="Stealing cars" source="Showcase" verified="after launch" />
       <div className="max-w-xl space-y-4 text-ink-2">
         <p>Older cars can be broken into and hot-wired.</p>
         <p>Newer cars need more than a simple break-in. Plan thefts by the age of the vehicle, not just the model name.</p>

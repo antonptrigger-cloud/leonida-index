@@ -37,7 +37,7 @@ export interface PlainSource {
 
 export function SourcesList({
   sources,
-  verified = { iso: LAST_VERIFIED, label: `${LAST_VERIFIED_LABEL} (pre-launch)` },
+  verified = { iso: LAST_VERIFIED, label: LAST_VERIFIED_LABEL },
   blurLinks = false,
   blurLabel = "source links (the web addresses name the mission)",
 }: {

@@ -12,7 +12,7 @@ export default function Page() {
     <div>
       <PageSchema path="/guides/activities" breadcrumbs={false} />
       <Breadcrumbs path="/guides/activities" />
-      <PageHeader backdrop="boat" kicker="Guide" title="Activities" source="Showcase" />
+      <PageHeader backdrop="boat" kicker="Guide" title="Activities" source="Showcase" verified="after launch" />
       <ul className="max-w-xl list-disc space-y-2 pl-5 text-ink-2">
         <li>Gym and food / drink that change how you feel in the moment</li>
         <li>Scuba, kayak, swim, jet ski, fish</li>

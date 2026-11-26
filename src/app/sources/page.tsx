@@ -8,7 +8,7 @@ export default function Page() {
     <div>
       <PageSchema path="/sources" breadcrumbs={false} />
       <Breadcrumbs path="/sources" />
-      <PageHeader kicker="About" title="How we label facts" source="Editorial" />
+      <PageHeader kicker="About" title="How we label facts" source="Editorial" verified="after launch" />
       <ul className="max-w-xl space-y-3 text-ink-2">
         <li><strong className="text-orange">Official</strong> — Rockstar or Take-Two.</li>
         <li><strong className="text-orange">Showcase</strong> — trailers and the Extended Look.</li>

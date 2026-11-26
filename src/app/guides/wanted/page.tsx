@@ -11,7 +11,7 @@ export default function Page() {
     <div>
       <PageSchema path="/guides/wanted" breadcrumbs={false} />
       <Breadcrumbs path="/guides/wanted" />
-      <PageHeader backdrop="boat" kicker="Guide" title="Wanted system" source="Showcase" />
+      <PageHeader backdrop="boat" kicker="Guide" title="Wanted system" source="Showcase" verified="after launch" />
       <div className="max-w-xl space-y-4 text-ink-2">
         <p>Six-star wanted returns. A crime needs a witness or an alarm before heat starts.</p>
         <p>Hollow stars mean police do not know what you look like. Leave the hot area clean and you can drop it.</p>
