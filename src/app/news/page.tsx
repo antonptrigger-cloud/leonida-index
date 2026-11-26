@@ -40,7 +40,7 @@ export default function Page() {
 
         {/* ---------- Hero ---------- */}
         <section className="relative isolate pb-6x pt-6x md:pt-10x" aria-labelledby="news-title">
-          <PageBackdrop id="skyline" dim="strong" fadeTop />
+          <PageBackdrop id="skyline" dim="strong" fadeTop priority />
           <p className="vc-kicker mb-4x">News</p>
           <h1 id="news-title" className="vc-heading text-[clamp(3.5rem,11vw,7.5rem)]">
             GTA 6 news
