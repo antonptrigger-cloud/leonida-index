@@ -85,3 +85,11 @@ their name is printed on the poster, at the printed label.
 The default map image is the site owner's own AI-generated artwork, cleaned (LaMa inpainting, Apache-2.0) and upscaled
 (Real-ESRGAN, BSD-3-Clause) locally. It is an illustration, not Rockstar's map and not the in-game geography. Details:
 `docs/CUSTOM_MAP_ART.md`.
+
+## Card and region images
+
+Card art, region cards and thumbnails (`public/images/**`, plus `-md` / `-sm` copies of existing files in
+`public/secrets`, `public/guides` and `public/map/pins/safehouse`) are official Grand Theft Auto VI screenshots from
+rockstargames.com/VI (downloads / screenshots), © Rockstar Games. They are cropped to 16:9 and saved as WebP at 1280,
+800 and 480 px wide. No Rockstar logos, no leaked material, no fan-site images. The registry and the picture chosen for
+each link live in `src/lib/media/shots.ts`; every grid that shows them prints a "Screenshots © Rockstar Games" line.

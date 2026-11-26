@@ -2,6 +2,7 @@ import Link from "next/link";
 import { NEWS, newsPath } from "@/lib/news/articles";
 import { shortDate } from "@/lib/news/hub";
 import { FollowCta } from "@/components/ShareButtons";
+import { MediaGrid } from "@/components/cards/MediaCard";
 
 const LIMIT = 4;
 
@@ -32,20 +33,10 @@ export function WhatsNew() {
           </Link>
         </div>
       </div>
-      <ul className="grid gap-4x sm:grid-cols-2 lg:grid-cols-4">
-        {items.map((n) => (
-          <li key={n.slug}>
-            <Link href={newsPath(n.slug)} className="vc-card group flex h-full flex-col p-4x">
-              <span className="text-xs uppercase tracking-[0.2em] text-muted">{n.tag}</span>
-              <span className="vc-display mt-2x block text-2xl leading-tight text-ink group-hover:text-pink">{n.crumb}</span>
-              <span className="mt-2x block flex-1 text-sm text-ink-2">{n.teaser}</span>
-              <time className="mt-4x text-[0.65rem] font-bold uppercase tracking-[0.18em] text-turq" dateTime={n.published}>
-                {shortDate(n.published)}
-              </time>
-            </Link>
-          </li>
-        ))}
-      </ul>
+      <MediaGrid
+        cols={4}
+        items={items.map((n) => ({ href: newsPath(n.slug), title: n.crumb, kicker: `${n.tag} · ${shortDate(n.published)}`, blurb: n.teaser }))}
+      />
     </section>
   );
 }
