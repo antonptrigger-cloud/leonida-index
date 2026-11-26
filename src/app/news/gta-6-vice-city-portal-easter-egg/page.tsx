@@ -3,6 +3,7 @@ import { metaFor } from "@/lib/seo/site";
 import { newsPath } from "@/lib/news/articles";
 import { Bullets, Callout, Ext, H2, Lead, Lede, NewsLayout, Source, Sources } from "@/components/news/NewsBits";
 import { Spoiler } from "@/components/guides/Spoiler";
+import { CreditImage } from "@/components/guides/CreditImage";
 
 const SLUG = "gta-6-vice-city-portal-easter-egg";
 export const metadata = metaFor(newsPath(SLUG));
@@ -26,6 +27,13 @@ export default function Page() {
         A content creator who goes by Memeio has cracked an unusually long Grand Theft Auto VI easter egg: a hidden sequence that, according to <Ext href={GS}>GameSpot</Ext>, <Ext href={GR}>GamesRadar+</Ext> and <Ext href={POLY}>Polygon</Ext>, opens a portal styled after 2002&rsquo;s Vice City.
         GamesRadar+ published its write-up on 25 November and led with a spoiler warning; GameSpot&rsquo;s guide ran on 23 November (US time) and Polygon&rsquo;s walkthrough on 24 November. The start point is a radio tower in Key Lento. The full route, the phrase it spells and the rewards sit behind spoiler toggles below. For other nods already on this site, see <Link href="/secrets/easter-eggs" className={L}>GTA 6 easter eggs</Link>.
       </Lede>
+      <CreditImage
+        src="/secrets/easter-eggs-vice-city-08.webp"
+        alt="Official GTA 6 screenshot of Vice City at night, with lit arenas, a ferris wheel and a tall tower on the skyline. © Rockstar Games"
+        width={1600}
+        height={900}
+        credit="Official screenshot (Vice City 08). © Rockstar Games"
+      />
 
       <H2>What the outlets report, without the steps</H2>
       <p>

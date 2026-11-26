@@ -3,6 +3,7 @@ import { metaFor } from "@/lib/seo/site";
 import { newsPath } from "@/lib/news/articles";
 import { Bullets, Callout, Ext, H2, Lead, Lede, NewsLayout, Source, Sources, Steps } from "@/components/news/NewsBits";
 import { Spoiler } from "@/components/guides/Spoiler";
+import { CreditImage } from "@/components/guides/CreditImage";
 
 const SLUG = "gta-6-bank-vaults-how-to-open";
 export const metadata = metaFor(newsPath(SLUG));
@@ -17,7 +18,8 @@ const IGN = "https://www.ign.com/articles/gta-6-breaking-down-the-cleanest-bank-
 // Sourcing (read 26 Nov 2026, 13:40-13:50 AEST):
 // - Payouts, van counts and map-icon colour are not agreed. Each figure is attributed to the page that printed it.
 // - Chapter and mission unlocks sit behind a spoiler toggle. Visible copy stays free of story beats.
-// - No bank-robbery guide page exists on main yet; internal links go to the money, wanted and trophies guides.
+// - Bank robbery guide is in PR #109 at /guides/bank-robbery (awaiting owner approval). This news piece must go live with or after #109.
+// - Image: /secrets/money-store-job.webp is already on main (same file PR #109 uses). Not copied from that branch.
 // - Skipped: Mobalytics, GameRant payout tables, and fan-wiki bank lists.
 
 export default function Page() {
@@ -25,8 +27,15 @@ export default function Page() {
     <NewsLayout slug={SLUG} kicker="News · Money" title="How to open bank vaults in GTA 6" source="GameSpot, PC Gamer, PowerPyx, IGN">
       <Lede>
         The biggest scores in Grand Theft Auto VI sit behind vault doors you cannot crack yourself. Guides published on 25 November (US time) by GameSpot and PC Gamer, plus PowerPyx&rsquo;s trophy roadmap and an IGN write-up of a clean downtown run, all describe the same core trick: you wait for an armored van to arrive, then slip in while the driver opens the vault.
-        Payouts and a few details of the setup are not agreed. Unlock timing sits behind a spoiler toggle. There is no bank-robbery guide on this site yet; until that lands, use the <Link href="/guides/money" className={L}>money guide</Link> and the links below.
+        Payouts and a few details of the setup are not agreed. Unlock timing sits behind a spoiler toggle. For every bank job, see the <Link href="/guides/bank-robbery" className={L}>bank robbery guide</Link>. The <Link href="/guides/money" className={L}>money guide</Link> covers the wider cash picture.
       </Lede>
+      <CreditImage
+        src="/secrets/money-store-job.webp"
+        alt="Official Grand Theft Auto VI screenshot of Jason and Lucia in masks holding up a store. © Rockstar Games"
+        width={1600}
+        height={900}
+        credit="© Rockstar Games"
+      />
 
       <H2>The method the outlets agree on</H2>
       <p>

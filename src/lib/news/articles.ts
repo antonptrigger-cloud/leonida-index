@@ -129,6 +129,9 @@ export const AGE_RATING_PUBLISHED = "2026-11-19T11:48:00+10:00";
 /** 26 Nov 13:40 AEST batch (bank vaults, Vice City portal, Mario hats). Set to the draft time; Web Bot adjusts if it goes live later. */
 export const NOV26_1340_PUBLISHED = "2026-11-26T13:48:43+10:00";
 
+/** QC pass (Dexerto removed, bank-robbery link, official screenshots). */
+export const NOV26_1340_UPDATED = "2026-11-26T13:52:48+10:00";
+
 export const newsPath = (slug: string) => `/news/${slug}`;
 
 export const NEWS: NewsItem[] = [
@@ -143,7 +146,7 @@ export const NEWS: NewsItem[] = [
     category: "launch",
     keywords: ["GTA 6 bank vaults", "how to open bank vaults GTA 6", "GTA 6 bank robbery", "GTA 6 armored van", "GTA 6 Yasmani", "GTA 6 money"],
     published: NOV26_1340_PUBLISHED,
-    updated: NOV26_1340_PUBLISHED,
+    updated: NOV26_1340_UPDATED,
     citations: [
       "https://www.gamespot.com/articles/how-to-break-into-bank-vaults-in-gta-6/",
       "https://www.pcgamer.com/games/grand-theft-auto/gta-6-vault-how-to-open/",
@@ -176,7 +179,7 @@ export const NEWS: NewsItem[] = [
     category: "launch",
     keywords: ["GTA 6 Vice City portal", "GTA 6 easter egg", "GTA 6 Tommy Vercetti shirt", "GTA 6 Key Lento radio tower", "GTA 6 secrets"],
     published: NOV26_1340_PUBLISHED,
-    updated: NOV26_1340_PUBLISHED,
+    updated: NOV26_1340_UPDATED,
     citations: [
       "https://www.gamespot.com/articles/how-to-get-tommy-vercettis-shirt-and-bike-in-gta-6/",
       "https://www.gamesradar.com/games/grand-theft-auto/gta-6s-coolest-easter-egg-so-far-is-so-intricate-that-only-real-vice-city-sickos-would-ever-find-it/",
@@ -203,28 +206,27 @@ export const NEWS: NewsItem[] = [
     description:
       "VGC maps a Super Mario easter egg in GTA 6 that drops hats for Jason and Lucia. Where to look, how the hidden block appears, and how to grab both caps.",
     crumb: "Mario and Luigi hats",
-    teaser: "VGC walked a Super Mario easter egg at a ruined paper mill in northern Leonida. Two hats drop for Jason and Lucia. Dexerto corroborates the named mill.",
+    teaser: "VGC walked a Super Mario easter egg at a ruined paper mill in the north of the map. Two hats drop for Jason and Lucia. A single-outlet report.",
     tag: "Easter egg",
     category: "launch",
-    keywords: ["GTA 6 Mario hats", "GTA 6 Luigi hats", "GTA 6 Super Mario easter egg", "GTA 6 paper mill", "GTA 6 Moreau", "GTA 6 secrets"],
+    keywords: ["GTA 6 Mario hats", "GTA 6 Luigi hats", "GTA 6 Super Mario easter egg", "GTA 6 paper mill", "GTA 6 secrets"],
     published: NOV26_1340_PUBLISHED,
-    updated: NOV26_1340_PUBLISHED,
+    updated: NOV26_1340_UPDATED,
     citations: [
       "https://www.videogameschronicle.com/guide/gta-6-where-to-find-the-mario-luigi-hats/",
-      "https://www.dexerto.com/wikis/gta-6/easter-eggs/super-mario-bros/",
     ],
     faq: [
       {
         question: "Where is the Mario and Luigi hats easter egg in GTA 6?",
-        answer: "VGC places it at an abandoned paper mill in the north of the map, in ruined brick buildings by a river. Dexerto, used here as corroboration only, names the Lawton Co. Paper Mill in Moreau, just north of Mount Kalaga National Park.",
+        answer: "VGC places it at an abandoned paper mill in the north of the map, in ruined brick buildings by a river. VGC does not name the mill or a region.",
       },
       {
         question: "How do you get the Mario and Luigi hats in GTA 6?",
-        answer: "VGC and Dexerto both say you use a bong found on a tarp in the ruins, which reveals a hidden block you then jump into from below. The hats drop on the ground. Exact steps are behind a toggle on this page.",
+        answer: "VGC says you use a bong found on a dusty blue tarp in the ruins, which reveals a hidden block you then jump into from below. The hats drop on the ground. Exact steps are behind a toggle on this page.",
       },
       {
         question: "What hats do you get from the GTA 6 Mario easter egg?",
-        answer: "VGC says two hats drop for Jason and Lucia, and a spare goes into the wardrobe. Dexerto, as corroboration, specifies a J baseball cap for Jason and an L cap for Lucia.",
+        answer: "VGC says two hats drop for Jason and Lucia. If one character picks up both, they wear one and the other goes into the wardrobe at their house.",
       },
     ],
   },
