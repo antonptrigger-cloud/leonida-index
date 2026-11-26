@@ -6,6 +6,7 @@ import { getLivePins } from "@/lib/map/service";
 import { PageSchema } from "@/lib/seo/jsonld";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { ROUTES, metaFor } from "@/lib/seo/site";
+import { NEWS, newsPath } from "@/lib/news/articles";
 
 export const metadata = metaFor("/map");
 
@@ -68,6 +69,13 @@ export default async function MapIndex({ searchParams }: { searchParams: Promise
         online={online}
         initialFilters={filters}
         breadcrumb={<Breadcrumbs path="/map" className="text-[11px] leading-none text-muted" />}
+        whatsNew={[...NEWS]
+          .sort((a, b) => {
+            const byPub = Date.parse(b.published) - Date.parse(a.published);
+            return byPub !== 0 ? byPub : Date.parse(b.updated) - Date.parse(a.updated);
+          })
+          .slice(0, 3)
+          .map((n) => ({ href: newsPath(n.slug), label: n.crumb }))}
       />
     </>
   );

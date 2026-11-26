@@ -13,6 +13,7 @@ import { categoryGlyphSvg, glyphSvg } from "./glyphs";
 import { MapSearch } from "./MapSearch";
 import { PinDetails } from "./PinDetails";
 import { SubmitForm } from "./SubmitForm";
+import { relatedPagesForSearch, type PinPageLink } from "@/lib/map/related-pages";
 
 const LeafletMap = dynamic(() => import("./LeafletMap"), {
   ssr: false,
@@ -50,6 +51,7 @@ export function CommunityMap({
   online,
   initialFilters = NO_FILTERS,
   breadcrumb,
+  whatsNew = [],
 }: {
   initialPins: PublicPin[];
   online: boolean;
@@ -57,6 +59,8 @@ export function CommunityMap({
   initialFilters?: InitialFilters;
   /** Visible breadcrumb (server-rendered with its JSON-LD), shown as a small first line of the floating controls card, so it overlays the map without taking layout space. */
   breadcrumb?: React.ReactNode;
+  /** Latest news, for a slim "New this week" chip that does not block the map. */
+  whatsNew?: PinPageLink[];
 }) {
   useHeaderOffset();
   const [pins, setPins] = useState<PublicPin[]>(initialPins);
@@ -234,6 +238,17 @@ export function CommunityMap({
       {/* Controls: submit (desktop), search, spoilers, filters */}
       <div data-map-ui className={`${card} vc-glass--cut absolute left-2x right-2x top-2x z-[1000] flex flex-col gap-3x p-3x sm:left-3x sm:right-auto sm:top-3x sm:w-[440px] sm:p-4x`}>
         {breadcrumb ? <div className="lvg-crumb -mb-1x">{breadcrumb}</div> : null}
+        {whatsNew[0] ? (
+          <p className="flex flex-wrap items-baseline gap-x-2x text-[0.7rem] leading-snug" data-testid="map-whats-new">
+            <span className="font-bold uppercase tracking-[0.2em] text-muted">New this week</span>
+            <Link href={whatsNew[0].href} className="text-orange hover:text-pink">
+              {whatsNew[0].label}
+            </Link>
+            <Link href="/news" className="text-muted hover:text-pink">
+              All news <span aria-hidden>→</span>
+            </Link>
+          </p>
+        ) : null}
         <h2 className="sr-only">Map controls</h2>
         <div className="hidden items-center justify-between gap-4x sm:flex">
           <div className="leading-none">
@@ -285,6 +300,17 @@ export function CommunityMap({
             </>
           }
         />
+        {relatedPagesForSearch(searchMarker?.name || query).length ? (
+          <ul className="flex flex-col gap-1x px-1x" data-testid="map-search-related">
+            {relatedPagesForSearch(searchMarker?.name || query).map((l) => (
+              <li key={l.href}>
+                <Link href={l.href} className="text-xs font-semibold text-orange hover:text-pink">
+                  {l.label} <span aria-hidden>→</span>
+                </Link>
+              </li>
+            ))}
+          </ul>
+        ) : null}
         <div id="map-filters" className={`${filtersOpen ? "flex" : "hidden"} flex-col gap-3x sm:flex`}>
           <div className="flex flex-wrap items-center gap-x-3x gap-y-2x pl-1x">
             <label className="vc-chip cursor-pointer" style={{ ["--chip" as string]: "#00e5cc" }} title="Only places Rockstar has named itself">
