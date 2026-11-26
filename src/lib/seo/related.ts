@@ -327,6 +327,9 @@ export const NEWS_GUIDES: Record<string, string[]> = {
   "/news/gta-6-army-reenlistment-four-day-pass": ["/database/characters/jason-duval", "/guides/beginner", "/guides/missions"],
   "/news/gta-6-the-album-tracklist": ["/database/radio-stations", "/guides/beginner", "/guides/activities"],
   "/news/gta-6-first-person-glitch": ["/guides/first-person", "/guides/saving", "/guides/beginner"],
+  "/news/gta-6-bank-vaults-how-to-open": ["/guides/money", "/guides/wanted", "/guides/trophies"],
+  "/news/gta-6-vice-city-portal-easter-egg": ["/guides/beginner", "/guides/cheats", "/guides/secret-vehicles"],
+  "/news/gta-6-mario-luigi-hats-easter-egg": ["/guides/change-clothes", "/guides/beginner", "/guides/secret-vehicles"],
 };
 
 /** Fewest related links a content page may end up with (also enforced by `npm run seo:audit`). */
