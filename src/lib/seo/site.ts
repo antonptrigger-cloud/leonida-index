@@ -17,6 +17,7 @@ import { SIDEJOBS_PUBLISHED, SIDEJOBS_VERIFIED } from "@/lib/guides/sidejobs";
 import { DIFFICULTY_PUBLISHED, DIFFICULTY_VERIFIED } from "@/lib/guides/difficulty";
 import { RELATIONSHIP_PUBLISHED, RELATIONSHIP_VERIFIED } from "@/lib/guides/relationship";
 import { STRIP_PUBLISHED, STRIP_VERIFIED } from "@/lib/guides/strip-clubs";
+import { BANK_PUBLISHED, BANK_VERIFIED } from "@/lib/guides/bank-robbery";
 import { WEAPONS_PUBLISHED, WEAPONS_VERIFIED } from "@/lib/guides/weapons";
 import { GARAGES_PUBLISHED, GARAGES_VERIFIED } from "@/lib/guides/garages";
 import { SAVING_PUBLISHED, SAVING_STEPS, SAVING_VERIFIED } from "@/lib/guides/saving";
@@ -383,6 +384,24 @@ export const ROUTES: Record<string, RouteSeo> = {
     priority: 0.8,
     updated: RELATIONSHIP_VERIFIED,
     published: RELATIONSHIP_PUBLISHED,
+  },
+  "/guides/bank-robbery": {
+    title: "GTA 6 Bank Robbery Guide: All 22 Banks & Vaults",
+    description: "All 22 GTA 6 banks you can rob, with map pins: payouts, security, vault tips, safe codes, guards, wanted level and getaways. Sourced, nothing guessed.",
+    crumb: "Bank robbery",
+    kind: "howto",
+    steps: [
+      { name: "Unlock bank jobs", text: "Small banks open mid-story with the Dye Pack Jammer; vaults open near the end of Chapter 4 (PowerPyx)." },
+      { name: "Case the bank", text: "Walk in unarmed and check the layout. Most banks have a back door and a side entrance (GameSpot)." },
+      { name: "Get in quietly", text: "Snap Gun one door, blow the reinforced one, take out cameras and disable the alarm (GameSpot, PC Gamer)." },
+      { name: "Loot the drawer and safe", text: "Safe codes are random: check sticky notes, screens and guards, or pick smaller safes (GameSpot)." },
+      { name: "Hit a vault", text: "Follow a security van and slip in while the courier has the vault open. Expect an instant four-star wanted level (PowerPyx, PC Gamer)." },
+      { name: "Escape", text: "Use a fast bike, switch vehicles and change your look to lose the cops (PowerPyx, GameSpot)." },
+    ],
+    changeFrequency: "weekly",
+    priority: 0.8,
+    updated: BANK_VERIFIED,
+    published: BANK_PUBLISHED,
   },
   "/guides/strip-clubs": {
     title: "GTA 6 Strip Clubs: Locations & Prices",

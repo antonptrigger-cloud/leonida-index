@@ -93,3 +93,23 @@ Card art, region cards and thumbnails (`public/images/**`, plus `-md` / `-sm` co
 rockstargames.com/VI (downloads / screenshots), © Rockstar Games. They are cropped to 16:9 and saved as WebP at 1280,
 800 and 480 px wide. No Rockstar logos, no leaked material, no fan-site images. The registry and the picture chosen for
 each link live in `src/lib/media/shots.ts`; every grid that shows them prints a "Screenshots © Rockstar Games" line.
+
+## Bank job pins (`/guides/bank-robbery`)
+
+21 of the 22 bank jobs have a pin (`seed-bank-*` in `seed-pins.json`, plus `gtadb-L1786`, the Washington Beach Fleeca, which
+was already a GTADB landmark pin and is now its bank pin). How each spot was checked:
+
+* **Coordinates:** in-game X, Y for every bank marker come from the **Open GTA 6 Map** dataset
+  (<https://github.com/fbritoferreira/gta6>, `public/data/locations.json`, ids `bank-001`..`bank-025`, CC BY 4.0), which carries
+  GTABase's bank markers. Its map units were converted to in-game metres with an affine fit on 14 banks that also have published
+  in-game coordinates on gta6.dexo.gg (fit residual under 3 m).
+* **Cross-check:** seven banks match a named GTADB.org landmark (CC BY 4.0) within 20 m: Fleeca Key Lento (L3267), Gibson
+  Brothers Bank Capri (L2842), ShoreFront Rockridge (L1102), Fleeca SW 4th St (L1786), Lombank Ocean Beach (L470, L2155) and
+  Fleeca Ocean Beach (L2150). The other 14 were checked against the district named by PowerPyx and GTABase, using the GTADB
+  landmarks within 250 m.
+* **Not pinned:** Lombank Bayside. Its point sits where Stockyard, Crosstown and Bayside meet, so the district can't be confirmed.
+* **Placement on the official poster:** a local affine fit (8 nearest anchors, weighted by distance) from in-game coordinates to
+  poster pixels. Anchors are the GTADB median position of each district or place the poster prints by name, paired with the
+  printed label. The leave-one-out error is roughly 50 to 190 px, so every bank pin is `approximate: true`. One point that fell in the
+  sea (Key Lento) was moved 14 px to the nearest land. Pin space and art positions come from `officialToPin` and `pinToArt`.
+* `scripts/import-gtadb.mjs` regenerates `gtadb-pins.json`. Re-apply the `gtadb-L1786` bank entry if you re-run it.
