@@ -106,6 +106,7 @@ const EXACT: Record<string, ShotId> = {
   "/guides/relationship": "relationship",
   "/guides/difficulty": "ambrosia",
   "/guides/strip-clubs": "club",
+  "/guides/bank-robbery": "missions",
   "/guides/weapons": "weapons",
   "/tools/edition-compare": "marina",
   "/secrets": "easter-eggs",

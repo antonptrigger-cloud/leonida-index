@@ -423,14 +423,15 @@
   },
   {
     "id": "gtadb-L1786",
-    "type": "shop",
-    "name": "Fleeca",
+    "type": "activity",
+    "name": "Fleeca – Washington Beach (bank job)",
     "region": "Vice City",
-    "x": 976.1,
-    "y": 307.9,
+    "x": 959.95,
+    "y": 325.31,
     "approximate": true,
     "source": "gtadb",
-    "description": "Shop or restaurant in SW 4th St, from community research. Position is approximate (placed by district, not by exact coordinates). Source: GTADB.org landmark data, record L1786 (CC BY 4.0), map.gtadb.org."
+    "category": "bank",
+    "description": "Small bank job: loot the cash drawer and the safe. Reported take: $10,000–$30,000 in marked bills (PowerPyx, GTABase). Position from in-game coordinates (1510, 1815), GTABase via the Open GTA 6 Map dataset, matching GTADB record L1786 (CC BY 4.0). Approximate on this map: within about a block. Full tips in our bank robbery guide."
   },
   {
     "id": "gtadb-L1789",
