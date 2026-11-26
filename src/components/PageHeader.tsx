@@ -16,7 +16,7 @@ export function PageHeader({
   kicker,
   title,
   source = "Showcase",
-  verified = "pre-launch",
+  verified = "after launch",
   backdrop,
   dim = "medium",
   share = true,

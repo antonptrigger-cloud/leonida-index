@@ -12,7 +12,7 @@ export default function Page() {
     <div>
       <PageSchema path="/guides/beginner" breadcrumbs={false} />
       <Breadcrumbs path="/guides/beginner" />
-      <PageHeader backdrop="boat" kicker="Guide" title="First hours in Leonida" source="Showcase" />
+      <PageHeader backdrop="boat" kicker="Guide" title="First hours in Leonida" source="Showcase" verified="after launch" />
       <div className="max-w-xl space-y-4 text-ink-2">
         <p>
           You play Lucia Caminos and Jason Duval. Free switching between them opens partway through the story, and it works mid-job. See{" "}

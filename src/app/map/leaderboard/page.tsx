@@ -47,7 +47,7 @@ export default async function LeaderboardPage() {
     <div>
       <PageSchema path="/map/leaderboard" breadcrumbs={false} />
       <Breadcrumbs path="/map/leaderboard" />
-      <PageHeader kicker="Community map" title="Leaderboard" source="Community submissions" />
+      <PageHeader kicker="Community map" title="Leaderboard" source="Community submissions" verified="after launch" />
       {!store ? (
         <p className="mb-6 rounded-lg border border-orange/40 bg-orange/10 px-3 py-2 text-sm text-orange">
           Community submissions are offline right now.

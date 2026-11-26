@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { metaFor } from "@/lib/seo/site";
 import { PageSchema } from "@/lib/seo/jsonld";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
@@ -25,7 +26,7 @@ export default function Page() {
     <div>
       <PageSchema path="/map/vice-city" breadcrumbs={false} />
       <Breadcrumbs path="/map/vice-city" />
-      <PageHeader kicker="Region" title="Vice City" source="Official / Showcase" />
+      <PageHeader kicker="Region" title="Vice City" source="Official / Showcase" verified="22 Nov 2026" />
       <div className="flex max-w-2xl flex-col gap-8 text-ink-2">
         <section>
           <h2 className="mb-2 text-sm uppercase tracking-widest text-turq">What it is</h2>
@@ -45,7 +46,7 @@ export default function Page() {
             ))}
           </ul>
           <p className="mt-3 text-sm text-muted">
-            Named in official material or the Extended Look. Pins and interiors after launch.
+            Named in official material or the Extended Look. Pins for these places are on the interactive map.
           </p>
         </section>
         <section>
@@ -57,7 +58,11 @@ export default function Page() {
         </section>
         <section>
           <h2 className="mb-2 text-sm uppercase tracking-widest text-turq">Pins</h2>
-          <p className="text-muted">0 in-game verified. Map layer ships after 19 Nov.</p>
+          <p>
+            <Link href="/map?region=vice-city" className="text-orange hover:text-pink">
+              Open Vice City on the interactive map <span aria-hidden>→</span>
+            </Link>
+          </p>
         </section>
       </div>
     </div>

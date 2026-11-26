@@ -108,7 +108,7 @@ export default async function MissionPage({ params }: { params: Promise<{ slug: 
         backdrop="boat"
         kicker={`Mission guide · Chapter ${chapterNumber} · ${String(missionChapterOrder(m)).padStart(2, "0")}/${String(chapterTotal).padStart(2, "0")}`}
         title={m.name}
-        verified={m.updated ? dateLabel(m.updated) : `${LAST_VERIFIED_LABEL} (pre-launch)`}
+        verified={m.updated ? dateLabel(m.updated) : LAST_VERIFIED_LABEL}
         source={m.sourceLabel ?? (m.sources.some((x) => x.id === "vgc") ? "PC Gamer, Press Start, VGC, PowerPyx" : "PC Gamer, Press Start, PowerPyx")}
       />
 
@@ -129,7 +129,7 @@ export default async function MissionPage({ params }: { params: Promise<{ slug: 
 
           <section aria-labelledby="objectives" className="mt-16x">
             <h2 id="objectives" className="vc-display text-3xl text-ink">Objectives</h2>
-            <p className="mt-2x text-sm text-muted">Reported by a pre-launch walkthrough. The on-screen prompts in your game take priority.</p>
+            <p className="mt-2x text-sm text-muted">Reported by a walkthrough. The on-screen prompts in your game take priority.</p>
             <div className="mt-4x">
               <Spoiler label="Objectives">
                 <ol className="flex list-decimal flex-col gap-3x pl-6x text-ink-2 marker:font-bold marker:text-pink">

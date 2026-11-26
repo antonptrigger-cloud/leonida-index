@@ -9,7 +9,7 @@ export default function Page() {
     <div>
       <PageSchema path="/tools/edition-compare" breadcrumbs={false} />
       <Breadcrumbs path="/tools/edition-compare" />
-      <PageHeader kicker="Tool" title="Standard vs Ultimate" source="Official" />
+      <PageHeader kicker="Tool" title="Standard vs Ultimate" source="Official" verified="after launch" />
       <div className="overflow-x-auto">
         <table className="w-full min-w-[32rem] border-collapse text-left text-sm">
           <thead>

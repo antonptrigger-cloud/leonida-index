@@ -47,7 +47,7 @@ export default async function CharacterPage({ params }: { params: Promise<{ slug
   const reported = c.tier === "reported";
   const verified = c.updated
     ? { iso: c.updated, label: dateLabel(c.updated), note: c.updated >= "2026-11-19" ? "after launch" : "launch day" }
-    : { iso: LAST_VERIFIED, label: LAST_VERIFIED_LABEL, note: reported ? "launch eve" : "pre-launch" };
+    : { iso: LAST_VERIFIED, label: LAST_VERIFIED_LABEL, note: reported ? "launch eve" : "after launch" };
 
   return (
     <article>
