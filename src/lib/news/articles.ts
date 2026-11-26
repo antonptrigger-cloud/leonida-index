@@ -127,10 +127,10 @@ export const GTA_PLUS_PUBLISHED = "2026-11-19T17:10:14+10:00";
 export const AGE_RATING_PUBLISHED = "2026-11-19T11:48:00+10:00";
 
 /** 26 Nov 13:40 AEST batch (bank vaults, Vice City portal, Mario hats). Set to the draft time; Web Bot adjusts if it goes live later. */
-export const NOV26_1340_PUBLISHED = "2026-11-26T13:48:43+10:00";
+export const NOV26_1340_PUBLISHED = "2026-11-26T14:08:10+10:00";
 
 /** QC pass (Dexerto removed, bank-robbery link, official screenshots). */
-export const NOV26_1340_UPDATED = "2026-11-26T13:52:48+10:00";
+export const NOV26_1340_UPDATED = "2026-11-26T14:08:10+10:00";
 
 export const newsPath = (slug: string) => `/news/${slug}`;
 
