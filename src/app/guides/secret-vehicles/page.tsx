@@ -97,20 +97,16 @@ export default function SecretVehiclesGuide() {
 
       <div className="grid gap-10x lg:grid-cols-12">
         <div className="min-w-0 lg:col-span-8">
-          <div className="max-w-2xl space-y-4x text-lg text-ink-2">
-            <p>
-              GTA 6 keeps some of its best vehicles in plain sight: a combat jet behind a guarded fence, free planes on airstrips, and sports cars parked where a patient thief can find them. This guide lists only vehicles that at least one of our main outlets places on the map: {SV_COUNTS.total} so far, with a location or a way to get each one.
-            </p>
-            <p>
-              <strong className="text-turq">Confirmed</strong> means at least two main outlets say so. <strong className="text-orange">Reported</strong> means one main outlet does, and we name it. Vehicles we couldn&apos;t verify aren&apos;t listed. Several cars here are tied to the story, so those sit inside blurred sections until you ask for them.
-            </p>
-          </div>
-
-          <section aria-labelledby="quick" className="mt-16x">
+          <section aria-labelledby="quick">
             <H2 id="quick">Quick answers</H2>
             <Bullets>
               <B>
-                <strong className="text-ink">Where&apos;s the jet?</strong> Mile Zero Air Station, in the far south-west corner of the map<C />.
+                <strong className="text-ink">Where&apos;s the jet?</strong>{" "}
+                <A href="/map?pin=seed-mile-zero-air-station">Mile Zero Air Station</A>, in the far south-west corner of the map, west of Key Lento<C />.
+              </B>
+              <B>
+                <strong className="text-ink">Where are the free planes?</strong>{" "}
+                GameSpot points to <A href="/map?pin=seed-wild-hog-point">Wild Hog Point</A>, west of Port Gellhorn, and PowerPyx to open airstrips<R />.
               </B>
               <B>
                 <strong className="text-ink">Is anything kept in a hidden garage?</strong> Not according to our sources. The jets are on a guarded base and the free planes sit at open airfields.
@@ -123,6 +119,15 @@ export default function SecretVehiclesGuide() {
               </B>
             </Bullets>
           </section>
+
+          <div className="mt-10x max-w-2xl space-y-4x text-lg text-ink-2">
+            <p>
+              GTA 6 keeps some of its best vehicles in plain sight: a combat jet behind a guarded fence, free planes on airstrips, and sports cars parked where a patient thief can find them. This guide lists only vehicles that at least one of our main outlets places on the map: {SV_COUNTS.total} so far, with a location or a way to get each one.
+            </p>
+            <p>
+              <strong className="text-turq">Confirmed</strong> means at least two main outlets say so. <strong className="text-orange">Reported</strong> means one main outlet does, and we name it. Vehicles we couldn&apos;t verify aren&apos;t listed. Several cars here are tied to the story, so those sit inside blurred sections until you ask for them.
+            </p>
+          </div>
 
           <section aria-labelledby="aircraft" className="mt-16x">
             <H2 id="aircraft">Jets, tanks and planes</H2>

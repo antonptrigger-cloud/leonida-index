@@ -53,7 +53,7 @@ export function ShareButtons({
     : "text-xs font-semibold uppercase tracking-[0.16em] text-ink-2 transition-colors hover:text-pink-2";
 
   return (
-    <div className={`flex flex-wrap items-center gap-x-3x gap-y-2x ${compact ? "" : "mt-6x"}`} role="group" aria-label="Share this page">
+    <div className={`flex flex-wrap items-center gap-x-3x gap-y-2x ${compact ? "" : "mt-3x sm:mt-6x"}`} role="group" aria-label="Share this page">
       {compact ? null : <span className="text-xs uppercase tracking-[0.2em] text-muted">Share</span>}
       <a href={x} target="_blank" rel="noopener noreferrer" className={linkClass}>
         X
