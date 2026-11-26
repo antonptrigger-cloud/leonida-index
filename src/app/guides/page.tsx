@@ -59,7 +59,7 @@ export default function Guides() {
 
         {/* ---------- Hero ---------- */}
         <section className="relative isolate pb-10x pt-6x md:pt-10x" aria-labelledby="guides-title">
-          <PageBackdrop id="boat" dim="strong" fadeTop />
+          <PageBackdrop id="boat" dim="strong" fadeTop priority />
           <p className="vc-kicker mb-4x">Guides</p>
           <h1 id="guides-title" className="vc-heading text-[clamp(3.5rem,11vw,7.5rem)]">
             How to play Leonida
@@ -98,7 +98,7 @@ export default function Guides() {
               <MediaCard
                 feature
                 headingLevel={3}
-                sizes="(min-width: 1152px) 660px, (min-width: 768px) 58vw, 100vw"
+                sizes="(min-width: 1152px) 660px, (min-width: 768px) 58vw, 60vw"
                 item={{
                   href: feature.href,
                   title: feature.title,

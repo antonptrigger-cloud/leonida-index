@@ -31,6 +31,7 @@ export function ShotImage({
       height={Math.round((s.widths[1] * 9) / 16)}
       alt={describe ? `${s.alt}. Official GTA 6 screenshot, © Rockstar Games` : ""}
       loading={eager ? "eager" : "lazy"}
+      fetchPriority={eager ? "high" : undefined}
       decoding="async"
       className={`h-full w-full object-cover ${className}`}
       style={s.pos ? { objectPosition: s.pos } : undefined}

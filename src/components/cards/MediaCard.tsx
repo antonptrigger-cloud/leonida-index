@@ -19,20 +19,23 @@ export interface MediaCardItem {
  */
 export function MediaCard({
   item,
-  sizes = "(min-width: 1024px) 360px, (min-width: 640px) 50vw, 100vw",
+  sizes = "(min-width: 1024px) 360px, (min-width: 640px) 50vw, 60vw",
   feature = false,
+  eager = false,
   headingLevel = 3,
 }: {
   item: MediaCardItem;
   sizes?: string;
   feature?: boolean;
+  /** Above-the-fold LCP card only: load eagerly with high fetch priority. */
+  eager?: boolean;
   headingLevel?: 2 | 3 | 4;
 }) {
   const H = `h${headingLevel}` as "h2" | "h3" | "h4";
   return (
     <Link href={item.href} className="mc-card group" data-feature={feature || undefined}>
       <div className="mc-card__media">
-        <ShotImage id={item.shot ?? shotForHref(item.href)} sizes={sizes} />
+        <ShotImage id={item.shot ?? shotForHref(item.href)} sizes={sizes} eager={eager} />
       </div>
       <div className="mc-card__body">
         {item.kicker ? <span className="mc-card__kicker">{item.kicker}</span> : null}
@@ -80,10 +83,10 @@ export function MediaGrid({
   if (!items.length) return null;
   const sizes =
     cols === 4
-      ? "(min-width: 1024px) 270px, (min-width: 640px) 50vw, 100vw"
+      ? "(min-width: 1024px) 270px, (min-width: 640px) 50vw, 60vw"
       : cols === 3
-        ? "(min-width: 1024px) 360px, (min-width: 640px) 50vw, 100vw"
-        : "(min-width: 640px) 50vw, 100vw";
+        ? "(min-width: 1024px) 360px, (min-width: 640px) 50vw, 60vw"
+        : "(min-width: 640px) 50vw, 60vw";
   return (
     <div className={className}>
       <ul className="mc-grid" data-cols={cols}>

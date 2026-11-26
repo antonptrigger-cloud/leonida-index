@@ -37,6 +37,7 @@ export default function DatabaseIndex() {
             <MediaCard
               item={{ href: c.href, title: c.title, kicker: c.kicker, blurb: c.body }}
               feature={i === 0}
+              eager={i === 0}
               headingLevel={2}
               sizes={i === 0 ? "(min-width: 1024px) 560px, 100vw" : "(min-width: 1024px) 270px, (min-width: 640px) 50vw, 100vw"}
             />
