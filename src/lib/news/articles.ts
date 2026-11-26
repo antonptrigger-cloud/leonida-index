@@ -126,9 +126,110 @@ export const GTA_PLUS_PUBLISHED = "2026-11-19T17:10:14+10:00";
 /** Age rating quick-answer page: boards re-read 11:46-11:48 AEST 19 Nov 2026. Also used for `updated` until the first fact change; bump `updated` on every edit. */
 export const AGE_RATING_PUBLISHED = "2026-11-19T11:48:00+10:00";
 
+/** 26 Nov 13:40 AEST batch (bank vaults, Vice City portal, Mario hats). Set to the draft time; Web Bot adjusts if it goes live later. */
+export const NOV26_1340_PUBLISHED = "2026-11-26T14:08:10+10:00";
+
+/** QC pass (Dexerto removed, bank-robbery link, official screenshots). */
+export const NOV26_1340_UPDATED = "2026-11-26T14:08:10+10:00";
+
 export const newsPath = (slug: string) => `/news/${slug}`;
 
 export const NEWS: NewsItem[] = [
+  {
+    slug: "gta-6-bank-vaults-how-to-open",
+    title: "GTA 6 Bank Vaults: How to Open Them",
+    description:
+      "You can't crack GTA 6 bank vaults yourself. GameSpot, PC Gamer, PowerPyx and IGN cover the armored-van method, payouts and when vaults unlock.",
+    crumb: "GTA 6 bank vaults",
+    teaser: "You cannot crack the big vault doors yourself. GameSpot, PC Gamer, PowerPyx and IGN on the armored-van method, what it pays, and when it unlocks.",
+    tag: "Money",
+    category: "launch",
+    keywords: ["GTA 6 bank vaults", "how to open bank vaults GTA 6", "GTA 6 bank robbery", "GTA 6 armored van", "GTA 6 Yasmani", "GTA 6 money"],
+    published: NOV26_1340_PUBLISHED,
+    updated: NOV26_1340_UPDATED,
+    citations: [
+      "https://www.gamespot.com/articles/how-to-break-into-bank-vaults-in-gta-6/",
+      "https://www.pcgamer.com/games/grand-theft-auto/gta-6-vault-how-to-open/",
+      "https://www.powerpyx.com/gta-6-grand-theft-auto-vi-trophy-guide-roadmap/",
+      "https://www.ign.com/articles/gta-6-breaking-down-the-cleanest-bank-robbery-weve-seen-so-far",
+    ],
+    faq: [
+      {
+        question: "Can you open bank vaults yourself in GTA 6?",
+        answer: "No. GameSpot and PC Gamer say you cannot use a code or a lockpick on the big vault doors during an open-world bank job. The usual method is to follow an armored van and go in while the driver opens the vault.",
+      },
+      {
+        question: "How much do GTA 6 bank vaults pay?",
+        answer: "The figures differ by outlet and by how you count the take. PC Gamer says well over $100,000 if you also loot safe-deposit boxes. GameSpot says a full cart of marked bills sells for about $80,000 to $100,000, plus about $25,000 to $50,000 from the rest of the bank. PowerPyx says up to $205,000 per bank. IGN reported one downtown Lombank run at $160,000.",
+      },
+      {
+        question: "How many big bank vaults are in GTA 6?",
+        answer: "PowerPyx, PC Gamer and IGN all put the number of large bank jobs at eight. PC Gamer places four in Ocean Beach, two downtown, one in Tequesta and one at Vice City International Airport.",
+      },
+    ],
+  },
+  {
+    slug: "gta-6-vice-city-portal-easter-egg",
+    title: "GTA 6 Vice City Portal Easter Egg",
+    description:
+      "GameSpot, GamesRadar+ and Polygon report a hidden GTA 6 easter egg that opens a Vice City-styled portal. The steps and rewards sit behind spoiler toggles.",
+    crumb: "Vice City portal easter egg",
+    teaser: "Memeio cracked a long easter egg that GameSpot, GamesRadar+ and Polygon say opens a portal styled after 2002's Vice City. The steps and rewards are behind toggles.",
+    tag: "Easter egg",
+    category: "launch",
+    keywords: ["GTA 6 Vice City portal", "GTA 6 easter egg", "GTA 6 Tommy Vercetti shirt", "GTA 6 Key Lento radio tower", "GTA 6 secrets"],
+    published: NOV26_1340_PUBLISHED,
+    updated: NOV26_1340_UPDATED,
+    citations: [
+      "https://www.gamespot.com/articles/how-to-get-tommy-vercettis-shirt-and-bike-in-gta-6/",
+      "https://www.gamesradar.com/games/grand-theft-auto/gta-6s-coolest-easter-egg-so-far-is-so-intricate-that-only-real-vice-city-sickos-would-ever-find-it/",
+      "https://www.polygon.com/gta-6-vice-city-portal-easter-egg-location-walkthrough-how-to-open/",
+    ],
+    faq: [
+      {
+        question: "Is there a Vice City portal easter egg in GTA 6?",
+        answer: "GameSpot, GamesRadar+ and Polygon all report a hidden easter egg, found by creator Memeio, that opens a portal styled after 2002's Grand Theft Auto: Vice City.",
+      },
+      {
+        question: "Where does the GTA 6 Vice City portal easter egg start?",
+        answer: "All three outlets say it starts at a radio tower in Key Lento. GameSpot places the tower west of Key Lento; Polygon names it the Badger radio tower, northeast of the Nifty Threads Island Wear shop. The rest of the sequence is behind a spoiler toggle on this page.",
+      },
+      {
+        question: "What do you get for the GTA 6 Vice City portal easter egg?",
+        answer: "GameSpot and GamesRadar+ say the reward includes Tommy Vercetti's Hawaiian shirt. They do not agree with Polygon on the vehicle, so that part is disputed. Exact rewards are behind a spoiler toggle on this page.",
+      },
+    ],
+  },
+  {
+    slug: "gta-6-mario-luigi-hats-easter-egg",
+    title: "GTA 6 Mario and Luigi Hats Location",
+    description:
+      "VGC maps a Super Mario easter egg in GTA 6 that drops hats for Jason and Lucia. Where to look, how the hidden block appears, and how to grab both caps.",
+    crumb: "Mario and Luigi hats",
+    teaser: "VGC walked a Super Mario easter egg at a ruined paper mill in the north of the map. Two hats drop for Jason and Lucia. A single-outlet report.",
+    tag: "Easter egg",
+    category: "launch",
+    keywords: ["GTA 6 Mario hats", "GTA 6 Luigi hats", "GTA 6 Super Mario easter egg", "GTA 6 paper mill", "GTA 6 secrets"],
+    published: NOV26_1340_PUBLISHED,
+    updated: NOV26_1340_UPDATED,
+    citations: [
+      "https://www.videogameschronicle.com/guide/gta-6-where-to-find-the-mario-luigi-hats/",
+    ],
+    faq: [
+      {
+        question: "Where is the Mario and Luigi hats easter egg in GTA 6?",
+        answer: "VGC places it at an abandoned paper mill in the north of the map, in ruined brick buildings by a river. VGC does not name the mill or a region.",
+      },
+      {
+        question: "How do you get the Mario and Luigi hats in GTA 6?",
+        answer: "VGC says you use a bong found on a dusty blue tarp in the ruins, which reveals a hidden block you then jump into from below. The hats drop on the ground. Exact steps are behind a toggle on this page.",
+      },
+      {
+        question: "What hats do you get from the GTA 6 Mario easter egg?",
+        answer: "VGC says two hats drop for Jason and Lucia. If one character picks up both, they wear one and the other goes into the wardrobe at their house.",
+      },
+    ],
+  },
   {
     slug: "gta-6-first-person-glitch",
     title: "GTA 6 First-Person Glitch: How It Works",

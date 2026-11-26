@@ -59,6 +59,9 @@ news | /news/gta-6-no-prostitutes-rockstar | Rockstar statement on sex workers |
 news | /news/gta-6-army-reenlistment-four-day-pass | Army reenlistment pass | live (in NEWS)
 news | /news/gta-6-the-album-tracklist | GTA 6: The Album | live; News category: Music
 news | /news/gta-6-first-person-glitch | First-person glitch | live; News category: Glitches
+news | /news/gta-6-bank-vaults-how-to-open | GTA 6 bank vaults | published 26 Nov 2026 (owner approved)
+news | /news/gta-6-vice-city-portal-easter-egg | Vice City portal easter egg | published 26 Nov 2026 (owner approved)
+news | /news/gta-6-mario-luigi-hats-easter-egg | Mario and Luigi hats | published 26 Nov 2026 (owner approved)
 news | /news/n3on-new-zealand-gta-6-stream | N3ON NZ stream | live
 news | /news/gta-6-streaming-viewership-peak | Stream viewership peak | live
 news | /news/gta-6-launch-streams-schedule | Launch streams schedule | live
