@@ -152,7 +152,7 @@ export default function MoneyGuide() {
                     The method it describes: follow a security van until it stops at a bank, then slip into the vault while the guard has it open<R />.
                   </li>
                   <li>
-                    Large banks pay up to about $205,000 for around five minutes of work, and the robbery instantly gives you a four-star wanted level<R />. PowerPyx suggests a fast motorcycle to cut through traffic, then swapping to another vehicle so you&apos;re harder to recognise. Our <A href="/guides/wanted">wanted system guide</A> explains how to lose the cops.
+                    Large banks pay up to about $205,000 for around five minutes of work, and the robbery instantly gives you a four-star wanted level<R />. PowerPyx suggests a fast motorcycle to cut through traffic, then swapping to another vehicle so you&apos;re harder to recognise. Our <A href="/guides/wanted">wanted system guide</A> explains how to lose the cops. Every bank, vault payout and map pin is in our <A href="/guides/bank-robbery">bank robbery guide</A>.
                   </li>
                   <li>
                     GameSpot notes that the bigger banks and higher-end stores open up around the halfway point of the story, once you are working with an actual robbery crew, and mentions Dye Pack Jammers for handling marked bills<R />.
