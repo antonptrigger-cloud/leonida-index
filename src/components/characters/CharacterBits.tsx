@@ -69,7 +69,7 @@ export function CharacterPlaceholder({
           width={c.portrait.width}
           height={c.portrait.height}
           className="h-full w-full object-cover"
-          sizes={hero ? "(min-width: 1024px) 42vw, 100vw" : "(min-width: 1024px) 370px, (min-width: 640px) 50vw, 100vw"}
+          sizes={hero ? "(min-width: 1024px) 42vw, 100vw" : "(min-width: 1024px) 370px, (min-width: 640px) 50vw, 60vw"}
           priority={hero}
         />
       </div>
@@ -89,7 +89,7 @@ export function CharacterPlaceholder({
       <img
         src={`${a.base}-md.webp`}
         srcSet={areaSrcSet(a.base)}
-        sizes={hero ? "(min-width: 1024px) 42vw, 100vw" : "(min-width: 1024px) 370px, (min-width: 640px) 50vw, 100vw"}
+        sizes={hero ? "(min-width: 1024px) 42vw, 100vw" : "(min-width: 1024px) 370px, (min-width: 640px) 50vw, 60vw"}
         width={800}
         height={450}
         alt={`No official still of ${c.name} yet. Official screenshot of ${a.scene} instead`}
