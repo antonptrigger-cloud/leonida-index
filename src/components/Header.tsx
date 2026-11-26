@@ -17,7 +17,7 @@ export function Header() {
     <header className="relative z-40 bg-[rgba(10,10,11,0.86)] backdrop-blur-md">
       <HeaderBackdrop />
       <div className="mx-auto flex max-w-6xl flex-wrap items-center gap-x-10x gap-y-2x px-4x py-3x sm:px-gutter">
-        <Link href="/" className="group flex shrink-0 items-center gap-3x" aria-label="Leonida Vice Guide home">
+        <Link href="/" prefetch={false} className="group flex shrink-0 items-center gap-3x" aria-label="Leonida Vice Guide home">
           <LogoMark className="h-9 w-auto drop-shadow-[0_0_10px_rgba(255,45,120,0.45)] transition-transform duration-300 group-hover:-rotate-3 sm:h-10" />
           <span className="flex flex-col leading-none">
             <span className="vc-display text-[1.9rem] leading-[0.8] tracking-[0.01em] text-ink sm:text-[2.15rem]">Leonida</span>

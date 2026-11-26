@@ -72,22 +72,27 @@ export function PageBackdrop({
       className={`pointer-events-none absolute inset-y-0 -z-10 overflow-hidden ${contained ? "inset-x-0" : "left-1/2 w-screen -translate-x-1/2"}`}
       style={mask ? { WebkitMaskImage: mask, maskImage: mask } : undefined}
     >
-      {/* Pre-sized WebP + srcset: no runtime optimizer cost, same outcome as next/image for static public assets. */}
-      {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img
-        src={`${base}.webp`}
-        srcSet={`${base}-sm.webp 720w, ${base}.webp ${b.w}w`}
-        sizes="100vw"
-        width={b.w}
-        height={b.h}
-        alt=""
-        decoding="async"
-        loading={priority ? "eager" : "lazy"}
-        fetchPriority={priority ? "high" : "auto"}
-        className="absolute inset-0 h-full w-full select-none object-cover"
-        style={{ objectPosition: b.pos }}
-        draggable={false}
-      />
+      {/*
+        <picture> with width media, not srcset+sizes: a 3x phone still "needs" ~1200px under sizes="100vw",
+        so it was downloading the 1600px file (official-swamp.webp is 205 KB vs 49 KB -sm). Media sources
+        pin phones to -sm and mid widths to -md.
+      */}
+      <picture>
+        <source media="(max-width: 767px)" srcSet={`${base}-sm.webp`} type="image/webp" />
+        <source media="(max-width: 1279px)" srcSet={`${base}-md.webp`} type="image/webp" />
+        <img
+          src={`${base}.webp`}
+          width={b.w}
+          height={b.h}
+          alt=""
+          decoding="async"
+          loading={priority ? "eager" : "lazy"}
+          fetchPriority={priority ? "high" : "auto"}
+          className="absolute inset-0 h-full w-full select-none object-cover"
+          style={{ objectPosition: b.pos }}
+          draggable={false}
+        />
+      </picture>
       {/* Headings are left-aligned: extra shade on the left keeps them legible while the right side stays vivid. */}
       <div
         className="absolute inset-0"
