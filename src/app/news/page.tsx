@@ -4,10 +4,9 @@ import { JsonLd, PageSchema } from "@/lib/seo/jsonld";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { PageBackdrop } from "@/components/PageBackdrop";
 import { SectionTitle } from "@/components/hub/SectionTitle";
-import { JumpNav } from "@/components/hub/JumpNav";
-import { Archive, LeadCard, LiveStrip, Ticker, TopList } from "@/components/news/NewsHub";
-import { buildNewsIndex, clock, shortDate } from "@/lib/news/hub";
-import type { HubAccent as Accent } from "@/components/hub/TapeCard";
+import { Archive, LeadCard, LiveStrip, TopList } from "@/components/news/NewsHub";
+import { NewsBrowser } from "@/components/news/NewsBrowser";
+import { buildNewsIndex, CATEGORIES, clock, shortDate } from "@/lib/news/hub";
 
 export const metadata = metaFor("/news");
 
@@ -19,13 +18,8 @@ export default function Page() {
   const idx = buildNewsIndex(now);
   const { lead, top, live, groups } = idx;
 
-  const nav: { id: string; num: string; label: string; accent: Accent }[] = [
-    ...(lead ? [{ id: "latest", num: "01", label: "Latest", accent: "pink" as Accent }] : []),
-    ...(live.length ? [{ id: "trackers", num: "02", label: "Live trackers", accent: "turq" as Accent }] : []),
-    ...(groups.length ? [{ id: "archive", num: "03", label: "Archive", accent: "orange" as Accent }] : []),
-  ];
-
-  const ticker = [lead, ...top].filter((e): e is NonNullable<typeof e> => Boolean(e)).map((e) => ({ label: e.tag, text: e.title }));
+  // Topic chips: every category that has at least one story, with its count.
+  const categories = CATEGORIES.map((c) => ({ ...c, count: idx.all.filter((e) => e.category === c.id).length })).filter((c) => c.count > 0);
 
   // Order shown on the page: latest, top stories, live trackers, archive.
   const ordered = [...(lead ? [lead] : []), ...top, ...live, ...groups.flatMap((g) => g.items)];
@@ -47,15 +41,12 @@ export default function Page() {
         {/* ---------- Hero ---------- */}
         <section className="relative isolate pb-6x pt-6x md:pt-10x" aria-labelledby="news-title">
           <PageBackdrop id="skyline" dim="strong" fadeTop />
-          <p className="nh-onair mb-4x">
-            <i aria-hidden /> Launch week · Live coverage
-          </p>
           <p className="vc-kicker mb-4x">News</p>
           <h1 id="news-title" className="vc-heading text-[clamp(3.5rem,11vw,7.5rem)]">
-            Launch news
+            GTA 6 news
           </h1>
           <p className="mt-6x max-w-[54ch] text-base leading-relaxed text-ink-2 md:text-lg">
-            Fresh GTA 6 reports up front, the trackers we keep updating, and everything older tidied into the archive. Every article links its sources and labels what is unconfirmed.
+            The latest GTA 6 reports, the trackers we keep updating, and every older story in the archive. Search or filter by topic. Every article links its sources and labels what is unconfirmed.
           </p>
           <dl className="nh-stats mt-10x">
             <div>
@@ -70,16 +61,18 @@ export default function Page() {
               <div>
                 <dt>Last update</dt>
                 <dd>
-                  {clock(idx.latestUpdate)} <small>AEST · {shortDate(idx.latestUpdate)}</small>
+                  <time dateTime={idx.latestUpdate}>
+                    {shortDate(idx.latestUpdate)} <small>{clock(idx.latestUpdate)} AEST</small>
+                  </time>
                 </dd>
               </div>
             ) : null}
           </dl>
-          <Ticker items={ticker} />
         </section>
 
-        <JumpNav items={nav} />
       </div>
+
+      <NewsBrowser entries={idx.all} categories={categories}>
 
       {/* ---------- 01 Latest ---------- */}
       {lead ? (
@@ -115,11 +108,13 @@ export default function Page() {
       {groups.length ? (
         <section id="archive" className="gh-anchor" aria-labelledby="archive-title">
           <SectionTitle id="archive-title" num="03" kicker="Archive" title="Everything else">
-            Explainers, guides and earlier launch coverage, newest first. Filter by topic.
+            Explainers, guides and earlier launch coverage, newest first. Use the search and topic filters above to narrow it down.
           </SectionTitle>
-          <Archive groups={groups} counts={idx.archiveCounts} total={idx.archiveTotal} />
+          <Archive groups={groups} />
         </section>
       ) : null}
+
+      </NewsBrowser>
 
       {/* ---------- Footer band ---------- */}
       <section className="relative overflow-hidden border-y border-pink/25 py-10x" aria-label="About this news desk">

@@ -21,4 +21,4 @@ Set `updated` whenever a fact changes: it drives the "Updated" badge and the pag
 
 ## Adding a category
 
-Add it to `NewsCategory` (articles.ts), `CATEGORIES` and `TAG_CATEGORY` (hub.ts), and add one `#nh-f-<id>` line to each of the two filter selector blocks at the bottom of the Archive section in `src/components/news/news-hub.css` (the filter is radio inputs plus `:has()`, no JavaScript). Accent colours: pink, orange, turq, blue (shared hub.css) or cobalt, violet, cream (news-hub.css).
+Add it to `NewsCategory` (articles.ts), `CATEGORIES` and `TAG_CATEGORY` (hub.ts), and it appears as a topic chip automatically. The search box, topic chips and sort (`src/components/news/NewsBrowser.tsx`) filter every story on the page client-side over title, teaser, description, tag, topic and keywords, and keep their state in the URL (`/news?q=pc&cat=platforms&sort=oldest`) so a filtered view can be shared. Accent colours: pink, orange, turq, blue (shared hub.css) or cobalt, violet, cream (news-hub.css).

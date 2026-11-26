@@ -73,6 +73,11 @@ export interface IndexEntry {
   live: boolean;
 }
 
+/** An index entry plus the article keywords, for the client-side search. */
+export interface SearchEntry extends IndexEntry {
+  keywords: string[];
+}
+
 const entry = (n: NewsItem): IndexEntry => ({
   href: newsPath(n.slug),
   crumb: n.crumb,
@@ -127,7 +132,15 @@ export function buildNewsIndex(now: Date = new Date()) {
 
   const archiveCounts = CATEGORIES.map((c) => ({ ...c, count: archive.filter((e) => e.category === c.id).length })).filter((c) => c.count > 0);
 
-  const latestUpdate = NEWS.map((n) => n.updated).sort().at(-1) ?? "";
+  // Newest timestamp across every article and reference page (published or updated), compared as instants, not strings.
+  const stamps = [...NEWS.flatMap((n) => [n.published, n.updated]), ...REFERENCE_PAGES.map((r) => r.updated)].filter(Boolean);
+  const latestUpdate = stamps.reduce((best, iso) => (ms(iso) > ms(best) ? iso : best), stamps[0] ?? "");
+
+  // Everything on the page, newest first: what the search box and topic chips filter.
+  const all: SearchEntry[] = [...(lead ? [lead] : []), ...top, ...live, ...NEWS.filter((n) => !shown.has(n.slug))]
+    .map((n) => ({ ...entry(n), keywords: n.keywords }))
+    .concat(REFERENCE_PAGES.map((r) => ({ href: r.href, crumb: r.crumb, title: r.crumb, teaser: r.teaser, description: r.teaser, tag: r.tag, category: r.category, published: r.updated, updated: r.updated, live: false, keywords: [] })))
+    .sort((a, b) => ms(b.published) - ms(a.published));
 
   return {
     lead: lead ? entry(lead) : undefined,
@@ -138,6 +151,7 @@ export function buildNewsIndex(now: Date = new Date()) {
     archiveTotal: archive.length,
     total: NEWS.length + REFERENCE_PAGES.length,
     latestUpdate,
+    all,
   };
 }
 
