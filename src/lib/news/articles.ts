@@ -133,7 +133,7 @@ export const NOV26_1340_PUBLISHED = "2026-11-26T14:08:10+10:00";
 export const NOV26_1340_UPDATED = "2026-11-26T14:08:10+10:00";
 
 /** Post-launch refresh of the GTA 6 Online / multiplayer confirmed-vs-reported page. Adjust at merge if it goes live later. */
-export const ONLINE_MP_UPDATED = "2026-11-28T00:45:00+10:00";
+export const ONLINE_MP_UPDATED = "2026-11-28T00:57:00+10:00";
 
 export const newsPath = (slug: string) => `/news/${slug}`;
 
