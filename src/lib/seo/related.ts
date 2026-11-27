@@ -315,7 +315,7 @@ export const NEWS_GUIDES: Record<string, string[]> = {
   "/news/gta-6-pc-release-status": ["/guides/beginner"],
   "/news/gta-6-game-pass-ps-plus-cloud": ["/guides/beginner"],
   "/news/gta-6-file-size-time-to-beat": ["/guides/missions", "/guides/trophies", "/guides/beginner"],
-  "/news/gta-6-online-release-date": ["/guides/missions", "/guides/beginner"],
+  "/news/gta-6-online-release-date": ["/guides/beginner"],
   "/news/gta-6-festival-set-times-heat-night": ["/guides/beginner", "/guides/activities"],
   "/news/gta-6-sales-17-million-sensor-tower": ["/guides/beginner", "/guides/missions"],
   "/news/gta-6-age-rating": ["/guides/beginner", "/tools/edition-compare"],

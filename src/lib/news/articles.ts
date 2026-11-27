@@ -132,6 +132,9 @@ export const NOV26_1340_PUBLISHED = "2026-11-26T14:08:10+10:00";
 /** QC pass (Dexerto removed, bank-robbery link, official screenshots). */
 export const NOV26_1340_UPDATED = "2026-11-26T14:08:10+10:00";
 
+/** Post-launch refresh of the GTA 6 Online / multiplayer confirmed-vs-reported page. Adjust at merge if it goes live later. */
+export const ONLINE_MP_UPDATED = "2026-11-28T00:57:00+10:00";
+
 export const newsPath = (slug: string) => `/news/${slug}`;
 
 export const NEWS: NewsItem[] = [
@@ -958,39 +961,48 @@ export const NEWS: NewsItem[] = [
   },
   {
     slug: "gta-6-online-release-date",
-    title: "GTA 6 Online: Release Date & What We Know",
+    title: "GTA 6 Online and multiplayer: what's confirmed",
     description:
-      "GTA 6 launches single-player with no online mode announced. What Take-Two has said, where the 2027 talk comes from, and which leaks are unconfirmed.",
+      "As of 28 November 2026, GTA 6 is single-player only. What Rockstar and Take-Two have confirmed, what outlets report, and why there's no Online date.",
     crumb: "GTA 6 Online",
-    teaser: "No GTA 6 Online date. Launch is single-player, GTA Online continues, and the 2027 talk is a partner's expectation.",
+    teaser: "Still no GTA 6 Online date or modes. What Rockstar and Take-Two have actually confirmed, and where the 2027 talk comes from.",
     tag: "Online",
-    keywords: ["GTA 6 Online", "GTA 6 Online release date", "GTA 6 multiplayer", "GTA Online after GTA 6", "GTA 6 2027"],
+    category: "launch",
+    pinned: true,
+    keywords: ["GTA 6 Online", "GTA 6 Online release date", "GTA 6 multiplayer", "GTA 6 co-op", "GTA Online after GTA 6", "GTA 6 2027"],
     published: GAPS_PUBLISHED,
-    updated: GAPS_PUBLISHED,
+    updated: ONLINE_MP_UPDATED,
     citations: [
       "https://www.playstation.com/en-us/games/grand-theft-auto-vi/",
-      "https://gamerant.com/gta-6-online-take-two-statement-release-beyond/",
-      "https://www.vice.com/en/article/gta-6-online-release-date/",
+      "https://www.xbox.com/en-US/games/store/grand-theft-auto-vi/9NP019G7NZXT",
+      "https://www.businesswire.com/news/home/20260624539426/en/Rockstar-Games-Announces-Pre-Orders-for-Grand-Theft-Auto-VI",
+      "https://www.businesswire.com/news/home/20261119830927/en/Rockstar-Games-Announces-Grand-Theft-Auto-VI-Now-Available",
+      "https://www.ign.com/articles/take-two-boss-strauss-zelnick-on-gta-6-expectations-gta-online-and-the-decade-to-come",
       "https://www.theverge.com/games/997116/twitch-ceo-gta-vi-multiplayer-is-coming-in-2027",
-      "https://www.pcgamer.com/games/grand-theft-auto/the-experiences-on-console-and-pc-tend-to-be-roughly-the-same-says-take-two-ceo-in-response-to-question-about-gta-roleplaying/",
-      "https://www.gamespot.com/articles/gta-6-ps5-pro-features-frame-rates-and-xbox-cloud-gaming-details-confirmed-by-rockstar/",
+      "https://www.gamesradar.com/games/grand-theft-auto/gta-6-online-multiplayer/",
+      "https://www.vice.com/en/article/gta-6-online-release-date/",
+      "https://www.radiotimes.com/technology/gaming/gta-6-online-mode/",
     ],
     faq: [
       {
         question: "Does GTA 6 have online multiplayer?",
-        answer: "Not at launch. PlayStation lists it as a single-player experience, and no online mode has been announced.",
+        answer: "Not as of 28 November 2026. PlayStation and Xbox both list it as a single-player experience, and no GTA 6 online mode has been announced.",
       },
       {
         question: "When is GTA 6 Online coming out?",
-        answer: "There is no announced date or window. The 2027 timing is a partner's expectation, not Rockstar's.",
+        answer: "There is no announced date or window. The 2027 timing often repeated online is a partner's expectation, not a statement from Rockstar or Take-Two.",
       },
       {
-        question: "Is GTA Online ending?",
-        answer: "No. Take-Two says it will keep supporting GTA Online after GTA 6 releases.",
+        question: "What modes will GTA 6 Online have?",
+        answer: "None have been announced. There is no official list of modes, features, or player counts for a GTA 6 online offering.",
       },
       {
-        question: "Can I play GTA Online with friends on 19 November?",
-        answer: "Yes, in the existing GTA Online in GTA V. GTA 6 itself is a single-player game at launch.",
+        question: "Can I play GTA 6 co-op with friends?",
+        answer: "Not according to the official storefronts, which list the game as one player. You can still play the existing GTA Online in Grand Theft Auto V with friends.",
+      },
+      {
+        question: "Is the current GTA Online shutting down?",
+        answer: "No. Take-Two has said it intends to keep supporting GTA Online, including with new content and ongoing events.",
       },
     ],
   },

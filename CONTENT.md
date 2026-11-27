@@ -68,7 +68,7 @@ news | /news/gta-6-launch-streams-schedule | Launch streams schedule | live
 news | /news/streamers-new-zealand-trick-warnings | Streamers and the NZ trick | live
 news | /news/gta-6-performance-ps5-pro-xbox | Performance: PS5, PS5 Pro & Xbox | live
 news | /news/gta-6-pc-release-status | PC release status | live
-news | /news/gta-6-online-release-date | GTA 6 Online | live
+news | /news/gta-6-online-release-date | GTA 6 Online and multiplayer: what's confirmed | live | official + reported | refreshed 28 Nov 2026; no official date or modes; 2027 talk is reported only
 news | /news/gta-6-game-pass-ps-plus-cloud | Game Pass, PS Plus, cloud | live
 news | /news/gta-6-file-size-time-to-beat | File size and time to beat | live
 db | /database/* | Characters, locations, vehicles, weapons, radio, gangs | live; character work is a separate track
