@@ -135,6 +135,9 @@ export const NOV26_1340_UPDATED = "2026-11-26T14:08:10+10:00";
 /** Post-launch refresh of the GTA 6 Online / multiplayer confirmed-vs-reported page. Adjust at merge if it goes live later. */
 export const ONLINE_MP_UPDATED = "2026-11-28T00:57:00+10:00";
 
+/** Post-launch refresh of the GTA 6 PC status page. Adjust at merge if it goes live later. */
+export const PC_STATUS_UPDATED = "2026-11-28T01:22:00+10:00";
+
 export const newsPath = (slug: string) => `/news/${slug}`;
 
 export const NEWS: NewsItem[] = [
@@ -924,34 +927,37 @@ export const NEWS: NewsItem[] = [
     slug: "gta-6-pc-release-status",
     title: "Is GTA 6 Coming to PC? Latest Status",
     description:
-      "GTA 6 is PS5 and Xbox Series X|S only. What Rockstar and Take-Two have said about a PC version, past port gaps, and which PC rumours are unconfirmed.",
+      "As of 28 November 2026, GTA 6 is still PS5 and Xbox only. What Rockstar and Take-Two have confirmed, and which PC dates are only rumours.",
     crumb: "GTA 6 on PC",
-    teaser: "No PC version announced. What is official, the GTA V and RDR2 port gaps, and which PC dates are only rumours.",
+    teaser: "Still no PC version, nine days after launch. What Rockstar and Take-Two have confirmed, and which dates are only rumours.",
     tag: "Platforms",
+    category: "platforms",
+    pinned: true,
     keywords: ["GTA 6 PC", "GTA 6 PC release date", "is GTA 6 on PC", "GTA 6 Steam", "GTA 6 system requirements"],
     published: GAPS_PUBLISHED,
-    updated: GAPS_PUBLISHED,
+    updated: PC_STATUS_UPDATED,
     citations: [
       "https://www.rockstargames.com/VI",
+      "https://www.businesswire.com/news/home/20261119830927/en/Rockstar-Games-Announces-Grand-Theft-Auto-VI-Now-Available",
       "https://news.xbox.com/en-us/2026/11/10/grand-theft-auto-6-comes-to-xbox-cloud-gaming-november-19/",
-      "https://www.polygon.com/gta-6-pc-release-date-cloud-streaming-rockstar-news-xbox-mods/",
-      "https://gamerant.com/gta-6-online-take-two-statement-release-beyond/",
+      "https://www.theverge.com/games/997116/twitch-ceo-gta-vi-multiplayer-is-coming-in-2027",
       "https://www.pcgamer.com/games/grand-theft-auto/the-experiences-on-console-and-pc-tend-to-be-roughly-the-same-says-take-two-ceo-in-response-to-question-about-gta-roleplaying/",
-      "https://tech.yahoo.com/gaming/articles/gta-6-pc-release-date-150338948.html",
+      "https://www.polygon.com/gta-6-pc-release-date-cloud-streaming-rockstar-news-xbox-mods/",
       "https://www.gamespot.com/articles/gta-6-ps5-pro-features-frame-rates-and-xbox-cloud-gaming-details-confirmed-by-rockstar/",
+      "https://tech.yahoo.com/gaming/articles/gta-6-pc-release-date-150338948.html",
     ],
     faq: [
       {
         question: "Is GTA 6 on PC?",
-        answer: "No. It is not on sale for PC, and Rockstar has not announced a PC version.",
-      },
-      {
-        question: "Can I stream GTA 6 to a PC?",
-        answer: "Not through anything Rockstar or Xbox has announced. The Xbox Cloud Gaming launch names Xbox consoles only.",
+        answer: "No. As of 28 November 2026 it is not on sale for PC, and Rockstar has not announced a PC version.",
       },
       {
         question: "Is there a GTA 6 PC release date?",
         answer: "No. The only timelines in circulation are unnamed-source reports, which we treat as rumour.",
+      },
+      {
+        question: "Can I stream GTA 6 to a PC?",
+        answer: "Not through anything Rockstar or Xbox has announced. The Xbox Cloud Gaming launch names Xbox consoles only.",
       },
       {
         question: "How long did GTA V and Red Dead Redemption 2 take to reach PC?",
